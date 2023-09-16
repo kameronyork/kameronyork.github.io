@@ -364,7 +364,7 @@ Countries with only one skyscraper removed.") +
 ```
 This plot shows the United States maintains dominance in the empire stat. While China has constructed more skyscrapers than the United States, the large GDP of the US gives it an edge in this fight. Another interesting point is that Japan has edged out the United Arab Emirates to take third place in the empire stat! This is most likely due to Japan having a higher GDP than the United Arab Emirates although it has fewer skyscrapers overall.
 
-#Summary:
+Summary:
 
 The United States was the dominant skyscraper country through the whole of the 1900's, but since the turn of the century China has taken over that mantle. However, when adjusting for population the United States still maintains a lead over China as they have a much larger population than the United States.
 
