@@ -29,7 +29,7 @@ For this project I started with the question: "Which country has the most skyscr
 ```{.r .cell-code}
 # Code downloading and wrangling GDP data since 1960:
 # GDP is in Billions.
-gdp_1960 <- read.csv("C:\\Users\\theka\\Desktop\\Projects\\Website Project\\Datasets\\GDP DATA.csv", sep = ",") %>% 
+gdp_1960 <- read.csv("C:\\Users\\theka\\Desktop\\Projects\\Website_project\\Datasets\\GDP DATA.csv", sep = ",") %>% 
   rename("country_name" = Country_Name) %>% 
   select(-c(Country_Code, Indicator_Code, Indicator_Name)) %>% 
   pivot_longer(!country_name, names_to = "year", values_to = "GDP2") %>% 
@@ -48,7 +48,7 @@ gdp_1960 <- read.csv("C:\\Users\\theka\\Desktop\\Projects\\Website Project\\Data
 
 # Code downloading and wrangling popoulation data since 1960:
 # Population is in Millions.
-pop_1960 <- read.csv("C:\\Users\\theka\\Desktop\\Projects\\Website Project\\Datasets\\World Population by Country.csv") %>% 
+pop_1960 <- read.csv("C:\\Users\\theka\\Desktop\\Projects\\Website_project\\Datasets\\World Population by Country.csv") %>% 
   rename("country_name" = Country.Name) %>% 
   select(-c(Indicator.Name, Country.Code, Indicator.Code)) %>% 
   pivot_longer(!country_name, names_to = "year", values_to = "POP2") %>% 
@@ -65,7 +65,7 @@ pop_1960 <- read.csv("C:\\Users\\theka\\Desktop\\Projects\\Website Project\\Data
   rename("country_name" = country_name2)
 
 # Code downloading and wrangling country skyscraper data since 1960:
-skyscraper_1960 <- read.csv("C:\\Users\\theka\\Desktop\\Projects\\Website Project\\Datasets\\Total Skyscraper by Country.csv") %>% 
+skyscraper_1960 <- read.csv("C:\\Users\\theka\\Desktop\\Projects\\Website_project\\Datasets\\Total Skyscraper by Country.csv") %>% 
   rename("country_name" = Country) %>% 
   select(-c(url)) %>% 
   pivot_longer(!c(country_name, Religion), names_to = "year", values_to = "Skyscraper") %>% 
@@ -125,7 +125,7 @@ ggplot(data = USA_analysis) +
 ```
 
 ::: {.cell-output-display}
-![](semester_project_final_files/figure-html/unnamed-chunk-3-1.png){width=672}
+![](SemesterProjectFInal_files/figure-html/unnamed-chunk-3-1.png){width=672}
 :::
 :::
 
@@ -172,7 +172,7 @@ ggplot(data = data_merge) +
 ```
 
 ::: {.cell-output-display}
-![](semester_project_final_files/figure-html/unnamed-chunk-4-1.png){width=672}
+![](SemesterProjectFInal_files/figure-html/unnamed-chunk-4-1.png){width=672}
 :::
 :::
 
@@ -281,7 +281,7 @@ Countries with only one skyscraper omitted.") +
 ```
 
 ::: {.cell-output-display}
-![](semester_project_final_files/figure-html/unnamed-chunk-6-1.png){width=672}
+![](SemesterProjectFInal_files/figure-html/unnamed-chunk-6-1.png){width=672}
 :::
 :::
 
@@ -338,7 +338,7 @@ Countries with only one skyscraper omitted.") +
 ```
 
 ::: {.cell-output-display}
-![](semester_project_final_files/figure-html/unnamed-chunk-7-1.png){width=672}
+![](SemesterProjectFInal_files/figure-html/unnamed-chunk-7-1.png){width=672}
 :::
 :::
 
@@ -441,7 +441,7 @@ Warning: Removed 15 rows containing missing values (`geom_line()`).
 :::
 
 ::: {.cell-output-display}
-![](semester_project_final_files/figure-html/unnamed-chunk-9-1.png){width=672}
+![](SemesterProjectFInal_files/figure-html/unnamed-chunk-9-1.png){width=672}
 :::
 :::
 
