@@ -1,17 +1,14 @@
 ---
-title: "Semester Project - York"
+title: "Skyscraper Analysis"  # Sets the Title.
 output: 
   html_document:
     theme: cerulean  # Sets the theme.  Alternate theme:  Journal
     code_folding: hide  # Makes all R Code in the file fold itself.
     toc: true  # Creates a Table of Contents
     toc_float: true  # Makes the Table of Contents Float
-editor: visual
-execute:
-  keep-md: TRUE
 ---
 
-## Skyscraper Analysis
+# Skyscraper Analysis
 
 For this project I started with the question: "Which country has the most skyscrapers per person?" I then expanded the question to finding three values: 1) The country with the highest number of skyscrapers, 2) the country with the most skyscrapers per person, and 3) the country with the most skyscrapers in relation to GDP.
 
@@ -24,7 +21,7 @@ library(stringr)
 library(ggrepel)
 ```
 
-## Creating Datasets:
+##Creating Datasets:
 
 ```{r}
 # Code downloading and wrangling GDP data since 1960:
@@ -87,15 +84,15 @@ data_merge <- skyscraper_1960 %>%
   select(country_name, ID, GDP, POP, Skyscraper) %>% 
   mutate("year" = as.integer(str_sub(ID, start = -4)))
 ```
-
-## Data Demonstration:
+##Data Demonstration:
 
 ```{r}
 # Analysis to visualize USA GDP vs. UK GDP:
 USA_analysis <- data_merge %>% 
   filter(country_name %in% c("United Kingdom", "United States"))
-
-# Visualization to show differece between USA GDP and UK GDP:
+```
+### Differece between USA GDP and UK GDP:
+```{r}
 ggplot(data = USA_analysis) +
   geom_point(mapping = aes(x = year, y = GDP, color = factor(country_name, levels = c("United States", "United Kingdom")))) +
   geom_line(mapping = aes(x = year, y = GDP, color = factor(country_name, levels = c("United States", "United Kingdom")))) +
@@ -118,10 +115,9 @@ ggplot(data = USA_analysis) +
         plot.caption = element_text(hjust = 0)) +
   guides(color = guide_legend(override.aes = list(size = 2)))
 ```
-
 This plot showcases one of the features of my created data set: GDP by country per year. This plot showcases the difference in GDP of the United States from the United Kingdom from the year 1960 to 2020. In the plot you can see a few important things, the United States has gained a massive lead over the United Kingdom, which is surprising seeing they started at a relatively close GDP in 1960. You can also see two semi-prominent dips in the GDP's of both countries occurring in 2008 and 2019. This is due to the housing market collapse of 2008 and the COVID-19 pandemic which started in 2019.
 
-## Skyscrapers in General:
+##Skyscrapers in General:
 
 ```{r}
 # Code determining labels for the top three countries:
@@ -132,7 +128,9 @@ highest_skyscraper <- data_merge %>%
     country_name == "United Arab Emirates" ~ "UAE",
     TRUE ~ country_name
   ))
+```
 
+```{r}
 # Visualization: Top three countries vs. The rest of the world
 ggplot(data = data_merge) +
   geom_point(mapping = aes(x = year, y = Skyscraper), color = "darkgrey") +
@@ -157,7 +155,7 @@ ggplot(data = data_merge) +
   guides(color = guide_legend(override.aes = list(size = 2)))
 ```
 
-This plot displays number of skyscrapers by country. From this visualization I found two interesting countries: [The United States (highlighted in blue) and China (highlighted in red)]{.underline}. The USA has been building skyscrapers at a consistent rate for the past 60 years, and it maintained the the status as the country with the most skyscrapers for 45 years. However, around 2005 it was overtaken (and QUICKLY) by China. China went from having almost no skyscrapers to having the most skyscrapers in a span of only 20 years. This growth is unprecedented.
+This plot displays number of skyscrapers by country. From this visualization I found two interesting countries: The United States (highlighted in blue) and China (highlighted in red). The USA has been building skyscrapers at a consistent rate for the past 60 years, and it maintained the the status as the country with the most skyscrapers for 45 years. However, around 2005 it was overtaken (and QUICKLY) by China. China went from having almost no skyscrapers to having the most skyscrapers in a span of only 20 years. This growth is unprecedented.
 
 Highlighted in Gold you will see the United Arab Emirates. Note their construction of hundreds of skyscrapers since the early 2000's, quickly moving them from the bottom of the pack to having the third most skyscrapers in the world! Keep your eye on them, as the United Arab Emirates will play a major part of the following visualizations. In fact, this jump can be illustrated by this table:
 
@@ -181,7 +179,9 @@ table2 <-data_merge %>%
   pivot_wider(names_from = year, values_from = Skyscraper) %>% 
   select(country_name, "2020", rank) %>% 
   rename("2020 Countries" = country_name)
+```
 
+```{r}
 # table to show top three countries for skyscrapers in 1960 vs. 2020:
 visual <- table1 %>% 
   inner_join(table2, by = "rank") %>% 
@@ -189,10 +189,9 @@ visual <- table1 %>%
 
 head(visual)
 ```
-
 This table shows the change in skyscraper dominant countries from 1960 to 2020. The United States went from being number one in the world to being a distant second. China went from not even having a skyscraper in 1960 to being number one in the world! And the United Arab Emirates has risen above the rest of the world be a strong third place.
 
-## Skyscrapers per Capita:
+##Skyscrapers per Capita:
 
 ```{r}
 # Filtering out countries with only one skyscraper to keep data consistent:
@@ -213,7 +212,9 @@ percap_labels <- data_per_cap %>%
     country_name == "United States" ~ "USA",
     TRUE ~ country_name
   ))
+```
 
+```{r}
 # Creating a visualization to show the top countries in relation to the world:
 ggplot(data = data_per_cap) +
   geom_point(mapping = aes(x = year, y = per_capita), color = "grey") +
@@ -240,8 +241,7 @@ Countries with only one skyscraper omitted.") +
         plot.caption = element_text(hjust = 0)) +
   guides(color = guide_legend(override.aes = list(size = 2)))
 ```
-
-*(I have decided to omit countries with only one skyscraper and small populations as they seemed to skew the data).*
+(I have decided to omit countries with only one skyscraper and small populations as they seemed to skew the data).
 
 Here you can see a plot of the top five countries with the most skyscrapers per million citizens along with the USA and China. In this plot it is clear that while China may have more skyscrapers than the United States, the United States has more skyscrapers per person. Yet, the United States does not have the most skyscrapers per person. Plotted in color above the United States and China you will find five highlighted countries with the most skyscrapers per person.
 
@@ -261,7 +261,9 @@ labels_uae_analysis <- data_per_cap %>%
     country_name == "United States" ~ "USA",
     TRUE ~ country_name
   ))
+```
 
+```{r}
 # Visualization to show the top three countries relative to the world:
 ggplot(data = data_per_cap) +
   geom_point(mapping = aes(x = year, y = per_capita), color = "grey") +
@@ -288,12 +290,11 @@ Countries with only one skyscraper omitted.") +
         plot.caption = element_text(hjust = 0)) +
   guides(color = guide_legend(override.aes = list(size = 2)))
 ```
-
 Compare this visualization to the first under Skyscrapers in General. The difference is staggering! In the former you can see the United States and China far exceed every other country, while the latter shows they are sitting around the values for the rest of the world. In this plot the United Arab Emirates completely outshines other countries. Their value skyrockets as they are building more skyscrapers per person than any other country in the world.
 
 The other interesting point I find in this plot is the fact that the United States is still higher than China in terms of skyscrapers per person. While it is amazing that they constructed 2,000 in a little over 20 years, they have far more people than the United States. This shows they are most likely building these skyscrapers to accommodate residents, while the immense growth of the United Arab Emirates in this plot most likely means they are building skyscrapers as a show of wealth.
 
-## Skyscrapers in relation to GDP:
+##Skyscrapers in relation to GDP:
 
 For this section I decided to create a whole new statistic (at least one that I haven't heard of before!). By taking the GDP and dividing it by the population I find the GDP per person. I then multiply the GDP per person by the number of skyscrapers in the country to find what I call the "Empire stat", named after the Empire State Building.
 
@@ -361,10 +362,9 @@ Countries with only one skyscraper removed.") +
         plot.caption = element_text(hjust = 0)) +
   guides(color = guide_legend(override.aes = list(size = 2)))
 ```
-
 This plot shows the United States maintains dominance in the empire stat. While China has constructed more skyscrapers than the United States, the large GDP of the US gives it an edge in this fight. Another interesting point is that Japan has edged out the United Arab Emirates to take third place in the empire stat! This is most likely due to Japan having a higher GDP than the United Arab Emirates although it has fewer skyscrapers overall.
 
-## Summary:
+#Summary:
 
 The United States was the dominant skyscraper country through the whole of the 1900's, but since the turn of the century China has taken over that mantle. However, when adjusting for population the United States still maintains a lead over China as they have a much larger population than the United States.
 
