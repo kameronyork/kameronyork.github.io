@@ -82,15 +82,13 @@ data_merge <- skyscraper_1960 %>%
   select(country_name, ID, GDP, POP, Skyscraper) %>% 
   mutate("year" = as.integer(str_sub(ID, start = -4)))
 ```
-#### Data Demonstration:
 
+### USA GDP vs. UK GDP:
 ```{r}
 # Analysis to visualize USA GDP vs. UK GDP:
 USA_analysis <- data_merge %>% 
   filter(country_name %in% c("United Kingdom", "United States"))
-```
-### Differece between USA GDP and UK GDP:
-```{r}
+
 ggplot(data = USA_analysis) +
   geom_point(mapping = aes(x = year, y = GDP, color = factor(country_name, levels = c("United States", "United Kingdom")))) +
   geom_line(mapping = aes(x = year, y = GDP, color = factor(country_name, levels = c("United States", "United Kingdom")))) +
@@ -126,9 +124,7 @@ highest_skyscraper <- data_merge %>%
     country_name == "United Arab Emirates" ~ "UAE",
     TRUE ~ country_name
   ))
-```
 
-```{r}
 # Visualization: Top three countries vs. The rest of the world
 ggplot(data = data_merge) +
   geom_point(mapping = aes(x = year, y = Skyscraper), color = "darkgrey") +
@@ -177,9 +173,7 @@ table2 <-data_merge %>%
   pivot_wider(names_from = year, values_from = Skyscraper) %>% 
   select(country_name, "2020", rank) %>% 
   rename("2020 Countries" = country_name)
-```
 
-```{r}
 # table to show top three countries for skyscrapers in 1960 vs. 2020:
 visual <- table1 %>% 
   inner_join(table2, by = "rank") %>% 
@@ -210,9 +204,7 @@ percap_labels <- data_per_cap %>%
     country_name == "United States" ~ "USA",
     TRUE ~ country_name
   ))
-```
 
-```{r}
 # Creating a visualization to show the top countries in relation to the world:
 ggplot(data = data_per_cap) +
   geom_point(mapping = aes(x = year, y = per_capita), color = "grey") +
@@ -259,9 +251,7 @@ labels_uae_analysis <- data_per_cap %>%
     country_name == "United States" ~ "USA",
     TRUE ~ country_name
   ))
-```
 
-```{r}
 # Visualization to show the top three countries relative to the world:
 ggplot(data = data_per_cap) +
   geom_point(mapping = aes(x = year, y = per_capita), color = "grey") +
@@ -329,10 +319,7 @@ labels_gdp <- sky_gdp %>%
 japan_labels_gdp <- sky_gdp %>% 
   filter(year == 2020) %>% 
   filter(country_name %in% c("Japan"))
-```
 
-```{r}
-# 
 ggplot(data = sky_gdp) +
   geom_point(mapping = aes(x = year, y = empire), color = "grey") +
   geom_point(data = top_gdp, mapping = aes(x = year, y = empire, color = country_name)) +
