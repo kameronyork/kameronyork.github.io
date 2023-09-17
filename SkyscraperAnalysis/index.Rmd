@@ -7,6 +7,7 @@ output:
     toc: true  # Creates a Table of Contents
     toc_float: true  # Makes the Table of Contents Float
 ---
+This project was completed in May 2023 as the final project for my Data Wrangling and Visualization class. Data-sets for GDP, Population by country, and Skyscrapers by country were obtained from various authors on Kaggle.
 
 For this project I started with the question: "Which country has the most skyscrapers per person?" I then expanded the question to finding three values: 1) The country with the highest number of skyscrapers, 2) the country with the most skyscrapers per person, and 3) the country with the most skyscrapers in relation to GDP.
 
@@ -17,9 +18,10 @@ library(downloader)
 library(ggthemes)
 library(stringr)
 library(ggrepel)
+library(pander)
 ```
 
-#### Creating Datasets:
+Wrangling Data-sets:
 
 ```{r}
 # Code downloading and wrangling GDP data since 1960:
@@ -179,7 +181,7 @@ visual <- table1 %>%
   inner_join(table2, by = "rank") %>% 
   select("rank", "1960 Countries", "1960", "2020 Countries", "2020")
 
-head(visual)
+pander(visual)
 ```
 This table shows the change in skyscraper dominant countries from 1960 to 2020. The United States went from being number one in the world to being a distant second. China went from not even having a skyscraper in 1960 to being number one in the world! And the United Arab Emirates has risen above the rest of the world be a strong third place.
 
