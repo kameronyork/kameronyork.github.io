@@ -1,0 +1,79 @@
+################################# Default configuration ###################
+# provide your domain here
+baseURL = "https://www.kameronyork.com"
+# https://www.kameronyork.com
+# theme
+theme = "Dot"
+# site title
+title = "DS250"
+# disable language
+disableLanguages = [true]
+publishDir = 'docs'
+# unsafe html
+[markup.goldmark.renderer]
+unsafe= true
+
+################################# navigation ################################
+
+[[menu.main]]
+name = "Home"
+url = "https://www.kameronyork.com"
+weight = 1
+
+[[menu.main]]
+name = "Projects"
+url = "projects"
+weight = 2
+
+[[menu.main]]
+name = "Blog"
+url = "blog"
+weight = 3
+
+[[menu.main]]
+name = "Contact"
+url = "docs/contact"
+weight = 3
+
+############################# Default Parameters ##########################
+[params]
+# logo is for all page
+logo = ""
+# logo white is for homepage logo, you can use colorful logo too...
+logo_white = ""
+# when logo is empty, it will shown your site title
+
+# customize color
+primary_color = "#FFD580"
+body_color = "#f9f9f9"
+text_color = "#636363"
+text_color_dark = "#242738"
+white_color = "#ffffff"
+light_color = "#f8f9fa"
+
+# font family
+font_family = "roboto" # Choose font family from : https://fonts.google.com/
+
+
+
+############################## social links ##############################
+ 
+[[params.social]]
+icon = "ti-github" # themify icon pack : https://themify.me/themify-icons
+link = "https://www.github.com/kameronyork"
+  
+[[params.social]]
+icon = "ti-linkedin" # themify icon pack : https://themify.me/themify-icons
+link = "https://www.linkedin.com/in/kameronyork"
+
+################################ English Language ######################
+[Languages.en]
+languageName = "En"
+languageCode = "en-us"
+weight = 1
+home = "Home"
+copyright = "Kameron York ©"
+
+# banner
+[Languages.en.params.banner]
+title = "Kameron York"
