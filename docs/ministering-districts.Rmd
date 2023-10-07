@@ -1,0 +1,18 @@
+---
+title: "South Fork Ward - Ministering Assignment Groups"
+author: "Kameron York - EQ Secretary"
+date: "2023-10-06"
+output: html_document
+---
+
+```{r, include=FALSE, warnings=FALSE}
+library(tidyverse)
+library(leaflet)
+
+households <- read.csv("https://www.kameronyork.com/datasets/southfork-households.csv")
+```
+
+
+### Suggested Map
+
+
