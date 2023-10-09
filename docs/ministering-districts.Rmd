@@ -8,11 +8,47 @@ output: html_document
 ```{r, include=FALSE, warnings=FALSE}
 library(tidyverse)
 library(leaflet)
+library(tidygeocoder)
 
-households <- read.csv("https://www.kameronyork.com/datasets/southfork-households.csv")
+households <- read.csv("https://www.kameronyork.com/datasets/southfork-households.csv") %>% 
+  geocode(Combined.Address, method = 'arcgis', lat = lat , long = long)
+```
+
+```{r, include=FALSE}
+red_icon <- makeIcon(
+  iconUrl = "https://www.kameronyork.com/docs/assets/red-marker.png",
+  iconWidth = 25, iconHeight = 25
+)
+
+yellow_icon <- makeIcon(
+  iconUrl = "https://www.kameronyork.com/docs/assets/yellow-marker.png",
+  iconWidth = 25, iconHeight = 25)
+
+blue_icon <- makeIcon(
+  iconUrl = "https://www.kameronyork.com/docs/assets/blue-marker.png",
+  iconWidth = 25, iconHeight = 25)
 ```
 
 
 ### Suggested Map
 
+This map shows the suggested configuration of Districts for Ministering brother assignments:
+
+```{r}
+(myleaflet <- leaflet() %>% 
+  setView(lng = -111.74, lat = 43.86, zoom = 13) %>% 
+  addProviderTiles(providers$OpenStreetMap) %>%
+  addMarkers(data = households,
+                   lat = ~lat,
+                   lng = ~long,
+                   popup = ~paste(Name, Assigned, sep = "<br>"),
+                   icon = blue_icon))
+  # # addMarkers(data = st_as_sf(df_wells),
+  # #                  group = "Wells",
+  # #                  popup = ~paste("Well:", Owner, sep = " "),
+  # #                  icon = dam_icon) %>% 
+  # ) %>% 
+  # addLayersControl(overlayGroups = c("Wise", "Baker", "Moss"),
+  #                  options = layersControlOptions(collapsed = FALSE))
+```
 
