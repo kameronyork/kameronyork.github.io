@@ -1,5 +1,5 @@
 ---
-title: "The Barren Fig Tree"  # Sets the Title.
+title: "The Mustard Seed"  # Sets the Title.
 output: 
   html_document:
     theme: cerulean  # Sets the theme.  Alternate theme:  Journal
