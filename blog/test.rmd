@@ -1,0 +1,12 @@
+---
+title: "Test Post"  # Sets the Title.
+output: 
+  html_document:
+    theme: cerulean  # Sets the theme.  Alternate theme:  Journal
+    code_folding: hide  # Makes all R Code in the file fold itself.
+    toc: true  # Creates a Table of Contents
+    toc_float: true  # Makes the Table of Contents Float
+---
+
+This article is yet to be completed.
+Please check back later!
