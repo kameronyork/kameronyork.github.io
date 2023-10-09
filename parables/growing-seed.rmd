@@ -10,3 +10,8 @@ output:
 
 This article is yet to be completed.
 Please check back later!
+
+<link rel=stylesheet href=https://kameronyork.github.io/scripting/themify-icons/themify-icons.css>
+<footer>  
+<div class="p-lg-5 p-4 bg-white"><nav class="pagination mt-3"><div class="row"><div class="col-md-6 text-md-left"><a class="nav nav-prev" href="https://www.kameronyork.com/parables"><i class="ti-arrow-left mr-2"></i><span class="d-none d-md-block">Home</span></a></div><div class="col-md-6 text-md-right"><a class="nav nav-next" href="https://www.kameronyork.com/parables/two-debtors.html"><span class="d-none d-md-block">The Two Debtors</span><i class="ti-arrow-right ml-2"></i></a></div></div></nav></div>
+</footer>
