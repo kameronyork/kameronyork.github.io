@@ -1,5 +1,5 @@
 ---
-title: "The Hidden Treasure'  # Sets the Title.
+title: "The Hidden Treasure"  # Sets the Title.
 output: 
   html_document:
     theme: cerulean  # Sets the theme.  Alternate theme:  Journal
