@@ -2,15 +2,29 @@
 title: "The Growing Seed"  # Sets the Title.
 output: 
   html_document:
-    theme: cerulean  # Sets the theme.  Alternate theme:  Journal
     code_folding: hide  # Makes all R Code in the file fold itself.
     toc: true  # Creates a Table of Contents
     toc_float: true  # Makes the Table of Contents Float
+    includes:
+      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/header.html"
+      after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
-
-This article is yet to be completed.
-Please check back later!
-
 <link rel=stylesheet href=https://kameronyork.github.io/scripting/themify-icons/themify-icons.css>
 
-<footer><div class="container"><div class="row"><div class="col-md-5 border text-md-left"><nav class="pagination mt-3"><a class="nav nav-prev" href="https://www.kameronyork.com/parables"><i class="ti-arrow-left mr-2"></i><span class="d-none d-md-block">   Home</span></a></nav></div><div class="col-md-7 border text-md-right"><nav class="pagination mt-3"><a class="nav nav-next" href="https://www.kameronyork.com/parables/two-debtors.html"><span class="d-none d-md-block">The Two Debtors   </span><i class="ti-arrow-right ml-2"></i></a></nav></div></div></div></footer>
+
+#### Scripture Link
+<div style="border: 1px solid #ccc; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">
+  <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/mark/4.26-29">Mark 4:26-29</a>
+</div>
+<br>
+
+
+<p>
+This article is yet to be completed.<br>
+Please check back later!
+</p>
+
+<br>
+<br>
+
+<div class="container"><div class="row"><div class="col-md-12 text-center"><nav class="pagination mt-3"><a class="btn btn-outline-primary mr-2" href="https://www.kameronyork.com/parables"><i class="ti-arrow-left mr-2"></i>Home</a><a class="btn btn-outline-primary" href="https://www.kameronyork.com/parables/two-debtors.html">The Two Debtors<i class="ti-arrow-right ml-2"></i></a></nav></div></div></div>
