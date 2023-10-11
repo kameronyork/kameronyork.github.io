@@ -1,32 +1,18 @@
 ---
-title: "The Growing Seed"  # Sets the Title.
-author: "Kameron York"
-output: 
+title: "The Growing Seed"
+subtitle: "by Kameron York"
+output:
   html_document:
-    code_folding: hide  # Makes all R Code in the file fold itself.
     includes:
       in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
-<link rel=stylesheet href=https://kameronyork.github.io/scripting/themify-icons/themify-icons.css>
+### Scripture Link
+<a href="https://www.churchofjesuschrist.org/study/scriptures/nt/mark/4?lang=eng?&id=23-25#p26">Mark 4:26-29</a>
 
-<div style="padding-left: 20px; padding-right: 20px;" class=container><div class=col-lg-8><div class="p-lg-5 p-4">
-<b>Scripture Link</b><br>
-  <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/mark/4?lang=eng?&id=23-25#p26">Mark 4:26-29</a>
-<br>
-<b>Insights here:</b>
-<br>
-<p>
-This article is yet to be completed.<br>
-Please check back later!
-</p>
+#### Insights here:
 
-<br>
-    </div>
-  </div>
-</div>
-
-<div class="container"><div class="row"><div class="col-md-5 text-md-left"><nav class="pagination mt-3"><a class="nav nav-prev" href="https://www.kameronyork.com/parables" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer;" onmouseover="this.style.backgroundColor='lightgray';" onmouseout="this.style.backgroundColor='transparent';" onmousedown="this.style.backgroundColor='gray';" onmouseup="this.style.backgroundColor='lightgray';"><i class="ti-arrow-left mr-2"></i><span class="d-none d-md-block">Home</span></a></nav></div><div class="col-md-7 ml-auto text-md-right"><nav class="pagination mt-3"><a class="nav nav-next" href="https://www.kameronyork.com/parables/two-debtors.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer;" onmouseover="this.style.backgroundColor='lightgray';" onmouseout="this.style.backgroundColor='transparent';" onmousedown="this.style.backgroundColor='gray';" onmouseup="this.style.backgroundColor='lightgray';"><span class="d-none d-md-block">The Two Debtors</span><i class="ti-arrow-right ml-2"></i></a></nav></div></div></div>
+This article is yet to be completed. Please check back later!
 
 
-
+<link rel=stylesheet href=https://kameronyork.github.io/scripting/themify-icons/themify-icons.css><div class="container"><div class="row justify-content-between"><div class="col-md-5 text-md-left"><nav class="pagination mt-3"><a class="nav nav-prev" href="https://www.kameronyork.com/parables" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap;" onmouseover="this.style.backgroundColor='lightgray';" onmouseout="this.style.backgroundColor='transparent';" onmousedown="this.style.backgroundColor='gray';" onmouseup="this.style.backgroundColor='lightgray';"><i class="ti-arrow-left mr-2"></i><span style="display: none;" class="d-md-inline-block">Home</span><span style="display: inline-block;" class="d-md-none">Home</span></a></nav></div><div class="col-md-7 ml-auto text-md-right"><nav class="pagination mt-3"><a class="nav nav-next" href="https://www.kameronyork.com/parables/two-debtors.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap;" onmouseover="this.style.backgroundColor='lightgray';" onmouseout="this.style.backgroundColor='transparent';" onmousedown="this.style.backgroundColor='gray';" onmouseup="this.style.backgroundColor='lightgray';"><span style="display: none;" class="d-md-inline-block">The Two Debtors</span><span style="display: inline-block;" class="d-md-none">The Two Debtors</span><i class="ti-arrow-right ml-2"></i></a></nav></div></div></div>
