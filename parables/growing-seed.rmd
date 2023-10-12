@@ -12,7 +12,7 @@ output:
 <img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/sapling.jpg" alt="Sapling Image" style="float: right; width: 195px; height: 115px; padding: 5px;">
 <br>
 <h4 style="text-align: left; margin: 0;">Scripture Link:</h4>
-<p style="text-align: left; margin: 0;"><a href="https://www.churchofjesuschrist.org/study/scriptures/nt/mark/4?lang=eng?&id=23-25#p26">Mark 4:26-29</a></p>
+<p style="text-align: left; margin: 0;"><a href="https://www.churchofjesuschrist.org/study/scriptures/nt/mark/4.26-29?lang=eng?#p26">Mark 4:26-29</a></p>
 </div>
 
 #### Insights here:
