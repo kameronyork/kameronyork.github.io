@@ -12,7 +12,7 @@ output:
 <img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/coins.jpg" alt="Sapling Image" style="float: right; width: 195px; height: 115px; padding: 5px;">
 <br>
 <h4 style="text-align: left; margin: 0;">Scripture Link:</h4>
-<p style="text-align: left; margin: 0;"><a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/7.41-43?lang=eng?#p41">Luke 7:41-43</a></p>
+<p style="text-align: left; margin: 0;"><a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/7?lang=eng&id=41-43#p41">Luke 7:41-43</a></p>
 </div>
 
 #### Insights here:
