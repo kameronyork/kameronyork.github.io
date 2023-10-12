@@ -7,6 +7,18 @@ output:
       in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
+<head>
+<meta property="og:title" content="The Growing Seed">
+<meta property="og:description" content="Analysis of the Parable about the Growing Seed">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.kameronyork.com/parables/growing-seed.html">
+<meta property="og:image" content="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/sapling.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Growing Seed">
+<meta name="twitter:description" content="Analysis of the Parable about the Growing Seed">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/sapling.jpg">
+</head>
 <br>
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
 <img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/sapling.jpg" alt="Sapling Image" style="float: right; width: 195px; height: 115px; padding: 5px;">
