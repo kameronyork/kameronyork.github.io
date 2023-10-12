@@ -12,7 +12,7 @@ output:
 <img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/coins.jpg" alt="Sapling Image" style="float: right; width: 195px; height: 115px; padding: 5px;">
 <br>
 <h4 style="text-align: left; margin: 0;">Scripture Link:</h4>
-<p style="text-align: left; margin: 0;"><a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/7?lang=eng&id=41-43#p41">Luke 7:41-43</a></p>
+<p style="text-align: left; margin: 0;"><a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/7?lang=eng&id=41-43#p41" target="_blank">Luke 7:41-43</a></p>
 </div>
 
 #### Insights here:
@@ -34,16 +34,16 @@ onmouseout="this.style.backgroundColor='transparent';"
 onmousedown="this.style.backgroundColor='gray';" 
 onmouseup="this.style.backgroundColor='lightgray';">
 <i class="ti-arrow-left mr-2"></i>
-<span style="display: none;" class="d-md-inline-block">The Growing Seed</span>
-<span style="display: inline-block;" class="d-md-none">The Growing Seed</span>
+<span style="display: none;" class="d-md-inline-block">Growing Seed</span>
+<span style="display: inline-block;" class="d-md-none">Growing Seed</span>
 </a>
 <a class="nav nav-next ml-3" href="https://www.kameronyork.com/parables/lamp-under-a-bushel.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap;" 
 onmouseover="this.style.backgroundColor='lightgray';" 
 onmouseout="this.style.backgroundColor='transparent';" 
 onmousedown="this.style.backgroundColor='gray';" 
 onmouseup="this.style.backgroundColor='lightgray';">
-<span style="display: none;" class="d-md-inline-block">The Lamp Under a Bushel</span>
-<span style="display: inline-block;" class="d-md-none">The Lamp Under a Bushel</span>
+<span style="display: none;" class="d-md-inline-block">Lamp Under a Bushel</span>
+<span style="display: inline-block;" class="d-md-none">Lamp Under a Bushel</span>
 <i class="ti-arrow-right ml-2"></i>
 </a>
 </nav>
