@@ -7,8 +7,13 @@ output:
       in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
-### Scripture Link
-<a href="https://www.churchofjesuschrist.org/study/scriptures/nt/mark/4?lang=eng?&id=23-25#p26">Mark 4:26-29</a>
+
+<div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
+<img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/sapling.jpg" alt="Sapling Image" style="float: right; width: 195px; height: 115px; padding: 5px;">
+<br>
+<h4 style="text-align: left; margin: 0;">Scripture Link:</h4>
+<p style="text-align: left; margin: 0;"><a href="https://www.churchofjesuschrist.org/study/scriptures/nt/mark/4?lang=eng?&id=23-25#p26">Mark 4:26-29</a></p>
+</div>
 
 #### Insights here:
 
@@ -23,7 +28,33 @@ points: <br>
 ##### See my other articles:
 
 
-<link rel="stylesheet" href="https://kameronyork.github.io/scripting/themify-icons/themify-icons.css"><div class="container"><div class="row"><div class="col-12 text-md-left"><nav class="pagination mt-3"><a class="nav nav-prev" href="https://www.kameronyork.com/parables" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap;" onmouseover="this.style.backgroundColor='lightgray';" onmouseout="this.style.backgroundColor='transparent';" onmousedown="this.style.backgroundColor='gray';" onmouseup="this.style.backgroundColor='lightgray';"><i class="ti-arrow-left mr-2"></i><span style="display: none;" class="d-md-inline-block">Home</span><span style="display: inline-block;" class="d-md-none">Home</span></a><a class="nav nav-next ml-3" href="https://www.kameronyork.com/parables/two-debtors.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap;" onmouseover="this.style.backgroundColor='lightgray';" onmouseout="this.style.backgroundColor='transparent';" onmousedown="this.style.backgroundColor='gray';" onmouseup="this.style.backgroundColor='lightgray';"><span style="display: none;" class="d-md-inline-block">The Two Debtors</span><span style="display: inline-block;" class="d-md-none">The Two Debtors</span><i class="ti-arrow-right ml-2"></i></a></nav></div></div></div>
+<link rel="stylesheet" href="https://kameronyork.github.io/scripting/themify-icons/themify-icons.css">
+<div class="container">
+<div class="row">
+<div class="col-12 text-md-left">
+<nav class="pagination mt-3">
+<a class="nav nav-prev" href="https://www.kameronyork.com/parables" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap;" 
+onmouseover="this.style.backgroundColor='lightgray';" 
+onmouseout="this.style.backgroundColor='transparent';" 
+onmousedown="this.style.backgroundColor='gray';" 
+onmouseup="this.style.backgroundColor='lightgray';">
+<i class="ti-arrow-left mr-2"></i>
+<span style="display: none;" class="d-md-inline-block">Home</span>
+<span style="display: inline-block;" class="d-md-none">Home</span>
+</a>
+<a class="nav nav-next ml-3" href="https://www.kameronyork.com/parables/two-debtors.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap;" 
+onmouseover="this.style.backgroundColor='lightgray';" 
+onmouseout="this.style.backgroundColor='transparent';" 
+onmousedown="this.style.backgroundColor='gray';" 
+onmouseup="this.style.backgroundColor='lightgray';">
+<span style="display: none;" class="d-md-inline-block">The Two Debtors</span>
+<span style="display: inline-block;" class="d-md-none">The Two Debtors</span>
+<i class="ti-arrow-right ml-2"></i>
+</a>
+</nav>
+</div>
+</div>
+</div>
 
 
 <!-- Align far sides
