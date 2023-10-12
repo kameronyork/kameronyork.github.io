@@ -7,7 +7,7 @@ output:
       in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
-
+<br>
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
 <img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/coins.jpg" alt="Sapling Image" style="float: right; width: 195px; height: 115px; padding: 5px;">
 <br>
@@ -20,7 +20,7 @@ output:
 This article is yet to be completed. Please check back later!
 
 
-##### See my other articles:
+##### Check out my other articles:
 
 
 <link rel="stylesheet" href="https://kameronyork.github.io/scripting/themify-icons/themify-icons.css">
