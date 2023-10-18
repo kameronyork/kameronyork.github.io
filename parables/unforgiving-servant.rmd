@@ -1,12 +1,58 @@
 ---
 title: "The Unforgiving Servant"  # Sets the Title.
-output: 
+subtitle: "by Kameron York"
+output:
   html_document:
-    theme: cerulean  # Sets the theme.  Alternate theme:  Journal
-    code_folding: hide  # Makes all R Code in the file fold itself.
-    toc: true  # Creates a Table of Contents
-    toc_float: true  # Makes the Table of Contents Float
+    includes:
+      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/header.html"
+      after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
+<br>
+<div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
+<img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/coins.jpg" alt="Sapling Image" style="float: right; width: 195px; height: 115px; padding: 5px;">
+<br>
+<h4 style="text-align: left; margin: 0;">Reference:</h4>
+<p style="text-align: left; margin: 0;">
+<a href="https://www.churchofjesuschrist.org/study/scriptures/nt/matt/18?lang=eng&id=23-25#p23" target="_blank">Matthew 18:23-25</a>
+</p>
+</div>
 
-This article is yet to be completed.
-Please check back later!
+#### Insights here:
+
+This article is yet to be completed. Please check back later!
+
+
+<div style="margin-top: -10px;">
+#### General Conference Talks:
+
+
+
+##### Check out my other articles:
+
+<link rel="stylesheet" href="https://kameronyork.github.io/scripting/themify-icons/themify-icons.css">
+<div class="container">
+<div class="row">
+<div class="col-12 text-md-left">
+<nav class="pagination mt-3">
+<a class="nav nav-prev" href="https://www.kameronyork.com/parables/lost-sheep.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" 
+onmouseover="this.style.backgroundColor='lightgray';" 
+onmouseout="this.style.backgroundColor='transparent';" 
+onmousedown="this.style.backgroundColor='gray';" 
+onmouseup="this.style.backgroundColor='lightgray';">
+<i class="ti-arrow-left mr-2"></i>
+<span style="display: none;" class="d-md-inline-block">Lost Sheep</span>
+<span style="display: inline-block;" class="d-md-none">Lost Sheep</span>
+</a>
+<a class="nav nav-next ml-3" href="https://www.kameronyork.com/parables/lost-coin.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" 
+onmouseover="this.style.backgroundColor='lightgray';" 
+onmouseout="this.style.backgroundColor='transparent';" 
+onmousedown="this.style.backgroundColor='gray';" 
+onmouseup="this.style.backgroundColor='lightgray';">
+<span style="display: none;" class="d-md-inline-block">Lost Coin</span>
+<span style="display: inline-block;" class="d-md-none">Lost Coin</span>
+<i class="ti-arrow-right ml-2"></i>
+</a>
+</nav>
+</div>
+</div>
+</div>
