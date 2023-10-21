@@ -48,8 +48,8 @@ onmouseover="this.style.backgroundColor='lightgray';"
 onmouseout="this.style.backgroundColor='transparent';" 
 onmousedown="this.style.backgroundColor='gray';" 
 onmouseup="this.style.backgroundColor='lightgray';">
-<span style="display: none;" class="d-md-inline-block">Workers in the Vineyard</span>
-<span style="display: inline-block;" class="d-md-none">Workers in the Vineyard</span>
+<span style="display: none;" class="d-md-inline-block">Vineyard Workers</span>
+<span style="display: inline-block;" class="d-md-none">Vineyard Workers</span>
 <i class="ti-arrow-right ml-2"></i>
 </a>
 </nav>
