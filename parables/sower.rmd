@@ -9,7 +9,7 @@ output:
 ---
 <br>
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
-<img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/coins.jpg" alt="Sapling Image" style="float: right; width: 195px; height: 115px; padding: 5px;">
+<img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/sower.jpg" alt="Parable of the sower image" style="float: right; width: 195px; height: 115px; padding: 5px;">
 <h4 style="text-align: left; margin: 0;">Reference:</h4>
 <p style="text-align: left; margin: 0;">
 <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/matt/13?lang=eng&id=3-9#p3" target="_blank">Matthew 13:3-9</a><br>
