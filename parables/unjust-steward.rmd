@@ -13,7 +13,7 @@ output:
 <br>
 <h4 style="text-align: left; margin: 0;">Reference:</h4>
 <p style="text-align: left; margin: 0;">
-<a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/16?lang=eng&id=1-13#p1" target="_blank">Luke 16:1-15</a>
+<a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/16?lang=eng&id=1-12#p1" target="_blank">Luke 16:1-12</a>
 </p>
 </div>
 
