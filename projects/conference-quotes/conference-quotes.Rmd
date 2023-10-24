@@ -2,11 +2,12 @@
 title: "General Conference Quotes"
 author: "Kameron York"
 date: "2023-10-15"
-output: 
+output:
   html_document:
     includes:
       in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
+    code_folding: hide
 ---
 
 ```{r setup, include=FALSE}
@@ -144,4 +145,35 @@ levels_check <- verses %>%
 
 
 ```
+
+<script>
+  $(document).ready( function () {
+      $('#table_id').DataTable();
+  } );
+</script>
+
+
+
+<div class="dataTables_filter">
+  <label>Search Scripture: <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="table_id"></label>
+</div>
+
+
+```{r}
+library(DT)
+
+datatable(
+  select(filter(quotes, year >= 2000), c("year", "month", "day", "session_id", "combined_scripture", "speaker")),
+  colnames = c("Combined Scripture", "Year", "Month", "Day", "Session ID", "Speaker"),
+  options = list(
+    searching = TRUE,
+    searchCols = list(
+      list(targets = 5, search = "applied")
+    )
+  )
+)
+
+```
+
+
 
