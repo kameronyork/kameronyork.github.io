@@ -11,17 +11,16 @@ output:
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
 <img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/wise-and-foolish-builders.jpg" alt="Wise and foolish builders parable image" style="float: right; width: 195px; height: 115px; padding: 5px;">
 <br>
-<h4 style="text-align: left; margin: 0;">Reference:</h4>
+<h4 style="text-align: left; margin: 0;">Reference:</h5>
 <p style="text-align: left; margin: 0;">
 <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/matt/7?lang=eng&id=24-28#p24" target="_blank">Matthew 7:24-28</a><br>
 <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/6?lang=eng&id=46-49#p46" target="_blank">Luke 6:46-49</a>
 </p>
 </div>
 
-#### Insights here:
-
-<h4>General Conference</h4><br>
+### Insights here:
 <br>
+<h5>General Conference</h5>
 The General Conference talks (listed below) are of interest for this study.  <br>
 <br>
 <b>Elder L. Tom Perry</b> in April 1985 relates a story of laying the foundation for the church's exhibit at the New York World's Fair.  "...we were using a pile driver because of the lack of a solid foundation. Big wooden piles about the size of those used for telephone poles were being driven into the ground to form the foundation of our pavilion."  Through great effort the soft foundation was transformed into a firm foundation. <br>
@@ -32,12 +31,10 @@ Life is hard for everyone, this parable does not promise followers of Christ an 
 <br>
 <b>Elder Keith W. Wilcox</b> in April 1985 mentioned how we can build our lives on the rock.  He taught that the rock we are to build on is Jesus Christ and His words.  Specifically he mentioned the Sermon on the Mount, saying, "As we live the principles of the Sermon on the Mount, we build a rock-solid foundation upon which our lives can safely be constructed. The Lord, the great Master Architect, has given us perfect plans and specifications to guide us in the building of our lives. These are the sacred scriptures. They contain the words of the Lord and should be frequently read and pondered."<br>
 <br>
-<h4>Other Insights</h4><br>
-<br>
+<h5>Other Insights</h5>
 "...did not fall." This does not mean the roof didn't leak, that there wasn't a bit of flooding, or that the family inside wasn't afraid of the storm.  We aren't impervious to pain and imperfections, but we are promised we will not <i>fall</i>.<br>
 <br>
-<h4>Differences between Matthew and Luke</h4><br>
-<br>
+<h5>Differences between Matthew and Luke</h5>
 1. <b><u>Coming to Christ</u></b>:  Matthew records Jesus as saying, "...whosoever heareth these sayings of mine, and doeth them..." while Luke records, "Whosoever <b>cometh to me</b>, and heareth my sayings, and doeth them...".  Luke mentions the importance of following Christ along with hearing His words.<br>
 <br>
 2. <b><u>Digging to the Foundation</u></b>:  Luke records the wise man digging through the sand to find the firm foundation to build his house on.  Matthew only mentions the stone, not how it was found.  This is an important reminder that building our lives on the foundation of Christ takes work to find it.<br>
@@ -48,7 +45,7 @@ Life is hard for everyone, this parable does not promise followers of Christ an 
 
 
 <div style="margin-top: -10px;">
-#### General Conference Talks:
+### General Conference Talks:
 </style>
 <a href="https://www.churchofjesuschrist.org/study/general-conference/1999/10/serving-the-lord?lang=eng" target="_blank">Serving the Lord</a> - Elder Adhemar Damiani, October 1999.<br>
 <a href="https://www.churchofjesuschrist.org/study/general-conference/1994/10/deep-roots?lang=eng" target="_blank">Deep Roots</a> - Elder Joseph B. Wirthlin, October 1994.<br>
