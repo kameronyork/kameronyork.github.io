@@ -7,12 +7,6 @@ output:
       in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
-<!-- Add OG meta tags -->
-<meta property="og:title" content="New Wine into Old Wineskins">
-<meta property="og:description" content="Article about the Parable 'New Wine into Old Wineskins'">
-<meta property="og:image" content="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/new-wine-old-wineskins.jpg">
-<meta property="og:url" content="https://www.kameronyork.com/parables/new-wine-into-old-wineskins.html">
-
 <br>
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
 <img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/new-wine-old-wineskins.jpg" alt="New wine into old wineskins parable image" style="float: right; width: 195px; height: 115px; padding: 5px;">
