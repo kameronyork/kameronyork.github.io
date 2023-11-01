@@ -14,12 +14,13 @@ output:
 library(tidyverse)
 library(pander)
 library(plotly)
+library(DT)
 
 quotes <- read.csv("https://www.kameronyork.com/datasets/conference-quotes.csv", encoding="UTF-8")
 verses <- read.csv("https://www.kameronyork.com/datasets/scripture-verses.csv", encoding="UTF-8") %>% 
   mutate("book_chapter" = paste(book, chapter, sep = " ")) %>% 
   mutate("quoted" = case_when(
-    scripture %in% quotes$combined_scripture ~ "Found",
+    scripture %in% quotes$scripture ~ "Found",
     TRUE ~ ""
   ))
 
@@ -32,11 +33,11 @@ verse_order <- strsplit(verse_order_data$order, ", ") %>%
 ## Overall Quotes Analysis
 ```{r}
 total_by_year <- quotes %>% 
-  group_by(year) %>% 
+  group_by(talk_year) %>% 
   summarise("total_quotes" = n())
 
 ggplot(data = total_by_year) + 
-  geom_area(mapping = aes(x = year, y = total_quotes), fill="steelblue", alpha=0.5) +
+  geom_area(mapping = aes(x = talk_year, y = total_quotes), fill="steelblue", alpha=0.5) +
   labs(title="Total Quotes by Year",
        x = "Year", 
        y = "Total Scriptures Quoted") +
@@ -44,11 +45,15 @@ ggplot(data = total_by_year) +
 ```
 ```{r}
 book_by_year <- quotes %>% 
-  group_by(sub_book, year) %>% 
+  group_by(quad_book, talk_year) %>% 
+  summarise("total_quotes" = n())
+
+big_book_by_year <- quotes %>% 
+  group_by(overall_book, talk_year) %>% 
   summarise("total_quotes" = n())
 
 ggplot(data = book_by_year) + 
-  geom_area(mapping = aes(x = year, y = total_quotes, fill = sub_book), position="identity", alpha = 0.5) +
+  geom_area(mapping = aes(x = talk_year, y = total_quotes, fill = quad_book), position="identity", alpha = 0.5) +
   labs(title="Total Quotes by Book and Year",
        x = "Year", 
        y = "Total Scriptures Quoted per Book") +
@@ -57,33 +62,55 @@ ggplot(data = book_by_year) +
 
 ```{r}
 ggplot(data = book_by_year) + 
-  geom_line(mapping = aes(x = year, y = total_quotes, color = sub_book), size=1) +
+  geom_line(mapping = aes(x = talk_year, y = total_quotes, color = quad_book), size=1) +
   labs(title="Total Quotes by Book and Year",
        x = "Year", 
        y = "Total Scriptures Quoted per Book") +
   theme_bw()
+```
+```{r}
+ggplot(data = big_book_by_year) + 
+  geom_line(mapping = aes(x = talk_year, y = total_quotes, color = overall_book), size=1) +
+  labs(title="Total Quotes by Book and Year",
+       x = "Year", 
+       y = "Total Scriptures Quoted per Book") +
+  theme_bw()
+```
+```{r}
+ggplot(data = filter(big_book_by_year, overall_book == "Book of Mormon")) + 
+  geom_line(mapping = aes(x = talk_year, y = total_quotes, color = overall_book), size=1) +
+  geom_smooth(mapping = aes(x = talk_year, y = total_quotes))
+  labs(title="Total Quotes by Book and Year",
+       x = "Year", 
+       y = "Total Scriptures Quoted per Book") +
+  theme_bw()
+
 ```
 
 ### What are the top 10 Scriptures of all time?
 ```{r}
 all_time_10 <- quotes %>% 
-  group_by(combined_scripture) %>% 
+  filter(scripture != "null null:null") %>% # Removes the null values from the data.
+  group_by(scripture) %>% 
   summarise("count" = n()) %>% 
   arrange(desc(count)) %>% 
   mutate("rank" = rank(desc(count), ties.method = "max")) %>% 
-  filter(rank %in% c(1:10))
+  filter(rank %in% c(1:10)) %>% 
+  left_join(y = verses, x = all_time_10, by = "scripture") %>% 
+  select(c("scripture", "count", "rank", "Text"))
 
 history_all_time_10 <- quotes %>% 
-  filter(combined_scripture %in% all_time_10$combined_scripture) %>% 
-  mutate("decade" = paste(str_sub(year, 1, 3), 0, sep="")) %>% 
+  filter(scripture %in% all_time_10$scripture) %>% 
+  mutate("decade" = paste(str_sub(talk_year, 1, 3), 0, sep="")) %>% 
   group_by(decade)
 
-pander(all_time_10)
+pander(select(all_time_10, c("scripture", "count", "rank")))
 ```
+
 
 ```{r}
 ggplot(data = history_all_time_10) + 
-  geom_bar(mapping = aes(x = decade, fill = combined_scripture), size=1, position="dodge") +
+  geom_bar(mapping = aes(x = decade, fill = scripture), size=1, position="dodge") +
   labs(title="Total Quotes Top 10 Scriptures all Time",
        x = "Year", 
        y = "Total Scriptures Quoted per Book") +
@@ -91,12 +118,12 @@ ggplot(data = history_all_time_10) +
 ```
 ```{r}
 line_all_time_history <- history_all_time_10 %>% 
-  group_by(decade = as.numeric(decade), combined_scripture) %>% 
+  group_by(decade = as.numeric(decade), scripture) %>% 
   summarise("count" = n())
 
 
 ggplot(data = line_all_time_history) + 
-  geom_line(mapping = aes(x = decade, y = count, color = combined_scripture), size=1) +
+  geom_line(mapping = aes(x = decade, y = count, color = scripture), size=1) +
   labs(title="Total Quotes Top 10 Scriptures all Time",
        x = "Year", 
        y = "Total Scriptures Quoted per Book") +
