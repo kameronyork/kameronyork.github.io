@@ -15,15 +15,20 @@ library(tidyverse)
 library(pander)
 library(plotly)
 library(DT)
+library(latticeExtra)
 
 quotes <- read.csv("https://www.kameronyork.com/datasets/conference-quotes.csv", encoding="UTF-8")
+quote_counts <- quotes %>% 
+  group_by(scripture) %>% 
+  summarise(quote_count = n())
 verses <- read.csv("https://www.kameronyork.com/datasets/scripture-verses.csv", encoding="UTF-8") %>% 
   mutate("book_chapter" = paste(book, chapter, sep = " ")) %>% 
   mutate("quoted" = case_when(
     scripture %in% quotes$scripture ~ "Found",
     TRUE ~ ""
-  ))
-
+  )) %>% 
+  left_join(quote_counts, by = c("scripture" = "scripture")) %>% 
+  mutate(quote_count = ifelse(is.na(quote_count), 0, quote_count))
 verse_order_data <- read.csv("https://www.kameronyork.com/datasets/verse-order.csv", encoding="UTF-8")
 verse_order <- strsplit(verse_order_data$order, ", ") %>% 
   unlist()
@@ -89,6 +94,14 @@ ggplot(data = filter(big_book_by_year, overall_book == "Book of Mormon")) +
 
 ### What are the top 10 Scriptures of all time?
 ```{r}
+all_time <- quotes %>% 
+  filter(scripture != "null null:null") %>% # Removes the null values from the data.
+  group_by(scripture) %>% 
+  summarise("count" = n()) %>% 
+  arrange(desc(count)) %>% 
+  mutate("rank" = rank(desc(count), ties.method = "max")) %>% 
+  filter(rank %in% c(1:10))
+
 all_time_10 <- quotes %>% 
   filter(scripture != "null null:null") %>% # Removes the null values from the data.
   group_by(scripture) %>% 
@@ -96,8 +109,8 @@ all_time_10 <- quotes %>%
   arrange(desc(count)) %>% 
   mutate("rank" = rank(desc(count), ties.method = "max")) %>% 
   filter(rank %in% c(1:10)) %>% 
-  left_join(y = verses, x = all_time_10, by = "scripture") %>% 
-  select(c("scripture", "count", "rank", "Text"))
+  left_join(y = verses, x = all_time, by = "scripture") %>% 
+  select(c("scripture", "count", "rank", "text"))
 
 history_all_time_10 <- quotes %>% 
   filter(scripture %in% all_time_10$scripture) %>% 
@@ -190,7 +203,7 @@ levels_check <- verses %>%
 library(DT)
 
 datatable(
-  select(filter(quotes, year >= 2000), c("year", "month", "day", "session_id", "combined_scripture", "speaker")),
+  select(filter(quotes, talk_year >= 2000), c("talk_year", "talk_month", "talk_day", "talk_session", "scripture", "speaker")),
   colnames = c("Combined Scripture", "Year", "Month", "Day", "Session ID", "Speaker"),
   options = list(
     searching = TRUE,
@@ -201,6 +214,7 @@ datatable(
 )
 
 ```
+
 
 
 
