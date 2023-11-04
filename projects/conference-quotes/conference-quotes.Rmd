@@ -225,7 +225,7 @@ plot_3d <- verses %>%
 plot_3d$verse <- as.numeric(plot_3d$verse)
 plot_3d$quote_count <- as.numeric(plot_3d$quote_count)
 
-fig <- plot_ly(data = plot_3d, x = ~verse, y = ~factor(book_chapter, levels = verse_order), z = ~quote_count) %>% 
+fig <- plot_ly(data = plot_3d, overall_book, x = ~verse, y = ~factor(book_chapter, levels = verse_order), z = ~quote_count) %>% 
   add_markers(size = 5) %>% 
   layout(scene = list(xaxis = list(title = 'Verse'),
                      yaxis = list(title = 'Chapter'),
