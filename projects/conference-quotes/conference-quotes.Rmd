@@ -33,6 +33,11 @@ verse_order_data <- read.csv("https://www.kameronyork.com/datasets/verse-order.c
 verse_order <- strsplit(verse_order_data$order, ", ") %>% 
   unlist()
 
+chapters <- verses %>% 
+  group_by(book_chapter) %>% 
+  summarise("verses" = n(),
+            "book_chapter_order" = min(verse_id))
+
 ```
 
 ## Overall Quotes Analysis
