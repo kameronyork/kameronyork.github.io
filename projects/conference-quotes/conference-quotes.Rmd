@@ -18,10 +18,16 @@ library(DT)
 library(latticeExtra)
 
 quotes <- read.csv("https://www.kameronyork.com/datasets/conference-quotes.csv", encoding="UTF-8")
+
 quote_counts <- quotes %>% 
   group_by(scripture) %>% 
   summarise(quote_count = n())
-verses <- read.csv("https://www.kameronyork.com/datasets/scripture-verses.csv", encoding="UTF-8") %>% 
+
+chapter_counts <-quotes %>% 
+  group_by(book_chapter) %>% 
+  summarise(quote_count = n())
+
+verses <- read.csv("https://www.kameronyork.com/datasets/scripture-verses.csv", encoding="UTF-8") %>%
   mutate("book_chapter" = paste(book, chapter, sep = " ")) %>% 
   mutate("quoted" = case_when(
     scripture %in% quotes$scripture ~ "Found",
@@ -29,15 +35,30 @@ verses <- read.csv("https://www.kameronyork.com/datasets/scripture-verses.csv", 
   )) %>% 
   left_join(quote_counts, by = c("scripture" = "scripture")) %>% 
   mutate(quote_count = ifelse(is.na(quote_count), 0, quote_count))
+
 verse_order_data <- read.csv("https://www.kameronyork.com/datasets/verse-order.csv", encoding="UTF-8")
+
 verse_order <- strsplit(verse_order_data$order, ", ") %>% 
   unlist()
 
 chapters <- verses %>% 
-  group_by(book_chapter) %>% 
-  summarise("verses" = n(),
-            "book_chapter_order" = min(verse_id))
+  group_by(book_chapter, book, chapter) %>% 
+  summarise("verses" = n()) %>% 
+  mutate("quoted" = case_when(
+    book_chapter %in% quotes$book_chapter ~ "Found",
+    TRUE ~ ""
+  )) %>% 
+  left_join(chapter_counts, by = c("book_chapter" = "book_chapter")) %>% 
+  mutate(quote_count = ifelse(is.na(quote_count), 0, quote_count))
 
+
+book_ordering_work <- verses %>% 
+  group_by(book) %>% 
+  summarise(book_order = min(verse_id)) %>% 
+  arrange(book_order)
+
+book_ordering <- paste(book_ordering_work$book, sep = ", ") %>% 
+  unlist()
 ```
 
 ## Overall Quotes Analysis
@@ -182,7 +203,24 @@ ggsave(filename = "C:/Users/theka/Pictures/my_plot.png", plot = my_plot, width =
 
 ```
 
+```{r}
+my_plot2 <- ggplot(data = chapters, aes(x = chapter, y = fct_rev(factor(book, levels = book_ordering)), fill = quoted)) +
+  geom_tile(col = "white") +
+  coord_equal(ratio=2.33) +
+  scale_fill_manual(values = c("NA" = "white", "Found" = "red")) +
+  scale_x_continuous(breaks = unique(chapters$chapter)) + 
+  theme_minimal() +
+  theme(
+    legend.position = "right",
+    panel.background = element_rect(fill = "white"),
+    axis.text.y = element_text(size = rel(0.5)),
+    axis.text.x = element_blank(),
+    axis.title.y = element_blank()
+  ) + 
+  guides(fill = "none")
 
+ggsave(filename = "C:/Users/theka/Pictures/my_plot2.png", plot = my_plot2, width = 8, height = 40, units = "in", limitsize = FALSE, bg = "white")
+```
 
 ```{r}
 levels_check <- verses %>%
@@ -249,3 +287,10 @@ fig <- plot_ly(data = plot_3d, x = ~verse, y = ~factor(book_chapter, levels = ve
 fig
 ```
 
+
+```{r}
+testing <- verses %>% 
+  group_by(book_chapter) %>% 
+  summarise(verse_count = n())
+
+```

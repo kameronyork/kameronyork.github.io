@@ -1,0 +1,255 @@
+---
+title: "Conference Word Analysis"
+author: "Kameron York"
+date: "2023-11-07"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(pander)
+library(plotly)
+library(DT)
+library(latticeExtra)
+library(stringr)
+
+```
+
+```{r, include=FALSE}
+# Loading in the Data
+talks_data <- read.csv("https://www.kameronyork.com/datasets/general-conference-talks.csv", encoding="UTF-8")
+dedication_data <- read.csv("https://www.kameronyork.com/datasets/dedication-data.csv", encoding="UTF-8") %>% 
+  mutate(year = str_sub(dedicated, 0, 4))
+```
+
+```{r, include=FALSE}
+# Loading in the quotes data
+quotes <- read.csv("https://www.kameronyork.com/datasets/conference-quotes.csv", encoding="UTF-8")
+```
+
+## Temples: {.tabset}
+("Temple", "House of God", "House of the Lord")
+```{r}
+# Create a new column to count occurrences of the specified words
+temple_data <- talks_data %>%
+  mutate(
+    temple_count = str_count(tolower(text), "\\btemple\\b"),
+    house_of_the_lord_count = str_count(tolower(text), "\\bhouse of the lord\\b"),
+    house_of_god_count = str_count(tolower(text), "\\bhouse of god\\b")
+  ) %>% 
+  mutate(
+    total_temple = temple_count + house_of_the_lord_count + house_of_god_count
+  )
+
+```
+
+### Scatter Plot
+This plot shows there seems to be an increase in temple-related words following President Hinckley's sustaining as prophet.  The large gap in the middle is due to the sudden jump from 63 temples in 1999 to 102 temples in 2000.  There are no dots through that section because no General Conference addresses were given in that time frame.
+```{r, warning=FALSE}
+temple_by_year <- temple_data %>% 
+  group_by(year) %>% 
+  summarise(total = sum(total_temple)) %>% 
+  mutate(temples = map_int(year, ~ sum(dedication_data$year <= .x)))
+
+# ggplot(data = temple_by_year) +
+#   geom_point(mapping = aes(x = year, y = total), color = "forestgreen") +
+#   geom_vline(xintercept = 1995, color = "red") +
+#   theme_bw() +
+#   labs(
+#     title = "Use of Temple Related Words in General Conference Talks",
+#     subtitle = "1995 Highlighted - Year President Gordon B. Hinckley became Church President",
+#     caption = '"Temple", "House of God", "House of the Lord"',
+#     x = "Year",
+#     y = "Mentions of the Temple"
+#   )
+
+ggplot(data = temple_by_year) +
+  geom_point(mapping = aes(x = temples, y = total), color = "forestgreen") +
+  geom_vline(xintercept = 47, color = "red") +
+  theme_bw() +
+  labs(
+    title = "Use of Temple Related Words in General Conference Talks",
+    subtitle = "1995 Highlighted - Year President Gordon B. Hinckley became Church President",
+    caption = '"Temple", "House of God", "House of the Lord"',
+    x = "Number of Dedicated Temples",
+    y = "Mentions of the Temple"
+  )
+
+# ggplot(data = temple_by_year) +
+#   geom_point(mapping = aes(x = year, y = temples), color = "forestgreen") +
+#   theme_bw()
+```
+### Box Plot
+This boxplot shows that there is an increase in temple-related words between before President Hinckley was the prophet and our current Post-President Hinckley era.  It seems temples are being talked about more now than they were before his sustaining. 
+```{r}
+temple_boxes <- temple_by_year %>% 
+  mutate(group = case_when(
+    year < 1995 ~ "Before Hinckley",
+    year >= 1995 ~ "Post Hinckley"
+  ))
+
+
+ggplot(data = temple_boxes) + 
+  geom_boxplot(mapping = aes(x = group, y = total)) + 
+  theme_bw()
+```
+
+### Statistical Test
+
+```{r}
+t.test(Y ~ X, data = YourData, mu = YourNull, alternative = YourAlternative, conf.level = 0.95)
+
+
+```
+
+This time the phrases are shown in different colors.
+```{r, warning=FALSE}
+temple_pivot <- temple_data %>% 
+  select(year, speaker, title, temple_count, house_of_the_lord_count, house_of_god_count) %>% 
+  pivot_longer(
+    cols = c(temple_count, house_of_the_lord_count, house_of_god_count),
+    names_to = "type",
+    values_to = "count"
+  ) %>% 
+  group_by(year, type) %>% 
+  summarise("total" = sum(count))
+
+ggplot(data = temple_pivot) +
+  geom_point(mapping = aes(x = year, y = total, color = type)) +
+  geom_vline(xintercept = 1995, color = "red") +
+  theme_bw() +
+  labs(
+    title = "Use of Temple Related Words in General Conference Talks",
+    subtitle = "1995 Highlighted - Year President Gordon B. Hinckley became Church President",
+    caption = '"Temple", "House of God", "House of the Lord"',
+    color = "Mention Type",
+    x = "Year",
+    y = "Mentions of the Temple"
+  )
+```
+
+
+
+## Book of Mormon
+("Book of Mormon")
+```{r}
+bom_data <- talks_data %>%
+  mutate(
+    total_bom = str_count(tolower(text), "(?i)\\bbook of mormon\\b")
+  )
+```
+
+```{r}
+bom_by_year <- bom_data %>% 
+  group_by(year) %>% 
+  summarise(total = sum(total_bom))
+
+ggplot(data = bom_by_year) +
+  geom_point(mapping = aes(x = year, y = total), color = "forestgreen") +
+  geom_vline(xintercept = 1986, color = "red") +
+  theme_bw() +
+  labs(
+    title = "Use of Book of Mormon Related Words in General Conference Talks",
+    subtitle = "1986 Highlighted - Year President Ezra Taft Benson Reaffirmed the Book of Mormon",
+    caption = '"Book of Mormon"',
+    x = "Year",
+    y = "Mentions of the Book of Mormon"
+  )
+
+```
+
+Are the scriptures from the book of mormon quoted more now that in the 70's before the talk?
+```{r}
+bom_quotes <- quotes %>% 
+  filter(overall_book == "Book of Mormon") %>% 
+  group_by(talk_year) %>% 
+  summarise(total = n())
+
+ggplot(data = bom_quotes) + 
+  geom_point(mapping = aes(x = talk_year, y = total), color = "red2") + 
+  geom_vline(xintercept = 1986, color = "blue3") +
+  theme_bw()
+
+```
+
+Boxplot Version:
+```{r}
+bom_boxes <- bom_quotes %>% 
+  mutate(group = case_when(
+    talk_year < 1986 ~ "Before Talk", 
+    talk_year >= 1986 ~ "Post Talk"
+  ))
+
+bom_means <- bom_boxes %>% 
+  group_by(group) %>% 
+  summarise(mean = mean(total))
+
+ggplot(data = bom_boxes) + 
+  geom_boxplot(mapping = aes(x = group, y = total)) + 
+  geom_point(data = bom_means, mapping = aes(x = group, y = mean), color = "red3") +
+  theme_bw()
+
+```   
+
+Bible Comparison
+```{r}
+bible_compare <- quotes %>% 
+  filter(overall_book %in% c("Book of Mormon", "Bible")) %>% 
+  group_by(talk_year, overall_book) %>% 
+  summarise(total = n())
+
+ggplot(data  = bible_compare) + 
+  geom_point(mapping = aes(x = talk_year, y = total, color = overall_book)) + 
+  theme_bw()
+
+```
+
+Is there a difference in boxplots Pre President Benson and Post President Benson?
+```{r}
+benson_check <- bible_compare %>% 
+  mutate(group = case_when(
+    talk_year < 1986 ~ "Before Talk",
+    talk_year >= 1986 ~ "Post Talk"
+  )) %>% 
+  mutate(overall_group = paste(overall_book, group, sep = " - "))
+
+ggplot(data = benson_check) + 
+  geom_boxplot(mapping = aes(x = overall_group, y = total, fill = overall_book)) + 
+  theme_bw()
+
+```
+
+## Pornography
+("pornography", "porn")
+```{r}
+# Create a new column to count occurrences of the specified words
+p_data <- talks_data %>%
+  mutate(
+    pornography = str_count(tolower(text), "\\bpornography\\b"),
+    porn = str_count(tolower(text), "\\bporn\\b")
+  ) %>% 
+  mutate(
+    total_p  = pornography + porn
+  ) %>% 
+  mutate(total_p = ifelse(is.na(total_p), 0, total_p))
+
+p_by_year <- p_data %>% 
+  group_by(year) %>% 
+  summarise(total = sum(total_p))
+
+ggplot(data = p_by_year) +
+  geom_point(mapping = aes(x = year, y = total), color = "forestgreen") +
+  theme_bw() +
+  labs(
+    title = "Use of Pornography Related Words in General Conference Talks",
+    caption = '"Pornography", "Porn"',
+    x = "Year",
+    y = "Mentions of Pornography"
+  )
+
+```
+
+
+
+
+
