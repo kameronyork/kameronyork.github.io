@@ -10,7 +10,7 @@ output:
     code_folding: hide
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, message=FALSE}
 library(tidyverse)
 library(pander)
 library(plotly)
@@ -41,28 +41,34 @@ verse_order_data <- read.csv("https://www.kameronyork.com/datasets/verse-order.c
 verse_order <- strsplit(verse_order_data$order, ", ") %>% 
   unlist()
 
+book_ordering_work <- verses %>% 
+  group_by(book) %>% 
+  summarise("book_chapter_order" = min(verse_id)) %>% 
+  arrange(book_chapter_order)
+
+book_ordering <- paste(book_ordering_work$book, sep = ", ") %>% 
+  unlist()
+
 chapters <- verses %>% 
   group_by(book_chapter, book, chapter) %>% 
-  summarise("verses" = n()) %>% 
+  summarise("verses" = n(),
+            "book_chapter_order" = min(verse_id)) %>% 
   mutate("quoted" = case_when(
     book_chapter %in% quotes$book_chapter ~ "Found",
     TRUE ~ ""
   )) %>% 
   left_join(chapter_counts, by = c("book_chapter" = "book_chapter")) %>% 
-  mutate(quote_count = ifelse(is.na(quote_count), 0, quote_count))
+  mutate(quote_count = ifelse(is.na(quote_count), 0, quote_count)) %>% 
+  mutate(quote_count = ifelse(quote_count == 0, NA, quote_count)) %>% 
+  left_join(book_ordering_work, by = c("book" = "book")) %>% 
+  arrange(book_chapter_order.y)
 
 
-book_ordering_work <- verses %>% 
-  group_by(book) %>% 
-  summarise(book_order = min(verse_id)) %>% 
-  arrange(book_order)
 
-book_ordering <- paste(book_ordering_work$book, sep = ", ") %>% 
-  unlist()
 ```
 
 ## Overall Quotes Analysis
-```{r}
+```{r, message=FALSE}
 total_by_year <- quotes %>% 
   group_by(talk_year) %>% 
   summarise("total_quotes" = n())
@@ -75,7 +81,7 @@ ggplot(data = total_by_year) +
   theme_bw()
 ```
 
-```{r}
+```{r, message=FALSE}
 book_by_year <- quotes %>% 
   group_by(quad_book, talk_year) %>% 
   summarise("total_quotes" = n())
@@ -92,7 +98,7 @@ ggplot(data = book_by_year) +
   theme_bw()
 ```
 
-```{r}
+```{r, message=FALSE}
 ggplot(data = book_by_year) + 
   geom_line(mapping = aes(x = talk_year, y = total_quotes, color = quad_book), size=1) +
   labs(title="Total Quotes by Book and Year",
@@ -101,7 +107,7 @@ ggplot(data = book_by_year) +
   theme_bw()
 ```
 
-```{r}
+```{r, message=FALSE}
 ggplot(data = big_book_by_year) + 
   geom_line(mapping = aes(x = talk_year, y = total_quotes, color = overall_book), size=1) +
   labs(title="Total Quotes by Book and Year",
@@ -110,7 +116,7 @@ ggplot(data = big_book_by_year) +
   theme_bw()
 ```
 
-```{r}
+```{r, message=FALSE}
 ggplot(data = filter(big_book_by_year, overall_book == "Book of Mormon")) + 
   geom_line(mapping = aes(x = talk_year, y = total_quotes, color = overall_book), size=1) +
   geom_smooth(mapping = aes(x = talk_year, y = total_quotes))
@@ -122,7 +128,7 @@ ggplot(data = filter(big_book_by_year, overall_book == "Book of Mormon")) +
 ```
 
 ### What are the top 10 Scriptures of all time?
-```{r}
+```{r, message=FALSE}
 all_time <- quotes %>% 
   filter(scripture != "null null:null") %>% # Removes the null values from the data.
   group_by(scripture) %>% 
@@ -150,7 +156,7 @@ pander(select(all_time_10, c("scripture", "count", "rank")))
 ```
 
 
-```{r}
+```{r, message=FALSE}
 ggplot(data = history_all_time_10) + 
   geom_bar(mapping = aes(x = decade, fill = scripture), size=1, position="dodge") +
   labs(title="Total Quotes Top 10 Scriptures all Time",
@@ -159,7 +165,7 @@ ggplot(data = history_all_time_10) +
   theme_bw()
 ```
 
-```{r}
+```{r, message=FALSE}
 line_all_time_history <- history_all_time_10 %>% 
   group_by(decade = as.numeric(decade), scripture) %>% 
   summarise("count" = n())
@@ -183,7 +189,8 @@ ggplot(data = line_all_time_history) +
 
 ### Creating a Grid:
 
-```{r}
+```{r, message=FALSE}
+# Creating the Full Verses Image:
 my_plot <- ggplot(data = verses, aes(x = verse, y = fct_rev(factor(book_chapter, levels = verse_order)), fill = quoted)) +
   geom_tile(col = "white") +
   coord_equal(ratio=2.33) +
@@ -203,26 +210,28 @@ ggsave(filename = "C:/Users/theka/Pictures/my_plot.png", plot = my_plot, width =
 
 ```
 
-```{r}
+```{r, message=FALSE}
+# Creating the Book Chapter Image:
 my_plot2 <- ggplot(data = chapters, aes(x = chapter, y = fct_rev(factor(book, levels = book_ordering)), fill = quoted)) +
   geom_tile(col = "white") +
   coord_equal(ratio=2.33) +
   scale_fill_manual(values = c("NA" = "white", "Found" = "red")) +
   scale_x_continuous(breaks = unique(chapters$chapter)) + 
   theme_minimal() +
+  labs(x = "Chapter") +
   theme(
     legend.position = "right",
     panel.background = element_rect(fill = "white"),
-    axis.text.y = element_text(size = rel(0.5)),
+    axis.text.y = element_text(size = rel(0.65)),
     axis.text.x = element_blank(),
     axis.title.y = element_blank()
   ) + 
   guides(fill = "none")
 
-ggsave(filename = "C:/Users/theka/Pictures/my_plot2.png", plot = my_plot2, width = 8, height = 40, units = "in", limitsize = FALSE, bg = "white")
+ggsave(filename = "C:/Users/theka/Pictures/my_plot2.png", plot = my_plot2, width = 8, height = 9, units = "in", limitsize = FALSE, bg = "white")
 ```
 
-```{r}
+```{r, message=FALSE}
 levels_check <- verses %>%
   select(book_chapter) %>% 
   mutate("check" = case_when(
@@ -233,20 +242,9 @@ levels_check <- verses %>%
 
 ```
 
-<script>
-  $(document).ready( function () {
-      $('#table_id').DataTable();
-  } );
-</script>
 
 
-
-<div class="dataTables_filter">
-  <label>Search Scripture: <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="table_id"></label>
-</div>
-
-
-```{r}
+```{r, message=FALSE}
 library(DT)
 
 datatable(
@@ -263,7 +261,7 @@ datatable(
 ```
 
 
-```{r}
+```{r, message=FALSE}
 # Remove zero values in quote_count
 plot_3d <- verses %>% 
   mutate(quote_count = ifelse(quote_count == 0, NA, quote_count))
@@ -287,8 +285,27 @@ fig <- plot_ly(data = plot_3d, x = ~verse, y = ~factor(book_chapter, levels = ve
 fig
 ```
 
+```{r, message=FALSE}
+# Plotting the Book Chapter Image in 3D:
 
-```{r}
+chapter_fig <- plot_ly(data = chapters, x = ~chapter, y = ~factor(chapters$book, levels = book_ordering), z = ~quote_count) %>% 
+  add_markers(size = 5) %>% 
+  layout(
+    scene = list(
+      xaxis = list(title = 'Chapter'),
+      yaxis = list(title = 'Book'),
+      zaxis = list(title = 'Quotes'),
+      aspectratio = list(x = 1, y = 3, z = 1)
+    ),
+    xaxis = list(title = 'Overall Book')  # Add x-axis title
+  )
+
+chapter_fig
+
+```
+
+
+```{r message=FALSE}
 testing <- verses %>% 
   group_by(book_chapter) %>% 
   summarise(verse_count = n())

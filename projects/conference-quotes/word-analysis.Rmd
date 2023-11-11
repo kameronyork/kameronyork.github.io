@@ -2,7 +2,9 @@
 title: "Conference Word Analysis"
 author: "Kameron York"
 date: "2023-11-07"
-output: html_document
+output:
+  html_document:
+    code_folding: hide
 ---
 
 ```{r setup, include=FALSE}
@@ -29,7 +31,7 @@ quotes <- read.csv("https://www.kameronyork.com/datasets/conference-quotes.csv",
 
 ## Temples: {.tabset}
 ("Temple", "House of God", "House of the Lord")
-```{r}
+```{r, message=FALSE}
 # Create a new column to count occurrences of the specified words
 temple_data <- talks_data %>%
   mutate(
@@ -43,9 +45,9 @@ temple_data <- talks_data %>%
 
 ```
 
-### Scatter Plot
+### Scatter Plots
 This plot shows there seems to be an increase in temple-related words following President Hinckley's sustaining as prophet.  The large gap in the middle is due to the sudden jump from 63 temples in 1999 to 102 temples in 2000.  There are no dots through that section because no General Conference addresses were given in that time frame.
-```{r, warning=FALSE}
+```{r, warning=FALSE, message=FALSE}
 temple_by_year <- temple_data %>% 
   group_by(year) %>% 
   summarise(total = sum(total_temple)) %>% 
@@ -74,36 +76,24 @@ ggplot(data = temple_by_year) +
     x = "Number of Dedicated Temples",
     y = "Mentions of the Temple"
   )
-
-# ggplot(data = temple_by_year) +
-#   geom_point(mapping = aes(x = year, y = temples), color = "forestgreen") +
-#   theme_bw()
-```
-### Box Plot
-This boxplot shows that there is an increase in temple-related words between before President Hinckley was the prophet and our current Post-President Hinckley era.  It seems temples are being talked about more now than they were before his sustaining. 
-```{r}
-temple_boxes <- temple_by_year %>% 
-  mutate(group = case_when(
-    year < 1995 ~ "Before Hinckley",
-    year >= 1995 ~ "Post Hinckley"
-  ))
-
-
-ggplot(data = temple_boxes) + 
-  geom_boxplot(mapping = aes(x = group, y = total)) + 
-  theme_bw()
 ```
 
-### Statistical Test
-
-```{r}
-t.test(Y ~ X, data = YourData, mu = YourNull, alternative = YourAlternative, conf.level = 0.95)
-
-
+This plot shows the number of temples in the world by year:
+```{r, warning=FALSE, message=FALSE}
+ggplot(data = temple_by_year) +
+  geom_point(mapping = aes(x = year, y = temples), color = "forestgreen", size = 1) +
+  geom_line(mapping = aes(x = year, y = temples), color = "forestgreen") +
+  theme_bw() +
+  labs(
+    title = "Number of Temples in the World by Year",
+    subtitle = "Data is representing the count of dedicated temples at the end of the year",
+    x = "Year",
+    y = "Number of Dedicated Temples"
+  )
 ```
 
 This time the phrases are shown in different colors.
-```{r, warning=FALSE}
+```{r, warning=FALSE, message=FALSE}
 temple_pivot <- temple_data %>% 
   select(year, speaker, title, temple_count, house_of_the_lord_count, house_of_god_count) %>% 
   pivot_longer(
@@ -130,16 +120,50 @@ ggplot(data = temple_pivot) +
 
 
 
-## Book of Mormon
+### Box Plot
+This boxplot shows that there is an increase in temple-related words between before President Hinckley was the prophet and our current Post-President Hinckley era.  It seems temples are being talked about more now than they were before his sustaining. 
+```{r, message=FALSE}
+temple_boxes <- temple_by_year %>% 
+  mutate(group = case_when(
+    year < 1995 ~ "Before Hinckley",
+    year >= 1995 ~ "Post Hinckley"
+  ))
+
+
+ggplot(data = temple_boxes) + 
+  geom_boxplot(mapping = aes(x = group, y = total)) + 
+  theme_bw()
+```
+
+### T Test
+
+```{r, message=FALSE}
+t.test(total ~ group, data = temple_boxes, mu = 0, alternative = "two.sided", conf.level = 0.95) %>% 
+  pander()
+```
+
+### Wilcoxon Test
+
+```{r, message=FALSE}
+wilcox.test(total ~ group, data = temple_boxes, mu = 0, alternative = "two.sided", conf.level = 0.95) %>% 
+  pander()
+
+```
+
+
+## Book of Mormon: {.tabset}
 ("Book of Mormon")
-```{r}
+```{r, message=FALSE}
 bom_data <- talks_data %>%
   mutate(
     total_bom = str_count(tolower(text), "(?i)\\bbook of mormon\\b")
   )
 ```
 
-```{r}
+
+### Scatter Plots
+
+```{r, message=FALSE}
 bom_by_year <- bom_data %>% 
   group_by(year) %>% 
   summarise(total = sum(total_bom))
@@ -158,7 +182,7 @@ ggplot(data = bom_by_year) +
 
 ```
 
-Are the scriptures from the book of mormon quoted more now that in the 70's before the talk?
+Are the scriptures from the book of mormon quoted more now than in the 70's before the talk?
 ```{r}
 bom_quotes <- quotes %>% 
   filter(overall_book == "Book of Mormon") %>% 
@@ -172,7 +196,8 @@ ggplot(data = bom_quotes) +
 
 ```
 
-Boxplot Version:
+### Box Plot
+
 ```{r}
 bom_boxes <- bom_quotes %>% 
   mutate(group = case_when(
@@ -191,7 +216,24 @@ ggplot(data = bom_boxes) +
 
 ```   
 
-Bible Comparison
+### T Test
+
+```{r}
+t.test(total ~ group, data = bom_boxes, mu = 0, alternative = "two.sided", conf.level = 0.95) %>% 
+  pander()
+```
+
+
+### Wilcoxon Test
+
+```{r}
+wilcox.test(total ~ group, data = bom_boxes, mu = 0, alternative = "two.sided", conf.level = 0.95) %>% 
+  pander()
+
+```
+
+## Bible & Book of Mormon Comparison
+
 ```{r}
 bible_compare <- quotes %>% 
   filter(overall_book %in% c("Book of Mormon", "Bible")) %>% 
@@ -219,35 +261,35 @@ ggplot(data = benson_check) +
 
 ```
 
-## Pornography
-("pornography", "porn")
-```{r}
-# Create a new column to count occurrences of the specified words
-p_data <- talks_data %>%
-  mutate(
-    pornography = str_count(tolower(text), "\\bpornography\\b"),
-    porn = str_count(tolower(text), "\\bporn\\b")
-  ) %>% 
-  mutate(
-    total_p  = pornography + porn
-  ) %>% 
-  mutate(total_p = ifelse(is.na(total_p), 0, total_p))
+<!-- ## Pornography -->
+<!-- ("pornography", "porn") -->
+<!-- ```{r} -->
+<!-- # Create a new column to count occurrences of the specified words -->
+<!-- p_data <- talks_data %>% -->
+<!--   mutate( -->
+<!--     pornography = str_count(tolower(text), "\\bpornography\\b"), -->
+<!--     porn = str_count(tolower(text), "\\bporn\\b") -->
+<!--   ) %>%  -->
+<!--   mutate( -->
+<!--     total_p  = pornography + porn -->
+<!--   ) %>%  -->
+<!--   mutate(total_p = ifelse(is.na(total_p), 0, total_p)) -->
 
-p_by_year <- p_data %>% 
-  group_by(year) %>% 
-  summarise(total = sum(total_p))
+<!-- p_by_year <- p_data %>%  -->
+<!--   group_by(year) %>%  -->
+<!--   summarise(total = sum(total_p)) -->
 
-ggplot(data = p_by_year) +
-  geom_point(mapping = aes(x = year, y = total), color = "forestgreen") +
-  theme_bw() +
-  labs(
-    title = "Use of Pornography Related Words in General Conference Talks",
-    caption = '"Pornography", "Porn"',
-    x = "Year",
-    y = "Mentions of Pornography"
-  )
+<!-- ggplot(data = p_by_year) + -->
+<!--   geom_point(mapping = aes(x = year, y = total), color = "forestgreen") + -->
+<!--   theme_bw() + -->
+<!--   labs( -->
+<!--     title = "Use of Pornography Related Words in General Conference Talks", -->
+<!--     caption = '"Pornography", "Porn"', -->
+<!--     x = "Year", -->
+<!--     y = "Mentions of Pornography" -->
+<!--   ) -->
 
-```
+<!-- ``` -->
 
 
 

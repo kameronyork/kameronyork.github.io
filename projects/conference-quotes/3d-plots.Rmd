@@ -1,0 +1,109 @@
+---
+title: "3D Plots"
+author: "Kameron York"
+output: 
+  html_document:
+    code_folding: hide
+---
+
+```{r setup, include=FALSE, message=FALSE}
+library(tidyverse)
+library(pander)
+library(plotly)
+library(DT)
+library(latticeExtra)
+
+quotes <- read.csv("https://www.kameronyork.com/datasets/conference-quotes.csv", encoding="UTF-8")
+
+quote_counts <- quotes %>% 
+  group_by(scripture) %>% 
+  summarise(quote_count = n())
+
+chapter_counts <-quotes %>% 
+  group_by(book_chapter) %>% 
+  summarise(quote_count = n())
+
+verses <- read.csv("https://www.kameronyork.com/datasets/scripture-verses.csv", encoding="UTF-8") %>%
+  mutate("book_chapter" = paste(book, chapter, sep = " ")) %>% 
+  mutate("quoted" = case_when(
+    scripture %in% quotes$scripture ~ "Found",
+    TRUE ~ ""
+  )) %>% 
+  left_join(quote_counts, by = c("scripture" = "scripture")) %>% 
+  mutate(quote_count = ifelse(is.na(quote_count), 0, quote_count))
+
+verse_order_data <- read.csv("https://www.kameronyork.com/datasets/verse-order.csv", encoding="UTF-8")
+
+verse_order <- strsplit(verse_order_data$order, ", ") %>% 
+  unlist()
+
+book_ordering_work <- verses %>% 
+  group_by(book) %>% 
+  summarise("book_chapter_order" = min(verse_id)) %>% 
+  arrange(book_chapter_order)
+
+book_ordering <- paste(book_ordering_work$book, sep = ", ") %>% 
+  unlist()
+
+chapters <- verses %>% 
+  group_by(book_chapter, book, chapter) %>% 
+  summarise("verses" = n(),
+            "book_chapter_order" = min(verse_id)) %>% 
+  mutate("quoted" = case_when(
+    book_chapter %in% quotes$book_chapter ~ "Found",
+    TRUE ~ ""
+  )) %>% 
+  left_join(chapter_counts, by = c("book_chapter" = "book_chapter")) %>% 
+  mutate(quote_count = ifelse(is.na(quote_count), 0, quote_count)) %>% 
+  mutate(quote_count = ifelse(quote_count == 0, NA, quote_count)) %>% 
+  left_join(book_ordering_work, by = c("book" = "book")) %>% 
+  arrange(book_chapter_order.y)
+
+```
+
+## Testing 3D Plot Knitting:
+
+All Verses:
+```{r, warning=FALSE, message=FALSE}
+# Remove zero values in quote_count
+plot_3d <- verses %>% 
+  mutate(quote_count = ifelse(quote_count == 0, NA, quote_count))
+
+# Convert columns to numeric if they are not already
+plot_3d$verse <- as.numeric(plot_3d$verse)
+plot_3d$quote_count <- as.numeric(plot_3d$quote_count)
+
+fig <- plot_ly(data = plot_3d, x = ~verse, y = ~factor(book_chapter, levels = verse_order), z = ~quote_count) %>% 
+  add_markers(size = 5) %>% 
+  layout(
+    scene = list(
+      xaxis = list(title = 'Verse'),
+      yaxis = list(title = 'Chapter'),
+      zaxis = list(title = 'Quotes'),
+      aspectratio = list(x = 1, y = 3, z = 1)
+    ),
+    xaxis = list(title = 'Overall Book')  # Add x-axis title
+  )
+
+fig
+```
+
+All Chapters:
+```{r, warning=FALSE, message=FALSE}
+# Plotting the Book Chapter Image in 3D:
+
+chapter_fig <- plot_ly(data = chapters, x = ~chapter, y = ~factor(chapters$book, levels = book_ordering), z = ~quote_count) %>% 
+  add_markers(size = 5) %>% 
+  layout(
+    scene = list(
+      xaxis = list(title = 'Chapter'),
+      yaxis = list(title = 'Book'),
+      zaxis = list(title = 'Quotes'),
+      aspectratio = list(x = 1, y = 3, z = 1)
+    ),
+    xaxis = list(title = 'Overall Book')  # Add x-axis title
+  )
+
+chapter_fig
+
+```
