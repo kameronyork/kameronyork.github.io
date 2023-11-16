@@ -1,0 +1,633 @@
+---
+title: "Conference Word Analysis"
+author: "Kameron York"
+date: "2023-11-07"
+output:
+  html_document:
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(pander)
+library(plotly)
+library(DT)
+library(latticeExtra)
+library(stringr)
+
+```
+
+```{r, include=FALSE}
+# Loading in the Data
+talks_data <- read.csv("https://www.kameronyork.com/datasets/general-conference-talks.csv", encoding="UTF-8")
+dedication_data <- read.csv("https://www.kameronyork.com/datasets/dedication-data.csv", encoding="UTF-8") %>% 
+  mutate(year = str_sub(dedicated, 0, 4))
+```
+
+```{r, include=FALSE}
+# Loading in the quotes data
+quotes <- read.csv("https://www.kameronyork.com/datasets/conference-quotes.csv", encoding="UTF-8")
+```
+
+# Can a Prophet Effect a Change? {.tabset .tabset-pills}
+
+## Temples: {.tabset}
+("Temple", "Temples", "House of God", "House of the Lord")
+
+![President Gordon B. Hincley Temples Header](https://www.kameronyork.com/docs/assets/hinckley-header2.png) <br>
+<br>
+
+Temple construction has boomed since 1995.  From 1995 to 2020 the world went from 47 to 168 in operation.  This is an unprecedented increase!
+
+Of temples President Hinckley said, <i>"We are determined, brethren, to take the temple to the people and afford them every opportunity for the very precious blessings that come of temple worship."</i>  [October 1997 Address](https://www.churchofjesuschrist.org/study/general-conference/1997/10/some-thoughts-on-temples-retention-of-converts-and-missionary-service)
+
+Through the design and construction of smaller temples, and an increase in the rate at which temples were announced and built, President Hinckley introduced the church to a new age of temple availability that continues to this day. Has this boom in temple availability lead to an increased mentions of temple related words in General Conference?
+
+```{r, message=FALSE}
+# Create a new column to count occurrences of the specified words
+temple_data <- talks_data %>%
+  mutate(
+    temple_count = str_count(tolower(text), "\\btemple\\b"),
+    temples_count = str_count(tolower(text), "\\btemples\\b"),
+    house_of_the_lord_count = str_count(tolower(text), "\\bhouse of the lord\\b"),
+    house_of_god_count = str_count(tolower(text), "\\bhouse of god\\b")
+  ) %>% 
+  mutate(
+    total_temple = temple_count + temples_count + house_of_the_lord_count + house_of_god_count
+  )
+
+```
+
+### Scatter Plots
+This plot shows there seems to be an increase in temple-related words following President Hinckley's sustaining as prophet.  The large gap in the middle is due to the sudden jump from 63 temples in 1999 to 102 temples in 2000.  There are no dots through that section because no General Conference addresses were given in that time frame.
+
+```{r, warning=FALSE, message=FALSE}
+temple_by_year <- temple_data %>% 
+  group_by(year) %>% 
+  summarise(total = sum(total_temple)) %>% 
+  mutate(temples = map_int(year, ~ sum(dedication_data$year <= .x)))
+
+ggplot(data = temple_by_year) +
+  geom_point(mapping = aes(x = temples, y = total), color = "forestgreen") +
+  geom_vline(xintercept = 47, color = "red") +
+  theme_bw() +
+  labs(
+    title = "Use of Temple Related Words in General Conference Talks",
+    subtitle = "1995 Highlighted - Year President Gordon B. Hinckley became Church President",
+    caption = '"Temple", "Temples", "House of God", "House of the Lord"',
+    x = "Number of Dedicated Temples",
+    y = "Mentions of the Temple"
+  )
+```
+
+This plot shows the number of temples in the world by year:
+```{r, warning=FALSE, message=FALSE}
+graph <- ggplot(data = temple_by_year) +
+  geom_point(mapping = aes(x = year, y = temples), color = "forestgreen", size = 1) +
+  geom_line(mapping = aes(x = year, y = temples), color = "forestgreen") +
+  theme_bw() +
+  labs(
+    title = "Number of Temples in the World by Year",
+    subtitle = "Data is representing the count of dedicated temples at the end of the year",
+    x = "Year",
+    y = "Number of Dedicated Temples"
+  ) 
+
+graph
+```
+
+This time the phrases are shown in different colors.
+```{r, warning=FALSE, message=FALSE}
+temple_pivot <- temple_data %>% 
+  select(year, speaker, title, temple_count, temples_count, house_of_the_lord_count, house_of_god_count) %>% 
+  pivot_longer(
+    cols = c(temple_count, temples_count, house_of_the_lord_count, house_of_god_count),
+    names_to = "type",
+    values_to = "count"
+  ) %>% 
+  group_by(year, type) %>% 
+  summarise("total" = sum(count))
+
+ggplot(data = temple_pivot) +
+  geom_point(mapping = aes(x = year, y = total, color = type)) +
+  geom_vline(xintercept = 1995, color = "red") +
+  theme_bw() +
+  labs(
+    title = "Use of Temple Related Words in General Conference Talks",
+    subtitle = "1995 Highlighted - Year President Gordon B. Hinckley became Church President",
+    caption = '"Temple", "Temples", "House of God", "House of the Lord"',
+    color = "Mention Type",
+    x = "Year",
+    y = "Mentions of the Temple"
+  )
+```
+
+
+
+### Box Plot
+This boxplot shows that there is an increase in temple-related words between before President Hinckley was the prophet and our current Post-President Hinckley era.  It seems temples are being talked about more now than they were before his sustaining. 
+```{r, warning=FALSE, message=FALSE}
+temple_boxes <- temple_by_year %>% 
+  mutate(group = case_when(
+    year < 1995 ~ "Before Hinckley",
+    year >= 1995 ~ "Post Hinckley"
+  ))
+
+
+ggplot(data = temple_boxes) + 
+  geom_boxplot(mapping = aes(x = group, y = total)) + 
+  theme_bw()
+```
+
+### T Test
+
+This T Test is a statistical test meant to tell us if the means of both populations differ from each other.  Because our result (`3.039e-06`) is smaller than the confidence interval of `95%` we can conclude the two means are significantly different.  On top of that, based on the box plots of the previous tab, it is easy to conclude that Temples are mentioned more after President Hinckley than before he was the prophet!
+
+```{r, warning=FALSE, message=FALSE}
+t.test(total ~ group, data = temple_boxes, mu = 0, alternative = "two.sided", conf.level = 0.95) %>% 
+  pander()
+```
+
+## Book of Mormon: {.tabset}
+("Book of Mormon")
+
+![President Ezra Taft Benson Book of Mormon Header](https://www.kameronyork.com/docs/assets/benson-header2.png) <br>
+<br>
+1986 was a big year for the Book of Mormon.  President Ezra Taft Benson delivered a General Conference talk instructing members to use the Book of Mormon in teachings.
+
+"This is a gift of greater value to mankind than even the many wonderful advances we have seen in modern medicine" [October 1996 Address](https://www.churchofjesuschrist.org/study/general-conference/1986/10/the-book-of-mormon-keystone-of-our-religion)
+
+How did this calling to action effect the number of quotes from the Book of Mormon in General Conference talks?
+
+```{r, warning=FALSE, message=FALSE}
+bom_data <- talks_data %>%
+  mutate(
+    total_bom = str_count(tolower(text), "(?i)\\bbook of mormon\\b")
+  )
+```
+
+
+### Scatter Plots
+
+```{r, warning=FALSE, message=FALSE}
+bom_by_year <- bom_data %>% 
+  group_by(year) %>% 
+  summarise(total = sum(total_bom))
+
+ggplot(data = bom_by_year) +
+  geom_point(mapping = aes(x = year, y = total), color = "forestgreen") +
+  geom_vline(xintercept = 1986, color = "red") +
+  theme_bw() +
+  labs(
+    title = "Use of Book of Mormon Related Words in General Conference Talks",
+    subtitle = "1986 Highlighted - Year President Ezra Taft Benson Reaffirmed the Book of Mormon",
+    caption = '"Book of Mormon"',
+    x = "Year",
+    y = "Mentions of the Book of Mormon"
+  )
+
+```
+
+Are the scriptures from the book of mormon quoted more now than in the 70's before the talk?
+```{r, warning=FALSE, message=FALSE}
+bom_quotes <- quotes %>% 
+  filter(overall_book == "Book of Mormon") %>% 
+  group_by(talk_year) %>% 
+  summarise(total = n())
+
+ggplot(data = bom_quotes, aes(x = talk_year, y = total)) + 
+  geom_point(color = "red2") + 
+  geom_smooth(method = lm, se = FALSE, color = "orange", linetype = "solid") +
+  geom_vline(xintercept = 1986, color = "blue3") +
+  theme_bw() +
+  labs(
+    title = "Quotes from the Book of Mormon in General Conference Talks",
+    subtitle = "1986 Highlighted - Year President Ezra Taft Benson Reaffirmed the Book of Mormon",
+    caption = '"Book of Mormon"',
+    x = "Year",
+    y = "Quotes from the Book of Mormon"
+  )
+
+```
+
+
+```{r, warning=FALSE, message=FALSE}
+mylm <- lm(total ~ talk_year, data = bom_quotes)
+summary(mylm) %>% 
+  pander()
+```
+
+### Box Plot
+
+```{r, warning=FALSE, message=FALSE}
+bom_boxes <- bom_quotes %>% 
+  mutate(group = case_when(
+    talk_year < 1986 ~ "Before Talk", 
+    talk_year >= 1986 ~ "Post Talk"
+  ))
+
+bom_means <- bom_boxes %>% 
+  group_by(group) %>% 
+  summarise(mean = mean(total))
+
+ggplot(data = bom_boxes) + 
+  geom_boxplot(mapping = aes(x = group, y = total)) + 
+  geom_point(data = bom_means, mapping = aes(x = group, y = mean), color = "red3") +
+  theme_bw()
+
+```   
+
+### T Test
+
+```{r, warning=FALSE, message=FALSE}
+t.test(total ~ group, data = bom_boxes, mu = 0, alternative = "two.sided", conf.level = 0.95) %>% 
+  pander()
+```
+
+
+### Bible Comparison
+
+```{r, warning=FALSE, message=FALSE}
+bible_compare <- quotes %>% 
+  filter(overall_book %in% c("Book of Mormon", "Bible")) %>% 
+  group_by(talk_year, overall_book) %>% 
+  summarise(total = n())
+
+ggplot(data  = bible_compare) + 
+  geom_point(mapping = aes(x = talk_year, y = total, color = overall_book)) + 
+  geom_smooth(se = FALSE, mapping = aes(x = talk_year, y = total, color = overall_book)) + 
+  theme_bw()
+
+```
+
+Is there a difference in boxplots Pre President Benson and Post President Benson?
+```{r, warning=FALSE, message=FALSE}
+benson_check <- bible_compare %>% 
+  mutate(group = case_when(
+    talk_year < 1986 ~ "Before Talk",
+    talk_year >= 1986 ~ "Post Talk"
+  )) %>% 
+  mutate(overall_group = paste(overall_book, group, sep = " - "))
+
+ggplot(data = benson_check) + 
+  geom_boxplot(mapping = aes(x = overall_group, y = total, fill = overall_book)) + 
+  theme_bw()
+
+```
+
+
+## Gathering Israel {.tabset}
+("Gathering Israel", "Both Sides of the Veil")
+
+![President Ezra Taft Benson Book of Mormon Header](https://www.kameronyork.com/docs/assets/nelson-header2.png) <br>
+<br>
+The main focus of President Nelson's ministry is, "Gathering Israel on both sides of the veil".  This focus includes missionary work, temple work, and each individual's commitment to following the covenant path.
+
+Has this focus permeated the church as a whole?  Here we have conducted a simple word analysis to determine if phrases related to gathering Israel have increased.
+
+### Scatter Plots
+
+```{r, warning=FALSE, message=FALSE}
+gathering_data <- talks_data %>%
+  mutate(
+    gathering1 = str_count(tolower(text), "(?i)\\bgathering of israel\\b"),
+    gathering2 = str_count(tolower(text), "(?i)\\bgathering israel\\b"),
+    both_sides = str_count(tolower(text), "(?i)\\bboth sides of the veil\\b")
+  ) %>% 
+  mutate(gathering = gathering1 + gathering2)
+  
+gathering_pivot <- gathering_data %>% 
+  select(year, speaker, title, gathering, both_sides) %>% 
+  pivot_longer(
+    cols = c(gathering, both_sides),
+    names_to = "type",
+    values_to = "count"
+  ) %>% 
+  group_by(year, type) %>% 
+  summarise("total" = sum(count)) %>% 
+  mutate(group = case_when(
+    year < 2017 ~ "Before Nelson",
+    year >= 2017 ~ "Post Nelson"
+  ))
+
+ggplot(data = gathering_pivot) +
+  geom_point(mapping = aes(x = year, y = total, color = type)) +
+  geom_smooth(se = FALSE, mapping = aes(x = year, y = total, color = type)) + 
+  geom_vline(xintercept = 2017, color = "red") +
+  theme_bw() +
+  labs(
+    title = "Use of Gathering Israel Related Words in General Conference Talks",
+    subtitle = "2017 Highlighted - President Nelson sustained as Prophet",
+    caption = '"Gathering Israel", "Both Sides of the Veil"',
+    color = "Mention Type",
+    x = "Year",
+    y = "Mentions of Gathering Israel"
+  )
+```
+
+### Box Plot
+
+```{r, warning=FALSE, message=FALSE}
+
+gathering_means <- gathering_pivot %>% 
+  group_by(group) %>% 
+  summarise(mean = mean(total))
+
+ggplot(data = gathering_pivot) + 
+  geom_boxplot(mapping = aes(x = group, y = total)) + 
+  geom_point(data = gathering_means, mapping = aes(x = group, y = mean), color = "red3") +
+  theme_bw()
+
+```   
+
+### T Test
+
+```{r, warning=FALSE, message=FALSE}
+t.test(total ~ group, data = gathering_pivot, mu = 0, alternative = "two.sided", conf.level = 0.95) %>% 
+  pander()
+```
+
+
+### Wilcoxon Test
+
+```{r, warning=FALSE, message=FALSE}
+wilcox.test(total ~ group, data = gathering_pivot, mu = 0, alternative = "two.sided", conf.level = 0.95) %>% 
+  pander()
+
+```
+
+
+# Other Insights {.tabset .tabset-pills}
+
+## Hide
+
+## Show {.tabset .tabset-pills}
+
+### Missionary Work
+("Missionary", "Missionaries", "Every member a missionary")
+
+```{r, warning=FALSE, message=FALSE}
+missionary_data <- talks_data %>%
+  mutate(
+    missionary = str_count(tolower(text), "(?i)\\bmissionary\\b"),
+    missionaries = str_count(tolower(text), "(?i)\\bmissionaries\\b")
+  )
+  
+missionary_pivot <- missionary_data %>% 
+  select(year, speaker, title, missionary, missionaries) %>% 
+  pivot_longer(
+    cols = c(missionary, missionaries),
+    names_to = "type",
+    values_to = "count"
+  ) %>% 
+  group_by(year, type) %>% 
+  summarise("total" = sum(count))
+
+
+ggplot(data = missionary_pivot) +
+  geom_point(mapping = aes(x = year, y = total, color = type)) +
+  geom_smooth(mapping = aes(x = year, y = total)) + 
+  geom_vline(xintercept = 1974, color = "red") +
+  theme_bw() +
+  labs(
+    title = "Use of Temple Related Words in General Conference Talks",
+    subtitle = "1974 Highlighted - Release of 'Go ye into all the World' by President Kimball",
+    caption = '"Missionary", "Missionaries", "Every Member a Missionary"',
+    color = "Mention Type",
+    x = "Year",
+    y = "Mentions of the Temple"
+  )
+
+```
+
+
+### Family History and Genealogy
+("Family History", "Genealogy")
+
+```{r, warning=FALSE, message=FALSE}
+family_search_data <- talks_data %>%
+  mutate(
+    family_history = str_count(tolower(text), "(?i)\\bfamily history\\b"),
+    genealogy = str_count(tolower(text), "(?i)\\bgenealogy\\b")
+  )
+  
+family_pivot <- family_search_data %>% 
+  select(year, speaker, title, family_history, genealogy) %>% 
+  pivot_longer(
+    cols = c(family_history, genealogy),
+    names_to = "type",
+    values_to = "count"
+  ) %>% 
+  group_by(year, type) %>% 
+  summarise("total" = sum(count))
+
+ggplot(data = family_pivot) +
+  geom_point(mapping = aes(x = year, y = total, color = type)) +
+  geom_smooth(se = FALSE, mapping = aes(x = year, y = total, color = type)) + 
+  geom_vline(xintercept = 1999, color = "red") +
+  theme_bw() +
+  labs(
+    title = "Use of Temple Related Words in General Conference Talks",
+    subtitle = "1999 Highlighted - Family Search Released World-wide",
+    caption = '"Family Hisroty", "Genealogy"',
+    color = "Mention Type",
+    x = "Year",
+    y = "Mentions of Family History"
+  )
+```
+
+### Gospel of Jesus Christ
+("Faith", "Repentance", "Baptism", "Gift of the Holy Ghost", "Endure to the End")
+
+```{r, warning=FALSE, message=FALSE}
+gospel_principles <- talks_data %>%
+  mutate(
+    faith = str_count(tolower(text), "(?i)\\bfaith\\b"),
+    repentance = str_count(tolower(text), "(?i)\\brepentance\\b"),
+    baptism = str_count(tolower(text), "(?i)\\bbaptism\\b"),
+    holy_ghost = str_count(tolower(text), "(?i)\\bgift of the holy ghost\\b"),
+    endure = str_count(tolower(text), "(?i)\\bendure to the end\\b"),
+  )
+  
+gospel_pivot <- gospel_principles %>% 
+  select(year, speaker, title, faith, repentance, baptism, holy_ghost, endure) %>% 
+  pivot_longer(
+    cols = c(faith, repentance, baptism, holy_ghost, endure),
+    names_to = "type",
+    values_to = "count"
+  ) %>% 
+  group_by(year, type) %>% 
+  summarise("total" = sum(count))
+
+ggplot(data = gospel_pivot) +
+  geom_point(mapping = aes(x = year, y = total, color = type)) +
+  geom_smooth(se = FALSE, mapping = aes(x = year, y = total, color = type)) + 
+  geom_vline(xintercept = 2008, color = "red") +
+  theme_bw() +
+  labs(
+    title = "Use of Gospel of Jesus Christ Related Words in General Conference Talks",
+    subtitle = "2008 Highlighted - Year President Monson became the Prophet.",
+    caption = '"Faith", "Repentance", "Baptism", "Gift of the Holy Ghost", "Endure to the End"',
+    color = "Mention Type",
+    x = "Year",
+    y = "Mentions of the Gospel of Jesus Christ"
+  )
+```
+
+```{r, warning=FALSE, message=FALSE}
+ggplot(data = filter(gospel_pivot, type != "faith")) +
+  geom_point(mapping = aes(x = year, y = total, color = type)) +
+  geom_smooth(se = FALSE, mapping = aes(x = year, y = total, color = type)) + 
+  geom_vline(xintercept = 2008, color = "red") +
+  theme_bw() +
+  labs(
+    title = "Use of Gospel of Jesus Christ Related Words in General Conference Talks",
+    subtitle = "2008 Highlighted - Year President Monson became the Prophet.",
+    caption = '"Repentance", "Baptism", "Gift of the Holy Ghost", "Endure to the End"',
+    color = "Mention Type",
+    x = "Year",
+    y = "Mentions of the Gospel of Jesus Christ"
+  )
+
+```
+
+```{r, warning=FALSE, message=FALSE}
+gospel_principles <- talks_data %>%
+  mutate(
+    gospel = str_count(tolower(text), "(?i)\\bgospel of jesus christ\\b")
+  )
+  
+gospel_pivot <- gospel_principles %>% 
+  select(year, speaker, title, gospel) %>% 
+  pivot_longer(
+    cols = c(gospel),
+    names_to = "type",
+    values_to = "count"
+  ) %>% 
+  group_by(year, type) %>% 
+  summarise("total" = sum(count))
+
+ggplot(data = gospel_pivot) +
+  geom_point(mapping = aes(x = year, y = total)) +
+  geom_smooth(se = FALSE, mapping = aes(x = year, y = total)) + 
+  geom_vline(xintercept = 2008, color = "red") +
+  theme_bw() +
+  labs(
+    title = "Mentions of 'Gospel of Jesus Christ' in General Conference Talks",
+    subtitle = "2008 Highlighted - Year President Monson became the Prophet.",
+    caption = '"Gospel of Jesus Christ"',
+    color = "Mention Type",
+    x = "Year",
+    y = "Mentions of the Gospel of Jesus Christ"
+  )
+```
+
+
+### Satan
+("Satan", "Adversary")
+
+```{r, warning=FALSE, message=FALSE}
+satan_data <- talks_data %>%
+  mutate(
+    satan = str_count(tolower(text), "(?i)\\bsatan\\b"),
+    adversary = str_count(tolower(text), "(?i)\\badversary\\b"),
+    lucifer = str_count(tolower(text), "(?i)\\blucifer\\b"),
+    devil = str_count(tolower(text), "(?i)\\bdevil\\b")
+  )
+  
+satan_pivot <- satan_data %>% 
+  select(year, speaker, title, satan, adversary, lucifer, devil) %>% 
+  pivot_longer(
+    cols = c(satan, adversary, lucifer, devil),
+    names_to = "type",
+    values_to = "count"
+  ) %>% 
+  group_by(year, type) %>% 
+  summarise("total" = sum(count))
+
+
+ggplot(data = satan_pivot) +
+  geom_point(mapping = aes(x = year, y = total, color = type)) +
+  geom_smooth(se = FALSE, mapping = aes(x = year, y = total, color = type)) + 
+  theme_bw() +
+  labs(
+    title = "Use of Satan Related Words in General Conference Talks",
+    caption = '"Satan", "Adversary", "Lucifer", "Devil"',
+    color = "Mention Type",
+    x = "Year",
+    y = "Mentions of Satan"
+  )
+
+```
+
+### Jesus
+("Jesus", "Lord", "Savior")
+
+```{r, warning=FALSE, message=FALSE}
+jesus_data <- talks_data %>%
+  mutate(
+    jesus = str_count(tolower(text), "(?i)\\bjesus\\b"),
+    lord = str_count(tolower(text), "(?i)\\blord\\b"),
+    savior = str_count(tolower(text), "(?i)\\bsavior\\b"),
+    christ = str_count(tolower(text), "(?i)\\bchrist\\b")
+  )
+  
+jesus_pivot <- jesus_data %>% 
+  select(year, speaker, title, jesus, lord, savior, christ) %>% 
+  pivot_longer(
+    cols = c(jesus, lord, savior, christ),
+    names_to = "type",
+    values_to = "count"
+  ) %>% 
+  group_by(year, type) %>% 
+  summarise("total" = sum(count))
+
+
+ggplot(data = jesus_pivot) +
+  geom_point(mapping = aes(x = year, y = total, color = type)) +
+  geom_smooth(se = FALSE, mapping = aes(x = year, y = total, color = type)) + 
+  theme_bw() +
+  labs(
+    title = "Use of Jesus Related Words in General Conference Talks",
+    caption = '"Jesus", "Lord", "Savior"',
+    color = "Mention Type",
+    x = "Year",
+    y = "Mentions of Jesus"
+  )
+
+```
+
+<!-- ## Pornography -->
+<!-- ("pornography", "porn") -->
+<!-- ```{r} -->
+<!-- # Create a new column to count occurrences of the specified words -->
+<!-- p_data <- talks_data %>% -->
+<!--   mutate( -->
+<!--     pornography = str_count(tolower(text), "\\bpornography\\b"), -->
+<!--     porn = str_count(tolower(text), "\\bporn\\b") -->
+<!--   ) %>%  -->
+<!--   mutate( -->
+<!--     total_p  = pornography + porn -->
+<!--   ) %>%  -->
+<!--   mutate(total_p = ifelse(is.na(total_p), 0, total_p)) -->
+
+<!-- p_by_year <- p_data %>%  -->
+<!--   group_by(year) %>%  -->
+<!--   summarise(total = sum(total_p)) -->
+
+<!-- ggplot(data = p_by_year) + -->
+<!--   geom_point(mapping = aes(x = year, y = total), color = "forestgreen") + -->
+<!--   theme_bw() + -->
+<!--   labs( -->
+<!--     title = "Use of Pornography Related Words in General Conference Talks", -->
+<!--     caption = '"Pornography", "Porn"', -->
+<!--     x = "Year", -->
+<!--     y = "Mentions of Pornography" -->
+<!--   ) -->
+
+<!-- ``` -->
+
+
+
+
+
