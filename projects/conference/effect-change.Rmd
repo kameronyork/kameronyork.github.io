@@ -596,6 +596,108 @@ ggplot(data = jesus_pivot) +
 
 ```
 
+
+###
+("President Nelson", "Russell M. Nelson", "Russell Nelson")
+
+```{r, warning=FALSE, message=FALSE}
+prophets_data <- talks_data %>%
+  mutate(
+    nelson1 = str_count(tolower(text), "(?i)\\bpresident nelson\\b"),
+    nelson2 = str_count(tolower(text), "(?i)\\brussell m. nelson\\b"),
+    nelson3 = str_count(tolower(text), "(?i)\\brussell nelson\\b"),
+    monson1 = str_count(tolower(text), "(?i)\\bpresident monson\\b"),
+    monson2 = str_count(tolower(text), "(?i)\\bthomas s. monson\\b"),
+    monson3 = str_count(tolower(text), "(?i)\\bthomas monson\\b"),
+    hinckley1 = str_count(tolower(text), "(?i)\\bpresident hinckley\\b"),
+    hinckley2 = str_count(tolower(text), "(?i)\\bgordon b. hinckley\\b"),
+    hinckley3 = str_count(tolower(text), "(?i)\\bgordon hinckley\\b"),
+    hunter1 = str_count(tolower(text), "(?i)\\bpresident hunter\\b"),
+    hunter2 = str_count(tolower(text), "(?i)\\bhoward w. hunter\\b"),
+    hunter3 = str_count(tolower(text), "(?i)\\bhoward hunter\\b"),
+    benson1 = str_count(tolower(text), "(?i)\\bpresident benson\\b"),
+    benson2 = str_count(tolower(text), "(?i)\\bezra taft benson\\b"),
+    benson3 = str_count(tolower(text), "(?i)\\bezra benson\\b"),
+    kimball1 = str_count(tolower(text), "(?i)\\bpresident kimball\\b"),
+    kimball2 = str_count(tolower(text), "(?i)\\bspencer w. kimball\\b"),
+    kimball3 = str_count(tolower(text), "(?i)\\bspencer kimball\\b"),
+    lee1 = str_count(tolower(text), "(?i)\\bpresident lee\\b"),
+    lee2 = str_count(tolower(text), "(?i)\\bharold b. lee\\b"),
+    lee3 = str_count(tolower(text), "(?i)\\bharold lee\\b"),
+    f_smith1 = str_count(tolower(text), "(?i)\\bpresident smith\\b"),
+    f_smith2 = str_count(tolower(text), "(?i)\\bjoseph fielding smith\\b"),
+    f_smith3 = str_count(tolower(text), "(?i)\\bjoseph f. smith\\b"),
+    mckay1 = str_count(tolower(text), "(?i)\\bpresident mckay\\b"),
+    mckay2 = str_count(tolower(text), "(?i)\\bdavid o. mckay\\b"),
+    mckay3 = str_count(tolower(text), "(?i)\\bdavid mckay\\b")
+  ) %>% 
+  mutate(nelson = nelson1 + nelson2 + nelson3, 
+         monson = monson1 + monson2 + monson3, 
+         hinckley = hinckley1 + hinckley2 + hinckley3, 
+         hunter = hunter1 + hunter2 + hunter3, 
+         benson = benson1 + benson2 + benson3, 
+         kimball = kimball1 + kimball2 + kimball3, 
+         lee = lee1 + lee2 + lee3, 
+         f_smith = f_smith1 + f_smith2 + f_smith3, 
+         mckay = mckay1 + mckay2 + mckay3 
+         )
+  
+prophets_pivot <- prophets_data %>% 
+  select(year, speaker, title, nelson, monson, hinckley, hunter, benson, kimball, lee, f_smith, mckay) %>% 
+  pivot_longer(
+    cols = c(nelson, monson, hinckley, hunter, benson, kimball, lee, f_smith, mckay),
+    names_to = "type",
+    values_to = "count"
+  ) %>% 
+  group_by(year, type) %>% 
+  summarise("total" = sum(count)) %>% 
+  mutate(group = case_when(
+    year < 2017 ~ "Before Nelson",
+    year >= 2017 ~ "Post Nelson"
+  ))
+
+ggplot(data = prophets_pivot) +
+  geom_point(mapping = aes(x = year, y = total, color = type)) +
+  geom_smooth(se = FALSE, mapping = aes(x = year, y = total, color = type)) + 
+  theme_bw() +
+  labs(
+    title = "Use of Each Prophet's Name in General Conference Talks over Time",
+    # subtitle = "2017 Highlighted - President Nelson sustained as Prophet",
+    caption = '"President Nelson", "Russell M. Nelson", "Russell Nelson"',
+    color = "Prophet",
+    x = "Year",
+    y = "Mentions of Prophet Names"
+  )
+
+```
+
+```{r}
+ggplot(data = filter(prophets_pivot, 
+                     !type %in% c("nelson"))) +
+  geom_point(mapping = aes(x = year, y = total), color = "grey") +
+  geom_point(data = filter(prophets_pivot, 
+                           type %in% c("nelson")), 
+             mapping = aes(x = year, y = total, color = type)) +
+  geom_smooth(data = filter(prophets_pivot, 
+                           type %in% c("nelson")),
+              se = FALSE, mapping = aes(x = year, y = total, color = type)) +
+  geom_smooth(se = FALSE, mapping = aes(x = year, y = total, group = type), color = "grey") + 
+  geom_vline(xintercept = 1995, color = "forestgreen") +
+  geom_vline(xintercept = 2008, color = "forestgreen") +
+  theme_bw() +
+  labs(
+    title = "Use of Each Prophet's Name in General Conference Talks over Time",
+    # subtitle = "2017 Highlighted - President Nelson sustained as Prophet",
+    caption = '"President Nelson", "Russell M. Nelson", "Russell Nelson"',
+    color = "Prophet",
+    x = "Year",
+    y = "Mentions of Prophet Names"
+  )
+```
+
+
+
+
 <!-- ## Pornography -->
 <!-- ("pornography", "porn") -->
 <!-- ```{r} -->
