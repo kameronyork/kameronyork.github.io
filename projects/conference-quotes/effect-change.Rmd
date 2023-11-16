@@ -1,7 +1,6 @@
 ---
-title: "Conference Word Analysis"
+title: "Can a Prophet Effect a Change?"
 author: "Kameron York"
-date: "2023-11-07"
 output:
   html_document:
     code_folding: hide
@@ -29,7 +28,7 @@ dedication_data <- read.csv("https://www.kameronyork.com/datasets/dedication-dat
 quotes <- read.csv("https://www.kameronyork.com/datasets/conference-quotes.csv", encoding="UTF-8")
 ```
 
-# Can a Prophet Effect a Change? {.tabset .tabset-pills}
+# {.tabset .tabset-pills}
 
 ## Temples: {.tabset}
 ("Temple", "Temples", "House of God", "House of the Lord")
