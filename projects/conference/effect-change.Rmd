@@ -597,7 +597,7 @@ ggplot(data = jesus_pivot) +
 ```
 
 
-###
+### Prohet Names
 ("President Nelson", "Russell M. Nelson", "Russell Nelson")
 
 ```{r, warning=FALSE, message=FALSE}
