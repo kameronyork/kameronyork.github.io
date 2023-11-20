@@ -11,6 +11,7 @@ output:
 <br>
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
 <img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/lamp-under-a-bushel.jpg" alt="Lamp under a bushel parable image" style="float: right; width: 195px; height: 115px; padding: 5px;">
+<br>
 <h4 style="text-align: left; margin: 0;">Reference:</h4>
 <p style="text-align: left; margin: 0;">
 <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/mark/4?lang=eng&id=21-25#p21" target="_blank">Mark 4:21-25</a><br>
@@ -25,6 +26,7 @@ When you hear lamp under a bushel your mind is likely drawn to the statement fro
 Matthew's account of the Sermon on the Mount in which that teaching is delivered occurs early in Christ's second Galilean ministry.  Mark and Luke record this parable being taught in the same ministry but much later.  These two sources claim it was after the miracles and other parables found therein.  The Harmony of the Gospels published by the Church of Jesus Christ of Latter-Day Saints notes the teaching of Matthew as "let you light shine," and the teaching in Mark and Luke as the "Parable of the Candle".  Because of this I have decided to exclude the teaching in Matthew.<br>
 <br>
 If you would like the reach the passage in Matthew, [click here](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/5?lang=eng&id=14-16#p14).
+<br>
 <br>
 <h4>Insights:</h4>
 Throughout scripture Jesus is proclaimed to be the, "Light of the World", or the, "Light and the Life of the World."  The major aspect of this parable is light.  Jesus teaches that a candle - at this time the most common way to light a room - is meant to be held high on a candle stick so it can illuminate the whole room.  It would be foolish to light a candle and then put a covering on it.  The room would be just as dark as before! <br>
