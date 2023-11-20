@@ -7,6 +7,29 @@ output:
       in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
+```{r, inlcude=FALSE, warning=FALSE, message=FALSE, echo=FALSE, results='hide'}
+library(metathis)
+library(tidyverse)
+
+meta() %>%
+  meta_description(
+    "This book will teach you how to do data science with R..."
+  ) %>% 
+  meta_name("github-repo" = "kameronyork/kameronyork.github.io") %>% 
+  meta_viewport() %>% 
+  meta_social(
+    title = "The Lamp Under a Bushel",
+    url = "https://www.kameronyork.com/parables/lamp-under-a-bushel.html",
+    image = "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/lamp-under-a-bushel.jpg",
+    image_alt = "Light that Shineth in Darkness",
+    og_type = "website",
+    og_author = c("Kameron York"),
+    twitter_card_type = "summary",
+    twitter_creator = "@kameronyorkie"
+  )
+
+```
+
 <br>
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
 <img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/lamp-under-a-bushel.jpg" alt="Lamp under a bushel parable image" style="float: right; width: 195px; height: 115px; padding: 5px;">
@@ -16,14 +39,28 @@ output:
 <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/8?lang=eng&id=16-18#p16" target="_blank">Luke 8:16-18</a>
 </p>
 </div>
-
-#### Insights here:
-
-This article is yet to be completed. Please check back later!
-
-
-<div style="margin-top: -10px;">
-#### General Conference Talks:
+<br>
+<br>
+<h4>Scriptural Accounts</h4>
+When you hear lamp under a bushel your mind is likely drawn to the statement from the Savior in Matthew, "Let your light so shine before men...".  Sources disagree on if that statement from the Lord should be included as one of the accounts of this parable.  The major issue comes because of the timing of its delivery.<br>
+<br>
+Matthew's account of the Sermon on the Mount in which that teaching is delivered occurs early in Christ's second Galilean ministry.  Mark and Luke record this parable being taught in the same ministry but much later.  These two sources claim it was after the miracles and other parables found therein.  The Harmony of the Gospels published by the Church of Jesus Christ of Latter-Day Saints notes the teaching of Matthew as "let you light shine," and the teaching in Mark and Luke as the "Parable of the Candle".  Because of this I have decided to exclude the teaching in Matthew.<br>
+<br>
+If you would like the reach the passage in Matthew, [click here](https://www.churchofjesuschrist.org/study/scriptures/nt/matt/5?lang=eng&id=14-16#p14).
+<br>
+<h4>Insights:</h4>
+Throughout scripture Jesus is proclaimed to be the, "Light of the World", or the, "Light and the Life of the World."  The major aspect of this parable is light.  Jesus teaches that a candle - at this time the most common way to light a room - is meant to be held high on a candle stick so it can illuminate the whole room.  It would be foolish to light a candle and then put a covering on it.  The room would be just as dark as before! <br>
+<br>
+Jesus goes on to say, "For there is nothin hid, which shall not be manifested; neither was any thing kept secret, but that it should come abroad" [Mark 4:22](https://www.churchofjesuschrist.org/study/scriptures/nt/mark/4?lang=eng&id=22#p22).  Interestingly there are no major differences between the account found in Mark and the one found in Luke.  They both follow this exact outline.  The only exception is Luke calling the bushel a, "vessel". <br>
+<br>
+This parable is meant to teach us about the divine mission of the Savior.  Jesus Christ was sent to be the light of the world, to brighten the whole world with the knowledge of the plan of salvation.  The light found in the parable can be applied to the way the Savior enlightens the whole world, or how He enlightens each of us personally. <br>
+<br>
+<h4>Possible Meanings of Symbols:</h4>
+<b>The Candle (or the Light)</b> is representative of the Savior.  An important aspect of the Savior is what is called the ["Light of Christ"](https://www.churchofjesuschrist.org/study/scriptures/bd/light-of-christ?lang=eng), an ennobling, and enlightening force often referred to as a person's conscience.<br>
+<br>
+<b>The Obstructions</b> represented in the parable as a bushel, vessel, or bed could represent the distractions and opposition of the world.  This is similar to the thorns choking out the growth of the seeds in [the parable of the sower](https://www.kameronyork.com/parables/sower.html).  These influences are stopping the light from illuminating the room.<br>
+<br>
+<b>The Room</b> as mentioned in the previous section could be representative of the world as a whole or of an individual.  The divine mission of Jesus Christ is jointly to redeem the whole world and each person individually.  The infinite nature of the Atonement allows this redemptive power to be personalized to everyone.  Because of this, the parable could be read as the power of the Light of Christ within one person's heart.
 
 
 
