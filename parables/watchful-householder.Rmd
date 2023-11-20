@@ -4,7 +4,7 @@ subtitle: "by Kameron York"
 output:
   html_document:
     includes:
-      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/header.html"
+      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/headers/watchful-householder-header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
 <br>

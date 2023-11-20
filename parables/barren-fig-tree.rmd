@@ -4,7 +4,7 @@ author: "Kameron York"
 output: 
   html_document:
     includes:
-      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/header.html"
+      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/headers/barren-fig-tree-header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
       css: ["https://kameronyork.github.io/scripting/css/style.min.css", "https://kameronyork.github.io/scripting/bootstrap/bootstrap.min.css", "https://kameronyork.github.io/scripting/themify-icons/themify-icons.css", "https://kameronyork.github.io/scripting/highlight/hybrid.css"]
 ---

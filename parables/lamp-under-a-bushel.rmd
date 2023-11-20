@@ -4,31 +4,9 @@ subtitle: "by Kameron York"
 output:
   html_document:
     includes:
-      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/header.html"
+      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/headers/lamp-under-a-bushel-header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
-```{r, inlcude=FALSE, warning=FALSE, message=FALSE, echo=FALSE, results='hide'}
-library(metathis)
-library(tidyverse)
-
-meta() %>%
-  meta_description(
-    "This book will teach you how to do data science with R..."
-  ) %>% 
-  meta_name("github-repo" = "kameronyork/kameronyork.github.io") %>% 
-  meta_viewport() %>% 
-  meta_social(
-    title = "The Lamp Under a Bushel",
-    url = "https://www.kameronyork.com/parables/lamp-under-a-bushel.html",
-    image = "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/lamp-under-a-bushel.jpg",
-    image_alt = "Light that Shineth in Darkness",
-    og_type = "website",
-    og_author = c("Kameron York"),
-    twitter_card_type = "summary",
-    twitter_creator = "@kameronyorkie"
-  )
-
-```
 
 <br>
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
