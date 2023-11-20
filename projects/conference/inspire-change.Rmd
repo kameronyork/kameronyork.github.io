@@ -1,5 +1,5 @@
 ---
-title: "Can a Prophet Effect a Change?"
+title: "Can a Prophet Inspire a Change?"
 author: "Kameron York"
 output:
   html_document:
