@@ -1,5 +1,5 @@
 ---
-title: "Can a Prophet Inspire a Change?"
+title: "Can a Prophet Inspire Change?"
 author: "Kameron York"
 output:
   html_document:
@@ -124,7 +124,8 @@ ggplot(data = temple_pivot) +
 
 
 ### Box Plot
-This boxplot shows that there is an increase in temple-related words between before President Hinckley was the prophet and our current Post-President Hinckley era.  It seems temples are being talked about more now than they were before his sustaining. 
+This boxplot shows that there is an increase in temple-related words between before President Hinckley was the prophet and our current Post-President Hinckley era.  It seems temples are being talked about more now than they were before his sustaining.
+
 ```{r, warning=FALSE, message=FALSE}
 temple_boxes <- temple_by_year %>% 
   mutate(group = case_when(
@@ -140,7 +141,9 @@ ggplot(data = temple_boxes) +
 
 ### T Test
 
-This T Test is a statistical test meant to tell us if the means of both populations differ from each other.  Because our result (`3.039e-06`) is smaller than the confidence interval of `95%` we can conclude the two means are significantly different.  On top of that, based on the box plots of the previous tab, it is easy to conclude that Temples are mentioned more after President Hinckley than before he was the prophet!
+This T Test is a statistical test meant to tell us if the means of both populations differ from each other.  Because our result (`3.039e-06`) is smaller than the confidence interval of `95%` we can conclude the two means are significantly different.  
+
+On top of that, based on the box plots of the previous tab, it is easy to conclude that Temples are mentioned more after President Hinckley's call than before he was the prophet!
 
 ```{r, warning=FALSE, message=FALSE}
 t.test(total ~ group, data = temple_boxes, mu = 0, alternative = "two.sided", conf.level = 0.95) %>% 
@@ -187,6 +190,8 @@ ggplot(data = bom_by_year) +
 
 ```
 
+This scatter plot represents the number of times speakers used the term, "Book of Mormon" in their talks.  There is an increase to be seen in the plot, but not a large one.
+
 Are the scriptures from the book of mormon quoted more now than in the 70's before the talk?
 ```{r, warning=FALSE, message=FALSE}
 bom_quotes <- quotes %>% 
@@ -209,6 +214,9 @@ ggplot(data = bom_quotes, aes(x = talk_year, y = total)) +
 
 ```
 
+This plot represents the number of scriptures quoted from Book of Mormon verses within General Conference talks per year.  Interestingly this plot seems to have a correlation with the previous, in which case it too has a positive change following the message from President Benson.  
+
+The following tabs will attempt to prove, statistically, that this positive change is significant.
 
 ```{r, warning=FALSE, message=FALSE}
 mylm <- lm(total ~ talk_year, data = bom_quotes)
@@ -236,6 +244,10 @@ ggplot(data = bom_boxes) +
 
 ```   
 
+These boxplots show a large change in the number of Book of Mormon quotes represented in General Conference talks between the two groups.  Before President Benson reaffirmed the Book of Mormon the typical year would see around 140 qoutes from the book of mormon, and at most 170 quotes in a year.
+
+However, in contrast, in the years following the prophet's message we typically see around 180 quotes from the Book of Mormon in a year, with some years seeing over 300 quotes!  This is a significant increase from the distribution before the message.
+
 ### T Test
 
 ```{r, warning=FALSE, message=FALSE}
@@ -243,6 +255,9 @@ t.test(total ~ group, data = bom_boxes, mu = 0, alternative = "two.sided", conf.
   pander()
 ```
 
+This T Test is a statistical test meant to tell us if the means of both populations differ from each other.  Because our result (`7.634e-06`) is smaller than the confidence interval of `95%` we can conclude the two means are significantly different.  
+
+From this result and the boxplots in the previous tab we can conclude that there are more quotes from the Book of Mormon in General Conference talks following the message from President Benson than before!
 
 ### Bible Comparison
 
@@ -324,6 +339,10 @@ ggplot(data = gathering_pivot) +
   )
 ```
 
+Based on this scatter plot we can see a major increase in words related to the gathering of Israel.  In fact, the points before President Nelson became the prophet and the points following are entirely different!
+
+Our statistical models have shown that this difference is significant!  Therefore, we can safely conclude that President Nelson's focus on the gathering of Israel has increase the mentions of the gathering in general conference talks.
+
 ### Box Plot
 
 ```{r, warning=FALSE, message=FALSE}
@@ -339,6 +358,10 @@ ggplot(data = gathering_pivot) +
 
 ```   
 
+These boxplots tell quite a story.  The median number of gathering of Israel mentions before President Nelson is nearly zero, and there are five points representing years with three or more references which are represented as outliers.  
+
+The median number of mentions after President Nelson's call to be the prophet is now around eight mentions per year!  The red dots on the plots represent the means of the groups, which have had quite a large jump between the two groups.
+
 ### T Test
 
 ```{r, warning=FALSE, message=FALSE}
@@ -346,14 +369,9 @@ t.test(total ~ group, data = gathering_pivot, mu = 0, alternative = "two.sided",
   pander()
 ```
 
+This T Test is a statistical test meant to tell us if the means of both populations differ from each other.  Because our result (`2.997e-05`) is smaller than the confidence interval of `95%` we can conclude the two means are significantly different.  
 
-### Wilcoxon Test
-
-```{r, warning=FALSE, message=FALSE}
-wilcox.test(total ~ group, data = gathering_pivot, mu = 0, alternative = "two.sided", conf.level = 0.95) %>% 
-  pander()
-
-```
+From this result and the boxplots in the previous tab we can conclude that mentions of the Gathering of Israel in General Conference talks are higher following President Nelson's call than before!
 
 
 # Other Insights {.tabset .tabset-pills}
@@ -361,44 +379,6 @@ wilcox.test(total ~ group, data = gathering_pivot, mu = 0, alternative = "two.si
 ## Hide
 
 ## Show {.tabset .tabset-pills}
-
-### Missionary Work
-("Missionary", "Missionaries", "Every member a missionary")
-
-```{r, warning=FALSE, message=FALSE}
-missionary_data <- talks_data %>%
-  mutate(
-    missionary = str_count(tolower(text), "(?i)\\bmissionary\\b"),
-    missionaries = str_count(tolower(text), "(?i)\\bmissionaries\\b")
-  )
-  
-missionary_pivot <- missionary_data %>% 
-  select(year, speaker, title, missionary, missionaries) %>% 
-  pivot_longer(
-    cols = c(missionary, missionaries),
-    names_to = "type",
-    values_to = "count"
-  ) %>% 
-  group_by(year, type) %>% 
-  summarise("total" = sum(count))
-
-
-ggplot(data = missionary_pivot) +
-  geom_point(mapping = aes(x = year, y = total, color = type)) +
-  geom_smooth(mapping = aes(x = year, y = total)) + 
-  geom_vline(xintercept = 1974, color = "red") +
-  theme_bw() +
-  labs(
-    title = "Use of Temple Related Words in General Conference Talks",
-    subtitle = "1974 Highlighted - Release of 'Go ye into all the World' by President Kimball",
-    caption = '"Missionary", "Missionaries", "Every Member a Missionary"',
-    color = "Mention Type",
-    x = "Year",
-    y = "Mentions of the Temple"
-  )
-
-```
-
 
 ### Family History and Genealogy
 ("Family History", "Genealogy")
@@ -434,6 +414,10 @@ ggplot(data = family_pivot) +
     y = "Mentions of Family History"
   )
 ```
+
+A quite interesting relationship has been found in the terms that are used for studying ancestry.  The 1970's preferred the term, "Genealogy" to describe this effort, but as the years passed it was quickly replaced by a most descriptive, "Family History".  This was doubled during the time of the worldwide release of, "Family Search" - the free family history service provided by the Church - in the year 1999.
+
+By 2010 the term, "Genealogy" was nearly completely phased out of General Conference messages.  This change was not due to any intervention from church leaders, but by the culture shift in the church as a whole.
 
 ### Gospel of Jesus Christ
 ("Faith", "Repentance", "Baptism", "Gift of the Holy Ghost", "Endure to the End")
@@ -558,6 +542,11 @@ ggplot(data = satan_pivot) +
   )
 
 ```
+
+Interestingly we have seen a large decrease in use of the words, "Satan", and "Lucifer" in General Conference talks in the past 50 years.  However, the word, "Adversary" is on the rise, having now overtaken "Satan" in some conferences.
+
+This is an interesting observation, but I am unsure of what could be causing it!
+
 
 ### Jesus
 ("Jesus", "Lord", "Savior")
