@@ -663,6 +663,51 @@ body {
     display: block;
   }
 
+  .tab-content > .tab-pane {
+    display: none;
+  }
+
+  .tab-content > .active {
+      display: block;
+  }
+
+  .nav-tabs {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+  }
+
+  .nav-tabs > li {
+      float: left;
+  }
+
+  .nav-tabs > li > a {
+      display: block;
+      padding: 5px 10px;
+      font-size: 14px;
+      margin-bottom: 0;
+  }
+
+  .tab-pane {
+      display: none;
+      padding: 20px;
+      background: #fdfdfd;
+  }
+
+  .tab-pane.active {
+      display: block;
+  }
+
+  /* Additional styles for active tab appearance */
+  .nav-tabs > li.active > a,
+  .nav-tabs > li > a:hover {
+      color: #000;
+      background: #ddd;
+  }
+
+  /* End of Tab Changes */
+
   pre {
     display: block;
     padding: 9.5px;
