@@ -28,6 +28,33 @@
         --light-color: #f8f9fa;
         --font-family: Roboto
       }
+      /* Styling for the tabsets */
+        .code-tabs .nav-tabs li {
+        list-style-type: none;
+        display: inline-block;
+        }
+        .code-tabs .nav-tabs li a {
+        display: block;
+        padding: 10px 15px;
+        border: 1px solid transparent;
+        border-bottom: none;
+        border-radius: 5px 5px 0 0;
+        background-color: var(--white-color);
+        margin-bottom: -1px;
+        }
+        .code-tabs .nav-tabs li.active a {
+        border-color: var(--primary-color) var(--primary-color) var(--body-color);
+        }
+        .code-tabs .tab-pane {
+        display: none;
+        padding: 20px;
+        background: var(--light-color);
+        border: 1px solid var(--primary-color);
+        border-top: none;
+        }
+        .code-tabs .tab-pane.active {
+        display: block;
+        }
     </style>
     <link href=https://kameronyork.github.io/scripting/css/style.min.css rel=stylesheet media=screen>
     <script src=https://kameronyork.github.io/scripting/jquery/jquery-1.12.4.js></script>
