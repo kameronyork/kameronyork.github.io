@@ -634,8 +634,7 @@ body {
     width: unset;
   }
   /* ... your existing styles */
-
-
+  
 /* Consolidated Tabsets styles */
 .code-tabs .nav-tabs {
   list-style-type: none;
