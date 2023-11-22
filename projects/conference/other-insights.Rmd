@@ -77,13 +77,10 @@ dedication_data <- read.csv("https://www.kameronyork.com/datasets/dedication-dat
 # Loading in the quotes data
 quotes <- read.csv("https://www.kameronyork.com/datasets/conference-quotes.csv", encoding="UTF-8")
 ```
+ 
+Below are insights I have found from the General Conference data used in my previous article.  Unlike the insights shown previously I was either unable to find statistical evidence to prove their significance or I could not determine a concrete reason why the events were transpiring. Enjoy!
 
-
-# Other Insights {.tabset .tabset-pills}
-
-## Hide
-
-## Show {.tabset .tabset-pills}
+# {.tabset .tabset-pills}
 
 ### Family History and Genealogy
 ("Family History", "Genealogy")
