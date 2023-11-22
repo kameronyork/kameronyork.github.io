@@ -49,7 +49,7 @@ body {
     font-size: 14px;
     font-family: var(--font-family), sans-serif;
     text-transform: uppercase;
-    padding: 16px 44px;
+    padding: 10px 20px;
     border-radius: 0;
     font-weight: 600;
     border: 0;
@@ -634,7 +634,7 @@ body {
     width: unset;
   }
   /* ... your existing styles */
-  
+
 /* Consolidated Tabsets styles */
 .code-tabs .nav-tabs {
   list-style-type: none;
