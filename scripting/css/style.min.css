@@ -633,39 +633,57 @@ body {
     position: unset;
     width: unset;
   }
-  .tab-content > .tab-pane {
-    display: none;
-  }
-  .tab-pane {
-    padding: 3px 0;
-  }
-  .tab-pane {
-    padding: 3px 0;
-  }
-  .tab-content > .active {
-    display: block;
-  }
-  .nav-tabs {
-    color: #0f0f0f;
-    list-style-type: none;
-    margin: 0 !important;
-    padding: 0;
-    overflow: hidden;
-  }
-  .nav-tabs > li {
-    color: #0f0f0f;
-    float: left;
-    padding: 0 !important;
-  }
-  .nav-tabs > li::before {
-    display: none;
-  }
-  .nav-tabs > li > a {
-    display: block;
-    padding: 5px 10px;
-    font-size: 14px;
-    margin-bottom: 0 !important;
-  }
+  /* ... your existing styles */
+
+
+/* Consolidated Tabsets styles */
+.code-tabs .nav-tabs {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.code-tabs .nav-tabs li {
+  display: inline-block;
+}
+
+.code-tabs .nav-tabs li a {
+  display: block;
+  padding: 10px 15px;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+  background-color: var(--white-color);
+  margin-bottom: -1px;
+  font-size: 14px;
+}
+
+.code-tabs .nav-tabs li.active a {
+  border-color: var(--primary-color) var(--primary-color) var(--body-color);
+}
+
+.code-tabs .tab-pane {
+  display: none;
+  padding: 20px;
+  background: var(--light-color);
+  border: 1px solid var(--primary-color);
+  border-top: none;
+}
+
+.code-tabs .tab-pane.active {
+  display: block;
+}
+
+/* Additional styles for active tab appearance */
+.code-tabs .nav-tabs li.active a,
+.code-tabs .nav-tabs li a:hover {
+  color: #000;
+  background: #ddd;
+}
+
+/* End of Tab Changes */
+
   pre {
     display: block;
     padding: 9.5px;
@@ -674,31 +692,6 @@ body {
   code {
     margin-bottom: 0 !important;
     font-size: 100%;
-  }
-  .code-tabs {
-    margin: 10px 0 0;
-  }
-  .nav-tabs > li.active > a,
-  .nav-tabs > li > a:hover {
-    color: #000 !important;
-    background: 0 0;
-  }
-  .tab-content .nav-tabs {
-    display: none !important;
-  }
-  .nav-tabs {
-    padding-left: 0 !important;
-  }
-  .nav-tabs li {
-    list-style-type: none;
-    border: 1px solid #d4d4d4;
-    border-radius: 4px 4px 0 0;
-    border-bottom: 0;
-  }
-  .tab-pane {
-    border: 1px solid #d4d4d4;
-    padding: 20px;
-    background: #fdfdfd;
   }
   .back-btn {
     position: relative;
