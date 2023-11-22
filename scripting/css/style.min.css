@@ -635,78 +635,54 @@ body {
   }
   /* ... your existing styles */
 
-  /* Tabsets styles (Add these styles for the tab functionality) */
-  .code-tabs .nav-tabs li {
-    list-style-type: none;
-    display: inline-block;
-  }
-  .code-tabs .nav-tabs li a {
-    display: block;
-    padding: 10px 15px;
-    border: 1px solid transparent;
-    border-bottom: none;
-    border-radius: 5px 5px 0 0;
-    background-color: var(--white-color);
-    margin-bottom: -1px;
-  }
-  .code-tabs .nav-tabs li.active a {
-    border-color: var(--primary-color) var(--primary-color) var(--body-color);
-  }
-  .code-tabs .tab-pane {
-    display: none;
-    padding: 20px;
-    background: var(--light-color);
-    border: 1px solid var(--primary-color);
-    border-top: none;
-  }
-  .code-tabs .tab-pane.active {
-    display: block;
-  }
 
-  .tab-content > .tab-pane {
-    display: none;
-  }
+/* Consolidated Tabsets styles */
+.code-tabs .nav-tabs {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
 
-  .tab-content > .active {
-      display: block;
-  }
+.code-tabs .nav-tabs li {
+  display: inline-block;
+}
 
-  .nav-tabs {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-  }
+.code-tabs .nav-tabs li a {
+  display: block;
+  padding: 10px 15px;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+  background-color: var(--white-color);
+  margin-bottom: -1px;
+  font-size: 14px;
+}
 
-  .nav-tabs > li {
-      float: left;
-  }
+.code-tabs .nav-tabs li.active a {
+  border-color: var(--primary-color) var(--primary-color) var(--body-color);
+}
 
-  .nav-tabs > li > a {
-      display: block;
-      padding: 5px 10px;
-      font-size: 14px;
-      margin-bottom: 0;
-  }
+.code-tabs .tab-pane {
+  display: none;
+  padding: 20px;
+  background: var(--light-color);
+  border: 1px solid var(--primary-color);
+  border-top: none;
+}
 
-  .tab-pane {
-      display: none;
-      padding: 20px;
-      background: #fdfdfd;
-  }
+.code-tabs .tab-pane.active {
+  display: block;
+}
 
-  .tab-pane.active {
-      display: block;
-  }
+/* Additional styles for active tab appearance */
+.code-tabs .nav-tabs li.active a,
+.code-tabs .nav-tabs li a:hover {
+  color: #000;
+  background: #ddd;
+}
 
-  /* Additional styles for active tab appearance */
-  .nav-tabs > li.active > a,
-  .nav-tabs > li > a:hover {
-      color: #000;
-      background: #ddd;
-  }
-
-  /* End of Tab Changes */
+/* End of Tab Changes */
 
   pre {
     display: block;
