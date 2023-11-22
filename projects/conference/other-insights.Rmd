@@ -1,0 +1,531 @@
+---
+title: "Other Insights"
+output:
+  html_document:
+    code_folding: hide
+    includes:
+      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/projects/conference/headers/inspire-change-header.html"
+      after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
+      css: "styles.css"
+---
+
+<style>
+.code-tabs .nav-tabs {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.code-tabs .nav-tabs li {
+  display: inline-block;
+}
+
+.code-tabs .nav-tabs li a {
+  display: block;
+  padding: 10px 15px;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+  background-color: var(--white-color);
+  margin-bottom: -1px;
+  font-size: 14px;
+}
+
+.code-tabs .nav-tabs li.active a {
+  border-color: var(--primary-color) var(--primary-color) var(--body-color);
+}
+
+.code-tabs .tab-pane {
+  display: none;
+  padding: 20px;
+  background: var(--light-color);
+  border: 1px solid var(--primary-color);
+  border-top: none;
+}
+
+.code-tabs .tab-pane.active {
+  display: block;
+}
+
+/* Additional styles for active tab appearance */
+.code-tabs .nav-tabs li.active a,
+.code-tabs .nav-tabs li a:hover {
+  color: #000;
+  background: #ddd;
+}
+</style>
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(pander)
+library(plotly)
+library(DT)
+library(latticeExtra)
+library(stringr)
+
+```
+
+```{r, include=FALSE}
+# Loading in the Data
+talks_data <- read.csv("https://www.kameronyork.com/datasets/general-conference-talks.csv", encoding="UTF-8")
+dedication_data <- read.csv("https://www.kameronyork.com/datasets/dedication-data.csv", encoding="UTF-8") %>% 
+  mutate(year = str_sub(dedicated, 0, 4))
+```
+
+```{r, include=FALSE}
+# Loading in the quotes data
+quotes <- read.csv("https://www.kameronyork.com/datasets/conference-quotes.csv", encoding="UTF-8")
+```
+
+
+# Other Insights {.tabset .tabset-pills}
+
+## Hide
+
+## Show {.tabset .tabset-pills}
+
+### Family History and Genealogy
+("Family History", "Genealogy")
+
+```{r, warning=FALSE, message=FALSE}
+family_search_data <- talks_data %>%
+  mutate(
+    family_history = str_count(tolower(text), "(?i)\\bfamily history\\b"),
+    genealogy = str_count(tolower(text), "(?i)\\bgenealogy\\b")
+  )
+  
+family_pivot <- family_search_data %>% 
+  select(year, speaker, title, family_history, genealogy) %>% 
+  pivot_longer(
+    cols = c(family_history, genealogy),
+    names_to = "type",
+    values_to = "count"
+  ) %>% 
+  group_by(year, type) %>% 
+  summarise("total" = sum(count))
+
+ggplot(data = family_pivot) +
+  geom_point(mapping = aes(x = year, y = total, color = type)) +
+  geom_smooth(se = FALSE, mapping = aes(x = year, y = total, color = type)) + 
+  geom_vline(xintercept = 1999, color = "red") +
+  theme_bw() +
+  labs(
+    title = "Use of Temple Related Words in General Conference Talks",
+    subtitle = "1999 Highlighted - Family Search Released World-wide",
+    caption = '"Family Hisroty", "Genealogy"',
+    color = "Mention Type",
+    x = "Year",
+    y = "Mentions of Family History"
+  )
+```
+
+A quite interesting relationship has been found in the terms that are used for studying ancestry.  The 1970's preferred the term, "Genealogy" to describe this effort, but as the years passed it was quickly replaced by a most descriptive, "Family History".  This was doubled during the time of the worldwide release of, "Family Search" - the free family history service provided by the Church - in the year 1999.
+
+By 2010 the term, "Genealogy" was nearly completely phased out of General Conference messages.  This change was not due to any intervention from church leaders, but by the culture shift in the church as a whole.
+
+### Gospel of Jesus Christ
+("Faith", "Repentance", "Baptism", "Gift of the Holy Ghost", "Endure to the End")
+
+```{r, warning=FALSE, message=FALSE}
+gospel_principles <- talks_data %>%
+  mutate(
+    faith = str_count(tolower(text), "(?i)\\bfaith\\b"),
+    repentance = str_count(tolower(text), "(?i)\\brepentance\\b"),
+    baptism = str_count(tolower(text), "(?i)\\bbaptism\\b"),
+    holy_ghost = str_count(tolower(text), "(?i)\\bgift of the holy ghost\\b"),
+    endure = str_count(tolower(text), "(?i)\\bendure to the end\\b"),
+  )
+  
+gospel_pivot <- gospel_principles %>% 
+  select(year, speaker, title, faith, repentance, baptism, holy_ghost, endure) %>% 
+  pivot_longer(
+    cols = c(faith, repentance, baptism, holy_ghost, endure),
+    names_to = "type",
+    values_to = "count"
+  ) %>% 
+  group_by(year, type) %>% 
+  summarise("total" = sum(count))
+
+ggplot(data = gospel_pivot) +
+  geom_point(mapping = aes(x = year, y = total, color = type)) +
+  geom_smooth(se = FALSE, mapping = aes(x = year, y = total, color = type)) + 
+  geom_vline(xintercept = 2008, color = "red") +
+  theme_bw() +
+  labs(
+    title = "Use of Gospel of Jesus Christ Related Words in General Conference Talks",
+    subtitle = "2008 Highlighted - Year President Monson became the Prophet.",
+    caption = '"Faith", "Repentance", "Baptism", "Gift of the Holy Ghost", "Endure to the End"',
+    color = "Mention Type",
+    x = "Year",
+    y = "Mentions of the Gospel of Jesus Christ"
+  )
+```
+
+```{r, warning=FALSE, message=FALSE}
+ggplot(data = filter(gospel_pivot, type != "faith")) +
+  geom_point(mapping = aes(x = year, y = total, color = type)) +
+  geom_smooth(se = FALSE, mapping = aes(x = year, y = total, color = type)) + 
+  geom_vline(xintercept = 2008, color = "red") +
+  theme_bw() +
+  labs(
+    title = "Use of Gospel of Jesus Christ Related Words in General Conference Talks",
+    subtitle = "2008 Highlighted - Year President Monson became the Prophet.",
+    caption = '"Repentance", "Baptism", "Gift of the Holy Ghost", "Endure to the End"',
+    color = "Mention Type",
+    x = "Year",
+    y = "Mentions of the Gospel of Jesus Christ"
+  )
+
+```
+
+```{r, warning=FALSE, message=FALSE}
+gospel_principles <- talks_data %>%
+  mutate(
+    gospel = str_count(tolower(text), "(?i)\\bgospel of jesus christ\\b")
+  )
+  
+gospel_pivot <- gospel_principles %>% 
+  select(year, speaker, title, gospel) %>% 
+  pivot_longer(
+    cols = c(gospel),
+    names_to = "type",
+    values_to = "count"
+  ) %>% 
+  group_by(year, type) %>% 
+  summarise("total" = sum(count))
+
+ggplot(data = gospel_pivot) +
+  geom_point(mapping = aes(x = year, y = total)) +
+  geom_smooth(se = FALSE, mapping = aes(x = year, y = total)) + 
+  geom_vline(xintercept = 2008, color = "red") +
+  theme_bw() +
+  labs(
+    title = "Mentions of 'Gospel of Jesus Christ' in General Conference Talks",
+    subtitle = "2008 Highlighted - Year President Monson became the Prophet.",
+    caption = '"Gospel of Jesus Christ"',
+    color = "Mention Type",
+    x = "Year",
+    y = "Mentions of the Gospel of Jesus Christ"
+  )
+```
+
+
+### Satan
+("Satan", "Adversary")
+
+```{r, warning=FALSE, message=FALSE}
+satan_data <- talks_data %>%
+  mutate(
+    satan = str_count(tolower(text), "(?i)\\bsatan\\b"),
+    adversary = str_count(tolower(text), "(?i)\\badversary\\b"),
+    lucifer = str_count(tolower(text), "(?i)\\blucifer\\b"),
+    devil = str_count(tolower(text), "(?i)\\bdevil\\b")
+  )
+  
+satan_pivot <- satan_data %>% 
+  select(year, speaker, title, satan, adversary, lucifer, devil) %>% 
+  pivot_longer(
+    cols = c(satan, adversary, lucifer, devil),
+    names_to = "type",
+    values_to = "count"
+  ) %>% 
+  group_by(year, type) %>% 
+  summarise("total" = sum(count))
+
+
+ggplot(data = satan_pivot) +
+  geom_point(mapping = aes(x = year, y = total, color = type)) +
+  geom_smooth(se = FALSE, mapping = aes(x = year, y = total, color = type)) + 
+  theme_bw() +
+  labs(
+    title = "Use of Satan Related Words in General Conference Talks",
+    caption = '"Satan", "Adversary", "Lucifer", "Devil"',
+    color = "Mention Type",
+    x = "Year",
+    y = "Mentions of Satan"
+  )
+
+```
+
+Interestingly we have seen a large decrease in use of the words, "Satan", and "Lucifer" in General Conference talks in the past 50 years.  However, the word, "Adversary" is on the rise, having now overtaken "Satan" in some conferences.
+
+This is an interesting observation, but I am unsure of what could be causing it!
+
+
+### Jesus
+("Jesus", "Lord", "Savior")
+
+```{r, warning=FALSE, message=FALSE}
+jesus_data <- talks_data %>%
+  mutate(
+    jesus = str_count(tolower(text), "(?i)\\bjesus\\b"),
+    lord = str_count(tolower(text), "(?i)\\blord\\b"),
+    savior = str_count(tolower(text), "(?i)\\bsavior\\b"),
+    christ = str_count(tolower(text), "(?i)\\bchrist\\b")
+  )
+  
+jesus_pivot <- jesus_data %>% 
+  select(year, speaker, title, jesus, lord, savior, christ) %>% 
+  pivot_longer(
+    cols = c(jesus, lord, savior, christ),
+    names_to = "type",
+    values_to = "count"
+  ) %>% 
+  group_by(year, type) %>% 
+  summarise("total" = sum(count))
+
+
+ggplot(data = jesus_pivot) +
+  geom_point(mapping = aes(x = year, y = total, color = type)) +
+  geom_smooth(se = FALSE, mapping = aes(x = year, y = total, color = type)) + 
+  theme_bw() +
+  labs(
+    title = "Use of Jesus Related Words in General Conference Talks",
+    caption = '"Jesus", "Lord", "Savior"',
+    color = "Mention Type",
+    x = "Year",
+    y = "Mentions of Jesus"
+  )
+
+```
+
+
+### Prophet Names
+("President Nelson", "Russell M. Nelson", "Russell Nelson")
+
+```{r, warning=FALSE, message=FALSE}
+prophets_data <- talks_data %>%
+  mutate(
+    nelson1 = str_count(tolower(text), "(?i)\\bpresident nelson\\b"),
+    nelson2 = str_count(tolower(text), "(?i)\\brussell m. nelson\\b"),
+    nelson3 = str_count(tolower(text), "(?i)\\brussell nelson\\b"),
+    monson1 = str_count(tolower(text), "(?i)\\bpresident monson\\b"),
+    monson2 = str_count(tolower(text), "(?i)\\bthomas s. monson\\b"),
+    monson3 = str_count(tolower(text), "(?i)\\bthomas monson\\b"),
+    hinckley1 = str_count(tolower(text), "(?i)\\bpresident hinckley\\b"),
+    hinckley2 = str_count(tolower(text), "(?i)\\bgordon b. hinckley\\b"),
+    hinckley3 = str_count(tolower(text), "(?i)\\bgordon hinckley\\b"),
+    hunter1 = str_count(tolower(text), "(?i)\\bpresident hunter\\b"),
+    hunter2 = str_count(tolower(text), "(?i)\\bhoward w. hunter\\b"),
+    hunter3 = str_count(tolower(text), "(?i)\\bhoward hunter\\b"),
+    benson1 = str_count(tolower(text), "(?i)\\bpresident benson\\b"),
+    benson2 = str_count(tolower(text), "(?i)\\bezra taft benson\\b"),
+    benson3 = str_count(tolower(text), "(?i)\\bezra benson\\b"),
+    kimball1 = str_count(tolower(text), "(?i)\\bpresident kimball\\b"),
+    kimball2 = str_count(tolower(text), "(?i)\\bspencer w. kimball\\b"),
+    kimball3 = str_count(tolower(text), "(?i)\\bspencer kimball\\b"),
+    lee1 = str_count(tolower(text), "(?i)\\bpresident lee\\b"),
+    lee2 = str_count(tolower(text), "(?i)\\bharold b. lee\\b"),
+    lee3 = str_count(tolower(text), "(?i)\\bharold lee\\b"),
+    f_smith1 = str_count(tolower(text), "(?i)\\bpresident smith\\b"),
+    f_smith2 = str_count(tolower(text), "(?i)\\bjoseph fielding smith\\b"),
+    f_smith3 = str_count(tolower(text), "(?i)\\bjoseph f. smith\\b"),
+    mckay1 = str_count(tolower(text), "(?i)\\bpresident mckay\\b"),
+    mckay2 = str_count(tolower(text), "(?i)\\bdavid o. mckay\\b"),
+    mckay3 = str_count(tolower(text), "(?i)\\bdavid mckay\\b")
+  ) %>% 
+  mutate(nelson = nelson1 + nelson2 + nelson3, 
+         monson = monson1 + monson2 + monson3, 
+         hinckley = hinckley1 + hinckley2 + hinckley3, 
+         hunter = hunter1 + hunter2 + hunter3, 
+         benson = benson1 + benson2 + benson3, 
+         kimball = kimball1 + kimball2 + kimball3, 
+         lee = lee1 + lee2 + lee3, 
+         f_smith = f_smith1 + f_smith2 + f_smith3, 
+         mckay = mckay1 + mckay2 + mckay3 
+         )
+  
+prophets_pivot <- prophets_data %>% 
+  select(year, speaker, title, nelson, monson, hinckley, hunter, benson, kimball, lee, f_smith, mckay) %>% 
+  pivot_longer(
+    cols = c(nelson, monson, hinckley, hunter, benson, kimball, lee, f_smith, mckay),
+    names_to = "type",
+    values_to = "count"
+  ) %>% 
+  group_by(year, type) %>% 
+  summarise("total" = sum(count)) %>% 
+  mutate(group = case_when(
+    year < 2017 ~ "Before Nelson",
+    year >= 2017 ~ "Post Nelson"
+  ))
+
+ggplot(data = prophets_pivot) +
+  geom_point(mapping = aes(x = year, y = total, color = type)) +
+  geom_smooth(se = FALSE, mapping = aes(x = year, y = total, color = type)) + 
+  theme_bw() +
+  labs(
+    title = "Use of Each Prophet's Name in General Conference Talks over Time",
+    # subtitle = "2017 Highlighted - President Nelson sustained as Prophet",
+    caption = '"President Nelson", "Russell M. Nelson", "Russell Nelson"',
+    color = "Prophet",
+    x = "Year",
+    y = "Mentions of Prophet Names"
+  )
+
+```
+
+```{r}
+ggplot(data = filter(prophets_pivot, 
+                     !type %in% c("nelson"))) +
+  geom_point(mapping = aes(x = year, y = total), color = "grey") +
+  geom_point(data = filter(prophets_pivot, 
+                           type %in% c("nelson")), 
+             mapping = aes(x = year, y = total, color = type)) +
+  geom_smooth(data = filter(prophets_pivot, 
+                           type %in% c("nelson")),
+              se = FALSE, mapping = aes(x = year, y = total, color = type)) +
+  geom_smooth(se = FALSE, mapping = aes(x = year, y = total, group = type), color = "grey") + 
+  geom_vline(xintercept = 1995, color = "forestgreen") +
+  geom_vline(xintercept = 2008, color = "forestgreen") +
+  theme_bw() +
+  labs(
+    title = "Use of Each Prophet's Name in General Conference Talks over Time",
+    # subtitle = "2017 Highlighted - President Nelson sustained as Prophet",
+    caption = '"President Nelson", "Russell M. Nelson", "Russell Nelson"',
+    color = "Prophet",
+    x = "Year",
+    y = "Mentions of Prophet Names"
+  )
+```
+
+### Relief Society President Names
+("President Bingham", "Jean B. Bingham", "Jean Bingham", "Sister Bingham")
+
+```{r, warning=FALSE, message=FALSE}
+rs_data <- talks_data %>%
+  mutate(
+    spafford1 = str_count(tolower(text), "(?i)\\bpresident spafford\\b"),
+    spafford2 = str_count(tolower(text), "(?i)\\bbelle s. spafford\\b"),
+    spafford3 = str_count(tolower(text), "(?i)\\bbelle spafford\\b"),
+    spafford4 = str_count(tolower(text), "(?i)\\bsister spafford\\b"),
+    
+    smith2 = str_count(tolower(text), "(?i)\\bbarbara b. smith\\b"),
+    smith3 = str_count(tolower(text), "(?i)\\bbarbara smith\\b"),
+    smith4 = str_count(tolower(text), "(?i)\\bsister smith\\b"),
+    
+    winder1 = str_count(tolower(text), "(?i)\\bpresident winder\\b"),
+    winder2 = str_count(tolower(text), "(?i)\\bbarbara w. winder\\b"),
+    winder3 = str_count(tolower(text), "(?i)\\bbarbara winder\\b"),
+    winder4 = str_count(tolower(text), "(?i)\\bsister winder\\b"),
+    
+    jack1 = str_count(tolower(text), "(?i)\\bpresident jack\\b"),
+    jack2 = str_count(tolower(text), "(?i)\\belaine l. jack\\b"),
+    jack3 = str_count(tolower(text), "(?i)\\belaine jack\\b"),
+    jack4 = str_count(tolower(text), "(?i)\\bsister jack\\b"),
+    
+    smoot1 = str_count(tolower(text), "(?i)\\bpresident smoot\\b"),
+    smoot2 = str_count(tolower(text), "(?i)\\bmary ellen w. smoot\\b"),
+    smoot3 = str_count(tolower(text), "(?i)\\bmary ellen smooth\\b"),
+    smoot4 = str_count(tolower(text), "(?i)\\bsister smoot\\b"),
+    
+    parkin1 = str_count(tolower(text), "(?i)\\bpresident parkin\\b"),
+    parkin2 = str_count(tolower(text), "(?i)\\bbonnie d. parkin\\b"),
+    parkin3 = str_count(tolower(text), "(?i)\\bbonnie parkin\\b"),
+    parkin4 = str_count(tolower(text), "(?i)\\bsister parkin\\b"),
+    
+    beck1 = str_count(tolower(text), "(?i)\\bpresident beck\\b"),
+    beck2 = str_count(tolower(text), "(?i)\\bjulie b. beck\\b"),
+    beck3 = str_count(tolower(text), "(?i)\\bjulie beck\\b"),
+    beck4 = str_count(tolower(text), "(?i)\\bsister beck\\b"),
+    
+    burton1 = str_count(tolower(text), "(?i)\\bpresident burton\\b"),
+    burton2 = str_count(tolower(text), "(?i)\\blinda k. burton\\b"),
+    burton3 = str_count(tolower(text), "(?i)\\blinda burton\\b"),
+    burton4 = str_count(tolower(text), "(?i)\\bsister burton\\b"),
+    
+    bingham1 = str_count(tolower(text), "(?i)\\bpresident bingham\\b"),
+    bingham2 = str_count(tolower(text), "(?i)\\bjean b. bingham\\b"),
+    bingham3 = str_count(tolower(text), "(?i)\\bjean bingham\\b"),
+    bingham4 = str_count(tolower(text), "(?i)\\bsister bingham\\b"),
+    
+    johnson1 = str_count(tolower(text), "(?i)\\bpresident johnson\\b"),
+    johnson2 = str_count(tolower(text), "(?i)\\bcamille n. johnson\\b"),
+    johnson3 = str_count(tolower(text), "(?i)\\bcamille johnson\\b"),
+    johnson4 = str_count(tolower(text), "(?i)\\bsister johnson\\b")
+    
+  ) %>% 
+  mutate(spafford = spafford1 + spafford2 + spafford3 + spafford4,
+         smith = smith2 + smith3 + smith4,
+         winder = winder1 + winder2 + winder3 + winder4,
+         jack = jack1 + jack2 + jack3 + jack4,
+         smoot = smoot1 + smoot2 + smoot3 + smoot4,
+         parkin = parkin1 + parkin2 + parkin3 + parkin4,
+         beck = beck1 + beck2 + beck3 + beck4,
+         burton = burton1 + burton2 + burton3 + burton4,
+         bingham = bingham1 + bingham2 + bingham3 + bingham4,
+         johnson = johnson1 + johnson2 + johnson3 + johnson4
+
+         )
+  
+rs_pivot <- rs_data %>% 
+  select(year, speaker, title, spafford, smith, winder, jack, smoot, parkin, beck, burton, bingham, johnson) %>% 
+  pivot_longer(
+    cols = c(spafford, smith, winder, jack, smoot, parkin, beck, burton, bingham, johnson),
+    names_to = "type",
+    values_to = "count"
+  ) %>% 
+  group_by(year, type) %>% 
+  summarise("total" = sum(count)) %>% 
+  mutate(group = case_when(
+    year < 2017 ~ "Before Nelson",
+    year >= 2017 ~ "Post Nelson"
+  ))
+
+# Given names
+names <- c("spafford", "smith", "winder", "jack", "smoot", "parkin", "beck", "burton", "bingham", "johnson")
+
+# Custom color palette
+custom_colors <- c("#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf")
+
+# Creating a named vector of colors for each type
+color_palette <- setNames(custom_colors, names)
+
+rs_pivot$type <- factor(rs_pivot$type, levels = c("spafford", "smith", "winder", "jack", "smoot", "parkin", "beck", "burton", "bingham", "johnson"))
+
+rs_plot <- ggplot(data = rs_pivot) +
+  geom_bar(mapping = aes(x = year, y = total, fill = type), stat = "identity") +
+  scale_fill_manual(values = color_palette) +
+  theme_bw() +
+  labs(
+    title = "Use of Each RS President's Name in General Conference Talks over Time",
+    subtitle = '"President Smith" omitted due to confusions with Prophets',
+    caption = '"President Bingham", "Jean B. Bingham", "Jean Bingham", "Sister Bingham"',
+    color = "President",
+    x = "Year",
+    y = "Mentions of RS President's Names"
+  )
+
+ggplotly(rs_plot)
+```
+
+
+<!-- ## Pornography -->
+<!-- ("pornography", "porn") -->
+<!-- ```{r} -->
+<!-- # Create a new column to count occurrences of the specified words -->
+<!-- p_data <- talks_data %>% -->
+<!--   mutate( -->
+<!--     pornography = str_count(tolower(text), "\\bpornography\\b"), -->
+<!--     porn = str_count(tolower(text), "\\bporn\\b") -->
+<!--   ) %>%  -->
+<!--   mutate( -->
+<!--     total_p  = pornography + porn -->
+<!--   ) %>%  -->
+<!--   mutate(total_p = ifelse(is.na(total_p), 0, total_p)) -->
+
+<!-- p_by_year <- p_data %>%  -->
+<!--   group_by(year) %>%  -->
+<!--   summarise(total = sum(total_p)) -->
+
+<!-- ggplot(data = p_by_year) + -->
+<!--   geom_point(mapping = aes(x = year, y = total), color = "forestgreen") + -->
+<!--   theme_bw() + -->
+<!--   labs( -->
+<!--     title = "Use of Pornography Related Words in General Conference Talks", -->
+<!--     caption = '"Pornography", "Porn"', -->
+<!--     x = "Year", -->
+<!--     y = "Mentions of Pornography" -->
+<!--   ) -->
+
+<!-- ``` -->
