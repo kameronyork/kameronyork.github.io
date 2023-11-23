@@ -343,7 +343,7 @@ gathering_pivot <- gathering_data %>%
     year >= 2017 ~ "Post Nelson"
   ))
 
-myplot <- ggplot(data = gathering_pivot) +
+ggplot(data = gathering_pivot) +
   geom_point(mapping = aes(x = year, y = total, color = type)) +
   geom_smooth(se = FALSE, mapping = aes(x = year, y = total, color = type)) + 
   geom_vline(xintercept = 2017, color = "red2") +
@@ -357,7 +357,6 @@ myplot <- ggplot(data = gathering_pivot) +
     y = "Mentions of Gathering Israel"
   )
 
-ggsave(filename = "C:/Users/theka/Pictures/gathering-points.png", plot = myplot, width = 10, height = 6, units = "in", bg = "white")
 ```
 
 Based on this scatter plot we can see a major increase in words related to the gathering of Israel.  In fact, the points before President Nelson became the prophet and the points following are entirely different!
