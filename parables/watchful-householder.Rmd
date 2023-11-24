@@ -9,11 +9,10 @@ output:
 ---
 <br>
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
-<img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/barren-fig-tree.jpg" alt="Barren fig tree parable image" style="float: right; width: 195px; height: 115px; padding: 5px;">
-<br>
+<img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/barren-fig-tree.jpg" alt="Barren fig tree parable image" style="float: right; width: 195px; height: 115px; padding: 5px;"><br> 
 <h4 style="text-align: left; margin: 0;">Reference:</h4>
 <p style="text-align: left; margin: 0;">
-<a href="https://www.churchofjesuschrist.org/study/scriptures/nt/matt/24?lang=eng&id=43-44#p43" target="_blank">Matthew 24:43-44</a>
+<a href="https://www.churchofjesuschrist.org/study/scriptures/nt/matt/24?lang=eng&id=43-44#p43" target="_blank">Matthew 24:43-44</a><br>
 <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/12?lang=eng&id=35-40#p35" target="_blank">Luke 12:35-40</a>
 </p>
 </div>
