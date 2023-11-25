@@ -146,14 +146,21 @@ This boxplot shows that there is an increase in temple-related words between bef
 ```{r, warning=FALSE, message=FALSE}
 temple_boxes <- temple_by_year %>% 
   mutate(group = case_when(
-    year < 1995 ~ "Before Hinckley",
-    year >= 1995 ~ "Post Hinckley"
+    year < 1995 ~ "Before Call",
+    year >= 1995 ~ "Post Call"
   ))
 
 
 ggplot(data = temple_boxes) + 
   geom_boxplot(mapping = aes(x = group, y = total)) + 
-  theme_bw()
+  theme_bw() + 
+  labs(
+    title = "Change in Temple Related Words in General Conference Talks",
+    subtitle = "Groups represent before and after President Hinckley's call to be Prophet",
+    x = "",
+    y = "Mentions of the Temple"
+  ) 
+
 ```
 
 ##### T Test
@@ -258,7 +265,13 @@ bom_means <- bom_boxes %>%
 ggplot(data = bom_boxes) + 
   geom_boxplot(mapping = aes(x = group, y = total)) + 
   geom_point(data = bom_means, mapping = aes(x = group, y = mean), color = "red3") +
-  theme_bw()
+  theme_bw() +
+  labs(
+    title = "Change in Book of Mormon Quotes in General Conference Talks",
+    subtitle = "Groups represent before and after President Benson's call to be Prophet",
+    x = "",
+    y = "Quotes from the Book of Mormon"
+  ) 
 
 ```   
 
@@ -374,7 +387,13 @@ gathering_means <- gathering_pivot %>%
 ggplot(data = gathering_pivot) + 
   geom_boxplot(mapping = aes(x = group, y = total)) + 
   geom_point(data = gathering_means, mapping = aes(x = group, y = mean), color = "red3") +
-  theme_bw()
+  theme_bw() +
+  labs(
+    title = "Change in Gathering of Israel Related Words in General Conference Talks",
+    subtitle = "Groups represent before and after President Nelson's call to be Prophet",
+    x = "",
+    y = "Mentions of the Gathering of Israel"
+  ) 
 
 ```   
 
