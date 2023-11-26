@@ -526,3 +526,109 @@ ggplotly(rs_plot)
 <!--   ) -->
 
 <!-- ``` -->
+
+
+### Jesus and God
+("God", "Heavenly Father", "Father in Heaven" | "Jesus", "Lord", "Savior")
+
+```{r, warning=FALSE, message=FALSE}
+god_data <- talks_data %>%
+  mutate(
+    god = str_count(tolower(text), "(?i)\\bgod\\b") + str_count(tolower(text), "(?i)\\bheavenly father\\b") + str_count(tolower(text), "(?i)\\father in heaven\\b"),
+    jesus = str_count(tolower(text), "(?i)\\jesus\\b") + str_count(tolower(text), "(?i)\\lord\\b") + str_count(tolower(text), "(?i)\\savior\\b")
+  )
+  
+god_pivot <- god_data %>% 
+  select(year, speaker, title, god, jesus) %>% 
+  pivot_longer(
+    cols = c(god, jesus),
+    names_to = "type",
+    values_to = "count"
+  ) %>% 
+  group_by(year, type) %>% 
+  summarise("total" = sum(count))
+
+
+ggplot(data = god_pivot) +
+  geom_point(mapping = aes(x = year, y = total, color = type)) +
+  geom_smooth(se = FALSE, mapping = aes(x = year, y = total, color = type)) + 
+  theme_bw() +
+  labs(
+    title = "Relationship Between Mentions of God and Jesus in General Conference Talks",
+    caption = '"God", "Heavenly Father", "Father in Heaven" | "Jesus", "Lord", "Savior"',
+    color = "Mention Type",
+    x = "Year",
+    y = "Mentions of God and Jesus"
+  )
+
+```
+
+
+### The Official Name of the Church
+("The Church of Jesus Christ of Latter-Day Saints")
+
+```{r, warning=FALSE, message=FALSE}
+church_name_data <- talks_data %>%
+  mutate(
+    Name = str_count(tolower(text), "(?i)\\bthe church of jesus christ of latter-day saints\\b") + str_count(tolower(text), "(?i)\\bthe church of jesus christ of latter day saints\\b")
+  )
+  
+church_name_pivot <- church_name_data %>% 
+  select(year, speaker, title, Name) %>% 
+  pivot_longer(
+    cols = c(Name),
+    names_to = "type",
+    values_to = "count"
+  ) %>% 
+  group_by(year, type) %>% 
+  summarise("total" = sum(count))
+
+
+ggplot(data = church_name_pivot) +
+  geom_point(mapping = aes(x = year, y = total, color = type)) +
+  geom_smooth(se = FALSE, mapping = aes(x = year, y = total, color = type)) + 
+  theme_bw() +
+  labs(
+    title = "References to the Full Name of the Chuch in General Conference Talks",
+    caption = '"The Church of Jesus Christ of Latter-Day Saints"',
+    color = "Mention Type",
+    x = "Year",
+    y = "Mentions of the Full Name"
+  )
+
+```
+
+Compared to other names of the Church:
+("Mormon Church", "LDS Church")
+
+```{r, warning=FALSE, message=FALSE}
+church_name_data2 <- talks_data %>%
+  mutate(
+    Correct = str_count(tolower(text), "(?i)\\bthe church of jesus christ of latter-day saints\\b") + str_count(tolower(text), "(?i)\\bthe church of jesus christ of latter day saints\\b"),
+    Other = str_count(tolower(text), "(?i)\\bmormon church\\b") + str_count(tolower(text), "(?i)\\blds church\\b")
+  )
+  
+church_name_pivot2 <- church_name_data2 %>% 
+  select(year, speaker, title, Correct, Other) %>% 
+  pivot_longer(
+    cols = c(Correct, Other),
+    names_to = "type",
+    values_to = "count"
+  ) %>% 
+  group_by(year, type) %>% 
+  summarise("total" = sum(count))
+
+
+ggplot(data = church_name_pivot2) +
+  geom_point(mapping = aes(x = year, y = total, color = type)) +
+  geom_smooth(se = FALSE, mapping = aes(x = year, y = total, color = type)) + 
+  theme_bw() +
+  labs(
+    title = "References to the Full Name vs. Other Names of the Church in General Conference Talks",
+    caption = '"The Church of Jesus Christ of Latter-Day Saints" | "Mormon Church", "Lds Church"',
+    color = "Mention Type",
+    x = "Year",
+    y = "Mentions of the Church Names"
+  )
+
+```
