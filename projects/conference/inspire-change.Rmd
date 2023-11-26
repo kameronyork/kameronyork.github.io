@@ -42,7 +42,7 @@ Click the tabs below to view how President Hinckley changed the way the church t
 
 #### Temples: {.tabset}
 
-![President Gordon B. Hincley Temples Header](https://www.kameronyork.com/docs/assets/hinckley-header2.png) <br>
+![President Gordon B. Hincley Temples Header](https://www.kameronyork.com/docs/assets/hinckley-header.png) <br>
 <br>
 <i>("Temple", "Temples", "House of God", "House of the Lord")</i>
 
@@ -176,7 +176,7 @@ t.test(total ~ group, data = temple_boxes, mu = 0, alternative = "two.sided", co
 
 #### Book of Mormon: {.tabset}
 
-![President Ezra Taft Benson Book of Mormon Header](https://www.kameronyork.com/docs/assets/benson-header2.png) <br>
+![President Ezra Taft Benson Book of Mormon Header](https://www.kameronyork.com/docs/assets/benson-header.png) <br>
 <br>
 ("Book of Mormon")
 
@@ -323,7 +323,7 @@ ggplot(data = benson_check) +
 
 #### Gathering Israel {.tabset}
 
-![President Ezra Taft Benson Book of Mormon Header](https://www.kameronyork.com/docs/assets/nelson-header2.png) <br>
+![President Ezra Taft Benson Book of Mormon Header](https://www.kameronyork.com/docs/assets/nelson-header.png) <br>
 <br>
 ("Gathering Israel", "Both Sides of the Veil")
 
