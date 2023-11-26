@@ -9,53 +9,6 @@ output:
       css: "styles.css"
 ---
 
-<style>
-.code-tabs .nav-tabs {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-.code-tabs .nav-tabs li {
-  display: inline-block;
-}
-
-.code-tabs .nav-tabs li a {
-  display: block;
-  padding: 10px 15px;
-  border: 1px solid transparent;
-  border-bottom: none;
-  border-radius: 5px 5px 0 0;
-  background-color: var(--white-color);
-  margin-bottom: -1px;
-  font-size: 14px;
-}
-
-.code-tabs .nav-tabs li.active a {
-  border-color: var(--primary-color) var(--primary-color) var(--body-color);
-}
-
-.code-tabs .tab-pane {
-  display: none;
-  padding: 20px;
-  background: var(--light-color);
-  border: 1px solid var(--primary-color);
-  border-top: none;
-}
-
-.code-tabs .tab-pane.active {
-  display: block;
-}
-
-/* Additional styles for active tab appearance */
-.code-tabs .nav-tabs li.active a,
-.code-tabs .nav-tabs li a:hover {
-  color: #000;
-  background: #ddd;
-}
-</style>
-
 ```{r setup, include=FALSE}
 library(tidyverse)
 library(pander)
@@ -562,6 +515,42 @@ ggplot(data = god_pivot) +
   )
 
 ```
+
+### Jesus and God
+("God" | "Jesus")
+
+```{r, warning=FALSE, message=FALSE}
+god_data2 <- talks_data %>%
+  mutate(
+    god = str_count(tolower(text), "(?i)\\bgod\\b"),
+    jesus = str_count(tolower(str_sub(text, end = -21)), "(?i)\\jesus\\b")
+  )
+  
+god_pivot2 <- god_data2 %>% 
+  select(year, speaker, title, god, jesus) %>% 
+  pivot_longer(
+    cols = c(god, jesus),
+    names_to = "type",
+    values_to = "count"
+  ) %>% 
+  group_by(year, type) %>% 
+  summarise("total" = sum(count))
+
+
+ggplot(data = god_pivot2) +
+  geom_point(mapping = aes(x = year, y = total, color = type)) +
+  geom_smooth(se = FALSE, mapping = aes(x = year, y = total, color = type)) + 
+  theme_bw() +
+  labs(
+    title = "Relationship Between Mentions of God and Jesus in General Conference Talks",
+    caption = '"God" | "Jesus"',
+    color = "Mention Type",
+    x = "Year",
+    y = "Mentions of God and Jesus"
+  )
+
+```
+
 
 
 ### The Official Name of the Church
