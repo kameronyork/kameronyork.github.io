@@ -17,7 +17,8 @@ library(plotly)
 library(DT)
 library(latticeExtra)
 
-quotes <- read.csv("https://www.kameronyork.com/datasets/conference-quotes.csv", encoding="UTF-8")
+quotes <- read.csv("https://www.kameronyork.com/datasets/conference-quotes.csv", encoding="UTF-8") %>% 
+  mutate("verse_years_join" = paste(talk_year, scripture, sep = "-"))
 
 quote_counts <- quotes %>% 
   group_by(scripture) %>% 
@@ -63,9 +64,31 @@ chapters <- verses %>%
   left_join(book_ordering_work, by = c("book" = "book")) %>% 
   arrange(book_chapter_order.y)
 
+talk_years <- talks_data %>% 
+  group_by(year) %>% 
+  summarise("count" = n()) %>% 
+  select(year)
 
+verse_years <- crossing(scrip = verses$scripture, yr = talk_years$year) %>% 
+  mutate("verse_years_join" = paste(yr, scrip, sep = "-")) %>%
+  left_join(quotes, by = "verse_years_join") %>%
+  mutate(not_na_year = ifelse(!is.na(talk_year), 1, 0)) %>%
+  group_by(scrip, yr) %>%
+  summarize(
+    count_of_mentions = sum(not_na_year)
+  ) %>%
+  mutate(total = cumsum(count_of_mentions)) %>% 
+  ungroup() %>% 
+  filter(total != 0)
+  
 
 ```
+
+```{r}
+write_excel_csv(verse_years, "C:/Users/theka/Desktop/Projects/Website_project/kameronyork.github.io/datasets/cummulative-quotes.csv")
+
+```
+
 
 ## Overall Quotes Analysis
 ```{r, message=FALSE}
