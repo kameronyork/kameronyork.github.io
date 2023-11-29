@@ -447,9 +447,9 @@ This T Test is a statistical test meant to tell us if the means of both populati
 
 ## Conclusion
 
-President Hinckley's focus on temples took the average mentions of the temple in general conference talks from `107.1` to `177.6`.  President Benson's focus on using the Book of Mormon more increased the average quotes from the Book in general conference talks from `141.3` per year to `200`.  President Nelson's focus on, "Gathering Israel on both sides of the veil," has caused mentions of the gathering in general conference talks to increase from an average of `0.8696` per year to `8.429`!  These are all examples of changes in the church that can be directly tied back to the influence of prophets.
+President Hinckley's focus on temples took the average mentions of the temple in general conference talks from `107.1` per year to `177.6`.  President Benson's focus on using the Book of Mormon more increased the average quotes from the Book in general conference talks from `141.3` per year to `200`.  President Nelson's focus on, "Gathering Israel on both sides of the veil," has caused mentions in general conference talks to increase from an average of `0.8696` per year to `8.429`!  These are all examples of changes in the church that can be directly tied back to the influence of prophets.
 
-Based on these conclusions, and I'm sure many other examples outside of this analysis, we can come to the conclusion that Prophets do indeed influence change within the church.
+Based on these conclusions, and I'm sure many other examples outside of this analysis, we can determine that Prophets do indeed inspire change within the church.
 
 <br>
 <br>

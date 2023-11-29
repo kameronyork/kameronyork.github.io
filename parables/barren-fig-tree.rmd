@@ -23,11 +23,6 @@ output:
 This article is yet to be completed. Please check back later!
 
 
-<div style="margin-top: -10px;">
-#### General Conference Talks:
-
-
-
 ##### Check out my other articles:
 
 <link rel="stylesheet" href="https://kameronyork.github.io/scripting/themify-icons/themify-icons.css">
