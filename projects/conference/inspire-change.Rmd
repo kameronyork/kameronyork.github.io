@@ -1,5 +1,6 @@
 ---
 title: "Can a Prophet Inspire Change?"
+subtitle: "An analysis of General Conference Talks"
 output:
   html_document:
     code_folding: hide
@@ -15,6 +16,7 @@ library(plotly)
 library(DT)
 library(latticeExtra)
 library(stringr)
+library(mosaic)
 
 ```
 
@@ -31,18 +33,18 @@ quotes <- read.csv("https://www.kameronyork.com/datasets/conference-quotes.csv",
 ```
 ## Background
 
-Members of the Church of Jesus Christ of Latter-Day Saints believe the Prophet and President of the Church to be an inspired leader who is called of God.  Through the history of the church generally each prophet has had a focus to which they devote their time and teachings.  
+Members of the Church of Jesus Christ of Latter-Day Saints believe their Prophet to be an inspired leader.  In fact, the Prophet is the only leader with authority to make decisions for the church as a whole.  Often Prophets for the Church of Jesus Christ of Latter-Day Saints have focuses and initiatives that are specific to their ministry.  To what extent do Prophets inspire change today?  
 
-Church members believe the Prophet is the only leader with the authority to lead the church as a whole, but to what extent can Prophets inspire change therein?  This analysis will seek to prove three examples of significant changes within church culture each from a different Prophet.
-
-Click the tabs below to view how President Hinckley changed the way the church talks about temples, how President Benson increased references to the Book of Mormon in General Conference, and how President Nelson has inspired more discussions on the "Gathering of Israel" than ever before!
+This analysis will seek to prove three significant changes in the culture of the Church of Jesus Christ each brought about by a different modern Prophet.  Click the tabs below to view how President Hinckley changed the way the church talks about temples, how President Benson increased references to the Book of Mormon in General Conference, and how President Nelson has inspired more discussions on the "Gathering of Israel" than ever before!
 
 
 ### {.tabset .tabset-pills}
 
-#### Temples: {.tabset}
+#### Temples {.tabset}
 
-![President Gordon B. Hincley Temples Header](https://www.kameronyork.com/docs/assets/hinckley-header.png) <br>
+![President Gordon B. Hincley Temples Header](https://www.kameronyork.com/docs/assets/hinckley-header.png) 
+<small>Source: [Church of Jesus Christ Media Library](https://www.churchofjesuschrist.org/media/images)</small>
+<br>
 <br>
 <i>("Temple", "Temples", "House of God", "House of the Lord")</i>
 
@@ -52,10 +54,8 @@ Of temples President Hinckley said, <i>"We are determined, brethren, to take the
 
 During his time as Prophet nearly 80 temples were dedicated - an impressive number as when he was called to the position there were less than 50 in operation.  Through the design and construction of smaller temples, and an increase in the rate at which temples were announced and built, President Hinckley introduced the church to a new age of temple availability that continues to this day.  
 
-Clearly the number of temples in the world has increased, but has the culture of the church as a whole changed because of this focus?  One way we can find out is by analyzing the number of references to temples in General Conference talks.
-
-```{r, message=FALSE}
-# Create a new column to count occurrences of the specified words
+This plot shows the number of temples in the world by year:
+```{r, warning=FALSE, message=FALSE}
 temple_data <- talks_data %>%
   mutate(
     temple_count = str_count(tolower(text), "\\btemple\\b") + str_count(tolower(text), "\\btemples\\b"),
@@ -66,16 +66,32 @@ temple_data <- talks_data %>%
     total_temple = temple_count + house_of_the_lord_count + house_of_god_count
   )
 
+temple_by_year <- temple_data %>% 
+  group_by(year) %>% 
+  summarise(total = sum(total_temple)) %>% 
+  mutate(temples = map_int(year, ~ sum(dedication_data$year <= .x)))
+
+ggplot(data = temple_by_year) +
+  geom_point(mapping = aes(x = year, y = temples), color = "forestgreen", size = 1) +
+  geom_line(mapping = aes(x = year, y = temples), color = "forestgreen") +
+  geom_vline(xintercept = 1995, color = "red") +
+  theme_bw() +
+  labs(
+    title = "The Incredible Growth of Temples in Over 50 Years",
+    subtitle = "1995 Highlighted - Year President Gordon B. Hinckley became Church President",
+    x = "Year",
+    y = "Number of Dedicated Temples"
+  ) 
+
 ```
+
+Clearly the number of temples in the world has increased, but has the culture of the church as a whole changed because of this focus?  One way we can find out is by analyzing the number of references to temples in General Conference talks.
+
 
 ##### Scatter Plots
 This plot shows there seems to be an increase in temple-related words following President Hinckley's sustaining as prophet.  The large gap in the middle is due to the sudden jump from 63 temples in 1999 to 102 temples in 2000.  There are no dots through that section because no General Conference addresses were given in that time frame.
 
 ```{r, warning=FALSE, message=FALSE}
-temple_by_year <- temple_data %>% 
-  group_by(year) %>% 
-  summarise(total = sum(total_temple)) %>% 
-  mutate(temples = map_int(year, ~ sum(dedication_data$year <= .x)))
 
 ggplot(data = temple_by_year) +
   geom_point(mapping = aes(x = temples, y = total), color = "forestgreen") +
@@ -88,22 +104,6 @@ ggplot(data = temple_by_year) +
     x = "Number of Dedicated Temples",
     y = "Mentions of the Temple"
   )
-```
-
-This plot shows the number of temples in the world by year:
-```{r, warning=FALSE, message=FALSE}
-graph <- ggplot(data = temple_by_year) +
-  geom_point(mapping = aes(x = year, y = temples), color = "forestgreen", size = 1) +
-  geom_line(mapping = aes(x = year, y = temples), color = "forestgreen") +
-  theme_bw() +
-  labs(
-    title = "Number of Temples in the World by Year",
-    subtitle = "Data is representing the count of dedicated temples at the end of the year",
-    x = "Year",
-    y = "Number of Dedicated Temples"
-  ) 
-
-graph
 ```
 
 This time the phrases are shown in different colors.
@@ -141,6 +141,7 @@ ggplot(data = temple_pivot) +
 
 
 ##### Box Plot
+
 This boxplot shows that there is an increase in temple-related words between before President Hinckley was the prophet and our current Post-President Hinckley era.  It seems temples are being talked about more now than they were before his sustaining.
 
 ```{r, warning=FALSE, message=FALSE}
@@ -163,6 +164,15 @@ ggplot(data = temple_boxes) +
 
 ```
 
+Numerical Summary:
+
+```{r}
+pander( favstats(total ~ group, data = temple_boxes)[, -10] )
+
+```
+
+From this table we can see the average values of both groups.  Before President Hinckley's call to be the Prophet and President of the Church it there were `107.1` mentions of the temple in per year on average.  However, in the time after President Hinckley's call we expect `177.6` mentions of the temple per year, with a peak of `308` in one year alone!  That is an increase of 70 mentions per year, an astounding change!
+
 ##### T Test
 
 This T Test is a statistical test meant to tell us if the means of both populations differ from each other.  Because our result (`3.039e-06`) is smaller than the confidence interval of `95%` we can conclude the two means are significantly different.  
@@ -174,11 +184,39 @@ t.test(total ~ group, data = temple_boxes, mu = 0, alternative = "two.sided", co
   pander()
 ```
 
-#### Book of Mormon: {.tabset}
+##### Linear Model
 
-![President Ezra Taft Benson Book of Mormon Header](https://www.kameronyork.com/docs/assets/benson-header.png) <br>
+This linear model table gives us information about the slope and intercepts of the line for each of the phrases we are tracking in General Conference talks.  However, the Y-intercept is attempting to estimate the number of mentions of each phrase at the year 0.  Because that statistic is not meaningful it should be ignored.
+
+```{r, warning=FALSE, message=FALSE}
+# Perform multiple linear regression
+model <- lm(total ~ type_label * year, data = temple_pivot)
+
+coefficients <- summary(model)$coefficients
+
+# Changing the row names in the output table of the model
+new_row_names <- c("House of God - Y Int.", "House of the Lord - Y Int.", "Temples - Y Int.", "House of God - Slope", "House of the Lord  - Slope", "Temples - Slope")
+
+new_coefficients <- data.frame(Coefficient = rownames(coefficients), coefficients[, 1:4])
+rownames(new_coefficients) <- new_row_names
+
+# Display the table, and removing the column with the old row names.
+pander(new_coefficients[, -1])
+```
+
+The phrase "Temple" has returned a slope of `2.405` and a p-value of `2.928e-11` which means that slope is a significant increase.  What this means is that for every 1 year added in our model we can expect two more mentions of the table in General Conference talks. 
+
+Unfortunately it seems the other temple-related phrases are not so significant.  "House of the Lord" has seen a positive increase during the 50 year period, but of only `0.07015`.  This phrase yielded a p-value of `0.8345` which tells us that this increase is not significant.  "House of God" on the other hand saw a decrease in the period, with a slope of `-0.0012`.  This phrase yielded a p-value of `0.9959` which tells us that this decrease is also not significant.
+
+While these two phrases don't actually show much change, the phrase "Temple" showed great change.  With a slope of `2.405` we can expect the mentions of the temple to continue increasing as time goes on.
+
+#### Book of Mormon {.tabset}
+
+![President Ezra Taft Benson Book of Mormon Header](https://www.kameronyork.com/docs/assets/benson-header.png) 
+<small>Source: [Church of Jesus Christ Media Library](https://www.churchofjesuschrist.org/media/images)</small>
 <br>
-("Book of Mormon")
+<br>
+<i>("Book of Mormon")</i>
 
 1986 was a big year for the Book of Mormon.  President Ezra Taft Benson delivered a General Conference talk instructing members to use the Book of Mormon in teachings.
 
@@ -196,28 +234,6 @@ bom_data <- talks_data %>%
 
 ##### Scatter Plots
 
-```{r, warning=FALSE, message=FALSE}
-bom_by_year <- bom_data %>% 
-  group_by(year) %>% 
-  summarise(total = sum(total_bom))
-
-ggplot(data = bom_by_year) +
-  geom_point(mapping = aes(x = year, y = total), color = "forestgreen") +
-  geom_vline(xintercept = 1986, color = "red") +
-  theme_bw() +
-  labs(
-    title = "Use of Book of Mormon Related Words in General Conference Talks",
-    subtitle = "1986 Highlighted - Year President Ezra Taft Benson Reaffirmed the Book of Mormon",
-    caption = '"Book of Mormon"',
-    x = "Year",
-    y = "Mentions of the Book of Mormon"
-  )
-
-```
-
-This scatter plot represents the number of times speakers used the term, "Book of Mormon" in their talks.  There is an increase to be seen in the plot, but not a large one.
-
-Are the scriptures from the book of mormon quoted more now than in the 70's before the talk?
 ```{r, warning=FALSE, message=FALSE}
 bom_quotes <- quotes %>% 
   filter(overall_book == "Book of Mormon") %>% 
@@ -243,12 +259,6 @@ This plot represents the number of scriptures quoted from Book of Mormon verses 
 
 The following tabs will attempt to prove, statistically, that this positive change is significant.
 
-```{r, warning=FALSE, message=FALSE}
-mylm <- lm(total ~ talk_year, data = bom_quotes)
-summary(mylm) %>% 
-  pander()
-```
-
 ##### Box Plot
 
 ```{r, warning=FALSE, message=FALSE}
@@ -264,7 +274,6 @@ bom_means <- bom_boxes %>%
 
 ggplot(data = bom_boxes) + 
   geom_boxplot(mapping = aes(x = group, y = total)) + 
-  geom_point(data = bom_means, mapping = aes(x = group, y = mean), color = "red3") +
   theme_bw() +
   labs(
     title = "Change in Book of Mormon Quotes in General Conference Talks",
@@ -275,9 +284,17 @@ ggplot(data = bom_boxes) +
 
 ```   
 
-These boxplots show a large change in the number of Book of Mormon quotes represented in General Conference talks between the two groups.  Before President Benson reaffirmed the Book of Mormon the typical year would see around 140 qoutes from the book of mormon, and at most 170 quotes in a year.
 
-However, in contrast, in the years following the prophet's message we typically see around 180 quotes from the Book of Mormon in a year, with some years seeing over 300 quotes!  This is a significant increase from the distribution before the message.
+Numerical Summary:
+```{r}
+pander( favstats(total ~ group, data = bom_boxes)[, -10] )
+
+```
+
+This table shows a large change in the number of Book of Mormon quotes represented in General Conference talks between the two groups.  Before President Benson reaffirmed the Book of Mormon the typical year would see around `141.3` quotes from the Book of Mormon, with a max of `184` quotes in a year.
+
+However, in contrast, in the years following the prophet's message we typically see around `200` quotes from the Book of Mormon in a year, with some years seeing over 300 quotes -and a max of `352` in one year!  The average has increased by 60 quotes per year and the maximum is nearly double the maximum from the previous group.  This is an astounding change as well.
+
 
 ##### T Test
 
@@ -289,6 +306,19 @@ t.test(total ~ group, data = bom_boxes, mu = 0, alternative = "two.sided", conf.
 This T Test is a statistical test meant to tell us if the means of both populations differ from each other.  Because our result (`7.634e-06`) is smaller than the confidence interval of `95%` we can conclude the two means are significantly different.  
 
 From this result and the boxplots in the previous tab we can conclude that there are more quotes from the Book of Mormon in General Conference talks following the message from President Benson than before!
+
+##### Linear Model
+
+This linear model table gives us information about the slope and intercepts of the line for the number of Book of Mormon quotes over time.  Like with the Temple mentions linear model, the Y-intercept is trying to estimate the number of Book of Mormon quotes in the year 0 which is not meaningful.  Because of this it should be ignored.
+
+```{r, warning=FALSE, message=FALSE}
+mylm <- lm(total ~ talk_year, data = bom_quotes)
+summary(mylm) %>% 
+  pander()
+```
+
+This table shows us that the slope of our linear model is `1.35`, a positive slope!  This means that in our model the number of Book of Mormon quotes increased by 1.35 year over year.  Our p-value (`0.002627`) is significant as well, meaning this positive slope in Book of Mormon quotes is a meaningful one.  This is an important observation as it proves that quotes from the Book of Mormon has increased over time.
+
 
 ##### Bible Comparison
 
@@ -323,9 +353,11 @@ ggplot(data = benson_check) +
 
 #### Gathering Israel {.tabset}
 
-![President Ezra Taft Benson Book of Mormon Header](https://www.kameronyork.com/docs/assets/nelson-header.png) <br>
+![President Ezra Taft Benson Book of Mormon Header](https://www.kameronyork.com/docs/assets/nelson-header.png) 
+<small>Source: [Church of Jesus Christ Media Library](https://www.churchofjesuschrist.org/media/images)</small>
 <br>
-("Gathering Israel", "Both Sides of the Veil")
+<br>
+<i>("Gathering Israel", "Both Sides of the Veil")</i>
 
 The main focus of President Nelson's ministry is, "Gathering Israel on both sides of the veil".  This focus includes missionary work, temple work, and each individual's commitment to following the covenant path.
 
@@ -380,13 +412,8 @@ Our statistical models have shown that this difference is significant!  Therefor
 
 ```{r, warning=FALSE, message=FALSE}
 
-gathering_means <- gathering_pivot %>% 
-  group_by(group) %>% 
-  summarise(mean = mean(total))
-
 ggplot(data = gathering_pivot) + 
   geom_boxplot(mapping = aes(x = group, y = total)) + 
-  geom_point(data = gathering_means, mapping = aes(x = group, y = mean), color = "red3") +
   theme_bw() +
   labs(
     title = "Change in Gathering of Israel Related Words in General Conference Talks",
@@ -397,9 +424,16 @@ ggplot(data = gathering_pivot) +
 
 ```   
 
-These boxplots tell quite a story.  The median number of gathering of Israel mentions before President Nelson is nearly zero, and there are five points representing years with three or more references which are represented as outliers.  
 
-The median number of mentions after President Nelson's call to be the prophet is now around eight mentions per year!  The red dots on the plots represent the means of the groups, which have had quite a large jump between the two groups.
+Numerical Summary:
+```{r}
+pander( favstats(total ~ group, data = gathering_pivot)[, -10] )
+
+```
+
+This table shows an incredible change in mentions of the Gathering of Israel.  Before President Nelson's call to be the Prophet and President of the church it was common place to have no mention of the Gathering of Israel at all.  In fact the average was `0.8696` mentions of the subject per year!  The maximum number of mentions was `12` times in one year, with 11 of those mentions derived from a talk entitled, "[Come: Let Israel Build Zion](https://www.churchofjesuschrist.org/study/general-conference/1977/04/come-let-israel-build-zion)" by Elder Bruce R. McConkie.
+
+In stark contrast, the group of years following President Nelson's call has never seen a year without a mention of the Gathering of Israel.  The mean has jumped to a healthy `8` mentions per year, with a maximum of `17` mentions.  It is clear that a change has taken place, and President Nelson's ministry is a highly likely cause of it.
 
 ##### T Test
 
@@ -410,9 +444,15 @@ t.test(total ~ group, data = gathering_pivot, mu = 0, alternative = "two.sided",
 
 This T Test is a statistical test meant to tell us if the means of both populations differ from each other.  Because our result (`2.997e-05`) is smaller than the confidence interval of `95%` we can conclude the two means are significantly different.  
 
-From this result and the boxplots in the previous tab we can conclude that mentions of the Gathering of Israel in General Conference talks are higher following President Nelson's call than before!
 
-## {-}
+## Conclusion
+
+President Hinckley's focus on temples took the average mentions of the temple in general conference talks from `107.1` to `177.6`.  President Benson's focus on using the Book of Mormon more increased the average quotes from the Book in general conference talks from `141.3` per year to `200`.  President Nelson's focus on, "Gathering Israel on both sides of the veil," has caused mentions of the gathering in general conference talks to increase from an average of `0.8696` per year to `8.429`!  These are all examples of changes in the church that can be directly tied back to the influence of prophets.
+
+Based on these conclusions, and I'm sure many other examples outside of this analysis, we can come to the conclusion that Prophets do indeed influence change within the church.
+
+<br>
+<br>
 <h4>Other Articles:</h4><br>
 
 <link rel="stylesheet" href="https://kameronyork.github.io/scripting/themify-icons/themify-icons.css">
