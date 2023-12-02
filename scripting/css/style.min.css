@@ -154,20 +154,20 @@ body {
   }
   @media (max-width: 768px) {
     .section {
-      padding-top: 60px;
+      padding-top: 50px;
     }
   }
   .section-sm {
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 50px;
+    padding-bottom: 50px;
   }
   @media (max-width: 768px) {
     .section-sm {
-      padding-top: 40px;
+      padding-top: 35px;
     }
   }
   .section-title {
-    margin-bottom: 40px;
+    margin-bottom: 35px;
   }
   .bg-cover {
     background-size: cover;
