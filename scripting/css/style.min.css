@@ -149,21 +149,21 @@ body {
     outline: 0;
   }
   .section {
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
   @media (max-width: 768px) {
     .section {
-      padding-top: 60px;
+      padding-top: 50px;
     }
   }
   .section-sm {
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
   @media (max-width: 768px) {
     .section-sm {
-      padding-top: 40px;
+      padding-top: 30px;
     }
   }
   .section-title {
