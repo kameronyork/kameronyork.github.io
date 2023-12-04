@@ -38,7 +38,7 @@ This parable is meant to teach us about the divine mission of the Savior.  Jesus
 <h4>Possible Meanings of Symbols:</h4>
 <b>The Candle (or the Light)</b> is representative of the Savior.  An important aspect of the Savior is what is called the ["Light of Christ"](https://www.churchofjesuschrist.org/study/scriptures/bd/light-of-christ?lang=eng), an ennobling, and enlightening force often referred to as a person's conscience.<br>
 <br>
-<b>The Obstructions</b> represented in the parable as a bushel, vessel, or bed could represent the distractions and opposition of the world.  This is similar to the thorns choking out the growth of the seeds in [the parable of the sower](https://www.kameronyork.com/parables/sower.html).  These influences are stopping the light from illuminating the room.<br>
+<b>The Obstructions</b> represented in the parable as a bushel, vessel, or bed could represent the distractions and opposition of the world.  This is similar to the thorns choking out the growth of the seeds in [the parable of the sower](https://kameronyork.com/parables/sower.html).  These influences are stopping the light from illuminating the room.<br>
 <br>
 <b>The Room</b> as mentioned in the previous section could be representative of the world as a whole or of an individual.  The divine mission of Jesus Christ is jointly to redeem the whole world and each person individually.  The infinite nature of the Atonement allows this redemptive power to be personalized to everyone.  Because of this, the parable could be read as the power of the Light of Christ within one person's heart.
 
@@ -51,7 +51,7 @@ This parable is meant to teach us about the divine mission of the Savior.  Jesus
 <div class="row">
 <div class="col-12 text-md-left">
 <nav class="pagination mt-3">
-<a class="nav nav-prev" href="https://www.kameronyork.com/parables/sower.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" 
+<a class="nav nav-prev" href="https://kameronyork.com/parables/sower.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" 
 onmouseover="this.style.backgroundColor='lightgray';" 
 onmouseout="this.style.backgroundColor='transparent';" 
 onmousedown="this.style.backgroundColor='gray';" 
@@ -60,7 +60,7 @@ onmouseup="this.style.backgroundColor='lightgray';">
 <span style="display: none;" class="d-md-inline-block">The Sower</span>
 <span style="display: inline-block;" class="d-md-none">The Sower</span>
 </a>
-<a class="nav nav-next ml-3" href="https://www.kameronyork.com/parables/growing-seed.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" 
+<a class="nav nav-next ml-3" href="https://kameronyork.com/parables/growing-seed.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" 
 onmouseover="this.style.backgroundColor='lightgray';" 
 onmouseout="this.style.backgroundColor='transparent';" 
 onmousedown="this.style.backgroundColor='gray';" 

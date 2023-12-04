@@ -43,7 +43,7 @@ This article is yet to be completed. Please check back later!
 <div class="row">
 <div class="col-12 text-md-left">
 <nav class="pagination mt-3">
-<a class="nav nav-prev" href="https://www.kameronyork.com/parables/wicked-husbandman.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" 
+<a class="nav nav-prev" href="https://kameronyork.com/parables/wicked-husbandman.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" 
 onmouseover="this.style.backgroundColor='lightgray';" 
 onmouseout="this.style.backgroundColor='transparent';" 
 onmousedown="this.style.backgroundColor='gray';" 
@@ -52,7 +52,7 @@ onmouseup="this.style.backgroundColor='lightgray';">
 <span style="display: none;" class="d-md-inline-block">Wicked Husbandman</span>
 <span style="display: inline-block;" class="d-md-none">Wicked Husbandman</span>
 </a>
-<a class="nav nav-next ml-3" href="https://www.kameronyork.com/parables/counting-the-cost.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" 
+<a class="nav nav-next ml-3" href="https://kameronyork.com/parables/counting-the-cost.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" 
 onmouseover="this.style.backgroundColor='lightgray';" 
 onmouseout="this.style.backgroundColor='transparent';" 
 onmousedown="this.style.backgroundColor='gray';" 
