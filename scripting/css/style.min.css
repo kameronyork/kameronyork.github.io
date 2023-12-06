@@ -163,11 +163,11 @@ body {
   }
   @media (max-width: 768px) {
     .section-sm {
-      padding-top: 5px;
+      padding-top: 20px;
     }
   }
   .section-title {
-    margin-bottom: 8px;
+    margin-bottom: 4px;
   }
   .bg-cover {
     background-size: cover;
