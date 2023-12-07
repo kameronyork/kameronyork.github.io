@@ -730,4 +730,6 @@ body {
   a:hover i {
     color: var(--primary-color);
   }
-  
+  .code-folding-btn {
+    display: none;
+  }
