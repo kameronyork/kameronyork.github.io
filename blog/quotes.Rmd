@@ -3,7 +3,6 @@ title: "What is the Most Quoted Scripture in General Conference?"
 author: "Kameron York"
 output:
   html_document:
-    code_folding: show
     includes:
       in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/projects/conference/headers/inspire-change-header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
@@ -368,7 +367,8 @@ Data for this article was gathered from the Church's website.  Some scripture re
 The most quoted scripture of all time is Moses 1:39.  A fitting first place as this scripture clearly sets forth God's purpose and plan for His Children.  While Moses 1:39 claimed first place from the 70's to the 90's the 2000's have seen other verses take the top spot.  
 
 ### The All-Time Most Quoted Scriptures in General Conference:
-<br>
+####
+
 Rank | Scripture | Count |  Words
 --- | --- | --- | ---              
 1 | `r ref_all_1` | `r count_all_1` | `r words_all_1`       

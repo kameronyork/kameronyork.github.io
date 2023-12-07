@@ -1,15 +1,11 @@
 ---
 title: "Contact Info"
-output: 
+output:
   html_document:
-    theme: cerulean  # Sets the theme.  Alternate theme:  Journal
-    code_folding: hide  # Makes all R Code in the file fold itself.
-    toc: true  # Creates a Table of Contents
-    toc_float: true  # Makes the Table of Contents Float
+    includes:
+      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/projects/conference/headers/inspire-change-header.html"
+      after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
-
-  
-  
 
 Email:  thekameronyork99@gmail.com  
 LinkedIn:  www.linkedin.com/in/kameronyork  

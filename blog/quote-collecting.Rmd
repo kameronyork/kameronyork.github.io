@@ -3,7 +3,6 @@ title: "Collecting General Conference Data"
 author: "Kameron York"
 output:
   html_document:
-    code_folding: show
     includes:
       in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/projects/conference/headers/inspire-change-header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
@@ -65,6 +64,6 @@ Copying and pasting the talks to the excel file took a few weeks to accomplish! 
 
 TO parse the quotes from the data set I wrote a python script to extract everything withing parentheses to a new column.  From there I used string functions to pivot the data set and create a row for each quote.  Then I removed any rows that started with "See" or "See also", and published the new data set to my website.
 
-From there I created my [General Conference Analyses](https://kameronyork.com/projects/conference/).  The csv files of all Conference talks, and all scriptures quotes in conference are freely available for download on the database section of my website [Here](https://kameronyork.com/datasets).
+From there I created my [General Conference Analyses](https://kameronyork.com/projects/conference/).  The csv files of all Conference talks, and all scriptures quotes in conference are freely available for download on the dataset section of my website [Here](https://kameronyork.com/datasets).
 
 I have learned so much from this project.  I learned about the efficiency and speed of coding in python (1,000x faster than my excel macro), the incredibly utility of web scraping (which I used to quickly gather all talk URLs), and the importance of data ware housing.  If only I had understood that last lesson from the beginning!
