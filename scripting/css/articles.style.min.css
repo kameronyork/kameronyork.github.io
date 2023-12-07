@@ -1,6 +1,4 @@
 body {
-    padding-left: 20px;
-    padding-right: 20px;
     line-height: 1.5;
     font-family: var(--font-family), sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -151,6 +149,8 @@ body {
     outline: 0;
   }
   .section {
+    padding-left: 20px;
+    padding-right: 20px;
     padding-top: 8px;
     padding-bottom: 8px;
   }
