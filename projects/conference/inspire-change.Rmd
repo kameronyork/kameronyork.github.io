@@ -32,6 +32,9 @@ dedication_data <- read.csv("https://www.kameronyork.com/datasets/dedication-dat
 quotes <- read.csv("https://www.kameronyork.com/datasets/conference-quotes.csv", encoding="UTF-8")
 ```
 
+<small>Images are used with permission from the Church of Jesus Christ of Latter-Day Saints</small>
+<br>
+<br>
 Members of the Church of Jesus Christ of Latter-Day Saints believe their Prophet to be an inspired leader.  In fact, the Prophet is the only leader with authority to make decisions for the church as a whole.  Often Prophets for the Church of Jesus Christ of Latter-Day Saints have focuses and initiatives that are specific to their ministry.  To what extent do Prophets inspire change today?  
 
 This analysis will seek to prove three significant changes in the culture of the Church of Jesus Christ each brought about by a different modern Prophet.  Click the tabs below to view how President Hinckley changed the way the church talks about temples, how President Benson increased references to the Book of Mormon in General Conference, and how President Nelson has inspired more discussions on the "Gathering of Israel" than ever before!
@@ -42,7 +45,7 @@ This analysis will seek to prove three significant changes in the culture of the
 #### Temples {.tabset}
 
 ![President Gordon B. Hincley Temples Header](https://www.kameronyork.com/docs/assets/hinckley-header.png) 
-<small>Source: [Church of Jesus Christ Media Library](https://www.churchofjesuschrist.org/media/images)</small>
+<small>President Hinckley © By Intellectual Reserve, Inc. | Washington D.C. Temple by Neal Most</small>
 <br>
 <br>
 <i>("Temple", "Temples", "House of God", "House of the Lord")</i>
@@ -212,7 +215,7 @@ While these two phrases don't actually show much change, the phrase "Temple" sho
 #### Book of Mormon {.tabset}
 
 ![President Ezra Taft Benson Book of Mormon Header](https://www.kameronyork.com/docs/assets/benson-header.png) 
-<small>Source: [Church of Jesus Christ Media Library](https://www.churchofjesuschrist.org/media/images)</small>
+<small>President Benson by Busath Photography © By Intellectual Reserve, Inc. | Scriptures © By Intellectual Reserve, Inc.</small>
 <br>
 <br>
 <i>("Book of Mormon")</i>
@@ -353,7 +356,7 @@ ggplot(data = benson_check) +
 #### Gathering Israel {.tabset}
 
 ![President Ezra Taft Benson Book of Mormon Header](https://www.kameronyork.com/docs/assets/nelson-header.png) 
-<small>Source: [Church of Jesus Christ Media Library](https://www.churchofjesuschrist.org/media/images)</small>
+<small>President Nelson © By Intellectual Reserve, Inc. | Jesus Teaching in Parables © By Intellectual Reserve, Inc.</small>
 <br>
 <br>
 <i>("Gathering Israel", "Both Sides of the Veil")</i>
@@ -449,6 +452,7 @@ This T Test is a statistical test meant to tell us if the means of both populati
 President Hinckley's focus on temples took the average mentions of the temple in general conference talks from `107.1` per year to `177.6`.  President Benson's focus on using the Book of Mormon more increased the average quotes from the Book in general conference talks from `141.3` per year to `200`.  President Nelson's focus on, "Gathering Israel on both sides of the veil," has caused mentions in general conference talks to increase from an average of `0.8696` per year to `8.429`!  These are all examples of changes in the church that can be directly tied back to the influence of prophets.
 
 Based on these conclusions, and I'm sure many other examples outside of this analysis, we can determine that Prophets do indeed inspire change within the church.
+
 
 <br>
 <br>

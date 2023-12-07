@@ -1,0 +1,484 @@
+---
+title: "What is the Most Quoted Scripture in General Conference?"
+author: "Kameron York"
+output:
+  html_document:
+    code_folding: show
+    includes:
+      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/projects/conference/headers/inspire-change-header.html"
+      after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
+---
+<small>Last Updated:  12/6/2023</small>
+```{r setup, include=FALSE}
+library(tidyverse)
+
+verses <- read.csv("https://kameronyork.com/datasets/scripture-verses.csv", encoding = "UTF-8")
+quotes <- read.csv("https://kameronyork.com/datasets/conference-quotes.csv", encoding = "UTF-8") %>% 
+  mutate(decade = (talk_year %/% 10) * 10) %>% 
+  filter(scripture != "null null:null")
+
+quotes_all <- quotes %>% 
+  group_by(scripture) %>% # Group by scripture
+  summarise(count = n()) %>% # Aggregate by counting the rows
+  arrange(desc(count)) %>%  # Sort by count in descending order
+  slice(1:10) # Keep only the first 10 rows
+
+quotes_1970 <- quotes %>% 
+  filter(decade == 1970) %>% 
+  group_by(scripture) %>% # Group by scripture
+  summarise(count = n()) %>% # Aggregate by counting the rows
+  arrange(desc(count)) %>%  # Sort by count in descending order
+  slice(1:10) # Keep only the first 10 rows
+
+quotes_1980 <- quotes %>% 
+  filter(decade == 1980) %>% 
+  group_by(scripture) %>% # Group by scripture
+  summarise(count = n()) %>% # Aggregate by counting the rows
+  arrange(desc(count)) %>%  # Sort by count in descending order
+  slice(1:10) # Keep only the first 10 rows
+
+quotes_1990 <- quotes %>% 
+  filter(decade == 1990) %>% 
+  group_by(scripture) %>% # Group by scripture
+  summarise(count = n()) %>% # Aggregate by counting the rows
+  arrange(desc(count)) %>%  # Sort by count in descending order
+  slice(1:10) # Keep only the first 10 rows
+
+quotes_2000 <- quotes %>% 
+  filter(decade == 2000) %>% 
+  group_by(scripture) %>% # Group by scripture
+  summarise(count = n()) %>% # Aggregate by counting the rows
+  arrange(desc(count)) %>%  # Sort by count in descending order
+  slice(1:10) # Keep only the first 10 rows
+
+quotes_2010 <- quotes %>% 
+  filter(decade == 2010) %>% 
+  group_by(scripture) %>% # Group by scripture
+  summarise(count = n()) %>% # Aggregate by counting the rows
+  arrange(desc(count)) %>%  # Sort by count in descending order
+  slice(1:10) # Keep only the first 10 rows
+
+quotes_2020 <- quotes %>% 
+  filter(decade == 2020) %>% 
+  group_by(scripture) %>% # Group by scripture
+  summarise(count = n()) %>% # Aggregate by counting the rows
+  arrange(desc(count)) %>%  # Sort by count in descending order
+  slice(1:10) # Keep only the first 10 rows
+  
+
+# All Time References
+ref_all_1 <- as.character(quotes_all[1, 1])
+count_all_1 <- as.numeric(quotes_all[1, 2])
+words_all_1 <- (verses %>% filter(scripture == ref_all_1))[1, 8]
+
+ref_all_2 <- as.character(quotes_all[2, 1])
+count_all_2 <- as.numeric(quotes_all[2, 2])
+words_all_2 <- (verses %>% filter(scripture == ref_all_2))[1, 8]
+
+ref_all_3 <- as.character(quotes_all[3, 1])
+count_all_3 <- as.numeric(quotes_all[3, 2])
+words_all_3 <- (verses %>% filter(scripture == ref_all_3))[1, 8]
+
+ref_all_4 <- as.character(quotes_all[4, 1])
+count_all_4 <- as.numeric(quotes_all[4, 2])
+words_all_4 <- (verses %>% filter(scripture == ref_all_4))[1, 8]
+
+ref_all_5 <- as.character(quotes_all[5, 1])
+count_all_5 <- as.numeric(quotes_all[5, 2])
+words_all_5 <- (verses %>% filter(scripture == ref_all_5))[1, 8]
+
+ref_all_6 <- as.character(quotes_all[6, 1])
+count_all_6 <- as.numeric(quotes_all[6, 2])
+words_all_6 <- (verses %>% filter(scripture == ref_all_6))[1, 8]
+
+ref_all_7 <- as.character(quotes_all[7, 1])
+count_all_7 <- as.numeric(quotes_all[7, 2])
+words_all_7 <- (verses %>% filter(scripture == ref_all_7))[1, 8]
+
+ref_all_8 <- as.character(quotes_all[8, 1])
+count_all_8 <- as.numeric(quotes_all[8, 2])
+words_all_8 <- (verses %>% filter(scripture == ref_all_8))[1, 8]
+
+ref_all_9 <- as.character(quotes_all[9, 1])
+count_all_9 <- as.numeric(quotes_all[9, 2])
+words_all_9 <- (verses %>% filter(scripture == ref_all_9))[1, 8]
+
+ref_all_10 <- as.character(quotes_all[10, 1])
+count_all_10 <- as.numeric(quotes_all[10, 2])
+words_all_10 <- (verses %>% filter(scripture == ref_all_10))[1, 8]
+
+
+# 1970's References
+ref_1970_1 <- as.character(quotes_1970[1, 1])
+count_1970_1 <- as.numeric(quotes_1970[1, 2])
+words_1970_1 <- (verses %>% filter(scripture == ref_1970_1))[1, 8]
+
+ref_1970_2 <- as.character(quotes_1970[2, 1])
+count_1970_2 <- as.numeric(quotes_1970[2, 2])
+words_1970_2 <- (verses %>% filter(scripture == ref_1970_2))[1, 8]
+
+ref_1970_3 <- as.character(quotes_1970[3, 1])
+count_1970_3 <- as.numeric(quotes_1970[3, 2])
+words_1970_3 <- (verses %>% filter(scripture == ref_1970_3))[1, 8]
+
+ref_1970_4 <- as.character(quotes_1970[4, 1])
+count_1970_4 <- as.numeric(quotes_1970[4, 2])
+words_1970_4 <- (verses %>% filter(scripture == ref_1970_4))[1, 8]
+
+ref_1970_5 <- as.character(quotes_1970[5, 1])
+count_1970_5 <- as.numeric(quotes_1970[5, 2])
+words_1970_5 <- (verses %>% filter(scripture == ref_1970_5))[1, 8]
+
+ref_1970_6 <- as.character(quotes_1970[6, 1])
+count_1970_6 <- as.numeric(quotes_1970[6, 2])
+words_1970_6 <- (verses %>% filter(scripture == ref_1970_6))[1, 8]
+
+ref_1970_7 <- as.character(quotes_1970[7, 1])
+count_1970_7 <- as.numeric(quotes_1970[7, 2])
+words_1970_7 <- (verses %>% filter(scripture == ref_1970_7))[1, 8]
+
+ref_1970_8 <- as.character(quotes_1970[8, 1])
+count_1970_8 <- as.numeric(quotes_1970[8, 2])
+words_1970_8 <- (verses %>% filter(scripture == ref_1970_8))[1, 8]
+
+ref_1970_9 <- as.character(quotes_1970[9, 1])
+count_1970_9 <- as.numeric(quotes_1970[9, 2])
+words_1970_9 <- (verses %>% filter(scripture == ref_1970_9))[1, 8]
+
+ref_1970_10 <- as.character(quotes_1970[10, 1])
+count_1970_10 <- as.numeric(quotes_1970[10, 2])
+words_1970_10 <- (verses %>% filter(scripture == ref_1970_10))[1, 8]
+
+
+# 1980's References
+ref_1980_1 <- as.character(quotes_1980[1, 1])
+count_1980_1 <- as.numeric(quotes_1980[1, 2])
+words_1980_1 <- (verses %>% filter(scripture == ref_1980_1))[1, 8]
+
+ref_1980_2 <- as.character(quotes_1980[2, 1])
+count_1980_2 <- as.numeric(quotes_1980[2, 2])
+words_1980_2 <- (verses %>% filter(scripture == ref_1980_2))[1, 8]
+
+ref_1980_3 <- as.character(quotes_1980[3, 1])
+count_1980_3 <- as.numeric(quotes_1980[3, 2])
+words_1980_3 <- (verses %>% filter(scripture == ref_1980_3))[1, 8]
+
+ref_1980_4 <- as.character(quotes_1980[4, 1])
+count_1980_4 <- as.numeric(quotes_1980[4, 2])
+words_1980_4 <- (verses %>% filter(scripture == ref_1980_4))[1, 8]
+
+ref_1980_5 <- as.character(quotes_1980[5, 1])
+count_1980_5 <- as.numeric(quotes_1980[5, 2])
+words_1980_5 <- (verses %>% filter(scripture == ref_1980_5))[1, 8]
+
+ref_1980_6 <- as.character(quotes_1980[6, 1])
+count_1980_6 <- as.numeric(quotes_1980[6, 2])
+words_1980_6 <- (verses %>% filter(scripture == ref_1980_6))[1, 8]
+
+ref_1980_7 <- as.character(quotes_1980[7, 1])
+count_1980_7 <- as.numeric(quotes_1980[7, 2])
+words_1980_7 <- (verses %>% filter(scripture == ref_1980_7))[1, 8]
+
+ref_1980_8 <- as.character(quotes_1980[8, 1])
+count_1980_8 <- as.numeric(quotes_1980[8, 2])
+words_1980_8 <- (verses %>% filter(scripture == ref_1980_8))[1, 8]
+
+ref_1980_9 <- as.character(quotes_1980[9, 1])
+count_1980_9 <- as.numeric(quotes_1980[9, 2])
+words_1980_9 <- (verses %>% filter(scripture == ref_1980_9))[1, 8]
+
+ref_1980_10 <- as.character(quotes_1980[10, 1])
+count_1980_10 <- as.numeric(quotes_1980[10, 2])
+words_1980_10 <- (verses %>% filter(scripture == ref_1980_10))[1, 8]
+
+
+# 1990's References
+ref_1990_1 <- as.character(quotes_1990[1, 1])
+count_1990_1 <- as.numeric(quotes_1990[1, 2])
+words_1990_1 <- (verses %>% filter(scripture == ref_1990_1))[1, 8]
+
+ref_1990_2 <- as.character(quotes_1990[2, 1])
+count_1990_2 <- as.numeric(quotes_1990[2, 2])
+words_1990_2 <- (verses %>% filter(scripture == ref_1990_2))[1, 8]
+
+ref_1990_3 <- as.character(quotes_1990[3, 1])
+count_1990_3 <- as.numeric(quotes_1990[3, 2])
+words_1990_3 <- (verses %>% filter(scripture == ref_1990_3))[1, 8]
+
+ref_1990_4 <- as.character(quotes_1990[4, 1])
+count_1990_4 <- as.numeric(quotes_1990[4, 2])
+words_1990_4 <- (verses %>% filter(scripture == ref_1990_4))[1, 8]
+
+ref_1990_5 <- as.character(quotes_1990[5, 1])
+count_1990_5 <- as.numeric(quotes_1990[5, 2])
+words_1990_5 <- (verses %>% filter(scripture == ref_1990_5))[1, 8]
+
+ref_1990_6 <- as.character(quotes_1990[6, 1])
+count_1990_6 <- as.numeric(quotes_1990[6, 2])
+words_1990_6 <- (verses %>% filter(scripture == ref_1990_6))[1, 8]
+
+ref_1990_7 <- as.character(quotes_1990[7, 1])
+count_1990_7 <- as.numeric(quotes_1990[7, 2])
+words_1990_7 <- (verses %>% filter(scripture == ref_1990_7))[1, 8]
+
+ref_1990_8 <- as.character(quotes_1990[8, 1])
+count_1990_8 <- as.numeric(quotes_1990[8, 2])
+words_1990_8 <- (verses %>% filter(scripture == ref_1990_8))[1, 8]
+
+ref_1990_9 <- as.character(quotes_1990[9, 1])
+count_1990_9 <- as.numeric(quotes_1990[9, 2])
+words_1990_9 <- (verses %>% filter(scripture == ref_1990_9))[1, 8]
+
+ref_1990_10 <- as.character(quotes_1990[10, 1])
+count_1990_10 <- as.numeric(quotes_1990[10, 2])
+words_1990_10 <- (verses %>% filter(scripture == ref_1990_10))[1, 8]
+
+
+# 2000's References
+ref_2000_1 <- as.character(quotes_2000[1, 1])
+count_2000_1 <- as.numeric(quotes_2000[1, 2])
+words_2000_1 <- (verses %>% filter(scripture == ref_2000_1))[1, 8]
+
+ref_2000_2 <- as.character(quotes_2000[2, 1])
+count_2000_2 <- as.numeric(quotes_2000[2, 2])
+words_2000_2 <- (verses %>% filter(scripture == ref_2000_2))[1, 8]
+
+ref_2000_3 <- as.character(quotes_2000[3, 1])
+count_2000_3 <- as.numeric(quotes_2000[3, 2])
+words_2000_3 <- (verses %>% filter(scripture == ref_2000_3))[1, 8]
+
+ref_2000_4 <- as.character(quotes_2000[4, 1])
+count_2000_4 <- as.numeric(quotes_2000[4, 2])
+words_2000_4 <- (verses %>% filter(scripture == ref_2000_4))[1, 8]
+
+ref_2000_5 <- as.character(quotes_2000[5, 1])
+count_2000_5 <- as.numeric(quotes_2000[5, 2])
+words_2000_5 <- (verses %>% filter(scripture == ref_2000_5))[1, 8]
+
+ref_2000_6 <- as.character(quotes_2000[6, 1])
+count_2000_6 <- as.numeric(quotes_2000[6, 2])
+words_2000_6 <- (verses %>% filter(scripture == ref_2000_6))[1, 8]
+
+ref_2000_7 <- as.character(quotes_2000[7, 1])
+count_2000_7 <- as.numeric(quotes_2000[7, 2])
+words_2000_7 <- (verses %>% filter(scripture == ref_2000_7))[1, 8]
+
+ref_2000_8 <- as.character(quotes_2000[8, 1])
+count_2000_8 <- as.numeric(quotes_2000[8, 2])
+words_2000_8 <- (verses %>% filter(scripture == ref_2000_8))[1, 8]
+
+ref_2000_9 <- as.character(quotes_2000[9, 1])
+count_2000_9 <- as.numeric(quotes_2000[9, 2])
+words_2000_9 <- (verses %>% filter(scripture == ref_2000_9))[1, 8]
+
+ref_2000_10 <- as.character(quotes_2000[10, 1])
+count_2000_10 <- as.numeric(quotes_2000[10, 2])
+words_2000_10 <- (verses %>% filter(scripture == ref_2000_10))[1, 8]
+
+
+# 2010's References
+ref_2010_1 <- as.character(quotes_2010[1, 1])
+count_2010_1 <- as.numeric(quotes_2010[1, 2])
+words_2010_1 <- (verses %>% filter(scripture == ref_2010_1))[1, 8]
+
+ref_2010_2 <- as.character(quotes_2010[2, 1])
+count_2010_2 <- as.numeric(quotes_2010[2, 2])
+words_2010_2 <- (verses %>% filter(scripture == ref_2010_2))[1, 8]
+
+ref_2010_3 <- as.character(quotes_2010[3, 1])
+count_2010_3 <- as.numeric(quotes_2010[3, 2])
+words_2010_3 <- (verses %>% filter(scripture == ref_2010_3))[1, 8]
+
+ref_2010_4 <- as.character(quotes_2010[4, 1])
+count_2010_4 <- as.numeric(quotes_2010[4, 2])
+words_2010_4 <- (verses %>% filter(scripture == ref_2010_4))[1, 8]
+
+ref_2010_5 <- as.character(quotes_2010[5, 1])
+count_2010_5 <- as.numeric(quotes_2010[5, 2])
+words_2010_5 <- (verses %>% filter(scripture == ref_2010_5))[1, 8]
+
+ref_2010_6 <- as.character(quotes_2010[6, 1])
+count_2010_6 <- as.numeric(quotes_2010[6, 2])
+words_2010_6 <- (verses %>% filter(scripture == ref_2010_6))[1, 8]
+
+ref_2010_7 <- as.character(quotes_2010[7, 1])
+count_2010_7 <- as.numeric(quotes_2010[7, 2])
+words_2010_7 <- (verses %>% filter(scripture == ref_2010_7))[1, 8]
+
+ref_2010_8 <- as.character(quotes_2010[8, 1])
+count_2010_8 <- as.numeric(quotes_2010[8, 2])
+words_2010_8 <- (verses %>% filter(scripture == ref_2010_8))[1, 8]
+
+ref_2010_9 <- as.character(quotes_2010[9, 1])
+count_2010_9 <- as.numeric(quotes_2010[9, 2])
+words_2010_9 <- (verses %>% filter(scripture == ref_2010_9))[1, 8]
+
+ref_2010_10 <- as.character(quotes_2010[10, 1])
+count_2010_10 <- as.numeric(quotes_2010[10, 2])
+words_2010_10 <- (verses %>% filter(scripture == ref_2010_10))[1, 8]
+
+
+# 2020's References
+ref_2020_1 <- as.character(quotes_2020[1, 1])
+count_2020_1 <- as.numeric(quotes_2020[1, 2])
+words_2020_1 <- (verses %>% filter(scripture == ref_2020_1))[1, 8]
+
+ref_2020_2 <- as.character(quotes_2020[2, 1])
+count_2020_2 <- as.numeric(quotes_2020[2, 2])
+words_2020_2 <- (verses %>% filter(scripture == ref_2020_2))[1, 8]
+
+ref_2020_3 <- as.character(quotes_2020[3, 1])
+count_2020_3 <- as.numeric(quotes_2020[3, 2])
+words_2020_3 <- (verses %>% filter(scripture == ref_2020_3))[1, 8]
+
+ref_2020_4 <- as.character(quotes_2020[4, 1])
+count_2020_4 <- as.numeric(quotes_2020[4, 2])
+words_2020_4 <- (verses %>% filter(scripture == ref_2020_4))[1, 8]
+
+ref_2020_5 <- as.character(quotes_2020[5, 1])
+count_2020_5 <- as.numeric(quotes_2020[5, 2])
+words_2020_5 <- (verses %>% filter(scripture == ref_2020_5))[1, 8]
+
+ref_2020_6 <- as.character(quotes_2020[6, 1])
+count_2020_6 <- as.numeric(quotes_2020[6, 2])
+words_2020_6 <- (verses %>% filter(scripture == ref_2020_6))[1, 8]
+
+ref_2020_7 <- as.character(quotes_2020[7, 1])
+count_2020_7 <- as.numeric(quotes_2020[7, 2])
+words_2020_7 <- (verses %>% filter(scripture == ref_2020_7))[1, 8]
+
+ref_2020_8 <- as.character(quotes_2020[8, 1])
+count_2020_8 <- as.numeric(quotes_2020[8, 2])
+words_2020_8 <- (verses %>% filter(scripture == ref_2020_8))[1, 8]
+
+ref_2020_9 <- as.character(quotes_2020[9, 1])
+count_2020_9 <- as.numeric(quotes_2020[9, 2])
+words_2020_9 <- (verses %>% filter(scripture == ref_2020_9))[1, 8]
+
+ref_2020_10 <- as.character(quotes_2020[10, 1])
+count_2020_10 <- as.numeric(quotes_2020[10, 2])
+words_2020_10 <- (verses %>% filter(scripture == ref_2020_10))[1, 8]
+
+```
+<br>
+The General Conference of the Church of Jesus Christ of Latter-Day Saints is a worldwide church service held bi-annually.  Members of the world-wide church tune in to listen to the Church's leadership share messages of hope, faith, and prayer.  Leaders often quote scriptures in these messages, but what scripture is quoted the most?
+
+Data for this article was gathered from the Church's website.  Some scripture references have been excluded.  To learn more about these exclusions and how the data was collected read my article about [Collecting General Conference Data](https://kameronyork.com/blog/quote-collecting.html).
+
+The most quoted scripture of all time is Moses 1:39.  A fitting first place as this scripture clearly sets forth God's purpose and plan for His Children.  While Moses 1:39 claimed first place from the 70's to the 90's the 2000's have seen other verses take the top spot.  
+
+### The All-Time Most Quoted Scriptures in General Conference:
+<br>
+Rank | Scripture | Count |  Words
+--- | --- | --- | ---              
+1 | `r ref_all_1` | `r count_all_1` | `r words_all_1`       
+2 | `r ref_all_2` | `r count_all_2` | `r words_all_2`       
+3 | `r ref_all_3` | `r count_all_3` | `r words_all_3`       
+4 | `r ref_all_4` | `r count_all_4` | `r words_all_4`       
+5 | `r ref_all_5` | `r count_all_5` | `r words_all_5`       
+6 | `r ref_all_6` | `r count_all_6` | `r words_all_6`       
+7 | `r ref_all_7` | `r count_all_7` | `r words_all_7`       
+8 | `r ref_all_8` | `r count_all_8` | `r words_all_8`       
+9 | `r ref_all_9` | `r count_all_9` | `r words_all_9`       
+10 | `r ref_all_10` | `r count_all_10` | `r words_all_10` 
+
+
+### Most Quoted By Decade: {.tabset}
+
+#### 1970's
+<br>
+
+Rank | Scripture | Count |  Words
+--- | --- | --- | ---              
+1 | `r ref_1970_1` | `r count_1970_1` | `r words_1970_1`       
+2 | `r ref_1970_2` | `r count_1970_2` | `r words_1970_2`       
+3 | `r ref_1970_3` | `r count_1970_3` | `r words_1970_3`       
+4 | `r ref_1970_4` | `r count_1970_4` | `r words_1970_4`       
+5 | `r ref_1970_5` | `r count_1970_5` | `r words_1970_5`       
+6 | `r ref_1970_6` | `r count_1970_6` | `r words_1970_6`       
+7 | `r ref_1970_7` | `r count_1970_7` | `r words_1970_7`       
+8 | `r ref_1970_8` | `r count_1970_8` | `r words_1970_8`       
+9 | `r ref_1970_9` | `r count_1970_9` | `r words_1970_9`       
+10 | `r ref_1970_10` | `r count_1970_10` | `r words_1970_10` 
+
+#### 1980's
+<br>
+
+Rank | Scripture | Count |  Words
+--- | --- | --- | ---              
+1 | `r ref_1980_1` | `r count_1980_1` | `r words_1980_1`       
+2 | `r ref_1980_2` | `r count_1980_2` | `r words_1980_2`       
+3 | `r ref_1980_3` | `r count_1980_3` | `r words_1980_3`       
+4 | `r ref_1980_4` | `r count_1980_4` | `r words_1980_4`       
+5 | `r ref_1980_5` | `r count_1980_5` | `r words_1980_5`       
+6 | `r ref_1980_6` | `r count_1980_6` | `r words_1980_6`       
+7 | `r ref_1980_7` | `r count_1980_7` | `r words_1980_7`       
+8 | `r ref_1980_8` | `r count_1980_8` | `r words_1980_8`       
+9 | `r ref_1980_9` | `r count_1980_9` | `r words_1980_9`       
+10 | `r ref_1980_10` | `r count_1980_10` | `r words_1980_10` 
+
+#### 1990's
+<br>
+
+Rank | Scripture | Count |  Words
+--- | --- | --- | ---              
+1 | `r ref_1990_1` | `r count_1990_1` | `r words_1990_1`       
+2 | `r ref_1990_2` | `r count_1990_2` | `r words_1990_2`       
+3 | `r ref_1990_3` | `r count_1990_3` | `r words_1990_3`       
+4 | `r ref_1990_4` | `r count_1990_4` | `r words_1990_4`       
+5 | `r ref_1990_5` | `r count_1990_5` | `r words_1990_5`       
+6 | `r ref_1990_6` | `r count_1990_6` | `r words_1990_6`       
+7 | `r ref_1990_7` | `r count_1990_7` | `r words_1990_7`       
+8 | `r ref_1990_8` | `r count_1990_8` | `r words_1990_8`       
+9 | `r ref_1990_9` | `r count_1990_9` | `r words_1990_9`       
+10 | `r ref_1990_10` | `r count_1990_10` | `r words_1990_10` 
+
+#### 2000's
+<br>
+
+Rank | Scripture | Count |  Words
+--- | --- | --- | ---              
+1 | `r ref_2000_1` | `r count_2000_1` | `r words_2000_1`       
+2 | `r ref_2000_2` | `r count_2000_2` | `r words_2000_2`       
+3 | `r ref_2000_3` | `r count_2000_3` | `r words_2000_3`       
+4 | `r ref_2000_4` | `r count_2000_4` | `r words_2000_4`       
+5 | `r ref_2000_5` | `r count_2000_5` | `r words_2000_5`       
+6 | `r ref_2000_6` | `r count_2000_6` | `r words_2000_6`       
+7 | `r ref_2000_7` | `r count_2000_7` | `r words_2000_7`       
+8 | `r ref_2000_8` | `r count_2000_8` | `r words_2000_8`       
+9 | `r ref_2000_9` | `r count_2000_9` | `r words_2000_9`       
+10 | `r ref_2000_10` | `r count_2000_10` | `r words_2000_10` 
+
+
+#### 2010's
+<br>
+
+Rank | Scripture | Count |  Words
+--- | --- | --- | ---              
+1 | `r ref_2010_1` | `r count_2010_1` | `r words_2010_1`       
+2 | `r ref_2010_2` | `r count_2010_2` | `r words_2010_2`       
+3 | `r ref_2010_3` | `r count_2010_3` | `r words_2010_3`       
+4 | `r ref_2010_4` | `r count_2010_4` | `r words_2010_4`       
+5 | `r ref_2010_5` | `r count_2010_5` | `r words_2010_5`       
+6 | `r ref_2010_6` | `r count_2010_6` | `r words_2010_6`       
+7 | `r ref_2010_7` | `r count_2010_7` | `r words_2010_7`       
+8 | `r ref_2010_8` | `r count_2010_8` | `r words_2010_8`       
+9 | `r ref_2010_9` | `r count_2010_9` | `r words_2010_9`       
+10 | `r ref_2010_10` | `r count_2010_10` | `r words_2010_10` 
+
+
+#### 2020's
+<br>
+
+Rank | Scripture | Count |  Words
+--- | --- | --- | ---              
+1 | `r ref_2020_1` | `r count_2020_1` | `r words_2020_1`       
+2 | `r ref_2020_2` | `r count_2020_2` | `r words_2020_2`       
+3 | `r ref_2020_3` | `r count_2020_3` | `r words_2020_3`       
+4 | `r ref_2020_4` | `r count_2020_4` | `r words_2020_4`       
+5 | `r ref_2020_5` | `r count_2020_5` | `r words_2020_5`       
+6 | `r ref_2020_6` | `r count_2020_6` | `r words_2020_6`       
+7 | `r ref_2020_7` | `r count_2020_7` | `r words_2020_7`       
+8 | `r ref_2020_8` | `r count_2020_8` | `r words_2020_8`       
+9 | `r ref_2020_9` | `r count_2020_9` | `r words_2020_9`       
+10 | `r ref_2020_10` | `r count_2020_10` | `r words_2020_10` 
