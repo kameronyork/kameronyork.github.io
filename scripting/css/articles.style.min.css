@@ -149,25 +149,27 @@ body {
     outline: 0;
   }
   .section {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
   }
   @media (max-width: 768px) {
     .section {
-      padding-top: 50px;
+      padding-top: 8px;
     }
   }
   .section-sm {
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
   @media (max-width: 768px) {
     .section-sm {
-      padding-top: 30px;
+      padding-top: 5px;
     }
   }
   .section-title {
-    margin-bottom: 40px;
+    margin-bottom: 4px;
   }
   .bg-cover {
     background-size: cover;
@@ -728,4 +730,6 @@ body {
   a:hover i {
     color: var(--primary-color);
   }
-  
+  .code-folding-btn {
+    display: none;
+  }
