@@ -140,33 +140,34 @@ function replaceVerseNumbersWithButtons() {
       const verseNumberText = verseNumber.textContent.trim();
       const bookFullName = bookDecoder[bookAbbr] || '';
       const scripturePath = `${bookFullName} ${chapter}:${verseNumberText}`;
-
+    
       const button = document.createElement('button');
       button.style.fontSize = '12px';
       button.style.border = '1px solid lightgrey';
       button.style.borderRadius = '5px';
       button.style.display = 'inline-flex';
-
+      button.style.overflow = 'hidden'; // Ensures content doesn't overflow the button
+      button.style.background = 'linear-gradient(to right, #191970 50%, white 50%)'; // Blue-White gradient
+    
       const leftSpan = document.createElement('span');
       const rightSpan = document.createElement('span');
-
-      leftSpan.style.backgroundColor = '#191970';
+    
       leftSpan.style.color = 'white';
       leftSpan.style.flex = '1';
-      leftSpan.style.padding = '5px';
+      leftSpan.style.padding = '2px 10px 2px 0px'; // Adjust right padding to move text left
       leftSpan.style.boxSizing = 'border-box';
-      leftSpan.textContent = verseNumberText;
-
-      rightSpan.style.backgroundColor = 'white';
+    
       rightSpan.style.flex = '2';
-      rightSpan.style.padding = '5px';
+      rightSpan.style.padding = '2px';
       rightSpan.style.boxSizing = 'border-box';
-
+    
+      leftSpan.textContent = verseNumberText;
+    
       // Fetch the JSON data
       const jsonData = await fetchJSON('https://kameronyork.com/datasets/conference-quotes.json');
       const scriptureCount = countScriptureInstances(jsonData, scripturePath);
       rightSpan.textContent = `${scriptureCount}`;
-
+    
       button.appendChild(leftSpan);
       button.appendChild(rightSpan);
 
@@ -174,11 +175,11 @@ function replaceVerseNumbersWithButtons() {
         const jsonData = await fetchJSON('https://kameronyork.com/datasets/conference-quotes.json');
         const scriptureCount = countScriptureInstances(jsonData, scripturePath);
         const matchingEntries = getEntriesWithScripture(jsonData, scripturePath);
-
-        rightSpan.textContent = `${scripturePath} (${scriptureCount})`;
-
+      
+        rightSpan.textContent = `${scriptureCount}`;
+      
         const tableView = createTableView(matchingEntries);
-
+      
         const overlay = document.createElement('div');
         overlay.style.position = 'fixed';
         overlay.style.top = '0';
@@ -190,7 +191,7 @@ function replaceVerseNumbersWithButtons() {
         overlay.style.alignItems = 'center';
         overlay.style.justifyContent = 'center';
         overlay.style.zIndex = '9999';
-
+      
         const htmlPaneContent = `
           <div style="background-color: white; padding: 20px; border-radius: 5px;">
             <h2>Scripture Details</h2>
@@ -198,11 +199,11 @@ function replaceVerseNumbersWithButtons() {
             <button id="closeButton">Close</button>
           </div>
         `;
-
+      
         overlay.innerHTML = htmlPaneContent;
-
+      
         document.body.appendChild(overlay);
-
+      
         const closeButton = document.getElementById('closeButton');
         closeButton.addEventListener('click', function() {
           overlay.remove();
