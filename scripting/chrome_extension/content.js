@@ -89,24 +89,48 @@ const bookDecoder = {
   'a-of-f': 'Articles of Faith',
 };
 
+async function fetchJSON(url) {
+  const response = await fetch(url);
+  return response.json();
+}
+
+function countScriptureInstances(data, scripturePath) {
+  return data.filter(entry => entry.scripture === scripturePath).length;
+}
+
+function getEntriesWithScripture(data, scripturePath) {
+  return data.filter(entry => entry.scripture === scripturePath);
+}
+
+function createTableView(entries) {
+  let tableHTML = '<table border="1"><tr><th>quote_id</th><th>talk_year</th><th>speaker</th></tr>';
+
+  entries.forEach(entry => {
+    tableHTML += `<tr><td>${entry.quote_id}</td><td>${entry.talk_year}</td><td>${entry.speaker}</td></tr>`;
+  });
+
+  tableHTML += '</table>';
+  return tableHTML;
+}
+
 function replaceVerseNumbersWithButtons() {
   const verseNumbers = document.querySelectorAll('.verse-number');
   const url = window.location.href;
 
   const langIndex = url.indexOf('lang=eng');
-  
+
   if (langIndex > -1) {
     const chapterIndex = url.lastIndexOf('/', langIndex - 1);
     const bookIndex = url.lastIndexOf('/', chapterIndex - 1);
-    
+
     let chapter = url.substring(chapterIndex + 1, langIndex);
     if (chapter.includes('?')) {
-      chapter = chapter.split('?')[0]; // Remove anything after the question mark
+      chapter = chapter.split('?')[0];
     }
 
     const bookAbbr = url.substring(bookIndex + 1, chapterIndex);
 
-    verseNumbers.forEach((verseNumber) => {
+    verseNumbers.forEach(async (verseNumber) => {
       const verseNumberText = verseNumber.textContent.trim();
       const bookFullName = bookDecoder[bookAbbr] || '';
       const scripturePath = `${bookFullName} ${chapter}:${verseNumberText}`;
@@ -131,12 +155,24 @@ function replaceVerseNumbersWithButtons() {
       rightSpan.style.flex = '2';
       rightSpan.style.padding = '5px';
       rightSpan.style.boxSizing = 'border-box';
-      rightSpan.textContent = scripturePath;
+
+      // Fetch the JSON data
+      const jsonData = await fetchJSON('https://kameronyork.com/datasets/conference-quotes.json');
+      const scriptureCount = countScriptureInstances(jsonData, scripturePath);
+      rightSpan.textContent = `${scriptureCount}`;
 
       button.appendChild(leftSpan);
       button.appendChild(rightSpan);
 
-      button.addEventListener('click', function() {
+      button.addEventListener('click', async function() {
+        const jsonData = await fetchJSON('https://kameronyork.com/datasets/conference-quotes.json');
+        const scriptureCount = countScriptureInstances(jsonData, scripturePath);
+        const matchingEntries = getEntriesWithScripture(jsonData, scripturePath);
+
+        rightSpan.textContent = `${scripturePath} (${scriptureCount})`;
+
+        const tableView = createTableView(matchingEntries);
+
         const overlay = document.createElement('div');
         overlay.style.position = 'fixed';
         overlay.style.top = '0';
@@ -151,9 +187,8 @@ function replaceVerseNumbersWithButtons() {
 
         const htmlPaneContent = `
           <div style="background-color: white; padding: 20px; border-radius: 5px;">
-            <h2>HTML Pane Title</h2>
-            <p>This is the content of the HTML pane...</p>
-            <p>You can add any HTML content you want here.</p>
+            <h2>Scripture Details</h2>
+            ${tableView}
             <button id="closeButton">Close</button>
           </div>
         `;
