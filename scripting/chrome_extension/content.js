@@ -113,6 +113,12 @@ function createTableView(entries) {
   return tableHTML;
 }
 
+function createSpace() {
+  const space = document.createElement('span');
+  space.innerHTML = '&nbsp&nbsp;'; // Add a space using HTML entity
+  return space;
+}
+
 function replaceVerseNumbersWithButtons() {
   const verseNumbers = document.querySelectorAll('.verse-number');
   const url = window.location.href;
@@ -203,9 +209,26 @@ function replaceVerseNumbersWithButtons() {
         });
       });
 
+      const space = createSpace();
+      verseNumber.parentNode.insertBefore(space, verseNumber.nextSibling);
+
       verseNumber.parentNode.replaceChild(button, verseNumber);
     });
   }
 }
 
 window.addEventListener('load', replaceVerseNumbersWithButtons);
+
+let currentUrl = window.location.href;
+
+function checkUrlChange() {
+  const newUrl = window.location.href;
+  if (newUrl !== currentUrl) {
+    replaceVerseNumbersWithButtons(); // Update extension
+    createSpace;
+    currentUrl = newUrl;
+  }
+}
+
+// Check for URL changes every second (adjust interval as needed)
+setInterval(checkUrlChange, 1000);
