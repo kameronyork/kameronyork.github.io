@@ -1,0 +1,54 @@
+body {
+  width: 300px;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+}
+
+.quote-list {
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f9f9f9;
+  overflow: auto;
+  max-height: 300px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 5px 0;
+  padding: 5px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #0073e6;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #005bbb;
+}
+
+/* Add this CSS to your extension's CSS file */
+.verse-number-box {
+  display: inline-block;
+  background-color: blue;
+  color: white;
+  padding: 4px 8px; /* Adjust padding as needed */
+  margin-right: 8px; /* Add some space after each box */
+  border-radius: 4px; /* Optional: Add rounded corners */
+}
+
+.verse-number {
+  font-weight: bold;
+  font-size: 14px; /* Adjust font size as needed */
+}

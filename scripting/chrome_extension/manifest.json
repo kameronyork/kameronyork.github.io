@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "My Verse Quoter",
+  "version": "1.0",
+  "description": "Quotes from General Conference",
+  "permissions": [
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://www.churchofjesuschrist.org/"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://www.churchofjesuschrist.org/study/scriptures/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  }
+}
