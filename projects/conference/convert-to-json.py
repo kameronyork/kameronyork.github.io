@@ -10,7 +10,7 @@ file_path = "C:/Users/theka/Desktop/Projects/Website_project/kameronyork.com/dat
 quotes = df[['quote_id', 'talk_year', 'talk_month', 'talk_day', 'talk_session', 'speaker', 'title', 'talk_id', 'quad_book', 'overall_book', 'book_chapter', 'scripture', 'apostle_check']]
 #%%
 # Save the DataFrame as JSON
-quotes.to_json(file_path)
+quotes.to_json(file_path, orient='records')
 
 
 
