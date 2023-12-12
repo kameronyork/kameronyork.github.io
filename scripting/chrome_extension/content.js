@@ -126,6 +126,7 @@ async function replaceVerseNumbersWithButtons() {
 
   if (langIndex > -1) {
     verseNumbers.forEach(async (verseNumber) => {
+      // Creating the scripturePath for lookup
       const chapterIndex = url.lastIndexOf('/', langIndex - 1);
       const bookIndex = url.lastIndexOf('/', chapterIndex - 1);
 
@@ -134,18 +135,39 @@ async function replaceVerseNumbersWithButtons() {
         chapter = chapter.split('?')[0];
       }
 
-      const bookAbbr = url.substring(bookIndex + 1, chapterIndex);
-      const verseNumberText = verseNumber.textContent.trim();
-      const bookFullName = bookDecoder[bookAbbr] || '';
-      const scripturePath = `${bookFullName} ${chapter}:${verseNumberText}`;
+      const bookAbbr = url.substring(bookIndex + 1, chapterIndex);  // Getting the Book
+      const verseNumberText = verseNumber.textContent.trim();  // Getting the Verse Number
+      const bookFullName = bookDecoder[bookAbbr] || '';  // Decoding the Book
+      const scripturePath = `${bookFullName} ${chapter}:${verseNumberText}`;  // Creating the Path for Lookup
 
+      // Getting the count of times quoted:
       const jsonData = await fetchJSON('https://kameronyork.com/datasets/conference-quotes.json');
       const scriptureCount = countScriptureInstances(jsonData, scripturePath);
       const matchingEntries = getEntriesWithScripture(jsonData, scripturePath);
 
+      // Defining the width of the buttons based on the number of digits in the variable:
+      let verseButtonWidth = '25px';
+      let countButtonWidth = '25px';
+
+      if (verseNumberText.length === 1) {
+        verseButtonWidth = '25px';
+      } else if (verseNumberText.length === 2) {
+        verseButtonWidth = '30px';
+      } else if (verseNumberText.length >= 3) {
+        verseButtonWidth = '35px';
+      }
+
+      if (scriptureCount.toString().length === 1) {
+        countButtonWidth = '25px';
+      } else if (scriptureCount.toString().length === 2) {
+        countButtonWidth = '30px';
+      } else if (scriptureCount.toString().length >= 3) {
+        countButtonWidth = '35px';
+      }
+
       if (scriptureCount === 0) {
         const verseButton = document.createElement('button');
-        verseButton.style.width = '30px';
+        verseButton.style.width = verseButtonWidth;
         verseButton.style.height = '20px';
         verseButton.style.border = 'none';
         verseButton.style.fontSize = '12px';
@@ -195,7 +217,7 @@ async function replaceVerseNumbersWithButtons() {
         verseNumber.style.display = 'none';
       } else {
         const verseButton = document.createElement('button');
-        verseButton.style.width = '30px'; // Adjust width as needed
+        verseButton.style.width = verseButtonWidth; // Adjust width as needed
         verseButton.style.height = '20px'; // Adjust height as needed
         verseButton.style.border = 'none';
         verseButton.style.fontSize = '12px';
@@ -214,7 +236,7 @@ async function replaceVerseNumbersWithButtons() {
         verseButton.style.verticalAlign = 'middle';
 
         const countButton = document.createElement('button');
-        countButton.style.width = '30px'; // Adjust width as needed
+        countButton.style.width = countButtonWidth; // Adjust width as needed
         countButton.style.height = '20px'; // Adjust height as needed
         countButton.style.border = '1px solid #191970'; // Border style and color
         countButton.style.fontSize = '12px';
