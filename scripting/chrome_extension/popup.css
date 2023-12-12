@@ -12,6 +12,25 @@ body {
   max-height: 300px;
 }
 
+.color-picker {
+  margin-bottom: 20px;
+}
+.example-button {
+  font-size: 12px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  display: inline-flex;
+  overflow: hidden;
+  background: linear-gradient(to right, #191970 50%, white 50%);
+  padding: 5px 10px;
+  margin-bottom: 10px;
+}
+.example-button span {
+  color: white;
+  flex: 1;
+  box-sizing: border-box;
+}
+
 ul {
   list-style: none;
   padding: 0;

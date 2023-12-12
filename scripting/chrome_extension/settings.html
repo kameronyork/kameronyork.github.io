@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="popup.css">
+</head>
+<body>
+  <div id="settings">
+    <h2>Extension Settings</h2>
+    <!-- Example button layout -->
+    <div class="example-button">
+      <span>15</span>
+      <span>32</span>
+    </div>
+    <label for="colorPicker">Choose Button Color:</label><br>
+    <input type="color" id="colorPicker" class="color-picker"><br>
+    <button id="visitSite">Visit kameronyork.com</button>
+  </div>
+
+  <script src="settings.js"></script>
+  <script>
+    // Link to kameronyork.com when button clicked
+    document.getElementById('visitSite').addEventListener('click', function() {
+      window.open('https://kameronyork.com', '_blank');
+    });
+
+    // Handle color picker change event
+    document.getElementById('colorPicker').addEventListener('change', function(event) {
+      // Save the selected color to localStorage or chrome.storage API
+      localStorage.setItem('buttonColor', event.target.value);
+
+      // You can also use chrome.storage API if developing a Chrome Extension
+      // chrome.storage.sync.set({ buttonColor: event.target.value });
+
+      // Apply the selected color to the example button
+      const exampleButton = document.querySelector('.example-button');
+      exampleButton.style.background = `linear-gradient(to right, ${event.target.value} 50%, white 50%)`;
+    });
+
+    // Retrieve the saved color on settings load (if any)
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedColor = localStorage.getItem('buttonColor');
+      if (savedColor) {
+        document.getElementById('colorPicker').value = savedColor;
+
+        // Apply the saved color to the example button on load
+        const exampleButton = document.querySelector('.example-button');
+        exampleButton.style.background = `linear-gradient(to right, ${savedColor} 50%, white 50%)`;
+      }
+    });
+  </script>
+</body>
+</html>
