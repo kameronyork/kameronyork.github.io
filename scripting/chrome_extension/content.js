@@ -103,15 +103,19 @@ function getEntriesWithScripture(data, scripturePath) {
 }
 
 function createTableView(entries) {
-  let tableHTML = '<table border="1"><tr><th>quote_id</th><th>talk_year</th><th>speaker</th></tr>';
+  let tableHTML = '<table border="1"><tr><th>Talk Year</th><th>Talk Month</th><th>Talk Day</th><th>Talk Session</th><th>Speaker</th><th>Title</th></tr>';
 
   entries.forEach(entry => {
-    tableHTML += `<tr><td>${entry.quote_id}</td><td>${entry.talk_year}</td><td>${entry.speaker}</td></tr>`;
+    // Assuming there's a 'hyperlink' property in each entry for the title hyperlink
+    const titleLink = entry.hyperlink ? `<a href="${entry.hyperlink}" target="_blank">${entry.title}</a>` : entry.title;
+
+    tableHTML += `<tr><td>${entry.talk_year}</td><td>${entry.talk_month}</td><td>${entry.talk_day}</td><td>${entry.talk_session}</td><td>${entry.speaker}</td><td>${titleLink}</td></tr>`;
   });
 
   tableHTML += '</table>';
   return tableHTML;
 }
+
 
 function createSpace() {
   const space = document.createElement('span');
@@ -260,7 +264,7 @@ async function replaceVerseNumbersWithButtons() {
 
         verseButton.addEventListener('click', async function() {
           const tableView = createTableView(matchingEntries);
-        
+          
           const overlay = document.createElement('div');
           overlay.style.position = 'fixed';
           overlay.style.top = '0';
@@ -268,28 +272,29 @@ async function replaceVerseNumbersWithButtons() {
           overlay.style.width = '100%';
           overlay.style.height = '100%';
           overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+          overlay.style.overflowY = 'auto'; // Add scrollbar if content exceeds height
           overlay.style.display = 'flex';
           overlay.style.alignItems = 'center';
           overlay.style.justifyContent = 'center';
           overlay.style.zIndex = '9999';
-        
+          
           const htmlPaneContent = `
-            <div style="background-color: white; padding: 20px; border-radius: 5px;">
+            <div style="background-color: white; padding: 20px; border-radius: 5px; max-height: 80vh; overflow-y: auto;">
               <h2>Scripture Details</h2>
               ${tableView}
               <button id="closeButton">Close</button>
             </div>
           `;
-        
+          
           overlay.innerHTML = htmlPaneContent;
-        
+          
           document.body.appendChild(overlay);
-        
+          
           const closeButton = document.getElementById('closeButton');
           closeButton.addEventListener('click', function() {
             overlay.remove();
           });
-        });
+        });        
         
         countButton.addEventListener('click', async function() {
           const tableView = createTableView(matchingEntries);
