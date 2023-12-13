@@ -145,25 +145,29 @@ async function replaceVerseNumbersWithButtons() {
       const scriptureCount = countScriptureInstances(jsonData, scripturePath);
       const matchingEntries = getEntriesWithScripture(jsonData, scripturePath);
 
-      // Defining the width of the buttons based on the number of digits in the variable:
-      let verseButtonWidth = '25px';
-      let countButtonWidth = '25px';
+      // Retrieve the saved color from chrome.storage.sync
+      chrome.storage.sync.get('buttonColor', function(data) {
+        const savedColor = data.buttonColor;
 
-      if (verseNumberText.length === 1) {
-        verseButtonWidth = '25px';
-      } else if (verseNumberText.length === 2) {
-        verseButtonWidth = '30px';
-      } else if (verseNumberText.length >= 3) {
-        verseButtonWidth = '35px';
-      }
+        // Defining the width of the buttons based on the number of digits in the variable:
+        let verseButtonWidth = '25px';
+        let countButtonWidth = '25px';
 
-      if (scriptureCount.toString().length === 1) {
-        countButtonWidth = '25px';
-      } else if (scriptureCount.toString().length === 2) {
-        countButtonWidth = '30px';
-      } else if (scriptureCount.toString().length >= 3) {
-        countButtonWidth = '35px';
-      }
+        if (verseNumberText.length === 1) {
+          verseButtonWidth = '25px';
+        } else if (verseNumberText.length === 2) {
+          verseButtonWidth = '30px';
+        } else if (verseNumberText.length >= 3) {
+          verseButtonWidth = '35px';
+        }
+
+        if (scriptureCount.toString().length === 1) {
+          countButtonWidth = '25px';
+        } else if (scriptureCount.toString().length === 2) {
+          countButtonWidth = '30px';
+        } else if (scriptureCount.toString().length >= 3) {
+          countButtonWidth = '35px';
+        }
 
       if (scriptureCount === 0) {
         const verseButton = document.createElement('button');
@@ -172,7 +176,7 @@ async function replaceVerseNumbersWithButtons() {
         verseButton.style.border = 'none';
         verseButton.style.fontSize = '12px';
         verseButton.textContent = verseNumberText;
-        verseButton.style.background = '#191970';
+        verseButton.style.background = savedColor || '#191970';
         verseButton.style.color = 'white';
         verseButton.style.borderRadius = '5px';
         verseButton.style.display = 'inline-block';
@@ -193,7 +197,7 @@ async function replaceVerseNumbersWithButtons() {
           overlay.style.zIndex = '9999';
         
           const scriptureDetails = document.createElement('div');
-          scriptureDetails.style.backgroundColor = '#191970';
+          scriptureDetails.style.backgroundColor = savedColor || '#191970';
           scriptureDetails.style.color = 'white';
           scriptureDetails.style.padding = '20px';
           scriptureDetails.style.borderRadius = '10px';
@@ -222,7 +226,7 @@ async function replaceVerseNumbersWithButtons() {
         verseButton.style.border = 'none';
         verseButton.style.fontSize = '12px';
         verseButton.textContent = verseNumberText;
-        verseButton.style.background = '#191970'; // Blue color
+        verseButton.style.background = savedColor || '#191970'; // Use the saved color, or the default
         verseButton.style.color = 'white';
         verseButton.style.borderTopLeftRadius = '5px'; // Rounded top-left corner
         verseButton.style.borderBottomLeftRadius = '5px'; // Rounded bottom-left corner
@@ -238,7 +242,7 @@ async function replaceVerseNumbersWithButtons() {
         const countButton = document.createElement('button');
         countButton.style.width = countButtonWidth; // Adjust width as needed
         countButton.style.height = '20px'; // Adjust height as needed
-        countButton.style.border = '1px solid #191970'; // Border style and color
+        countButton.style.border = `1px solid ${savedColor || '#191970'}`; 
         countButton.style.fontSize = '12px';
         countButton.textContent = `${scriptureCount}`;
         countButton.style.background = 'white'; // White background
@@ -326,11 +330,11 @@ async function replaceVerseNumbersWithButtons() {
         verseNumber.parentNode.insertBefore(countButton, verseNumber.nextSibling);
         verseNumber.parentNode.insertBefore(verseButton, verseNumber.nextSibling);
         verseNumber.style.display = 'none';
-      }
+        }
+      });
     });
   }
 }
-
 
 window.addEventListener('load', replaceVerseNumbersWithButtons);
 
@@ -340,7 +344,7 @@ function checkUrlChange() {
   const newUrl = window.location.href;
   if (newUrl !== currentUrl) {
     replaceVerseNumbersWithButtons(); // Update extension
-    createSpace;
+    createSpace();
     currentUrl = newUrl;
   }
 }

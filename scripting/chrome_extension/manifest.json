@@ -4,6 +4,7 @@
   "version": "1.0",
   "description": "Quotes from General Conference",
   "permissions": [
+    "storage",
     "activeTab",
     "scripting"
   ],
