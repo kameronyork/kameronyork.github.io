@@ -123,7 +123,8 @@ function createSpace() {
   return space;
 }
 
-async function replaceVerseNumbersWithButtons() {
+
+async function replaceVerseNumbersWithButtons() { 
   const verseNumbers = document.querySelectorAll('.verse-number');
   const url = window.location.href;
   const langIndex = url.indexOf('lang=eng');

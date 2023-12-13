@@ -13,7 +13,7 @@
   ],
   "content_scripts": [
     {
-      "matches": ["https://www.churchofjesuschrist.org/study/scriptures/*"],
+      "matches": ["*://*.churchofjesuschrist.org/*"],
       "js": ["content.js"]
     }
   ],
