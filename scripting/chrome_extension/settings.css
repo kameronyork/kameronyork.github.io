@@ -4,8 +4,31 @@ body {
   font-family: Arial, sans-serif;
 }
 
+/* Additional styles for the header */
+.header {
+  background: linear-gradient(to bottom, #E74C3C 50%, transparent 50%); /* Gradient from blue to transparent */
+  padding: 20px; /* Adjust padding as needed */
+  text-align: center;
+}
+
+.header img {
+  width: 100px; /* Adjust image size as needed */
+  height: 100px; /* Adjust image size as needed */
+  border-radius: 50%; /* Create a circular frame */
+  border: 3px solid #000000; /* Add a border color */
+  position: relative;
+  z-index: 1; /* Ensures the image is on top of the background */
+}
+
+/* Additional styles for centering */
+#settings {
+  text-align: center; /* Center text within the settings div */
+  margin: 0 auto; /* Center the settings div horizontally */
+}
+
 .color-buttons {
   display: flex;
+  justify-content: center; /* Center the color buttons within the flex container */
 }
 
 .color-option {

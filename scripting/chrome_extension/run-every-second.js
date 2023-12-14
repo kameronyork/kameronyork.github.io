@@ -124,7 +124,7 @@ const bookDecoder = {
   }
   
   
-  async function replaceVerseNumbersWithButtons(callback) { 
+  async function replaceVerseNumbersWithButtons() { 
     const verseNumbers = document.querySelectorAll('.verse-number');
     const url = window.location.href;
     const langIndex = url.indexOf('lang=eng');
@@ -340,7 +340,6 @@ const bookDecoder = {
         });
       });
     }
-    callback();
   }
   
   
@@ -375,18 +374,17 @@ const bookDecoder = {
       // Stop the interval
       clearInterval(intervalId);
   
-      replaceVerseNumbersWithButtons(() => {
-        // Once replaceVerseNumbersWithButtons completes, reset the flag and start the interval again after a delay
+      replaceVerseNumbersWithButtons();
+  
+      // Once replaceVerseNumbersWithButtons completes, reset the flag and start the interval again
+      setTimeout(() => {
         isReplacing = false;
-        setTimeout(() => {
-          intervalId = setInterval(checkingButtonsExist, 1000);
-        }, 10000); // Wait for 8 seconds before restarting the interval
-      });
+        intervalId = setInterval(checkingButtonsExist, 1000);
+      }, 100000); // wait 100,000 miliseconds to start the interval again.
     }
   }
   
   // Start the interval
-  intervalId = setInterval(checkingButtonsExist, 1000); // Checking every three seconds
-  
+  intervalId = setInterval(checkingButtonsExist, 1000);
   
   

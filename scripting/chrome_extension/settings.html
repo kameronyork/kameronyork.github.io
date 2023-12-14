@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/TR/REC-html40">
 <head>
   <link rel="stylesheet" type="text/css" href="settings.css">
 </head>
 <body>
-  <div id="settings">
-    <h2>Extension Settings</h2>
+   <!-- Header Section -->
+   <div class="header">
+    <img src="https://kameronyork.com/scripting/chrome_extension/images/icon16.png" alt="Icon Image">
+  </div>
+  <div id="settings" style="margin-top: -30px;">
+    <h1>Gospel Genius</h1>
+    <h2>Select a Button Color:</h2>
     <div class="color-buttons">
       <button id="colorOption1" class="color-option" data-color="#191970"></button>
       <button id="colorOption2" class="color-option" data-color="#7D3C98"></button>
@@ -14,7 +19,6 @@
       <button id="colorOption5" class="color-option" data-color="#F39C12"></button>
     </div>
   </div>
-
   <script src="settings.js"></script>
 </body>
 </html>

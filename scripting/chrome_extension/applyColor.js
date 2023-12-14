@@ -7,10 +7,21 @@ const applyButton = document.getElementById('applyColor');
 // Retrieve the example button
 const exampleButton = document.querySelector('.example-button');
 
+// Function to apply the selected color to the header
+function applyUserColor(color) {
+  const header = document.querySelector('.header');
+  const headerImage = document.querySelector('.header img');
+  header.style.background = `linear-gradient(to bottom, ${color} 50%, transparent 50%)`;
+  headerImage.style.borderColor = color;
+}
+
 // Apply the selected color from the color picker to the example button and save it to localStorage and chrome.storage.sync
 applyButton.addEventListener('click', function() {
   const selectedColor = colorPicker.value;
   exampleButton.style.background = selectedColor;
+  
+  // Apply the selected color to the header
+  applyUserColor(selectedColor);
   
   // Save color to localStorage
   localStorage.setItem('buttonColor', selectedColor);
