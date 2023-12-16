@@ -14,12 +14,19 @@ merged_df = pd.merge(quotes, talks[['id', 'hyperlink']], left_on='talk_id', righ
 # Sort the DataFrame by 'quote_id' in descending order
 merged_df.sort_values(by='quote_id', ascending=False, inplace=True)
 
-# Define the file path
-file_path = "C:/Users/theka/Desktop/Projects/Website_project/kameronyork.com/datasets/conference-quotes.json"
+# Define the file path for the JSON file with the long list
+file_path_long = "C:/Users/theka/Desktop/Projects/Website_project/kameronyork.com/datasets/conference-quotes.json"
+
+# Define the file path for the JSON file with the short list.  Grouped by scripture with the count of instances.
+file_path_short = "C:/Users/theka/Desktop/Projects/Website_project/kameronyork.com/datasets/scriptures-quoted.json"
 
 # %%
 # Save the sorted and merged DataFrame as JSON
-merged_df.to_json(file_path, orient='records')
+merged_df.to_json(file_path_long, orient='records')
 
 
+# %%
+scripture_counts = merged_df.groupby('scripture').size().reset_index(name='count')
+
+scripture_counts.to_json(file_path_short, orient='records')
 # %%
