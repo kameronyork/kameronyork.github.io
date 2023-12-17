@@ -89,28 +89,6 @@ const bookDecoder = {
     'a-of-f': 'Articles of Faith',
   };
   
-  // Function to parse and cache data on extension initialization
-  async function initializeExtension() {
-    const jsonData = await fetchJSON('https://kameronyork.com/datasets/conference-quotes.json');
-
-    const summarizedData = {};
-
-    jsonData.forEach(entry => {
-      const { scripture } = entry;
-      if (!summarizedData[scripture]) {
-        summarizedData[scripture] = 1;
-      } else {
-        summarizedData[scripture]++;
-      }
-    });
-
-    // Store summarized data in the extension's cache
-    chrome.storage.sync.set({ summarizedData });
-  }
-
-// Call initializeExtension when the extension is loaded
-initializeExtension();
-
   async function fetchJSON(url) {
     const response = await fetch(url);
     return response.json();
@@ -138,6 +116,38 @@ initializeExtension();
     return tableHTML;
   }
   
+  function createTableOverlay(matchingEntries) {
+    const tableView = createTableView(matchingEntries);
+    const overlay = document.createElement('div');
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+    overlay.style.overflowY = 'auto';
+    overlay.style.display = 'flex';
+    overlay.style.alignItems = 'center';
+    overlay.style.justifyContent = 'center';
+    overlay.style.zIndex = '9999';
+  
+    const htmlPaneContent = `
+      <div style="background-color: white; padding: 20px; border-radius: 5px; max-height: 80vh; overflow-y: auto;">
+        <h2>Scripture Details</h2>
+        ${tableView}
+        <button id="closeButton">Close</button>
+      </div>
+    `;
+  
+    overlay.innerHTML = htmlPaneContent;
+  
+    document.body.appendChild(overlay);
+  
+    const closeButton = document.getElementById('closeButton');
+    closeButton.addEventListener('click', function () {
+      overlay.remove();
+    });
+  }
   
   function createSpace() {
     const space = document.createElement('span');
@@ -146,54 +156,56 @@ initializeExtension();
   }
   
   
-  async function replaceVerseNumbersWithButtons(callback) {
-    const verseNumbers = document.querySelectorAll('.verse-number');
+  async function replaceVerseNumbersWithButtonsSideBar(callback) {
+    const verseNumbers = document.querySelectorAll('.footnotePanel-PLlDp .verse .verse-number');
     const url = window.location.href;
     const langIndex = url.indexOf('lang=eng');
   
     if (langIndex > -1) {
-      chrome.storage.sync.get('summarizedData', async function(data) {
-        const summarizedData = data.summarizedData || {};
+      const promises = Array.from(verseNumbers).map(async (verseNumber) => {
+        const chapterIndex = url.lastIndexOf('/', langIndex - 1);
+        const bookIndex = url.lastIndexOf('/', chapterIndex - 1);
   
-        const promises = Array.from(verseNumbers).map(async (verseNumber) => {
-          const chapterIndex = url.lastIndexOf('/', langIndex - 1);
-          const bookIndex = url.lastIndexOf('/', chapterIndex - 1);
+        let chapter = url.substring(chapterIndex + 1, langIndex);
+        if (chapter.includes('?')) {
+          chapter = chapter.split('?')[0];
+        }
   
-          let chapter = url.substring(chapterIndex + 1, langIndex);
-          if (chapter.includes('?')) {
-            chapter = chapter.split('?')[0];
-          }
+        const bookAbbr = url.substring(bookIndex + 1, chapterIndex);
+        const verseNumberText = verseNumber.textContent.trim();
+        const bookFullName = bookDecoder[bookAbbr] || '';
+        const scripturePath = `${bookFullName} ${chapter}:${verseNumberText}`;
   
-          const bookAbbr = url.substring(bookIndex + 1, chapterIndex);
-          const verseNumberText = verseNumber.textContent.trim();
-          const bookFullName = bookDecoder[bookAbbr] || '';
-          const scripturePath = `${bookFullName} ${chapter}:${verseNumberText}`;
+        const scriptureQuotedData = await fetchJSON('https://kameronyork.com/datasets/scriptures-quoted.json');
+        const matchingEntry = scriptureQuotedData.find(entry => entry.scripture === scripturePath);
+        const scriptureCount = matchingEntry ? matchingEntry.count : 0;
   
-          const scriptureCount = summarizedData[scripturePath] || 0;
+        const savedColor = await new Promise((resolve) => {
+          chrome.storage.sync.get('buttonColor', function (data) {
+            resolve(data.buttonColor);
+          });
+        });
   
-        chrome.storage.sync.get('buttonColor', function (data) {
-          const savedColor = data.buttonColor;
+        let verseButtonWidth = '25px';
+        let countButtonWidth = '25px';
   
-          let verseButtonWidth = '25px';
-          let countButtonWidth = '25px';
+        if (verseNumberText.length === 1) {
+          verseButtonWidth = '25px';
+        } else if (verseNumberText.length === 2) {
+          verseButtonWidth = '30px';
+        } else if (verseNumberText.length >= 3) {
+          verseButtonWidth = '35px';
+        }
   
-          if (verseNumberText.length === 1) {
-            verseButtonWidth = '25px';
-          } else if (verseNumberText.length === 2) {
-            verseButtonWidth = '30px';
-          } else if (verseNumberText.length >= 3) {
-            verseButtonWidth = '35px';
-          }
+        if (scriptureCount.toString().length === 1) {
+          countButtonWidth = '25px';
+        } else if (scriptureCount.toString().length === 2) {
+          countButtonWidth = '30px';
+        } else if (scriptureCount.toString().length >= 3) {
+          countButtonWidth = '35px';
+        }
   
-          if (scriptureCount.toString().length === 1) {
-            countButtonWidth = '25px';
-          } else if (scriptureCount.toString().length === 2) {
-            countButtonWidth = '30px';
-          } else if (scriptureCount.toString().length >= 3) {
-            countButtonWidth = '35px';
-          }
-  
-          if (scriptureCount === 0) {
+        if (scriptureCount === 0) {
             const verseButton = document.createElement('button');
             verseButton.style.width = verseButtonWidth;
             verseButton.style.height = '20px';
@@ -207,7 +219,7 @@ initializeExtension();
             verseButton.style.textAlign = 'center';
             verseButton.style.lineHeight = '20px';
   
-            verseButton.addEventListener('click', async function() {
+            verseButton.addEventListener('click', async function () {
               const overlay = document.createElement('div');
               overlay.style.position = 'fixed';
               overlay.style.top = '0';
@@ -219,14 +231,14 @@ initializeExtension();
               overlay.style.alignItems = 'center';
               overlay.style.justifyContent = 'center';
               overlay.style.zIndex = '9999';
-  
+    
               const scriptureDetails = document.createElement('div');
-              scriptureDetails.style.backgroundColor = savedColor || '#191970';
+              scriptureDetails.style.backgroundColor = savedColor || '#191970';  // Sets the background color of the element.
               scriptureDetails.style.color = 'white';
               scriptureDetails.style.padding = '20px';
               scriptureDetails.style.borderRadius = '10px';
               scriptureDetails.textContent = 'No entries found';
-  
+    
               const closeButton = document.createElement('button');
               closeButton.textContent = 'Close';
               closeButton.addEventListener('click', function() {
@@ -237,7 +249,7 @@ initializeExtension();
               overlay.appendChild(closeButton);
   
               document.body.appendChild(overlay);
-            });        
+            });         
   
             const space = createSpace();
             verseNumber.parentNode.insertBefore(space.cloneNode(true), verseNumber.nextSibling);
@@ -282,72 +294,17 @@ initializeExtension();
             countButton.style.display = 'inline-block';
             countButton.style.verticalAlign = 'middle';
   
-            verseButton.addEventListener('click', async function() {
-              const tableView = createTableView(matchingEntries);
-              
-              const overlay = document.createElement('div');
-              overlay.style.position = 'fixed';
-              overlay.style.top = '0';
-              overlay.style.left = '0';
-              overlay.style.width = '100%';
-              overlay.style.height = '100%';
-              overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-              overlay.style.overflowY = 'auto';
-              overlay.style.display = 'flex';
-              overlay.style.alignItems = 'center';
-              overlay.style.justifyContent = 'center';
-              overlay.style.zIndex = '9999';
-              
-              const htmlPaneContent = `
-                <div style="background-color: white; padding: 20px; border-radius: 5px; max-height: 80vh; overflow-y: auto;">
-                  <h2>Scripture Details</h2>
-                  ${tableView}
-                  <button id="closeButton">Close</button>
-                </div>
-              `;
-              
-              overlay.innerHTML = htmlPaneContent;
-              
-              document.body.appendChild(overlay);
-              
-              const closeButton = document.getElementById('closeButton');
-              closeButton.addEventListener('click', function() {
-                overlay.remove();
-              });
+            verseButton.addEventListener('click', async function () {
+              const fullQueryData = await fetchJSON('https://kameronyork.com/datasets/conference-quotes.json');
+              const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePath);
+              createTableOverlay(matchingEntries);
             });        
   
-            countButton.addEventListener('click', async function() {
-              const tableView = createTableView(matchingEntries);
-            
-              const overlay = document.createElement('div');
-              overlay.style.position = 'fixed';
-              overlay.style.top = '0';
-              overlay.style.left = '0';
-              overlay.style.width = '100%';
-              overlay.style.height = '100%';
-              overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-              overlay.style.display = 'flex';
-              overlay.style.alignItems = 'center';
-              overlay.style.justifyContent = 'center';
-              overlay.style.zIndex = '9999';
-            
-              const htmlPaneContent = `
-                <div style="background-color: white; padding: 20px; border-radius: 5px;">
-                  <h2>Scripture Details</h2>
-                  ${tableView}
-                  <button id="closeButton">Close</button>
-                </div>
-              `;
-            
-              overlay.innerHTML = htmlPaneContent;
-            
-              document.body.appendChild(overlay);
-            
-              const closeButton = document.getElementById('closeButton');
-              closeButton.addEventListener('click', function() {
-                overlay.remove();
-              });
-            });
+            countButton.addEventListener('click', async function () {
+              const fullQueryData = await fetchJSON('https://kameronyork.com/datasets/conference-quotes.json');
+              const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePath);
+              createTableOverlay(matchingEntries);
+            });       
   
             const space = createSpace();
             verseNumber.parentNode.insertBefore(space.cloneNode(true), verseNumber.nextSibling);
@@ -356,14 +313,13 @@ initializeExtension();
             verseNumber.style.display = 'none';
           }
         });
-      });
+    
+        // Wait for all promises to resolve before invoking the callback
+        await Promise.all(promises);
+      }
+      callback();
+    }  
   
-      // Wait for all promises to resolve before invoking the callback
-      await Promise.all(promises);
-    callback();
-    });
-  }
-}
   
   // window.addEventListener('load', replaceVerseNumbersWithButtons);
   
@@ -380,9 +336,9 @@ initializeExtension();
   }
   
   function checkingButtonsExist() {
-    const verseNumbers = document.querySelectorAll('.verse-number');
+    const verseNumbers = document.querySelectorAll('.footnotePanel-PLlDp .verse .verse-number');
   
-    // Check if any verse numbers are visible
+    // Check if any verse numbers are visible   
     const isVisible = Array.from(verseNumbers).some(verseNumber => {
       return window.getComputedStyle(verseNumber).getPropertyValue('display') !== 'none';
     });
