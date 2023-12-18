@@ -290,67 +290,45 @@ function createButtonWithExtractedURL(verseNumber, verseNumberText, scriptureCou
 const createdButtonsMap = new Map();
 
 async function replaceVerseNumbersWithButtonsSideBar(callback) {
-  const sections = document.querySelectorAll('section.crossRefPanel-pyz6M');
+  const articles = document.querySelectorAll('article.has-max-width.classic-scripture[lang="eng"]');
 
-  if (sections.length > 0) {
-    for (const section of sections) {
-      const firstLink = section.querySelector('a[href]');
-      if (firstLink) {
-        const langIndex = firstLink.href.indexOf('lang=eng');
+  if (articles.length > 0) {
+    for (const article of articles) {
+      const dataURI = article.getAttribute('data-uri');
+      if (dataURI) {
+        const verseNumbers = article.querySelectorAll('.verse .verse-number');
+        const promises = Array.from(verseNumbers).map(async (verseNumber) => {
+          const chapterIndex = dataURI.lastIndexOf('/');
+          const chapter = dataURI.substring(chapterIndex + 1);
+          const bookIndex = dataURI.substring(0, chapterIndex).lastIndexOf('/');
+          const bookAbbr = dataURI.substring(bookIndex + 1, chapterIndex);
 
-        if (langIndex > -1) {
-          // Check if buttons have been created for this section
-          if (!createdButtonsMap.has(section)) {
-            createdButtonsMap.set(section, new Set()); // Initialize a Set to track buttons for this section
-          }
+          const bookFullName = bookDecoder[bookAbbr] || '';
+          const verseNumberText = verseNumber.textContent.trim();
+          const scripturePath = `${bookFullName} ${chapter}:${verseNumberText}`;
 
-          const verseNumbers = section.querySelectorAll('.crossRefPanel-pyz6M .verse .verse-number');
-          const promises = Array.from(verseNumbers).map(async (verseNumber) => {
-            const createdButtons = createdButtonsMap.get(section);
+          const scriptureQuotedData = await fetchJSON('https://kameronyork.com/datasets/scriptures-quoted.json');
+          const matchingEntry = scriptureQuotedData.find(entry => entry.scripture === scripturePath);
+          const scriptureCount = matchingEntry ? matchingEntry.count : 0;
 
-            // Check if a button already exists for this verseNumber in this section
-            if (!createdButtons.has(verseNumber)) {
-              const chapterIndex = firstLink.href.lastIndexOf('/', langIndex - 1);
-              const bookIndex = firstLink.href.lastIndexOf('/', chapterIndex - 1);
-
-              let chapter = firstLink.href.substring(chapterIndex + 1, langIndex);
-              if (chapter.includes('?')) {
-                chapter = chapter.split('?')[0];
-              }
-
-              const bookAbbr = firstLink.href.substring(bookIndex + 1, chapterIndex);
-
-              const extractedURL = firstLink.getAttribute('href');
-              const bookFullName = bookDecoder[bookAbbr] || '';
-              const verseNumberText = verseNumber.textContent.trim();
-              const scripturePath = `${bookFullName} ${chapter}:${verseNumberText}`;
-
-              const scriptureQuotedData = await fetchJSON('https://kameronyork.com/datasets/scriptures-quoted.json');
-              const matchingEntry = scriptureQuotedData.find(entry => entry.scripture === scripturePath);
-              const scriptureCount = matchingEntry ? matchingEntry.count : 0;
-
-              // Get the user-saved color
-              const savedColor = await new Promise((resolve) => {
-                chrome.storage.sync.get('buttonColor', function (data) {
-                  resolve(data.buttonColor);
-                });
-              });
-
-              // Call the function to create the button
-              createButtonWithExtractedURL(verseNumber, verseNumberText, scriptureCount, savedColor, scripturePath);
-
-              // After creating the button, add the verseNumber to the set for this section
-              createdButtons.add(verseNumber);
-            }
+          // Get the user-saved color
+          const savedColor = await new Promise((resolve) => {
+            chrome.storage.sync.get('buttonColor', function (data) {
+              resolve(data.buttonColor);
+            });
           });
 
-          await Promise.all(promises);
-        }
+          // Call the function to create the button
+          createButtonWithExtractedURL(verseNumber, verseNumberText, scriptureCount, savedColor, scripturePath);
+        });
+
+        await Promise.all(promises);
       }
     }
   }
   callback();
 }
+
 
 // Example usage:
 replaceVerseNumbersWithButtonsSideBar(() => {

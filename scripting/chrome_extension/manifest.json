@@ -14,7 +14,7 @@
   "content_scripts": [
     {
       "matches": ["*://*.churchofjesuschrist.org/*"],
-      "js": ["sidebar-content.js"]
+      "js": ["main-content.js"]
     }
   ],
   "action": {
