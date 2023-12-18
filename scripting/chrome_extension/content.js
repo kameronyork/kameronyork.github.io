@@ -157,7 +157,7 @@ const bookDecoder = {
   
   
   async function replaceVerseNumbersWithButtons(callback) {
-    const verseNumbers = document.querySelectorAll('.contentWrapper-n6Z8K .verse .verse-number');
+    const verseNumbers = document.querySelectorAll("[class^='contentWrapper'] .verse .verse-number");
     const url = window.location.href;
     const langIndex = url.indexOf('lang=eng');
   
@@ -336,7 +336,7 @@ const bookDecoder = {
   }
   
   function checkingButtonsExist() {
-    const verseNumbers = document.querySelectorAll('.contentWrapper-n6Z8K .verse .verse-number');
+    const verseNumbers = document.querySelectorAll("[class^='contentWrapper'] .verse .verse-number");
   
     // Check if any verse numbers are visible   
     const isVisible = Array.from(verseNumbers).some(verseNumber => {

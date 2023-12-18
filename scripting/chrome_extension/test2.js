@@ -158,20 +158,23 @@ const bookDecoder = {
   
   async function replaceVerseNumbersWithButtonsSideBar(callback) {
     const verseNumbers = document.querySelectorAll('.footnotePanel-PLlDp .verse .verse-number');
-    const url = window.location.href;
-    const langIndex = url.indexOf('lang=eng');
+    const section = document.querySelector('section.reference-UoeCG');
+
+    if (section) {
+        const firstLink = section.querySelector('a[href]');
+        const langIndex = firstLink.href.indexOf('lang=eng');
   
     if (langIndex > -1) {
       const promises = Array.from(verseNumbers).map(async (verseNumber) => {
-        const chapterIndex = url.lastIndexOf('/', langIndex - 1);
-        const bookIndex = url.lastIndexOf('/', chapterIndex - 1);
+        const chapterIndex = firstLink.href.lastIndexOf('/', langIndex - 1);
+        const bookIndex = firstLink.href.lastIndexOf('/', chapterIndex - 1);
   
-        let chapter = url.substring(chapterIndex + 1, langIndex);
+        let chapter = firstLink.href.substring(chapterIndex + 1, langIndex);
         if (chapter.includes('?')) {
           chapter = chapter.split('?')[0];
         }
   
-        const bookAbbr = url.substring(bookIndex + 1, chapterIndex);
+        const bookAbbr = firstLink.href.substring(bookIndex + 1, chapterIndex);
         const verseNumberText = verseNumber.textContent.trim();
         const bookFullName = bookDecoder[bookAbbr] || '';
         const scripturePath = `${bookFullName} ${chapter}:${verseNumberText}`;
@@ -317,10 +320,123 @@ const bookDecoder = {
         // Wait for all promises to resolve before invoking the callback
         await Promise.all(promises);
       }
+    }
       callback();
     }  
   
+
+// function createButtonWithExtractedURL(verseNumberElement, scriptureCount) {
+//     const verseNumberText = verseNumberElement.textContent.trim();
+//     const verseButton = document.createElement('button');
+//     verseButton.style.width = '150px'; // Adjust width as needed
+//     verseButton.style.height = '20px';
+//     verseButton.style.border = 'none';
+//     verseButton.style.fontSize = '12px';
+//     verseButton.textContent = scriptureCount;
+//     verseButton.style.background = 'yellow'; // Yellow background
+//     verseButton.style.color = 'black'; // Black text color
+//     verseButton.style.borderRadius = '5px';
+//     verseButton.style.display = 'inline-block';
+//     verseButton.style.textAlign = 'center';
+//     verseButton.style.lineHeight = '20px';
   
+//     verseButton.addEventListener('click', async function () {
+//       // Perform actions with the extracted URL here
+//       console.log('Extracted URL:', scriptureCount);
+//       // Modify button's behavior as needed
+//     });
+  
+//     verseNumberElement.parentNode.insertBefore(verseButton, verseNumberElement.nextSibling);
+//     verseNumberElement.style.display = 'none';
+//   }
+  
+// //   async function replaceVerseNumbersWithButtonsSideBar(callback) {
+// //     const verseNumbers = document.querySelectorAll('.footnotePanel-PLlDp .verse .verse-number');
+  
+// //     if (verseNumbers.length === 0) return; // No verse numbers found, exit
+  
+// //     const url = window.location.href;
+// //     const langIndex = url.indexOf('lang=eng');
+  
+// //     if (langIndex > -1) {
+// //       const promises = Array.from(verseNumbers).map(async (verseNumber) => {
+// //         const chapterIndex = url.lastIndexOf('/', langIndex - 1);
+// //         const bookIndex = url.lastIndexOf('/', chapterIndex - 1);
+  
+// //         let chapter = url.substring(chapterIndex + 1, langIndex);
+// //         if (chapter.includes('?')) {
+// //           chapter = chapter.split('?')[0];
+// //         }
+  
+// //         const bookAbbr = url.substring(bookIndex + 1, chapterIndex);
+  
+// //         const section = verseNumber.closest('section.reference-UoeCG');
+// //         if (section) {
+// //           const firstLink = section.querySelector('a[href]');
+// //           if (firstLink) {
+// //             const extractedURL = firstLink.getAttribute('href');
+// //             const bookFullName = bookDecoder[bookAbbr] || '';
+// //             const verseNumberText = verseNumber.textContent.trim();
+// //             const scripturePath = `${bookFullName} ${chapter}:${verseNumberText}`;
+  
+// //             createButtonWithExtractedURL(verseNumber, extractedURL);
+// //           }  // Closes First Link
+// //         } // Closes section
+// //       }); // Closes the Promises
+  
+// //       await Promise.all(promises);
+// //       callback();
+// //     } // Closes Lang Index
+// //   }
+
+
+// async function replaceVerseNumbersWithButtonsSideBar(callback) {
+//     const verseNumbers = document.querySelectorAll('.footnotePanel-PLlDp .verse .verse-number');
+//     const section = document.querySelector('section.reference-UoeCG');
+  
+//     if (section) {
+//       const firstLink = section.querySelector('a[href]');
+//       if (firstLink) {
+//         const langIndex = firstLink.href.indexOf('lang=eng');
+  
+//         if (langIndex > -1) {
+//           const promises = Array.from(verseNumbers).map(async (verseNumber) => {
+//             const chapterIndex = firstLink.href.lastIndexOf('/', langIndex - 1);
+//             const bookIndex = firstLink.href.lastIndexOf('/', chapterIndex - 1);
+  
+//             let chapter = firstLink.href.substring(chapterIndex + 1, langIndex);
+//             if (chapter.includes('?')) {
+//               chapter = chapter.split('?')[0];
+//             }
+  
+//             const bookAbbr = firstLink.href.substring(bookIndex + 1, chapterIndex);
+  
+//             const extractedURL = firstLink.getAttribute('href');
+//             const bookFullName = bookDecoder[bookAbbr] || '';
+//             const verseNumberText = verseNumber.textContent.trim();
+//             const scripturePath = `${bookFullName} ${chapter}:${verseNumberText}`;
+
+//             const scriptureQuotedData = await fetchJSON('https://kameronyork.com/datasets/scriptures-quoted.json');
+//             const matchingEntry = scriptureQuotedData.find(entry => entry.scripture === firstLink);
+//             const scriptureCount = matchingEntry ? matchingEntry.count : 0;
+    
+//             createButtonWithExtractedURL(verseNumber, scriptureCount);
+//           });
+  
+//           await Promise.all(promises);
+//           callback();
+//         }
+//       }
+//     }
+//   }
+  
+//   // Example usage:
+//   replaceVerseNumbersWithButtonsSideBar(() => {
+//     console.log('Replacement completed');
+//   });
+    
+
+
   // window.addEventListener('load', replaceVerseNumbersWithButtons);
   
   // The code will now check every second if the verse ids have been set to display = none.
@@ -352,7 +468,7 @@ const bookDecoder = {
       // Stop the interval
       clearInterval(intervalId);
   
-      replaceVerseNumbersWithButtons(() => {
+      replaceVerseNumbersWithButtonsSideBar(() => {
         // Once replaceVerseNumbersWithButtons completes, reset the flag and start the interval again after a delay
         isReplacing = false;
         setTimeout(() => {
