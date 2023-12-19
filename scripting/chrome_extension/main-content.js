@@ -351,7 +351,7 @@ function checkingButtonsExist() {
     return window.getComputedStyle(verseNumber).getPropertyValue('display') !== 'none';
   });
 
-  displayisVisible(isVisible);
+  // displayisVisible(isVisible);
 
   // If verse numbers are visible and not currently replacing, execute replaceVerseNumbersWithButtons
   if (isVisible && !isReplacing) {
