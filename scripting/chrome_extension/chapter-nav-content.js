@@ -205,13 +205,13 @@ replaceverseNumbersWithButtonsNav(() => {
   let isReplacingNav = false;
   let intervalIdNav = null;
   
-  function displayisVisible(isVisibleNav) {
+  function displayisVisibleNav(isVisibleNav) {
     const isVisibleDivNav = document.createElement('div');
     isVisibleDivNav.textContent = `isVisibleNav: ${isVisibleNav}`;
     document.body.appendChild(isVisibleDivNav);
   }
   
-  function checkingButtonsExist() {
+  function checkingButtonsExistNav() {
     const verseNumbersNav = document.querySelectorAll('.crossRefPanel-pyz6M .verse .verse-number');
   
     // Check if any verse numbers are visible   
@@ -232,14 +232,14 @@ replaceverseNumbersWithButtonsNav(() => {
         // Once replaceverseNumbersNavWithButtons completes, reset the flag and start the interval again after a delay
         isReplacingNav = false;
         setTimeout(() => {
-          intervalIdNav = setInterval(checkingButtonsExist, 1000);
+          intervalIdNav = setInterval(checkingButtonsExistNav, 1000);
         }, 3000); // Wait for 3 seconds before restarting the interval
       });
     }
   }
   
   // Start the interval
-  intervalIdNav = setInterval(checkingButtonsExist, 1000); // Checking every three seconds
+  intervalIdNav = setInterval(checkingButtonsExistNav, 1000); // Checking every three seconds
   
   
   

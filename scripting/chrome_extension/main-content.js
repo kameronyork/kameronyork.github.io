@@ -154,10 +154,140 @@ const bookDecoder = {
     space.innerHTML = '&nbsp&nbsp;'; // Add a space using HTML entity
     return space;
   }
+
+
+  function createButton(verseNumber, verseNumberText, scriptureCount, savedColor, scripturePath) {
+    let verseButtonWidth = '25px';
+    let countButtonWidth = '25px';
+  
+    if (verseNumberText.length === 1) {
+      verseButtonWidth = '25px';
+    } else if (verseNumberText.length === 2) {
+      verseButtonWidth = '30px';
+    } else if (verseNumberText.length >= 3) {
+      verseButtonWidth = '35px';
+    }
+  
+    if (scriptureCount.toString().length === 1) {
+      countButtonWidth = '25px';
+    } else if (scriptureCount.toString().length === 2) {
+      countButtonWidth = '30px';
+    } else if (scriptureCount.toString().length >= 3) {
+      countButtonWidth = '35px';
+    }
+  
+    if (scriptureCount === 0) {
+      const verseButton = document.createElement('button');
+      verseButton.style.width = verseButtonWidth;
+      verseButton.style.height = '20px';
+      verseButton.style.border = 'none';
+      verseButton.style.fontSize = '12px';
+      verseButton.textContent = verseNumberText;
+      verseButton.style.background = savedColor || '#191970';
+      verseButton.style.color = 'white';
+      verseButton.style.borderRadius = '5px';
+      verseButton.style.display = 'inline-block';
+      verseButton.style.textAlign = 'center';
+      verseButton.style.lineHeight = '20px';
+  
+      verseButton.addEventListener('click', async function () {
+        const overlay = document.createElement('div');
+        overlay.style.position = 'fixed';
+        overlay.style.top = '0';
+        overlay.style.left = '0';
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+        overlay.style.display = 'flex';
+        overlay.style.alignItems = 'center';
+        overlay.style.justifyContent = 'center';
+        overlay.style.zIndex = '9999';
+  
+        const scriptureDetails = document.createElement('div');
+        scriptureDetails.style.backgroundColor = savedColor || '#191970';  // Sets the background color of the element.
+        scriptureDetails.style.color = 'white';
+        scriptureDetails.style.padding = '20px';
+        scriptureDetails.style.borderRadius = '10px';
+        scriptureDetails.textContent = 'No entries found';
+  
+        const closeButton = document.createElement('button');
+        closeButton.textContent = 'Close';
+        closeButton.addEventListener('click', function() {
+          overlay.remove();
+        });
+  
+        overlay.appendChild(scriptureDetails);
+        overlay.appendChild(closeButton);
+  
+        document.body.appendChild(overlay);
+      });
+  
+      const space = createSpace();
+      verseNumber.parentNode.insertBefore(space.cloneNode(true), verseNumber.nextSibling);
+      verseNumber.parentNode.insertBefore(verseButton, verseNumber.nextSibling);
+      verseNumber.style.display = 'none';
+    } else {
+      const verseButton = document.createElement('button');
+      verseButton.style.width = verseButtonWidth;
+      verseButton.style.height = '20px';
+      verseButton.style.border = 'none';
+      verseButton.style.fontSize = '12px';
+      verseButton.textContent = verseNumberText;
+      verseButton.style.background = savedColor || '#191970';
+      verseButton.style.color = 'white';
+      verseButton.style.borderTopLeftRadius = '5px';
+      verseButton.style.borderBottomLeftRadius = '5px';
+      verseButton.style.borderTopRightRadius = '0';
+      verseButton.style.borderBottomRightRadius = '0';
+      verseButton.style.display = 'flex';
+      verseButton.style.alignItems = 'center';
+      verseButton.style.justifyContent = 'center';
+      verseButton.style.padding = '0 5px';
+      verseButton.style.display = 'inline-block';
+      verseButton.style.verticalAlign = 'middle';
+  
+      const countButton = document.createElement('button');
+      countButton.style.width = countButtonWidth;
+      countButton.style.height = '20px';
+      countButton.style.border = `1px solid ${savedColor || '#191970'}`;
+      countButton.style.fontSize = '12px';
+      countButton.textContent = `${scriptureCount}`;
+      countButton.style.background = 'white';
+      countButton.style.color = 'black';
+      countButton.style.borderTopLeftRadius = '0';
+      countButton.style.borderBottomLeftRadius = '0';
+      countButton.style.borderTopRightRadius = '5px';
+      countButton.style.borderBottomRightRadius = '5px';
+      countButton.style.display = 'flex';
+      countButton.style.alignItems = 'center';
+      countButton.style.justifyContent = 'center';
+      countButton.style.padding = '0 5px';
+      countButton.style.display = 'inline-block';
+      countButton.style.verticalAlign = 'middle';
+  
+      verseButton.addEventListener('click', async function () {
+        const fullQueryData = await fetchJSON('https://kameronyork.com/datasets/conference-quotes.json');
+        const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePath);
+        createTableOverlay(matchingEntries);
+      });
+  
+      countButton.addEventListener('click', async function () {
+        const fullQueryData = await fetchJSON('https://kameronyork.com/datasets/conference-quotes.json');
+        const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePath);
+        createTableOverlay(matchingEntries);
+      });
+  
+      const space = createSpace();
+      verseNumber.parentNode.insertBefore(space.cloneNode(true), verseNumber.nextSibling);
+      verseNumber.parentNode.insertBefore(countButton, verseNumber.nextSibling);
+      verseNumber.parentNode.insertBefore(verseButton, verseNumber.nextSibling);
+      verseNumber.style.display = 'none';
+    }
+  }
   
   
   async function replaceVerseNumbersWithButtons(callback) {
-    const verseNumbers = document.querySelectorAll("[class^='contentWrapper'] .verse .verse-number");
+    const verseNumbers = document.querySelectorAll(".contentWrapper-n6Z8K .renderFrame-hnHZX .verse .verse-number");
     const url = window.location.href;
     const langIndex = url.indexOf('lang=eng');
   
@@ -186,184 +316,59 @@ const bookDecoder = {
           });
         });
   
-        let verseButtonWidth = '25px';
-        let countButtonWidth = '25px';
-  
-        if (verseNumberText.length === 1) {
-          verseButtonWidth = '25px';
-        } else if (verseNumberText.length === 2) {
-          verseButtonWidth = '30px';
-        } else if (verseNumberText.length >= 3) {
-          verseButtonWidth = '35px';
-        }
-  
-        if (scriptureCount.toString().length === 1) {
-          countButtonWidth = '25px';
-        } else if (scriptureCount.toString().length === 2) {
-          countButtonWidth = '30px';
-        } else if (scriptureCount.toString().length >= 3) {
-          countButtonWidth = '35px';
-        }
-  
-        if (scriptureCount === 0) {
-            const verseButton = document.createElement('button');
-            verseButton.style.width = verseButtonWidth;
-            verseButton.style.height = '20px';
-            verseButton.style.border = 'none';
-            verseButton.style.fontSize = '12px';
-            verseButton.textContent = verseNumberText;
-            verseButton.style.background = savedColor || '#191970';
-            verseButton.style.color = 'white';
-            verseButton.style.borderRadius = '5px';
-            verseButton.style.display = 'inline-block';
-            verseButton.style.textAlign = 'center';
-            verseButton.style.lineHeight = '20px';
-  
-            verseButton.addEventListener('click', async function () {
-              const overlay = document.createElement('div');
-              overlay.style.position = 'fixed';
-              overlay.style.top = '0';
-              overlay.style.left = '0';
-              overlay.style.width = '100%';
-              overlay.style.height = '100%';
-              overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-              overlay.style.display = 'flex';
-              overlay.style.alignItems = 'center';
-              overlay.style.justifyContent = 'center';
-              overlay.style.zIndex = '9999';
-    
-              const scriptureDetails = document.createElement('div');
-              scriptureDetails.style.backgroundColor = savedColor || '#191970';  // Sets the background color of the element.
-              scriptureDetails.style.color = 'white';
-              scriptureDetails.style.padding = '20px';
-              scriptureDetails.style.borderRadius = '10px';
-              scriptureDetails.textContent = 'No entries found';
-    
-              const closeButton = document.createElement('button');
-              closeButton.textContent = 'Close';
-              closeButton.addEventListener('click', function() {
-                overlay.remove();
-              });
-  
-              overlay.appendChild(scriptureDetails);
-              overlay.appendChild(closeButton);
-  
-              document.body.appendChild(overlay);
-            });         
-  
-            const space = createSpace();
-            verseNumber.parentNode.insertBefore(space.cloneNode(true), verseNumber.nextSibling);
-            verseNumber.parentNode.insertBefore(verseButton, verseNumber.nextSibling);
-            verseNumber.style.display = 'none';
-          } else {
-            const verseButton = document.createElement('button');
-            verseButton.style.width = verseButtonWidth;
-            verseButton.style.height = '20px';
-            verseButton.style.border = 'none';
-            verseButton.style.fontSize = '12px';
-            verseButton.textContent = verseNumberText;
-            verseButton.style.background = savedColor || '#191970';
-            verseButton.style.color = 'white';
-            verseButton.style.borderTopLeftRadius = '5px';
-            verseButton.style.borderBottomLeftRadius = '5px';
-            verseButton.style.borderTopRightRadius = '0';
-            verseButton.style.borderBottomRightRadius = '0';
-            verseButton.style.display = 'flex';
-            verseButton.style.alignItems = 'center';
-            verseButton.style.justifyContent = 'center';
-            verseButton.style.padding = '0 5px';
-            verseButton.style.display = 'inline-block';
-            verseButton.style.verticalAlign = 'middle';
-  
-            const countButton = document.createElement('button');
-            countButton.style.width = countButtonWidth;
-            countButton.style.height = '20px';
-            countButton.style.border = `1px solid ${savedColor || '#191970'}`;
-            countButton.style.fontSize = '12px';
-            countButton.textContent = `${scriptureCount}`;
-            countButton.style.background = 'white';
-            countButton.style.color = 'black';
-            countButton.style.borderTopLeftRadius = '0';
-            countButton.style.borderBottomLeftRadius = '0';
-            countButton.style.borderTopRightRadius = '5px';
-            countButton.style.borderBottomRightRadius = '5px';
-            countButton.style.display = 'flex';
-            countButton.style.alignItems = 'center';
-            countButton.style.justifyContent = 'center';
-            countButton.style.padding = '0 5px';
-            countButton.style.display = 'inline-block';
-            countButton.style.verticalAlign = 'middle';
-  
-            verseButton.addEventListener('click', async function () {
-              const fullQueryData = await fetchJSON('https://kameronyork.com/datasets/conference-quotes.json');
-              const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePath);
-              createTableOverlay(matchingEntries);
-            });        
-  
-            countButton.addEventListener('click', async function () {
-              const fullQueryData = await fetchJSON('https://kameronyork.com/datasets/conference-quotes.json');
-              const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePath);
-              createTableOverlay(matchingEntries);
-            });       
-  
-            const space = createSpace();
-            verseNumber.parentNode.insertBefore(space.cloneNode(true), verseNumber.nextSibling);
-            verseNumber.parentNode.insertBefore(countButton, verseNumber.nextSibling);
-            verseNumber.parentNode.insertBefore(verseButton, verseNumber.nextSibling);
-            verseNumber.style.display = 'none';
-          }
-        });
-    
-        // Wait for all promises to resolve before invoking the callback
-        await Promise.all(promises);
-      }
-      callback();
-    }  
-  
-  
-  // window.addEventListener('load', replaceVerseNumbersWithButtons);
-  
-  // The code will now check every second if the verse ids have been set to display = none.
-  
-  // This variable is used to help disable to checking every second
-  let isReplacing = false;
-  let intervalId = null;
-  
-  function displayIsVisible(isVisible) {
-    const isVisibleDiv = document.createElement('div');
-    isVisibleDiv.textContent = `isVisible: ${isVisible}`;
-    document.body.appendChild(isVisibleDiv);
-  }
-  
-  function checkingButtonsExist() {
-    const verseNumbers = document.querySelectorAll("[class^='contentWrapper'] .verse .verse-number");
-  
-    // Check if any verse numbers are visible   
-    const isVisible = Array.from(verseNumbers).some(verseNumber => {
-      return window.getComputedStyle(verseNumber).getPropertyValue('display') !== 'none';
-    });
-  
-    // displayIsVisible(isVisible);
-  
-    // If verse numbers are visible and not currently replacing, execute replaceVerseNumbersWithButtons
-    if (isVisible && !isReplacing) {
-      isReplacing = true;
-  
-      // Stop the interval
-      clearInterval(intervalId);
-  
-      replaceVerseNumbersWithButtons(() => {
-        // Once replaceVerseNumbersWithButtons completes, reset the flag and start the interval again after a delay
-        isReplacing = false;
-        setTimeout(() => {
-          intervalId = setInterval(checkingButtonsExist, 1000);
-        }, 3000); // Wait for 3 seconds before restarting the interval
+        createButton(verseNumber, verseNumberText, scriptureCount, savedColor, scripturePath);
       });
+  
+      // Wait for all promises to resolve before invoking the callback
+      await Promise.all(promises);
+      callback();
     }
   }
   
-  // Start the interval
-  intervalId = setInterval(checkingButtonsExist, 1000); // Checking every three seconds
+  // Example usage:
+  replaceVerseNumbersWithButtons(() => {
+    console.log('Replacement completed');
+  });
   
+  // The code will now check every second if the verse ids have been set to display = none.
   
-  
+  // This variable is used to help disable the checking every second
+  // This variable is used to help disable the checking every second
+let isReplacing = false;
+let intervalId = null;
+
+function displayisVisible(isVisible) {
+  const isVisibleDiv = document.createElement('div');
+  isVisibleDiv.textContent = `isVisible: ${isVisible}`;
+  document.body.appendChild(isVisibleDiv);
+}
+
+function checkingButtonsExist() {
+  const verseNumbers = document.querySelectorAll(".contentWrapper-n6Z8K .renderFrame-hnHZX .verse .verse-number");
+
+  // Check if any verse numbers are visible
+  const isVisible = Array.from(verseNumbers).some(verseNumber => {
+    return window.getComputedStyle(verseNumber).getPropertyValue('display') !== 'none';
+  });
+
+  displayisVisible(isVisible);
+
+  // If verse numbers are visible and not currently replacing, execute replaceVerseNumbersWithButtons
+  if (isVisible && !isReplacing) {
+    isReplacing = true;
+
+    // Stop the interval
+    clearInterval(intervalId);
+
+    replaceVerseNumbersWithButtons(() => {
+      // Once replaceVerseNumbersWithButtons completes, reset the flag and start the interval again after a delay
+      isReplacing = false;
+      setTimeout(() => {
+        intervalId = setInterval(checkingButtonsExist, 1000);
+      }, 3000); // Wait for 3 seconds before restarting the interval
+    });
+  }
+}
+
+// Start the interval
+intervalId = setInterval(checkingButtonsExist, 1000); // Checking every second
