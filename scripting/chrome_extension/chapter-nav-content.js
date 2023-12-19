@@ -1,329 +1,193 @@
-// Decode book abbreviation to its full name
-const bookDecoder = {
-  'gen': 'Genesis',
-  'ex': 'Exodus',
-  'lev': 'Leviticus',
-  'num': 'Numbers',
-  'deut': 'Deuteronomy',
-  'josh': 'Joshua',
-  'judg': 'Judges',
-  'ruth': 'Ruth',
-  '1-sam': '1 Samuel',
-  '2-sam': '2 Samuel',
-  '1-kgs': '1 Kings',
-  '2-kgs': '2 Kings',
-  '1-chr': '1 Chronicles',
-  '2-chr': '2 Chronicles',
-  'ezra': 'Ezra',
-  'neh': 'Nehemiah',
-  'esth': 'Esther',
-  'job': 'Job',
-  'ps': 'Psalm',
-  'prov': 'Proverbs',
-  'eccl': 'Ecclesiastes',
-  'song': 'Song of Solomon',
-  'isa': 'Isaiah',
-  'jer': 'Jeremiah',
-  'lam': 'Lamentations',
-  'ezek': 'Ezekiel',
-  'dan': 'Daniel',
-  'hosea': 'Hosea',
-  'joel': 'Joel',
-  'amos': 'Amos',
-  'obad': 'Obadiah',
-  'jonah': 'Jonah',
-  'micah': 'Micah',
-  'nahum': 'Nahum',
-  'hab': 'Habakkuk',
-  'zeph': 'Zephaniah',
-  'hag': 'Haggai',
-  'zech': 'Zechariah',
-  'mal': 'Malachi',
-  'matt': 'Matthew',
-  'mark': 'Mark',
-  'luke': 'Luke',
-  'john': 'John',
-  'acts': 'Acts',
-  'rom': 'Romans',
-  '1-cor': '1 Corinthians',
-  '2-cor': '2 Corinthians',
-  'gal': 'Galatians',
-  'eph': 'Ephesians',
-  'philip': 'Philippians',
-  'col': 'Colossians',
-  '1-thes': '1 Thessalonians',
-  '2-thes': '2 Thessalonians',
-  '1-tim': '1 Timothy',
-  '2-tim': '2 Timothy',
-  'titus': 'Titus',
-  'philem': 'Philemon',
-  'heb': 'Hebrews',
-  'james': 'James',
-  '1-pet': '1 Peter',
-  '2-pet': '2 Peter',
-  '1-jn': '1 John',
-  '2-jn': '2 John',
-  '3-jn': '3 John',
-  'jude': 'Jude',
-  'rev': 'Revelation',
-  '1-ne': '1 Nephi',
-  '2-ne': '2 Nephi',
-  'jacob': 'Jacob',
-  'enos': 'Enos',
-  'jarom': 'Jarom',
-  'omni': 'Omni',
-  'w-of-m': 'Words of Mormon',
-  'mosiah': 'Mosiah',
-  'alma': 'Alma',
-  'hel': 'Helaman',
-  '3-ne': '3 Nephi',
-  '4-ne': '4 Nephi',
-  'morm': 'Mormon',
-  'ether': 'Ether',
-  'moro': 'Moroni',
-  'dc': 'D&C',
-  'moses': 'Moses',
-  'abr': 'Abraham',
-  'js-m': 'Joseph Smith Matthew',
-  'js-h': 'Joseph Smith History',
-  'a-of-f': 'Articles of Faith',
-};
+// Creating buttons in the chapterNav navigator sidebars.
 
-async function fetchJSON(url) {
-  const response = await fetch(url);
-  return response.json();
-}
-
-function countScriptureInstances(data, scripturePath) {
-  return data.filter(entry => entry.scripture === scripturePath).length;
-}
-
-function getEntriesWithScripture(data, scripturePath) {
-  return data.filter(entry => entry.scripture === scripturePath);
-}
-
-function createTableView(entries) {
-  let tableHTML = '<table border="1"><tr><th>Talk Year</th><th>Talk Month</th><th>Talk Day</th><th>Talk Session</th><th>Speaker</th><th>Title</th></tr>';
-
-  entries.forEach(entry => {
-    // Assuming there's a 'hyperlink' property in each entry for the title hyperlink
-    const titleLink = entry.hyperlink ? `<a href="${entry.hyperlink}" target="_blank">${entry.title}</a>` : entry.title;
-
-    tableHTML += `<tr><td>${entry.talk_year}</td><td>${entry.talk_month}</td><td>${entry.talk_day}</td><td>${entry.talk_session}</td><td>${entry.speaker}</td><td>${titleLink}</td></tr>`;
-  });
-
-  tableHTML += '</table>';
-  return tableHTML;
-}
-
-function createTableOverlay(matchingEntries) {
-  const tableView = createTableView(matchingEntries);
-  const overlay = document.createElement('div');
-  overlay.style.position = 'fixed';
-  overlay.style.top = '0';
-  overlay.style.left = '0';
-  overlay.style.width = '100%';
-  overlay.style.height = '100%';
-  overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-  overlay.style.overflowY = 'auto';
-  overlay.style.display = 'flex';
-  overlay.style.alignItems = 'center';
-  overlay.style.justifyContent = 'center';
-  overlay.style.zIndex = '9999';
-
-  const htmlPaneContent = `
-    <div style="background-color: white; padding: 20px; border-radius: 5px; max-height: 80vh; overflow-y: auto;">
-      <h2>Scripture Details</h2>
-      ${tableView}
-      <button id="closeButton">Close</button>
-    </div>
-  `;
-
-  overlay.innerHTML = htmlPaneContent;
-
-  document.body.appendChild(overlay);
-
-  const closeButton = document.getElementById('closeButton');
-  closeButton.addEventListener('click', function () {
-    overlay.remove();
-  });
-}
-
-function createSpace() {
-  const space = document.createElement('span');
-  space.innerHTML = '&nbsp&nbsp;'; // Add a space using HTML entity
-  return space;
-}
-
-
-function createButtonWithExtractedURL(verseNumber, verseNumberText, scriptureCount, savedColor, scripturePath) {
-  let verseButtonWidth = '25px';
-  let countButtonWidth = '25px';
+function createButtonWithExtractedURLNav(verseNumber, verseNumberText, scriptureCountNav, savedColorNav, scripturePathNav) {
+  let verseButtonWidthNav = '25px';
+  let countButtonWidthNav = '25px';
 
   if (verseNumberText.length === 1) {
-    verseButtonWidth = '25px';  // 25
+    verseButtonWidthNav = '25px';  // 25
   } else if (verseNumberText.length === 2) {
-    verseButtonWidth = '30px';  // 30
+    verseButtonWidthNav = '30px';  // 30
   } else if (verseNumberText.length >= 3) {
-    verseButtonWidth = '35px';  // 35
+    verseButtonWidthNav = '35px';  // 35
   }
 
-  if (scriptureCount.toString().length === 1) {
-    countButtonWidth = '25px';
-  } else if (scriptureCount.toString().length === 2) {
-    countButtonWidth = '30px';
-  } else if (scriptureCount.toString().length >= 3) {
-    countButtonWidth = '35px';
+  if (scriptureCountNav.toString().length === 1) {
+    countButtonWidthNav = '25px';
+  } else if (scriptureCountNav.toString().length === 2) {
+    countButtonWidthNav = '30px';
+  } else if (scriptureCountNav.toString().length >= 3) {
+    countButtonWidthNav = '35px';
   }
 
-  if (scriptureCount === 0) {
-      const verseButton = document.createElement('button');
-      verseButton.style.width = verseButtonWidth;
-      verseButton.style.height = '20px';
-      verseButton.style.border = 'none';
-      verseButton.style.fontSize = '12px';
-      verseButton.textContent = verseNumberText;  // This is what goes on the button.
-      verseButton.style.background = savedColor || '#191970';
-      verseButton.style.color = 'white';
-      verseButton.style.borderRadius = '5px';
-      verseButton.style.display = 'inline-block';
-      verseButton.style.textAlign = 'center';
-      verseButton.style.lineHeight = '20px';
+  if (scriptureCountNav === 0) {
+    const verseButtonNav = document.createElement('button');
+    verseButtonNav.style.width = verseButtonWidthNav;
+    verseButtonNav.style.height = '20px';
+    verseButtonNav.style.border = 'none';
+    verseButtonNav.style.fontSize = '12px';
+    verseButtonNav.textContent = verseNumberText;  // This is what goes on the button.
+    verseButtonNav.style.background = savedColorNav || '#191970';
+    verseButtonNav.style.color = 'white';
+    verseButtonNav.style.borderRadius = '5px';
+    verseButtonNav.style.display = 'inline-block';
+    verseButtonNav.style.textAlign = 'center';
+    verseButtonNav.style.lineHeight = '20px';
 
-      verseButton.addEventListener('click', async function () {
-        const overlay = document.createElement('div');
-        overlay.style.position = 'fixed';
-        overlay.style.top = '0';
-        overlay.style.left = '0';
-        overlay.style.width = '100%';
-        overlay.style.height = '100%';
-        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-        overlay.style.display = 'flex';
-        overlay.style.alignItems = 'center';
-        overlay.style.justifyContent = 'center';
-        overlay.style.zIndex = '9999';
+    verseButtonNav.addEventListener('click', async function () {
+      const overlayNav = document.createElement('div');
+      overlayNav.style.position = 'fixed';
+      overlayNav.style.top = '0';
+      overlayNav.style.left = '0';
+      overlayNav.style.width = '100%';
+      overlayNav.style.height = '100%';
+      overlayNav.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+      overlayNav.style.display = 'flex';
+      overlayNav.style.alignItems = 'center';
+      overlayNav.style.justifyContent = 'center';
+      overlayNav.style.zIndex = '9999';
 
-        const scriptureDetails = document.createElement('div');
-        scriptureDetails.style.backgroundColor = savedColor || '#191970';  // Sets the background color of the element.
-        scriptureDetails.style.color = 'white';
-        scriptureDetails.style.padding = '20px';
-        scriptureDetails.style.borderRadius = '10px';
-        scriptureDetails.textContent = 'No entries found';
+      const scriptureDetailsNav = document.createElement('div');
+      scriptureDetailsNav.style.backgroundColor = savedColorNav || '#191970';  // Sets the background color of the element.
+      scriptureDetailsNav.style.color = 'white';
+      scriptureDetailsNav.style.padding = '20px';
+      scriptureDetailsNav.style.borderRadius = '10px';
+      scriptureDetailsNav.textContent = 'No entries found';
 
-        const closeButton = document.createElement('button');
-        closeButton.textContent = 'Close';
-        closeButton.addEventListener('click', function() {
-          overlay.remove();
-        });
+      const closeButtonNav = document.createElement('button');
+      closeButtonNav.textContent = 'Close';
+      closeButtonNav.addEventListener('click', function() {
+        overlayNav.remove();
+      });
 
-        overlay.appendChild(scriptureDetails);
-        overlay.appendChild(closeButton);
+      overlayNav.appendChild(scriptureDetailsNav);
+      overlayNav.appendChild(closeButtonNav);
 
-        document.body.appendChild(overlay);
-      });         
+      document.body.appendChild(overlayNav);
+    });
 
-      const space = createSpace();
-      verseNumber.parentNode.insertBefore(space.cloneNode(true), verseNumber.nextSibling);
-      verseNumber.parentNode.insertBefore(verseButton, verseNumber.nextSibling);
-      verseNumber.style.display = 'none';
-    } else {
-      const verseButton = document.createElement('button');
-      verseButton.style.width = verseButtonWidth;
-      verseButton.style.height = '20px';
-      verseButton.style.border = 'none';
-      verseButton.style.fontSize = '12px';
-      verseButton.textContent = verseNumberText;  // This is what goes on the button.
-      verseButton.style.background = savedColor || '#191970';
-      verseButton.style.color = 'white';
-      verseButton.style.borderTopLeftRadius = '5px';
-      verseButton.style.borderBottomLeftRadius = '5px';
-      verseButton.style.borderTopRightRadius = '0';
-      verseButton.style.borderBottomRightRadius = '0';
-      verseButton.style.display = 'flex';
-      verseButton.style.alignItems = 'center';
-      verseButton.style.justifyContent = 'center';
-      verseButton.style.padding = '0 5px';
-      verseButton.style.display = 'inline-block';
-      verseButton.style.verticalAlign = 'middle';
+    // Remove any existing spaces after the verse number
+    const existingSpaces = verseNumber.parentNode.querySelectorAll('span.verse-space');
+    existingSpaces.forEach(space => space.remove());
 
-      const countButton = document.createElement('button');
-      countButton.style.width = countButtonWidth;
-      countButton.style.height = '20px';
-      countButton.style.border = `1px solid ${savedColor || '#191970'}`;
-      countButton.style.fontSize = '12px';
-      countButton.textContent = `${scriptureCount}`;  // This is what goes on the button.
-      countButton.style.background = 'white';
-      countButton.style.color = 'black';
-      countButton.style.borderTopLeftRadius = '0';
-      countButton.style.borderBottomLeftRadius = '0';
-      countButton.style.borderTopRightRadius = '5px';
-      countButton.style.borderBottomRightRadius = '5px';
-      countButton.style.display = 'flex';
-      countButton.style.alignItems = 'center';
-      countButton.style.justifyContent = 'center';
-      countButton.style.padding = '0 5px';
-      countButton.style.display = 'inline-block';
-      countButton.style.verticalAlign = 'middle';
+    // Create a single space after the verse button
+    const spaceNav = document.createElement('span');
+    spaceNav.className = 'verse-space';
+    spaceNav.innerHTML = '&nbsp&nbsp;';
+    verseNumber.parentNode.insertBefore(spaceNav, verseNumber.nextSibling);
+    verseNumber.parentNode.insertBefore(verseButtonNav, verseNumber.nextSibling);
+    verseNumber.style.display = 'none';
+  } else {
+    const verseButtonNav = document.createElement('button');
+    verseButtonNav.style.width = verseButtonWidthNav;
+    verseButtonNav.style.height = '20px';
+    verseButtonNav.style.border = 'none';
+    verseButtonNav.style.fontSize = '12px';
+    verseButtonNav.textContent = verseNumberText;  // This is what goes on the button.
+    verseButtonNav.style.background = savedColorNav || '#191970';
+    verseButtonNav.style.color = 'white';
+    verseButtonNav.style.borderTopLeftRadius = '5px';
+    verseButtonNav.style.borderBottomLeftRadius = '5px';
+    verseButtonNav.style.borderTopRightRadius = '0';
+    verseButtonNav.style.borderBottomRightRadius = '0';
+    verseButtonNav.style.display = 'flex';
+    verseButtonNav.style.alignItems = 'center';
+    verseButtonNav.style.justifyContent = 'center';
+    verseButtonNav.style.padding = '0 5px';
+    verseButtonNav.style.display = 'inline-block';
+    verseButtonNav.style.verticalAlign = 'middle';
 
-      verseButton.addEventListener('click', async function () {
-        const fullQueryData = await fetchJSON('https://kameronyork.com/datasets/conference-quotes.json');
-        const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePath);
-        createTableOverlay(matchingEntries);
-      });        
+    const countButtonNav = document.createElement('button');
+    countButtonNav.style.width = countButtonWidthNav;
+    countButtonNav.style.height = '20px';
+    countButtonNav.style.border = `1px solid ${savedColorNav || '#191970'}`;
+    countButtonNav.style.fontSize = '12px';
+    countButtonNav.textContent = `${scriptureCountNav}`;  // This is what goes on the button.
+    countButtonNav.style.background = 'white';
+    countButtonNav.style.color = 'black';
+    countButtonNav.style.borderTopLeftRadius = '0';
+    countButtonNav.style.borderBottomLeftRadius = '0';
+    countButtonNav.style.borderTopRightRadius = '5px';
+    countButtonNav.style.borderBottomRightRadius = '5px';
+    countButtonNav.style.display = 'flex';
+    countButtonNav.style.alignItems = 'center';
+    countButtonNav.style.justifyContent = 'center';
+    countButtonNav.style.padding = '0 5px';
+    countButtonNav.style.display = 'inline-block';
+    countButtonNav.style.verticalAlign = 'middle';
 
-      countButton.addEventListener('click', async function () {
-        const fullQueryData = await fetchJSON('https://kameronyork.com/datasets/conference-quotes.json');
-        const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePath);
-        createTableOverlay(matchingEntries);
-      });       
+    verseButtonNav.addEventListener('click', async function () {
+      const fullQueryData = await fetchJSON('https://kameronyork.com/datasets/conference-quotes.json');
+      const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePathNav);
+      createTableOverlay(matchingEntries);
+    });
 
-      const space = createSpace();
-      verseNumber.parentNode.insertBefore(space.cloneNode(true), verseNumber.nextSibling);
-      verseNumber.parentNode.insertBefore(countButton, verseNumber.nextSibling);
-      verseNumber.parentNode.insertBefore(verseButton, verseNumber.nextSibling);
-      verseNumber.style.display = 'none';
-    }
+    countButtonNav.addEventListener('click', async function () {
+      const fullQueryData = await fetchJSON('https://kameronyork.com/datasets/conference-quotes.json');
+      const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePathNav);
+      createTableOverlay(matchingEntries);
+    });
+
+    // Remove any existing spaces after the verse number
+    const existingSpaces = verseNumber.parentNode.querySelectorAll('span.verse-space');
+    existingSpaces.forEach(space => space.remove());
+
+    // Create a single space after the verse button
+    const spaceNav = document.createElement('span');
+    spaceNav.className = 'verse-space';
+    spaceNav.innerHTML = '&nbsp&nbsp;';
+    verseNumber.parentNode.insertBefore(spaceNav, verseNumber.nextSibling);
+    verseNumber.parentNode.insertBefore(countButtonNav, verseNumber.nextSibling);
+    verseNumber.parentNode.insertBefore(verseButtonNav, verseNumber.nextSibling);
+    verseNumber.style.display = 'none';
   }
+}
 
+
+  
 
 // Maintain a record of created buttons for each section
-const createdButtonsMap = new Map();
+const createdButtonsMapNav = new Map();
 
-async function replaceVerseNumbersWithButtonsSideBar(callback) {
-  const articles = document.querySelectorAll('article.has-max-width.classic-scripture[lang="eng"]');
+async function replaceverseNumbersWithButtonsNav(callback) {
+  const articlesNav = document.querySelectorAll('article.has-max-width.classic-scripture[lang="eng"]');
 
-  if (articles.length > 0) {
-    for (const article of articles) {
-      const dataURI = article.getAttribute('data-uri');
-      if (dataURI) {
-        const verseNumbers = article.querySelectorAll('.verse .verse-number');
-        const promises = Array.from(verseNumbers).map(async (verseNumber) => {
-          const chapterIndex = dataURI.lastIndexOf('/');
-          const chapter = dataURI.substring(chapterIndex + 1);
-          const bookIndex = dataURI.substring(0, chapterIndex).lastIndexOf('/');
-          const bookAbbr = dataURI.substring(bookIndex + 1, chapterIndex);
+  if (articlesNav.length > 0) {
+    for (const article of articlesNav) {
+      const verseNumbersNav = article.querySelectorAll('.verse .verse-number');
+      // Clear existing buttons in this article
+      const existingButtons = article.querySelectorAll('button');
+      existingButtons.forEach(button => button.remove());
 
-          const bookFullName = bookDecoder[bookAbbr] || '';
+      const promises = Array.from(verseNumbersNav).map(async (verseNumber) => {
+        const dataURINav = article.getAttribute('data-uri');
+        if (dataURINav) {
+          const chapterIndexNav = dataURINav.lastIndexOf('/');
+          const chapterNav = dataURINav.substring(chapterIndexNav + 1);
+          const bookIndexNav = dataURINav.substring(0, chapterIndexNav).lastIndexOf('/');
+          const bookAbbrNav = dataURINav.substring(bookIndexNav + 1, chapterIndexNav);
+
+          const bookFullNameNav = bookDecoder[bookAbbrNav] || '';
           const verseNumberText = verseNumber.textContent.trim();
-          const scripturePath = `${bookFullName} ${chapter}:${verseNumberText}`;
+          const scripturePathNav = `${bookFullNameNav} ${chapterNav}:${verseNumberText}`;
 
-          const scriptureQuotedData = await fetchJSON('https://kameronyork.com/datasets/scriptures-quoted.json');
-          const matchingEntry = scriptureQuotedData.find(entry => entry.scripture === scripturePath);
-          const scriptureCount = matchingEntry ? matchingEntry.count : 0;
+          const scriptureQuotedDataNav = await fetchJSON('https://kameronyork.com/datasets/scriptures-quoted.json');
+          const matchingEntryNav = scriptureQuotedDataNav.find(entry => entry.scripture === scripturePathNav);
+          const scriptureCountNav = matchingEntryNav ? matchingEntryNav.count : 0;
 
           // Get the user-saved color
-          const savedColor = await new Promise((resolve) => {
+          const savedColorNav = await new Promise((resolve) => {
             chrome.storage.sync.get('buttonColor', function (data) {
               resolve(data.buttonColor);
             });
           });
 
           // Call the function to create the button
-          createButtonWithExtractedURL(verseNumber, verseNumberText, scriptureCount, savedColor, scripturePath);
-        });
+          createButtonWithExtractedURLNav(verseNumber, verseNumberText, scriptureCountNav, savedColorNav, scripturePathNav);
+        }
+      });
 
-        await Promise.all(promises);
-      }
+      await Promise.all(promises);
     }
   }
   callback();
@@ -331,51 +195,51 @@ async function replaceVerseNumbersWithButtonsSideBar(callback) {
 
 
 // Example usage:
-replaceVerseNumbersWithButtonsSideBar(() => {
+replaceverseNumbersWithButtonsNav(() => {
   console.log('Replacement completed');
 });
 
   // The code will now check every second if the verse ids have been set to display = none.
   
   // This variable is used to help disable to checking every second
-  let isReplacing = false;
-  let intervalId = null;
+  let isReplacingNav = false;
+  let intervalIdNav = null;
   
-  function displayIsVisible(isVisible) {
-    const isVisibleDiv = document.createElement('div');
-    isVisibleDiv.textContent = `isVisible: ${isVisible}`;
-    document.body.appendChild(isVisibleDiv);
+  function displayisVisible(isVisibleNav) {
+    const isVisibleDivNav = document.createElement('div');
+    isVisibleDivNav.textContent = `isVisibleNav: ${isVisibleNav}`;
+    document.body.appendChild(isVisibleDivNav);
   }
   
   function checkingButtonsExist() {
-    const verseNumbers = document.querySelectorAll('.crossRefPanel-pyz6M .verse .verse-number');
+    const verseNumbersNav = document.querySelectorAll('.crossRefPanel-pyz6M .verse .verse-number');
   
     // Check if any verse numbers are visible   
-    const isVisible = Array.from(verseNumbers).some(verseNumber => {
+    const isVisibleNav = Array.from(verseNumbersNav).some(verseNumber => {
       return window.getComputedStyle(verseNumber).getPropertyValue('display') !== 'none';
     });
   
-    // displayIsVisible(isVisible);
+    // displayisVisibleNav(isVisibleNav);
   
-    // If verse numbers are visible and not currently replacing, execute replaceVerseNumbersWithButtons
-    if (isVisible && !isReplacing) {
-      isReplacing = true;
+    // If verse numbers are visible and not currently replacing, execute replaceverseNumbersNavWithButtons
+    if (isVisibleNav && !isReplacingNav) {
+      isReplacingNav = true;
   
       // Stop the interval
-      clearInterval(intervalId);
+      clearInterval(intervalIdNav);
   
-      replaceVerseNumbersWithButtonsSideBar(() => {
-        // Once replaceVerseNumbersWithButtons completes, reset the flag and start the interval again after a delay
-        isReplacing = false;
+      replaceverseNumbersWithButtonsNav(() => {
+        // Once replaceverseNumbersNavWithButtons completes, reset the flag and start the interval again after a delay
+        isReplacingNav = false;
         setTimeout(() => {
-          intervalId = setInterval(checkingButtonsExist, 1000);
+          intervalIdNav = setInterval(checkingButtonsExist, 1000);
         }, 3000); // Wait for 3 seconds before restarting the interval
       });
     }
   }
   
   // Start the interval
-  intervalId = setInterval(checkingButtonsExist, 1000); // Checking every three seconds
+  intervalIdNav = setInterval(checkingButtonsExist, 1000); // Checking every three seconds
   
   
   
