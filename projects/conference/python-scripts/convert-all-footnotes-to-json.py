@@ -8,10 +8,13 @@ df = pd.read_csv("https://kameronyork.com/datasets/all-footnotes.csv", encoding=
 # Define the file path for the JSON file with the short list.  Grouped by scripture with the count of instances.
 file_path_short = "C:/Users/theka/Desktop/Projects/Website_project/kameronyork.com/datasets/all-footnotes-lookup.json"
 
+# Define the file path for the JSON file with the long list
+file_path_long = "C:/Users/theka/Desktop/Projects/Website_project/kameronyork.com/datasets/all-footnotes.json"
+
 
 # %%
 # Save the sorted and merged DataFrame as JSON
-# df.to_json(file_path_long, orient='records')
+df.to_json(file_path_long, orient='records')
 
 
 # %%
