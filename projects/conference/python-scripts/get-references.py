@@ -82,7 +82,7 @@ df = df.explode('quote_output')
 # # %%
 # df.to_csv('extracted_quotes_pivot.csv', index=False, encoding='utf-8-sig')
 
-#%% 
+# #%% 
 # # Removing rows that start with see
 # df['quote_output'] = df['quote_output'].str.split('; emphasis|; see|. see|; Emphasis|; See|. See|, note|; italics added|. italics added').str[0]
 
@@ -107,8 +107,8 @@ df["reference_type"] = results
 
 # %% 
 # Save the DataFrame
-df = df.drop(columns=["text", "footnotes", "check", "Transformations"])
-df.to_csv('full_quotes.csv', encoding='utf-8-sig')
+# df = df.drop(columns=["text", "footnotes", "check", "Transformations"])
+df.to_csv('full_quotes2.csv', encoding='utf-8-sig')
 
 
 # %%
