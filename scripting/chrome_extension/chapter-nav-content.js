@@ -20,9 +20,9 @@ function createButtonWithExtractedURLNav(verseNumber, verseNumberText, scripture
 
   chrome.storage.sync.get('useAllFootnotes', function (data) {
     const useAllFootnotes = data.useAllFootnotes;
-    let scriptureQuotedDataUrlNav = 'https://kameronyork.com/datasets/conference-quotes.json';
+    let scriptureQuotedDataUrlNav = 'https://kameronyork.com/datasets/all-footnotes.json';
     if (useAllFootnotes) {
-      scriptureQuotedDataUrlNav = 'https://kameronyork.com/datasets/all-footnotes.json';
+      scriptureQuotedDataUrlNav = 'https://kameronyork.com/datasets/conference-quotes.json';
     }
 
     if (scriptureCountNav === 0) {
@@ -184,9 +184,9 @@ async function replaceverseNumbersWithButtonsNav(callback) {
           const verseNumberText = verseNumber.textContent.trim();
           const scripturePathNav = `${bookFullNameNav} ${chapterNav}:${verseNumberText}`;
 
-          let scriptureQuotedDataUrlNav = 'https://kameronyork.com/datasets/scriptures-quoted.json';
+          let scriptureQuotedDataUrlNav = 'https://kameronyork.com/datasets/all-footnotes-lookup.json';
           if (useAllFootnotes) {
-            scriptureQuotedDataUrlNav = 'https://kameronyork.com/datasets/all-footnotes-lookup.json';
+            scriptureQuotedDataUrlNav = 'https://kameronyork.com/datasets/scriptures-quoted.json';
           }
 
           const scriptureQuotedDataNav = await fetchJSON(scriptureQuotedDataUrlNav);
