@@ -22,21 +22,21 @@ def extract_hrefs(url, section_class):
 # Read the dataset into a pandas DataFrame
 df = pd.read_csv("C:/Users/theka/Desktop/Projects/conference-talk-hyperlinks.csv", encoding="utf-8")
 
-# %%
+
 # Apply the function to each row in the DataFrame with tqdm
 tqdm.pandas(desc="Processing rows")
 df['main_body_hrefs'] = df['hyperlink'].progress_apply(lambda url: extract_hrefs(url, 'contentWrapper-n6Z8K'))
 df['aside_hrefs'] = df['hyperlink'].progress_apply(lambda url: extract_hrefs(url, 'sidePanel-sfJHO'))
 
-# %%
+
 # Save the DataFrame to a new CSV file
 df.to_csv("C:/Users/theka/Desktop/Projects/conference-talk-hyperlinks-output.csv", encoding="utf-8", index=False)
 
-# %%
+
 # Unlist the main_body_hrefs column and pivot the DataFrame
 swap_df = df.explode('main_body_hrefs').reset_index(drop=True)
 
-# %%
+
 replace_strings = [
     "/study/scriptures/nt/",
     "/study/scriptures/ot/",
@@ -47,7 +47,7 @@ replace_strings = [
 for string in replace_strings:
     swap_df['main_body_hrefs'] = swap_df['main_body_hrefs'].str.replace(string, '')
     
-# %%
+
 # Creating Ref_Check column.
 # Create a list of scripture abbreviations
 scripture_abbreviations = {
@@ -59,10 +59,10 @@ swap_df['ref_check'] = swap_df['main_body_hrefs'].str.split('/').str[0].isin(scr
 
 swap_df.to_csv("C:/Users/theka/Desktop/Projects/conference-talk-hyperlinks-output-2.csv", encoding="utf-8", index=False)
 
-# %%
+
 refs_df = swap_df.query("ref_check == True")
 
-# %%
+
 book_decoder = {
     'gen': 'Genesis',
     'ex': 'Exodus',
@@ -153,7 +153,7 @@ book_decoder = {
     'a-of-f': 'Articles of Faith',
 }
 
-# %%
+
 # Updated function to decode book abbreviation, chapter, and verse
 def decode_book_and_reference(href):
     parts = href.split('/')
@@ -172,10 +172,10 @@ refs_df['chapter_and_verse'] = refs_df['chapter_and_verse'].str.replace('.', ':'
 refs_df['scripture'] = refs_df['book_name'] + ' ' + refs_df['chapter_and_verse']
 
 
-# %%
+
 refs_df.to_csv("C:/Users/theka/Desktop/Projects/conference-talk-hyperlinks-output-3.csv", encoding="utf-8", index=False)
 
-# %%
+
 
 
 from tqdm import tqdm
@@ -227,11 +227,11 @@ new_df['scripture_type'] = new_df['scripture'].apply(determine_scripture_type)
 new_df.to_csv("C:/Users/theka/Desktop/Projects/conference-talk-hyperlinks-output-4.csv", encoding="utf-8", index=False)
 
 
-# %% 
+ 
 # Creating a new df for single scriptures
 single_df = new_df.query("scripture_type == 'SINGLE'")
 
-# %%
+
 sequence_df = new_df.query("scripture_type == 'SEQUENCE'")
 
 sequence_rows = []
@@ -265,7 +265,7 @@ with tqdm(total=len(sequence_df)) as pbar:
 pivot_sequence_df = pd.DataFrame(sequence_rows)
 
 
-# %%
+
 # Selecting the required columns from each DataFrame
 pivot_sequence_df_selected = pivot_sequence_df[['id', 'year', 'month', 'day', 'session', 'speaker', 'title', 'hyperlink', 'scripture']]
 single_df_selected = single_df[['id', 'year', 'month', 'day', 'session', 'speaker', 'title', 'hyperlink', 'scripture']]
@@ -273,8 +273,18 @@ single_df_selected = single_df[['id', 'year', 'month', 'day', 'session', 'speake
 # Concatenating the DataFrames
 scriptures_df = pd.concat([pivot_sequence_df_selected, single_df_selected], ignore_index=True)
 
+# Rename the columns
+scriptures_df = scriptures_df.rename(columns={
+    'id': 'talk_id',
+    'year': 'talk_year',
+    'month': 'talk_month',
+    'day': 'talk_day',
+    'session': 'talk_session'
+})
 
-# %%
+# Create a new index column called "quote_id"
+scriptures_df['quote_id'] = scriptures_df.reset_index().index
+
 # Define the file path for the JSON file with the short list.  Grouped by scripture with the count of instances.
 file_path_short = "C:/Users/theka/Desktop/Projects/Website_project/kameronyork.com/datasets/all-footnotes-lookup.json"
 
@@ -287,4 +297,6 @@ scriptures_df.to_json(file_path_long, orient='records')
 scripture_counts = scriptures_df.groupby('scripture').size().reset_index(name='count')
 
 scripture_counts.to_json(file_path_short, orient='records')
+
+
 # %%
