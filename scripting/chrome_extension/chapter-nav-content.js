@@ -1,15 +1,13 @@
-// Creating buttons in the chapterNav navigator sidebars.
-
 function createButtonWithExtractedURLNav(verseNumber, verseNumberText, scriptureCountNav, savedColorNav, scripturePathNav) {
   let verseButtonWidthNav = '25px';
   let countButtonWidthNav = '25px';
 
   if (verseNumberText.length === 1) {
-    verseButtonWidthNav = '25px';  // 25
+    verseButtonWidthNav = '25px'; // 25
   } else if (verseNumberText.length === 2) {
-    verseButtonWidthNav = '30px';  // 30
+    verseButtonWidthNav = '30px'; // 30
   } else if (verseNumberText.length >= 3) {
-    verseButtonWidthNav = '35px';  // 35
+    verseButtonWidthNav = '35px'; // 35
   }
 
   if (scriptureCountNav.toString().length === 1) {
@@ -20,128 +18,137 @@ function createButtonWithExtractedURLNav(verseNumber, verseNumberText, scripture
     countButtonWidthNav = '35px';
   }
 
-  if (scriptureCountNav === 0) {
-    const verseButtonNav = document.createElement('button');
-    verseButtonNav.style.width = verseButtonWidthNav;
-    verseButtonNav.style.height = '20px';
-    verseButtonNav.style.border = 'none';
-    verseButtonNav.style.fontSize = '12px';
-    verseButtonNav.textContent = verseNumberText;  // This is what goes on the button.
-    verseButtonNav.style.background = savedColorNav || '#191970';
-    verseButtonNav.style.color = 'white';
-    verseButtonNav.style.borderRadius = '5px';
-    verseButtonNav.style.display = 'inline-block';
-    verseButtonNav.style.textAlign = 'center';
-    verseButtonNav.style.lineHeight = '20px';
+  chrome.storage.sync.get('useAllFootnotes', function (data) {
+    const useAllFootnotes = data.useAllFootnotes;
+    let scriptureQuotedDataUrlNav = 'https://kameronyork.com/datasets/conference-quotes.json';
+    if (useAllFootnotes) {
+      scriptureQuotedDataUrlNav = 'https://kameronyork.com/datasets/all-footnotes.json';
+    }
 
-    verseButtonNav.addEventListener('click', async function () {
-      const overlayNav = document.createElement('div');
-      overlayNav.style.position = 'fixed';
-      overlayNav.style.top = '0';
-      overlayNav.style.left = '0';
-      overlayNav.style.width = '100%';
-      overlayNav.style.height = '100%';
-      overlayNav.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-      overlayNav.style.display = 'flex';
-      overlayNav.style.alignItems = 'center';
-      overlayNav.style.justifyContent = 'center';
-      overlayNav.style.zIndex = '9999';
+    if (scriptureCountNav === 0) {
+      const verseButtonNav = document.createElement('button');
+      verseButtonNav.style.width = verseButtonWidthNav;
+      verseButtonNav.style.height = '20px';
+      verseButtonNav.style.border = 'none';
+      verseButtonNav.style.fontSize = '12px';
+      verseButtonNav.textContent = verseNumberText; // This is what goes on the button.
+      verseButtonNav.style.background = savedColorNav || '#191970';
+      verseButtonNav.style.color = 'white';
+      verseButtonNav.style.borderRadius = '5px';
+      verseButtonNav.style.display = 'inline-block';
+      verseButtonNav.style.textAlign = 'center';
+      verseButtonNav.style.lineHeight = '20px';
 
-      const scriptureDetailsNav = document.createElement('div');
-      scriptureDetailsNav.style.backgroundColor = savedColorNav || '#191970';  // Sets the background color of the element.
-      scriptureDetailsNav.style.color = 'white';
-      scriptureDetailsNav.style.padding = '20px';
-      scriptureDetailsNav.style.borderRadius = '10px';
-      scriptureDetailsNav.textContent = 'No entries found';
+      verseButtonNav.addEventListener('click', async function () {
+        const overlayNav = document.createElement('div');
+        overlayNav.style.position = 'fixed';
+        overlayNav.style.top = '0';
+        overlayNav.style.left = '0';
+        overlayNav.style.width = '100%';
+        overlayNav.style.height = '100%';
+        overlayNav.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+        overlayNav.style.display = 'flex';
+        overlayNav.style.alignItems = 'center';
+        overlayNav.style.justifyContent = 'center';
+        overlayNav.style.zIndex = '9999';
 
-      const closeButtonNav = document.createElement('button');
-      closeButtonNav.textContent = 'Close';
-      closeButtonNav.addEventListener('click', function() {
-        overlayNav.remove();
+        const scriptureDetailsNav = document.createElement('div');
+        scriptureDetailsNav.style.backgroundColor = savedColorNav || '#191970'; // Sets the background color of the element.
+        scriptureDetailsNav.style.color = 'white';
+        scriptureDetailsNav.style.padding = '20px';
+        scriptureDetailsNav.style.borderRadius = '10px';
+        scriptureDetailsNav.textContent = 'No entries found';
+
+        const closeButtonNav = document.createElement('button');
+        closeButtonNav.textContent = 'Close';
+        closeButtonNav.addEventListener('click', function() {
+          overlayNav.remove();
+        });
+
+        overlayNav.appendChild(scriptureDetailsNav);
+        overlayNav.appendChild(closeButtonNav);
+
+        document.body.appendChild(overlayNav);
       });
 
-      overlayNav.appendChild(scriptureDetailsNav);
-      overlayNav.appendChild(closeButtonNav);
+      // Remove any existing spaces after the verse number
+      const existingSpaces = verseNumber.parentNode.querySelectorAll('span.verse-space');
+      existingSpaces.forEach(space => space.remove());
 
-      document.body.appendChild(overlayNav);
-    });
+      // Create a single space after the verse button
+      const spaceNav = document.createElement('span');
+      spaceNav.className = 'verse-space';
+      spaceNav.innerHTML = '&nbsp&nbsp;';
+      verseNumber.parentNode.insertBefore(spaceNav, verseNumber.nextSibling);
+      verseNumber.parentNode.insertBefore(verseButtonNav, verseNumber.nextSibling);
+      verseNumber.style.display = 'none';
+    } else {
+      const verseButtonNav = document.createElement('button');
+      verseButtonNav.style.width = verseButtonWidthNav;
+      verseButtonNav.style.height = '20px';
+      verseButtonNav.style.border = 'none';
+      verseButtonNav.style.fontSize = '12px';
+      verseButtonNav.textContent = verseNumberText; // This is what goes on the button.
+      verseButtonNav.style.background = savedColorNav || '#191970';
+      verseButtonNav.style.color = 'white';
+      verseButtonNav.style.borderTopLeftRadius = '5px';
+      verseButtonNav.style.borderBottomLeftRadius = '5px';
+      verseButtonNav.style.borderTopRightRadius = '0';
+      verseButtonNav.style.borderBottomRightRadius = '0';
+      verseButtonNav.style.display = 'flex';
+      verseButtonNav.style.alignItems = 'center';
+      verseButtonNav.style.justifyContent = 'center';
+      verseButtonNav.style.padding = '0 5px';
+      verseButtonNav.style.display = 'inline-block';
+      verseButtonNav.style.verticalAlign = 'middle';
 
-    // Remove any existing spaces after the verse number
-    const existingSpaces = verseNumber.parentNode.querySelectorAll('span.verse-space');
-    existingSpaces.forEach(space => space.remove());
+      const countButtonNav = document.createElement('button');
+      countButtonNav.style.width = countButtonWidthNav;
+      countButtonNav.style.height = '20px';
+      countButtonNav.style.border = `1px solid ${savedColorNav || '#191970'}`;
+      countButtonNav.style.fontSize = '12px';
+      countButtonNav.textContent = `${scriptureCountNav}`; // This is what goes on the button.
+      countButtonNav.style.background = 'white';
+      countButtonNav.style.color = 'black';
+      countButtonNav.style.borderTopLeftRadius = '0';
+      countButtonNav.style.borderBottomLeftRadius = '0';
+      countButtonNav.style.borderTopRightRadius = '5px';
+      countButtonNav.style.borderBottomRightRadius = '5px';
+      countButtonNav.style.display = 'flex';
+      countButtonNav.style.alignItems = 'center';
+      countButtonNav.style.justifyContent = 'center';
+      countButtonNav.style.padding = '0 5px';
+      countButtonNav.style.display = 'inline-block';
+      countButtonNav.style.verticalAlign = 'middle';
 
-    // Create a single space after the verse button
-    const spaceNav = document.createElement('span');
-    spaceNav.className = 'verse-space';
-    spaceNav.innerHTML = '&nbsp&nbsp;';
-    verseNumber.parentNode.insertBefore(spaceNav, verseNumber.nextSibling);
-    verseNumber.parentNode.insertBefore(verseButtonNav, verseNumber.nextSibling);
-    verseNumber.style.display = 'none';
-  } else {
-    const verseButtonNav = document.createElement('button');
-    verseButtonNav.style.width = verseButtonWidthNav;
-    verseButtonNav.style.height = '20px';
-    verseButtonNav.style.border = 'none';
-    verseButtonNav.style.fontSize = '12px';
-    verseButtonNav.textContent = verseNumberText;  // This is what goes on the button.
-    verseButtonNav.style.background = savedColorNav || '#191970';
-    verseButtonNav.style.color = 'white';
-    verseButtonNav.style.borderTopLeftRadius = '5px';
-    verseButtonNav.style.borderBottomLeftRadius = '5px';
-    verseButtonNav.style.borderTopRightRadius = '0';
-    verseButtonNav.style.borderBottomRightRadius = '0';
-    verseButtonNav.style.display = 'flex';
-    verseButtonNav.style.alignItems = 'center';
-    verseButtonNav.style.justifyContent = 'center';
-    verseButtonNav.style.padding = '0 5px';
-    verseButtonNav.style.display = 'inline-block';
-    verseButtonNav.style.verticalAlign = 'middle';
+      verseButtonNav.addEventListener('click', async function () {
+        const fullQueryData = await fetchJSON(scriptureQuotedDataUrlNav);
+        const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePathNav);
+        createTableOverlay(matchingEntries);
+      });
 
-    const countButtonNav = document.createElement('button');
-    countButtonNav.style.width = countButtonWidthNav;
-    countButtonNav.style.height = '20px';
-    countButtonNav.style.border = `1px solid ${savedColorNav || '#191970'}`;
-    countButtonNav.style.fontSize = '12px';
-    countButtonNav.textContent = `${scriptureCountNav}`;  // This is what goes on the button.
-    countButtonNav.style.background = 'white';
-    countButtonNav.style.color = 'black';
-    countButtonNav.style.borderTopLeftRadius = '0';
-    countButtonNav.style.borderBottomLeftRadius = '0';
-    countButtonNav.style.borderTopRightRadius = '5px';
-    countButtonNav.style.borderBottomRightRadius = '5px';
-    countButtonNav.style.display = 'flex';
-    countButtonNav.style.alignItems = 'center';
-    countButtonNav.style.justifyContent = 'center';
-    countButtonNav.style.padding = '0 5px';
-    countButtonNav.style.display = 'inline-block';
-    countButtonNav.style.verticalAlign = 'middle';
+      countButtonNav.addEventListener('click', async function () {
+        const fullQueryData = await fetchJSON(scriptureQuotedDataUrlNav);
+        const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePathNav);
+        createTableOverlay(matchingEntries);
+      });
 
-    verseButtonNav.addEventListener('click', async function () {
-      const fullQueryData = await fetchJSON('https://kameronyork.com/datasets/conference-quotes.json');
-      const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePathNav);
-      createTableOverlay(matchingEntries);
-    });
+      // Remove any existing spaces after the verse number
+      const existingSpaces = verseNumber.parentNode.querySelectorAll('span.verse-space');
+      existingSpaces.forEach(space => space.remove());
 
-    countButtonNav.addEventListener('click', async function () {
-      const fullQueryData = await fetchJSON('https://kameronyork.com/datasets/conference-quotes.json');
-      const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePathNav);
-      createTableOverlay(matchingEntries);
-    });
-
-    // Remove any existing spaces after the verse number
-    const existingSpaces = verseNumber.parentNode.querySelectorAll('span.verse-space');
-    existingSpaces.forEach(space => space.remove());
-
-    // Create a single space after the verse button
-    const spaceNav = document.createElement('span');
-    spaceNav.className = 'verse-space';
-    spaceNav.innerHTML = '&nbsp&nbsp;';
-    verseNumber.parentNode.insertBefore(spaceNav, verseNumber.nextSibling);
-    verseNumber.parentNode.insertBefore(countButtonNav, verseNumber.nextSibling);
-    verseNumber.parentNode.insertBefore(verseButtonNav, verseNumber.nextSibling);
-    verseNumber.style.display = 'none';
-  }
+      // Create a single space after the verse button
+      const spaceNav = document.createElement('span');
+      spaceNav.className = 'verse-space';
+      spaceNav.innerHTML = '&nbsp&nbsp;';
+      verseNumber.parentNode.insertBefore(spaceNav, verseNumber.nextSibling);
+      verseNumber.parentNode.insertBefore(countButtonNav, verseNumber.nextSibling);
+      verseNumber.parentNode.insertBefore(verseButtonNav, verseNumber.nextSibling);
+      verseNumber.style.display = 'none';
+    }
+  });
 }
+
 
 
   
@@ -159,6 +166,12 @@ async function replaceverseNumbersWithButtonsNav(callback) {
       const existingButtons = article.querySelectorAll('button');
       existingButtons.forEach(button => button.remove());
 
+      const useAllFootnotes = await new Promise((resolve) => {
+        chrome.storage.sync.get('useAllFootnotes', function (data) {
+          resolve(data.useAllFootnotes);
+        });
+      });
+
       const promises = Array.from(verseNumbersNav).map(async (verseNumber) => {
         const dataURINav = article.getAttribute('data-uri');
         if (dataURINav) {
@@ -171,7 +184,12 @@ async function replaceverseNumbersWithButtonsNav(callback) {
           const verseNumberText = verseNumber.textContent.trim();
           const scripturePathNav = `${bookFullNameNav} ${chapterNav}:${verseNumberText}`;
 
-          const scriptureQuotedDataNav = await fetchJSON('https://kameronyork.com/datasets/scriptures-quoted.json');
+          let scriptureQuotedDataUrlNav = 'https://kameronyork.com/datasets/scriptures-quoted.json';
+          if (useAllFootnotes) {
+            scriptureQuotedDataUrlNav = 'https://kameronyork.com/datasets/all-footnotes-lookup.json';
+          }
+
+          const scriptureQuotedDataNav = await fetchJSON(scriptureQuotedDataUrlNav);
           const matchingEntryNav = scriptureQuotedDataNav.find(entry => entry.scripture === scripturePathNav);
           const scriptureCountNav = matchingEntryNav ? matchingEntryNav.count : 0;
 

@@ -7,12 +7,12 @@ document.addEventListener('DOMContentLoaded', function() {
   function applyUserColor(color) {
     const header = document.querySelector('.header');
     const headerImage = document.querySelector('.header img');
-  
-      // Apply color directly as inline styles
-      header.style.background = `linear-gradient(to bottom, ${color} 50%, transparent 50%)`;
-      headerImage.style.borderColor = color;
-      headerImage.setAttribute('style', `border-color: ${color}; width: 100px; height: 100px; border-radius: 50%;`);
-    }
+
+    // Apply color directly as inline styles
+    header.style.background = `linear-gradient(to bottom, ${color} 50%, transparent 50%)`;
+    headerImage.style.borderColor = color;
+    headerImage.setAttribute('style', `border-color: ${color}; width: 100px; height: 100px; border-radius: 50%;`);
+  }
 
   function reloadColorButtons(selectedColor) {
     const colors = [
@@ -36,21 +36,21 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  reloadColorButtons(localStorage.getItem('buttonColor'));
-
-  const userSelectedColor = localStorage.getItem('buttonColor');
-
-  // Apply the user-selected color if available in local storage
-  if (userSelectedColor) {
-    applyUserColor(userSelectedColor);
+  // Load button color from chrome.storage.sync
+  chrome.storage.sync.get('buttonColor', function(data) {
+    const userSelectedColor = data.buttonColor;
     reloadColorButtons(userSelectedColor);
-  }
+
+    // Apply the user-selected color if available
+    if (userSelectedColor) {
+      applyUserColor(userSelectedColor);
+    }
+  });
 
   colorButtonsContainer.addEventListener('click', function(event) {
     const target = event.target;
     if (target.classList.contains('color-option')) {
       const selectedColor = target.getAttribute('data-color');
-      localStorage.setItem('buttonColor', selectedColor);
       chrome.storage.sync.set({ 'buttonColor': selectedColor }, function() {
         console.log('Color saved to sync storage: ' + selectedColor);
         // Refresh the active tab instead of the entire window
@@ -70,5 +70,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
     }
+  });
+
+  // Turn on All Footnotes slider functionality
+  const footnotesToggle = document.getElementById('footnotesToggle');
+
+  footnotesToggle.addEventListener('change', function() {
+    const useAllFootnotes = footnotesToggle.checked;
+    localStorage.setItem('useAllFootnotes', useAllFootnotes);
+
+    chrome.storage.sync.set({ 'useAllFootnotes': useAllFootnotes }, function() {
+      console.log('Use All Footnotes saved to sync storage: ' + useAllFootnotes);
+      // Refresh the active tab instead of the entire window
+      chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+        chrome.tabs.reload(tabs[0].id);
+      });
+    });
+  });
+
+  // Initialize the slider state based on stored value
+  chrome.storage.sync.get('useAllFootnotes', function(data) {
+    const storedUseAllFootnotes = data.useAllFootnotes;
+    footnotesToggle.checked = storedUseAllFootnotes === true;
   });
 });

@@ -103,9 +103,27 @@ const bookDecoder = {
   }
   
   function createTableView(entries) {
+    // Use an object to store unique entries based on the talk_id
+    const uniqueEntries = {};
+  
+    // Iterate through the entries and store them in the object using the talk_id as the key
+    entries.forEach(entry => {
+      const talkId = entry.talk_id;
+      if (!uniqueEntries[talkId]) {
+        uniqueEntries[talkId] = entry;
+      }
+    });
+  
+    // Convert the object back to an array of unique entries
+    const uniqueEntriesArray = Object.values(uniqueEntries);
+  
+    // Sort the unique entries array based on talk_id in descending order
+    uniqueEntriesArray.sort((a, b) => b.talk_id - a.talk_id);
+  
+    // Create the table HTML using the unique entries array
     let tableHTML = '<table border="1"><tr><th>Talk Year</th><th>Talk Month</th><th>Talk Day</th><th>Talk Session</th><th>Speaker</th><th>Title</th></tr>';
   
-    entries.forEach(entry => {
+    uniqueEntriesArray.forEach(entry => {
       // Assuming there's a 'hyperlink' property in each entry for the title hyperlink
       const titleLink = entry.hyperlink ? `<a href="${entry.hyperlink}" target="_blank">${entry.title}</a>` : entry.title;
   
@@ -115,6 +133,8 @@ const bookDecoder = {
     tableHTML += '</table>';
     return tableHTML;
   }
+  
+  
   
   function createTableOverlay(matchingEntries) {
     const tableView = createTableView(matchingEntries);
@@ -176,114 +196,123 @@ const bookDecoder = {
       countButtonWidth = '35px';
     }
   
-    if (scriptureCount === 0) {
-      const verseButton = document.createElement('button');
-      verseButton.style.width = verseButtonWidth;
-      verseButton.style.height = '20px';
-      verseButton.style.border = 'none';
-      verseButton.style.fontSize = '12px';
-      verseButton.textContent = verseNumberText;
-      verseButton.style.background = savedColor || '#191970';
-      verseButton.style.color = 'white';
-      verseButton.style.borderRadius = '5px';
-      verseButton.style.display = 'inline-block';
-      verseButton.style.textAlign = 'center';
-      verseButton.style.lineHeight = '20px';
+    chrome.storage.sync.get('useAllFootnotes', function (data) {
+      const useAllFootnotes = data.useAllFootnotes;
+      let scriptureQuotedDataUrl = 'https://kameronyork.com/datasets/conference-quotes.json';
+      if (useAllFootnotes) {
+        scriptureQuotedDataUrl = 'https://kameronyork.com/datasets/all-footnotes.json';
+      }
   
-      verseButton.addEventListener('click', async function () {
-        const overlay = document.createElement('div');
-        overlay.style.position = 'fixed';
-        overlay.style.top = '0';
-        overlay.style.left = '0';
-        overlay.style.width = '100%';
-        overlay.style.height = '100%';
-        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-        overlay.style.display = 'flex';
-        overlay.style.alignItems = 'center';
-        overlay.style.justifyContent = 'center';
-        overlay.style.zIndex = '9999';
+      if (scriptureCount === 0) {
+        const verseButton = document.createElement('button');
+        verseButton.style.width = verseButtonWidth;
+        verseButton.style.height = '20px';
+        verseButton.style.border = 'none';
+        verseButton.style.fontSize = '12px';
+        verseButton.textContent = verseNumberText;
+        verseButton.style.background = savedColor || '#191970';
+        verseButton.style.color = 'white';
+        verseButton.style.borderRadius = '5px';
+        verseButton.style.display = 'inline-block';
+        verseButton.style.textAlign = 'center';
+        verseButton.style.lineHeight = '20px';
   
-        const scriptureDetails = document.createElement('div');
-        scriptureDetails.style.backgroundColor = savedColor || '#191970';  // Sets the background color of the element.
-        scriptureDetails.style.color = 'white';
-        scriptureDetails.style.padding = '20px';
-        scriptureDetails.style.borderRadius = '10px';
-        scriptureDetails.textContent = 'No entries found';
+        verseButton.addEventListener('click', async function () {
+          const overlay = document.createElement('div');
+          overlay.style.position = 'fixed';
+          overlay.style.top = '0';
+          overlay.style.left = '0';
+          overlay.style.width = '100%';
+          overlay.style.height = '100%';
+          overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+          overlay.style.display = 'flex';
+          overlay.style.alignItems = 'center';
+          overlay.style.justifyContent = 'center';
+          overlay.style.zIndex = '9999';
   
-        const closeButton = document.createElement('button');
-        closeButton.textContent = 'Close';
-        closeButton.addEventListener('click', function() {
-          overlay.remove();
+          const scriptureDetails = document.createElement('div');
+          scriptureDetails.style.backgroundColor = savedColor || '#191970';  // Sets the background color of the element.
+          scriptureDetails.style.color = 'white';
+          scriptureDetails.style.padding = '20px';
+          scriptureDetails.style.borderRadius = '10px';
+          scriptureDetails.textContent = 'No entries found';
+  
+          const closeButton = document.createElement('button');
+          closeButton.textContent = 'Close';
+          closeButton.addEventListener('click', function() {
+            overlay.remove();
+          });
+  
+          overlay.appendChild(scriptureDetails);
+          overlay.appendChild(closeButton);
+  
+          document.body.appendChild(overlay);
         });
   
-        overlay.appendChild(scriptureDetails);
-        overlay.appendChild(closeButton);
+        const space = createSpace();
+        verseNumber.parentNode.insertBefore(space.cloneNode(true), verseNumber.nextSibling);
+        verseNumber.parentNode.insertBefore(verseButton, verseNumber.nextSibling);
+        verseNumber.style.display = 'none';
+      } else {
+        const verseButton = document.createElement('button');
+        verseButton.style.width = verseButtonWidth;
+        verseButton.style.height = '20px';
+        verseButton.style.border = 'none';
+        verseButton.style.fontSize = '12px';
+        verseButton.textContent = verseNumberText;
+        verseButton.style.background = savedColor || '#191970';
+        verseButton.style.color = 'white';
+        verseButton.style.borderTopLeftRadius = '5px';
+        verseButton.style.borderBottomLeftRadius = '5px';
+        verseButton.style.borderTopRightRadius = '0';
+        verseButton.style.borderBottomRightRadius = '0';
+        verseButton.style.display = 'flex';
+        verseButton.style.alignItems = 'center';
+        verseButton.style.justifyContent = 'center';
+        verseButton.style.padding = '0 5px';
+        verseButton.style.display = 'inline-block';
+        verseButton.style.verticalAlign = 'middle';
   
-        document.body.appendChild(overlay);
-      });
+        const countButton = document.createElement('button');
+        countButton.style.width = countButtonWidth;
+        countButton.style.height = '20px';
+        countButton.style.border = `1px solid ${savedColor || '#191970'}`;
+        countButton.style.fontSize = '12px';
+        countButton.textContent = `${scriptureCount}`;
+        countButton.style.background = 'white';
+        countButton.style.color = 'black';
+        countButton.style.borderTopLeftRadius = '0';
+        countButton.style.borderBottomLeftRadius = '0';
+        countButton.style.borderTopRightRadius = '5px';
+        countButton.style.borderBottomRightRadius = '5px';
+        countButton.style.display = 'flex';
+        countButton.style.alignItems = 'center';
+        countButton.style.justifyContent = 'center';
+        countButton.style.padding = '0 5px';
+        countButton.style.display = 'inline-block';
+        countButton.style.verticalAlign = 'middle';
   
-      const space = createSpace();
-      verseNumber.parentNode.insertBefore(space.cloneNode(true), verseNumber.nextSibling);
-      verseNumber.parentNode.insertBefore(verseButton, verseNumber.nextSibling);
-      verseNumber.style.display = 'none';
-    } else {
-      const verseButton = document.createElement('button');
-      verseButton.style.width = verseButtonWidth;
-      verseButton.style.height = '20px';
-      verseButton.style.border = 'none';
-      verseButton.style.fontSize = '12px';
-      verseButton.textContent = verseNumberText;
-      verseButton.style.background = savedColor || '#191970';
-      verseButton.style.color = 'white';
-      verseButton.style.borderTopLeftRadius = '5px';
-      verseButton.style.borderBottomLeftRadius = '5px';
-      verseButton.style.borderTopRightRadius = '0';
-      verseButton.style.borderBottomRightRadius = '0';
-      verseButton.style.display = 'flex';
-      verseButton.style.alignItems = 'center';
-      verseButton.style.justifyContent = 'center';
-      verseButton.style.padding = '0 5px';
-      verseButton.style.display = 'inline-block';
-      verseButton.style.verticalAlign = 'middle';
+        verseButton.addEventListener('click', async function () {
+          const fullQueryData = await fetchJSON(scriptureQuotedDataUrl);
+          const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePath);
+          createTableOverlay(matchingEntries);
+        });
   
-      const countButton = document.createElement('button');
-      countButton.style.width = countButtonWidth;
-      countButton.style.height = '20px';
-      countButton.style.border = `1px solid ${savedColor || '#191970'}`;
-      countButton.style.fontSize = '12px';
-      countButton.textContent = `${scriptureCount}`;
-      countButton.style.background = 'white';
-      countButton.style.color = 'black';
-      countButton.style.borderTopLeftRadius = '0';
-      countButton.style.borderBottomLeftRadius = '0';
-      countButton.style.borderTopRightRadius = '5px';
-      countButton.style.borderBottomRightRadius = '5px';
-      countButton.style.display = 'flex';
-      countButton.style.alignItems = 'center';
-      countButton.style.justifyContent = 'center';
-      countButton.style.padding = '0 5px';
-      countButton.style.display = 'inline-block';
-      countButton.style.verticalAlign = 'middle';
+        countButton.addEventListener('click', async function () {
+          const fullQueryData = await fetchJSON(scriptureQuotedDataUrl);
+          const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePath);
+          createTableOverlay(matchingEntries);
+        });
   
-      verseButton.addEventListener('click', async function () {
-        const fullQueryData = await fetchJSON('https://kameronyork.com/datasets/conference-quotes.json');
-        const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePath);
-        createTableOverlay(matchingEntries);
-      });
-  
-      countButton.addEventListener('click', async function () {
-        const fullQueryData = await fetchJSON('https://kameronyork.com/datasets/conference-quotes.json');
-        const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePath);
-        createTableOverlay(matchingEntries);
-      });
-  
-      const space = createSpace();
-      verseNumber.parentNode.insertBefore(space.cloneNode(true), verseNumber.nextSibling);
-      verseNumber.parentNode.insertBefore(countButton, verseNumber.nextSibling);
-      verseNumber.parentNode.insertBefore(verseButton, verseNumber.nextSibling);
-      verseNumber.style.display = 'none';
-    }
+        const space = createSpace();
+        verseNumber.parentNode.insertBefore(space.cloneNode(true), verseNumber.nextSibling);
+        verseNumber.parentNode.insertBefore(countButton, verseNumber.nextSibling);
+        verseNumber.parentNode.insertBefore(verseButton, verseNumber.nextSibling);
+        verseNumber.style.display = 'none';
+      }
+    });
   }
+  
   
   
   async function replaceVerseNumbersWithButtons(callback) {
@@ -306,7 +335,18 @@ const bookDecoder = {
         const bookFullName = bookDecoder[bookAbbr] || '';
         const scripturePath = `${bookFullName} ${chapter}:${verseNumberText}`;
   
-        const scriptureQuotedData = await fetchJSON('https://kameronyork.com/datasets/scriptures-quoted.json');
+        const useAllFootnotes = await new Promise((resolve) => {
+          chrome.storage.sync.get('useAllFootnotes', function (data) {
+            resolve(data.useAllFootnotes);
+          });
+        });
+  
+        let scriptureQuotedDataUrl = 'https://kameronyork.com/datasets/scriptures-quoted.json';
+        if (useAllFootnotes) {
+          scriptureQuotedDataUrl = 'https://kameronyork.com/datasets/all-footnotes-lookup.json';
+        }
+  
+        const scriptureQuotedData = await fetchJSON(scriptureQuotedDataUrl);
         const matchingEntry = scriptureQuotedData.find(entry => entry.scripture === scripturePath);
         const scriptureCount = matchingEntry ? matchingEntry.count : 0;
   
