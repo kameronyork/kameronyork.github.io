@@ -32,6 +32,8 @@ df['aside_hrefs'] = df['hyperlink'].progress_apply(lambda url: extract_hrefs(url
 # Save the DataFrame to a new CSV file
 df.to_csv("C:/Users/theka/Desktop/Projects/conference-talk-hyperlinks-output.csv", encoding="utf-8", index=False)
 
+# %%
+df = pd.read_csv("C:/Users/theka/Desktop/Projects/conference-talk-hyperlinks-output.csv", encoding="utf-8")
 
 # Unlist the main_body_hrefs column and pivot the DataFrame
 swap_df = df.explode('main_body_hrefs').reset_index(drop=True)
@@ -59,6 +61,8 @@ swap_df['ref_check'] = swap_df['main_body_hrefs'].str.split('/').str[0].isin(scr
 
 swap_df.to_csv("C:/Users/theka/Desktop/Projects/conference-talk-hyperlinks-output-2.csv", encoding="utf-8", index=False)
 
+# %%
+swap_df.pd.read_csv("C:/Users/theka/Desktop/Projects/conference-talk-hyperlinks-output-2.csv", encoding="utf-8")
 
 refs_df = swap_df.query("ref_check == True")
 
@@ -175,12 +179,8 @@ refs_df['scripture'] = refs_df['book_name'] + ' ' + refs_df['chapter_and_verse']
 
 refs_df.to_csv("C:/Users/theka/Desktop/Projects/conference-talk-hyperlinks-output-3.csv", encoding="utf-8", index=False)
 
-
-
-
-from tqdm import tqdm
-
-# Assuming you have already loaded your DataFrame called refs_df
+# %%
+refs_df = pd.read_csv("C:/Users/theka/Desktop/Projects/conference-talk-hyperlinks-output-3.csv", encoding="utf-8")
 
 # Create an empty list to store the rows for the new DataFrame
 new_rows = []
@@ -226,8 +226,9 @@ new_df['scripture_type'] = new_df['scripture'].apply(determine_scripture_type)
 
 new_df.to_csv("C:/Users/theka/Desktop/Projects/conference-talk-hyperlinks-output-4.csv", encoding="utf-8", index=False)
 
+# %%
+new_df = pd.read_csv("C:/Users/theka/Desktop/Projects/conference-talk-hyperlinks-output-4.csv", encoding="utf-8")
 
- 
 # Creating a new df for single scriptures
 single_df = new_df.query("scripture_type == 'SINGLE'")
 
@@ -291,6 +292,12 @@ file_path_short = "C:/Users/theka/Desktop/Projects/Website_project/kameronyork.c
 # Define the file path for the JSON file with the long list
 file_path_long = "C:/Users/theka/Desktop/Projects/Website_project/kameronyork.com/datasets/all-footnotes.json"
 
+# Define the file path for the JSON file with the short list of only footnotes from apostles
+apostle_path_short = "C:/Users/theka/Desktop/Projects/Website_project/kameronyork.com/datasets/apostle-all-footnotes-lookup.json"
+
+# Define the file path for the JSON file with the long list of only footnotes from apostles
+apostle_path_long = "C:/Users/theka/Desktop/Projects/Website_project/kameronyork.com/datasets/apostle-all-footnotes.json"
+
 # Save the sorted and merged DataFrame as JSON
 scriptures_df.to_json(file_path_long, orient='records')
 
@@ -298,5 +305,4 @@ scripture_counts = scriptures_df.groupby('scripture').size().reset_index(name='c
 
 scripture_counts.to_json(file_path_short, orient='records')
 
-
-# %%
+apostles_scriptures_df = scriptures_df.query()
