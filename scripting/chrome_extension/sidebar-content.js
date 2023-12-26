@@ -18,11 +18,11 @@ function createButtonWithExtractedURL(verseNumber, verseNumberText, scriptureCou
     countButtonWidthSB = '35px';
   }
 
-  chrome.storage.sync.get('useAllFootnotes', function (data) {
-    const useAllFootnotes = data.useAllFootnotes;
+  chrome.storage.sync.get('apostleOnly', function (data) {
+    const apostleOnly = data.apostleOnly;
     let scriptureQuotedDataUrlSB = 'https://kameronyork.com/datasets/all-footnotes.json';
-    if (useAllFootnotes) {
-      scriptureQuotedDataUrlSB = 'https://kameronyork.com/datasets/conference-quotes.json';
+    if (apostleOnly) {
+      scriptureQuotedDataUrlSB = 'https://kameronyork.com/datasets/apostle-all-footnotes.json';
     }
 
     if (scriptureCountSB === 0) {
@@ -156,9 +156,9 @@ function createButtonWithExtractedURL(verseNumber, verseNumberText, scriptureCou
             }
   
             const verseNumbersSB = section.querySelectorAll('.reference-UoeCG .verse .verse-number');
-            const useAllFootnotes = await new Promise((resolve) => {
-              chrome.storage.sync.get('useAllFootnotes', function (data) {
-                resolve(data.useAllFootnotes);
+            const apostleOnly = await new Promise((resolve) => {
+              chrome.storage.sync.get('apostleOnly', function (data) {
+                resolve(data.apostleOnly);
               });
             });
   
@@ -183,8 +183,8 @@ function createButtonWithExtractedURL(verseNumber, verseNumberText, scriptureCou
                 const scripturePathSB = `${bookFullNameSB} ${chapterSB}:${verseNumberText}`;
   
                 let scriptureQuotedDataUrlSB = 'https://kameronyork.com/datasets/all-footnotes-lookup.json';
-                if (useAllFootnotes) {
-                  scriptureQuotedDataUrlSB = 'https://kameronyork.com/datasets/scriptures-quoted.json';
+                if (apostleOnly) {
+                  scriptureQuotedDataUrlSB = 'https://kameronyork.com/datasets/apostle-all-foonotes-lookup.json';
                 }
   
                 const scriptureQuotedDataSB = await fetchJSON(scriptureQuotedDataUrlSB);

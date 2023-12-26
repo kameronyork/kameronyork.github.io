@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "My Verse Quoter",
+  "name": "Gospel Genius",
   "version": "1.0",
-  "description": "Quotes from General Conference",
+  "description": "Extension to create footnotes between scriptures and General Conference talks from the Church of Jesus Christ of Latter-Day Saints",
   "permissions": [
     "storage",
     "activeTab",

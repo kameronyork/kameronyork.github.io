@@ -20,10 +20,23 @@
     </div>
     <div><br></div>
     <h2>Advanced Options</h2>
-    <label class="switch">
-      <input type="checkbox" id="footnotesToggle">
-      <span class="slider round"></span>
-    </label>
+    <div class="advanced-options">
+      <div class="option">
+        <div class="option-label">Apostles Only </div>
+        <label class="switch">
+          <input type="checkbox" id="apostleOnlyToggle">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <!-- Removed the functionality to swap between footnotes and "quotes".  The new footnote webscraping process means the footnotes are now way more accurate than the "quotes only" version.  Users will now be able to toggle between All and Apostle only. 
+      <div class="option">
+        <div class="option-label">Quotes Only </div>
+        <label class="switch">
+          <input type="checkbox" id="footnotesToggle">
+          <span class="slider round"></span>
+        </label>
+      </div> -->
+    </div>
   </div>
   <script src="settings.js"></script>
 </body>

@@ -18,11 +18,11 @@ function createButtonWithExtractedURLNav(verseNumber, verseNumberText, scripture
     countButtonWidthNav = '35px';
   }
 
-  chrome.storage.sync.get('useAllFootnotes', function (data) {
-    const useAllFootnotes = data.useAllFootnotes;
+  chrome.storage.sync.get('apostleOnly', function (data) {
+    const apostleOnly = data.apostleOnly;
     let scriptureQuotedDataUrlNav = 'https://kameronyork.com/datasets/all-footnotes.json';
-    if (useAllFootnotes) {
-      scriptureQuotedDataUrlNav = 'https://kameronyork.com/datasets/conference-quotes.json';
+    if (apostleOnly) {
+      scriptureQuotedDataUrlNav = 'https://kameronyork.com/datasets/apostle-all-footnotes.json';
     }
 
     if (scriptureCountNav === 0) {
@@ -166,9 +166,9 @@ async function replaceverseNumbersWithButtonsNav(callback) {
       const existingButtons = article.querySelectorAll('button');
       existingButtons.forEach(button => button.remove());
 
-      const useAllFootnotes = await new Promise((resolve) => {
-        chrome.storage.sync.get('useAllFootnotes', function (data) {
-          resolve(data.useAllFootnotes);
+      const apostleOnly = await new Promise((resolve) => {
+        chrome.storage.sync.get('apostleOnly', function (data) {
+          resolve(data.apostleOnly);
         });
       });
 
@@ -185,8 +185,8 @@ async function replaceverseNumbersWithButtonsNav(callback) {
           const scripturePathNav = `${bookFullNameNav} ${chapterNav}:${verseNumberText}`;
 
           let scriptureQuotedDataUrlNav = 'https://kameronyork.com/datasets/all-footnotes-lookup.json';
-          if (useAllFootnotes) {
-            scriptureQuotedDataUrlNav = 'https://kameronyork.com/datasets/scriptures-quoted.json';
+          if (apostleOnly) {
+            scriptureQuotedDataUrlNav = 'https://kameronyork.com/datasets/apostle-all-footnotes-lookup.json';
           }
 
           const scriptureQuotedDataNav = await fetchJSON(scriptureQuotedDataUrlNav);

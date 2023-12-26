@@ -74,13 +74,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Turn on All Footnotes slider functionality
   const footnotesToggle = document.getElementById('footnotesToggle');
+  const apostleOnlyToggle = document.getElementById('apostleOnlyToggle');
 
-  footnotesToggle.addEventListener('change', function() {
-    const useAllFootnotes = footnotesToggle.checked;
-    localStorage.setItem('useAllFootnotes', useAllFootnotes);
+  apostleOnlyToggle.addEventListener('change', function() {
+    const apostleOnly = apostleOnlyToggle.checked;
+    localStorage.setItem('apostleOnly', apostleOnly);
 
-    chrome.storage.sync.set({ 'useAllFootnotes': useAllFootnotes }, function() {
-      console.log('Use All Footnotes saved to sync storage: ' + useAllFootnotes);
+    chrome.storage.sync.set({ 'apostleOnly': apostleOnly }, function() {
+      console.log('Apostle Only setting saved to sync storage: ' + apostleOnly);
       // Refresh the active tab instead of the entire window
       chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
         chrome.tabs.reload(tabs[0].id);
@@ -88,9 +89,30 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  // Removed the functionality to swap between footnotes and "quotes".  The new footnote webscraping process means the footnotes are now way more accurate than the "quotes only" version.  Users will now be able to toggle between All and Apostle only.
+
+  // footnotesToggle.addEventListener('change', function() {
+  //   const useAllFootnotes = footnotesToggle.checked;
+  //   localStorage.setItem('useAllFootnotes', useAllFootnotes);
+
+  //   chrome.storage.sync.set({ 'useAllFootnotes': useAllFootnotes }, function() {
+  //     console.log('Use All Footnotes saved to sync storage: ' + useAllFootnotes);
+  //     // Refresh the active tab instead of the entire window
+  //     chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+  //       chrome.tabs.reload(tabs[0].id);
+  //     });
+  //   });
+  // });
+
   // Initialize the slider state based on stored value
-  chrome.storage.sync.get('useAllFootnotes', function(data) {
-    const storedUseAllFootnotes = data.useAllFootnotes;
-    footnotesToggle.checked = storedUseAllFootnotes === true;
+  // chrome.storage.sync.get('useAllFootnotes', function(data) {
+  //   const storedUseAllFootnotes = data.useAllFootnotes;
+  //   footnotesToggle.checked = storedUseAllFootnotes === true;
+  // });
+
+  chrome.storage.sync.get('apostleOnly', function(data) {
+    const storedApostleOnly = data.apostleOnly;
+    apostleOnlyToggle.checked = storedApostleOnly === true;
   });
+
 });
