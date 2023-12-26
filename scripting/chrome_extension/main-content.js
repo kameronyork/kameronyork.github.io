@@ -138,6 +138,8 @@ const bookDecoder = {
   
   function createTableOverlay(matchingEntries) {
     const tableView = createTableView(matchingEntries);
+    const headerHeight = 50; // Example header height
+    const footerHeight = 50; // Example footer height
     const overlay = document.createElement('div');
     overlay.style.position = 'fixed';
     overlay.style.top = '0';
@@ -152,11 +154,80 @@ const bookDecoder = {
     overlay.style.zIndex = '9999';
   
     const htmlPaneContent = `
-      <div style="background-color: white; padding: 20px; border-radius: 5px; max-height: 80vh; overflow-y: auto;">
-        <h2>Scripture Details</h2>
-        ${tableView}
-        <button id="closeButton">Close</button>
+      <head>
+        <title>Conference Talks</title>
+        <style>
+          body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+          }
+          .container {
+            padding: 150px 50px;
+            border: 2px solid black;
+            overflow: auto;
+          }
+          .title {
+            position: sticky;
+            top: 0;
+            background-color: #dadada; /* Updated background color */
+            color: black; /* Updated text color */
+            padding: 10px;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+          .close-button {
+            cursor: pointer;
+            border: none;
+            background-color: #dadada; /* Gray background color */
+            color: black; /* Updated text color */
+            font-size: 20px;
+            line-height: 1;
+            padding: 5px 10px;
+            margin-right: 10px;
+          }
+          .close-button:hover {
+            background-color: #ccc; /* Hover color */
+          }
+          .footer {
+            position: sticky;
+            bottom: 0;
+            background-color: white;
+            z-index: 1;
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px;
+          }
+          table {
+            border-collapse: collapse;
+            width: 100%;
+          }
+          th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+          }
+          th {
+            background-color: #f2f2f2;
+          }
+          </style>
+        </head>
+      <body>
+      <div style="background-color: white; padding: 0px; border-radius: 5px; max-height: calc(80vh - ${headerHeight + footerHeight}px); overflow-y: auto;">
+        <div class="title">
+          <span>Conference Talks</span>
+          <button class="close-button" id="closeButton">x</button>
+        </div>
+        <div>
+          ${tableView}
+        </div>
+        <div class="footer">
+          <button id="closeButton">Close</button>
+        </div>
       </div>
+      </body>
     `;
   
     overlay.innerHTML = htmlPaneContent;
@@ -391,7 +462,7 @@ function checkingButtonsExist() {
     return window.getComputedStyle(verseNumber).getPropertyValue('display') !== 'none';
   });
 
-  displayisVisible(isVisible);
+  // displayisVisible(isVisible);
 
   // If verse numbers are visible and not currently replacing, execute replaceVerseNumbersWithButtons
   if (isVisible && !isReplacing) {
