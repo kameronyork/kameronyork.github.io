@@ -250,14 +250,14 @@ replaceverseNumbersWithButtonsNav(() => {
         // Once replaceverseNumbersNavWithButtons completes, reset the flag and start the interval again after a delay
         isReplacingNav = false;
         setTimeout(() => {
-          intervalIdNav = setInterval(checkingButtonsExistNav, 1000);
-        }, 3000); // Wait for 3 seconds before restarting the interval
+          intervalIdNav = setInterval(checkingButtonsExistNav, 2000);
+        }, 2000); // Wait for 2 seconds before restarting the interval
       });
     }
   }
   
   // Start the interval
-  intervalIdNav = setInterval(checkingButtonsExistNav, 1000); // Checking every three seconds
+  intervalIdNav = setInterval(checkingButtonsExistNav, 2000); // Checking every three seconds
   
   
   

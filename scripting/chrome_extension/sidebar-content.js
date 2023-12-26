@@ -253,14 +253,14 @@ function createButtonWithExtractedURL(verseNumber, verseNumberText, scriptureCou
           // Once replaceverseNumbersSBWithButtons completes, reset the flag and start the interval again after a delay
           isReplacingSB = false;
           setTimeout(() => {
-            intervalIdSB = setInterval(checkingButtonsExistSB, 1000);
-          }, 3000); // Wait for 3 seconds before restarting the interval
+            intervalIdSB = setInterval(checkingButtonsExistSB, 2000);
+          }, 2000); // Wait for 2 seconds before restarting the interval
         });
       }
     }
     
     // Start the interval
-    intervalIdSB = setInterval(checkingButtonsExistSB, 1000); // Checking every three seconds
+    intervalIdSB = setInterval(checkingButtonsExistSB, 2000); // Checking every three seconds
     
     
     

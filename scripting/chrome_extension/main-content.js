@@ -391,7 +391,7 @@ function checkingButtonsExist() {
     return window.getComputedStyle(verseNumber).getPropertyValue('display') !== 'none';
   });
 
-  // displayisVisible(isVisible);
+  displayisVisible(isVisible);
 
   // If verse numbers are visible and not currently replacing, execute replaceVerseNumbersWithButtons
   if (isVisible && !isReplacing) {
@@ -404,11 +404,11 @@ function checkingButtonsExist() {
       // Once replaceVerseNumbersWithButtons completes, reset the flag and start the interval again after a delay
       isReplacing = false;
       setTimeout(() => {
-        intervalId = setInterval(checkingButtonsExist, 1000);
-      }, 3000); // Wait for 3 seconds before restarting the interval
+        intervalId = setInterval(checkingButtonsExist, 2000);
+      }, 2000); // Wait for 2 seconds before restarting the interval
     });
   }
 }
 
 // Start the interval
-intervalId = setInterval(checkingButtonsExist, 1000); // Checking every second
+intervalId = setInterval(checkingButtonsExist, 2000); // Checking every second
