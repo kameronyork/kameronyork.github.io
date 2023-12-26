@@ -3,20 +3,15 @@ document.addEventListener('DOMContentLoaded', function() {
   const header = document.querySelector('.header');
   const headerImage = document.querySelector('.header img');
 
-  // Function to apply the selected color to the header
+  // Function to apply the selected color to the header and image borders
   function applyUserColor(color) {
-    const header = document.querySelector('.header');
-    const headerImage = document.querySelector('.header img');
-
-    // Apply color directly as inline styles
     header.style.background = `linear-gradient(to bottom, ${color} 50%, transparent 50%)`;
     headerImage.style.borderColor = color;
-    headerImage.setAttribute('style', `border-color: ${color}; width: 100px; height: 100px; border-radius: 50%;`);
   }
 
   function reloadColorButtons(selectedColor) {
     const colors = [
-      '#191970', '#7D3C98', '#229954', '#E74C3C', '#F39C12'
+      '#E74C3C', '#F39C12', '#229954', '#191970', '#7D3C98'
     ];
 
     colorButtonsContainer.innerHTML = '';
@@ -53,11 +48,10 @@ document.addEventListener('DOMContentLoaded', function() {
       const selectedColor = target.getAttribute('data-color');
       chrome.storage.sync.set({ 'buttonColor': selectedColor }, function() {
         console.log('Color saved to sync storage: ' + selectedColor);
-        // Refresh the active tab instead of the entire window
-        chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-          chrome.tabs.reload(tabs[0].id);
-        });
       });
+
+      // Apply the selected color to the header and image borders
+      applyUserColor(selectedColor);
 
       // Update the buttons' outline based on the selection
       const buttons = colorButtonsContainer.querySelectorAll('.color-option');
@@ -69,11 +63,17 @@ document.addEventListener('DOMContentLoaded', function() {
           button.style.border = '3px solid #000';
         }
       });
+
+      // Refresh the active tab if the URL starts with "https://www.churchofjesuschrist.org/"
+      chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+        const tab = tabs[0];
+        if (tab && tab.url && tab.url.startsWith('https://www.churchofjesuschrist.org/')) {
+          chrome.tabs.reload(tab.id);
+        }
+      });
     }
   });
 
-  // Turn on All Footnotes slider functionality
-  const footnotesToggle = document.getElementById('footnotesToggle');
   const apostleOnlyToggle = document.getElementById('apostleOnlyToggle');
 
   apostleOnlyToggle.addEventListener('change', function() {
@@ -82,34 +82,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     chrome.storage.sync.set({ 'apostleOnly': apostleOnly }, function() {
       console.log('Apostle Only setting saved to sync storage: ' + apostleOnly);
-      // Refresh the active tab instead of the entire window
       chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-        chrome.tabs.reload(tabs[0].id);
+        const tab = tabs[0];
+        if (tab && tab.url && tab.url.startsWith('https://www.churchofjesuschrist.org/')) {
+          chrome.tabs.reload(tab.id);
+        }
       });
     });
   });
 
-  // Removed the functionality to swap between footnotes and "quotes".  The new footnote webscraping process means the footnotes are now way more accurate than the "quotes only" version.  Users will now be able to toggle between All and Apostle only.
-
-  // footnotesToggle.addEventListener('change', function() {
-  //   const useAllFootnotes = footnotesToggle.checked;
-  //   localStorage.setItem('useAllFootnotes', useAllFootnotes);
-
-  //   chrome.storage.sync.set({ 'useAllFootnotes': useAllFootnotes }, function() {
-  //     console.log('Use All Footnotes saved to sync storage: ' + useAllFootnotes);
-  //     // Refresh the active tab instead of the entire window
-  //     chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-  //       chrome.tabs.reload(tabs[0].id);
-  //     });
-  //   });
-  // });
-
   // Initialize the slider state based on stored value
-  // chrome.storage.sync.get('useAllFootnotes', function(data) {
-  //   const storedUseAllFootnotes = data.useAllFootnotes;
-  //   footnotesToggle.checked = storedUseAllFootnotes === true;
-  // });
-
   chrome.storage.sync.get('apostleOnly', function(data) {
     const storedApostleOnly = data.apostleOnly;
     apostleOnlyToggle.checked = storedApostleOnly === true;
