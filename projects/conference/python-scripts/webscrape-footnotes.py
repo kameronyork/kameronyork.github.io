@@ -4,6 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 from tqdm import tqdm  # Import tqdm for the progress bar
 
+# %%
 # Define a function to extract hrefs from a given section
 def extract_hrefs(url, section_class):
     response = requests.get(url)
@@ -20,7 +21,7 @@ def extract_hrefs(url, section_class):
         return []
 
 # Read the dataset into a pandas DataFrame
-df = pd.read_csv("C:/Users/theka/Desktop/Projects/conference-talk-hyperlinks.csv", encoding="utf-8")
+df = pd.read_csv("https://kameronyork.com/datasets/conference-talk-hyperlinks.csv", encoding="utf-8")
 
 
 # Apply the function to each row in the DataFrame with tqdm
@@ -286,6 +287,8 @@ scriptures_df = scriptures_df.rename(columns={
 # Create a new index column called "quote_id"
 scriptures_df['quote_id'] = scriptures_df.reset_index().index
 
+# %%
+
 # Define the file path for the JSON file with the short list.  Grouped by scripture with the count of instances.
 file_path_short = "C:/Users/theka/Desktop/Projects/Website_project/kameronyork.com/datasets/all-footnotes-lookup.json"
 
@@ -305,4 +308,28 @@ scripture_counts = scriptures_df.groupby('scripture').size().reset_index(name='c
 
 scripture_counts.to_json(file_path_short, orient='records')
 
-apostles_scriptures_df = scriptures_df.query()
+# %%
+apostle_list = pd.read_csv("https://kameronyork.com/datasets/apostles.csv", encoding="utf-8")
+
+apostle_names = apostle_list[['Name']]
+
+# Define a function to check if the name is in the apostle_names DataFrame
+def check_apostle(name):
+    if name in apostle_names['Name'].values:
+        return 'Apostle'
+    else:
+        return 'General'
+
+# Apply the function to create a new column
+scriptures_df['apostle_check'] = scriptures_df['speaker'].apply(check_apostle)
+
+apostles_scriptures_df = scriptures_df.query("apostle_check == 'Apostle'")
+
+# Save the sorted and merged DataFrame as JSON
+apostles_scriptures_df.to_json(apostle_path_long, orient='records')
+
+apostles_scripture_counts = apostles_scriptures_df.groupby('scripture').size().reset_index(name='count')
+
+apostles_scripture_counts.to_json(apostle_path_short, orient='records')
+
+# %%
