@@ -2,6 +2,8 @@ function createButtonWithExtractedURL(verseNumber, verseNumberText, scriptureCou
   let verseButtonWidthSB = '25px';
   let countButtonWidthSB = '25px';
 
+  const topPositionSB = '-1px';
+
   if (verseNumberText.length === 1) {
     verseButtonWidthSB = '25px'; // 25
   } else if (verseNumberText.length === 2) {
@@ -34,10 +36,18 @@ function createButtonWithExtractedURL(verseNumber, verseNumberText, scriptureCou
       verseButtonSB.textContent = verseNumberText; // This is what goes on the button.
       verseButtonSB.style.background = savedColorSB || '#191970';
       verseButtonSB.style.color = 'white';
-      verseButtonSB.style.borderRadius = '5px';
+      verseButtonSB.style.borderTopLeftRadius = '5px';
+      verseButtonSB.style.borderBottomLeftRadius = '5px';
+      verseButtonSB.style.borderTopRightRadius = '5px';
+      verseButtonSB.style.borderBottomRightRadius = '5px';
+      verseButtonSB.style.display = 'flex';
+      verseButtonSB.style.alignItems = 'center';
+      verseButtonSB.style.justifyContent = 'center';
+      verseButtonSB.style.padding = '0 5px';
       verseButtonSB.style.display = 'inline-block';
-      verseButtonSB.style.textAlign = 'center';
-      verseButtonSB.style.lineHeight = '20px';
+      verseButtonSB.style.verticalAlign = 'middle';
+      verseButtonSB.style.position = 'relative'; // Set position to relative
+      verseButtonSB.style.top = topPositionSB; // Shift the button up by 5px
 
       verseButtonSB.addEventListener('click', async function () {
         const overlaySB = document.createElement('div');
@@ -52,23 +62,49 @@ function createButtonWithExtractedURL(verseNumber, verseNumberText, scriptureCou
         overlaySB.style.justifyContent = 'center';
         overlaySB.style.zIndex = '9999';
 
-        const scriptureDetailsSB = document.createElement('div');
-        scriptureDetailsSB.style.backgroundColor = savedColorSB || '#191970'; // Sets the background color of the element.
-        scriptureDetailsSB.style.color = 'white';
-        scriptureDetailsSB.style.padding = '20px';
-        scriptureDetailsSB.style.borderRadius = '10px';
-        scriptureDetailsSB.textContent = 'No entries found';
+        const scriptureContainerSB = document.createElement('div');
+        scriptureContainerSB.style.backgroundColor = savedColorSB || '#191970'; // Set the background color of the inner shape
+        scriptureContainerSB.style.color = 'white';
+        scriptureContainerSB.style.padding = '20px';
+        scriptureContainerSB.style.borderRadius = '10px';
+        scriptureContainerSB.style.position = 'relative'; // Position the container relative to the overlay
+        scriptureContainerSB.style.width = '220px'; // Set the width to 300px
+        scriptureContainerSB.style.height = '100px'; // Set the height to 200px
+        scriptureContainerSB.style.display = 'flex'; // Use flexbox for centering
+        scriptureContainerSB.style.flexDirection = 'column'; // Stack elements vertically
+        scriptureContainerSB.style.alignItems = 'center'; // Center horizontally
+        scriptureContainerSB.style.justifyContent = 'center'; // Center vertically
 
         const closeButtonSB = document.createElement('button');
-        closeButtonSB.textContent = 'Close';
-        closeButtonSB.addEventListener('click', function () {
+        closeButtonSB.textContent = '✖'; // Use the "x" symbol for close
+        closeButtonSB.style.position = 'absolute'; // Position the button
+        closeButtonSB.style.top = '10px'; // Adjust top position
+        closeButtonSB.style.right = '10px'; // Adjust right position
+        closeButtonSB.style.backgroundColor = 'transparent'; // Transparent background
+        closeButtonSB.style.border = 'none'; // No border
+        closeButtonSB.style.color = 'white'; // White color
+        closeButtonSB.style.fontSize = '20px'; // Adjust font size
+        closeButtonSB.style.cursor = 'pointer'; // Set cursor to pointer
+        closeButtonSB.addEventListener('click', function() {
           overlaySB.remove();
         });
 
-        overlaySB.appendChild(scriptureDetailsSB);
-        overlaySB.appendChild(closeButtonSB);
+        const scriptureDetailSB = document.createElement('div');
+        scriptureDetailSB.textContent = 'No entries found';
+
+        scriptureContainerSB.appendChild(closeButtonSB);
+        scriptureContainerSB.appendChild(scriptureDetailSB);
+
+        overlaySB.appendChild(scriptureContainerSB);
 
         document.body.appendChild(overlaySB);
+
+        // Close the pane when clicking outside the scripture container area (on the overlay)
+        overlaySB.addEventListener('click', function (event) {
+          if (event.target === overlaySB) {
+            overlaySB.remove();
+          }
+        });
       });
 
       const spaceSB = createSpace();
@@ -94,6 +130,8 @@ function createButtonWithExtractedURL(verseNumber, verseNumberText, scriptureCou
       verseButtonSB.style.padding = '0 5px';
       verseButtonSB.style.display = 'inline-block';
       verseButtonSB.style.verticalAlign = 'middle';
+      verseButtonSB.style.position = 'relative'; // Set position to relative
+      verseButtonSB.style.top = topPositionSB; // Shift the button up by 5px
 
       const countButtonSB = document.createElement('button');
       countButtonSB.style.width = countButtonWidthSB;
@@ -113,6 +151,8 @@ function createButtonWithExtractedURL(verseNumber, verseNumberText, scriptureCou
       countButtonSB.style.padding = '0 5px';
       countButtonSB.style.display = 'inline-block';
       countButtonSB.style.verticalAlign = 'middle';
+      countButtonSB.style.position = 'relative'; // Set position to relative
+      countButtonSB.style.top = topPositionSB; // Shift the button up by 5px
 
       verseButtonSB.addEventListener('click', async function () {
         const fullQueryData = await fetchJSON(scriptureQuotedDataUrlSB);

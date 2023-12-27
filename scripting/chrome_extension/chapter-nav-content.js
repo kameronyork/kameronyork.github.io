@@ -34,10 +34,16 @@ function createButtonWithExtractedURLNav(verseNumber, verseNumberText, scripture
       verseButtonNav.textContent = verseNumberText; // This is what goes on the button.
       verseButtonNav.style.background = savedColorNav || '#191970';
       verseButtonNav.style.color = 'white';
-      verseButtonNav.style.borderRadius = '5px';
+      verseButtonNav.style.borderTopLeftRadius = '5px';
+      verseButtonNav.style.borderBottomLeftRadius = '5px';
+      verseButtonNav.style.borderTopRightRadius = '5px';
+      verseButtonNav.style.borderBottomRightRadius = '5px';
+      verseButtonNav.style.display = 'flex';
+      verseButtonNav.style.alignItems = 'center';
+      verseButtonNav.style.justifyContent = 'center';
+      verseButtonNav.style.padding = '0 5px';
       verseButtonNav.style.display = 'inline-block';
-      verseButtonNav.style.textAlign = 'center';
-      verseButtonNav.style.lineHeight = '20px';
+      verseButtonNav.style.verticalAlign = 'middle';
 
       verseButtonNav.addEventListener('click', async function () {
         const overlayNav = document.createElement('div');
@@ -52,23 +58,49 @@ function createButtonWithExtractedURLNav(verseNumber, verseNumberText, scripture
         overlayNav.style.justifyContent = 'center';
         overlayNav.style.zIndex = '9999';
 
-        const scriptureDetailsNav = document.createElement('div');
-        scriptureDetailsNav.style.backgroundColor = savedColorNav || '#191970'; // Sets the background color of the element.
-        scriptureDetailsNav.style.color = 'white';
-        scriptureDetailsNav.style.padding = '20px';
-        scriptureDetailsNav.style.borderRadius = '10px';
-        scriptureDetailsNav.textContent = 'No entries found';
+        const scriptureContainerNav = document.createElement('div');
+        scriptureContainerNav.style.backgroundColor = savedColorNav || '#191970'; // Set the background color of the inner shape
+        scriptureContainerNav.style.color = 'white';
+        scriptureContainerNav.style.padding = '20px';
+        scriptureContainerNav.style.borderRadius = '10px';
+        scriptureContainerNav.style.position = 'relative'; // Position the container relative to the overlay
+        scriptureContainerNav.style.width = '220px'; // Set the width to 300px
+        scriptureContainerNav.style.height = '100px'; // Set the height to 200px
+        scriptureContainerNav.style.display = 'flex'; // Use flexbox for centering
+        scriptureContainerNav.style.flexDirection = 'column'; // Stack elements vertically
+        scriptureContainerNav.style.alignItems = 'center'; // Center horizontally
+        scriptureContainerNav.style.justifyContent = 'center'; // Center vertically
 
         const closeButtonNav = document.createElement('button');
-        closeButtonNav.textContent = 'Close';
+        closeButtonNav.textContent = '✖'; // Use the "x" symbol for close
+        closeButtonNav.style.position = 'absolute'; // Position the button
+        closeButtonNav.style.top = '10px'; // Adjust top position
+        closeButtonNav.style.right = '10px'; // Adjust right position
+        closeButtonNav.style.backgroundColor = 'transparent'; // Transparent background
+        closeButtonNav.style.border = 'none'; // No border
+        closeButtonNav.style.color = 'white'; // White color
+        closeButtonNav.style.fontSize = '20px'; // Adjust font size
+        closeButtonNav.style.cursor = 'pointer'; // Set cursor to pointer
         closeButtonNav.addEventListener('click', function() {
           overlayNav.remove();
         });
 
-        overlayNav.appendChild(scriptureDetailsNav);
-        overlayNav.appendChild(closeButtonNav);
+        const scriptureDetailsNav = document.createElement('div');
+        scriptureDetailsNav.textContent = 'No entries found';
+
+        scriptureContainerNav.appendChild(closeButtonNav);
+        scriptureContainerNav.appendChild(scriptureDetailsNav);
+
+        overlayNav.appendChild(scriptureContainerNav);
 
         document.body.appendChild(overlayNav);
+
+        // Close the pane when clicking outside the scripture container area (on the overlay)
+        overlayNav.addEventListener('click', function (event) {
+          if (event.target === overlayNav) {
+            overlayNav.remove();
+          }
+        });
       });
 
       // Remove any existing spaces after the verse number

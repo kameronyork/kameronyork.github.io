@@ -213,6 +213,7 @@ const bookDecoder = {
           table {
             border-collapse: collapse;
             width: 100%;
+            color: black; /* Set text color to black */
           }
           th, td {
             border: 1px solid #dddddd;
@@ -243,22 +244,30 @@ const bookDecoder = {
           </div>
         </div>
       </body>
-    `;
-  
-    overlay.innerHTML = htmlPaneContent;
-  
-    document.body.appendChild(overlay);
-  
-    const closeButton = document.getElementById('closeButtonHeader');
-    closeButton.addEventListener('click', function () {
-      overlay.remove();
-    });
+      `;
     
-    const closeButtonFooter = document.getElementById('closeButtonFooter');
-    closeButtonFooter.addEventListener('click', function () {
-      overlay.remove();
-    });
-  }
+  
+      overlay.innerHTML = htmlPaneContent;
+
+      document.body.appendChild(overlay);
+    
+      const closeButton = document.getElementById('closeButtonHeader');
+      closeButton.addEventListener('click', function () {
+        overlay.remove();
+      });
+    
+      const closeButtonFooter = document.getElementById('closeButtonFooter');
+      closeButtonFooter.addEventListener('click', function () {
+        overlay.remove();
+      });
+    
+      // Close the pane when clicking outside the main table area (on the overlay)
+      overlay.addEventListener('click', function (event) {
+        if (event.target === overlay) {
+          overlay.remove();
+        }
+      });
+    }
   
   function createSpace() {
     const space = document.createElement('span');
@@ -268,23 +277,36 @@ const bookDecoder = {
 
 
   function createButton(verseNumber, verseNumberText, scriptureCount, savedColor, scripturePath) {
-    let verseButtonWidth = '25px';
-    let countButtonWidth = '25px';
+
+    const fontSizeElement = document.querySelector('.contentWrapper-n6Z8K .renderFrame-hnHZX .classic-scripture .body');
+    const fontSizeStyle = getComputedStyle(fontSizeElement);
+    const fontSizeValue = parseFloat(fontSizeStyle.getPropertyValue('--increment'));
+
+    console.log('Font Size Value:', fontSizeValue);
+
+    // Calculate the button height and font size based on the font size range value
+    const buttonHeight = fontSizeValue * 18 + 'px';
+    const fontSize = fontSizeValue * 11 + 'px';
+
+    const topPosition = '-2px';
+
+    let verseButtonWidth = fontSizeValue * 20 + 'px';
+    let countButtonWidth = fontSizeValue * 20 + 'px';
   
     if (verseNumberText.length === 1) {
-      verseButtonWidth = '25px';
+      verseButtonWidth = fontSizeValue * 22 + 'px';
     } else if (verseNumberText.length === 2) {
-      verseButtonWidth = '30px';
+      verseButtonWidth = fontSizeValue * 27 + 'px';
     } else if (verseNumberText.length >= 3) {
-      verseButtonWidth = '35px';
+      verseButtonWidth = fontSizeValue * 32 + 'px';
     }
   
     if (scriptureCount.toString().length === 1) {
-      countButtonWidth = '25px';
+      countButtonWidth = fontSizeValue * 22 + 'px';
     } else if (scriptureCount.toString().length === 2) {
-      countButtonWidth = '30px';
+      countButtonWidth = fontSizeValue * 27 + 'px';
     } else if (scriptureCount.toString().length >= 3) {
-      countButtonWidth = '35px';
+      countButtonWidth = fontSizeValue * 32 + 'px';
     }
   
     chrome.storage.sync.get('apostleOnly', function (data) {
@@ -297,16 +319,24 @@ const bookDecoder = {
       if (scriptureCount === 0) {
         const verseButton = document.createElement('button');
         verseButton.style.width = verseButtonWidth;
-        verseButton.style.height = '20px';
+        verseButton.style.height = buttonHeight;
         verseButton.style.border = 'none';
-        verseButton.style.fontSize = '12px';
+        verseButton.style.fontSize = fontSize;
         verseButton.textContent = verseNumberText;
         verseButton.style.background = savedColor || '#191970';
         verseButton.style.color = 'white';
-        verseButton.style.borderRadius = '5px';
+        verseButton.style.borderTopLeftRadius = '5px';
+        verseButton.style.borderBottomLeftRadius = '5px';
+        verseButton.style.borderTopRightRadius = '5px';
+        verseButton.style.borderBottomRightRadius = '5px';
+        verseButton.style.display = 'flex';
+        verseButton.style.alignItems = 'center';
+        verseButton.style.justifyContent = 'center';
+        verseButton.style.padding = '0 5px';
         verseButton.style.display = 'inline-block';
-        verseButton.style.textAlign = 'center';
-        verseButton.style.lineHeight = '20px';
+        verseButton.style.verticalAlign = 'middle';
+        verseButton.style.position = 'relative'; // Set position to relative
+        verseButton.style.top = topPosition; // Shift the button up by 5px
   
         verseButton.addEventListener('click', async function () {
           const overlay = document.createElement('div');
@@ -322,13 +352,13 @@ const bookDecoder = {
           overlay.style.zIndex = '9999';
         
           const scriptureContainer = document.createElement('div');
-          scriptureContainer.style.backgroundColor = '#dadada'; // Set the background color of the inner shape to #dadada
+          scriptureContainer.style.backgroundColor = savedColor || '#191970'; // Set the background color of the inner shape
           scriptureContainer.style.color = 'white';
           scriptureContainer.style.padding = '20px';
           scriptureContainer.style.borderRadius = '10px';
           scriptureContainer.style.position = 'relative'; // Position the container relative to the overlay
-          scriptureContainer.style.width = '300px'; // Set the width to 300px
-          scriptureContainer.style.height = '200px'; // Set the height to 200px
+          scriptureContainer.style.width = '220px'; // Set the width to 300px
+          scriptureContainer.style.height = '100px'; // Set the height to 200px
           scriptureContainer.style.display = 'flex'; // Use flexbox for centering
           scriptureContainer.style.flexDirection = 'column'; // Stack elements vertically
           scriptureContainer.style.alignItems = 'center'; // Center horizontally
@@ -350,13 +380,20 @@ const bookDecoder = {
         
           const scriptureDetails = document.createElement('div');
           scriptureDetails.textContent = 'No entries found';
-        
+
           scriptureContainer.appendChild(closeButton);
           scriptureContainer.appendChild(scriptureDetails);
-        
+
           overlay.appendChild(scriptureContainer);
-        
+
           document.body.appendChild(overlay);
+
+          // Close the pane when clicking outside the scripture container area (on the overlay)
+          overlay.addEventListener('click', function (event) {
+            if (event.target === overlay) {
+              overlay.remove();
+            }
+          });
         });
         
   
@@ -367,9 +404,9 @@ const bookDecoder = {
       } else {
         const verseButton = document.createElement('button');
         verseButton.style.width = verseButtonWidth;
-        verseButton.style.height = '20px';
+        verseButton.style.height = buttonHeight;
         verseButton.style.border = 'none';
-        verseButton.style.fontSize = '12px';
+        verseButton.style.fontSize = fontSize;
         verseButton.textContent = verseNumberText;
         verseButton.style.background = savedColor || '#191970';
         verseButton.style.color = 'white';
@@ -383,12 +420,14 @@ const bookDecoder = {
         verseButton.style.padding = '0 5px';
         verseButton.style.display = 'inline-block';
         verseButton.style.verticalAlign = 'middle';
+        verseButton.style.position = 'relative'; // Set position to relative
+        verseButton.style.top = topPosition; // Shift the button up by 5px
   
         const countButton = document.createElement('button');
         countButton.style.width = countButtonWidth;
-        countButton.style.height = '20px';
+        countButton.style.height = buttonHeight;
         countButton.style.border = `1px solid ${savedColor || '#191970'}`;
-        countButton.style.fontSize = '12px';
+        countButton.style.fontSize = fontSize;
         countButton.textContent = `${scriptureCount}`;
         countButton.style.background = 'white';
         countButton.style.color = 'black';
@@ -402,6 +441,9 @@ const bookDecoder = {
         countButton.style.padding = '0 5px';
         countButton.style.display = 'inline-block';
         countButton.style.verticalAlign = 'middle';
+        countButton.style.position = 'relative'; // Set position to relative
+        countButton.style.top = topPosition; // Shift the button up by 5px
+  
   
         verseButton.addEventListener('click', async function () {
           const fullQueryData = await fetchJSON(scriptureQuotedDataUrl);
@@ -485,41 +527,41 @@ const bookDecoder = {
   
   // This variable is used to help disable the checking every second
   // This variable is used to help disable the checking every second
-let isReplacing = false;
-let intervalId = null;
-
-function displayisVisible(isVisible) {
-  const isVisibleDiv = document.createElement('div');
-  isVisibleDiv.textContent = `isVisible: ${isVisible}`;
-  document.body.appendChild(isVisibleDiv);
-}
-
-function checkingButtonsExist() {
-  const verseNumbers = document.querySelectorAll(".contentWrapper-n6Z8K .renderFrame-hnHZX .verse .verse-number");
-
-  // Check if any verse numbers are visible
-  const isVisible = Array.from(verseNumbers).some(verseNumber => {
-    return window.getComputedStyle(verseNumber).getPropertyValue('display') !== 'none';
-  });
-
-  // displayisVisible(isVisible);
-
-  // If verse numbers are visible and not currently replacing, execute replaceVerseNumbersWithButtons
-  if (isVisible && !isReplacing) {
-    isReplacing = true;
-
-    // Stop the interval
-    clearInterval(intervalId);
-
-    replaceVerseNumbersWithButtons(() => {
-      // Once replaceVerseNumbersWithButtons completes, reset the flag and start the interval again after a delay
-      isReplacing = false;
-      setTimeout(() => {
-        intervalId = setInterval(checkingButtonsExist, 2000);
-      }, 2000); // Wait for 2 seconds before restarting the interval
-    });
+  let isReplacing = false;
+  let intervalId = null;
+  
+  function displayisVisible(isVisible) {
+    const isVisibleDiv = document.createElement('div');
+    isVisibleDiv.textContent = `isVisible: ${isVisible}`;
+    document.body.appendChild(isVisibleDiv);
   }
-}
-
-// Start the interval
-intervalId = setInterval(checkingButtonsExist, 2000); // Checking every second
+  
+  function checkingButtonsExist() {
+    const verseNumbers = document.querySelectorAll(".contentWrapper-n6Z8K .renderFrame-hnHZX .verse .verse-number");
+  
+    // Check if any verse numbers are visible
+    const isVisible = Array.from(verseNumbers).some(verseNumber => {
+      return window.getComputedStyle(verseNumber).getPropertyValue('display') !== 'none';
+    });
+  
+    // displayisVisible(isVisible);
+  
+    // If verse numbers are visible and not currently replacing, execute replaceVerseNumbersWithButtons
+    if (isVisible && !isReplacing) {
+      isReplacing = true;
+  
+      // Stop the interval
+      clearInterval(intervalId);
+  
+      replaceVerseNumbersWithButtons(() => {
+        // Once replaceVerseNumbersWithButtons completes, reset the flag and start the interval again after a delay
+        isReplacing = false;
+        setTimeout(() => {
+          intervalId = setInterval(checkingButtonsExist, 2000);
+        }, 2000); // Wait for 2 seconds before restarting the interval
+      });
+    }
+  }
+  
+  // Start the interval
+  intervalId = setInterval(checkingButtonsExist, 2000); // Checking every second
