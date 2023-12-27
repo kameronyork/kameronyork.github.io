@@ -1,0 +1,43 @@
+---
+title: "Gospel Genius Privacy Policy"  # Sets the Title.
+output:
+  html_document:
+    includes:
+      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/headers/tares-header.html"
+      after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
+---
+<br>
+<br>
+
+## Data Collection
+
+Gospel Genius Chrome Extension does not collect any personal data or personally identifiable information from its users. We do not track or store any user-specific information, and we have no access to any data on user activities outside of the extension's functionality.
+
+## Permissions
+
+The extension requests the following permissions for its intended functionality:
+
+1. **Storage**: Required to store user preferences and settings locally on the user's device.
+2. **ActiveTab**: Needed to access the currently active tab in the user's browser for script injection.
+3. **Scripting**: Necessary for executing scripts on web pages to enhance user experience.
+
+These permissions are only used to enable the core features of the extension and are not utilized for any other purposes.
+
+## Host Permissions
+
+The extension requires host permissions for the following website:
+- https://www.churchofjesuschrist.org/
+
+This permission is essential for the extension to function properly on the specified website and is not used to collect any user data.
+
+## Remote Code Usage
+
+The extension does not use any remote code execution. All functionality is contained within the extension itself, and no external services or remote servers are accessed.
+
+## Future Data Collection
+
+Gospel Genius Chrome Extension does not currently collect any user data, and there are no plans to start collecting user data in the future. Any changes to this policy will be communicated clearly to users through the extension's update notes and documentation.
+
+---
+
+This privacy policy was last updated on December 27th, 2023.
