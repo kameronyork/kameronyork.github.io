@@ -121,13 +121,13 @@ const bookDecoder = {
     uniqueEntriesArray.sort((a, b) => b.talk_id - a.talk_id);
   
     // Create the table HTML using the unique entries array
-    let tableHTML = '<table border="1"><tr><th>Talk Year</th><th>Talk Month</th><th>Talk Day</th><th>Talk Session</th><th>Speaker</th><th>Title</th></tr>';
+    let tableHTML = '<table border="1"><tr><th>Year</th><th>Month</th><th>Speaker</th><th>Talk Title</th></tr>';
   
     uniqueEntriesArray.forEach(entry => {
       // Assuming there's a 'hyperlink' property in each entry for the title hyperlink
       const titleLink = entry.hyperlink ? `<a href="${entry.hyperlink}" target="_blank">${entry.title}</a>` : entry.title;
   
-      tableHTML += `<tr><td>${entry.talk_year}</td><td>${entry.talk_month}</td><td>${entry.talk_day}</td><td>${entry.talk_session}</td><td>${entry.speaker}</td><td>${titleLink}</td></tr>`;
+      tableHTML += `<tr><td>${entry.talk_year}</td><td>${entry.talk_month}</td><td>${entry.speaker}</td><td>${titleLink}</td></tr>`;
     });
   
     tableHTML += '</table>';
@@ -136,7 +136,7 @@ const bookDecoder = {
   
   
   
-  function createTableOverlay(matchingEntries) {
+  function createTableOverlay(matchingEntries, scripturePath, scripturePathSB, scripturePathNav) {
     const tableView = createTableView(matchingEntries);
     const headerHeight = 50; // Example header height
     const footerHeight = 50; // Example footer height
@@ -152,8 +152,18 @@ const bookDecoder = {
     overlay.style.alignItems = 'center';
     overlay.style.justifyContent = 'center';
     overlay.style.zIndex = '9999';
+
+    let finalPath = scripturePath
+    
+    if (scripturePath === undefined) {
+      if (scripturePathSB !== undefined) {
+        finalPath = scripturePathSB
+      }else{
+        finalPath = scripturePathNav
+      }
+    }
   
-    const htmlPaneContent = `
+      const htmlPaneContent = `
       <head>
         <title>Conference Talks</title>
         <style>
@@ -163,7 +173,7 @@ const bookDecoder = {
             font-family: Arial, sans-serif;
           }
           .container {
-            padding: 150px 50px;
+            padding: 500px 50px;
             border: 2px solid black;
             overflow: auto;
           }
@@ -207,26 +217,31 @@ const bookDecoder = {
           th, td {
             border: 1px solid #dddddd;
             text-align: left;
-            padding: 8px;
+            padding: 8px 15px; /* Updated padding for th elements */
           }
           th {
+            position: sticky;
+            top: 0;
             background-color: #f2f2f2;
+            z-index: 2;
           }
-          </style>
-        </head>
+        </style>
+      </head>
       <body>
-      <div style="background-color: white; padding: 0px; border-radius: 5px; max-height: calc(80vh - ${headerHeight + footerHeight}px); overflow-y: auto;">
-        <div class="title">
-          <span>Conference Talks</span>
-          <button class="close-button" id="closeButton">x</button>
+        <div style="background-color: white; padding: 0px; border-radius: 5px;">
+          <div class="title">
+            <span>Conference Talks — ${finalPath}</span>
+            <button class="close-button" id="closeButtonHeader">✖</button>
+          </div>
+          <div class="table-container" style="max-height: calc(90vh - ${headerHeight + footerHeight}px); overflow-y: auto;">
+            <table>
+              ${tableView}
+            </table>
+          </div>
+          <div class="footer">
+            <button id="closeButtonFooter">Close</button>
+          </div>
         </div>
-        <div>
-          ${tableView}
-        </div>
-        <div class="footer">
-          <button id="closeButton">Close</button>
-        </div>
-      </div>
       </body>
     `;
   
@@ -234,8 +249,13 @@ const bookDecoder = {
   
     document.body.appendChild(overlay);
   
-    const closeButton = document.getElementById('closeButton');
+    const closeButton = document.getElementById('closeButtonHeader');
     closeButton.addEventListener('click', function () {
+      overlay.remove();
+    });
+    
+    const closeButtonFooter = document.getElementById('closeButtonFooter');
+    closeButtonFooter.addEventListener('click', function () {
       overlay.remove();
     });
   }
@@ -300,25 +320,45 @@ const bookDecoder = {
           overlay.style.alignItems = 'center';
           overlay.style.justifyContent = 'center';
           overlay.style.zIndex = '9999';
-  
-          const scriptureDetails = document.createElement('div');
-          scriptureDetails.style.backgroundColor = savedColor || '#191970';  // Sets the background color of the element.
-          scriptureDetails.style.color = 'white';
-          scriptureDetails.style.padding = '20px';
-          scriptureDetails.style.borderRadius = '10px';
-          scriptureDetails.textContent = 'No entries found';
-  
+        
+          const scriptureContainer = document.createElement('div');
+          scriptureContainer.style.backgroundColor = '#dadada'; // Set the background color of the inner shape to #dadada
+          scriptureContainer.style.color = 'white';
+          scriptureContainer.style.padding = '20px';
+          scriptureContainer.style.borderRadius = '10px';
+          scriptureContainer.style.position = 'relative'; // Position the container relative to the overlay
+          scriptureContainer.style.width = '300px'; // Set the width to 300px
+          scriptureContainer.style.height = '200px'; // Set the height to 200px
+          scriptureContainer.style.display = 'flex'; // Use flexbox for centering
+          scriptureContainer.style.flexDirection = 'column'; // Stack elements vertically
+          scriptureContainer.style.alignItems = 'center'; // Center horizontally
+          scriptureContainer.style.justifyContent = 'center'; // Center vertically
+        
           const closeButton = document.createElement('button');
-          closeButton.textContent = 'Close';
+          closeButton.textContent = '✖'; // Use the "x" symbol for close
+          closeButton.style.position = 'absolute'; // Position the button
+          closeButton.style.top = '10px'; // Adjust top position
+          closeButton.style.right = '10px'; // Adjust right position
+          closeButton.style.backgroundColor = 'transparent'; // Transparent background
+          closeButton.style.border = 'none'; // No border
+          closeButton.style.color = 'white'; // White color
+          closeButton.style.fontSize = '20px'; // Adjust font size
+          closeButton.style.cursor = 'pointer'; // Set cursor to pointer
           closeButton.addEventListener('click', function() {
             overlay.remove();
           });
-  
-          overlay.appendChild(scriptureDetails);
-          overlay.appendChild(closeButton);
-  
+        
+          const scriptureDetails = document.createElement('div');
+          scriptureDetails.textContent = 'No entries found';
+        
+          scriptureContainer.appendChild(closeButton);
+          scriptureContainer.appendChild(scriptureDetails);
+        
+          overlay.appendChild(scriptureContainer);
+        
           document.body.appendChild(overlay);
         });
+        
   
         const space = createSpace();
         verseNumber.parentNode.insertBefore(space.cloneNode(true), verseNumber.nextSibling);
@@ -366,13 +406,13 @@ const bookDecoder = {
         verseButton.addEventListener('click', async function () {
           const fullQueryData = await fetchJSON(scriptureQuotedDataUrl);
           const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePath);
-          createTableOverlay(matchingEntries);
+          createTableOverlay(matchingEntries, scripturePath);
         });
   
         countButton.addEventListener('click', async function () {
           const fullQueryData = await fetchJSON(scriptureQuotedDataUrl);
           const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePath);
-          createTableOverlay(matchingEntries);
+          createTableOverlay(matchingEntries, scripturePath);
         });
   
         const space = createSpace();

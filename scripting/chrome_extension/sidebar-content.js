@@ -117,13 +117,13 @@ function createButtonWithExtractedURL(verseNumber, verseNumberText, scriptureCou
       verseButtonSB.addEventListener('click', async function () {
         const fullQueryData = await fetchJSON(scriptureQuotedDataUrlSB);
         const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePathSB);
-        createTableOverlay(matchingEntries);
+        createTableOverlay(matchingEntries, scripturePathSB);
       });
 
       countButtonSB.addEventListener('click', async function () {
         const fullQueryData = await fetchJSON(scriptureQuotedDataUrlSB);
         const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePathSB);
-        createTableOverlay(matchingEntries);
+        createTableOverlay(matchingEntries, scripturePathSB);
       });
 
       const spaceSB = createSpace();

@@ -124,13 +124,13 @@ function createButtonWithExtractedURLNav(verseNumber, verseNumberText, scripture
       verseButtonNav.addEventListener('click', async function () {
         const fullQueryData = await fetchJSON(scriptureQuotedDataUrlNav);
         const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePathNav);
-        createTableOverlay(matchingEntries);
+        createTableOverlay(matchingEntries, scripturePathNav);
       });
 
       countButtonNav.addEventListener('click', async function () {
         const fullQueryData = await fetchJSON(scriptureQuotedDataUrlNav);
         const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePathNav);
-        createTableOverlay(matchingEntries);
+        createTableOverlay(matchingEntries, scripturePathNav);
       });
 
       // Remove any existing spaces after the verse number
