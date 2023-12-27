@@ -6,7 +6,7 @@ body {
 
 /* Additional styles for the header */
 .header {
-  background: linear-gradient(to bottom, #191970 50%, transparent 50%); /* Gradient from blue to transparent */
+  background: linear-gradient(to bottom, #E74C3C 50%, transparent 50%); /* Gradient from blue to transparent */
   padding: 20px; /* Adjust padding as needed */
   text-align: center;
 }
@@ -15,7 +15,7 @@ body {
   width: 100px; /* Adjust image size as needed */
   height: 100px; /* Adjust image size as needed */
   border-radius: 50%; /* Create a circular frame */
-  border: 3px solid #191970; /* Add a border color */
+  border: 3px solid #E74C3C; /* Add a border color */
   position: relative;
   z-index: 1; /* Ensures the image is on top of the background */
 }

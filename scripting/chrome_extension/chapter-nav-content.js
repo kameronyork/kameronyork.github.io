@@ -32,7 +32,7 @@ function createButtonWithExtractedURLNav(verseNumber, verseNumberText, scripture
       verseButtonNav.style.border = 'none';
       verseButtonNav.style.fontSize = '12px';
       verseButtonNav.textContent = verseNumberText; // This is what goes on the button.
-      verseButtonNav.style.background = savedColorNav || '#191970';
+      verseButtonNav.style.background = savedColorNav || '#E74C3C';
       verseButtonNav.style.color = 'white';
       verseButtonNav.style.borderTopLeftRadius = '5px';
       verseButtonNav.style.borderBottomLeftRadius = '5px';
@@ -59,7 +59,7 @@ function createButtonWithExtractedURLNav(verseNumber, verseNumberText, scripture
         overlayNav.style.zIndex = '9999';
 
         const scriptureContainerNav = document.createElement('div');
-        scriptureContainerNav.style.backgroundColor = savedColorNav || '#191970'; // Set the background color of the inner shape
+        scriptureContainerNav.style.backgroundColor = savedColorNav || '#E74C3C'; // Set the background color of the inner shape
         scriptureContainerNav.style.color = 'white';
         scriptureContainerNav.style.padding = '20px';
         scriptureContainerNav.style.borderRadius = '10px';
@@ -121,7 +121,7 @@ function createButtonWithExtractedURLNav(verseNumber, verseNumberText, scripture
       verseButtonNav.style.border = 'none';
       verseButtonNav.style.fontSize = '12px';
       verseButtonNav.textContent = verseNumberText; // This is what goes on the button.
-      verseButtonNav.style.background = savedColorNav || '#191970';
+      verseButtonNav.style.background = savedColorNav || '#E74C3C';
       verseButtonNav.style.color = 'white';
       verseButtonNav.style.borderTopLeftRadius = '5px';
       verseButtonNav.style.borderBottomLeftRadius = '5px';
@@ -137,7 +137,7 @@ function createButtonWithExtractedURLNav(verseNumber, verseNumberText, scripture
       const countButtonNav = document.createElement('button');
       countButtonNav.style.width = countButtonWidthNav;
       countButtonNav.style.height = '20px';
-      countButtonNav.style.border = `1px solid ${savedColorNav || '#191970'}`;
+      countButtonNav.style.border = `1px solid ${savedColorNav || '#E74C3C'}`;
       countButtonNav.style.fontSize = '12px';
       countButtonNav.textContent = `${scriptureCountNav}`; // This is what goes on the button.
       countButtonNav.style.background = 'white';

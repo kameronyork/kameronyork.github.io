@@ -34,7 +34,7 @@ function createButtonWithExtractedURL(verseNumber, verseNumberText, scriptureCou
       verseButtonSB.style.border = 'none';
       verseButtonSB.style.fontSize = '12px';
       verseButtonSB.textContent = verseNumberText; // This is what goes on the button.
-      verseButtonSB.style.background = savedColorSB || '#191970';
+      verseButtonSB.style.background = savedColorSB || '#E74C3C';
       verseButtonSB.style.color = 'white';
       verseButtonSB.style.borderTopLeftRadius = '5px';
       verseButtonSB.style.borderBottomLeftRadius = '5px';
@@ -63,7 +63,7 @@ function createButtonWithExtractedURL(verseNumber, verseNumberText, scriptureCou
         overlaySB.style.zIndex = '9999';
 
         const scriptureContainerSB = document.createElement('div');
-        scriptureContainerSB.style.backgroundColor = savedColorSB || '#191970'; // Set the background color of the inner shape
+        scriptureContainerSB.style.backgroundColor = savedColorSB || '#E74C3C'; // Set the background color of the inner shape
         scriptureContainerSB.style.color = 'white';
         scriptureContainerSB.style.padding = '20px';
         scriptureContainerSB.style.borderRadius = '10px';
@@ -118,7 +118,7 @@ function createButtonWithExtractedURL(verseNumber, verseNumberText, scriptureCou
       verseButtonSB.style.border = 'none';
       verseButtonSB.style.fontSize = '12px';
       verseButtonSB.textContent = verseNumberText; // This is what goes on the button.
-      verseButtonSB.style.background = savedColorSB || '#191970';
+      verseButtonSB.style.background = savedColorSB || '#E74C3C';
       verseButtonSB.style.color = 'white';
       verseButtonSB.style.borderTopLeftRadius = '5px';
       verseButtonSB.style.borderBottomLeftRadius = '5px';
@@ -136,7 +136,7 @@ function createButtonWithExtractedURL(verseNumber, verseNumberText, scriptureCou
       const countButtonSB = document.createElement('button');
       countButtonSB.style.width = countButtonWidthSB;
       countButtonSB.style.height = '20px';
-      countButtonSB.style.border = `1px solid ${savedColorSB || '#191970'}`;
+      countButtonSB.style.border = `1px solid ${savedColorSB || '#E74C3C'}`;
       countButtonSB.style.fontSize = '12px';
       countButtonSB.textContent = `${scriptureCountSB}`; // This is what goes on the button.
       countButtonSB.style.background = 'white';
