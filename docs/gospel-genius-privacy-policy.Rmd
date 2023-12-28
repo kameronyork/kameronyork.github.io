@@ -1,5 +1,5 @@
 ---
-title: "Gospel Genius Privacy Policy"  # Sets the Title.
+title: "Gospel Buddy Privacy Policy"  # Sets the Title.
 output:
   html_document:
     includes:
@@ -11,7 +11,7 @@ output:
 
 ## Data Collection
 
-Gospel Genius Chrome Extension does not collect any personal data or personally identifiable information from its users. We do not track or store any user-specific information, and we have no access to any data on user activities outside of the extension's functionality.
+Gospel Buddy Chrome Extension does not collect any personal data or personally identifiable information from its users. We do not track or store any user-specific information, and we have no access to any data on user activities outside of the extension's functionality.
 
 ## Permissions
 
@@ -36,7 +36,7 @@ The extension does not use any remote code execution. All functionality is conta
 
 ## Future Data Collection
 
-Gospel Genius Chrome Extension does not currently collect any user data, and there are no plans to start collecting user data in the future. Any changes to this policy will be communicated clearly to users through the extension's update notes and documentation.
+Gospel Buddy Chrome Extension does not currently collect any user data, and there are no plans to start collecting user data in the future. Any changes to this policy will be communicated clearly to users through the extension's update notes and documentation.
 
 ---
 
