@@ -1,0 +1,70 @@
+---
+title: "The Gospel Buddy"
+output:
+  html_document:
+    includes:
+      in_header: "https://kameronyork.com/gospel-buddy/headers/gospel-buddy-header.html"
+      after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
+---
+A Browser Extension built for Better General Conference References
+<br>
+<br>
+<br>
+
+<style>
+    .download-button {
+    display: inline-flex; /* Use flexbox for alignment */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    background-color: #0073e6; /* Blue color */
+    color: #ffffff; /* White text color */
+    padding: 10px 20px; /* Adjust padding as needed */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold;
+    width: 250px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  .download-button img {
+    width: 20px; /* Adjust image size as needed */
+    margin-right: 10px; /* Add space between image and text */
+  }
+</style>
+
+<a href="https://kameronyork.com/gospel-buddy/" class="download-button">
+  <img src="https://kameronyork.com/docs/assets/chrome-logo.png" alt="Google Chrome Logo">
+  Download for Chrome
+</a>
+<a href="https://kameronyork.com/gospel-buddy/" class="download-button">
+  <img src="https://kameronyork.com/docs/assets/edge-logo.png" alt="Microsoft Edge Logo">
+  Download for Edge
+</a>
+<br>
+<br>
+<br>
+
+#### What is the Gospel Buddy Extension?
+
+General Conference talks from the Church of Jesus Christ of Latter-Day Saints feature extensive footnotes to scriptures. These footnotes are meant to inspire deeper study of these words from modern prophets. However, scriptures on the Church's website currently have no references to relevant General Conference talks. The ability to jump to related teachings from modern prophets when reading the scriptures would deepen study and build faith. The Gospel Buddy extension aims to do just that!
+
+The Gospel Buddy replaces the verse numbers on the Church's website with buttons. These buttons display the verse number and the number of times that verse has appeared as a footnote in General Conference talks. Clicking on the verse buttons will display a table with links to each talk that references the verse. The color of the verse buttons can be customized in the Gospel Buddy settings window. If desired, the settings window also enables the ability to filter the tables and footnote counts to only General Conference talks from Apostles.
+
+#### How Does the Gospel Buddy Extension Gather Footnote Data?
+
+The Gospel Buddy runs a webscraping utility after the release of new General Conference talks biannually. The Gospel Buddy searches for links to scriptures within every Conference Talk - both new and previous - to maintain the most up-to-date footnote data. After the scripture links are extracted, they are decoded using functions to create a usable dataset. These datasets can be found here on my website's [Datasets Page](https://kameronyork.com/datasets).
+
+#### How Can the Gospel Buddy Help Me Study Come Follow Me?
+
+Come Follow Me is an excellent scripture study resource provided by the Church of Jesus Christ of Latter-Day Saints. These study outlines help members to read and ponder one of the Four Standard Works every year. Lessons include insights on scripture passages, prompts for gospel topic discussions, and ideas for family activities that assist in the learning process. The Gospel Buddy Extension can help to make this scripture study even more meaningful!
+
+The Gospel Buddy provides members with links to relevant General Conference talks built into the current week's readings. The hard-to-understand passages from Isaiah and Revelation will become easier when combined with the words of General Conference talks. Relevant Conference Talks provide additional study and family activities through the week. The Gospel Buddy creates links between Come Follow Me and General Conference talks!
+
+#### Where Can I Download the Gospel Buddy Extension?
+
+The Gospel Buddy Extension is available through the Google Chrome Extension Store for free! When added to Chrome, the Gospel Buddy will automatically create verse buttons on the Church of Jesus Christ of Latter-Day Saints' website. Enhance gospel learning with the Gospel Buddy by clicking [Here](link_to_extension_here).
+
+<br>
+<br>
+
