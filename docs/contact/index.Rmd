@@ -7,6 +7,6 @@ output:
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
 
-Email:  thekameronyork99@gmail.com  
+Email:  kamsyork@gmail.com  
 LinkedIn:  www.linkedin.com/in/kameronyork  
 Facebook: www.facebook.com/kameron.york.5
