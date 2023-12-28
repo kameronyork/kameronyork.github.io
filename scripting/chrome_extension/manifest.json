@@ -1,12 +1,11 @@
 {
   "manifest_version": 3,
-  "name": "Gospel Genius",
+  "name": "Gospel Buddy",
   "version": "1.0",
   "description": "Extension to create footnotes between scriptures and General Conference talks from the Church of Jesus Christ of Latter-Day Saints",
   "permissions": [
     "storage",
-    "activeTab",
-    "scripting"
+    "activeTab"
   ],
   "host_permissions": [
     "https://www.churchofjesuschrist.org/"
