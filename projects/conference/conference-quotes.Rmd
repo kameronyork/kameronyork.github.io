@@ -5,7 +5,7 @@ date: "2023-10-15"
 output:
   html_document:
     includes:
-      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/header.html"
+      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/projects/conference/headers/inspire-change-header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
     code_folding: hide
 ---
