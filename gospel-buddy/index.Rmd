@@ -63,7 +63,7 @@ The Gospel Buddy provides members with links to relevant General Conference talk
 
 #### Where Can I Download the Gospel Buddy Extension?
 
-The Gospel Buddy Extension is available through the Google Chrome Extension Store for free! When added to Chrome, the Gospel Buddy will automatically create verse buttons on the Church of Jesus Christ of Latter-Day Saints' website. Enhance gospel learning with the Gospel Buddy by clicking [Here](link_to_extension_here).
+The Gospel Buddy Extension is available through the Google Chrome Extension Store for free! When added to Chrome, the Gospel Buddy will automatically create verse buttons on the Church of Jesus Christ of Latter-Day Saints' website. Enhance gospel learning with the Gospel Buddy by clicking [Here]("https://kameronyork.com/gospel-buddy/").
 
 <br>
 <br>
