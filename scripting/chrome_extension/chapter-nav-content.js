@@ -189,7 +189,7 @@ function createButtonWithExtractedURLNav(verseNumber, verseNumberText, scripture
 const createdButtonsMapNav = new Map();
 
 async function replaceverseNumbersWithButtonsNav(callback) {
-  const articlesNav = document.querySelectorAll('article.has-max-width.classic-scripture[lang="eng"]');
+  const articlesNav = document.querySelectorAll('article.has-max-width.classic-scripture[lang="eng"], article.has-max-width.classic-scripture[lang="spa"]');
 
   if (articlesNav.length > 0) {
     for (const article of articlesNav) {

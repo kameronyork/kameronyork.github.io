@@ -187,9 +187,10 @@ function createButtonWithExtractedURL(verseNumber, verseNumberText, scriptureCou
       for (const section of sections) {
         const firstLink = section.querySelector('a[href]');
         if (firstLink) {
-          const langIndex = firstLink.href.indexOf('lang=eng');
+          const langRegex = /lang=(eng|spa)/;
+          const langMatch = firstLink.href.match(langRegex);
   
-          if (langIndex > -1) {
+          if (langMatch) {
             // Check if buttons have been created for this section
             if (!createdButtonsMap.has(section)) {
               createdButtonsMap.set(section, new Set()); // Initialize a Set to track buttons for this section
@@ -207,12 +208,16 @@ function createButtonWithExtractedURL(verseNumber, verseNumberText, scriptureCou
   
               // Check if a button already exists for this verseNumber in this section
               if (!createdButtons.has(verseNumber)) {
-                const chapterIndexSB = firstLink.href.lastIndexOf('/', langIndex - 1);
+                const chapterIndexSB = firstLink.href.lastIndexOf('/', langMatch.index - 1);
                 const bookIndexSB = firstLink.href.lastIndexOf('/', chapterIndexSB - 1);
   
-                let chapterSB = firstLink.href.substring(chapterIndexSB + 1, langIndex);
+                let chapterSB = firstLink.href.substring(chapterIndexSB + 1, langMatch.index);
                 if (chapterSB.includes('?')) {
                   chapterSB = chapterSB.split('?')[0];
+                }
+  
+                if (chapterSB.includes('.')) {
+                  chapterSB = chapterSB.split('.')[0];
                 }
   
                 const bookAbbrSB = firstLink.href.substring(bookIndexSB + 1, chapterIndexSB);

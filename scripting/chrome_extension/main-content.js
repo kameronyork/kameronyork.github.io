@@ -471,16 +471,23 @@ const bookDecoder = {
   async function replaceVerseNumbersWithButtons(callback) {
     const verseNumbers = document.querySelectorAll(".contentWrapper-n6Z8K .renderFrame-hnHZX .verse .verse-number");
     const url = window.location.href;
-    const langIndex = url.indexOf('lang=eng');
+    const langRegex = /lang=(eng|spa)/;
   
-    if (langIndex > -1) {
+    if (langRegex.test(url)) {
       const promises = Array.from(verseNumbers).map(async (verseNumber) => {
-        const chapterIndex = url.lastIndexOf('/', langIndex - 1);
+        const langMatch = url.match(langRegex);
+        const langValue = langMatch ? langMatch[1] : ''; // Extract the matched value (eng or spa)
+  
+        const chapterIndex = url.lastIndexOf('/', langMatch.index - 1);
         const bookIndex = url.lastIndexOf('/', chapterIndex - 1);
   
-        let chapter = url.substring(chapterIndex + 1, langIndex);
+        let chapter = url.substring(chapterIndex + 1, langMatch.index);
         if (chapter.includes('?')) {
           chapter = chapter.split('?')[0];
+        }
+  
+        if (chapter.includes('.')) {
+          chapter = chapter.split('.')[0];
         }
   
         const bookAbbr = url.substring(bookIndex + 1, chapterIndex);
@@ -517,6 +524,7 @@ const bookDecoder = {
       callback();
     }
   }
+  
   
   // Example usage:
   replaceVerseNumbersWithButtons(() => {
