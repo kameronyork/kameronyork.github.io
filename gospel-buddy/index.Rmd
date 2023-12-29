@@ -3,8 +3,8 @@ title: "The Gospel Buddy"
 output:
   html_document:
     includes:
-      in_header: "C:/Users/kyork/Desktop/Projects/website-project/kameronyork.github.io/gospel-buddy/headers/gospel-buddy-header.html"
-      after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
+      in_header: "https://kameronyork.com/gospel-buddy/headers/gospel-buddy-header.html"
+      after_body: "https://kameronyork.com/parables/footer.html"
 ---
 A Browser Extension built for Better General Conference References
 <br>
