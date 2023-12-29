@@ -3,7 +3,7 @@ title: "The Gospel Buddy"
 output:
   html_document:
     includes:
-      in_header: "https://kameronyork.com/gospel-buddy/headers/gospel-buddy-header.html"
+      in_header: "C:/Users/kyork/Desktop/Projects/website-project/kameronyork.github.io/gospel-buddy/headers/gospel-buddy-header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
 A Browser Extension built for Better General Conference References
@@ -27,6 +27,19 @@ A Browser Extension built for Better General Conference References
     margin-right: 10px;
   }
   
+  .download-button img {
+    width: 20px; /* Adjust image size as needed */
+    margin-right: 10px; /* Add space between image and text */
+  }
+  /* Apply styling to larger images */
+  .large-image {
+    width: 75%; /* Set the width of the images to 75% of their current size */
+    display: block; /* Center the images */
+    margin: 0 auto; /* Center the images */
+    border: 2px solid #f0f0f0;
+  }
+
+  /* Apply styling to Chrome and Edge icons */
   .download-button img {
     width: 20px; /* Adjust image size as needed */
     margin-right: 10px; /* Add space between image and text */
@@ -60,8 +73,7 @@ The Gospel Buddy runs a webscraping utility after the release of new General Con
 Come Follow Me is an excellent scripture study resource provided by the Church of Jesus Christ of Latter-Day Saints. These study outlines help members to read and ponder one of the Four Standard Works every year. Lessons include insights on scripture passages, prompts for gospel topic discussions, and ideas for family activities that assist in the learning process. The Gospel Buddy Extension can help to make this scripture study even more meaningful!
 
 <br>
-![Studying Come Follow Me with the Gospel Buddy Extension](https://kameronyork.com/docs/assets/come-follow-me.png)
-<small>The Gospel Buddy Extension make studying Come Follow Me easier!</small>
+![Studying Come Follow Me with the Gospel Buddy Extension](https://kameronyork.com/docs/assets/come-follow-me.png){.large-image}
 <br>
 <br>
 
@@ -72,8 +84,8 @@ The Gospel Buddy provides members with links to relevant General Conference talk
 While studying General Conference talks users can browse footnotes of scriptures related to what the speaker has said.  By simply clicking one of these footnotes the Gospel Buddy will create a button on the verse in the footnote pane.  This button generates links to other General Conference talks which feature that scripture in the footnotes.  The Gospel Buddy Extension increases the usability of General Conference talks from the Church of Jesus Christ of Latter-Day Saints. 
 
 <br>
-![Studying General Conference Talks with the Gospel Buddy Extension](https://kameronyork.com/docs/assets/president-nelson.png)
-<small>The Gospel Buddy Extension make studying General Conference easier!</small>
+![Studying General Conference Talks with the Gospel Buddy Extension](https://kameronyork.com/docs/assets/president-nelson.png){.large-image}
+
 <br>
 <br>
 
