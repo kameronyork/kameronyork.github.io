@@ -9,40 +9,46 @@ output:
 A Browser Extension built for Better General Conference References
 <br>
 <br>
-<br>
 
 <style>
-    .download-button {
-    display: inline-flex; /* Use flexbox for alignment */
-    align-items: center; /* Center items vertically */
-    justify-content: center; /* Center items horizontally */
+  .download-button {
+    display: inline-block; /* Use inline-block to allow setting width */
+    width: 180px; /* Set fixed width */
+    height: 50px;
+    margin-right: 10px;
     background-color: #0073e6; /* Blue color */
     color: #ffffff; /* White text color */
     padding: 10px 10px; /* Adjust padding as needed */
     border-radius: 5px; /* Rounded corners */
     text-decoration: none; /* Remove underline */
     font-weight: bold;
-    width: 155px;
-    height: 50px;
-    margin-right: 10px;
-  }
-  
-  .download-button img {
-    width: 20px; /* Adjust image size as needed */
-    margin-right: 10px; /* Add space between image and text */
-  }
-  /* Apply styling to larger images */
-  .large-image {
-    width: 75%; /* Set the width of the images to 75% of their current size */
-    display: block; /* Center the images */
-    margin: 0 auto; /* Center the images */
-    border: 2px solid #f0f0f0;
+    text-align: center; /* Center text horizontally */
+    line-height: 30px; /* Center text vertically */
   }
 
-  /* Apply styling to Chrome and Edge icons */
   .download-button img {
-    width: 20px; /* Adjust image size as needed */
+    width: 25px; /* Adjust image size as needed */
+    vertical-align: left; /* Align image vertically */
     margin-right: 10px; /* Add space between image and text */
+  }
+
+  /* Media query for smaller screens */
+  @media (max-width: 600px) {
+    .download-button {
+      display: block; /* Change to block-level element */
+      margin-bottom: 10px; /* Add spacing between buttons */
+      width: 180px; /* Set fixed width */
+      height: 50px;
+      margin-right: 10px;
+      background-color: #0073e6; /* Blue color */
+      color: #ffffff; /* White text color */
+      padding: 10px 10px; /* Adjust padding as needed */
+      border-radius: 5px; /* Rounded corners */
+      text-decoration: none; /* Remove underline */
+      font-weight: bold;
+      text-align: left; /* Center text horizontally */
+      line-height: 30px; /* Center text vertically */
+    }
   }
 </style>
 
@@ -55,7 +61,6 @@ A Browser Extension built for Better General Conference References
   Add to Edge
 </a>
 
-<br>
 <br>
 
 #### What is the Gospel Buddy Extension?
