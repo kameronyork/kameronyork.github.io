@@ -18,11 +18,11 @@ A Browser Extension built for Better General Conference References
     justify-content: center; /* Center items horizontally */
     background-color: #0073e6; /* Blue color */
     color: #ffffff; /* White text color */
-    padding: 10px 20px; /* Adjust padding as needed */
+    padding: 10px 10px; /* Adjust padding as needed */
     border-radius: 5px; /* Rounded corners */
     text-decoration: none; /* Remove underline */
     font-weight: bold;
-    width: 175px;
+    width: 155px;
     height: 50px;
     margin-right: 10px;
   }
@@ -91,7 +91,7 @@ While studying General Conference talks users can browse footnotes of scriptures
 
 #### Where Can I Download the Gospel Buddy Extension?
 
-The Gospel Buddy Extension is available through the Google Chrome Extension Store for free! When added to Chrome, the Gospel Buddy will automatically create verse buttons on the Church of Jesus Christ of Latter-Day Saints' website. Enhance gospel learning with the Gospel Buddy by clicking [Here]("https://chromewebstore.google.com/detail/gospel-buddy/mlimohmgngjmnpllmnbjgkggclnmcdbn?hl=en").
+The Gospel Buddy Extension is available through the Google Chrome Extension Store for free! When added to Chrome, the Gospel Buddy will automatically create verse buttons on the Church of Jesus Christ of Latter-Day Saints' website. Enhance gospel learning with the Gospel Buddy by clicking here:
 
 <br>
 <br>
