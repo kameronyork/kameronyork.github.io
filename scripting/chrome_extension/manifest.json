@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Gospel Buddy",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Extension to create footnotes between scriptures and General Conference talks from the Church of Jesus Christ of Latter-Day Saints",
   "permissions": [
     "storage",
