@@ -27,8 +27,20 @@ A Browser Extension built for Better General Conference References
   }
 
   .download-button img {
-    width: 25px; /* Adjust image size as needed */
-    vertical-align: left; /* Align image vertically */
+    width: 20px; /* Adjust image size as needed */
+    margin-right: 10px; /* Add space between image and text */
+  }
+  /* Apply styling to larger images */
+  .large-image {
+    width: 75%; /* Set the width of the images to 75% of their current size */
+    display: block; /* Center the images */
+    margin: 0 auto; /* Center the images */
+    border: 2px solid #f0f0f0;
+  }
+
+  /* Apply styling to Chrome and Edge icons */
+  .download-button img {
+    width: 20px; /* Adjust image size as needed */
     margin-right: 10px; /* Add space between image and text */
   }
 
