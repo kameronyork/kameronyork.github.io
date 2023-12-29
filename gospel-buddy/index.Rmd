@@ -22,7 +22,7 @@ A Browser Extension built for Better General Conference References
     border-radius: 5px; /* Rounded corners */
     text-decoration: none; /* Remove underline */
     font-weight: bold;
-    width: 250px;
+    width: 175px;
     height: 50px;
     margin-right: 10px;
   }
@@ -33,15 +33,15 @@ A Browser Extension built for Better General Conference References
   }
 </style>
 
-<a href="https://kameronyork.com/gospel-buddy/" class="download-button">
+<a href="https://chromewebstore.google.com/detail/gospel-buddy/mlimohmgngjmnpllmnbjgkggclnmcdbn?hl=en" class="download-button">
   <img src="https://kameronyork.com/docs/assets/chrome-logo.png" alt="Google Chrome Logo">
-  Download for Chrome
+  Add to Chrome
 </a>
-<a href="https://kameronyork.com/gospel-buddy/" class="download-button">
+<a href="https://chromewebstore.google.com/detail/gospel-buddy/mlimohmgngjmnpllmnbjgkggclnmcdbn?hl=en" class="download-button">
   <img src="https://kameronyork.com/docs/assets/edge-logo.png" alt="Microsoft Edge Logo">
-  Download for Edge
+  Add to Edge
 </a>
-<br>
+
 <br>
 <br>
 
@@ -59,12 +59,39 @@ The Gospel Buddy runs a webscraping utility after the release of new General Con
 
 Come Follow Me is an excellent scripture study resource provided by the Church of Jesus Christ of Latter-Day Saints. These study outlines help members to read and ponder one of the Four Standard Works every year. Lessons include insights on scripture passages, prompts for gospel topic discussions, and ideas for family activities that assist in the learning process. The Gospel Buddy Extension can help to make this scripture study even more meaningful!
 
+<br>
+![Studying Come Follow Me with the Gospel Buddy Extension](https://kameronyork.com/docs/assets/come-follow-me.png)
+<small>The Gospel Buddy Extension make studying Come Follow Me easier!</small>
+<br>
+<br>
+
 The Gospel Buddy provides members with links to relevant General Conference talks built into the current week's readings. The hard-to-understand passages from Isaiah and Revelation will become easier when combined with the words of General Conference talks. Relevant Conference Talks provide additional study and family activities through the week. The Gospel Buddy creates links between Come Follow Me and General Conference talks!
+
+#### How Can the Gospel Buddy Help Me Study General Conference Talks?
+
+While studying General Conference talks users can browse footnotes of scriptures related to what the speaker has said.  By simply clicking one of these footnotes the Gospel Buddy will create a button on the verse in the footnote pane.  This button generates links to other General Conference talks which feature that scripture in the footnotes.  The Gospel Buddy Extension increases the usability of General Conference talks from the Church of Jesus Christ of Latter-Day Saints. 
+
+<br>
+![Studying General Conference Talks with the Gospel Buddy Extension](https://kameronyork.com/docs/assets/president-nelson.png)
+<small>The Gospel Buddy Extension make studying General Conference easier!</small>
+<br>
+<br>
 
 #### Where Can I Download the Gospel Buddy Extension?
 
-The Gospel Buddy Extension is available through the Google Chrome Extension Store for free! When added to Chrome, the Gospel Buddy will automatically create verse buttons on the Church of Jesus Christ of Latter-Day Saints' website. Enhance gospel learning with the Gospel Buddy by clicking [Here]("https://kameronyork.com/gospel-buddy/").
+The Gospel Buddy Extension is available through the Google Chrome Extension Store for free! When added to Chrome, the Gospel Buddy will automatically create verse buttons on the Church of Jesus Christ of Latter-Day Saints' website. Enhance gospel learning with the Gospel Buddy by clicking [Here]("https://chromewebstore.google.com/detail/gospel-buddy/mlimohmgngjmnpllmnbjgkggclnmcdbn?hl=en").
 
 <br>
 <br>
-
+<a href="https://chromewebstore.google.com/detail/gospel-buddy/mlimohmgngjmnpllmnbjgkggclnmcdbn?hl=en" class="download-button">
+  <img src="https://kameronyork.com/docs/assets/chrome-logo.png" alt="Google Chrome Logo">
+  Add to Chrome
+</a>
+<a href="https://chromewebstore.google.com/detail/gospel-buddy/mlimohmgngjmnpllmnbjgkggclnmcdbn?hl=en" class="download-button">
+  <img src="https://kameronyork.com/docs/assets/edge-logo.png" alt="Microsoft Edge Logo">
+  Add to Edge
+</a>
+<br>
+<br>
+<br>
+<br>
