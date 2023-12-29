@@ -1,15 +1,14 @@
-<!doctype html>
-<html lang=en-us>
-  <head>
-    <meta charset=utf-8>
-    <title>Gospel Buddy</title>
-    <meta name=generator content="Hugo 0.74.3">
-    <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
-    <link rel=stylesheet href="https://kameronyork.github.io/scripting/bootstrap/bootstrap.min.css">
-    <link rel=stylesheet href="https://kameronyork.github.io/scripting/themify-icons/themify-icons.css">
-    <link rel=stylesheet href="https://kameronyork.github.io/scripting/highlight/hybrid.css">
-    <link rel=icon href="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/icon.png" type=image/x-icon>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel=stylesheet>
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <title>Gospel Buddy</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <link rel="stylesheet" href="https://kameronyork.github.io/scripting/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="https://kameronyork.github.io/scripting/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="https://kameronyork.github.io/scripting/highlight/hybrid.css">
+  <link rel="icon" href="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/icon.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
 
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="The Gospel Buddy">
@@ -24,19 +23,22 @@
       padding: 0;
     }
     .header {
-      background: linear-gradient(to bottom, #f0f0f0 50%, transparent 50%);
+      background: linear-gradient(to bottom, #E74C3C 50%, transparent 50%);
       max-height: 200px;
       overflow: hidden;
       position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 200px; /* Set explicit height for the header */
     }
     .header img {
-      display: block;
-      margin: 0 auto;
       border-radius: 50%;
-      border: 3px solid #fff;
+      border: 5px solid #0d0f38;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-      max-width: 100%;
-      height: auto;
+      height: 75%; /* Image height is 50% of the header height */
+      width: auto; /* Maintain aspect ratio */
+      max-width: 100%; /* Ensure the image doesn't exceed the header's width */
     }
     :root {
       --primary-color: #02007e;
@@ -48,7 +50,7 @@
       --font-family: Roboto
     }
   </style>
-  <link href="https://kameronyork.github.io/scripting/css/articles.style.min.css" rel=stylesheet media=screen>
+  <link href="https://kameronyork.github.io/scripting/css/articles.style.min.css" rel="stylesheet" media="screen">
   <script src="https://kameronyork.github.io/scripting/jquery/projects.jquery-1.12.4.js"></script>
   <script src="https://kameronyork.github.io/scripting/jquery/projects.jquery-ui.js"></script>
   <script src="https://kameronyork.github.io/scripting/bootstrap/bootstrap.bundle.min.js"></script>
