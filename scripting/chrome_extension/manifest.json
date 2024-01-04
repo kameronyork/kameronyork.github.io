@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Gospel Buddy",
-  "version": "1.2",
+  "version": "1.2.1",
   "description": "Extension to create footnotes between scriptures and General Conference talks from the Church of Jesus Christ of Latter-Day Saints",
   "icons": {
     "16": "images/icon16.png",
@@ -15,11 +15,13 @@
     "activeTab"
   ],
   "host_permissions": [
-    "https://www.churchofjesuschrist.org/"
+    "https://www.churchofjesuschrist.org/study/come-follow-me",
+    "https://www.churchofjesuschrist.org/study/scriptures",
+    "https://www.churchofjesuschrist.org/study/general-conference"
   ],
   "content_scripts": [
     {
-      "matches": ["*://*.churchofjesuschrist.org/*"],
+      "matches": ["https://www.churchofjesuschrist.org/study/*"],
       "js": ["main-content.js", "sidebar-content.js", "chapter-nav-content.js"]
     }
   ],
