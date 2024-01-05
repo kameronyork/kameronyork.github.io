@@ -14,11 +14,6 @@
     "storage",
     "activeTab"
   ],
-  "host_permissions": [
-    "https://www.churchofjesuschrist.org/study/come-follow-me",
-    "https://www.churchofjesuschrist.org/study/scriptures",
-    "https://www.churchofjesuschrist.org/study/general-conference"
-  ],
   "content_scripts": [
     {
       "matches": ["https://www.churchofjesuschrist.org/study/*"],
