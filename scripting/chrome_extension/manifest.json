@@ -16,7 +16,7 @@
   ],
   "content_scripts": [
     {
-      "matches": ["https://www.churchofjesuschrist.org/study/*"],
+      "matches": ["https://www.churchofjesuschrist.org/*"],
       "js": ["main-content.js", "sidebar-content.js", "chapter-nav-content.js"]
     }
   ],
