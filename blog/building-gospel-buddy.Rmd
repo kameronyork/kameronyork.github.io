@@ -1,0 +1,109 @@
+---
+title: "Building the Gospel Buddy"
+output:
+  html_document:
+    includes:
+      in_header: "https://kameronyork.com/gospel-buddy/headers/gospel-buddy-header.html"
+      after_body: "https://kameronyork.com/parables/footer.html"
+---
+
+<style>
+  /* Center alignment for the title, text under the title, and buttons */
+  h1, .subtitle-text, .download-button {
+    text-align: center;
+  }
+
+  /* Left alignment for paragraphs and their titles in the middle of the document */
+  h4 {
+    text-align: left;
+  }
+</style>
+
+<div class="subtitle-text">
+  <p>How the Extension Works and Came to Be</p>
+</div>
+<br>
+
+<style>
+  .download-button {
+    display: inline-block; /* Use inline-block to allow setting width */
+    width: 180px; /* Set fixed width */
+    height: 50px;
+    margin-right: 10px;
+    background-color: #0073e6; /* Blue color */
+    color: #ffffff; /* White text color */
+    padding: 10px 10px; /* Adjust padding as needed */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold;
+    text-align: center; /* Center text horizontally */
+    line-height: 30px; /* Center text vertically */
+  }
+
+  .download-button img {
+    width: 20px; /* Adjust image size as needed */
+    margin-right: 10px; /* Add space between image and text */
+  }
+  /* Apply styling to larger images */
+  .large-image {
+    width: 75%; /* Set the width of the images to 75% of their current size */
+    display: block; /* Center the images */
+    margin: 0 auto; /* Center the images */
+    border: 2px solid #f0f0f0;
+  }
+
+  /* Apply styling to Chrome and Edge icons */
+  .download-button img {
+    width: 20px; /* Adjust image size as needed */
+    margin-right: 10px; /* Add space between image and text */
+  }
+
+  @media (max-width: 600px) {
+  .download-button {
+    display: block; /* Change to block-level element */
+    margin: 0 auto; /* Center the buttons horizontally */
+    width: 180px; /* Set fixed width */
+    height: 50px;
+    margin-bottom: 10px; /* Add spacing between buttons */
+    background-color: #0073e6; /* Blue color */
+    color: #ffffff; /* White text color */
+    padding: 10px 10px; /* Adjust padding as needed */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold;
+    text-align: center; /* Center text horizontally */
+    line-height: 30px; /* Center text vertically */
+  }
+}
+</style>
+
+#### The Idea for the Gospel Buddy Extension
+
+Creating the Gospel Buddy extension all started with one question: "What is the most quoted scripture in General Conference Talks".  Asking this question led to the creation of my project titled [Can a Prophet Inspire Change?](https://kameronyork.com/projects/conference/inspire-change.html)  To build that project I gathered data and built a file of every scripture quoted in General Conference.  To read about how I collected that data [Click Here](https://www.kameronyork.com/blog/quote-collecting.html).  The data for the Gospel Buddy was collected in a slightly different way which will be discussed later.  So, if we know what scriptures are referenced in General Conference talks how can we make this information useful to the average person?  What if users could see the number of times a scripture has been referenced in General Conference talks along with links to the specific talks?  That is the question that finalized the idea for the Gospel Buddy.
+
+#### How was the Data Collected for the Gospel Buddy Extension
+
+The Gospel Buddy is meant to be of much more use that a simple report.  The extension is meant as a cross refernce tool between General Conference talks and the scriptures.  Conference talks include many footnotes - both in the paragraphs and the reference tab - to create links to scriptures that are related to what the speaker has said.  However, when users read scriptures there are no links to relevant Conference talks.  The Gospel Buddy is meant to bridge that gap.  But the question remains, "How does it know what Conference talks to display?"
+
+Through a process called webscraping a script is run every 6 months that updates the footnote data.  The code will search through the main body and reference tab of every General Conference talk on the Church's website to identify any links to scriptures.  The script will then extract the links and run processes to clean and organize the data.  The result is a dataset that contains every scripture listed as a footnote on each Conference Talk.  Using this information we can bridge the gap between scripture and General Conference.
+
+#### How does the Gospel Buddy Create Buttons on the Scritpures?
+
+The Gospel Buddy extension, once installed in Chrome or Edge, will run when the user is on the Church's website.  The extension will search the webpage for scripture verses, and then for the verse numbers related to each verse.  If verse numbers are found the extension will identify what Book and Chapter that verse belongs to and generate a new Verse Button.  Then, by accessing the dataset mentioned previously, the number of General Conference mentions will be determined and created as a second button to be joined to the right side of the Verse Button called a Count Button.  Any verses that have not been used as a footnote will only generate a Verse Button.
+
+Once the Verse and Count Buttons are generated the extension will wait for the user to click on a button.  When a button is clicked a new script will identify exactly which talks have used that verse as a footnote.  It is important to note that the number on the Count Buttons represents the number of times the verse has been used as a footnote and NOT the number of talks in which that verse appears.  It is likely that these two numbers will be different.  The tables display each talk uniquely which means talks which use a verse as a footnote more than once will only be displayed once in the list.
+
+This process is able to identify verse numbers and replace them with Verse Buttons in the main body of the webpage, the Footnotes Sidebar, and in Chapter Navigators generated by Come Follow Me webpages.  This means the buttons will appear anywhere a verse number can be found.  Users can improve their study of scriptures, conference talks, and come follow me using one extension!
+
+<br>
+<div class="subtitle-text">
+  <a href="https://chromewebstore.google.com/detail/gospel-buddy/mlimohmgngjmnpllmnbjgkggclnmcdbn?hl=en" class="download-button">
+    <img src="https://kameronyork.com/docs/assets/chrome-logo.png" alt="Google Chrome Logo">
+    Add to Chrome
+  </a>
+  <a href="https://chromewebstore.google.com/detail/gospel-buddy/mlimohmgngjmnpllmnbjgkggclnmcdbn?hl=en" class="download-button">
+    <img src="https://kameronyork.com/docs/assets/edge-logo.png" alt="Microsoft Edge Logo">
+    Add to Edge
+  </a>
+</div>
+<br>
