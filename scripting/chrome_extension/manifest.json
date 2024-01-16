@@ -1,18 +1,22 @@
 {
   "manifest_version": 3,
   "name": "Gospel Buddy",
-  "version": "1.1",
+  "version": "1.2.2",
   "description": "Extension to create footnotes between scriptures and General Conference talks from the Church of Jesus Christ of Latter-Day Saints",
+  "icons": {
+    "16": "images/icon16.png",
+    "24": "images/icon24.png",
+    "32": "images/icon32.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
   "permissions": [
     "storage",
     "activeTab"
   ],
-  "host_permissions": [
-    "https://www.churchofjesuschrist.org/"
-  ],
   "content_scripts": [
     {
-      "matches": ["*://*.churchofjesuschrist.org/*"],
+      "matches": ["https://www.churchofjesuschrist.org/*"],
       "js": ["main-content.js", "sidebar-content.js", "chapter-nav-content.js"]
     }
   ],
@@ -20,8 +24,9 @@
     "default_popup": "settings.html",
     "default_icon": {
       "16": "images/icon16.png",
-      "48": "images/icon48.png",
-      "128": "images/icon128.png"
+      "24": "images/icon24.png",
+      "32": "images/icon32.png",
+      "48": "images/icon48.png"
     }
   },
   "web_accessible_resources": [

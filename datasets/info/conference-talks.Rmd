@@ -1,0 +1,26 @@
+---
+title: "General Conference Talks Dataset"
+author: "Kameron York"
+output: html_document
+---
+
+```{r setup, include=FALSE, warning=FALSE, message=FALSE}
+# Load the 'gt' package
+library(gt)
+library(dplyr)
+library(pander)
+
+df <- read.csv("https://www.kameronyork.com/datasets/general-conference-talks.csv", encoding = "utf-8") %>% 
+  arrange(desc(id))
+```
+
+A csv file of all General Conference Talks from the Church of Jesus Christ of Latter-Day Saints.  This csv dataset contains the full text and footnotes of all General Conference talks publicly available on churchofjesuschrist.org.  
+
+```{r, warning=FALSE, message=FALSE}
+df_summary <- df %>%
+  head(5) %>% 
+  pander()
+
+# Display the summary table
+df_summary
+```
