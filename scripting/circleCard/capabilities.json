@@ -1,0 +1,40 @@
+{
+    "dataRoles": [
+        {
+            "displayName": "Measure",
+            "name": "measure",
+            "kind": "Measure"
+        }
+    ],
+    "objects": {
+        "circle": {
+            "properties": {
+                "circleColor": {
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "circleThickness": {
+                    "type": {
+                        "numeric": true
+                    }
+                }
+            }
+        }
+    },
+    "dataViewMappings": [
+        {
+            "conditions": [
+                { "measure": { "max": 1 } }
+            ],
+            "single": {
+                "role": "measure"
+            }
+        }
+    ],
+    "privileges": []
+}
