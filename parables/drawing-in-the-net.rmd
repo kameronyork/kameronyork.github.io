@@ -42,8 +42,8 @@ onmouseout="this.style.backgroundColor='transparent';"
 onmousedown="this.style.backgroundColor='gray';" 
 onmouseup="this.style.backgroundColor='lightgray';">
 <i class="ti-arrow-left mr-2"></i>
-<span style="display: none;" class="d-md-inline-block">The Pearl</span>
-<span style="display: inline-block;" class="d-md-none">The Pearl</span>
+<span style="display: none;" class="d-md-inline-block">Hidden Treasure & Pearl</span>
+<span style="display: inline-block;" class="d-md-none">Hidden Treasure & Pearl</span>
 </a>
 <a class="nav nav-next ml-3" href="https://kameronyork.com/parables/friend-at-night.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" 
 onmouseover="this.style.backgroundColor='lightgray';" 
