@@ -29,7 +29,7 @@ This article is yet to be completed. Please check back later!
 <div class="row">
 <div class="col-12 text-md-left">
 <nav class="pagination mt-3">
-<a class="nav nav-prev" href="https://kameronyork.com/parables/hidden-treasure.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" 
+<a class="nav nav-prev" href="https://kameronyork.com/parables/drawing-in-the-net.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" 
 onmouseover="this.style.backgroundColor='lightgray';" 
 onmouseout="this.style.backgroundColor='transparent';" 
 onmousedown="this.style.backgroundColor='gray';" 

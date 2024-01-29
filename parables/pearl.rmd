@@ -1,5 +1,5 @@
 ---
-title: "The Pearl"  # Sets the Title.
+title: "The Hidden Treasure & the Pearl"  # Sets the Title.
 subtitle: "by Kameron York"
 output:
   html_document:
@@ -9,7 +9,7 @@ output:
 ---
 <br>
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
-<img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/pearl.jpg" alt="Parable of the pearl image" style="float: right; width: 195px; height: 115px; padding: 5px;">
+<img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/hidden-treasure-pearl.png" alt="Parable of the hidden treasure image" style="float: right; width: 195px; height: 115px; padding: 5px;">
 <br>
 <h4 style="text-align: left; margin: 0;">Reference:</h4>
 <p style="text-align: left; margin: 0;">
