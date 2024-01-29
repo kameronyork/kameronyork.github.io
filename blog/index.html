@@ -28,6 +28,24 @@
         --light-color: #f8f9fa;
         --font-family: Roboto
       }
+
+      .image-container {
+        width: 100%; /* Adjust width as needed */
+        overflow: hidden;
+      }
+
+      .image-container img {
+          width: 100%;
+          height: auto;
+          display: block; /* Removes bottom space under the image */
+      }
+
+      /* Mobile-specific styles */
+      @media (max-width: 767px) {
+          .image-container {
+              height: 50%; /* This sets the height to half of the image's width */
+          }
+    }
     </style>
     <link href="https://www.kameronyork.com/scripting/css/style.min.css" rel=stylesheet media=screen>
     <script src="https://www.kameronyork.com/scripting/jquery/jquery-1.12.4.js"></script>
@@ -119,13 +137,11 @@
                           </a>
                       </div>
                       <div class="col-md-3">
-                          <a href="https://www.kameronyork.com/blog/quotes.html">
-                            <!-- Desktop-specific image --  aspect ratio 1:1  -->
-                          <a href="https://www.kameronyork.com/blog/quotes.html">
-                            <img src="https://www.kameronyork.com/docs/assets/conference-center.png" alt="general conference center" class="img-fluid desktop-image d-none d-md-block">
-                          
-                            <!-- Mobile-specific image --  aspect ratio 2:1  -->
-                            <img src="https://www.kameronyork.com/docs/assets/conference-center-mobile.png" alt="general conference center" class="img-fluid mobile-image d-md-none">
+                        <a href="https://www.kameronyork.com/blog/quotes.html">
+                            <!-- Single image used for both Desktop and Mobile -->
+                            <div class="image-container">
+                                <img src="https://www.kameronyork.com/docs/assets/conference-center.png" alt="general conference center" class="img-fluid">
+                            </div>
                           </a>
                       </div>
                   </div>
