@@ -28,6 +28,33 @@
         --light-color: #f8f9fa;
         --font-family: Roboto
       }
+
+      .image-container {
+          width: 100%; /* Adjust width as needed */
+          overflow: hidden;
+          position: relative; /* Needed for absolute positioning of the image */
+      }
+
+      .image-container img {
+          width: 100%;
+          height: auto;
+          display: block; /* Removes bottom space under the image */
+      }
+
+      /* Mobile-specific styles */
+      @media (max-width: 767px) {
+          .image-container {
+              height: 0;
+              padding-top: 40%; /* This sets the height to 40% of the image's width */
+          }
+
+          .image-container img {
+              position: absolute;
+              top: 0;
+              left: 0;
+          }
+      }
+
     </style>
     <link href="https://www.kameronyork.com/scripting/css/style.min.css" rel=stylesheet media=screen>
     <script src="https://www.kameronyork.com/scripting/jquery/jquery-1.12.4.js"></script>
@@ -87,6 +114,24 @@
             <div class="p-lg-5 p-4 bg-white">
               <h2 class="mb-5">Blog Posts</h2>
               <div class="content">
+
+                  <div class="row">
+                    <div class="col-md-9">
+                        <a href="https://www.kameronyork.com/blog/building-gospel-buddy.html" class="post-link">
+                            <div class="post-content">
+                                <h4>Building the Gospel Buddy Extension</h4>
+                                <p>How I collected footnotes from every General Conference talk and built a Chrome extension to create links between scriptures and the Conference talks that reference them.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="image-container">
+                          <a href="https://www.kameronyork.com/blog/building-gospel-buddy.html">
+                              <img src="https://www.kameronyork.com/docs/assets/gb-article-icon-large.png" alt="general conference center" class="img-fluid">
+                          </a>
+                      </div>
+                    </div>
+                  </div>
           
                   <div class="row">
                       <div class="col-md-9">
@@ -98,14 +143,11 @@
                           </a>
                       </div>
                       <div class="col-md-3">
-                          <a href="https://www.kameronyork.com/blog/quotes.html">
-                            <!-- Desktop-specific image --  aspect ratio 1:1  -->
-                          <a href="https://www.kameronyork.com/blog/quotes.html">
-                            <img src="https://www.kameronyork.com/docs/assets/conference-center.png" alt="general conference center" class="img-fluid desktop-image d-none d-md-block">
-                          
-                            <!-- Mobile-specific image --  aspect ratio 2:1  -->
-                            <img src="https://www.kameronyork.com/docs/assets/conference-center-mobile.png" alt="general conference center" class="img-fluid mobile-image d-md-none">
-                          </a>
+                          <div class="image-container">
+                              <a href="https://www.kameronyork.com/blog/quotes.html">
+                                  <img src="https://www.kameronyork.com/docs/assets/conference-center.png" alt="general conference center" class="img-fluid">
+                              </a>
+                          </div>
                       </div>
                   </div>
           
@@ -119,37 +161,13 @@
                           </a>
                       </div>
                       <div class="col-md-3">
-                          <a href="https://www.kameronyork.com/blog/posts/quote-collecting.html">
-                            <!-- Desktop-specific image --  aspect ratio 1:1  -->
-                          <a href="https://www.kameronyork.com/blog/quote-collecting.html">
-                            <img src="https://www.kameronyork.com/docs/assets/quotes-graph.png" alt="general conference center" class="img-fluid desktop-image d-none d-md-block">
-                          
-                            <!-- Mobile-specific image  --  aspect ratio 2:1  -->
-                            <img src="https://www.kameronyork.com/docs/assets/quotes-graph-mobile.png" alt="change in quotes over time" class="img-fluid mobile-image d-md-none">
-                          </a>
+                        <div class="image-container">
+                            <a href="https://www.kameronyork.com/blog/quote-collecting.html">
+                                <img src="https://www.kameronyork.com/docs/assets/quotes-graph.png" alt="general conference center" class="img-fluid">
+                            </a>
+                        </div>
                       </div>
                   </div>
-
-                  <div class="row">
-                    <div class="col-md-9">
-                        <a href="https://www.kameronyork.com/blog/building-gospel-buddy.html" class="post-link">
-                            <div class="post-content">
-                                <h4>Building the Gospel Buddy Extension</h4>
-                                <p>How I collected footnotes from every General Conference talk and built a Chrome extension to create links between scriptures and the Conference talks that reference them.</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-3">
-                        <a href="https://www.kameronyork.com/blog/posts/building-gospel-buddy.html">
-                          <!-- Desktop-specific image --  aspect ratio 1:1  -->
-                        <a href="https://www.kameronyork.com/blog/building-gospel-buddy.html">
-                          <img src="https://www.kameronyork.com/docs/assets/gb-article-icon-large.png" alt="general conference center" class="img-fluid desktop-image d-none d-md-block">
-                        
-                          <!-- Mobile-specific image  --  aspect ratio 2:1  -->
-                          <img src="https://www.kameronyork.com/docs/assets/gb-article-icon-smallpng" alt="change in quotes over time" class="img-fluid mobile-image d-md-none">
-                        </a>
-                    </div>
-                </div>
           
               </div>
           
