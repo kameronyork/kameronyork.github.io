@@ -254,26 +254,31 @@ replaceverseNumbersWithButtonsNav(() => {
   // This variable is used to help disable to checking every second
   let isReplacingNav = false;
   let intervalIdNav = null;
+  let lastChapterSelection = ""; // Track the last chapter selection
+
+  function getCurrentChapterSelection() {
+    const currentChapterElements = document.querySelectorAll(".reference-UoeCG .citation-gN5YU");
+    if (currentChapterElements.length > 0) {
+        // Assuming there's only one current chapter visible at a time
+        return currentChapterElements[0].textContent.trim().replace(/\s+/g, ' ');
+    }
+    return null;
+}
   
-  function displayisVisibleNav(isVisibleNav) {
-    const isVisibleDivNav = document.createElement('div');
-    isVisibleDivNav.textContent = `isVisibleNav: ${isVisibleNav}`;
-    document.body.appendChild(isVisibleDivNav);
-  }
+  function checkingButtonsExistNav() {  
+    // Fetch the current chapter selection text
+    const currentChapterSelectionText = getCurrentChapterSelection(); // Assuming this returns the current chapter's text content, or null if not found
   
-  function checkingButtonsExistNav() {
-    const verseNumbersNav = document.querySelectorAll('.crossRefPanel-pyz6M .verse .verse-number');
+    // console.log("Last Chapter = ", lastChapterSelection);
+    // console.log("Current Chapter = ", currentChapterSelectionText);
   
-    // Check if any verse numbers are visible   
-    const isVisibleNav = Array.from(verseNumbersNav).some(verseNumber => {
-      return window.getComputedStyle(verseNumber).getPropertyValue('display') !== 'none';
-    });
-  
-    // displayisVisibleNav(isVisibleNav);
+    // Determine if chapter selection has changed (and not null)
+    const hasChapterChanged = currentChapterSelectionText !== lastChapterSelection && currentChapterSelectionText !== null;
   
     // If verse numbers are visible and not currently replacing, execute replaceverseNumbersNavWithButtons
-    if (isVisibleNav && !isReplacingNav) {
+    if (hasChapterChanged && !isReplacingNav) {
       isReplacingNav = true;
+      lastChapterSelection = currentChapterSelectionText; // Update lastChapterSelection
   
       // Stop the interval
       clearInterval(intervalIdNav);
@@ -285,6 +290,7 @@ replaceverseNumbersWithButtonsNav(() => {
           intervalIdNav = setInterval(checkingButtonsExistNav, 2000);
         }, 2000); // Wait for 2 seconds before restarting the interval
       });
+      // console.log("Buttons Replaced");
     }
   }
   
