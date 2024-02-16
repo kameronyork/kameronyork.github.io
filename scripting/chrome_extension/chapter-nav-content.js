@@ -273,8 +273,10 @@ replaceverseNumbersWithButtonsNav(() => {
     // console.log("Current Chapter = ", currentChapterSelectionText);
   
     // Determine if chapter selection has changed (and not null)
-    const hasChapterChanged = currentChapterSelectionText !== lastChapterSelection && currentChapterSelectionText !== null;
-  
+    const hasChapterChanged = currentChapterSelectionText !== lastChapterSelection && (currentChapterSelectionText !== null); // && lastChapterSelection !== null); Removed because the buttons should be replaced even if the previous chapter is null.
+
+
+
     // If verse numbers are visible and not currently replacing, execute replaceverseNumbersNavWithButtons
     if (hasChapterChanged && !isReplacingNav) {
       isReplacingNav = true;
@@ -291,6 +293,11 @@ replaceverseNumbersWithButtonsNav(() => {
         }, 2000); // Wait for 2 seconds before restarting the interval
       });
       // console.log("Buttons Replaced");
+    }
+
+    if (currentChapterSelectionText === null && !(currentChapterSelectionText === null && lastChapterSelection === null)) {
+      lastChapterSelection = null;
+      // console.log("I'm setting this to null");
     }
   }
   
