@@ -1,0 +1,51 @@
+Instructions for collection General Conference data after a new Conference.
+
+---------------------------------------------------------------------------
+                        Copying the Data in Excel
+---------------------------------------------------------------------------
+The first step is manual.  Open the Conferen on the Church's website, then
+open the excel file in this folder.  You will first copy the names in the 
+left sidebar to add the speakers.  Then input the titles.  Then go talk by
+talk copying the text and footnotes and clicking the buttons to add them to
+the table.  Once this is complete, add this data to the "general-Conference
+-talks.csv" file in the datasets folder.
+
+---------------------------------------------------------------------------
+                        Creating the talk URLs
+---------------------------------------------------------------------------
+Scraping the references for the Gospel Buddy extension needs the URLs for 
+each talk.  Next you should copy and paste the talk speaker, title, and 
+session information to the "conference-talk-hyperlinks.csv" file in the 
+datasets folder.  Then go and find the URLs for each talk and copy them 
+There.  OPTIONALLY you could run the "find-hyperlinks.py" file in this 
+folder to return the URLs for each talk.  Remember, that script will 
+include sustainings and auditing reports which should not be kept in the 
+dataset files.  Once the dataset files are updated, publish to GitHub.
+
+---------------------------------------------------------------------------
+                    Generating Gospel Buddy References
+---------------------------------------------------------------------------
+Once the new talk hyperlinks are added to the hyperlinks dataset file you 
+can run the "webscrape-footnotes.py" script located in this folder. This 
+python script will scrape all hyperlinks it finds in the body and reference
+tabs of every conference talk in the hyperlinks dataset.  The script should
+be run on all talks periodically instead of just new talks.  This will 
+ensure ALL gospel buddy references are correct in case the Church updates
+past talk footnotes.
+
+The "webscrape-footnotes.py" file is designed to output four datasets in
+JSON format to the datasets folder.  They have unique filters and purposes.
+
+1. all-footnotes.JSON - This is the largest dataset as it contains all 
+references from all talks.
+2. all-foonotes-lookup.JSON - This dataset contains a unique list of all 
+possible scriptures along with the number of times they appear in the 
+all-footnotes.JSON file.
+3. apostle-all-footnotes.json - Similar to the all-footnotes.JSON file, but
+filtered to talks by apostles only.
+4. apostle-all-footnotes-lookup.JSON - Similar to the all-footnotes-lookup
+.json file, but counting the times they appear in the apostle-all-
+footnotes.JSON file instead.
+
+The files are the backbone of the Gospel Buddy extension.  Once they are 
+completed and published to GitHub the extension will include the new data.
