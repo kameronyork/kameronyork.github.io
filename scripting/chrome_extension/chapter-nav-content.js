@@ -154,15 +154,29 @@ function createButtonWithExtractedURLNav(verseNumber, verseNumberText, scripture
       countButtonNav.style.verticalAlign = 'middle';
 
       verseButtonNav.addEventListener('click', async function () {
+        this.disabled = true; // Disable the button immediately to prevent multiple clicks
+
         const fullQueryData = await fetchJSON(scriptureQuotedDataUrlNav);
         const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePathNav);
         createTableOverlay(matchingEntries, scripturePathNav);
+
+        // Re-enable the button after the table is shown and a delay of 3 seconds
+        setTimeout(() => {
+          this.disabled = false;
+        }, 1000); // 1000 milliseconds = 1 second
       });
 
       countButtonNav.addEventListener('click', async function () {
+        this.disabled = true; // Disable the button immediately to prevent multiple clicks
+
         const fullQueryData = await fetchJSON(scriptureQuotedDataUrlNav);
         const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePathNav);
         createTableOverlay(matchingEntries, scripturePathNav);
+
+        // Re-enable the button after the table is shown and a delay of 3 seconds
+        setTimeout(() => {
+          this.disabled = false;
+        }, 1000); // 1000 milliseconds = 1 second
       });
 
       // Remove any existing spaces after the verse number

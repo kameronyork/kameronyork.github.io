@@ -155,15 +155,29 @@ function createButtonWithExtractedURL(verseNumber, verseNumberText, scriptureCou
       countButtonSB.style.top = topPositionSB; // Shift the button up by 5px
 
       verseButtonSB.addEventListener('click', async function () {
+        this.disabled = true; // Disable the button immediately to prevent multiple clicks
+
         const fullQueryData = await fetchJSON(scriptureQuotedDataUrlSB);
         const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePathSB);
         createTableOverlay(matchingEntries, scripturePathSB);
+
+        // Re-enable the button after the table is shown and a delay of 3 seconds
+        setTimeout(() => {
+          this.disabled = false;
+        }, 1000); // 1000 milliseconds = 1 second
       });
 
       countButtonSB.addEventListener('click', async function () {
+        this.disabled = true; // Disable the button immediately to prevent multiple clicks
+
         const fullQueryData = await fetchJSON(scriptureQuotedDataUrlSB);
         const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePathSB);
         createTableOverlay(matchingEntries, scripturePathSB);
+
+        // Re-enable the button after the table is shown and a delay of 3 seconds
+        setTimeout(() => {
+          this.disabled = false;
+        }, 1000); // 1000 milliseconds = 1 second
       });
 
       const spaceSB = createSpace();

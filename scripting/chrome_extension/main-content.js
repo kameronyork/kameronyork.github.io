@@ -134,9 +134,15 @@ const bookDecoder = {
     return tableHTML;
   }
   
-  
+  // A flag that can stop a second table from being generated on top of another table.
+  let isTableBeingGenerated = false;
   
   function createTableOverlay(matchingEntries, scripturePath, scripturePathSB, scripturePathNav) {
+    if (isTableBeingGenerated) return; // Prevent multiple tables if one is already in process
+    isTableBeingGenerated = true; // Set the flag to true to indicate table generation has started
+
+    console.log("Flag Changed = ", isTableBeingGenerated);
+
     const tableView = createTableView(matchingEntries);
     const headerHeight = 50; // Example header height
     const footerHeight = 50; // Example footer height
@@ -267,6 +273,10 @@ const bookDecoder = {
           overlay.remove();
         }
       });
+
+      // Reset the flag after the table has been appended to the DOM
+      isTableBeingGenerated = false;
+      console.log("Flag Changed = ", isTableBeingGenerated);
     }
   
   function createSpace() {
@@ -446,15 +456,30 @@ const bookDecoder = {
   
   
         verseButton.addEventListener('click', async function () {
+          this.disabled = true; // Disable the button immediately to prevent multiple clicks
+      
+          // Existing logic to fetch data and create table overlay
           const fullQueryData = await fetchJSON(scriptureQuotedDataUrl);
           const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePath);
           createTableOverlay(matchingEntries, scripturePath);
+
+          // Re-enable the button after the table is shown and a delay of 3 seconds
+          setTimeout(() => {
+            this.disabled = false;
+          }, 1000); // 1000 milliseconds = 1 second
         });
   
         countButton.addEventListener('click', async function () {
+          this.disabled = true; // Disable the button immediately to prevent multiple clicks
+
           const fullQueryData = await fetchJSON(scriptureQuotedDataUrl);
           const matchingEntries = getEntriesWithScripture(fullQueryData, scripturePath);
           createTableOverlay(matchingEntries, scripturePath);
+
+          // Re-enable the button after the table is shown and a delay of 3 seconds
+          setTimeout(() => {
+            this.disabled = false;
+          }, 1000); // 1000 milliseconds = 1 second
         });
   
         const space = createSpace();
