@@ -19,7 +19,7 @@ function createButtonWithExtractedURLNav(verseNumber, verseNumberText, scripture
   }
 
   chrome.storage.sync.get('apostleOnly', function (data) {
-    const apostleOnlyNav = data.apostleOnlyNav;
+    const apostleOnlyNav = data.apostleOnly;
     let scriptureQuotedDataUrlNav = 'https://kameronyork.com/datasets/all-footnotes.json';
     if (apostleOnlyNav) {
       scriptureQuotedDataUrlNav = 'https://kameronyork.com/datasets/apostle-all-footnotes.json';
@@ -200,7 +200,7 @@ async function replaceverseNumbersWithButtonsNav(callback) {
 
       const apostleOnlyNav = await new Promise((resolve) => {
         chrome.storage.sync.get('apostleOnly', function (data) {
-          resolve(data.apostleOnlyNav);
+          resolve(data.apostleOnly);
         });
       });
 

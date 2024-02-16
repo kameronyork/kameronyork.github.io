@@ -1,10 +1,13 @@
+# Lines that begin with ##### indicate "failsafe lines"
+# Because some sections of code take so long to run the datasets can be saved to the file directory and read back in to restart a section.  This is much easier than having to rerun the code to go back a few lines.
+
 # %%
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 from tqdm import tqdm  # Import tqdm for the progress bar
 
-# %%
+##### # %%
 # Define a function to extract hrefs from a given section
 def extract_hrefs(url, section_class):
     response = requests.get(url)
@@ -31,10 +34,10 @@ df['aside_hrefs'] = df['hyperlink'].progress_apply(lambda url: extract_hrefs(url
 
 
 # Save the DataFrame to a new CSV file
-df.to_csv("C:/Users/theka/Desktop/Projects/conference-talk-hyperlinks-output.csv", encoding="utf-8", index=False)
+##### df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output.csv", encoding="utf-8", index=False)
 
-# %%
-df = pd.read_csv("C:/Users/theka/Desktop/Projects/conference-talk-hyperlinks-output.csv", encoding="utf-8")
+##### # %%
+##### df = pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output.csv", encoding="utf-8")
 
 # Unlist the main_body_hrefs column and pivot the DataFrame
 swap_df = df.explode('main_body_hrefs').reset_index(drop=True)
@@ -60,10 +63,10 @@ scripture_abbreviations = {
 # Create a new column to check if the string before the first "/" is in the list of scripture abbreviations
 swap_df['ref_check'] = swap_df['main_body_hrefs'].str.split('/').str[0].isin(scripture_abbreviations)
 
-swap_df.to_csv("C:/Users/theka/Desktop/Projects/conference-talk-hyperlinks-output-2.csv", encoding="utf-8", index=False)
+##### swap_df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-2.csv", encoding="utf-8", index=False)
 
-# %%
-swap_df.pd.read_csv("C:/Users/theka/Desktop/Projects/conference-talk-hyperlinks-output-2.csv", encoding="utf-8")
+##### # %%
+##### swap_df.pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-2.csv", encoding="utf-8")
 
 refs_df = swap_df.query("ref_check == True")
 
@@ -178,10 +181,10 @@ refs_df['scripture'] = refs_df['book_name'] + ' ' + refs_df['chapter_and_verse']
 
 
 
-refs_df.to_csv("C:/Users/theka/Desktop/Projects/conference-talk-hyperlinks-output-3.csv", encoding="utf-8", index=False)
+##### refs_df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-3.csv", encoding="utf-8", index=False)
 
-# %%
-refs_df = pd.read_csv("C:/Users/theka/Desktop/Projects/conference-talk-hyperlinks-output-3.csv", encoding="utf-8")
+##### # %%
+##### refs_df = pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-3.csv", encoding="utf-8")
 
 # Create an empty list to store the rows for the new DataFrame
 new_rows = []
@@ -225,10 +228,10 @@ def determine_scripture_type(scripture):
 # Apply the function to create the new "scripture_type" column
 new_df['scripture_type'] = new_df['scripture'].apply(determine_scripture_type)
 
-new_df.to_csv("C:/Users/theka/Desktop/Projects/conference-talk-hyperlinks-output-4.csv", encoding="utf-8", index=False)
+##### new_df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-4.csv", encoding="utf-8", index=False)
 
 # %%
-new_df = pd.read_csv("C:/Users/theka/Desktop/Projects/conference-talk-hyperlinks-output-4.csv", encoding="utf-8")
+new_df = pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-4.csv", encoding="utf-8")
 
 # Creating a new df for single scriptures
 single_df = new_df.query("scripture_type == 'SINGLE'")
@@ -287,19 +290,19 @@ scriptures_df = scriptures_df.rename(columns={
 # Create a new index column called "quote_id"
 scriptures_df['quote_id'] = scriptures_df.reset_index().index
 
-# %%
+##### # %%
 
 # Define the file path for the JSON file with the short list.  Grouped by scripture with the count of instances.
-file_path_short = "C:/Users/theka/Desktop/Projects/Website_project/kameronyork.com/datasets/all-footnotes-lookup.json"
+file_path_short = "../../../datasets/all-footnotes-lookup.json"
 
 # Define the file path for the JSON file with the long list
-file_path_long = "C:/Users/theka/Desktop/Projects/Website_project/kameronyork.com/datasets/all-footnotes.json"
+file_path_long = "../../../datasets/all-footnotes.json"
 
 # Define the file path for the JSON file with the short list of only footnotes from apostles
-apostle_path_short = "C:/Users/theka/Desktop/Projects/Website_project/kameronyork.com/datasets/apostle-all-footnotes-lookup.json"
+apostle_path_short = "../../../datasets/apostle-all-footnotes-lookup.json"
 
 # Define the file path for the JSON file with the long list of only footnotes from apostles
-apostle_path_long = "C:/Users/theka/Desktop/Projects/Website_project/kameronyork.com/datasets/apostle-all-footnotes.json"
+apostle_path_long = "../../../datasets/apostle-all-footnotes.json"
 
 # Save the sorted and merged DataFrame as JSON
 scriptures_df.to_json(file_path_long, orient='records')
@@ -308,7 +311,7 @@ scripture_counts = scriptures_df.groupby('scripture').size().reset_index(name='c
 
 scripture_counts.to_json(file_path_short, orient='records')
 
-# %%
+##### # %%
 apostle_list = pd.read_csv("https://kameronyork.com/datasets/apostles.csv", encoding="utf-8")
 
 apostle_names = apostle_list[['Name']]

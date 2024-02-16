@@ -21,7 +21,7 @@ function createButtonWithExtractedURL(verseNumber, verseNumberText, scriptureCou
   }
 
   chrome.storage.sync.get('apostleOnly', function (data) {
-    const apostleOnlySB = data.apostleOnlySB;
+    const apostleOnlySB = data.apostleOnly;
     let scriptureQuotedDataUrlSB = 'https://kameronyork.com/datasets/all-footnotes.json';
     if (apostleOnlySB) {
       scriptureQuotedDataUrlSB = 'https://kameronyork.com/datasets/apostle-all-footnotes.json';
@@ -199,7 +199,7 @@ function createButtonWithExtractedURL(verseNumber, verseNumberText, scriptureCou
             const verseNumbersSB = section.querySelectorAll('.reference-UoeCG .verse .verse-number');
             const apostleOnlySB = await new Promise((resolve) => {
               chrome.storage.sync.get('apostleOnly', function (data) {
-                resolve(data.apostleOnlySB);
+                resolve(data.apostleOnly);
               });
             });
   
@@ -229,7 +229,7 @@ function createButtonWithExtractedURL(verseNumber, verseNumberText, scriptureCou
   
                 let scriptureQuotedDataUrlSB = 'https://kameronyork.com/datasets/all-footnotes-lookup.json';
                 if (apostleOnlySB) {
-                  scriptureQuotedDataUrlSB = 'https://kameronyork.com/datasets/apostle-all-foonotes-lookup.json';
+                  scriptureQuotedDataUrlSB = 'https://kameronyork.com/datasets/apostle-all-footnotes-lookup.json';
                 }
   
                 const scriptureQuotedDataSB = await fetchJSON(scriptureQuotedDataUrlSB);
