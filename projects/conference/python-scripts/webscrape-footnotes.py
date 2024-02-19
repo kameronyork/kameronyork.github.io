@@ -230,6 +230,7 @@ new_df['scripture_type'] = new_df['scripture'].apply(determine_scripture_type)
 
 ##### new_df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-4.csv", encoding="utf-8", index=False)
 
+##### 
 # %%
 new_df = pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-4.csv", encoding="utf-8")
 
@@ -290,7 +291,67 @@ scriptures_df = scriptures_df.rename(columns={
 # Create a new index column called "quote_id"
 scriptures_df['quote_id'] = scriptures_df.reset_index().index
 
-##### # %%
+# Filter out rows where the value immediately following ":" in the 'scripture' column is not a number
+scriptures_df = scriptures_df[scriptures_df['scripture'].str.split(':').str[1].str.isdigit()]
+
+
+# %%
+# Loading all conference talk data to merge to scriptures_df.  This will return the text of the talk.
+all_talks = pd.read_csv("https://kameronyork.com/datasets/general-conference-talks.csv", encoding="utf-8").filter(items=["id", "text"]).rename(columns={"id": "talk_id", "text": "talk_text"})
+
+# Loading all scritpure verses.  This will return the full text of each verse.
+all_verses = pd.read_csv("https://kameronyork.com/datasets/scripture-verses.csv", encoding="utf-8").filter(items=["scripture", "text"]).rename(columns={"text": "scripture_text"})
+
+# Merge scriptures_df and all_talks on 'talk_id'
+scriptures_df = pd.merge(scriptures_df, all_talks, on='talk_id', how='left')
+
+# Merge scriptures_df and all_verses on 'scripture'
+scriptures_df = pd.merge(scriptures_df, all_verses, on='scripture', how='left')
+
+# %%
+scriptures_df.to_csv("C:/Users/theka/Desktop/Projects/perc_quoted.csv", encoding="utf-8", index=False)
+
+# %% 
+
+# Function to calculate percentage of scripture text quoted in talk text
+def calculate_perc_quoted(row):
+    scripture_words = row['scripture_text'].split()
+    talk_words = row['talk_text'].split()
+    
+    # Initialize variables to track longest match
+    max_matched = 0
+    matched_indices = []
+
+    # Iterate over each word in scripture_text
+    for i in range(len(scripture_words)):
+        # Create a sliding window of length i+1
+        for j in range(len(scripture_words) - i):
+            word_window = scripture_words[j:j+i+1]
+            # Check if the word window appears in talk_text
+            if ' '.join(word_window) in ' '.join(talk_words):
+                # If it's the longest match, update max_matched and indices
+                if len(word_window) > max_matched:
+                    max_matched = len(word_window)
+                    matched_indices = range(j, j+i+1)
+    
+    # Calculate percentage quoted
+    perc_quoted = (max_matched / len(scripture_words)) * 100 if max_matched > 0 else 0
+
+    # Round to nearest 10%
+    perc_quoted_rounded = round(perc_quoted / 10) * 10
+    
+    return perc_quoted_rounded
+
+# Apply the function to each row to create the perc_quoted column
+tqdm.pandas()
+scriptures_df['perc_quoted'] = scriptures_df.progress_apply(calculate_perc_quoted, axis=1)
+
+# %%
+scriptures_df.to_csv("C:/Users/theka/Desktop/Projects/perc_quoted.csv", encoding="utf-8", index=False)
+
+
+##### 
+# %%
 
 # Define the file path for the JSON file with the short list.  Grouped by scripture with the count of instances.
 file_path_short = "../../../datasets/all-footnotes-lookup.json"
