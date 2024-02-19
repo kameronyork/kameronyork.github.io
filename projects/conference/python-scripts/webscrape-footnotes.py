@@ -341,8 +341,7 @@ def calculate_perc_quoted(row):
 tqdm.pandas()
 scriptures_df['perc_quoted'] = scriptures_df.progress_apply(calculate_perc_quoted, axis=1)
 
-##### 
-# %%
+##### # %%
 # Drop the 'talk_text' and 'scripture_text' columns from the dataframe
 scriptures_df.drop(['talk_text', 'scripture_text'], axis=1, inplace=True)
 
