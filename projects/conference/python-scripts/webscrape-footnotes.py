@@ -230,8 +230,7 @@ new_df['scripture_type'] = new_df['scripture'].apply(determine_scripture_type)
 
 ##### new_df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-4.csv", encoding="utf-8", index=False)
 
-##### 
-# %%
+##### # %%
 new_df = pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-4.csv", encoding="utf-8")
 
 # Creating a new df for single scriptures
@@ -295,7 +294,7 @@ scriptures_df['quote_id'] = scriptures_df.reset_index().index
 scriptures_df = scriptures_df[scriptures_df['scripture'].str.split(':').str[1].str.isdigit()]
 
 
-# %%
+##### # %%
 # Loading all conference talk data to merge to scriptures_df.  This will return the text of the talk.
 all_talks = pd.read_csv("https://kameronyork.com/datasets/general-conference-talks.csv", encoding="utf-8").filter(items=["id", "text"]).rename(columns={"id": "talk_id", "text": "talk_text"})
 
@@ -308,10 +307,6 @@ scriptures_df = pd.merge(scriptures_df, all_talks, on='talk_id', how='left')
 # Merge scriptures_df and all_verses on 'scripture'
 scriptures_df = pd.merge(scriptures_df, all_verses, on='scripture', how='left')
 
-# %%
-scriptures_df.to_csv("C:/Users/theka/Desktop/Projects/perc_quoted.csv", encoding="utf-8", index=False)
-
-# %% 
 
 # Function to calculate percentage of scripture text quoted in talk text
 def calculate_perc_quoted(row):
@@ -346,12 +341,10 @@ def calculate_perc_quoted(row):
 tqdm.pandas()
 scriptures_df['perc_quoted'] = scriptures_df.progress_apply(calculate_perc_quoted, axis=1)
 
-# %%
-scriptures_df.to_csv("C:/Users/theka/Desktop/Projects/perc_quoted.csv", encoding="utf-8", index=False)
-
-
 ##### 
 # %%
+# Drop the 'talk_text' and 'scripture_text' columns from the dataframe
+scriptures_df.drop(['talk_text', 'scripture_text'], axis=1, inplace=True)
 
 # Define the file path for the JSON file with the short list.  Grouped by scripture with the count of instances.
 file_path_short = "../../../datasets/all-footnotes-lookup.json"
