@@ -103,36 +103,37 @@ const bookDecoder = {
   }
   
   function createTableView(entries) {
-    // Use an object to store unique entries based on the talk_id
     const uniqueEntries = {};
-  
-    // Iterate through the entries and store them in the object using the talk_id as the key
     entries.forEach(entry => {
-      const talkId = entry.talk_id;
-      if (!uniqueEntries[talkId]) {
-        uniqueEntries[talkId] = entry;
-      }
+        const talkId = entry.talk_id;
+        if (!uniqueEntries[talkId]) {
+            uniqueEntries[talkId] = entry;
+        }
     });
-  
-    // Convert the object back to an array of unique entries
+
     const uniqueEntriesArray = Object.values(uniqueEntries);
-  
-    // Sort the unique entries array based on talk_id in descending order
     uniqueEntriesArray.sort((a, b) => b.talk_id - a.talk_id);
-  
-    // Create the table HTML using the unique entries array
-    let tableHTML = '<table border="1"><tr><th>Year</th><th>Month</th><th>Speaker</th><th>Talk Title</th></tr>';
-  
+
+    // Modified the header to include an information icon with a tooltip
+    let tableHTML = `<table border="1">
+      <tr>
+          <th style="text-align: center;">% <button class="info-button" title="This column displays what percentage of the verse is quoted in the talk">i</button></th>
+          <th>Year</th>
+          <th>Month</th>
+          <th>Speaker</th>
+          <th>Talk Title</th>
+      </tr>`;
+
     uniqueEntriesArray.forEach(entry => {
-      // Assuming there's a 'hyperlink' property in each entry for the title hyperlink
-      const titleLink = entry.hyperlink ? `<a href="${entry.hyperlink}" target="_blank">${entry.title}</a>` : entry.title;
-  
-      tableHTML += `<tr><td>${entry.talk_year}</td><td>${entry.talk_month}</td><td>${entry.speaker}</td><td>${titleLink}</td></tr>`;
+        const titleLink = entry.hyperlink ? `<a href="${entry.hyperlink}" target="_blank">${entry.title}</a>` : entry.title;
+        // Ensure the percentage values are centered
+        tableHTML += `<tr><td style="text-align: center;">${entry.perc_quoted}</td><td>${entry.talk_year}</td><td>${entry.talk_month}</td><td>${entry.speaker}</td><td>${titleLink}</td></tr>`;
     });
-  
+
     tableHTML += '</table>';
     return tableHTML;
-  }
+}
+
   
   // A flag that can stop a second table from being generated on top of another table.
   let isTableBeingGenerated = false;
@@ -222,9 +223,37 @@ const bookDecoder = {
             color: black; /* Set text color to black */
           }
           th, td {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px 15px; /* Updated padding for th elements */
+              border: 1px solid #dddddd;
+              padding: 8px 15px;
+          }
+          .info-button {
+            float: right;
+            cursor: pointer;
+            background-color: #F2F2F2;
+            color: black;
+            border: 1px solid black;
+            border-radius: 2px;
+            padding: 1px 4px;
+            font-size: 10px;
+            margin-left: 1px;
+            margin-right: -35%; /* Shift left by 35% */
+          }
+        
+
+          /* Optional: Style for a custom tooltip if using a div instead of the title attribute */
+          .tooltip {
+              visibility: hidden;
+              width: 120px;
+              background-color: black;
+              color: #fff;
+              text-align: center;
+              border-radius: 6px;
+              padding: 5px 0;
+              position: absolute;
+              z-index: 1;
+              bottom: 100%;
+              left: 50%;
+              margin-left: -60px;
           }
           th {
             position: sticky;

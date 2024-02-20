@@ -230,7 +230,8 @@ new_df['scripture_type'] = new_df['scripture'].apply(determine_scripture_type)
 
 ##### new_df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-4.csv", encoding="utf-8", index=False)
 
-##### # %%
+##### 
+# %%
 new_df = pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-4.csv", encoding="utf-8")
 
 # Creating a new df for single scriptures
@@ -308,7 +309,6 @@ scriptures_df = pd.merge(scriptures_df, all_talks, on='talk_id', how='left')
 scriptures_df = pd.merge(scriptures_df, all_verses, on='scripture', how='left')
 
 
-# Function to calculate percentage of scripture text quoted in talk text
 def calculate_perc_quoted(row):
     scripture_words = row['scripture_text'].split()
     talk_words = row['talk_text'].split()
@@ -332,14 +332,22 @@ def calculate_perc_quoted(row):
     # Calculate percentage quoted
     perc_quoted = (max_matched / len(scripture_words)) * 100 if max_matched > 0 else 0
 
-    # Round to nearest 10%
-    perc_quoted_rounded = round(perc_quoted / 10) * 10
+    # Round to the nearest 5%
+    if perc_quoted < 1:
+        perc_quoted_rounded = 0
+    elif 1 <= perc_quoted < 2:
+        perc_quoted_rounded = 1
+    elif 2 <= perc_quoted <= 4:
+        perc_quoted_rounded = 5
+    else:
+        perc_quoted_rounded = round(perc_quoted / 5) * 5
     
     return perc_quoted_rounded
 
 # Apply the function to each row to create the perc_quoted column
 tqdm.pandas()
 scriptures_df['perc_quoted'] = scriptures_df.progress_apply(calculate_perc_quoted, axis=1)
+
 
 ##### # %%
 # Drop the 'talk_text' and 'scripture_text' columns from the dataframe
