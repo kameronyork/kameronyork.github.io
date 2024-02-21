@@ -1,4 +1,5 @@
 # Lines that begin with ##### indicate "failsafe lines"
+# Lines that begin with ## # ## indicate a "save point" where the data is offloaded to the local computer.
 # Because some sections of code take so long to run the datasets can be saved to the file directory and read back in to restart a section.  This is much easier than having to rerun the code to go back a few lines.
 
 # %%
@@ -34,10 +35,12 @@ df['aside_hrefs'] = df['hyperlink'].progress_apply(lambda url: extract_hrefs(url
 
 
 # Save the DataFrame to a new CSV file
-##### df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output.csv", encoding="utf-8", index=False)
+## # ## 
+df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output.csv", encoding="utf-8", index=False)
 
 ##### # %%
-##### df = pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output.csv", encoding="utf-8")
+## # ## 
+df = pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output.csv", encoding="utf-8")
 
 # Unlist the main_body_hrefs column and pivot the DataFrame
 swap_df = df.explode('main_body_hrefs').reset_index(drop=True)
@@ -63,10 +66,12 @@ scripture_abbreviations = {
 # Create a new column to check if the string before the first "/" is in the list of scripture abbreviations
 swap_df['ref_check'] = swap_df['main_body_hrefs'].str.split('/').str[0].isin(scripture_abbreviations)
 
-##### swap_df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-2.csv", encoding="utf-8", index=False)
+## # ## 
+swap_df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-2.csv", encoding="utf-8", index=False)
 
 ##### # %%
-##### swap_df.pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-2.csv", encoding="utf-8")
+## # ## 
+swap_df.pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-2.csv", encoding="utf-8")
 
 refs_df = swap_df.query("ref_check == True")
 
@@ -181,10 +186,12 @@ refs_df['scripture'] = refs_df['book_name'] + ' ' + refs_df['chapter_and_verse']
 
 
 
-##### refs_df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-3.csv", encoding="utf-8", index=False)
+## # ## 
+refs_df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-3.csv", encoding="utf-8", index=False)
 
 ##### # %%
-##### refs_df = pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-3.csv", encoding="utf-8")
+## # ## 
+refs_df = pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-3.csv", encoding="utf-8")
 
 # Create an empty list to store the rows for the new DataFrame
 new_rows = []
@@ -228,10 +235,11 @@ def determine_scripture_type(scripture):
 # Apply the function to create the new "scripture_type" column
 new_df['scripture_type'] = new_df['scripture'].apply(determine_scripture_type)
 
-##### new_df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-4.csv", encoding="utf-8", index=False)
+## # ## 
+new_df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-4.csv", encoding="utf-8", index=False)
 
-##### 
-# %%
+##### # %%
+## # ## 
 new_df = pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-4.csv", encoding="utf-8")
 
 # Creating a new df for single scriptures
@@ -309,40 +317,40 @@ scriptures_df = pd.merge(scriptures_df, all_talks, on='talk_id', how='left')
 scriptures_df = pd.merge(scriptures_df, all_verses, on='scripture', how='left')
 
 
-def calculate_perc_quoted(row):
-    scripture_words = row['scripture_text'].split()
-    talk_words = row['talk_text'].split()
-    
-    # Initialize variables to track longest match
-    max_matched = 0
-    matched_indices = []
+import re
 
-    # Iterate over each word in scripture_text
-    for i in range(len(scripture_words)):
-        # Create a sliding window of length i+1
-        for j in range(len(scripture_words) - i):
-            word_window = scripture_words[j:j+i+1]
-            # Check if the word window appears in talk_text
-            if ' '.join(word_window) in ' '.join(talk_words):
-                # If it's the longest match, update max_matched and indices
-                if len(word_window) > max_matched:
-                    max_matched = len(word_window)
-                    matched_indices = range(j, j+i+1)
+def calculate_perc_quoted(row):
+    # Function to remove punctuation and lower the case
+    def preprocess_text(text):
+        return re.sub(r'[^\w\s]', '', text).lower().split()
+
+    scripture_words = preprocess_text(row['scripture_text'])
+    talk_words = preprocess_text(row['talk_text'])
+
+    # Initialize DP table
+    dp = [[0] * (len(talk_words) + 1) for _ in range(len(scripture_words) + 1)]
+    max_length, end_index = 0, 0
+
+    # Fill DP table
+    for i in range(1, len(scripture_words) + 1):
+        for j in range(1, len(talk_words) + 1):
+            if scripture_words[i-1] == talk_words[j-1]:
+                dp[i][j] = dp[i-1][j-1] + 1
+                if dp[i][j] > max_length:
+                    max_length = dp[i][j]
+                    end_index = i
     
     # Calculate percentage quoted
-    perc_quoted = (max_matched / len(scripture_words)) * 100 if max_matched > 0 else 0
+    perc_quoted = (max_length / len(scripture_words)) * 100 if max_length > 0 else 0
 
-    # Round to the nearest 5%
-    if perc_quoted < 1:
-        perc_quoted_rounded = 0
-    elif 1 <= perc_quoted < 2:
-        perc_quoted_rounded = 1
-    elif 2 <= perc_quoted <= 4:
-        perc_quoted_rounded = 5
+    # Simplified rounding logic
+    if perc_quoted < 5:
+        perc_quoted_rounded = round(perc_quoted)
     else:
         perc_quoted_rounded = round(perc_quoted / 5) * 5
-    
+
     return perc_quoted_rounded
+
 
 # Apply the function to each row to create the perc_quoted column
 tqdm.pandas()

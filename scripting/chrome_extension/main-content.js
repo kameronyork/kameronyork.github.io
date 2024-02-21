@@ -114,7 +114,6 @@ const bookDecoder = {
     const uniqueEntriesArray = Object.values(uniqueEntries);
     uniqueEntriesArray.sort((a, b) => b.talk_id - a.talk_id);
 
-    // Modified the header to include an information icon with a tooltip
     let tableHTML = `<table border="1">
       <tr>
           <th style="text-align: center;">% <button class="info-button" title="This column displays what percentage of the verse is quoted in the talk">i</button></th>
@@ -126,13 +125,23 @@ const bookDecoder = {
 
     uniqueEntriesArray.forEach(entry => {
         const titleLink = entry.hyperlink ? `<a href="${entry.hyperlink}" target="_blank">${entry.title}</a>` : entry.title;
-        // Ensure the percentage values are centered
-        tableHTML += `<tr><td style="text-align: center;">${entry.perc_quoted}</td><td>${entry.talk_year}</td><td>${entry.talk_month}</td><td>${entry.speaker}</td><td>${titleLink}</td></tr>`;
+        // Modify this line to include a div with dynamic width based on perc_quoted
+        tableHTML += `<tr>
+                        <td style="text-align: center; position: relative;">
+                          <div style="background-color: #F39C12; width: ${entry.perc_quoted}%; height: 100%; position: absolute; left: 0; top: 0;"></div>
+                          <div style="position: relative; z-index: 1;">${entry.perc_quoted}</div>
+                        </td>
+                        <td>${entry.talk_year}</td>
+                        <td>${entry.talk_month}</td>
+                        <td>${entry.speaker}</td>
+                        <td>${titleLink}</td>
+                      </tr>`;
     });
 
     tableHTML += '</table>';
     return tableHTML;
 }
+
 
   
   // A flag that can stop a second table from being generated on top of another table.
@@ -236,7 +245,7 @@ const bookDecoder = {
             padding: 1px 4px;
             font-size: 10px;
             margin-left: 1px;
-            margin-right: -35%; /* Shift left by 35% */
+            margin-right: -25%; /* Shift left by 35% */
           }
         
 
