@@ -35,12 +35,10 @@ df['aside_hrefs'] = df['hyperlink'].progress_apply(lambda url: extract_hrefs(url
 
 
 # Save the DataFrame to a new CSV file
-## # ## 
-df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output.csv", encoding="utf-8", index=False)
+## # ## df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output.csv", encoding="utf-8", index=False)
 
 ##### # %%
-## # ## 
-df = pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output.csv", encoding="utf-8")
+## # ## df = pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output.csv", encoding="utf-8")
 
 # Unlist the main_body_hrefs column and pivot the DataFrame
 swap_df = df.explode('main_body_hrefs').reset_index(drop=True)
@@ -66,12 +64,10 @@ scripture_abbreviations = {
 # Create a new column to check if the string before the first "/" is in the list of scripture abbreviations
 swap_df['ref_check'] = swap_df['main_body_hrefs'].str.split('/').str[0].isin(scripture_abbreviations)
 
-## # ## 
-swap_df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-2.csv", encoding="utf-8", index=False)
+## # ## swap_df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-2.csv", encoding="utf-8", index=False)
 
 ##### # %%
-## # ## 
-swap_df.pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-2.csv", encoding="utf-8")
+## # ## swap_df.pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-2.csv", encoding="utf-8")
 
 refs_df = swap_df.query("ref_check == True")
 
@@ -186,12 +182,10 @@ refs_df['scripture'] = refs_df['book_name'] + ' ' + refs_df['chapter_and_verse']
 
 
 
-## # ## 
-refs_df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-3.csv", encoding="utf-8", index=False)
+## # ## refs_df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-3.csv", encoding="utf-8", index=False)
 
 ##### # %%
-## # ## 
-refs_df = pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-3.csv", encoding="utf-8")
+## # ## refs_df = pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-3.csv", encoding="utf-8")
 
 # Create an empty list to store the rows for the new DataFrame
 new_rows = []
@@ -235,12 +229,10 @@ def determine_scripture_type(scripture):
 # Apply the function to create the new "scripture_type" column
 new_df['scripture_type'] = new_df['scripture'].apply(determine_scripture_type)
 
-## # ## 
-new_df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-4.csv", encoding="utf-8", index=False)
+## # ## new_df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-4.csv", encoding="utf-8", index=False)
 
 ##### # %%
-## # ## 
-new_df = pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-4.csv", encoding="utf-8")
+## # ## new_df = pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-4.csv", encoding="utf-8")
 
 # Creating a new df for single scriptures
 single_df = new_df.query("scripture_type == 'SINGLE'")
