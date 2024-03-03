@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="https://kameronyork.github.io/scripting/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="https://kameronyork.github.io/scripting/themify-icons/themify-icons.css">
   <link rel="stylesheet" href="https://kameronyork.github.io/scripting/highlight/hybrid.css">
-  <link rel="icon" href="https://kameronyork.github.io/docs/assets/scraper-article-header.png" type="image/png">
+  <link rel="icon" href="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/gospel-buddy-icon.png" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
 
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="The Gospel Buddy">
   <meta property="og:description" content="A google chrome extension to add better references from the scriptures to the general conference talks of the Church of Jesus Christ of Latter-Day Saints">
-  <meta property="og:image" content="https://kameronyork.com/docs/assets/scraper-article-header.png">
-  <meta property="og:url" content="https://kameronyork.com/gospel-buddy/">
+  <meta property="og:image" content="https://kameronyork.com/docs/assets/gospel-buddy-logo.png"> <!-- Replace with the URL of your image -->
+  <meta property="og:url" content="https://kameronyork.com/gospel-buddy/"> <!-- Replace with your URL -->
   <meta property="og:type" content="website">
 
   <style>
@@ -23,23 +23,31 @@
       padding: 0;
     }
     .shadow-bottom {
-      margin-bottom: 0;
+      margin-bottom: 0; /* Remove margin spacing at the bottom of the header */
     }
     .navbar {
-      margin-bottom: 0;
+      margin-bottom: 0; /* Remove margin spacing at the bottom of the header */
     }
     .container {
-      margin-bottom: 0;
+      margin-bottom: 0; /* Remove margin spacing at the bottom of the header */
     }
     .header {
-      background: url('https://kameronyork.com/docs/assets/scraper-article-header.png') no-repeat center center;
-      background-size: cover;
-      height: 200px;
+      background: linear-gradient(to bottom, #b28da1 50%, transparent 50%);
+      max-height: 200px;
       overflow: hidden;
       position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
+      height: 200px; /* Set explicit height for the header */
+    }
+    .header img {
+      border-radius: 50%;
+      border: 5px solid #0d0f38;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      height: 75%; /* Image height is 75% of the header height */
+      width: auto; /* Maintain aspect ratio */
+      max-width: 100%; /* Ensure the image doesn't exceed the header's width */
     }
     :root {
       --primary-color: #02007e;
@@ -48,10 +56,10 @@
       --text-color-dark: #242738;
       --white-color: #ffffff;
       --light-color: #f8f9fa;
-      --font-family: Roboto;
+      --font-family: Roboto
     }
     .header + div {
-      margin-top: -1px;
+      margin-top: -1px; /* Move the div up by 20 pixels */
     }
   </style>
   <link href="https://kameronyork.github.io/scripting/css/articles.style.min.css" rel="stylesheet" media="screen">
@@ -90,7 +98,9 @@
           </div>
       </nav>
   </header>
-  <div class="header"></div>
+  <div class="header">
+    <img src="https://kameronyork.com/docs/assets/scraper-icon.png" alt="Logo">
+  </div>
   <br>
   <script src="https://kameronyork.github.io/scripting/js/script.min.js"></script>
 </body>
