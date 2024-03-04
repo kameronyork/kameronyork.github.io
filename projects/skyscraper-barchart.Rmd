@@ -1,0 +1,110 @@
+---
+title: "Skyscraper Barchart"
+output:
+  html_document:
+    includes:
+      in_header: "https://kameronyork.com/blog/headers/skyscraper-barchart-header.html"
+      after_body: "https://kameronyork.com/parables/footer.html"
+---
+<style>
+  /* Center alignment for the title, text under the title, and buttons */
+  h1, .subtitle-text, .download-button {
+    text-align: center;
+  }
+
+  /* Left alignment for paragraphs and their titles in the middle of the document */
+  h4 {
+    text-align: left;
+  }
+</style>
+
+<div class="subtitle-text">
+  <p>A custom Power BI visual that lets you see data like a city skyline</p>
+</div>
+<br>
+
+<style>
+  .download-button {
+    display: inline-block; /* Use inline-block to allow setting width */
+    width: 180px; /* Set fixed width */
+    height: 50px;
+    margin-right: 10px;
+    background-color: #a26f7e; /* Purple color */
+    color: #ffffff; /* White text color */
+    padding: 10px 10px; /* Adjust padding as needed */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold;
+    text-align: center; /* Center text horizontally */
+    line-height: 30px; /* Center text vertically */
+  }
+
+  .download-button img {
+    width: 20px; /* Adjust image size as needed */
+    margin-right: 10px; /* Add space between image and text */
+  }
+  /* Apply styling to larger images */
+  .large-image {
+    width: 75%; /* Set the width of the images to 75% of their current size */
+    display: block; /* Center the images */
+    margin: 0 auto; /* Center the images */
+    border: 2px solid #f0f0f0;
+  }
+
+  /* Apply styling to Chrome and Edge icons */
+  .download-button img {
+    width: 20px; /* Adjust image size as needed */
+    margin-right: 10px; /* Add space between image and text */
+  }
+
+  @media (max-width: 600px) {
+  .download-button {
+    display: block; /* Change to block-level element */
+    margin: 0 auto; /* Center the buttons horizontally */
+    width: 180px; /* Set fixed width */
+    height: 50px;
+    margin-bottom: 10px; /* Add spacing between buttons */
+    background-color: #0073e6; /* Blue color */
+    color: #ffffff; /* White text color */
+    padding: 10px 10px; /* Adjust padding as needed */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold;
+    text-align: center; /* Center text horizontally */
+    line-height: 30px; /* Center text vertically */
+  }
+}
+</style>
+
+<div class="subtitle-text">
+  <a href="https://kameronyork.com/docs/skyscraper-barchart.pbiviz" class="download-button">
+    <img src="https://kameronyork.com/docs/assets/powerbi-logo.png" alt="Google Chrome Logo">
+    Download Here
+  </a>
+</div>
+
+<br>
+
+#### What is the Gospel Buddy Extension?
+
+[Datasets Page](https://kameronyork.com/datasets).
+
+![Studying Come Follow Me with the Gospel Buddy Extension](https://kameronyork.com/docs/assets/come-follow-me.png){.large-image}
+<br>
+<br>
+
+
+<br>
+<br>
+<div class="subtitle-text">
+  <a href="https://chromewebstore.google.com/detail/gospel-buddy/mlimohmgngjmnpllmnbjgkggclnmcdbn?hl=en" class="download-button">
+    <img src="https://kameronyork.com/docs/assets/chrome-logo.png" alt="Google Chrome Logo">
+    Add to Chrome
+  </a>
+  <a href="https://microsoftedge.microsoft.com/addons/detail/gospel-buddy/mjpbfipgpeclaihceppjnkgeibgjdoig" class="download-button">
+    <img src="https://kameronyork.com/docs/assets/edge-logo.png" alt="Microsoft Edge Logo">
+    Add to Edge
+  </a>
+</div>
+<br>
+<br>
