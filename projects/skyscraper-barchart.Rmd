@@ -29,7 +29,7 @@ output:
     width: 180px; /* Set fixed width */
     height: 50px;
     margin-right: 10px;
-    background-color: #a26f7e; /* Purple color */
+    background-color: #a57381; /* Purple color */
     color: #ffffff; /* White text color */
     padding: 10px 10px; /* Adjust padding as needed */
     border-radius: 5px; /* Rounded corners */
@@ -37,6 +37,10 @@ output:
     font-weight: bold;
     text-align: center; /* Center text horizontally */
     line-height: 30px; /* Center text vertically */
+  }
+  
+  .download-button:hover {
+  color: #623f4a; /* Change text color on hover */
   }
 
   .download-button img {
@@ -64,7 +68,7 @@ output:
     width: 180px; /* Set fixed width */
     height: 50px;
     margin-bottom: 10px; /* Add spacing between buttons */
-    background-color: #0073e6; /* Blue color */
+    background-color: #a57381; /* Purple color */
     color: #ffffff; /* White text color */
     padding: 10px 10px; /* Adjust padding as needed */
     border-radius: 5px; /* Rounded corners */
@@ -72,6 +76,10 @@ output:
     font-weight: bold;
     text-align: center; /* Center text horizontally */
     line-height: 30px; /* Center text vertically */
+  }
+  
+  .download-button:hover {
+  color: #623f4a; /* Change text color on hover */
   }
 }
 </style>
@@ -97,13 +105,9 @@ output:
 <br>
 <br>
 <div class="subtitle-text">
-  <a href="https://chromewebstore.google.com/detail/gospel-buddy/mlimohmgngjmnpllmnbjgkggclnmcdbn?hl=en" class="download-button">
-    <img src="https://kameronyork.com/docs/assets/chrome-logo.png" alt="Google Chrome Logo">
-    Add to Chrome
-  </a>
-  <a href="https://microsoftedge.microsoft.com/addons/detail/gospel-buddy/mjpbfipgpeclaihceppjnkgeibgjdoig" class="download-button">
-    <img src="https://kameronyork.com/docs/assets/edge-logo.png" alt="Microsoft Edge Logo">
-    Add to Edge
+  <a href="https://kameronyork.com/docs/skyscraper-barchart.pbiviz" class="download-button">
+    <img src="https://kameronyork.com/docs/assets/powerbi-logo.png" alt="Google Chrome Logo">
+    Download Here
   </a>
 </div>
 <br>
