@@ -93,13 +93,17 @@ output:
 
 <br>
 
-#### What is the Gospel Buddy Extension?
+#### This post is not complete.  Please check back later!
 
 [Datasets Page](https://kameronyork.com/datasets).
 
-![Studying Come Follow Me with the Gospel Buddy Extension](https://kameronyork.com/docs/assets/come-follow-me.png){.large-image}
+![Studying Come Follow Me with the Gospel Buddy Extension](https://kameronyork.com/docs/assets/scraper-day-example.png){.large-image}
 <br>
 <br>
+![Studying Come Follow Me with the Gospel Buddy Extension](https://kameronyork.com/docs/assets/scraper-sunset-example.png){.large-image}
+<br>
+<br>
+![Studying Come Follow Me with the Gospel Buddy Extension](https://kameronyork.com/docs/assets/scraper-night-example.png){.large-image}
 
 
 <br>
