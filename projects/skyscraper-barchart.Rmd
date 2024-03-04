@@ -109,33 +109,16 @@ Like many other Power Bi visuals this visual utilizes the power of interactions 
 The time of day can be changed in the visualization settings pane.  In settings you will see a section called, "Visual Style".  Within this section there is a dropdown with three options:  Day, Sunset, and Night.  Clicking between these options in the dropdown menu will change the time of day represented in the visualization.  
 
 <br>
-<i>Below you will find three images displaying the style of each "time of day" setting.</i>
-
-
 <div style="display: flex; justify-content: space-around; align-items: center;">
   <img src="https://kameronyork.com/docs/assets/scraper-day-example.png" style="width: 32%; margin-right: 1%;">
   <img src="https://kameronyork.com/docs/assets/scraper-sunset-example.png" style="width: 32%; margin-right: 1%;">
   <img src="https://kameronyork.com/docs/assets/scraper-night-example.png" style="width: 32%;">
 </div>
+<i>Above are three images displaying the style of each "time of day" setting.</i>
 
-<br>
-
-#### Where can I download the Skyscraper Barchart visual?
-
-Simply click here to download this visual for use in Power Bi reports.  This will download a .pbiviz file to your device which can be imported to a Power Bi desktop report.
-
-<br>
-<div class="subtitle-text">
-  <a href="https://kameronyork.com/docs/skyscraper-barchart.pbiviz" class="download-button">
-    <img src="https://kameronyork.com/docs/assets/powerbi-logo.png" alt="Google Chrome Logo">
-    Download Here
-  </a>
-</div>
-<br>
 
 #### How do I import this visual to Power Bi Desktop?
-
-To import this visual to a Power Bi Desktop report:
+<br>
 
 <div class="indented">
 1. Open the desired report.
@@ -145,10 +128,12 @@ To import this visual to a Power Bi Desktop report:
 5. Select the file and click, "Open".
 </div>
 
-The visual has now been imported to the report.  Now simply select it from the Visualization pane and input data.
+When the visual has been imported, simply select it from the Visualization pane and input data.
 
 #### What inspired you to make the Skyscraper Barchart?
 
 I created the Skyscraper Barchart as a way to learn how Power Bi visuals work.  I worked on this project during my free time in college.  Before working on the Skyscraper Barchart I had no experience in TypeScript, but with the help of Microsoft Documentation and ai tools like GPT4 I completed this project in a few weeks.
 
 Along with gaining a basic understaning of Power Bi custom visuals I used this project as an opportunity to practice design.  Using canva I created every image displayed in the visual from the skyscrapers to the backgrounds.  This was a learning curve for me, but I am extremely proud of the look and feel of the visual.
+<br>
+<br>
