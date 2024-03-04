@@ -19,7 +19,7 @@ output:
 </style>
 
 <div class="subtitle-text">
-  <p>A custom Power BI visual that lets you see data like a city skyline</p>
+  <p>How the visual works and came to be</p>
 </div>
 <br>
 
@@ -83,13 +83,6 @@ output:
   }
 }
 </style>
-
-<div class="subtitle-text">
-  <a href="https://kameronyork.com/docs/skyscraper-barchart.pbiviz" class="download-button">
-    <img src="https://kameronyork.com/docs/assets/powerbi-logo.png" alt="Google Chrome Logo">
-    Download Here
-  </a>
-</div>
 
 <br>
 
