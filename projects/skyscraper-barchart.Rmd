@@ -100,13 +100,13 @@ output:
 
 #### What is the Skyscraper Barchart visual?
 
-The Skyscraper Barchart is a custom Power BI visual coded in TypeScript.  This visual acts like a normal bar chart to visualize and interpret data.  Unlike normal bar charts the Skyscraper Barchart has a splash of fun added in.  Instead of bars this visual displays the data as a city skyline with high-rise skyscrapers representing the data.  The time of day can be changed to represent the skyline during the day, at sunset, or at night.  
+The Skyscraper Barchart is a custom Power BI visual coded in TypeScript.  This visual acts like a normal bar chart to visualize and interpret data.  Unlike normal bar charts, the Skyscraper Barchart has a splash of fun added in.  Instead of bars, this visual displays the data as a city skyline with high-rise skyscrapers representing the data.  The time of day can be changed to represent the skyline during the day, at sunset, or night.  
 
-Like many other Power Bi visuals this visual utilizes the power of interactions to filter data across the report page.  By simply clicking on a skyscraper all other visuals with interactions enabled will be filtered to that category.  
+Like many other Power BI visuals, this visual utilizes the power of interactions to filter data across the report page.  By simply clicking on a skyscraper all other visuals with interactions enabled will be filtered to that category.  
 
 #### How can I change the time of day in the Skyscraper Barchart?
 
-The time of day can be changed in the visualization settings pane.  In settings you will see a section called, "Visual Style".  Within this section there is a dropdown with three options:  Day, Sunset, and Night.  Clicking between these options in the dropdown menu will change the time of day represented in the visualization.  
+The time of day can be changed in the visualization settings pane.  In settings, you will see a section called, "Visual Style".  Within this section, there is a dropdown with three options:  Day, Sunset, and Night.  Clicking between these options in the dropdown menu will change the time of day represented in the visualization.  
 
 <br>
 <div style="display: flex; justify-content: space-around; align-items: center;">
@@ -117,7 +117,7 @@ The time of day can be changed in the visualization settings pane.  In settings 
 <i>Above are three images displaying the style of each "time of day" setting.</i>
 
 
-#### How do I import this visual to Power Bi Desktop?
+#### How do I import this visual to Power BI Desktop?
 <br>
 
 <div class="indented">
@@ -132,8 +132,10 @@ When the visual has been imported, simply select it from the Visualization pane 
 
 #### What inspired you to make the Skyscraper Barchart?
 
-I created the Skyscraper Barchart as a way to learn how Power Bi visuals work.  I worked on this project during my free time in college.  Before working on the Skyscraper Barchart I had no experience in TypeScript, but with the help of Microsoft Documentation and ai tools like GPT4 I completed this project in a few weeks.
+I created the Skyscraper Barchart as a way to learn how Power BI visuals work.  I worked on this project during my free time in college.  Before working on the Skyscraper Barchart I had no experience in TypeScript, but with the help of Microsoft Documentation and AI tools like GPT4, I completed this project in a few weeks.
 
-Along with gaining a basic understaning of Power Bi custom visuals I used this project as an opportunity to practice design.  Using canva I created every image displayed in the visual from the skyscrapers to the backgrounds.  This was a learning curve for me, but I am extremely proud of the look and feel of the visual.
+Along with gaining a basic understanding of Power BI custom visuals I used this project as an opportunity to practice design.  Using Canva I created every image displayed in the visual from the skyscrapers to the backgrounds.  This was a learning curve for me, but I am extremely proud of the look and feel of the visual.
+
+To learn more about the process of building this custom visual [click here](https://kameronyork.com/blog/building-skyscraper-barchart.html).
 <br>
 <br>

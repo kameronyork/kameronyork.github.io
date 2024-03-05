@@ -9,12 +9,12 @@ output:
 ---
 <small>Last Updated:  12/6/2023</small>
 
-Collecting the data of all General Conference talks was a long and rewarding journey.  I started working on this project in the fall of 2022.  I had always wondered, "What is the most quoted scripture in General Conference?"  With the blind confidence I had gained from the one data science programming class I had taken I set out to answer that question!
+Collecting the data of all General Conference talks was a long and rewarding journey.  I started working on this project in the fall of 2022.  I had always wondered, "What is the most quoted scripture in General Conference?"  With the blind confidence I had gained from the one data science programming class I had taken, I set out to answer that question!
 
-In the beginning I was collecting the data by hand.  I would open the conference talk I wanted to index and go down the list of footnotes typing them into an excel file.  This was a long and tedious process, but I came to enjoy it.  Some people like knitting, I like the monotony of copying things into excel.  During this part of the data collection I began to notice a pattern in the footnotes: some references were just a scripture `Ether 12:27` and others were prefaced, like `see Ether 12:27`.  Upon inspecting the difference between these types of footnotes I found they usually followed this pattern:
+In the beginning, I was collecting the data by hand.  I would open the conference talk I wanted to index and go down the list of footnotes typing them into an Excel file.  This was a long and tedious process, but I came to enjoy it.  Some people like knitting, but I like the monotony of copying things into Excel.  During this part of the data collection I began to notice a pattern in the footnotes: some references were just a scripture `Ether 12:27` and others were prefaced, like `see Ether 12:27`.  Upon inspecting the difference between these types of footnotes I found they usually followed this pattern:
 
 
-Quotes with just the scripture, like `Ether 12:27` usually indicated the speaker quoted directly from the verse.
+Quotes with just the scripture, like `Ether 12:27` usually indicate the speaker quoted directly from the verse.
 
 
 
@@ -25,7 +25,7 @@ Ether 12:27</p>
 </div>
 <br>
 
-Quotes with a preface of "See" or "See also" usually indicated the speaker made a comment that was similar to a scripture.  These footnotes are added to enhance the study-ability of the talks. 
+Quotes with a preface of "See" or "See also" usually indicated the speaker made a comment that was similar to a scripture.  These footnotes are added to enhance the study ability of the talks. 
 
 
 <div style="text-align: center; border: 1px solid #d3d3d3; padding: 20px; max-width: 500px; margin: 0 auto; background-color: white;">
@@ -40,9 +40,9 @@ Because I wanted to determine the most <b>quoted</b> scripture, I decided to omi
 
 ### The Process of Data Collection
 
-As mentioned previously I started the collection process by typing the quotes into a spreadsheet by hand.  I indexed 17 years of conference talks, and over 12,000 quotes this way but it took over a year to get that far!  At that point I decided there must be a better way.  What if I could pull all of the information directly from the church's website and make transformations to clean it afterwards?  
+As mentioned previously I started the collection process by typing the quotes into a spreadsheet by hand.  I indexed 17 years of conference talks, and over 12,000 quotes this way but it took over a year to get that far!  At that point, I decided there must be a better way.  What if I could pull all of the information directly from the church's website and make transformations to clean it afterward?  
 
-I created a new excel file and wrote a lot of VBA code to create some custom processes.  My idea:  I would copy the full text and footnotes of all General Conference talks and extract the quotes from them using a macro.  Talks prior to 2000 usually have the scripture references within the text of the talk inside parentheses.  Modern talks don't use the parentheses for footnotes, opting to put them all in the "References" tab instead.  To collect the data I created two columns.  In one column I would copy and paste the full text of the talk, and in the other I would paste the footnotes from the references tab if there were any.  Then, with the click of a button those columns would each be collapsed into individual strings and entered into a table on the same page.
+I created a new Excel file and wrote a lot of VBA code to create some custom processes.  My idea:  I would copy the full text and footnotes of all General Conference talks and extract the quotes from them using a macro.  Talks before 2000 usually have the scripture references within the text of the talk inside parentheses.  Modern talks don't use the parentheses for footnotes, opting to put them all in the "References" tab instead.  To collect the data I created two columns.  In one column I would copy and paste the full text of the talk, and in the other, I would paste the footnotes from the references tab if there were any.  Then, with the click of a button, those columns would each be collapsed into individual strings and entered into a table on the same page.
 
 Then, when I had collected a whole conference worth of talks I would click a button to extract the quotes.  A macro would split the string into smaller pieces using the "(" character, and then use formulas to determine if it should be included as a quote.  However, it was during this step that a fatal error crept in.
 
@@ -50,20 +50,20 @@ Then, when I had collected a whole conference worth of talks I would click a but
 
 References on the Church's website are not made up of common characters.  Often in people's names, and the names of books of scripture we will find "non-blank space characters".  These characters are used instead of spaces to ensure the string won't be broken by screen size changes.  For instance, the one in "1 Nephi" always needs to be next to the "Nephi" for it to make sense!  However, this caused some unforeseen problems in my code.
 
-When writing my VBA code I decided the macro that extracted the scriptures quoted should delete the conference talks in the table to make space for the next conference.  Clearly I wouldn't be needing those again! (<i>foreshadowing</i>)  After running through this process for every talk on the Church's website I was ready to be done with data collection.  Then, I noticed 1 Nephi didn't appear in my data set at all!  It only took 30 seconds of looking through conference talks to prove it clearly should have been.  In despair I realized what had happened.
+When writing my VBA code I decided the macro that extracted the scriptures quoted should delete the conference talks in the table to make space for the next conference.  I won't be needing those again! (<i>foreshadowing</i>)  After running through this process for every talk on the Church's website I was ready to be done with data collection.  Then, I noticed 1 Nephi didn't appear in my data set at all!  It only took 30 seconds of looking through conference talks to prove it clearly should have been.  In despair, I realized what had happened.
 
-If only I had the text and footnotes of each talk still!  But, due to the deletion of those I would need to re-copy all of them to fix the data set.  At this point I took a couple days off.  I needed a break!
+If only I had the text and footnotes of each talk still!  But, due to the deletion of those I would need to re-copy all of them to fix the data set.  At this point, I took a couple of days off.  I needed a break!
 
 ### Collecting the Data - Part 2
 
-I decided to learn from my previous mistakes, big time!  Not only would I copy the talks and get the quotes, I would also compile a data set of comprised of the talk's speaker, conference, title, text, footnotes, and a hyperlink.  This would allow me to go back and fix any other mistakes should they arise.  Along with a new plan I created a new excel file to help me collect these new data points.  Then, I was off!
+I decided to learn from my previous mistakes, big time!  Not only would I copy the talks and get the quotes, but I would also compile a data set comprised of the talk's speaker, conference, title, text, footnotes, and a hyperlink.  This would allow me to go back and fix any other mistakes should they arise.  Along with a new plan I created a new Excel file to help me collect these new data points.  Then, I was off!
 
-Copying and pasting the talks to the excel file took a few weeks to accomplish!  But while working part time and being in college classes I still managed to complete the task.  I copied over 3,800 conference talks in that time frame.  Now I just needed to extract the quotes!
+Copying and pasting the talks to the Excel file took a few weeks to accomplish!  But while working part time and being in college classes I still managed to complete the task.  I copied over 3,800 conference talks in that time frame.  Now I just needed to extract the quotes!
 
 ### Quote Extraction
 
-TO parse the quotes from the data set I wrote a python script to extract everything withing parentheses to a new column.  From there I used string functions to pivot the data set and create a row for each quote.  Then I removed any rows that started with "See" or "See also", and published the new data set to my website.
+TO parse the quotes from the data set I wrote a Python script to extract everything within parentheses to a new column.  From there I used string functions to pivot the data set and create a row for each quote.  Then I removed any rows that started with "See" or "See also", and published the new data set to my website.
 
-From there I created my [General Conference Analyses](https://kameronyork.com/projects/conference/).  The csv files of all Conference talks, and all scriptures quotes in conference are freely available for download on the dataset section of my website [Here](https://kameronyork.com/datasets).
+From there I created my [General Conference Analyses](https://kameronyork.com/projects/conference/).  The CSV files of all Conference talks and all scriptures quotes during conferences are freely available for download on the dataset section of my website [Here](https://kameronyork.com/datasets).
 
-I have learned so much from this project.  I learned about the efficiency and speed of coding in python (1,000x faster than my excel macro), the incredibly utility of web scraping (which I used to quickly gather all talk URLs), and the importance of data ware housing.  If only I had understood that last lesson from the beginning!
+I have learned so much from this project.  I learned about the efficiency and speed of coding in Python (1,000 times faster than my Excel macro), the incredible utility of web scraping (which I used to quickly gather all talk URLs), and the importance of data warehousing.  If only I had understood that last lesson from the beginning!
