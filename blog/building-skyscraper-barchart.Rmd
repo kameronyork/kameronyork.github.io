@@ -86,17 +86,33 @@ output:
 
 <br>
 
-#### This post is not complete.  Please check back later!
+#### The Inspiration for the Skyscraper Barchart
 
-[Datasets Page](https://kameronyork.com/datasets).
+Data can be represented in countless ways.  One of the most common ways to represent data is through size comparisons.  The tallest man-made structures in the world are skyscrapers like the Burj Khalifa or the One World Trade Center.  I thought it would be a fun project to combine the usefulness of a bar chart and the wonder of skyscrapers.  
 
-![Studying Come Follow Me with the Gospel Buddy Extension](https://kameronyork.com/docs/assets/scraper-day-example.png){.large-image}
+Through the process of designing, building, and documenting this custom visual I have come to appreciate the immense amount of work these projects require.  Prior to this project I had zero experience with TypeScript coding and very little experience in graphic design.  I am happy I took the time to learn about the value of both.
+
+#### The Process of Building a Custom Visual
+
+I leaned heavily on ai tools like GPT4 to write the TypeScript code for the visual.  I also learned as much as possible from the excellent custom visual tutorials on Microsoft's learn platform.  However, through the process I realized how steep the learning curve for this type of project actually is.
+
+To build a custom visual I had to learn how to generate basic project files using the pbiviz library.  Then I modified the generated TypeScript files to function in the intended way.  This required modifications to the capabilities of the project and the "front end" or "visual" files.  During this process I learned how to modify the visualization's format pane and settings.  This process took me over two weeks to feel comfortable and a week longer to complete.
+
+I created the look of the visual myself in canva.  I modeled the skyscrapers after the One World Trade Center in New York City and designed a background of rolling hills.  In experimenting with the settings capabilities I decided to utilize the dropdown feature.  Through a dropdown the user is able to pick the time of day displayed in the visual (Day, sunset, or night).  To make this possible I created three versions of the skyscrapers and background in different lightings.  I am very proud of the way these designs turned out!  
 <br>
-<br>
-![Studying Come Follow Me with the Gospel Buddy Extension](https://kameronyork.com/docs/assets/scraper-sunset-example.png){.large-image}
-<br>
-<br>
-![Studying Come Follow Me with the Gospel Buddy Extension](https://kameronyork.com/docs/assets/scraper-night-example.png){.large-image}
+<div style="display: flex; justify-content: space-around; align-items: center;">
+  <img src="https://kameronyork.com/docs/assets/scraper-day-example.png" style="width: 32%; margin-right: 1%;">
+  <img src="https://kameronyork.com/docs/assets/scraper-sunset-example.png" style="width: 32%; margin-right: 1%;">
+  <img src="https://kameronyork.com/docs/assets/scraper-night-example.png" style="width: 32%;">
+</div>
+
+#### My Biggest Take-Aways from this Project
+
+I have gained a huge respect for Power Bi visual developers.  This very simple visual required weeks of learning and coding.  I have also learned that visuals can be customized and developed beyond what I originally thought possible.  Lastly, I have gained an appreciation for design and the art that goes into these visuals.  Power Bi visual developers allow analysts like me to build artistic data visualizations with their work, and that is admirable.
+
+#### Where can I Download the Skyscraper Barchart?
+
+To download this Power Bi custom visual simply click on the button below.  Once downloaded you can import is as a custom visual in Power Bi desktop for use in reports.
 
 
 <br>
