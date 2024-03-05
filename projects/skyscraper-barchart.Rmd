@@ -110,9 +110,9 @@ The time of day can be changed in the visualization settings pane.  In settings,
 
 <br>
 <div style="display: flex; justify-content: space-around; align-items: center;">
-  <img src="https://kameronyork.com/docs/assets/scraper-day-example.png" style="width: 32%; margin-right: 1%;">
-  <img src="https://kameronyork.com/docs/assets/scraper-sunset-example.png" style="width: 32%; margin-right: 1%;">
-  <img src="https://kameronyork.com/docs/assets/scraper-night-example.png" style="width: 32%;">
+  <img src="https://kameronyork.com/docs/assets/scraper-day-example.png" style="width: 30%; margin-right: 1%;">
+  <img src="https://kameronyork.com/docs/assets/scraper-sunset-example.png" style="width: 30%; margin-right: 1%;">
+  <img src="https://kameronyork.com/docs/assets/scraper-night-example.png" style="width: 30%;">
 </div>
 <i>Above are three images displaying the style of each "time of day" setting.</i>
 
