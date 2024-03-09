@@ -3,7 +3,7 @@ title: "Skyscraper Barchart"
 output:
   html_document:
     includes:
-      in_header: "https://kameronyork.com/blog/headers/skyscraper-barchart-header.html"
+      in_header: "https://kameronyork.com/gospel-buddy/headers/gospel-buddy-header.html"
       after_body: "https://kameronyork.com/parables/footer.html"
 ---
 <style>
