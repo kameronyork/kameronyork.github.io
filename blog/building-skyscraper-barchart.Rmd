@@ -101,9 +101,9 @@ To build a custom visual I had to learn how to generate basic project files usin
 I created the look of the visual myself in Canva.  I modeled the skyscrapers after the One World Trade Center in New York City and designed a background of rolling hills.  In experimenting with the settings capabilities I decided to utilize the dropdown feature.  Through a dropdown, the user can pick the time of day displayed in the visual (Day, sunset, or night).  To make this possible I created three versions of the skyscrapers and background in different lightings.  I am very proud of the way these designs turned out!  
 <br>
 <div style="display: flex; justify-content: space-around; align-items: center;">
-  <img src="https://kameronyork.com/docs/assets/scraper-day-example.png" style="width: 32%; margin-right: 1%;">
-  <img src="https://kameronyork.com/docs/assets/scraper-sunset-example.png" style="width: 32%; margin-right: 1%;">
-  <img src="https://kameronyork.com/docs/assets/scraper-night-example.png" style="width: 32%;">
+  <img src="https://kameronyork.com/docs/assets/scraper-day-example.png" style="width: 30%; margin-right: 1%;">
+  <img src="https://kameronyork.com/docs/assets/scraper-sunset-example.png" style="width: 30%; margin-right: 1%;">
+  <img src="https://kameronyork.com/docs/assets/scraper-night-example.png" style="width: 30%;">
 </div>
 
 #### My Biggest Take-Aways from this Project
