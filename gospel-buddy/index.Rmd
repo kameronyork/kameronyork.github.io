@@ -127,7 +127,7 @@ While studying General Conference talks users can browse footnotes of scriptures
 
 When a Verse Button is clicked the Gospel Buddy will generate a table displaying all talks that have cited the selected scripture.  This table shows the talk's year, month, speaker, and title as a hyperlink to the talk.  On the left side, a column displays percentages along with data bars.  These percentages indicate what percentage of the scripture appears in the talk.  
 
-To determine the percentage the extension searches for the longest unbroken string of words from the scripture in the talk.  The length of this string is then compared to the length of the verse and a percentage is displayed.  This column is meant to assist users in determining which conference talks quote the scripture and which simply use it as a footnote.
+To determine a quote percentage the extension searches for the longest unbroken string of words from the scripture in the talk.  The length of this string is then compared to the length of the verse and a percentage is displayed.  This column is meant to assist users in determining which conference talks quote the scripture and which simply use it as a footnote.
 
 <br>
 <div class=large-image>
@@ -138,7 +138,7 @@ To determine the percentage the extension searches for the longest unbroken stri
 
 #### Where Can I Download the Gospel Buddy Extension?
 
-The Gospel Buddy Extension is available through the Google Chrome Extension Store for free! When added to Chrome, the Gospel Buddy will automatically create verse buttons on the Church of Jesus Christ of Latter-Day Saints' website. Enhance gospel learning with the Gospel Buddy by clicking here:
+The Gospel Buddy Extension is available through the Google Chrome Extension Store for free! When added to Chrome, the Gospel Buddy will automatically create verse buttons on the Church of Jesus Christ of Latter-Day Saints' website. Enhance gospel learning with the Gospel Buddy by clicking here: 
 
 <br>
 <br>
