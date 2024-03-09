@@ -1,0 +1,152 @@
+---
+title: "The Gospel Buddy"
+output:
+  html_document:
+    includes:
+      in_header: "https://kameronyork.com/gospel-buddy/headers/gospel-buddy-header.html"
+      after_body: "https://kameronyork.com/parables/footer.html"
+---
+<style>
+  /* Center alignment for the title, text under the title, and buttons */
+  h1, .subtitle-text, .download-button {
+    text-align: center;
+  }
+
+  /* Left alignment for paragraphs and their titles in the middle of the document */
+  h4 {
+    text-align: left;
+  }
+</style>
+
+<div class="subtitle-text">
+  <p>A Browser Extension built for Better General Conference References</p>
+</div>
+<br>
+
+<style>
+  .download-button {
+    display: inline-block; /* Use inline-block to allow setting width */
+    width: 180px; /* Set fixed width */
+    height: 50px;
+    margin-right: 10px;
+    background-color: #0073e6; /* Blue color */
+    color: #ffffff; /* White text color */
+    padding: 10px 10px; /* Adjust padding as needed */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold;
+    text-align: center; /* Center text horizontally */
+    line-height: 30px; /* Center text vertically */
+  }
+
+  .download-button img {
+    width: 20px; /* Adjust image size as needed */
+    margin-right: 10px; /* Add space between image and text */
+  }
+  /* Apply styling to larger images */
+  .large-image {
+    width: 75%; /* Set the width of the images to 75% of their current size */
+    display: block; /* Center the images */
+    margin: 0 auto; /* Center the images */
+    border: 2px solid #f0f0f0;
+  }
+
+  /* Apply styling to Chrome and Edge icons */
+  .download-button img {
+    width: 20px; /* Adjust image size as needed */
+    margin-right: 10px; /* Add space between image and text */
+  }
+
+  @media (max-width: 600px) {
+  .download-button {
+    display: block; /* Change to block-level element */
+    margin: 0 auto; /* Center the buttons horizontally */
+    width: 180px; /* Set fixed width */
+    height: 50px;
+    margin-bottom: 10px; /* Add spacing between buttons */
+    background-color: #0073e6; /* Blue color */
+    color: #ffffff; /* White text color */
+    padding: 10px 10px; /* Adjust padding as needed */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold;
+    text-align: center; /* Center text horizontally */
+    line-height: 30px; /* Center text vertically */
+  }
+}
+</style>
+
+<div class="subtitle-text">
+  <a href="https://chromewebstore.google.com/detail/gospel-buddy/mlimohmgngjmnpllmnbjgkggclnmcdbn?hl=en" class="download-button">
+    <img src="https://kameronyork.com/docs/assets/chrome-logo.png" alt="Google Chrome Logo">
+    Add to Chrome
+  </a>
+  <a href="https://microsoftedge.microsoft.com/addons/detail/gospel-buddy/mjpbfipgpeclaihceppjnkgeibgjdoig" class="download-button">
+    <img src="https://kameronyork.com/docs/assets/edge-logo.png" alt="Microsoft Edge Logo">
+    Add to Edge
+  </a>
+</div>
+
+<br>
+
+#### What is the Gospel Buddy Extension?
+
+General Conference talks from the Church of Jesus Christ of Latter-Day Saints feature extensive footnotes to scriptures. These footnotes are meant to inspire a deeper study of these words from modern prophets. However, scriptures on the Church's website currently have no references to relevant General Conference talks. The ability to jump to related teachings from modern prophets when reading the scriptures would deepen study and build faith. The Gospel Buddy extension aims to do just that!
+
+The Gospel Buddy replaces the verse numbers on the Church's website with buttons. These buttons display the verse number and the number of times that verse has appeared as a footnote in General Conference talks. Clicking on the verse buttons will display a table with links to each talk that references the verse. The color of the verse buttons can be customized in the Gospel Buddy settings window. If desired, the settings window also enables the ability to filter the tables and footnote counts to only General Conference talks from Apostles.
+
+#### How Does the Gospel Buddy Extension Gather Footnote Data?
+
+The Gospel Buddy runs a web scraping utility after the release of new General Conference talks biannually. The Gospel Buddy searches for links to scriptures within every Conference Talk - both new and previous - to maintain the most up-to-date footnote data. After the scripture links are extracted, they are decoded using functions to create a usable dataset. These datasets can be found here on my website's [Datasets Page](https://kameronyork.com/datasets).
+
+#### How Can the Gospel Buddy Help Me Study Come Follow Me?
+
+Come Follow Me is an excellent scripture study resource provided by the Church of Jesus Christ of Latter-Day Saints. These study outlines help members to read and ponder one of the Four Standard Works every year. Lessons include insights on scripture passages, prompts for gospel topic discussions, and ideas for family activities that assist in the learning process. The Gospel Buddy Extension can help to make this scripture study even more meaningful!
+
+<br>
+![Studying Come Follow Me with the Gospel Buddy Extension](https://kameronyork.com/docs/assets/come-follow-me.png){.large-image}
+<br>
+<br>
+
+The Gospel Buddy provides members with links to relevant General Conference talks built into the current week's readings. The hard-to-understand passages from Isaiah and Revelation will become easier when combined with the words of General Conference talks. Relevant Conference Talks provide additional study and family activities throughout the week. The Gospel Buddy creates links between Come Follow Me and General Conference talks!
+
+#### How Can the Gospel Buddy Help Me Study General Conference Talks?
+
+While studying General Conference talks users can browse footnotes of scriptures related to what the speaker has said.  By simply clicking one of these footnotes the Gospel Buddy will create a button on the verse in the footnote pane.  This button generates links to other General Conference talks which feature that scripture in the footnotes.  The Gospel Buddy Extension increases the usability of General Conference talks from the Church of Jesus Christ of Latter-Day Saints. 
+
+<br>
+![Studying General Conference Talks with the Gospel Buddy Extension](https://kameronyork.com/docs/assets/president-nelson.png){.large-image}
+
+<br>
+<br>
+
+#### How Can I Know Which Talks to Study?
+
+When a Verse Button is clicked the Gospel Buddy will generate a table displaying all talks that have cited the selected scripture.  This table shows the talk's year, month, speaker, and title as a hyperlink to the talk.  On the left side, a column displays percentages along with data bars.  These percentages indicate what percentage of the scripture appears in the talk.  
+
+To determine the percentage the extension searches for the longest unbroken string of words from the scripture in the talk.  The length of this string is then compared to the length of the verse and a percentage is displayed.  This column is meant to assist users in determining which conference talks quote the scripture and which simply use it as a footnote.
+
+<br>
+![Studying General Conference Talks with the Gospel Buddy Extension](https://kameronyork.com/docs/assets/reference-table.png){.large-image}
+
+<br>
+<br>
+
+#### Where Can I Download the Gospel Buddy Extension?
+
+The Gospel Buddy Extension is available through the Google Chrome Extension Store for free! When added to Chrome, the Gospel Buddy will automatically create verse buttons on the Church of Jesus Christ of Latter-Day Saints' website. Enhance gospel learning with the Gospel Buddy by clicking here:
+
+<br>
+<br>
+<div class="subtitle-text">
+  <a href="https://chromewebstore.google.com/detail/gospel-buddy/mlimohmgngjmnpllmnbjgkggclnmcdbn?hl=en" class="download-button">
+    <img src="https://kameronyork.com/docs/assets/chrome-logo.png" alt="Google Chrome Logo">
+    Add to Chrome
+  </a>
+  <a href="https://microsoftedge.microsoft.com/addons/detail/gospel-buddy/mjpbfipgpeclaihceppjnkgeibgjdoig" class="download-button">
+    <img src="https://kameronyork.com/docs/assets/edge-logo.png" alt="Microsoft Edge Logo">
+    Add to Edge
+  </a>
+</div>
+<br>
+<br>
