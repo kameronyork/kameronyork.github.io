@@ -27,6 +27,16 @@
         --light-color: #f8f9fa;
         --font-family: Roboto
       }
+      .custom-button {
+          background-color: #F8A807; /* Button color */
+          color: black; /* Text color */
+          transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+        }
+        
+        .custom-button:hover {
+          background-color: #e07905; /* Darker shade for hover */
+        }
+
     </style>
     <link href="https://www.kameronyork.com/scripting/css/style.min.css" rel=stylesheet media=screen>
     <script src="https://www.kameronyork.com/scripting/jquery/jquery-1.12.4.js"></script>
@@ -65,30 +75,37 @@
         </div>
       </nav>
     </header>
-    <section class =section>
-      <div class="container section">
-        <div class=row>
-          <div class="col-lg-8 text-center mx-auto">
-            <h3 style = "color: black">Below you will see tiles for each data project, enjoy!</h3>
-          </div>
+    <!-- New Section for Power BI projects, General Conference, Resume -->
+    <div class="container mt-4 mb-4">
+      <div class="row justify-content-center">
+        <!-- Power BI Projects Button -->
+        <div class="col-md-3 col-12 mb-2">
+          <a href="https://kameronyork.com/projects/powerbi-projects.html" class="d-flex justify-content-center align-items-center p-2 bg-white shadow text-decoration-none">
+            <span>Power BI Projects</span>
+          </a>
         </div>
+        <!-- General Conference Button -->
+        <div class="col-md-3 col-12 mb-2">
+          <a href="https://www.kameronyork.com/projects/conference" class="d-flex justify-content-center align-items-center p-2 bg-white shadow text-decoration-none">
+            <span>General Conference</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Faint Gray Line -->
+    <div style="height: 1px; background-color: #d3d3d3; margin-bottom: -25px;"></div>
+
+    <section class =section>
       <div class=container>
         <div class="row justify-content-center">
           <div class="col-12 text-center">
             <h2 class=section-title></h2>
           </div>
           <div class="col-lg-4 col-sm-6 mb-4">
-            <a href= "https://www.kameronyork.com/projects/skyscrapers.html" class="px-4 py-5 bg-white shadow text-center d-block match-height">
-              <img src="https://kameronyork.com/docs/assets/skyscraper-analysis-icon.png" alt="Barchart Icon" class="icon text-primary d-block mb-4" style="width: 100px; height: 100px; background-position: center; margin: 0 auto;">
-              <h3 class="mb-3 mt-0">Skyscraper Analysis</h3>
-              <p class=mb-0>Which country has the most per person?</p>
-            </a>
-          </div>
-          <div class="col-lg-4 col-sm-6 mb-4">
-            <a href= "https://www.kameronyork.com/projects/conference" class="px-4 py-5 bg-white shadow text-center d-block match-height">
-              <img src="https://kameronyork.com/docs/assets/conference-center.png" alt="Gospel Buddy Icon" class="icon text-primary d-block mb-4" style="width: 100px; height: 100px; background-position: center; margin: 0 auto;">
-              <h3 class="mb-3 mt-0">General Conference</h3>
-              <p class=mb-0>What scripture is quoted most?<br>Can a Prophet inspire change?</p>
+            <a href= "https://www.kameronyork.com/projects/skyscraper-barchart.html" class="px-4 py-5 bg-white shadow text-center d-block match-height">
+              <img src="https://kameronyork.com/docs/assets/scraper-icon.png" alt="Custom Skyscraper Barchart Icon" class="icon text-primary d-block mb-4" style="width: 100px; height: 100px; background-position: center; margin: 0 auto;">
+              <h3 class="mb-3 mt-0">Skyscraper Barchart</h3>
+              <p class=mb-0>My first custom Power BI visual</p>
             </a>
           </div>
           <div class="col-lg-4 col-sm-6 mb-4">
@@ -98,14 +115,20 @@
                 <p class="mb-0">A Chrome Extension for Scriptures</p>
               </a>
             </div>
-          <div class="col-lg-4 col-sm-6 mb-4">
-            <a href= "https://www.kameronyork.com/projects/skyscraper-barchart.html" class="px-4 py-5 bg-white shadow text-center d-block match-height">
-              <img src="https://kameronyork.com/docs/assets/scraper-icon.png" alt="Custom Skyscraper Barchart Icon" class="icon text-primary d-block mb-4" style="width: 100px; height: 100px; background-position: center; margin: 0 auto;">
-              <h3 class="mb-3 mt-0">Custom Skyscraper Barchart</h3>
-              <p class=mb-0>A custom Power BI visual<br>with multiple scenes</p>
+            <div class="col-lg-4 col-sm-6 mb-4">
+            <a href= "https://www.kameronyork.com/projects/conference/inspire-change.html" class="px-4 py-5 bg-white shadow text-center d-block match-height">
+              <img src="https://kameronyork.com/docs/assets/conference-center.png" alt="Conference Center Icon" class="icon text-primary d-block mb-4" style="width: 100px; height: 100px; background-position: center; margin: 0 auto;">
+              <h3 class="mb-3 mt-0">Inspiring Change</h3>
+              <p class="mb-0">How have prophets changed the church?</p>
             </a>
           </div>
-
+          <div class="col-lg-4 col-sm-6 mb-4">
+            <a href= "https://www.kameronyork.com/projects/skyscrapers.html" class="px-4 py-5 bg-white shadow text-center d-block match-height">
+              <img src="https://kameronyork.com/docs/assets/skyscraper-analysis-icon.png" alt="Barchart Icon" class="icon text-primary d-block mb-4" style="width: 100px; height: 100px; background-position: center; margin: 0 auto;">
+              <h3 class="mb-3 mt-0">Skyscraper Analysis</h3>
+              <p class=mb-0>Which country has the most per person?</p>
+            </a>
+          </div>
           <!-- <div class="col-lg-4 col-sm-6 mb-4">
             <a href= INSERT TREE HERE class="px-4 py-5 bg-white shadow text-center d-block match-height">
               <i class="ti-bar-chart icon text-primary d-block mb-4"></i>
@@ -115,6 +138,9 @@
           </div> -->
         </div>
       </div>
+      <br>
+      <div style="height: 1px; background-color: #d3d3d3;"></div>
+
       <div class=container>
         <div class="row justify-content-center">
           <div class="col-12 text-center">
@@ -129,7 +155,7 @@
           </div>
         </div>
        </div>
-      </div>
+
     </section>
     <footer class="section pb-4">
       <div class=container>
