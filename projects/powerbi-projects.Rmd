@@ -1,9 +1,9 @@
 ---
-title: "Skyscraper Barchart"
+title: "Power BI Project Portfolio"
 output:
   html_document:
     includes:
-      in_header: "https://kameronyork.com/blog/headers/skyscraper-barchart-header.html"
+      in_header: "https://kameronyork.com/blog/headers/powerbi-projects-header.html"
       after_body: "https://kameronyork.com/parables/footer.html"
 ---
 <style>
@@ -19,7 +19,7 @@ output:
 </style>
 
 <div class="subtitle-text">
-  <p>A custom Power BI visual that lets you see data like a city skyline</p>
+  <p>I've worked in Power BI for nearly two years. <br>Here are some examples of projects I designed and distributed. <br>Click the download button to view the full report</p>
 </div>
 <br>
 
@@ -29,7 +29,7 @@ output:
     width: 180px; /* Set fixed width */
     height: 50px;
     margin-right: 10px;
-    background-color: #a57381; /* Purple color */
+    background-color: #F3CE42; /* Yellow color */
     color: #ffffff; /* White text color */
     padding: 10px 10px; /* Adjust padding as needed */
     border-radius: 5px; /* Rounded corners */
@@ -40,7 +40,8 @@ output:
   }
   
   .download-button:hover {
-  color: #623f4a; /* Change text color on hover */
+  background-color: #D69610; /* Change text color on hover */
+  color: #ffffff; /* Maintain white text when hovering */
   }
 
   .download-button img {
@@ -60,6 +61,14 @@ output:
     width: 20px; /* Adjust image size as needed */
     margin-right: 10px; /* Add space between image and text */
   }
+  
+  /* Apply styling to larger images */
+  .large-image {
+    width: 75%; /* Set the width of the images to 75% of their current size */
+    display: block; /* Center the images */
+    margin: 0 auto; /* Center the images */
+    border: 2px solid #f0f0f0;
+  }
 
   @media (max-width: 600px) {
   .download-button {
@@ -68,7 +77,7 @@ output:
     width: 180px; /* Set fixed width */
     height: 50px;
     margin-bottom: 10px; /* Add spacing between buttons */
-    background-color: #a57381; /* Purple color */
+    background-color: #F3CE42; /* Yellow color */
     color: #ffffff; /* White text color */
     padding: 10px 10px; /* Adjust padding as needed */
     border-radius: 5px; /* Rounded corners */
@@ -79,7 +88,8 @@ output:
   }
   
   .download-button:hover {
-  color: #623f4a; /* Change text color on hover */
+  background-color: #D69610; /* Change text color on hover */
+  color: #ffffff; /* Maintain white text when hovering */
   }
 }
 
@@ -89,53 +99,39 @@ output:
   }
 </style>
 
+
+
+<br>
+
+#### Staff Financial Performance Scorecard
+
+<br>
+<div class=large-image>
+ <img src="https://kameronyork.com/docs/assets/financial-performance-scorecard.png" alt="Studying General Conference Talks with the Gospel Buddy Extension">
+</div>
+<br>
+A "One Stop Shop" for all staff member KPI's.  Tracking everything from effective billing rate to average days to collect a client's invoice.  This tool infinitely improved visibility of staff member performance and allowed leaders to set dynamic goals for staff performance. 
+<br>
+<br>
 <div class="subtitle-text">
-  <a href="https://kameronyork.com/docs/skyscraper-barchart.pbiviz" class="download-button">
-    <img src="https://kameronyork.com/docs/assets/powerbi-logo.png" alt="Google Chrome Logo">
+  <a href="https://kameronyork.com/docs/#" class="download-button">
+    <img src="https://kameronyork.com/docs/assets/powerbi-logo.png" alt="Power BI Logo">
+    Download Here
+  </a>
+</div>
+<br>
+
+
+#### More Examples Coming Soon
+
+<br>
+<div class="subtitle-text">
+  <a href="https://kameronyork.com/docs/#" class="download-button">
+    <img src="https://kameronyork.com/docs/assets/powerbi-logo.png" alt="Power BI Logo">
     Download Here
   </a>
 </div>
 
-<br>
 
-#### What is the Skyscraper Barchart visual?
-
-The Skyscraper Barchart is a custom Power BI visual coded in TypeScript.  This visual acts like a normal bar chart to visualize and interpret data.  Unlike normal bar charts, the Skyscraper Barchart has a splash of fun added in.  Instead of bars, this visual displays the data as a city skyline with high-rise skyscrapers representing the data.  The time of day can be changed to represent the skyline during the day, at sunset, or night.  
-
-Like many other Power BI visuals, this visual utilizes the power of interactions to filter data across the report page.  By simply clicking on a skyscraper all other visuals with interactions enabled will be filtered to that category.  
-
-#### How can I change the time of day in the Skyscraper Barchart?
-
-The time of day can be changed in the visualization settings pane.  In settings, you will see a section called, "Visual Style".  Within this section, there is a dropdown with three options:  Day, Sunset, and Night.  Clicking between these options in the dropdown menu will change the time of day represented in the visualization.  
-
-<br>
-<div style="display: flex; justify-content: space-around; align-items: center;">
-  <img src="https://kameronyork.com/docs/assets/scraper-day-example.png" style="width: 30%; margin-right: 1%;">
-  <img src="https://kameronyork.com/docs/assets/scraper-sunset-example.png" style="width: 30%; margin-right: 1%;">
-  <img src="https://kameronyork.com/docs/assets/scraper-night-example.png" style="width: 30%;">
-</div>
-<i>Above are three images displaying the style of each "time of day" setting.</i>
-
-
-#### How do I import this visual to Power BI Desktop?
-<br>
-
-<div class="indented">
-1. Open the desired report.
-2. From the ribbon click on the dropdown under, "More Visuals".
-3. Select, "From my files".
-4. Navigate to where you saved the <b>skyscraper-barchart.pbiviz</b> file.
-5. Select the file and click, "Open".
-</div>
-
-When the visual has been imported, simply select it from the Visualization pane and input data.
-
-#### What inspired you to make the Skyscraper Barchart?
-
-I created the Skyscraper Barchart as a way to learn how Power BI visuals work.  I worked on this project during my free time in college.  Before working on the Skyscraper Barchart I had no experience in TypeScript, but with the help of Microsoft Documentation and AI tools like GPT4, I completed this project in a few weeks.
-
-Along with gaining a basic understanding of Power BI custom visuals I used this project as an opportunity to practice design.  Using Canva I created every image displayed in the visual from the skyscrapers to the backgrounds.  This was a learning curve for me, but I am extremely proud of the look and feel of the visual.
-
-To learn more about the process of building this custom visual [click here](https://kameronyork.com/blog/building-skyscraper-barchart.html).
 <br>
 <br>
