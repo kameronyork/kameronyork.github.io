@@ -1,0 +1,1307 @@
+﻿client_KEY,update__staff_KEY,client_id,client_id_sortable,description,client_class_KEY,client_class__description,name_1,name_2,federal_tin,individual_first_name,individual_last_name,individual_date_of_birth,spouse_first_name,spouse_last_name,spouse_date_of_birth,client_status_KEY,client_status__description,office_KEY,entity_KEY,entity__entity_id,partner__staff_KEY,partner__staff__staff_id,manager__staff_KEY,manager__staff__staff_id,associate__staff_KEY,associate__staff__staff_id,industry_code,fiscal_year_end_month,date_opened,date_left,comments,principal__client_KEY,assess_service_charge,service_charge_KEY,print_statements,use_wip_limit,wip_limit,use_accounts_receivable_limit,accounts_receivable_limit,contact_KEY,contact__primary__contact_address__city,contact__primary__contact_address__state_abbreviation,contact__primary__contact_address__postal_code,contact__mailing__contact_address__city,contact__mailing__contact_address__state_abbreviation,contact__mailing__contact_address__postal_code,days_to_due_date,billing_instructions,date_of_last_service_charge,invoice__report_definition_KEY,statement__report_definition_KEY,referral_type_KEY,referred_by__client_KEY,referred_by__contact_KEY,referred_by__referral_source_KEY,referred_by__staff_KEY,referred_by__description,won_date,won_reason_KEY,lost_reason_KEY,lost_to_KEY,client_guid,client_note_data,spouse_federal_tin,billing__contact_KEY,billing_email_recipients,preferred__contact_KEY,complexity,complexity_event_date_utc,complexity_product_year,digita_out_of_date
+1,93,38684554500,38684554500                              `,LedgerLogic Accounting,1,Client,John & Kath Vance Ventures,,31-6968857,John,Vance,17962,Kath,Vance,16821,1,Active,1,1,1120,94,4081OL,94,4081OL,6,4874HP,990000,12,37329,,,1,True,1,False,False,0,False,0,16,Whispering Pines,ID,84660,Whispering Pines,ID,84660,15,,41670,1500,1880,,,,,,,,,,,92079173045,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Date>2022-12-22 22:22:53Z</Date>
+<User>kgivens</User>
+<RichText>{\rtf1\fbidis\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}{\f1\fswiss\fprq2\fcharset0 Calibri;}{\f2\fswiss\fprq2\fcharset0 Microsoft Sans Serif;}}
+{\colortbl ;\red0\green0\blue128;\red0\green0\blue0;}
+\viewkind4\uc1\pard\ltrpar\cf1\b\f0\fs17 12/22/2022 3:22 PM [kgivens]\par
+\cf0\b0\f1\fs22 Kitty\rquote s husband passed away a few weeks ago. Kitty closed out her bank accounts and set up a new account.\par
+I am waiting for the new checks to come so I can write the CN invoices 105332-$175.00 and 105302 for $105.00.\par
+Once those checks arrive, I will write out the checks.\par
+\cf2\f0\fs16\par
+\cf0\fs17\par
+\cf1\b 6/1/2022 3:55 PM [scox]\par
+\cf2\b0\fs16 Transferred AE from Clint Tavenner to Misty Martinell per Clint&apos;s request, effective 07/01/2021.\par
+\cf0\fs17\par
+\cf1\b\par
+9/28/2018 8:24 PM [sjohnson]\par
+\cf0\b0\f2\fs16 Transfer AM from MG to MM per TRG&apos;s request, effective 7/1/2018\f1\fs22\par
+\f0\fs17\par
+\par
+}
+</RichText>
+<Deleted>False</Deleted><History>
+<HistoryItem>
+<User>kgivens</User>
+<Action>Edited</Action>
+<Date>2022-12-22 22:22:53Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>APRIL2021-05</Machine>
+</HistoryItem>
+<HistoryItem><User>scox</User><Action>Edited</Action><Date>2022-06-01 21:55:14Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>JULY2019-28</Machine></HistoryItem><HistoryItem><User>mwest</User><Action>Edited</Action><Date>2020-09-30 20:17:58Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN2-015</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Created</Action><Date>2018-09-29 02:24:59Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN3-026</Machine></HistoryItem></History>
+</ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName><RealAppName>UltraTax CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName><RealAppName>Fixed Assets CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+<ClientNote>
+<AppName>FileCabinet CS</AppName><RealAppName>FileCabinet CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+</ClientNotes>",,16,slozano@hotmail.com,4521,60,45320.66194,2023,False
+2,100,35062011000,35062011000                              `,UnityVault Bank,1,Client,Dale & Donna Smith Ventures,,66-6800705,Dale,Smith,,Donna,Smith,,1,Active,1,1,1120,84,4380LH,87,2505CC,6,4874HP,990000,12,35873,,,2,True,1,False,False,0,False,0,389,Mount Vista,ID,83310,Mount Vista,ID,83310,15,,43271,1500,1880,,,,,,,,,,,41975498549,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName><Date>2021-04-09 20:40:21Z</Date>
+<User>kjohnson</User>
+<RichText>{\rtf1\fbidis\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}{\f1\fswiss\fprq2\fcharset0 Calibri;}{\f2\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue128;\red0\green0\blue0;\red31\green73\blue125;\red5\green99\blue193;}
+\viewkind4\uc1\pard\ltrpar\cf1\b\f0\fs17 4/9/2021 2:40 PM [kjohnson]\par
+\cf2\b0\fs16 Added Diane to Portal Access for Personal, \cf3\f1\fs22 Kona Inc., Cutting Edge Cabinets, and Triple S Inc.\cf2\f0\fs16\par
+Added email \cf4\ul\f1\fs22 dms313@hotmail.com \f2\par
+\par
+\cf1\ulnone\b\f0\fs17 5/6/2019 10:14 AM [lhall]\par
+\cf2\b0\fs16 Transfer AE from CT to SN per CT&apos;s request effective 5/6/2019\par
+\cf0\fs17\par
+\cf1\b 3/30/2018 10:04 AM [lhall]\par
+\cf2\b0\fs16 Updated client email from dave@skidmoreinc.com to dave@cecidaho.com \par
+\par
+\cf0\fs17\par
+\cf1\b 1/9/2015 3:46 PM [rmorgan]\par
+\cf2\b0\fs16 Changed AM From RT to SN per CT\par
+\cf0\fs17\par
+\cf1\b 2/21/2014 7:23 PM [sjohnson]\par
+\cf0\b0 Transfer AE from RPM to CT per RPM&apos;s request effective 11/1/2013.\par
+\par
+}
+</RichText>
+<Deleted>False</Deleted><RealAppName>Practice CS</RealAppName><History>
+<HistoryItem>
+<User>kjohnson</User>
+<Action>Edited</Action>
+<Date>2021-04-09 20:40:21Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>AUGUST2020-06</Machine>
+</HistoryItem>
+<HistoryItem><User>lhall</User><Action>Edited</Action><Date>2019-05-06 16:14:47Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>WIN7-10-003</Machine></HistoryItem><HistoryItem><User>lhall</User><Action>Edited</Action><Date>2018-03-30 16:04:01Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN3-039</Machine></HistoryItem><HistoryItem><User>rmorgan</User><Action>Edited</Action><Date>2015-01-09 22:46:36Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>CN-CITRIX-7</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Created</Action><Date>2014-02-22 02:23:21Z</Date><AppName>Practice CS</AppName><Machine>I-SJOHNSON</Machine><RealAppName>Practice CS</RealAppName></HistoryItem></History>
+</ClientNote>
+<ClientNote>
+<AppName>FileCabinet CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>FileCabinet CS</RealAppName><History></History></ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>UltraTax CS</RealAppName><History></History></ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>Fixed Assets CS</RealAppName><History></History></ClientNote>
+</ClientNotes>",,389,,4996,57,45370.68733,2023,False
+3,61,35909826000,35909826000                              `,SeedlingSuccess Agritech,1,Client,Robert & Dorothy Smith Ventures,,88-3401865,Robert,Smith,,Dorothy,Smith,,1,Active,1,1,1120,84,4380LH,87,2505CC,6,4874HP,990000,12,35515,,,3,True,1,False,False,0,False,0,17,Riverwood,ID,83020,Riverwood,ID,83020,15,,44418,1500,1880,,,,,,,,,,,93356221413,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName><Date>2020-07-07 16:44:53Z</Date>
+<User>mwest</User>
+<RichText>{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}}
+{\colortbl ;\red0\green0\blue128;\red0\green0\blue0;}
+\viewkind4\uc1\pard\cf1\b\f0\fs17\par
+6/6/2019 12:20 PM [lhall]\par
+\cf2\b0\fs16 Mailed RTC to 5220 Comish Dr, IF\par
+\cf0\fs17\par
+\cf1\b 5/6/2019 10:15 AM [lhall]\par
+\cf2\b0\fs16 Transfer AE from CT to SN per CT&apos;s request effective 5/6/2019\par
+\cf0\fs17\par
+\cf1\b 6/28/2018 10:28 AM [lhall]\par
+\cf2\b0\fs16 Left VM that RTC is ready to be picked up.\par
+\cf0\fs17\par
+\cf1\b 1/9/2015 3:45 PM [rmorgan]\par
+\cf2\b0\fs16 Changed AM From RT to SN per CT\par
+\cf0\fs17\par
+\cf1\b 2/21/2014 7:24 PM [sjohnson]\par
+\cf0\b0 Transfer AE from RPM to CT per RPM&apos;s request effective 11/1/2013.\par
+\par
+}
+</RichText>
+<Deleted>False</Deleted><RealAppName>Practice CS</RealAppName><History>
+<HistoryItem>
+<User>mwest</User>
+<Action>Edited</Action>
+<Date>2020-07-07 16:44:53Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>XEN4-C-006</Machine>
+</HistoryItem>
+<HistoryItem><User>lhall</User><Action>Edited</Action><Date>2019-06-06 18:20:04Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>WIN7-10-007</Machine></HistoryItem><HistoryItem><User>lhall</User><Action>Edited</Action><Date>2019-05-06 16:15:37Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>WIN7-10-003</Machine></HistoryItem><HistoryItem><User>lhall</User><Action>Edited</Action><Date>2018-06-28 16:28:49Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>WIN7-5-005</Machine></HistoryItem><HistoryItem><User>rmorgan</User><Action>Edited</Action><Date>2015-01-09 22:45:28Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>CN-CITRIX-7</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Created</Action><Date>2014-02-22 02:24:31Z</Date><AppName>Practice CS</AppName><Machine>I-SJOHNSON</Machine><RealAppName>Practice CS</RealAppName></HistoryItem></History>
+</ClientNote>
+<ClientNote>
+<AppName>FileCabinet CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>FileCabinet CS</RealAppName><History></History></ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>UltraTax CS</RealAppName><History></History></ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>Fixed Assets CS</RealAppName><History></History></ClientNote>
+</ClientNotes>",,17,abeasley@msn.com,5124,48,45323.69346,2023,False
+4,153,27956983500,27956983500                              `,WealthWave Advisors,1,Client,WealthWave Advisors,,47-1918497,,,,,,,1,Active,1,2,1065,94,4081OL,94,4081OL,6,4874HP,531210,12,37858,,,1,True,1,False,False,0,False,0,15,Whispering Pines,ID,84660,Whispering Pines,ID,84660,15,,,1500,1880,,,,,,,,,,,59447614946,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName><Date>2024-01-15 17:20:30Z</Date>
+<User>hmurfitt</User>
+<RichText>{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil Microsoft Sans Serif;}{\f1\fnil\fcharset0 Microsoft Sans Serif;}{\f2\fswiss\fprq2\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue128;\red0\green0\blue0;}
+{\*\generator Riched20 10.0.22621}\viewkind4\uc1 
+\pard\cf1\b\f0\fs17 1/15/2024 10:20 AM [hmurfitt]\par
+\cf2\b0\f1\fs16 Client QBO is stored in Cooper Norman CPAs &amp; Business Advisors folder\par
+\cf0\f0\fs17\par
+\cf1\b 11/27/2023 12:12 PM [maigo]\par
+\cf2\b0\f1\fs16 Updated email address on account to Kitty&apos;s email: kitty@ida.net\par
+Her husband is deceased so her email is best contact.\par
+\cf0\f0\fs17\par
+\cf1\b\f1 12/22/2022 3:25 PM [kgivens]\par
+\cf0\b0\f2\fs22 Kitty\rquote s husband passed away a few weeks ago. Kitty closed out her bank accounts and set up a new account.\par
+I am waiting for the new checks to come so I can write the CN invoices 105332-$175.00 and 105302 for $105.00.\par
+Once those checks arrive, I will write out the checks.\cf2\f1\fs16\par
+\cf0\fs17\par
+\cf1\b 6/1/2022 3:56 PM [scox]\par
+\cf2\b0\fs16 Transferred AE from Clint Tavenner to Misty Martinell per Clint&apos;s request, effective 07/01/2021. \par
+\cf0\fs17\par
+\cf1\b 2/15/2017 8:12 PM [smurdock]\par
+\cf2\b0\fs16 Changed AM from MG to MM per SN request, effective 6/1/2016.\par
+\cf0\fs17\par
+\par
+\par
+\par
+}
+</RichText>
+<Deleted>False</Deleted><RealAppName>Practice CS</RealAppName><History>
+<HistoryItem>
+<User>hmurfitt</User>
+<Action>Edited</Action>
+<Date>2024-01-15 17:20:30Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>CNR-HGMURFITT-2</Machine>
+</HistoryItem>
+<HistoryItem><User>maigo</User><Action>Edited</Action><Date>2023-11-27 19:12:16Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>CNIF-DEC18-22</Machine></HistoryItem><HistoryItem><User>kgivens</User><Action>Edited</Action><Date>2022-12-22 22:25:27Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>APRIL2021-05</Machine></HistoryItem><HistoryItem><User>scox</User><Action>Edited</Action><Date>2022-06-01 21:56:26Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>JULY2019-28</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2017-09-06 17:28:10Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>CN-CITRIX3-HD</Machine></HistoryItem><HistoryItem><User>smurdock</User><Action>Edited</Action><Date>2017-02-16 03:12:49Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>CN-CITRIX2-HD</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2015-02-26 15:26:59Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>CN-CITRIX-15</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Created</Action><Date>2014-07-02 18:58:19Z</Date><AppName>Practice CS</AppName><Machine>I-SJOHNSON</Machine><RealAppName>Practice CS</RealAppName></HistoryItem></History>
+</ClientNote>
+<ClientNote>
+<AppName>FileCabinet CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>FileCabinet CS</RealAppName><History></History></ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>UltraTax CS</RealAppName><History></History></ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>Fixed Assets CS</RealAppName><History></History></ClientNote>
+</ClientNotes>",,15,rmccoy@gmail.com,6301,135,45328.95844,2023,False
+5,61,34283535000,34283535000                              `,HorizonBank Corp,1,Client,HorizonBank Corp,,54-3284742,,,,,,,1,Active,1,2,1065,84,4380LH,87,2505CC,6,4874HP,531210,12,37349,,,3,True,1,False,False,0,False,0,21,Riverwood,ID,83020,Riverwood,ID,83020,15,,44362,1500,1880,,,,,,,,,,,72645331794,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName><Date>2019-05-06 16:21:10Z</Date>
+<User>lhall</User>
+<RichText>{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}}
+{\colortbl ;\red0\green0\blue128;\red0\green0\blue0;}
+\viewkind4\uc1\pard\cf1\b\f0\fs17 5/6/2019 10:21 AM [lhall]\par
+\cf2\b0\fs16 Transfer AE from CT to SN per CT&apos;s request effective 5/6/2019\par
+\cf0\fs17\par
+\cf1\b 1/9/2015 3:48 PM [rmorgan]\par
+\cf2\b0\fs16 Changed AM From RT to SN per CT\par
+\cf0\fs17\par
+\cf1\b\par
+2/21/2014 7:25 PM [sjohnson]\par
+\cf0\b0 Transfer AE from RPM to CT per RPM&apos;s request effective 11/1/2013.\par
+\par
+}
+</RichText>
+<Deleted>False</Deleted><RealAppName>Practice CS</RealAppName><History>
+<HistoryItem>
+<User>lhall</User>
+<Action>Edited</Action>
+<Date>2019-05-06 16:21:10Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>WIN7-10-003</Machine>
+</HistoryItem>
+<HistoryItem><User>rmorgan</User><Action>Edited</Action><Date>2015-01-09 22:48:08Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>CN-CITRIX-7</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2014-03-15 17:59:06Z</Date><AppName>Practice CS</AppName><Machine>I-SJOHNSON</Machine><RealAppName>Practice CS</RealAppName></HistoryItem><HistoryItem><User>sjohnson</User><Action>Created</Action><Date>2014-02-22 02:25:41Z</Date><AppName>Practice CS</AppName><Machine>I-SJOHNSON</Machine><RealAppName>Practice CS</RealAppName></HistoryItem></History>
+</ClientNote>
+<ClientNote>
+<AppName>FileCabinet CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>FileCabinet CS</RealAppName><History></History></ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>UltraTax CS</RealAppName><History></History></ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>Fixed Assets CS</RealAppName><History></History></ClientNote>
+</ClientNotes>",,21,ctanner@msn.com,6701,135,45311.70225,2023,False
+6,129,30923067000,30923067000                              `,MarketMingle Stores,1,Client,MarketMingle Stores,,79-8192170,,,,,,,1,Active,1,1,1120,84,4380LH,87,2505CC,6,4874HP,990000,12,35946,,,3,True,1,False,False,0,False,0,22,Riverwood,ID,83020,Riverwood,ID,83020,15,,44362,1500,1880,,,,,,,,,,,39816359824,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName><Date>2019-05-06 16:12:56Z</Date>
+<User>lhall</User><RichText>{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}}
+{\colortbl ;\red0\green0\blue128;\red0\green0\blue0;}
+\viewkind4\uc1\pard\cf1\b\f0\fs17 5/6/2019 10:12 AM [lhall]\par
+\cf2\b0\fs16 Transfer AE from CT to SN per CT&apos;s request effective 5/6/2019\par
+\cf0\fs17\par
+\cf1\b 4/2/2018 11:01 AM [lhall]\par
+\cf2\b0\fs16 Save Skidmore emailed Cindy and said that he is no longer part of Skidmore, Inc and to please email Brent, Brett and Ras at Skidmore Inc and to take his email off of our records for Skidmore Inc. I am deleting dave@cecidaho.com.\par
+\cf0\fs17\par
+\cf1\b 3/30/2018 10:01 AM [lhall]\par
+\cf2\b0\fs16 Updated client email from dave@skidmoreinc.com to dave@cecidaho.com \par
+\cf0\fs17\par
+\cf1\b\par
+, ran1/9/2015 3:37 PM [rmorgan]\par
+\cf2\b0\fs16 Changed AM From RT to SN per CT\par
+\cf0\fs17\par
+\cf1\b\par
+2/21/2014 7:23 PM [sjohnson]\par
+\cf0\b0 Transfer AE from RPM to CT per RPM&apos;s request effective 11/1/2013.\par
+\par
+}
+</RichText>
+<Deleted>False</Deleted><RealAppName>Practice CS</RealAppName><History>
+<HistoryItem>
+<User>lhall</User>
+<Action>Edited</Action>
+<Date>2019-05-06 16:12:56Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>WIN7-10-003</Machine>
+</HistoryItem>
+<HistoryItem><User>lhall</User><Action>Edited</Action><Date>2018-04-02 17:01:17Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>WIN7-6-001</Machine></HistoryItem><HistoryItem><User>lhall</User><Action>Edited</Action><Date>2018-03-30 16:01:24Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN3-039</Machine></HistoryItem><HistoryItem><User>lhall</User><Action>Edited</Action><Date>2018-03-30 16:01:06Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN3-039</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2017-02-16 00:45:11Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>CN-CITRIX2-HD</Machine></HistoryItem><HistoryItem><User>rmorgan</User><Action>Edited</Action><Date>2015-01-09 22:37:56Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>CN-CITRIX-7</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2014-03-15 17:58:32Z</Date><AppName>Practice CS</AppName><Machine>I-SJOHNSON</Machine><RealAppName>Practice CS</RealAppName></HistoryItem><HistoryItem><User>sjohnson</User><Action>Created</Action><Date>2014-02-22 02:23:08Z</Date><AppName>Practice CS</AppName><Machine>I-SJOHNSON</Machine><RealAppName>Practice CS</RealAppName></HistoryItem></History>
+</ClientNote>
+<ClientNote>
+<AppName>FileCabinet CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>FileCabinet CS</RealAppName><History></History></ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>UltraTax CS</RealAppName><History></History></ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>Fixed Assets CS</RealAppName><History></History></ClientNote>
+</ClientNotes>",,22,lbaker@yahoo.com,10665,123,45332.89223,2023,False
+7,73,23887591500,23887591500                              `,HarvestHive AgriBusiness,1,Client,HarvestHive AgriBusiness,,29-3097251,,,,,,,1,Active,1,3,1065F,84,4380LH,87,2505CC,6,4874HP,621210,12,35425,,,3,True,1,False,False,0,False,0,18,Riverwood,ID,83020,Riverwood,ID,83020,15,,44449,1500,1880,,,,,,,,,,,18958567917,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName><Date>2019-05-06 15:42:51Z</Date>
+<User>lhall</User>
+<RichText>{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}}
+{\colortbl ;\red0\green0\blue128;\red0\green0\blue0;}
+\viewkind4\uc1\pard\cf1\b\f0\fs17 5/6/2019 9:42 AM [lhall]\par
+\cf2\b0\fs16 Transfer AE from CT to SN per CT&apos;s request effective 5/6/2019\par
+\cf0\fs17\par
+\cf1\b\par
+1/9/2015 3:32 PM [rmorgan]\par
+\cf2\b0\fs16 Changed AM From RT to SN per CT\par
+\cf0\fs17\par
+\cf1\b\par
+2/21/2014 7:18 PM [sjohnson]\par
+\cf0\b0 Transfer AE from RPM to CT per RPM&apos;s request effective 11/1/2013.\par
+\par
+}
+</RichText>
+<Deleted>False</Deleted><RealAppName>Practice CS</RealAppName><History>
+<HistoryItem>
+<User>lhall</User>
+<Action>Edited</Action>
+<Date>2019-05-06 15:42:51Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>WIN7-10-003</Machine>
+</HistoryItem>
+<HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2015-08-20 17:00:04Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>CN-CITRIX-13</Machine></HistoryItem><HistoryItem><User>rmorgan</User><Action>Edited</Action><Date>2015-01-09 22:32:06Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>CN-CITRIX-7</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2014-03-15 17:58:57Z</Date><AppName>Practice CS</AppName><Machine>I-SJOHNSON</Machine><RealAppName>Practice CS</RealAppName></HistoryItem><HistoryItem><User>sjohnson</User><Action>Created</Action><Date>2014-02-22 02:18:28Z</Date><AppName>Practice CS</AppName><Machine>I-SJOHNSON</Machine><RealAppName>Practice CS</RealAppName></HistoryItem></History>
+</ClientNote>
+<ClientNote>
+<AppName>FileCabinet CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>FileCabinet CS</RealAppName><History></History></ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>UltraTax CS</RealAppName><History></History></ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>Fixed Assets CS</RealAppName><History></History></ClientNote>
+</ClientNotes>",,18,lclark@yahoo.com,14493,140,45325.66418,2023,False
+8,119,39481843500,39481843500                              `,UrbanTrend Retailers,1,Client,Dimitri & Avery Davidson LLC.,,44-8617620,Dimitri,Davidson,,Avery,Davidson,,1,Active,2,1,1120,70,3321MC,94,4081OL,49,4928AB,990000,12,42326,,,8,True,1,True,False,0,False,0,10,Crystal Lake,WA,83190,Crystal Lake,WA,83190,15,,42480,1500,1880,1,3,,,,SeedlingSuccess Agritech,42326,1,,,34632923107,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Date>2016-03-25 16:27:25Z</Date>
+<User>cbrown</User>
+<RichText>{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}}
+\viewkind4\uc1\pard\b\f0\fs17 Mailing Address per client-- CB\par
+\b0 PO Box 908\par
+Big Piney, WY 83113\par
+}
+</RichText>
+<History>
+<HistoryItem>
+<User>cbrown</User>
+<Action>Created</Action>
+<Date>2016-03-25 16:27:25Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>CN-CITRIX4-HD</Machine>
+</HistoryItem>
+</History>
+<Deleted>False</Deleted>
+</ClientNote>
+<ClientNote>
+<AppName>FileCabinet CS</AppName>
+<RealAppName>FileCabinet CS</RealAppName>
+<Date>0001-01-01 00:00:00Z</Date>
+<User>
+</User>
+<RichText>
+</RichText>
+<History>
+</History>
+<Deleted>False</Deleted>
+</ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName>
+<RealAppName>UltraTax CS</RealAppName>
+<Date>0001-01-01 00:00:00Z</Date>
+<User>
+</User>
+<RichText>
+</RichText>
+<History>
+</History>
+<Deleted>False</Deleted>
+</ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName>
+<RealAppName>Fixed Assets CS</RealAppName>
+<Date>0001-01-01 00:00:00Z</Date>
+<User>
+</User>
+<RichText>
+</RichText>
+<History>
+</History>
+<Deleted>False</Deleted>
+</ClientNote>
+</ClientNotes>",,10,mnicholson@gmail.com,28522,26,45346.93836,2023,False
+9,61,40459066500,40459066500                              `,FreshFinds Marketplace,1,Client,FreshFinds Marketplace,,97-5575820,,,,,,,1,Active,3,2,1065,71,4193AB,137,2947MB,49,4928AB,531210,12,42682,,,9,True,1,True,False,0,False,0,11,Pacifica Bluffs,OR,83420,Pacifica Bluffs,OR,83420,15,,,1500,1880,1,10,,,,SummitStone Financial,42682,1,,,15444080901,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Date>2022-12-19 16:51:37Z</Date>
+<User>kgivens</User>
+<RichText>{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}{\f1\froman\fprq2\fcharset0 Times New Roman;}}
+{\colortbl ;\red0\green0\blue128;\red0\green0\blue0;\red0\green0\blue255;}
+\viewkind4\uc1\pard\cf1\b\f0\fs17 12/19/2022 9:51 AM [kgivens]\par
+\cf2\b0\fs16 Transfered AM from Matthew Thurber to Braxton cook per Cstein, Effective 07/01/22\par
+\cf0\fs17\par
+\cf1\b 1/31/2022 8:47 AM [mmcneal]\par
+\cf2\b0\fs16 Transfer to subsidiary of Speedy CPS instead of Rock yMountain CPS per CStein.\par
+\cf0\fs17\par
+\cf1\b 2/15/2021 4:25 PM [scox]\par
+\cf2\b0\fs16 Old Address: \par
+989 WEST 170 SOUTH\par
+OREM, UT 84058\par
+\par
+\cf0\fs17\par
+\cf1\b 1/9/2021 4:53 PM [sjohnson]\par
+\cf2\b0\fs16 Transfer AM from TB to MT per CJS&apos; request, effective 7/1/2020\par
+\cf0\fs17\par
+\cf1\b 8/28/2019 4:19 PM [sjohnson]\par
+\cf0\b0 Transfer AE from BJ to CJS per CJS request, effective 7/1/2019.\par
+Transfer AM from CJS to TB per CJS request, effective 7/1/2019.\cf2\fs16\par
+\cf0\fs17\par
+\cf1\b 11/8/2016 9:12 AM [smurdock]\par
+\cf0\f1\fs24 Etsuko Davis\b0  &lt;\cf3\ul etdavis2003@yahoo.com &lt;mailto:etdavis2003@yahoo.com&gt;\cf0\ulnone &gt;\line\f0\fs17\par
+\par
+}
+</RichText>
+<Deleted>False</Deleted><History>
+<HistoryItem>
+<User>kgivens</User>
+<Action>Edited</Action>
+<Date>2022-12-19 16:51:37Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>APRIL2021-05</Machine>
+</HistoryItem>
+<HistoryItem><User>mmcneal</User><Action>Edited</Action><Date>2022-01-31 15:47:36Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>VMWARE8-017</Machine></HistoryItem><HistoryItem><User>scox</User><Action>Edited</Action><Date>2021-02-15 23:25:21Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN9-FS-012</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2021-01-09 23:53:56Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN9-FS-012</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2019-08-28 22:19:04Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN-10-021</Machine></HistoryItem><HistoryItem><User>smurdock</User><Action>Created</Action><Date>2016-11-08 16:12:59Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>CN-CITRIX1-HD</Machine></HistoryItem></History>
+</ClientNote>
+<ClientNote>
+<AppName>FileCabinet CS</AppName><RealAppName>FileCabinet CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName><RealAppName>UltraTax CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName><RealAppName>Fixed Assets CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+</ClientNotes>",,11,roneill@gmail.com,30942,28,45365.09965,2023,False
+10,61,32626342500,32626342500                              `,SummitStone Financial,1,Client,SummitStone Financial,,21-5034537,,,,,,,1,Active,1,1,1120,84,4380LH,87,2505CC,6,4874HP,990000,12,42453,,,3,True,1,True,False,0,False,0,19,Riverwood,ID,83020,Riverwood,ID,83020,15,,43697,1500,1880,,,,,,,,1,,,79053134948,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Date>2019-05-06 16:13:59Z</Date>
+<User>lhall</User>
+<RichText>{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}}
+{\colortbl ;\red0\green0\blue128;\red0\green0\blue0;}
+\viewkind4\uc1\pard\cf1\b\f0\fs17 5/6/2019 10:13 AM [lhall]\par
+\cf2\b0\fs16 Transfer AE from CT to SN per CT&apos;s request effective 5/6/2019\cf0\fs17\par
+\pard\fs17\par
+}
+</RichText>
+<Deleted>False</Deleted>
+<History>
+<HistoryItem>
+<User>lhall</User>
+<Action>Created</Action>
+<Date>2019-05-06 16:13:59Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>WIN7-10-003</Machine>
+</HistoryItem>
+</History>
+</ClientNote>
+<ClientNote>
+<AppName>FileCabinet CS</AppName>
+<RealAppName>FileCabinet CS</RealAppName>
+<Date>0001-01-01 00:00:00Z</Date>
+<User>
+</User>
+<RichText>
+</RichText>
+<History>
+</History>
+<Deleted>False</Deleted>
+</ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName>
+<RealAppName>UltraTax CS</RealAppName>
+<Date>0001-01-01 00:00:00Z</Date>
+<User>
+</User>
+<RichText>
+</RichText>
+<History>
+</History>
+<Deleted>False</Deleted>
+</ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName>
+<RealAppName>Fixed Assets CS</RealAppName>
+<Date>0001-01-01 00:00:00Z</Date>
+<User>
+</User>
+<RichText>
+</RichText>
+<History>
+</History>
+<Deleted>False</Deleted>
+</ClientNote>
+</ClientNotes>",,19,staylor@gmail.com,29653,32,45323.69329,2023,False
+11,46,37285951500,37285951500                              `,TrustTide Banking,1,Client,TrustTide Banking,,57-8448708,,,,,,,1,Active,2,1,1120,70,3321MC,94,4081OL,49,4928AB,990000,12,42270,,,8,True,1,True,False,0,False,0,13,Crystal Lake,WA,83190,Crystal Lake,WA,83190,15,,,1500,1880,1,7,,,,HarvestHive AgriBusiness,,1,,,21650529191,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Date>2015-09-30 15:43:12Z</Date>
+<User>smackes</User>
+<RichText>{\rtf1\fbidis\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}{\f1\fscript\fprq2\fcharset0 Comic Sans MS;}}
+{\colortbl ;\red0\green0\blue128;\red19\green79\blue92;}
+\viewkind4\uc1\pard\ltrpar\cf1\b\f0\fs17 9/30/2015 9:43 AM [smackes]\par
+\cf2\b0\f1\fs24 Susie,\par
+Thanks for making contact.  My mailing address is PO Box 908, Big Piney, WY 83113 for USPS mail.  All other mail would need to be sent to the physical address of 231 South Mickelson Street, Big Piney, WY 83113.\par
+\par
+Blue Wing Consulting LLC&apos;s EIN is 47-2362012.  \par
+\par
+As for the tax return for 2014, do you need the entire thing? It is a bit of a book...just want to make sure before I clog your inbox.\par
+Thanks\par
+Aimee\par
+\cf0\f0\fs17\par
+\pard\ltrpar\fs17\par
+}
+</RichText>
+<Deleted>False</Deleted>
+<History>
+<HistoryItem>
+<User>smackes</User>
+<Action>Created</Action>
+<Date>2015-09-30 15:43:12Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>CN-CITRIX-14</Machine>
+</HistoryItem>
+</History>
+</ClientNote>
+<ClientNote>
+<AppName>FileCabinet CS</AppName>
+<RealAppName>FileCabinet CS</RealAppName>
+<Date>0001-01-01 00:00:00Z</Date>
+<User>
+</User>
+<RichText>
+</RichText>
+<History>
+</History>
+<Deleted>False</Deleted>
+</ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName>
+<RealAppName>UltraTax CS</RealAppName>
+<Date>0001-01-01 00:00:00Z</Date>
+<User>
+</User>
+<RichText>
+</RichText>
+<History>
+</History>
+<Deleted>False</Deleted>
+</ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName>
+<RealAppName>Fixed Assets CS</RealAppName>
+<Date>0001-01-01 00:00:00Z</Date>
+<User>
+</User>
+<RichText>
+</RichText>
+<History>
+</History>
+<Deleted>False</Deleted>
+</ClientNote>
+</ClientNotes>",,13,igentry@yahoo.com,28137,141,45320.92933,2023,False
+12,100,25103704500,25103704500                              `,ProsperPath Investments,1,Client,ProsperPath Investments,,47-8479658,,,,,,,1,Active,1,1,1120,84,4380LH,87,2505CC,6,4874HP,990000,12,43138,,,2,True,1,False,False,0,False,0,388,Mount Vista,ID,83310,Mount Vista,ID,83310,15,,45056,1500,1880,1,11,,,,TrustTide Banking,43138,1,,,46673848645,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName><Date>2020-02-17 23:36:06Z</Date>
+<User>smurdock</User><RichText>{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}}
+{\colortbl ;\red0\green0\blue128;}
+\viewkind4\uc1\pard\cf1\b\f0\fs17 2/17/2020 4:36 PM [smurdock]\par
+\cf0\b0 Business start date: February 2018.\par
+\pard\fs17\par
+}
+</RichText>
+<Deleted>False</Deleted><RealAppName>Practice CS</RealAppName><History>
+<HistoryItem>
+<User>smurdock</User>
+<Action>Edited</Action>
+<Date>2020-02-17 23:36:06Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>XEN4-C-011</Machine>
+</HistoryItem>
+<HistoryItem><User>smurdock</User><Action>Edited</Action><Date>2020-02-17 23:30:49Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN4-C-011</Machine></HistoryItem><HistoryItem><User>smurdock</User><Action>Edited</Action><Date>2020-02-17 23:17:23Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN4-C-011</Machine></HistoryItem><HistoryItem><User>lhall</User><Action>Edited</Action><Date>2019-05-06 15:45:49Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>WIN7-10-003</Machine></HistoryItem><HistoryItem><User>rmorgan</User><Action>Edited</Action><Date>2015-01-09 22:46:36Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>CN-CITRIX-7</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Created</Action><Date>2014-02-22 02:23:21Z</Date><AppName>Practice CS</AppName><Machine>I-SJOHNSON</Machine><RealAppName>Practice CS</RealAppName></HistoryItem></History>
+</ClientNote>
+<ClientNote>
+<AppName>FileCabinet CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>FileCabinet CS</RealAppName><History></History></ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>UltraTax CS</RealAppName><History></History></ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>Fixed Assets CS</RealAppName><History></History></ClientNote>
+</ClientNotes>",,388,,34783,131,45370.57796,2023,False
+13,108,28361139000,28361139000                              `,PrimePulse Accountancy,1,Client,Lance & Martha Norman Ventures,,40-9366319,Lance,Norman,,Martha,Norman,,1,Active,1,2,1065,71,4193AB,137,2947MB,6,4874HP,531210,12,41261,,,9,True,1,False,False,0,False,0,387,Frostpeak,ID,84750,Frostpeak,ID,84750,15,,,1500,1880,,,,,,,,,,,44612431452,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName><Date>2022-12-19 16:51:14Z</Date>
+<User>kgivens</User>
+<RichText>{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}}
+{\colortbl ;\red0\green0\blue128;\red0\green0\blue0;}
+\viewkind4\uc1\pard\cf1\b\f0\fs17 12/19/2022 9:51 AM [kgivens]\par
+\cf2\b0\fs16 Transfered AM from Matthew Thurber to Braxton cook per Cstein, Effective 07/01/22\par
+\cf0\fs17\par
+\cf1\b 1/9/2021 4:54 PM [sjohnson]\par
+\cf2\b0\fs16 Transfer AM from TB to MT per CJS&apos; request, effective 7/1/2020\par
+\cf0\fs17\par
+\cf1\b 8/28/2019 4:18 PM [sjohnson]\par
+\cf0\b0 Transfer AE from BJ to CJS per CJS request, effective 7/1/2019.\par
+Transfer AM from CJS to TB per CJS request, effective 7/1/2019.\cf2\fs16\par
+\cf0\fs17\par
+\cf1\b 7/24/2019 3:04 PM [lhall]\par
+\cf0\b0 Mailed RTC to 3864 E 380 N, Rigby, ID 83442\cf2\fs16\par
+\cf0\fs17\par
+\cf1\b 6/5/2018 12:01 PM [lhall]\par
+\cf2\b0\fs16 Left VM that RTC is ready to be picked up.\par
+\cf0\fs17\par
+\cf1\b\par
+2/15/2014 11:12 PM [sjohnson]\par
+\cf0\b0 Transfer AM from RPM to CJS per BJ&apos;s request\fs16\par
+\fs17\par
+}
+</RichText>
+<Deleted>False</Deleted><RealAppName>Practice CS</RealAppName><History>
+<HistoryItem>
+<User>kgivens</User>
+<Action>Edited</Action>
+<Date>2022-12-19 16:51:14Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>APRIL2021-05</Machine>
+</HistoryItem>
+<HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2021-01-09 23:54:08Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN9-FS-012</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2019-08-28 22:18:50Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN-10-021</Machine></HistoryItem><HistoryItem><User>lhall</User><Action>Edited</Action><Date>2019-07-24 21:04:29Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>WIN7-4-001</Machine></HistoryItem><HistoryItem><User>lhall</User><Action>Edited</Action><Date>2018-06-05 18:01:26Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>WIN7-1-011</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2015-08-28 19:45:33Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>CN-CITRIX-9</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2014-03-01 20:57:55Z</Date><AppName>Practice CS</AppName><Machine>I-SJOHNSON</Machine><RealAppName>Practice CS</RealAppName></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2014-02-16 06:12:37Z</Date><AppName>Practice CS</AppName><Machine>I-SJOHNSON</Machine><RealAppName>Practice CS</RealAppName></HistoryItem><HistoryItem><User>sjohnson</User><Action>Created</Action><Date>2014-02-16 06:12:15Z</Date><AppName>Practice CS</AppName><Machine>I-SJOHNSON</Machine><RealAppName>Practice CS</RealAppName></HistoryItem></History>
+</ClientNote>
+<ClientNote>
+<AppName>FileCabinet CS</AppName><RealAppName>FileCabinet CS</RealAppName><Date>2015-01-06 20:21:06Z</Date><User></User><RichText></RichText><Deleted>True</Deleted><History></History></ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>UltraTax CS</RealAppName><History></History></ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>Fixed Assets CS</RealAppName><History></History></ClientNote>
+</ClientNotes>",,387,,16424,44,45252.00922,2023,False
+14,140,29405385000,29405385000                              `,VistaVogue Outlets,1,Client,Mark Larson LLC.,,44-4476849,Mark,Larson,,,,,1,Active,1,2,1065,87,2505CC,136,4219LH,46,4016HL,531210,12,42970,,,14,True,1,True,False,0,False,0,384,Frostpeak,ID,84750,Frostpeak,ID,84750,15,,,1500,1880,2,,,,16,"Johnston, Ruben",42970,1,,,36546754138,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Date>2023-10-05 15:45:44Z</Date>
+<User>vponce</User>
+<RichText>{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}{\f1\fnil Microsoft Sans Serif;}{\f2\fswiss\fprq2\fcharset0 Calibri;}}
+{\colortbl ;\red0\green128\blue0;\red0\green0\blue128;\red0\green0\blue0;\red5\green99\blue193;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\cf1\b\f0\fs17 10/5/2023 9:45 AM [vponce]\cf2\f1\fs17\par
+\cf3\b0\f0\fs16 client was not suppose to be impounded since July 2023 had credit of $1,491.40. apply to monthly ACH .\par
+\cf0\f1\fs17\par
+\cf2\b 3/23/2023 1:39 PM [smartin]\par
+\cf3\b0\f0\fs16 Old Address\par
+33 WINN DRIVE STE 2, REXBURG, ID 83440\par
+\cf0\f1\fs17\par
+\cf2\b\f0\tab 11/7/2022 12:53 PM [scox]\par
+\cf3\b0\fs16 Transferred AE from Daniel Packard to Hollie Diehl and AM from Holli Diehl to Isabella Tower, effective 07/01/2022.\par
+\cf0\fs17\par
+\cf2\b 10/17/2022 4:18 PM [aslutz]\par
+\cf3\b0\fs16 Radiant Dental is supposed to be paid separately by Sky Sessions. The pull from Apple Tree should be $1,050. ($900 for Apple Tree Dental and $150 for Michael A Larsen). Radiant Dental is still $150, but this should be pulled from a separate account per RH/CM.\par
+\par
+Apple Tree will only be billed $450 for November 2022 with the credit.\par
+Radiant Dental currently owe&apos;s $1,150\par
+\cf0\fs17\par
+Previous payments pulled for Radiant Dental that were billed through Apple Tree Dental and cannot be applied to Radiant Dental. $600 is moved over to Apple Tree due to pulling from the wrong accounts for July, August, Sept, and Oct. of 2022.\par
+\par
+\cf2\b 9/2/2022 2:43 PM [kgivens]\par
+\cf0\b0\f2\fs22 The total monthly fee is $1,200, There are some credits on these accounts so she is only going to pull $950 this month. \par
+APPLE TREE DENTAL- CREDIT OF $150 , INV IS $900, APPLY $750 OF ACH \par
+RADIANT DENTAL- NO CREDIT, MONTHLY INV IS $150, APPLY $150 OF ACH\par
+MICHAEL A LARSEN - CREDIT OF $100, INV IS $150, APPLY $50 OF  ACH\par
+\f0\fs17\par
+\cf2\b 5/13/2022 11:35 AM [kgivens]\par
+\cf3\b0\fs16 client said he sent check 2 days go if check comes in shred/ void check per Chantelle, she already charged card. \par
+\cf0\fs17\par
+\cf2\b 1/31/2022 10:11 AM [sjohnson]\par
+\cf3\b0\fs16 Transfer AM from TateR to HolliD per Tate&apos;s request, effective 7/1/2021.\par
+(actual Transfer is from BenR to Hollid effective 7/1/2021.)\par
+\cf0\fs17\par
+\cf2\b 12/30/2021 1:20 PM [cstobie]\par
+\cf3\b0\fs16 Transfer AM from BRichards to TateRammell, per BRichards, effective 07/01/2021.\par
+\cf0\fs17\par
+\cf2\b 11/10/2021 11:29 AM [sjohnson]\par
+\cf3\b0\fs16 Transfer AE from BenR to DanP per Ben&apos;s request, effective 7/1/2021.\par
+\cf0\fs17\par
+\cf2\b 7/19/2021 8:34 AM [aslutz]\par
+\cf3\b0\fs16 Automatic credit card monthly payments from Chantelle; Also in Billing and A/R notes\par
+\par
+Make sure Chantelle gets e-mailed the invoices as well.\par
+\cf0\fs17\par
+\cf2\b 2/1/2021 4:07 PM [scox]\par
+\cf3\b0\fs16 Old email address: rexburgappletreedental@live.com\par
+New email address: \cf4\ul\f2\fs22 mikelarsendds@gmail.com &lt;{\cf0\ulnone{\field{\*\fldinst{HYPERLINK ""mailto:mikelarsendds@gmail.com""}}{\fldrslt{mailto:mikelarsendds@gmail.com\ul0\cf0}}}}\f2\fs22 &gt;\cf0\ulnone\par
+\cf3\f0\fs16\par
+\cf0\fs17\par
+\cf2\b 9/26/2018 3:37 PM [sjohnson]\par
+\cf0\b0 Transfer AE from DP to BR per DP&apos;s request, effective 7/1/2018.\par
+\par
+}
+</RichText>
+<Deleted>False</Deleted><History>
+<HistoryItem>
+<User>vponce</User>
+<Action>Edited</Action>
+<Date>2023-10-05 15:45:44Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>DECEMBER2020-10</Machine>
+</HistoryItem>
+<HistoryItem><User>smartin</User><Action>Edited</Action><Date>2023-03-23 19:39:41Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>DESKTOP-UJLGS35</Machine></HistoryItem><HistoryItem><User></User><Action>Edited</Action><Date>2022-11-23 16:27:11Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>DECEMBER2020-10</Machine></HistoryItem><HistoryItem><User>scox</User><Action>Edited</Action><Date>2022-11-07 19:53:47Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>DESKTOP-KUJPP7O</Machine></HistoryItem><HistoryItem><User>aslutz</User><Action>Edited</Action><Date>2022-10-17 22:42:35Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>JULY2019-001</Machine></HistoryItem><HistoryItem><User>aslutz</User><Action>Edited</Action><Date>2022-10-17 22:38:45Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>JULY2019-001</Machine></HistoryItem><HistoryItem><User>aslutz</User><Action>Edited</Action><Date>2022-10-17 22:38:32Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>JULY2019-001</Machine></HistoryItem><HistoryItem><User>aslutz</User><Action>Edited</Action><Date>2022-10-17 22:18:46Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>JULY2019-001</Machine></HistoryItem><HistoryItem><User>kgivens</User><Action>Edited</Action><Date>2022-09-02 20:43:34Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>APRIL2021-05</Machine></HistoryItem><HistoryItem><User>kgivens</User><Action>Edited</Action><Date>2022-05-13 17:35:11Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>APRIL2021-05</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2022-01-31 17:11:32Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>VMWARE9-016</Machine></HistoryItem><HistoryItem><User>cstobie</User><Action>Edited</Action><Date>2021-12-30 20:20:43Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>VMWARE4-004</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2021-11-10 18:29:30Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>VMWARE9-002</Machine></HistoryItem><HistoryItem><User>aslutz</User><Action>Edited</Action><Date>2021-07-19 15:49:39Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>JULY2019-001</Machine></HistoryItem><HistoryItem><User>aslutz</User><Action>Edited</Action><Date>2021-07-19 14:34:47Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>JULY2019-001</Machine></HistoryItem><HistoryItem><User>scox</User><Action>Edited</Action><Date>2021-02-01 23:07:36Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN2-FS-023</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2019-12-03 20:10:15Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN-3-007</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Created</Action><Date>2018-09-26 21:37:19Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>WIN7-4-005</Machine></HistoryItem></History>
+</ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName><RealAppName>UltraTax CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName><RealAppName>Fixed Assets CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+<ClientNote>
+<AppName>FileCabinet CS</AppName><RealAppName>FileCabinet CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+</ClientNotes>",,384,,33382,47,45358.76061,2023,False
+15,120,22633971000,22633971000                              `,EcoYield Solutions,1,Client,EcoYield Solutions,,76-4384409,,,,,,,1,Active,1,1,1120,87,2505CC,136,4219LH,46,4016HL,990000,12,43822,,,14,True,1,True,False,0,False,0,2,Frostpeak,ID,84750,Frostpeak,ID,84750,15,,,1500,1880,2,,,,32,"Baker, Lennon",43822,1,,,62559708098,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Date>2022-11-07 19:57:55Z</Date>
+<User>scox</User>
+<RichText>{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}}
+{\colortbl ;\red0\green0\blue128;\red0\green0\blue0;}
+\viewkind4\uc1\pard\cf1\b\f0\fs17 11/7/2022 12:57 PM [scox]\par
+\cf2\b0\fs16 Transferred AE from Daniel Packard to Hollie Diehl and AM from Holli Diehl to Isabella Tower, effective 07/01/2022.\par
+\cf0\fs17\par
+\cf1\b 1/31/2022 10:12 AM [sjohnson]\par
+\cf2\b0\fs16 Transfer AM from TateR to HolliD per Tate&apos;s request, effective 7/1/2021.\par
+(actual Transfer is from BenR to Hollid effective 7/1/2021.)\par
+\cf0\fs17\par
+\cf1\b 12/30/2021 1:20 PM [cstobie]\par
+\cf2\b0\fs16 Transfer AM from BRichards to TateRammell, per BRichards, effective 07/01/2021.\par
+\cf0\fs17\par
+\cf1\b 11/10/2021 11:29 AM [sjohnson]\par
+\cf2\b0\fs16 Transfer AE from BenR to DanP per Ben&apos;s request, effective 7/1/2021.\par
+\cf0\fs17\par
+\cf1\b 12/23/2019 11:36 AM [smurdock]\par
+\cf2\b0\fs16 Business start date: 05/23/2016\par
+\cf0\fs17\par
+\par
+\cf1\b 9/26/2018 3:37 PM [sjohnson]\par
+\cf0\b0 Transfer AE from DP to BR per DP&apos;s request, effective 7/1/2018.\par
+\par
+}
+</RichText>
+<Deleted>False</Deleted><History>
+<HistoryItem>
+<User>scox</User>
+<Action>Edited</Action>
+<Date>2022-11-07 19:57:55Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>DESKTOP-KUJPP7O</Machine>
+</HistoryItem>
+<HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2022-01-31 17:12:44Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>VMWARE9-016</Machine></HistoryItem><HistoryItem><User>cstobie</User><Action>Edited</Action><Date>2021-12-30 20:20:20Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>VMWARE4-004</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2021-11-10 18:29:15Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>VMWARE9-002</Machine></HistoryItem><HistoryItem><User>smurdock</User><Action>Edited</Action><Date>2019-12-23 18:36:50Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN-3-006</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2019-12-03 20:10:15Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN-3-007</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Created</Action><Date>2018-09-26 21:37:19Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>WIN7-4-005</Machine></HistoryItem></History>
+</ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName><RealAppName>UltraTax CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName><RealAppName>Fixed Assets CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+<ClientNote>
+<AppName>FileCabinet CS</AppName><RealAppName>FileCabinet CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+</ClientNotes>",,2,dlamb@msn.com,40077,42,45313.60862,2023,False
+16,102,21747927000,21747927000                              `,ClearCut Calculations,1,Client,ClearCut Calculations,,97-1841525,,,,,,,1,Active,1,2,1065,73,4831LC,84,4380LH,46,4016HL,531210,12,43838,,,16,True,1,True,False,0,False,0,9,Emerald Meadows,ID,84070,Emerald Meadows,ID,84070,15,,44362,1500,1880,1,3,,,,SeedlingSuccess Agritech,43833,1,,,40863918776,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Date>2020-01-10 21:39:50Z</Date>
+<User>lhall</User>
+<RichText>{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}}
+{\colortbl ;\red0\green0\blue128;}
+\viewkind4\uc1\pard\cf1\b\f0\fs17 1/10/2020 2:39 PM [lhall]\par
+\cf0\b0 Business start date- 9/1/2017\par
+\pard\fs17\par
+}
+</RichText>
+<History>
+<HistoryItem>
+<User>lhall</User>
+<Action>Created</Action>
+<Date>2020-01-10 21:39:50Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>XEN8-10C-006</Machine>
+</HistoryItem>
+</History>
+<Deleted>False</Deleted>
+</ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName>
+<RealAppName>UltraTax CS</RealAppName>
+<Date>0001-01-01 00:00:00Z</Date>
+<User>
+</User>
+<RichText>
+</RichText>
+<History>
+</History>
+<Deleted>False</Deleted>
+</ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName>
+<RealAppName>Fixed Assets CS</RealAppName>
+<Date>0001-01-01 00:00:00Z</Date>
+<User>
+</User>
+<RichText>
+</RichText>
+<History>
+</History>
+<Deleted>False</Deleted>
+</ClientNote>
+</ClientNotes>",,9,acraig@yahoo.com,40212,59,45318.01707,2023,False
+17,118,20971824000,20971824000                              `,FarmForward Innovations,1,Client,FarmForward Innovations,,19-8171357,,,,,,,1,Active,1,2,1065,73,4831LC,84,4380LH,46,4016HL,531210,12,43838,,,16,True,1,True,False,0,False,0,8,Emerald Meadows,ID,84070,Emerald Meadows,ID,84070,15,,44816,1500,1880,1,7,,,,HarvestHive AgriBusiness,43833,1,,,95174310288,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Date>2022-08-11 21:17:03Z</Date>
+<User>kgivens</User>
+<RichText>{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}}
+{\colortbl ;\red0\green0\blue128;\red0\green0\blue0;}
+\viewkind4\uc1\pard\cf1\b\f0\fs17 8/11/2022 3:17 PM [kgivens]\par
+\cf2\b0\fs16 send client email on 90+ past due balance \par
+\par
+\cf0\fs17\par
+\cf1\b 1/10/2020 2:33 PM [lhall]\par
+\cf0\b0 Business start date- 9/1/2017\par
+\par
+}
+</RichText>
+<Deleted>False</Deleted><History>
+<HistoryItem>
+<User>kgivens</User>
+<Action>Edited</Action>
+<Date>2022-08-11 21:17:03Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>XEN9-010</Machine>
+</HistoryItem>
+<HistoryItem><User>lhall</User><Action>Created</Action><Date>2020-01-10 21:33:59Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN8-10C-006</Machine></HistoryItem></History>
+</ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName><RealAppName>UltraTax CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName><RealAppName>Fixed Assets CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+<ClientNote>
+<AppName>FileCabinet CS</AppName><RealAppName>FileCabinet CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+</ClientNotes>",,8,eriley@yahoo.com,40214,106,45330.68885,2023,False
+18,73,23344078500,23344078500                              `,BeaconBridge Banking,1,Client,BeaconBridge Banking,,33-7653175,,,,,,,1,Active,1,1,1120,84,4380LH,87,2505CC,89,2960JO,990000,12,43878,,,2,True,1,True,False,0,False,0,3,Mount Vista,ID,83310,Mount Vista,ID,83310,15,,,1500,1880,1,10,,,,SummitStone Financial,43878,1,,,85284463064,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Date>2020-02-17 22:27:05Z</Date>
+<User>smurdock</User>
+<RichText>{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}}
+{\colortbl ;\red0\green0\blue128;}
+\viewkind4\uc1\pard\cf1\b\f0\fs17 2/17/2020 3:27 PM [smurdock]\par
+\cf0\b0 March 1997\tab\tab\tab\tab\tab\par
+\pard\fs17\par
+}
+</RichText>
+<History>
+<HistoryItem>
+<User>smurdock</User>
+<Action>Created</Action>
+<Date>2020-02-17 22:27:05Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>XEN4-C-011</Machine>
+</HistoryItem>
+</History>
+<Deleted>False</Deleted>
+</ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName>
+<RealAppName>UltraTax CS</RealAppName>
+<Date>0001-01-01 00:00:00Z</Date>
+<User>
+</User>
+<RichText>
+</RichText>
+<History>
+</History>
+<Deleted>False</Deleted>
+</ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName>
+<RealAppName>Fixed Assets CS</RealAppName>
+<Date>0001-01-01 00:00:00Z</Date>
+<User>
+</User>
+<RichText>
+</RichText>
+<History>
+</History>
+<Deleted>False</Deleted>
+</ClientNote>
+</ClientNotes>",,3,amurphy@hotmail.com,40785,17,45325.71061,2023,False
+19,61,26265427500,26265427500                              `,BrightHorizon Enterprises,1,Client,BrightHorizon Enterprises,,56-1005500,,,,,,,1,Active,1,1,1120,84,4380LH,87,2505CC,89,2960JO,990000,12,43878,,,2,True,1,True,False,0,False,0,4,Mount Vista,ID,83310,Mount Vista,ID,83310,15,,,1500,1880,1,4,,,,WealthWave Advisors,43878,1,,,10993768564,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Date>2020-02-17 23:11:49Z</Date>
+<User>smurdock</User>
+<RichText>{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}}
+{\colortbl ;\red0\green0\blue128;}
+\viewkind4\uc1\pard\cf1\b\f0\fs17 2/17/2020 4:11 PM [smurdock]\par
+\cf0\b0 Business start date: February 1987\tab\par
+\pard\fs17\par
+}
+</RichText>
+<History>
+<HistoryItem>
+<User>smurdock</User>
+<Action>Created</Action>
+<Date>2020-02-17 23:11:49Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>XEN4-C-011</Machine>
+</HistoryItem>
+</History>
+<Deleted>False</Deleted>
+</ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName>
+<RealAppName>UltraTax CS</RealAppName>
+<Date>0001-01-01 00:00:00Z</Date>
+<User>
+</User>
+<RichText>
+</RichText>
+<History>
+</History>
+<Deleted>False</Deleted>
+</ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName>
+<RealAppName>Fixed Assets CS</RealAppName>
+<Date>0001-01-01 00:00:00Z</Date>
+<User>
+</User>
+<RichText>
+</RichText>
+<History>
+</History>
+<Deleted>False</Deleted>
+</ClientNote>
+</ClientNotes>",,4,crichards@msn.com,40786,65,45325.72637,2023,False
+20,61,23346687000,23346687000                              `,GreenSprout Ventures,1,Client,David & Shaylee Beck Ventures,,29-8214262,David,Beck,30334,Shaylee,Beck,33105,1,Active,3,3,1065F,71,4193AB,137,2947MB,90,4125CG,621210,12,43878,,,9,True,1,False,False,0,False,0,14,Pacifica Bluffs,OR,83420,Pacifica Bluffs,OR,83420,15,,,1500,1880,1,3,,,,SeedlingSuccess Agritech,43878,1,,,84721204552,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Date>2022-12-19 16:51:50Z</Date>
+<User>kgivens</User>
+<RichText>{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}{\f1\fnil Arial;}}
+{\colortbl ;\red0\green0\blue128;\red0\green0\blue0;}
+\viewkind4\uc1\pard\cf1\b\f0\fs17 12/19/2022 9:51 AM [kgivens]\par
+\cf2\b0\fs16 Transfered AM from Matthew Thurber to Braxton cook per Cstein, Effective 07/01/22\par
+\cf0\fs17\par
+\cf1\b 1/9/2021 4:53 PM [sjohnson]\par
+\cf2\b0\fs16 Transfer AM from TB to MT per CJS&apos; request, effective 7/1/2020.\par
+\cf0\fs17\par
+\cf1\b 2/17/2020 6:04 PM [smurdock]\par
+\trowd\trgaph30\trleft-30\cellx2293\cellx4465\cellx6368\pard\intbl\cf2\b0\f1\fs24 Children (Names/SSN/DOB):\cell\cell\cell\row
+\intbl BAYLEE BAKER\cell 208-83-0111\cell 4/23/2014\cell\row
+\intbl ARCHER BAKER\cell 825-16-8053\cell 11/6/2016\cell\row
+\intbl RHETT BAKER\cell 283-69-5061\cell 7/3/2019\cell\row
+\pard\cf0\f0\fs17\par
+\par
+}
+</RichText>
+<Deleted>False</Deleted><History>
+<HistoryItem>
+<User>kgivens</User>
+<Action>Edited</Action>
+<Date>2022-12-19 16:51:50Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>APRIL2021-05</Machine>
+</HistoryItem>
+<HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2021-01-09 23:53:11Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN9-FS-012</Machine></HistoryItem><HistoryItem><User>smurdock</User><Action>Created</Action><Date>2020-02-18 01:04:09Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN4-C-011</Machine></HistoryItem></History>
+</ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName><RealAppName>UltraTax CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName><RealAppName>Fixed Assets CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+<ClientNote>
+<AppName>FileCabinet CS</AppName><RealAppName>FileCabinet CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+</ClientNotes>",,14,olowe@msn.com,40802,62,45322.94757,2023,False
+21,70,30804892500,30804892500                              `,InsightfulAccounts,1,Client,InsightfulAccounts,,30-3275472,,,,,,,1,Active,3,1,1120,71,4193AB,137,2947MB,49,4928AB,990000,12,43082,,,9,True,1,True,False,0,False,0,12,,,,,,0,15,,,1500,1880,1,10,,,,SummitStone Financial,43081,1,,,85247220540,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Date>2022-12-19 16:51:30Z</Date>
+<User>kgivens</User>
+<RichText>{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}{\f1\froman\fprq2\fcharset0 Times New Roman;}}
+{\colortbl ;\red0\green0\blue128;\red0\green0\blue0;\red0\green0\blue255;}
+\viewkind4\uc1\pard\cf1\b\f0\fs17 12/19/2022 9:51 AM [kgivens]\par
+\cf2\b0\fs16 Transfered AM from Matthew Thurber to Braxton cook per Cstein, Effective 07/01/22\par
+\cf0\fs17\par
+\cf1\b 1/31/2022 8:46 AM [mmcneal]\par
+\cf2\b0\fs16 Transfer to subsidiary of Speedy CPS instead of Rock yMountain CPS per CStein.\par
+\cf0\fs17\par
+\cf1\b 1/9/2021 4:54 PM [sjohnson]\par
+\cf2\b0\fs16 Transfer AM from TB to MT per CJS&apos; request, effective 7/1/2020\par
+\cf0\fs17\par
+\cf1\b 8/28/2019 4:18 PM [sjohnson]\par
+\cf0\b0 Transfer AE from BJ to CJS per CJS request, effective 7/1/2019.\par
+Transfer AM from CJS to TB per CJS request, effective 7/1/2019.\cf2\fs16\par
+\cf0\fs17\par
+\cf1\b 2/14/2019 2:10 PM [smurdock]\par
+\cf2\b0\fs16 Client was previosuly in the system and known as PHIL DAVIS LLC. Switched per Christy Stein email 2/12/2019. SM\par
+\cf0\fs17\par
+\cf1\b 11/8/2016 9:12 AM [smurdock]\par
+\cf0\f1\fs24 Etsuko Davis\b0  &lt;\cf3\ul etdavis2003@yahoo.com &lt;mailto:etdavis2003@yahoo.com&gt;\cf0\ulnone &gt;\line\f0\fs17\par
+\par
+}
+</RichText>
+<Deleted>False</Deleted><History>
+<HistoryItem>
+<User>kgivens</User>
+<Action>Edited</Action>
+<Date>2022-12-19 16:51:30Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>APRIL2021-05</Machine>
+</HistoryItem>
+<HistoryItem><User>mmcneal</User><Action>Edited</Action><Date>2022-01-31 15:46:04Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>VMWARE8-017</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2021-01-09 23:54:02Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN9-FS-012</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2019-08-28 22:18:56Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN-10-021</Machine></HistoryItem><HistoryItem><User>smurdock</User><Action>Edited</Action><Date>2019-02-14 21:10:34Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>WIN7-2-004</Machine></HistoryItem><HistoryItem><User>smurdock</User><Action>Created</Action><Date>2016-11-08 16:12:59Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>CN-CITRIX1-HD</Machine></HistoryItem></History>
+</ClientNote>
+<ClientNote>
+<AppName>FileCabinet CS</AppName><RealAppName>FileCabinet CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName><RealAppName>UltraTax CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName><RealAppName>Fixed Assets CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+</ClientNotes>",,12,hmoss@gmail.com,34253,130,45359.80104,2023,False
+22,102,22422573000,22422573000                              `,InfinityItems Retail,1,Client,InfinityItems Retail,,67-7956522,,,,,,,1,Active,1,2,1065,73,4831LC,84,4380LH,46,4016HL,531210,12,43906,,,16,True,1,True,False,0,False,0,5,Emerald Meadows,ID,84070,Emerald Meadows,ID,84070,15,,45117,1500,1880,1,1,,,,LedgerLogic Accounting,43906,1,,,23747389163,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Date>2022-02-13 03:35:58Z</Date>
+<User>scox</User>
+<RichText>{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}}
+{\colortbl ;\red0\green0\blue128;\red0\green0\blue0;}
+\viewkind4\uc1\pard\cf1\b\f0\fs17 2/12/2022 8:35 PM [scox]\par
+\cf2\b0\fs16 Any time from the 1120S project needs to me moved to the 1065 project. Changed this client from an 1120S to a 1065 per Kolten Williams. \par
+\cf0\fs17\par
+\cf1\b 3/16/2020 10:25 AM [smurdock]\par
+\cf0\b0 Business start date: 01/01/2011\par
+\par
+}
+</RichText>
+<Deleted>False</Deleted><History>
+<HistoryItem>
+<User>scox</User>
+<Action>Edited</Action>
+<Date>2022-02-13 03:35:58Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>XEN4-007</Machine>
+</HistoryItem>
+<HistoryItem><User>smurdock</User><Action>Created</Action><Date>2020-03-16 16:25:49Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN1-010</Machine></HistoryItem></History>
+</ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName><RealAppName>UltraTax CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName><RealAppName>Fixed Assets CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+<ClientNote>
+<AppName>FileCabinet CS</AppName>
+<RealAppName>FileCabinet CS</RealAppName>
+<Date>0001-01-01 00:00:00Z</Date>
+<User>
+</User>
+<RichText>
+</RichText>
+<History>
+</History>
+<Deleted>False</Deleted>
+</ClientNote>
+</ClientNotes>",,5,mcolon@gmail.com,41222,93,45318.01771,2023,False
+23,102,25616209500,25616209500                              `,BrightFutures Finance,1,Client,Kirk Parke Ventures,,91-6940090,Kirk,Parke,,,,,1,Active,3,1,1120,80,4764RC,121,3687TH,94,4081OL,990000,12,43514,,,23,True,1,True,False,0,False,0,6,Pacifica Bluffs,OR,83420,Pacifica Bluffs,OR,83420,15,,45117,1500,1880,2,,,,45,"Osborn, Minnie",,1,,,93206967533,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Date>2023-02-10 23:50:15Z</Date>
+<User>kvega</User>
+<RichText>{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil Microsoft Sans Serif;}{\f1\fswiss\fprq2\fcharset0 Calibri;}{\f2\fnil\fcharset0 Calibri;}{\f3\fnil\fcharset0 Microsoft Sans Serif;}{\f4\fswiss\fprq2\fcharset0 Microsoft Sans Serif;}}
+{\colortbl ;\red0\green0\blue128;\red112\green48\blue160;\red0\green0\blue0;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\cf1\b\f0\fs17 2/10/2023 4:49 PM [kvega]\par
+
+\pard\widctlpar\cf2\f1\fs22 Spoke with Kasey\f2  regarding his open invoices\f1 . He was under the impression that he could pay his open invoices all at once when the taxes are filed. (Please, let me know if this is accurate so I can note it on the account.) He said he has no problem paying them now but that what he thought we did. I sent him copies of his invoices through Aiwyn.\cf3\b0\f3\fs16\par
+
+\pard\cf0\f0\fs17\par
+\cf1\b 1/30/2023 11:50 AM [amay]\par
+\cf3\b0\f3\fs16 ADDRESS CHANGE REQUEST PER MC  OLD ADDRESS 525 TAYLOR ST AMERICAN FALLS 83211\par
+\cf0\f0\fs17\par
+\cf1\b\f3 12/12/2022 12:34 PM [scox]\par
+\cf3\b0\fs16 Transferred AM from MarieC to JessieT per Jessie Torres&apos; request, effective 07/01/2022.\par
+\cf0\fs17\par
+\cf1\b 11/5/2021 3:09 PM [sjohnson]\par
+\cf0\b0\f4\fs16 Transfer AE from BrodyF to MarieC per TA&apos;s request, effective 10/15/2021.\cf3\f3\par
+\cf0\fs17\par
+\cf1\b 11/5/2021 2:35 PM [sjohnson]\par
+\cf0\b0\f4\fs16 Transfer AE from BrodyF to MarieC per TA&apos;s request, effective 10/15/2021.\cf3\f3\par
+\cf0\fs17\par
+\cf1\b 8/25/2020 2:49 PM [sjohnson]\par
+\cf0\b0 Transfer AE from TA to BF per BF&apos;s request, effective 7/1/2020.\par
+Transfer AM from BF to MC per BF&apos;s request, effective 7/1/2020.\par
+\par
+}
+</RichText>
+<Deleted>False</Deleted><History>
+<HistoryItem>
+<User>kvega</User>
+<Action>Edited</Action>
+<Date>2023-02-10 23:50:15Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>AUGUST2021-03</Machine>
+</HistoryItem>
+<HistoryItem>
+<User>kvega</User>
+<Action>Edited</Action>
+<Date>2023-02-10 23:49:17Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>AUGUST2021-03</Machine>
+</HistoryItem>
+<HistoryItem><User>amay</User><Action>Edited</Action><Date>2023-01-30 18:50:53Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN10-008</Machine></HistoryItem><HistoryItem><User>scox</User><Action>Edited</Action><Date>2022-12-12 19:34:45Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN4-010</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2021-11-05 21:09:07Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>VMWARE9-003</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2021-11-05 20:35:24Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>VMWARE9-003</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Created</Action><Date>2020-08-25 20:49:59Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN3-FS-006</Machine></HistoryItem></History>
+</ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName><RealAppName>UltraTax CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName><RealAppName>Fixed Assets CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+<ClientNote>
+<AppName>FileCabinet CS</AppName><RealAppName>FileCabinet CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+</ClientNotes>",,6,aphelps@gmail.com,37775,58,45314.07729,2023,False
+24,61,24744118500,24744118500                              `,NextGen Wealth Management,1,Client,NextGen Wealth Management,,97-5781707,,,,,,,1,Active,1,1,1120,84,4380LH,87,2505CC,6,4874HP,990000,12,43903,,,3,True,1,True,False,0,False,0,20,Riverwood,ID,83020,Riverwood,ID,83020,15,,,1500,1880,1,7,,,,HarvestHive AgriBusiness,43902,1,,,26463710158,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Date>2022-10-17 16:17:06Z</Date>
+<User>kgivens</User>
+<RichText>{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}{\f1\fnil Arial;}}
+{\colortbl ;\red0\green0\blue128;\red0\green0\blue0;}
+\viewkind4\uc1\pard\cf1\b\f0\fs17 10/17/2022 10:17 AM [kgivens]\line 60+\par
+\cf2\b0\fs16 Sent client email on 60+ balance\par
+\cf0\fs17\par
+\cf1\b 3/13/2020 11:18 AM [smurdock]\par
+\trowd\trgaph30\trleft-30\cellx2293\pard\intbl\cf2\b0\f1\fs24 Business Start Date:\cell\row
+\intbl 8/15/2019\cell\row
+\pard\cf0\f0\fs17\par
+\par
+}
+</RichText>
+<Deleted>False</Deleted><History>
+<HistoryItem>
+<User>kgivens</User>
+<Action>Edited</Action>
+<Date>2022-10-17 16:17:06Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>APRIL2021-05</Machine>
+</HistoryItem>
+<HistoryItem><User>smurdock</User><Action>Created</Action><Date>2020-03-13 17:18:33Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN8-007</Machine></HistoryItem></History>
+</ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName><RealAppName>UltraTax CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName><RealAppName>Fixed Assets CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+<ClientNote>
+<AppName>FileCabinet CS</AppName><RealAppName>FileCabinet CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+</ClientNotes>",,20,agillespie@hotmail.com,41177,25,45311.68134,2023,False
+25,61,20616853500,20616853500                              `,PeakPinnacle Bank,1,Client,PeakPinnacle Bank,,36-6967771,,,,,,,1,Active,1,1,1120,87,2505CC,136,4219LH,46,4016HL,990000,12,44232,,,14,True,1,True,False,0,False,0,1,Frostpeak,ID,84750,Frostpeak,ID,84750,15,,,1500,1880,1,3,,,,SeedlingSuccess Agritech,44231,1,,,53629640723,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Date>2024-01-12 15:47:39Z</Date>
+<User>vponce</User>
+<RichText>{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}}
+{\colortbl ;\red0\green0\blue128;\red0\green0\blue0;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\cf1\b\f0\fs17\par
+11/7/2022 12:58 PM [scox]\par
+\cf2\b0\fs16 Transferred AE from Daniel Packard to Hollie Diehl and AM from Holli Diehl to Isabella Tower, effective 07/01/2022.\par
+\cf0\fs17\par
+\cf1\b 1/31/2022 10:12 AM [sjohnson]\par
+\cf2\b0\fs16 Transfer AM from TateR to HolliD per Tate&apos;s request, effective 7/1/2021.\par
+(actual Transfer is from BenR to Hollid effective 7/1/2021)\par
+\cf0\fs17\par
+\cf1\b 12/30/2021 1:21 PM [cstobie]\par
+\cf2\b0\fs16 Transfer AM from BRichards to TateRammell, per BRichards, effective 07/01/2021.\par
+\cf0\fs17\par
+\cf1\b 11/10/2021 11:28 AM [sjohnson]\par
+\cf2\b0\fs16 Transfer AE from BenR to DanP per Ben&apos;s request, effective 7/1/2021.\cf0\fs17\par
+\par
+}
+</RichText>
+<Deleted>False</Deleted><History>
+<HistoryItem>
+<User>vponce</User>
+<Action>Edited</Action>
+<Date>2024-01-12 15:47:39Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>XEN10-005</Machine>
+</HistoryItem>
+<HistoryItem><User>scox</User><Action>Edited</Action><Date>2022-11-07 19:58:59Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>DESKTOP-KUJPP7O</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2022-01-31 17:20:18Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>VMWARE9-016</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2022-01-31 17:12:53Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>VMWARE9-016</Machine></HistoryItem><HistoryItem><User>cstobie</User><Action>Edited</Action><Date>2021-12-30 20:21:21Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>VMWARE4-004</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2021-11-10 18:28:40Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>VMWARE9-002</Machine></HistoryItem><HistoryItem><User>scox</User><Action>Created</Action><Date>2021-02-05 21:37:34Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN10-FS-004</Machine></HistoryItem></History>
+</ClientNote>
+<ClientNote>
+<AppName>FileCabinet CS</AppName><RealAppName>FileCabinet CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName><RealAppName>UltraTax CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName><RealAppName>Fixed Assets CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+</ClientNotes>",,1,tmcgrath@yahoo.com,43960,49,45313.61164,2023,False
+26,61,25984038000,25984038000                              `,FutureFocus Group,1,Client,Lanny & Marley Norbert Ventures,,29-3166572,Lanny,Norbert,,Marley,Norbert,,1,Active,1,2,1065,71,4193AB,137,2947MB,6,4874HP,531210,12,43795,,,9,True,1,False,False,0,False,0,385,Frostpeak,ID,84750,Frostpeak,ID,84750,15,,,1500,1880,,,,,,,,,,,51922155010,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName><Date>2022-12-19 16:50:49Z</Date>
+<User>kgivens</User>
+<RichText>{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft Sans Serif;}}
+{\colortbl ;\red0\green0\blue128;\red0\green0\blue0;}
+\viewkind4\uc1\pard\cf1\b\f0\fs17 12/19/2022 9:50 AM [kgivens]\par
+\cf2\b0\fs16 Transfered AM from Matthew Thurber to Braxton cook per Cstein, Effective 07/01/22\par
+\cf0\fs17\par
+\cf1\b 1/9/2021 4:54 PM [sjohnson]\par
+\cf2\b0\fs16 Transfer AM from TB to MT per CJS&apos; request, effective 7/1/2020\par
+\cf0\fs17\par
+\cf1\b 1/6/2020 11:59 AM [smurdock]\par
+\cf2\b0\fs16 Updated from a 2018 disregarded entity to a 2019 1065 project. Estimated fee is $1000.\par
+\cf0\fs17\par
+\cf1\b 8/28/2019 4:18 PM [sjohnson]\par
+\cf0\b0 Transfer AE from BJ to CJS per CJS request, effective 7/1/2019.\par
+Transfer AM from CJS to TB per CJS request, effective 7/1/2019.\cf2\fs16\par
+\cf0\fs17\par
+\cf1\b 7/24/2019 3:04 PM [lhall]\par
+\cf0\b0 Mailed RTC to 3864 E 380 N, Rigby, ID 83442\cf2\fs16\par
+\cf0\fs17\par
+\cf1\b 6/5/2018 12:01 PM [lhall]\par
+\cf2\b0\fs16 Left VM that RTC is ready to be picked up.\par
+\cf0\fs17\par
+\cf1\b\par
+2/15/2014 11:12 PM [sjohnson]\par
+\cf0\b0 Transfer AM from RPM to CJS per BJ&apos;s request\fs16\par
+\fs17\par
+}
+</RichText>
+<Deleted>False</Deleted><RealAppName>Practice CS</RealAppName><History>
+<HistoryItem>
+<User>kgivens</User>
+<Action>Edited</Action>
+<Date>2022-12-19 16:50:49Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>APRIL2021-05</Machine>
+</HistoryItem>
+<HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2021-01-09 23:54:20Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN9-FS-012</Machine></HistoryItem><HistoryItem><User>smurdock</User><Action>Edited</Action><Date>2020-01-06 19:05:01Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN10-10C-003</Machine></HistoryItem><HistoryItem><User>smurdock</User><Action>Edited</Action><Date>2020-01-06 18:59:39Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN10-10C-003</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2019-08-28 22:18:50Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>XEN-10-021</Machine></HistoryItem><HistoryItem><User>lhall</User><Action>Edited</Action><Date>2019-07-24 21:04:29Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>WIN7-4-001</Machine></HistoryItem><HistoryItem><User>lhall</User><Action>Edited</Action><Date>2018-06-05 18:01:26Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>WIN7-1-011</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2015-08-28 19:45:33Z</Date><AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Machine>CN-CITRIX-9</Machine></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2014-03-01 20:57:55Z</Date><AppName>Practice CS</AppName><Machine>I-SJOHNSON</Machine><RealAppName>Practice CS</RealAppName></HistoryItem><HistoryItem><User>sjohnson</User><Action>Edited</Action><Date>2014-02-16 06:12:37Z</Date><AppName>Practice CS</AppName><Machine>I-SJOHNSON</Machine><RealAppName>Practice CS</RealAppName></HistoryItem><HistoryItem><User>sjohnson</User><Action>Created</Action><Date>2014-02-16 06:12:15Z</Date><AppName>Practice CS</AppName><Machine>I-SJOHNSON</Machine><RealAppName>Practice CS</RealAppName></HistoryItem></History>
+</ClientNote>
+<ClientNote>
+<AppName>FileCabinet CS</AppName><RealAppName>FileCabinet CS</RealAppName><Date>2015-01-06 20:21:06Z</Date><User></User><RichText></RichText><Deleted>True</Deleted><History></History></ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName><RealAppName>UltraTax CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName><RealAppName>Fixed Assets CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
+</ClientNotes>",,385,,39922,52,45362.69131,2023,False
+27,150,40922701500,40922701500                              `,BalanceBeam Financials,1,Client,Shane Norbert LLC.,,47-3425594,Shane,Norbert,,,,,1,Active,1,2,1065,71,4193AB,103,2448SR,90,4125CG,531210,12,45013,,,9,True,1,True,False,0,False,0,7,Frostpeak,ID,84750,Frostpeak,ID,84750,15,,,1500,1880,1,15,,,,EcoYield Solutions,45013,1,,,89882844214,"<?xml version=""1.0"" encoding=""utf-8""?>
+<ClientNotes>
+<ClientNote>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Date>2023-03-28 18:56:41Z</Date>
+<User>Amay</User>
+<RichText>{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil Microsoft Sans Serif;}{\f1\fnil\fcharset0 Microsoft Sans Serif;}}
+{\colortbl ;\red0\green0\blue128;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\cf1\b\f0\fs17 3/28/2023 12:56 PM [Amay]\par
+\cf0\b0\f1 SPENCER NELSON IS THE SON OF LYNN &amp; MARIANNE NELSON\f0\par
+
+\pard\fs17\par
+}
+</RichText>
+<Deleted>False</Deleted>
+<History>
+<HistoryItem>
+<User>Amay</User>
+<Action>Created</Action>
+<Date>2023-03-28 18:56:41Z</Date>
+<AppName>Practice CS</AppName>
+<RealAppName>Practice CS</RealAppName>
+<Machine>XEN2-002</Machine>
+</HistoryItem>
+</History>
+</ClientNote>
+<ClientNote>
+<AppName>FileCabinet CS</AppName>
+<RealAppName>FileCabinet CS</RealAppName>
+<Date>0001-01-01 00:00:00Z</Date>
+<User>
+</User>
+<RichText>
+</RichText>
+<History>
+</History>
+<Deleted>False</Deleted>
+</ClientNote>
+<ClientNote>
+<AppName>UltraTax CS</AppName>
+<RealAppName>UltraTax CS</RealAppName>
+<Date>0001-01-01 00:00:00Z</Date>
+<User>
+</User>
+<RichText>
+</RichText>
+<History>
+</History>
+<Deleted>False</Deleted>
+</ClientNote>
+<ClientNote>
+<AppName>Fixed Assets CS</AppName>
+<RealAppName>Fixed Assets CS</RealAppName>
+<Date>0001-01-01 00:00:00Z</Date>
+<User>
+</User>
+<RichText>
+</RichText>
+<History>
+</History>
+<Deleted>False</Deleted>
+</ClientNote>
+</ClientNotes>",,7,kkramer@hotmail.com,53029,100,45323.67047,2023,False
