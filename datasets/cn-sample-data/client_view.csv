@@ -1,5 +1,5 @@
 ﻿client_KEY,update__staff_KEY,client_id,client_id_sortable,description,client_class_KEY,client_class__description,name_1,name_2,federal_tin,individual_first_name,individual_last_name,individual_date_of_birth,spouse_first_name,spouse_last_name,spouse_date_of_birth,client_status_KEY,client_status__description,office_KEY,entity_KEY,entity__entity_id,partner__staff_KEY,partner__staff__staff_id,manager__staff_KEY,manager__staff__staff_id,associate__staff_KEY,associate__staff__staff_id,industry_code,fiscal_year_end_month,date_opened,date_left,comments,principal__client_KEY,assess_service_charge,service_charge_KEY,print_statements,use_wip_limit,wip_limit,use_accounts_receivable_limit,accounts_receivable_limit,contact_KEY,contact__primary__contact_address__city,contact__primary__contact_address__state_abbreviation,contact__primary__contact_address__postal_code,contact__mailing__contact_address__city,contact__mailing__contact_address__state_abbreviation,contact__mailing__contact_address__postal_code,days_to_due_date,billing_instructions,date_of_last_service_charge,invoice__report_definition_KEY,statement__report_definition_KEY,referral_type_KEY,referred_by__client_KEY,referred_by__contact_KEY,referred_by__referral_source_KEY,referred_by__staff_KEY,referred_by__description,won_date,won_reason_KEY,lost_reason_KEY,lost_to_KEY,client_guid,client_note_data,spouse_federal_tin,billing__contact_KEY,billing_email_recipients,preferred__contact_KEY,complexity,complexity_event_date_utc,complexity_product_year,digita_out_of_date
-1,93,38684554500,38684554500                              `,LedgerLogic Accounting,1,Client,John & Kath Vance Ventures,,31-6968857,John,Vance,17962,Kath,Vance,16821,1,Active,1,1,1120,94,4081OL,94,4081OL,6,4874HP,990000,12,37329,,,1,True,1,False,False,0,False,0,16,Whispering Pines,ID,84660,Whispering Pines,ID,84660,15,,41670,1500,1880,,,,,,,,,,,92079173045,"<?xml version=""1.0"" encoding=""utf-8""?>
+1,93,38684554500,38684554500                              `,LedgerLogic Accounting,1,Client,John & Kath Vance Ventures,,31-6968857,John,Vance,03/05/1949,Kath,Vance,01/19/1946,1,Active,1,1,1120,94,4081OL,94,4081OL,6,4874HP,990000,12,03/14/2002,,,1,TRUE,1,FALSE,FALSE,0,FALSE,0,16,Whispering Pines,ID,84660,Whispering Pines,ID,84660,15,,01/31/2014,1500,1880,,,,,,,,,,,92079173045,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Date>2022-12-22 22:22:53Z</Date>
@@ -39,8 +39,8 @@ Once those checks arrive, I will write out the checks.\par
 <AppName>Fixed Assets CS</AppName><RealAppName>Fixed Assets CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
 <ClientNote>
 <AppName>FileCabinet CS</AppName><RealAppName>FileCabinet CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
-</ClientNotes>",,16,slozano@hotmail.com,4521,60,45320.66194,2023,False
-2,100,35062011000,35062011000                              `,UnityVault Bank,1,Client,Dale & Donna Smith Ventures,,66-6800705,Dale,Smith,,Donna,Smith,,1,Active,1,1,1120,84,4380LH,87,2505CC,6,4874HP,990000,12,35873,,,2,True,1,False,False,0,False,0,389,Mount Vista,ID,83310,Mount Vista,ID,83310,15,,43271,1500,1880,,,,,,,,,,,41975498549,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,16,slozano@hotmail.com,4521,60,01/29/2024,2023,FALSE
+2,100,35062011000,35062011000                              `,UnityVault Bank,1,Client,Dale & Donna Smith Ventures,,66-6800705,Dale,Smith,,Donna,Smith,,1,Active,1,1,1120,84,4380LH,87,2505CC,6,4874HP,990000,12,03/19/1998,,,2,TRUE,1,FALSE,FALSE,0,FALSE,0,389,Mount Vista,ID,83310,Mount Vista,ID,83310,15,,06/20/2018,1500,1880,,,,,,,,,,,41975498549,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName><Date>2021-04-09 20:40:21Z</Date>
@@ -83,8 +83,8 @@ Added email \cf4\ul\f1\fs22 dms313@hotmail.com \f2\par
 <AppName>UltraTax CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>UltraTax CS</RealAppName><History></History></ClientNote>
 <ClientNote>
 <AppName>Fixed Assets CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>Fixed Assets CS</RealAppName><History></History></ClientNote>
-</ClientNotes>",,389,,4996,57,45370.68733,2023,False
-3,61,35909826000,35909826000                              `,SeedlingSuccess Agritech,1,Client,Robert & Dorothy Smith Ventures,,88-3401865,Robert,Smith,,Dorothy,Smith,,1,Active,1,1,1120,84,4380LH,87,2505CC,6,4874HP,990000,12,35515,,,3,True,1,False,False,0,False,0,17,Riverwood,ID,83020,Riverwood,ID,83020,15,,44418,1500,1880,,,,,,,,,,,93356221413,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,389,,4996,57,03/19/2024,2023,FALSE
+3,61,35909826000,35909826000                              `,SeedlingSuccess Agritech,1,Client,Robert & Dorothy Smith Ventures,,88-3401865,Robert,Smith,,Dorothy,Smith,,1,Active,1,1,1120,84,4380LH,87,2505CC,6,4874HP,990000,12,03/26/1997,,,3,TRUE,1,FALSE,FALSE,0,FALSE,0,17,Riverwood,ID,83020,Riverwood,ID,83020,15,,08/10/2021,1500,1880,,,,,,,,,,,93356221413,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName><Date>2020-07-07 16:44:53Z</Date>
@@ -126,8 +126,8 @@ Added email \cf4\ul\f1\fs22 dms313@hotmail.com \f2\par
 <AppName>UltraTax CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>UltraTax CS</RealAppName><History></History></ClientNote>
 <ClientNote>
 <AppName>Fixed Assets CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>Fixed Assets CS</RealAppName><History></History></ClientNote>
-</ClientNotes>",,17,abeasley@msn.com,5124,48,45323.69346,2023,False
-4,153,27956983500,27956983500                              `,WealthWave Advisors,1,Client,WealthWave Advisors,,47-1918497,,,,,,,1,Active,1,2,1065,94,4081OL,94,4081OL,6,4874HP,531210,12,37858,,,1,True,1,False,False,0,False,0,15,Whispering Pines,ID,84660,Whispering Pines,ID,84660,15,,,1500,1880,,,,,,,,,,,59447614946,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,17,abeasley@msn.com,5124,48,02/01/2024,2023,FALSE
+4,153,27956983500,27956983500                              `,WealthWave Advisors,1,Client,WealthWave Advisors,,47-1918497,,,,,,,1,Active,1,2,1065,94,4081OL,94,4081OL,6,4874HP,531210,12,08/25/2003,,,1,TRUE,1,FALSE,FALSE,0,FALSE,0,15,Whispering Pines,ID,84660,Whispering Pines,ID,84660,15,,,1500,1880,,,,,,,,,,,59447614946,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName><Date>2024-01-15 17:20:30Z</Date>
@@ -175,8 +175,8 @@ Once those checks arrive, I will write out the checks.\cf2\f1\fs16\par
 <AppName>UltraTax CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>UltraTax CS</RealAppName><History></History></ClientNote>
 <ClientNote>
 <AppName>Fixed Assets CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>Fixed Assets CS</RealAppName><History></History></ClientNote>
-</ClientNotes>",,15,rmccoy@gmail.com,6301,135,45328.95844,2023,False
-5,61,34283535000,34283535000                              `,HorizonBank Corp,1,Client,HorizonBank Corp,,54-3284742,,,,,,,1,Active,1,2,1065,84,4380LH,87,2505CC,6,4874HP,531210,12,37349,,,3,True,1,False,False,0,False,0,21,Riverwood,ID,83020,Riverwood,ID,83020,15,,44362,1500,1880,,,,,,,,,,,72645331794,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,15,rmccoy@gmail.com,6301,135,02/06/2024,2023,FALSE
+5,61,34283535000,34283535000                              `,HorizonBank Corp,1,Client,HorizonBank Corp,,54-3284742,,,,,,,1,Active,1,2,1065,84,4380LH,87,2505CC,6,4874HP,531210,12,04/03/2002,,,3,TRUE,1,FALSE,FALSE,0,FALSE,0,21,Riverwood,ID,83020,Riverwood,ID,83020,15,,06/15/2021,1500,1880,,,,,,,,,,,72645331794,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName><Date>2019-05-06 16:21:10Z</Date>
@@ -212,8 +212,8 @@ Once those checks arrive, I will write out the checks.\cf2\f1\fs16\par
 <AppName>UltraTax CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>UltraTax CS</RealAppName><History></History></ClientNote>
 <ClientNote>
 <AppName>Fixed Assets CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>Fixed Assets CS</RealAppName><History></History></ClientNote>
-</ClientNotes>",,21,ctanner@msn.com,6701,135,45311.70225,2023,False
-6,129,30923067000,30923067000                              `,MarketMingle Stores,1,Client,MarketMingle Stores,,79-8192170,,,,,,,1,Active,1,1,1120,84,4380LH,87,2505CC,6,4874HP,990000,12,35946,,,3,True,1,False,False,0,False,0,22,Riverwood,ID,83020,Riverwood,ID,83020,15,,44362,1500,1880,,,,,,,,,,,39816359824,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,21,ctanner@msn.com,6701,135,01/20/2024,2023,FALSE
+6,129,30923067000,30923067000                              `,MarketMingle Stores,1,Client,MarketMingle Stores,,79-8192170,,,,,,,1,Active,1,1,1120,84,4380LH,87,2505CC,6,4874HP,990000,12,05/31/1998,,,3,TRUE,1,FALSE,FALSE,0,FALSE,0,22,Riverwood,ID,83020,Riverwood,ID,83020,15,,06/15/2021,1500,1880,,,,,,,,,,,39816359824,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName><Date>2019-05-06 16:12:56Z</Date>
@@ -255,8 +255,8 @@ Once those checks arrive, I will write out the checks.\cf2\f1\fs16\par
 <AppName>UltraTax CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>UltraTax CS</RealAppName><History></History></ClientNote>
 <ClientNote>
 <AppName>Fixed Assets CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>Fixed Assets CS</RealAppName><History></History></ClientNote>
-</ClientNotes>",,22,lbaker@yahoo.com,10665,123,45332.89223,2023,False
-7,73,23887591500,23887591500                              `,HarvestHive AgriBusiness,1,Client,HarvestHive AgriBusiness,,29-3097251,,,,,,,1,Active,1,3,1065F,84,4380LH,87,2505CC,6,4874HP,621210,12,35425,,,3,True,1,False,False,0,False,0,18,Riverwood,ID,83020,Riverwood,ID,83020,15,,44449,1500,1880,,,,,,,,,,,18958567917,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,22,lbaker@yahoo.com,10665,123,02/10/2024,2023,FALSE
+7,73,23887591500,23887591500                              `,HarvestHive AgriBusiness,1,Client,HarvestHive AgriBusiness,,29-3097251,,,,,,,1,Active,1,3,1065F,84,4380LH,87,2505CC,6,4874HP,621210,12,12/26/1996,,,3,TRUE,1,FALSE,FALSE,0,FALSE,0,18,Riverwood,ID,83020,Riverwood,ID,83020,15,,09/10/2021,1500,1880,,,,,,,,,,,18958567917,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName><Date>2019-05-06 15:42:51Z</Date>
@@ -293,8 +293,8 @@ Once those checks arrive, I will write out the checks.\cf2\f1\fs16\par
 <AppName>UltraTax CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>UltraTax CS</RealAppName><History></History></ClientNote>
 <ClientNote>
 <AppName>Fixed Assets CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>Fixed Assets CS</RealAppName><History></History></ClientNote>
-</ClientNotes>",,18,lclark@yahoo.com,14493,140,45325.66418,2023,False
-8,119,39481843500,39481843500                              `,UrbanTrend Retailers,1,Client,Dimitri & Avery Davidson LLC.,,44-8617620,Dimitri,Davidson,,Avery,Davidson,,1,Active,2,1,1120,70,3321MC,94,4081OL,49,4928AB,990000,12,42326,,,8,True,1,True,False,0,False,0,10,Crystal Lake,WA,83190,Crystal Lake,WA,83190,15,,42480,1500,1880,1,3,,,,SeedlingSuccess Agritech,42326,1,,,34632923107,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,18,lclark@yahoo.com,14493,140,02/03/2024,2023,FALSE
+8,119,39481843500,39481843500                              `,UrbanTrend Retailers,1,Client,Dimitri & Avery Davidson LLC.,,44-8617620,Dimitri,Davidson,,Avery,Davidson,,1,Active,2,1,1120,70,3321MC,94,4081OL,49,4928AB,990000,12,11/18/2015,,,8,TRUE,1,TRUE,FALSE,0,FALSE,0,10,Crystal Lake,WA,83190,Crystal Lake,WA,83190,15,,04/20/2016,1500,1880,1,3,,,,SeedlingSuccess Agritech,11/18/2015,1,,,34632923107,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName>
@@ -355,8 +355,8 @@ Big Piney, WY 83113\par
 </History>
 <Deleted>False</Deleted>
 </ClientNote>
-</ClientNotes>",,10,mnicholson@gmail.com,28522,26,45346.93836,2023,False
-9,61,40459066500,40459066500                              `,FreshFinds Marketplace,1,Client,FreshFinds Marketplace,,97-5575820,,,,,,,1,Active,3,2,1065,71,4193AB,137,2947MB,49,4928AB,531210,12,42682,,,9,True,1,True,False,0,False,0,11,Pacifica Bluffs,OR,83420,Pacifica Bluffs,OR,83420,15,,,1500,1880,1,10,,,,SummitStone Financial,42682,1,,,15444080901,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,10,mnicholson@gmail.com,28522,26,02/24/2024,2023,FALSE
+9,61,40459066500,40459066500                              `,FreshFinds Marketplace,1,Client,FreshFinds Marketplace,,97-5575820,,,,,,,1,Active,3,2,1065,71,4193AB,137,2947MB,49,4928AB,531210,12,11/08/2016,,,9,TRUE,1,TRUE,FALSE,0,FALSE,0,11,Pacifica Bluffs,OR,83420,Pacifica Bluffs,OR,83420,15,,,1500,1880,1,10,,,,SummitStone Financial,11/08/2016,1,,,15444080901,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Date>2022-12-19 16:51:37Z</Date>
@@ -404,8 +404,8 @@ Transfer AM from CJS to TB per CJS request, effective 7/1/2019.\cf2\fs16\par
 <AppName>UltraTax CS</AppName><RealAppName>UltraTax CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
 <ClientNote>
 <AppName>Fixed Assets CS</AppName><RealAppName>Fixed Assets CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
-</ClientNotes>",,11,roneill@gmail.com,30942,28,45365.09965,2023,False
-10,61,32626342500,32626342500                              `,SummitStone Financial,1,Client,SummitStone Financial,,21-5034537,,,,,,,1,Active,1,1,1120,84,4380LH,87,2505CC,6,4874HP,990000,12,42453,,,3,True,1,True,False,0,False,0,19,Riverwood,ID,83020,Riverwood,ID,83020,15,,43697,1500,1880,,,,,,,,1,,,79053134948,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,11,roneill@gmail.com,30942,28,03/14/2024,2023,FALSE
+10,61,32626342500,32626342500                              `,SummitStone Financial,1,Client,SummitStone Financial,,21-5034537,,,,,,,1,Active,1,1,1120,84,4380LH,87,2505CC,6,4874HP,990000,12,03/24/2016,,,3,TRUE,1,TRUE,FALSE,0,FALSE,0,19,Riverwood,ID,83020,Riverwood,ID,83020,15,,08/20/2019,1500,1880,,,,,,,,1,,,79053134948,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName>
@@ -467,8 +467,8 @@ Transfer AM from CJS to TB per CJS request, effective 7/1/2019.\cf2\fs16\par
 </History>
 <Deleted>False</Deleted>
 </ClientNote>
-</ClientNotes>",,19,staylor@gmail.com,29653,32,45323.69329,2023,False
-11,46,37285951500,37285951500                              `,TrustTide Banking,1,Client,TrustTide Banking,,57-8448708,,,,,,,1,Active,2,1,1120,70,3321MC,94,4081OL,49,4928AB,990000,12,42270,,,8,True,1,True,False,0,False,0,13,Crystal Lake,WA,83190,Crystal Lake,WA,83190,15,,,1500,1880,1,7,,,,HarvestHive AgriBusiness,,1,,,21650529191,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,19,staylor@gmail.com,29653,32,02/01/2024,2023,FALSE
+11,46,37285951500,37285951500                              `,TrustTide Banking,1,Client,TrustTide Banking,,57-8448708,,,,,,,1,Active,2,1,1120,70,3321MC,94,4081OL,49,4928AB,990000,12,09/23/2015,,,8,TRUE,1,TRUE,FALSE,0,FALSE,0,13,Crystal Lake,WA,83190,Crystal Lake,WA,83190,15,,,1500,1880,1,7,,,,HarvestHive AgriBusiness,,1,,,21650529191,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName>
@@ -538,8 +538,8 @@ Aimee\par
 </History>
 <Deleted>False</Deleted>
 </ClientNote>
-</ClientNotes>",,13,igentry@yahoo.com,28137,141,45320.92933,2023,False
-12,100,25103704500,25103704500                              `,ProsperPath Investments,1,Client,ProsperPath Investments,,47-8479658,,,,,,,1,Active,1,1,1120,84,4380LH,87,2505CC,6,4874HP,990000,12,43138,,,2,True,1,False,False,0,False,0,388,Mount Vista,ID,83310,Mount Vista,ID,83310,15,,45056,1500,1880,1,11,,,,TrustTide Banking,43138,1,,,46673848645,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,13,igentry@yahoo.com,28137,141,01/29/2024,2023,FALSE
+12,100,25103704500,25103704500                              `,ProsperPath Investments,1,Client,ProsperPath Investments,,47-8479658,,,,,,,1,Active,1,1,1120,84,4380LH,87,2505CC,6,4874HP,990000,12,02/07/2018,,,2,TRUE,1,FALSE,FALSE,0,FALSE,0,388,Mount Vista,ID,83310,Mount Vista,ID,83310,15,,05/10/2023,1500,1880,1,11,,,,TrustTide Banking,02/07/2018,1,,,46673848645,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName><Date>2020-02-17 23:36:06Z</Date>
@@ -567,8 +567,8 @@ Aimee\par
 <AppName>UltraTax CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>UltraTax CS</RealAppName><History></History></ClientNote>
 <ClientNote>
 <AppName>Fixed Assets CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>Fixed Assets CS</RealAppName><History></History></ClientNote>
-</ClientNotes>",,388,,34783,131,45370.57796,2023,False
-13,108,28361139000,28361139000                              `,PrimePulse Accountancy,1,Client,Lance & Martha Norman Ventures,,40-9366319,Lance,Norman,,Martha,Norman,,1,Active,1,2,1065,71,4193AB,137,2947MB,6,4874HP,531210,12,41261,,,9,True,1,False,False,0,False,0,387,Frostpeak,ID,84750,Frostpeak,ID,84750,15,,,1500,1880,,,,,,,,,,,44612431452,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,388,,34783,131,03/19/2024,2023,FALSE
+13,108,28361139000,28361139000                              `,PrimePulse Accountancy,1,Client,Lance & Martha Norman Ventures,,40-9366319,Lance,Norman,,Martha,Norman,,1,Active,1,2,1065,71,4193AB,137,2947MB,6,4874HP,531210,12,12/18/2012,,,9,TRUE,1,FALSE,FALSE,0,FALSE,0,387,Frostpeak,ID,84750,Frostpeak,ID,84750,15,,,1500,1880,,,,,,,,,,,44612431452,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName><Date>2022-12-19 16:51:14Z</Date>
@@ -614,8 +614,8 @@ Transfer AM from CJS to TB per CJS request, effective 7/1/2019.\cf2\fs16\par
 <AppName>UltraTax CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>UltraTax CS</RealAppName><History></History></ClientNote>
 <ClientNote>
 <AppName>Fixed Assets CS</AppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><RealAppName>Fixed Assets CS</RealAppName><History></History></ClientNote>
-</ClientNotes>",,387,,16424,44,45252.00922,2023,False
-14,140,29405385000,29405385000                              `,VistaVogue Outlets,1,Client,Mark Larson LLC.,,44-4476849,Mark,Larson,,,,,1,Active,1,2,1065,87,2505CC,136,4219LH,46,4016HL,531210,12,42970,,,14,True,1,True,False,0,False,0,384,Frostpeak,ID,84750,Frostpeak,ID,84750,15,,,1500,1880,2,,,,16,"Johnston, Ruben",42970,1,,,36546754138,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,387,,16424,44,11/22/2023,2023,FALSE
+14,140,29405385000,29405385000                              `,VistaVogue Outlets,1,Client,Mark Larson LLC.,,44-4476849,Mark,Larson,,,,,1,Active,1,2,1065,87,2505CC,136,4219LH,46,4016HL,531210,12,08/23/2017,,,14,TRUE,1,TRUE,FALSE,0,FALSE,0,384,Frostpeak,ID,84750,Frostpeak,ID,84750,15,,,1500,1880,2,,,,16,"Johnston, Ruben",08/23/2017,1,,,36546754138,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Date>2023-10-05 15:45:44Z</Date>
@@ -692,8 +692,8 @@ New email address: \cf4\ul\f2\fs22 mikelarsendds@gmail.com &lt;{\cf0\ulnone{\fie
 <AppName>Fixed Assets CS</AppName><RealAppName>Fixed Assets CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
 <ClientNote>
 <AppName>FileCabinet CS</AppName><RealAppName>FileCabinet CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
-</ClientNotes>",,384,,33382,47,45358.76061,2023,False
-15,120,22633971000,22633971000                              `,EcoYield Solutions,1,Client,EcoYield Solutions,,76-4384409,,,,,,,1,Active,1,1,1120,87,2505CC,136,4219LH,46,4016HL,990000,12,43822,,,14,True,1,True,False,0,False,0,2,Frostpeak,ID,84750,Frostpeak,ID,84750,15,,,1500,1880,2,,,,32,"Baker, Lennon",43822,1,,,62559708098,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,384,,33382,47,03/07/2024,2023,FALSE
+15,120,22633971000,22633971000                              `,EcoYield Solutions,1,Client,EcoYield Solutions,,76-4384409,,,,,,,1,Active,1,1,1120,87,2505CC,136,4219LH,46,4016HL,990000,12,12/23/2019,,,14,TRUE,1,TRUE,FALSE,0,FALSE,0,2,Frostpeak,ID,84750,Frostpeak,ID,84750,15,,,1500,1880,2,,,,32,"Baker, Lennon",12/23/2019,1,,,62559708098,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Date>2022-11-07 19:57:55Z</Date>
@@ -739,8 +739,8 @@ New email address: \cf4\ul\f2\fs22 mikelarsendds@gmail.com &lt;{\cf0\ulnone{\fie
 <AppName>Fixed Assets CS</AppName><RealAppName>Fixed Assets CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
 <ClientNote>
 <AppName>FileCabinet CS</AppName><RealAppName>FileCabinet CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
-</ClientNotes>",,2,dlamb@msn.com,40077,42,45313.60862,2023,False
-16,102,21747927000,21747927000                              `,ClearCut Calculations,1,Client,ClearCut Calculations,,97-1841525,,,,,,,1,Active,1,2,1065,73,4831LC,84,4380LH,46,4016HL,531210,12,43838,,,16,True,1,True,False,0,False,0,9,Emerald Meadows,ID,84070,Emerald Meadows,ID,84070,15,,44362,1500,1880,1,3,,,,SeedlingSuccess Agritech,43833,1,,,40863918776,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,2,dlamb@msn.com,40077,42,01/22/2024,2023,FALSE
+16,102,21747927000,21747927000                              `,ClearCut Calculations,1,Client,ClearCut Calculations,,97-1841525,,,,,,,1,Active,1,2,1065,73,4831LC,84,4380LH,46,4016HL,531210,12,01/08/2020,,,16,TRUE,1,TRUE,FALSE,0,FALSE,0,9,Emerald Meadows,ID,84070,Emerald Meadows,ID,84070,15,,06/15/2021,1500,1880,1,3,,,,SeedlingSuccess Agritech,01/03/2020,1,,,40863918776,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName>
@@ -790,8 +790,8 @@ New email address: \cf4\ul\f2\fs22 mikelarsendds@gmail.com &lt;{\cf0\ulnone{\fie
 </History>
 <Deleted>False</Deleted>
 </ClientNote>
-</ClientNotes>",,9,acraig@yahoo.com,40212,59,45318.01707,2023,False
-17,118,20971824000,20971824000                              `,FarmForward Innovations,1,Client,FarmForward Innovations,,19-8171357,,,,,,,1,Active,1,2,1065,73,4831LC,84,4380LH,46,4016HL,531210,12,43838,,,16,True,1,True,False,0,False,0,8,Emerald Meadows,ID,84070,Emerald Meadows,ID,84070,15,,44816,1500,1880,1,7,,,,HarvestHive AgriBusiness,43833,1,,,95174310288,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,9,acraig@yahoo.com,40212,59,01/27/2024,2023,FALSE
+17,118,20971824000,20971824000                              `,FarmForward Innovations,1,Client,FarmForward Innovations,,19-8171357,,,,,,,1,Active,1,2,1065,73,4831LC,84,4380LH,46,4016HL,531210,12,01/08/2020,,,16,TRUE,1,TRUE,FALSE,0,FALSE,0,8,Emerald Meadows,ID,84070,Emerald Meadows,ID,84070,15,,09/12/2022,1500,1880,1,7,,,,HarvestHive AgriBusiness,01/03/2020,1,,,95174310288,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Date>2022-08-11 21:17:03Z</Date>
@@ -824,8 +824,8 @@ New email address: \cf4\ul\f2\fs22 mikelarsendds@gmail.com &lt;{\cf0\ulnone{\fie
 <AppName>Fixed Assets CS</AppName><RealAppName>Fixed Assets CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
 <ClientNote>
 <AppName>FileCabinet CS</AppName><RealAppName>FileCabinet CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
-</ClientNotes>",,8,eriley@yahoo.com,40214,106,45330.68885,2023,False
-18,73,23344078500,23344078500                              `,BeaconBridge Banking,1,Client,BeaconBridge Banking,,33-7653175,,,,,,,1,Active,1,1,1120,84,4380LH,87,2505CC,89,2960JO,990000,12,43878,,,2,True,1,True,False,0,False,0,3,Mount Vista,ID,83310,Mount Vista,ID,83310,15,,,1500,1880,1,10,,,,SummitStone Financial,43878,1,,,85284463064,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,8,eriley@yahoo.com,40214,106,02/08/2024,2023,FALSE
+18,73,23344078500,23344078500                              `,BeaconBridge Banking,1,Client,BeaconBridge Banking,,33-7653175,,,,,,,1,Active,1,1,1120,84,4380LH,87,2505CC,89,2960JO,990000,12,02/17/2020,,,2,TRUE,1,TRUE,FALSE,0,FALSE,0,3,Mount Vista,ID,83310,Mount Vista,ID,83310,15,,,1500,1880,1,10,,,,SummitStone Financial,02/17/2020,1,,,85284463064,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName>
@@ -875,8 +875,8 @@ New email address: \cf4\ul\f2\fs22 mikelarsendds@gmail.com &lt;{\cf0\ulnone{\fie
 </History>
 <Deleted>False</Deleted>
 </ClientNote>
-</ClientNotes>",,3,amurphy@hotmail.com,40785,17,45325.71061,2023,False
-19,61,26265427500,26265427500                              `,BrightHorizon Enterprises,1,Client,BrightHorizon Enterprises,,56-1005500,,,,,,,1,Active,1,1,1120,84,4380LH,87,2505CC,89,2960JO,990000,12,43878,,,2,True,1,True,False,0,False,0,4,Mount Vista,ID,83310,Mount Vista,ID,83310,15,,,1500,1880,1,4,,,,WealthWave Advisors,43878,1,,,10993768564,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,3,amurphy@hotmail.com,40785,17,02/03/2024,2023,FALSE
+19,61,26265427500,26265427500                              `,BrightHorizon Enterprises,1,Client,BrightHorizon Enterprises,,56-1005500,,,,,,,1,Active,1,1,1120,84,4380LH,87,2505CC,89,2960JO,990000,12,02/17/2020,,,2,TRUE,1,TRUE,FALSE,0,FALSE,0,4,Mount Vista,ID,83310,Mount Vista,ID,83310,15,,,1500,1880,1,4,,,,WealthWave Advisors,02/17/2020,1,,,10993768564,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName>
@@ -926,8 +926,8 @@ New email address: \cf4\ul\f2\fs22 mikelarsendds@gmail.com &lt;{\cf0\ulnone{\fie
 </History>
 <Deleted>False</Deleted>
 </ClientNote>
-</ClientNotes>",,4,crichards@msn.com,40786,65,45325.72637,2023,False
-20,61,23346687000,23346687000                              `,GreenSprout Ventures,1,Client,David & Shaylee Beck Ventures,,29-8214262,David,Beck,30334,Shaylee,Beck,33105,1,Active,3,3,1065F,71,4193AB,137,2947MB,90,4125CG,621210,12,43878,,,9,True,1,False,False,0,False,0,14,Pacifica Bluffs,OR,83420,Pacifica Bluffs,OR,83420,15,,,1500,1880,1,3,,,,SeedlingSuccess Agritech,43878,1,,,84721204552,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,4,crichards@msn.com,40786,65,02/03/2024,2023,FALSE
+20,61,23346687000,23346687000                              `,GreenSprout Ventures,1,Client,David & Shaylee Beck Ventures,,29-8214262,David,Beck,01/18/1983,Shaylee,Beck,08/20/1990,1,Active,3,3,1065F,71,4193AB,137,2947MB,90,4125CG,621210,12,02/17/2020,,,9,TRUE,1,FALSE,FALSE,0,FALSE,0,14,Pacifica Bluffs,OR,83420,Pacifica Bluffs,OR,83420,15,,,1500,1880,1,3,,,,SeedlingSuccess Agritech,02/17/2020,1,,,84721204552,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Date>2022-12-19 16:51:50Z</Date>
@@ -966,8 +966,8 @@ New email address: \cf4\ul\f2\fs22 mikelarsendds@gmail.com &lt;{\cf0\ulnone{\fie
 <AppName>Fixed Assets CS</AppName><RealAppName>Fixed Assets CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
 <ClientNote>
 <AppName>FileCabinet CS</AppName><RealAppName>FileCabinet CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
-</ClientNotes>",,14,olowe@msn.com,40802,62,45322.94757,2023,False
-21,70,30804892500,30804892500                              `,InsightfulAccounts,1,Client,InsightfulAccounts,,30-3275472,,,,,,,1,Active,3,1,1120,71,4193AB,137,2947MB,49,4928AB,990000,12,43082,,,9,True,1,True,False,0,False,0,12,,,,,,0,15,,,1500,1880,1,10,,,,SummitStone Financial,43081,1,,,85247220540,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,14,olowe@msn.com,40802,62,01/31/2024,2023,FALSE
+21,70,30804892500,30804892500                              `,InsightfulAccounts,1,Client,InsightfulAccounts,,30-3275472,,,,,,,1,Active,3,1,1120,71,4193AB,137,2947MB,49,4928AB,990000,12,12/13/2017,,,9,TRUE,1,TRUE,FALSE,0,FALSE,0,12,,,,,,0,15,,,1500,1880,1,10,,,,SummitStone Financial,12/12/2017,1,,,85247220540,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Date>2022-12-19 16:51:30Z</Date>
@@ -1012,8 +1012,8 @@ Transfer AM from CJS to TB per CJS request, effective 7/1/2019.\cf2\fs16\par
 <AppName>UltraTax CS</AppName><RealAppName>UltraTax CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
 <ClientNote>
 <AppName>Fixed Assets CS</AppName><RealAppName>Fixed Assets CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
-</ClientNotes>",,12,hmoss@gmail.com,34253,130,45359.80104,2023,False
-22,102,22422573000,22422573000                              `,InfinityItems Retail,1,Client,InfinityItems Retail,,67-7956522,,,,,,,1,Active,1,2,1065,73,4831LC,84,4380LH,46,4016HL,531210,12,43906,,,16,True,1,True,False,0,False,0,5,Emerald Meadows,ID,84070,Emerald Meadows,ID,84070,15,,45117,1500,1880,1,1,,,,LedgerLogic Accounting,43906,1,,,23747389163,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,12,hmoss@gmail.com,34253,130,03/08/2024,2023,FALSE
+22,102,22422573000,22422573000                              `,InfinityItems Retail,1,Client,InfinityItems Retail,,67-7956522,,,,,,,1,Active,1,2,1065,73,4831LC,84,4380LH,46,4016HL,531210,12,03/16/2020,,,16,TRUE,1,TRUE,FALSE,0,FALSE,0,5,Emerald Meadows,ID,84070,Emerald Meadows,ID,84070,15,,07/10/2023,1500,1880,1,1,,,,LedgerLogic Accounting,03/16/2020,1,,,23747389163,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Date>2022-02-13 03:35:58Z</Date>
@@ -1055,8 +1055,8 @@ Transfer AM from CJS to TB per CJS request, effective 7/1/2019.\cf2\fs16\par
 </History>
 <Deleted>False</Deleted>
 </ClientNote>
-</ClientNotes>",,5,mcolon@gmail.com,41222,93,45318.01771,2023,False
-23,102,25616209500,25616209500                              `,BrightFutures Finance,1,Client,Kirk Parke Ventures,,91-6940090,Kirk,Parke,,,,,1,Active,3,1,1120,80,4764RC,121,3687TH,94,4081OL,990000,12,43514,,,23,True,1,True,False,0,False,0,6,Pacifica Bluffs,OR,83420,Pacifica Bluffs,OR,83420,15,,45117,1500,1880,2,,,,45,"Osborn, Minnie",,1,,,93206967533,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,5,mcolon@gmail.com,41222,93,01/27/2024,2023,FALSE
+23,102,25616209500,25616209500                              `,BrightFutures Finance,1,Client,Kirk Parke Ventures,,91-6940090,Kirk,Parke,,,,,1,Active,3,1,1120,80,4764RC,121,3687TH,94,4081OL,990000,12,02/18/2019,,,23,TRUE,1,TRUE,FALSE,0,FALSE,0,6,Pacifica Bluffs,OR,83420,Pacifica Bluffs,OR,83420,15,,07/10/2023,1500,1880,2,,,,45,"Osborn, Minnie",,1,,,93206967533,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Date>2023-02-10 23:50:15Z</Date>
@@ -1112,8 +1112,8 @@ Transfer AM from BF to MC per BF&apos;s request, effective 7/1/2020.\par
 <AppName>Fixed Assets CS</AppName><RealAppName>Fixed Assets CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
 <ClientNote>
 <AppName>FileCabinet CS</AppName><RealAppName>FileCabinet CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
-</ClientNotes>",,6,aphelps@gmail.com,37775,58,45314.07729,2023,False
-24,61,24744118500,24744118500                              `,NextGen Wealth Management,1,Client,NextGen Wealth Management,,97-5781707,,,,,,,1,Active,1,1,1120,84,4380LH,87,2505CC,6,4874HP,990000,12,43903,,,3,True,1,True,False,0,False,0,20,Riverwood,ID,83020,Riverwood,ID,83020,15,,,1500,1880,1,7,,,,HarvestHive AgriBusiness,43902,1,,,26463710158,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,6,aphelps@gmail.com,37775,58,01/23/2024,2023,FALSE
+24,61,24744118500,24744118500                              `,NextGen Wealth Management,1,Client,NextGen Wealth Management,,97-5781707,,,,,,,1,Active,1,1,1120,84,4380LH,87,2505CC,6,4874HP,990000,12,03/13/2020,,,3,TRUE,1,TRUE,FALSE,0,FALSE,0,20,Riverwood,ID,83020,Riverwood,ID,83020,15,,,1500,1880,1,7,,,,HarvestHive AgriBusiness,03/12/2020,1,,,26463710158,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Date>2022-10-17 16:17:06Z</Date>
@@ -1147,8 +1147,8 @@ Transfer AM from BF to MC per BF&apos;s request, effective 7/1/2020.\par
 <AppName>Fixed Assets CS</AppName><RealAppName>Fixed Assets CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
 <ClientNote>
 <AppName>FileCabinet CS</AppName><RealAppName>FileCabinet CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
-</ClientNotes>",,20,agillespie@hotmail.com,41177,25,45311.68134,2023,False
-25,61,20616853500,20616853500                              `,PeakPinnacle Bank,1,Client,PeakPinnacle Bank,,36-6967771,,,,,,,1,Active,1,1,1120,87,2505CC,136,4219LH,46,4016HL,990000,12,44232,,,14,True,1,True,False,0,False,0,1,Frostpeak,ID,84750,Frostpeak,ID,84750,15,,,1500,1880,1,3,,,,SeedlingSuccess Agritech,44231,1,,,53629640723,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,20,agillespie@hotmail.com,41177,25,01/20/2024,2023,FALSE
+25,61,20616853500,20616853500                              `,PeakPinnacle Bank,1,Client,PeakPinnacle Bank,,36-6967771,,,,,,,1,Active,1,1,1120,87,2505CC,136,4219LH,46,4016HL,990000,12,02/05/2021,,,14,TRUE,1,TRUE,FALSE,0,FALSE,0,1,Frostpeak,ID,84750,Frostpeak,ID,84750,15,,,1500,1880,1,3,,,,SeedlingSuccess Agritech,02/04/2021,1,,,53629640723,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName><RealAppName>Practice CS</RealAppName><Date>2024-01-12 15:47:39Z</Date>
@@ -1189,8 +1189,8 @@ Transfer AM from BF to MC per BF&apos;s request, effective 7/1/2020.\par
 <AppName>UltraTax CS</AppName><RealAppName>UltraTax CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
 <ClientNote>
 <AppName>Fixed Assets CS</AppName><RealAppName>Fixed Assets CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
-</ClientNotes>",,1,tmcgrath@yahoo.com,43960,49,45313.61164,2023,False
-26,61,25984038000,25984038000                              `,FutureFocus Group,1,Client,Lanny & Marley Norbert Ventures,,29-3166572,Lanny,Norbert,,Marley,Norbert,,1,Active,1,2,1065,71,4193AB,137,2947MB,6,4874HP,531210,12,43795,,,9,True,1,False,False,0,False,0,385,Frostpeak,ID,84750,Frostpeak,ID,84750,15,,,1500,1880,,,,,,,,,,,51922155010,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,1,tmcgrath@yahoo.com,43960,49,01/22/2024,2023,FALSE
+26,61,25984038000,25984038000                              `,FutureFocus Group,1,Client,Lanny & Marley Norbert Ventures,,29-3166572,Lanny,Norbert,,Marley,Norbert,,1,Active,1,2,1065,71,4193AB,137,2947MB,6,4874HP,531210,12,11/26/2019,,,9,TRUE,1,FALSE,FALSE,0,FALSE,0,385,Frostpeak,ID,84750,Frostpeak,ID,84750,15,,,1500,1880,,,,,,,,,,,51922155010,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName><Date>2022-12-19 16:50:49Z</Date>
@@ -1239,8 +1239,8 @@ Transfer AM from CJS to TB per CJS request, effective 7/1/2019.\cf2\fs16\par
 <AppName>UltraTax CS</AppName><RealAppName>UltraTax CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
 <ClientNote>
 <AppName>Fixed Assets CS</AppName><RealAppName>Fixed Assets CS</RealAppName><Date>0001-01-01 00:00:00Z</Date><User></User><RichText></RichText><Deleted>False</Deleted><History></History></ClientNote>
-</ClientNotes>",,385,,39922,52,45362.69131,2023,False
-27,150,40922701500,40922701500                              `,BalanceBeam Financials,1,Client,Shane Norbert LLC.,,47-3425594,Shane,Norbert,,,,,1,Active,1,2,1065,71,4193AB,103,2448SR,90,4125CG,531210,12,45013,,,9,True,1,True,False,0,False,0,7,Frostpeak,ID,84750,Frostpeak,ID,84750,15,,,1500,1880,1,15,,,,EcoYield Solutions,45013,1,,,89882844214,"<?xml version=""1.0"" encoding=""utf-8""?>
+</ClientNotes>",,385,,39922,52,03/11/2024,2023,FALSE
+27,150,40922701500,40922701500                              `,BalanceBeam Financials,1,Client,Shane Norbert LLC.,,47-3425594,Shane,Norbert,,,,,1,Active,1,2,1065,71,4193AB,103,2448SR,90,4125CG,531210,12,03/28/2023,,,9,TRUE,1,TRUE,FALSE,0,FALSE,0,7,Frostpeak,ID,84750,Frostpeak,ID,84750,15,,,1500,1880,1,15,,,,EcoYield Solutions,03/28/2023,1,,,89882844214,"<?xml version=""1.0"" encoding=""utf-8""?>
 <ClientNotes>
 <ClientNote>
 <AppName>Practice CS</AppName>
@@ -1304,4 +1304,4 @@ Transfer AM from CJS to TB per CJS request, effective 7/1/2019.\cf2\fs16\par
 </History>
 <Deleted>False</Deleted>
 </ClientNote>
-</ClientNotes>",,7,kkramer@hotmail.com,53029,100,45323.67047,2023,False
+</ClientNotes>",,7,kkramer@hotmail.com,53029,100,02/01/2024,2023,FALSE
