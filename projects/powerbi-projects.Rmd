@@ -1,5 +1,5 @@
 ---
-title: "Power BI Project Portfolio"
+title: "Power BI Portfolio"
 output:
   html_document:
     includes:
@@ -19,9 +19,9 @@ output:
 </style>
 
 <div class="subtitle-text">
-  <p>I've worked in Power BI for nearly two years. <br>Here are some examples of projects I designed and distributed. <br>Click the download button to view the full report</p>
+<p>I've worked in Power BI for nearly two years. <br>Here are some examples of projects I designed and distributed. <br><span style="color: #c0c0c0;"><i>All data within the following reports has been changed for privacy purposes.</i></span></p>
 </div>
-<br>
+
 
 <style>
   .download-button {
@@ -103,35 +103,73 @@ output:
 
 <br>
 
-#### Staff Financial Performance Scorecard
+#### Staff Capacity Report
 
+Quickly view important staff production metrics in one place.  Billable hours, percentage billable, goal comparisons, and overtime in one week, previous five weeks, and year to date formats.
+<br>
 <br>
 <div class=large-image>
- <img src="https://kameronyork.com/docs/assets/financial-performance-scorecard.png" alt="Studying General Conference Talks with the Gospel Buddy Extension">
+ <img src="https://kameronyork.com/docs/cn-sample-images/capacity1.png" alt="View the amount of hours worked, percentage billable, and year to date capacity per employee per week.">
 </div>
 <br>
-A "One Stop Shop" for all staff member KPI's.  Tracking everything from effective billing rate to average days to collect a client's invoice.  This tool infinitely improved visibility of staff member performance and allowed leaders to set dynamic goals for staff performance. 
-<br>
-<br>
-<div class="subtitle-text">
-  <a href="https://kameronyork.com/docs/#" class="download-button">
-    <img src="https://kameronyork.com/docs/assets/powerbi-logo.png" alt="Power BI Logo">
-    Download Here
-  </a>
+<div class=large-image>
+ <img src="https://kameronyork.com/docs/cn-sample-images/capacity2.png" alt="View the specific time entries from a staff member in that week.">
 </div>
 <br>
-
-
-#### More Examples Coming Soon
-
-<br>
-<div class="subtitle-text">
-  <a href="https://kameronyork.com/docs/#" class="download-button">
-    <img src="https://kameronyork.com/docs/assets/powerbi-logo.png" alt="Power BI Logo">
-    Download Here
-  </a>
+<div class=large-image>
+ <img src="https://kameronyork.com/docs/cn-sample-images/capacity3.png" alt="View information about the staff member's previous five weeks of work.">
 </div>
+<br>
+This report greatly improved the visibility of staff production across all departments. Customizable staff goals allowed leaders to set and refine individual metrics for staff performance. During the implementation of this project I learned about the importance of row-level security, app/workspace permissions, and dynamic filtering in distribution.  
+<br>
 
 
+#### Company Collections Report
+
+Monitor company collections for different categories through the use of a parameter slicer in Power BI. Compare current year collections to previous year collections. View where collections are being applied within invoicing.
+<br>
+<br>
+<div class=large-image>
+ <img src="https://kameronyork.com/docs/cn-sample-images/collections1.png" alt="View collections by client, staff member, and manager for the current and previous year.">
+</div>
+<br>
+In building this report I learned how to create parameters and dynamic-relationship functions in Power BI using the USERELATIONSHIP function.  I also implemented multiple solutions for comparing current year collections to previous year collections. The report's drill through feature allows managers to view collections by client and even collections applied to specific invoices.  
+<br>
+
+#### Staff Performance Snapshot
+
+View a staff member's billable goal vs. actual over time. Compare key metrics like realization and utilization to previous month amounts.
+<br>
+<br>
+<div class=large-image>
+ <img src="https://kameronyork.com/docs/cn-sample-images/snapshot1.png" alt="Automated emails containing a PDF version of a Power BI report tracking staff KPIs.">
+</div>
+<br>
+After implementation of their capacity report one department requested a variation to be sent in a monthly email. Department leaders wished staff members could visualize actual distance from their goal to prompt conversations about changes to be made.  Along with this Power BI report I built a Power Automate flow to automatically export a PDF version which would then be sent in a email to each staff member.
+<br>
+
+#### Data Integrity Reporting
+
+An ever-growing list of data integrity checks reviewed daily by the operations team.
+<br>
+<br>
+<div class=large-image>
+ <img src="https://kameronyork.com/docs/cn-sample-images/integrity1.png" alt="Data integrity report responsible for identifying and correcting hundreds of data inconsistencies.">
+</div>
+<br>
+One of the first reports I created in this company.  I believe a report is only as strong as the least trustworthy data source.  This report brings together almost 30 integrity checks across two softwares. Hundreds of data inconsistencies have been identified and corrected using this report.
+<br>
+
+
+#### Company-Wide Staff Scorecard
+
+Comparing KPIs for staff members across the company.  View personal or client collections and where they've been applied.  Who is responsible for billing a staff member's clients? How much Work in Progress and Accounts Receivable are in each aging group?
+<br>
+<br>
+<div class=large-image>
+ <img src="https://kameronyork.com/docs/cn-sample-images/scorecard1.png" alt="Data integrity report responsible for identifying and correcting hundreds of data inconsistencies.">
+</div>
+<br>
+Following the success of the Staff Snapshot a company wide scorecard was implemented.  This more robust KPI report Allowed management to see collections, applications, Work in Progress and Accounts Receivable in one place.  Dynamic rankings show staff members where they stand compared to others in the company along with the value in first place. Like the Staff Snapshot this report is paired with a Power Automate flow to be automatically emailed to staff members monthly.
 <br>
 <br>
