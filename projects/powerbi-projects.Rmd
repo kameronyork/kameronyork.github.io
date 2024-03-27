@@ -109,15 +109,15 @@ Quickly view important staff production metrics in one place.  Billable hours, p
 <br>
 <br>
 <div class=large-image>
- <img src="https://kameronyork.com/docs/cn-sample-images/capacity1.png" alt="View the amount of hours worked, percentage billable, and year to date capacity per employee per week.">
+ <img src="https://kameronyork.com/docs/pbi-sample-images/capacity1.png" alt="View the amount of hours worked, percentage billable, and year to date capacity per employee per week.">
 </div>
 <br>
 <div class=large-image>
- <img src="https://kameronyork.com/docs/cn-sample-images/capacity2.png" alt="View the specific time entries from a staff member in that week.">
+ <img src="https://kameronyork.com/docs/pbi-sample-images/capacity2.png" alt="View the specific time entries from a staff member in that week.">
 </div>
 <br>
 <div class=large-image>
- <img src="https://kameronyork.com/docs/cn-sample-images/capacity3.png" alt="View information about the staff member's previous five weeks of work.">
+ <img src="https://kameronyork.com/docs/pbi-sample-images/capacity3.png" alt="View information about the staff member's previous five weeks of work.">
 </div>
 <br>
 This report greatly improved the visibility of staff production across all departments. Customizable staff goals allowed leaders to set and refine individual metrics for staff performance. During the implementation of this project I learned about the importance of row-level security, app/workspace permissions, and dynamic filtering in distribution.  
@@ -130,7 +130,7 @@ Monitor company collections for different categories through the use of a parame
 <br>
 <br>
 <div class=large-image>
- <img src="https://kameronyork.com/docs/cn-sample-images/collections1.png" alt="View collections by client, staff member, and manager for the current and previous year.">
+ <img src="https://kameronyork.com/docs/pbi-sample-images/collections1.png" alt="View collections by client, staff member, and manager for the current and previous year.">
 </div>
 <br>
 In building this report I learned how to create parameters and dynamic-relationship functions in Power BI using the USERELATIONSHIP function.  I also implemented multiple solutions for comparing current year collections to previous year collections. The report's drill through feature allows managers to view collections by client and even collections applied to specific invoices.  
@@ -142,7 +142,7 @@ View a staff member's billable goal vs. actual over time. Compare key metrics li
 <br>
 <br>
 <div class=large-image>
- <img src="https://kameronyork.com/docs/cn-sample-images/snapshot1.png" alt="Automated emails containing a PDF version of a Power BI report tracking staff KPIs.">
+ <img src="https://kameronyork.com/docs/pbi-sample-images/snapshot1.png" alt="Automated emails containing a PDF version of a Power BI report tracking staff KPIs.">
 </div>
 <br>
 After implementation of their capacity report one department requested a variation to be sent in a monthly email. Department leaders wished staff members could visualize actual distance from their goal to prompt conversations about changes to be made.  Along with this Power BI report I built a Power Automate flow to automatically export a PDF version which would then be sent in a email to each staff member.
@@ -154,7 +154,7 @@ An ever-growing list of data integrity checks reviewed daily by the operations t
 <br>
 <br>
 <div class=large-image>
- <img src="https://kameronyork.com/docs/cn-sample-images/integrity1.png" alt="Data integrity report responsible for identifying and correcting hundreds of data inconsistencies.">
+ <img src="https://kameronyork.com/docs/pbi-sample-images/integrity1.png" alt="Data integrity report responsible for identifying and correcting hundreds of data inconsistencies.">
 </div>
 <br>
 One of the first reports I created in this company.  I believe a report is only as strong as the least trustworthy data source.  This report brings together almost 30 integrity checks across two softwares. Hundreds of data inconsistencies have been identified and corrected using this report.
@@ -167,7 +167,7 @@ Comparing KPIs for staff members across the company.  View personal or client co
 <br>
 <br>
 <div class=large-image>
- <img src="https://kameronyork.com/docs/cn-sample-images/scorecard1.png" alt="Data integrity report responsible for identifying and correcting hundreds of data inconsistencies.">
+ <img src="https://kameronyork.com/docs/pbi-sample-images/scorecard1.png" alt="Data integrity report responsible for identifying and correcting hundreds of data inconsistencies.">
 </div>
 <br>
 Following the success of the Staff Snapshot a company wide scorecard was implemented.  This more robust KPI report Allowed management to see collections, applications, Work in Progress and Accounts Receivable in one place.  Dynamic rankings show staff members where they stand compared to others in the company along with the value in first place. Like the Staff Snapshot this report is paired with a Power Automate flow to be automatically emailed to staff members monthly.
