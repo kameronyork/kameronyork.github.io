@@ -103,6 +103,11 @@ output:
 
 <br>
 
+<div>
+ <img src="https://kameronyork.com/docs/pbi-sample-images/company-orange.png" alt="Header for Company Orange">
+</div>
+<br>
+
 #### Staff Capacity Report
 
 Quickly view important staff production metrics in one place.  Billable hours, percentage billable, goal comparisons, and overtime in one week, previous five weeks, and year to date formats.
@@ -171,5 +176,53 @@ Comparing KPIs for staff members across the company.  View personal or client co
 </div>
 <br>
 Following the success of the Staff Snapshot a company wide scorecard was implemented.  This more robust KPI report Allowed management to see collections, applications, Work in Progress and Accounts Receivable in one place.  Dynamic rankings show staff members where they stand compared to others in the company along with the value in first place. Like the Staff Snapshot this report is paired with a Power Automate flow to be automatically emailed to staff members monthly.
+<br>
+<br>
+<br>
+
+<div>
+ <img src="https://kameronyork.com/docs/pbi-sample-images/company-blue.png" alt="Header for Company Blue">
+</div>
+<br>
+
+#### Cisco Phone Dashboard
+
+Phone dashboard
+<br>
+<br>
+<div class=large-image>
+ <img src="https://kameronyork.com/docs/pbi-sample-images/phone1.png" alt="Data integrity report responsible for identifying and correcting hundreds of data inconsistencies.">
+</div>
+<br>
+Improved efficiency
+<br>
+
+#### State Compliance Dashboard
+
+Visualize emails sent for state compliance
+<br>
+<br>
+<div class=large-image>
+ <img src="https://kameronyork.com/docs/pbi-sample-images/sara1.png" alt="Dashboard to collect and analyze phone data from front desk staff members.">
+</div>
+<br>
+Increased visibility of compliance
+<br>
+
+#### Team Task Tracking Dashboard
+
+Task completion reporting in a form
+<br>
+<br>
+<div class=large-image>
+ <img src="https://kameronyork.com/docs/pbi-sample-images/process1.png" alt="View team task metrics at a glance.">
+</div>
+<br>
+<div class=large-image>
+ <img src="https://kameronyork.com/docs/pbi-sample-images/process2.png" alt="View in depth metric breakdowns for the whole team or individual staff members.">
+</div>
+<br>
+Increased visibility of team processes
+
 <br>
 <br>
