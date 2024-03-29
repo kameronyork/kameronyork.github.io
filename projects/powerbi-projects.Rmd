@@ -109,62 +109,59 @@ output:
 <br>
 
 #### Staff Capacity Report
-Tracking staff time entries and utilization can be time consuming.  This report automates the process allowing key decision makers to allocate workloads more efficiently.  Although originally created for one department this report was implemented company-wide.
+Tracking staff time entries and utilization can be time-consuming.  This report automates the process allowing key decision makers to allocate workloads more efficiently.  Although created for one department this report was implemented company-wide.
 <br>
 <br>
 <div class=large-image>
- <img src="https://kameronyork.com/docs/pbi-sample-images/capacity1.png" alt="View the amount of hours worked, percentage billable, and year to date capacity per employee per week.">
+ <img src="https://kameronyork.com/docs/pbi-sample-images/capacity1.png" alt="View the amount of hours worked, percentage billable, and year-to-date capacity per employee per week.">
 </div>
-<p align="center"><small>View hours for the current week, five week period, and year to date.</small></p>
 <br>
 <div class=large-image>
  <img src="https://kameronyork.com/docs/pbi-sample-images/capacity2.png" alt="View the specific time entries from a staff member in that week.">
 </div>
-<p align="center"><small>Drill through to see individual time entries per week!</small></p>
 <br>
 <div class=large-image>
  <img src="https://kameronyork.com/docs/pbi-sample-images/capacity3.png" alt="View information about the staff member's previous five weeks of work.">
 </div>
-<p align="center"><small>View key performance metrics for the previous five weeks!</small></p>
 <br>
-This is the second version of this report.  Between the first version and the second I learned the efficiency of Power Query and the speed of Direct Query connections.  During my revisions of the first version I implemented most transformations in Power Query instead of using calculated tables within the report.  This change improved workspace refresh times immensely.
+This is the second version of this report.  Between the first version and the second I learned the efficiency of Power Query and the speed of Direct Query connections.  During my revisions of the first version, I implemented most transformations in Power Query instead of using calculated tables within the report.  This change improved workspace refresh times immensely.
 <br>
 
 
 #### Company Collections Report
 
-Monitor company collections for different categories through the use of a parameter slicer in Power BI. Compare current year collections to previous year collections. View where collections are being applied within invoicing.
+Watch company collections by different groups with a parameter slicer.  Drill through to view individual client payments within each category.  Compare the current year and previous year quickly with two charts.
 <br>
 <br>
 <div class=large-image>
  <img src="https://kameronyork.com/docs/pbi-sample-images/collections1.png" alt="View collections by client, staff member, and manager for the current and previous year.">
 </div>
 <br>
-In building this report I learned how to create parameters and dynamic-relationship functions in Power BI using the USERELATIONSHIP function.  I also implemented multiple solutions for comparing current year collections to previous year collections. The report's drill through feature allows managers to view collections by client and even collections applied to specific invoices.  
+This report is one in a larger series of reports.  For the main project, my team replicated all basic reports from our company's time and invoice tracking software.  These base reports are stored in a shared workspace with a main dashboard to display key metrics for decision-makers.  The main dashboard also acted as a central hub for navigation between reports.
 <br>
 
 #### Staff Performance Snapshot
 
-View a staff member's billable goal vs. actual over time. Compare key metrics like realization and utilization to previous month amounts.
+Monitor staff performance in customizable categories.  Visualize a staff member's distance from their declared hourly goal.  This report was automatically printed to PDF and sent to individual staff members through a Power Automate flow.  
 <br>
 <br>
 <div class=large-image>
  <img src="https://kameronyork.com/docs/pbi-sample-images/snapshot1.png" alt="Automated emails containing a PDF version of a Power BI report tracking staff KPIs.">
 </div>
 <br>
-After implementation of their capacity report one department requested a variation to be sent in a monthly email. Department leaders wished staff members could visualize actual distance from their goal to prompt conversations about changes to be made.  Along with this Power BI report I built a Power Automate flow to automatically export a PDF version which would then be sent in a email to each staff member.
+After the implementation of their capacity report, one department requested this variation. Along with hourly information, billing information was included as well.  This represented a staff member's overall standing in their position.  Staff members who received the report stated they looked forward to its weekly arrival.
 <br>
 
 #### Data Integrity Reporting
 
-An ever-growing list of data integrity checks reviewed daily by the operations team.
+An ever-growing list of data integrity checks is reviewed daily by the operations team.
 <br>
 <br>
 <div class=large-image>
  <img src="https://kameronyork.com/docs/pbi-sample-images/integrity1.png" alt="Data integrity report responsible for identifying and correcting hundreds of data inconsistencies.">
 </div>
 <br>
-One of the first reports I created in this company.  I believe a report is only as strong as the least trustworthy data source.  This report brings together almost 30 integrity checks across two softwares. Hundreds of data inconsistencies have been identified and corrected using this report.
+One of the first reports I created for Company Orange.  I believe a report is only as strong as the least trustworthy data source.  This report brings together almost 30 integrity checks across two software. Hundreds of data inconsistencies have been identified and corrected using this report.
 <br>
 
 
@@ -177,7 +174,7 @@ Comparing KPIs for staff members across the company.  View personal or client co
  <img src="https://kameronyork.com/docs/pbi-sample-images/scorecard1.png" alt="Data integrity report responsible for identifying and correcting hundreds of data inconsistencies.">
 </div>
 <br>
-Following the success of the Staff Snapshot a company wide scorecard was implemented.  This more robust KPI report Allowed management to see collections, applications, Work in Progress and Accounts Receivable in one place.  Dynamic rankings show staff members where they stand compared to others in the company along with the value in first place. Like the Staff Snapshot this report is paired with a Power Automate flow to be automatically emailed to staff members monthly.
+Following the success of the Staff Snapshot a company-wide scorecard was implemented.  This more robust KPI report allowed management to see collections, applications, Work in Progress, and Accounts Receivable in one place.  In creating this report I learned how to create rankings by group in Power Query.  Like the Staff Snapshot, this report is paired with a Power Automate flow to be automatically emailed to staff members monthly.
 <br>
 <br>
 <br>
@@ -189,31 +186,31 @@ Following the success of the Staff Snapshot a company wide scorecard was impleme
 
 #### Cisco Phone Dashboard
 
-Phone dashboard
-<br>
+View the phone activity of staff members and key phone KPIs like missed, abandoned, and dequeued calls.  Track the ratio of calls presented to calls handled over time and by department.
+<br> 
 <br>
 <div class=large-image>
  <img src="https://kameronyork.com/docs/pbi-sample-images/phone1.png" alt="Data integrity report responsible for identifying and correcting hundreds of data inconsistencies.">
 </div>
 <br>
-Improved efficiency
+This was the most influential report I created for Company Blue.  The process for tracking phone KPIs previously was to export and email a report from Cisco weekly.  Using Power Automate Desktop I intercepted the data from the weekly emails and created a historical data source in Excel Online.  This Power BI report connected to the new historical data which revolutionized phone call tracking through key visualizations.
 <br>
 
 #### State Compliance Dashboard
 
-Visualize emails sent for state compliance
+A Power BI report and Power App deployed to automate the monotonous process of drafting compliance emails.  Automation reduced the time to complete this task from three hours per week to 30 seconds.
 <br>
 <br>
 <div class=large-image>
  <img src="https://kameronyork.com/docs/pbi-sample-images/sara1.png" alt="Dashboard to collect and analyze phone data from front desk staff members.">
 </div>
 <br>
-Increased visibility of compliance
+This process involved the creation of a Power App to alert team members of individuals who required compliance communication.  By clicking a button by the individual's name the Power App would dynamically generate the correct email text and would be approved and sent.  A Power BI report was deployed to visualize the number of emails sent through the Power App per week and the home state of the receiving individual.
 <br>
 
 #### Team Task Tracking Dashboard
 
-Task completion reporting in a form
+Track staff performance team-wide and view progress towards declared goals.  Dynamic weights are assigned to each category type which are used to generate staff scores.  Managers can view a leaderboard report to monitor staff scores and overall task completion.
 <br>
 <br>
 <div class=large-image>
@@ -221,10 +218,9 @@ Task completion reporting in a form
 </div>
 <br>
 <div class=large-image>
- <img src="https://kameronyork.com/docs/pbi-sample-images/process2.png" alt="View in depth metric breakdowns for the whole team or individual staff members.">
+ <img src="https://kameronyork.com/docs/pbi-sample-images/process2.png" alt="View in-depth metric breakdowns for the whole team or individual staff members.">
 </div>
 <br>
-Increased visibility of team processes
-
+Building this report was a challenge as no data existed before the report request.  Key decision makers wanted to track how many tasks staff members completed in nine processes.  By implementing a Microsoft Form on the team SharePoint site staff members self-reported task completions in each category.  This data was stored in a spreadsheet and a Power BI report was deployed to display these key metrics.  This process improved project management greatly.
 <br>
 <br>
