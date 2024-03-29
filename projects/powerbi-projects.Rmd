@@ -103,29 +103,31 @@ output:
 
 <br>
 
-<div>
- <img src="https://kameronyork.com/docs/pbi-sample-images/company-orange.png" alt="Header for Company Orange">
+<div style="text-align: center;">
+ <img src="https://kameronyork.com/docs/pbi-sample-images/company-orange.png" alt="Header for Company Orange" style="max-height: 40px;">
 </div>
 <br>
 
 #### Staff Capacity Report
-
-Quickly view important staff production metrics in one place.  Billable hours, percentage billable, goal comparisons, and overtime in one week, previous five weeks, and year to date formats.
+Tracking staff time entries and utilization can be time consuming.  This report automates the process allowing key decision makers to allocate workloads more efficiently.  Although originally created for one department this report was implemented company-wide.
 <br>
 <br>
 <div class=large-image>
  <img src="https://kameronyork.com/docs/pbi-sample-images/capacity1.png" alt="View the amount of hours worked, percentage billable, and year to date capacity per employee per week.">
 </div>
+<p align="center"><small>View hours for the current week, five week period, and year to date.</small></p>
 <br>
 <div class=large-image>
  <img src="https://kameronyork.com/docs/pbi-sample-images/capacity2.png" alt="View the specific time entries from a staff member in that week.">
 </div>
+<p align="center"><small>Drill through to see individual time entries per week!</small></p>
 <br>
 <div class=large-image>
  <img src="https://kameronyork.com/docs/pbi-sample-images/capacity3.png" alt="View information about the staff member's previous five weeks of work.">
 </div>
+<p align="center"><small>View key performance metrics for the previous five weeks!</small></p>
 <br>
-This report greatly improved the visibility of staff production across all departments. Customizable staff goals allowed leaders to set and refine individual metrics for staff performance. During the implementation of this project I learned about the importance of row-level security, app/workspace permissions, and dynamic filtering in distribution.  
+This is the second version of this report.  Between the first version and the second I learned the efficiency of Power Query and the speed of Direct Query connections.  During my revisions of the first version I implemented most transformations in Power Query instead of using calculated tables within the report.  This change improved workspace refresh times immensely.
 <br>
 
 
@@ -180,8 +182,8 @@ Following the success of the Staff Snapshot a company wide scorecard was impleme
 <br>
 <br>
 
-<div>
- <img src="https://kameronyork.com/docs/pbi-sample-images/company-blue.png" alt="Header for Company Blue">
+<div style="text-align: center;">
+ <img src="https://kameronyork.com/docs/pbi-sample-images/company-blue.png" alt="Header for Company Blue" style="max-height: 40px;">
 </div>
 <br>
 
