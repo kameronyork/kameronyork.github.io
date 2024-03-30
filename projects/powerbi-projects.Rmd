@@ -19,7 +19,7 @@ output:
 </style>
 
 <div class="subtitle-text">
-<p>I've worked in Power BI for nearly two years. <br>Here are some examples of projects I designed and distributed. <br><span style="color: #c0c0c0;"><i>All data within the following reports has been changed for privacy purposes.</i></span></p>
+<span style="color: #c0c0c0;"><i>All data within the following reports has been changed for privacy purposes.</i></span></p>
 </div>
 
 
