@@ -39,8 +39,10 @@ with open('C:/Users/theka/Desktop/Projects/Website_project/kameronyork.com/proje
             current_rank = None  # Reset rank for users without completion
         elif line.endswith('(you)'):  # This line is a name, specifically the user
             current_name = line.split(' ')[0]  # Extract name before "(you)"
-        elif ':' in line or line == '--':  # This line is a time or '--'
-            time_in_seconds = time_to_seconds(line)
+        elif ':' in line or line == '--' or line == 'Play Puzzle':  # This line is a time, '--', or 'Play Puzzle'
+            time_in_seconds = None
+            if ':' in line and line != '--':
+                time_in_seconds = time_to_seconds(line)
             table.append({'rank': current_rank, 'name': current_name, 'seconds': time_in_seconds})
             current_rank, current_name = None, None  # Reset for the next entry
         else:  # This line is a name without '(you)' and without a preceding rank
