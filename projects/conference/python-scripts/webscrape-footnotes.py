@@ -8,8 +8,7 @@ import requests
 from bs4 import BeautifulSoup
 from tqdm import tqdm  # Import tqdm for the progress bar
 
-##### 
-# %%
+##### # %%
 # Define a function to extract hrefs from a given section
 def extract_hrefs(url, section_class):
     response = requests.get(url)
@@ -38,10 +37,8 @@ df['main_body_hrefs'] = df['hyperlink'].progress_apply(lambda url: extract_hrefs
 ## # ## 
 df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output.csv", encoding="utf-8", index=False)
 
-##### 
-# %%
-## # ## 
-df = pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output.csv", encoding="utf-8")
+##### # %%
+## # ## df = pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output.csv", encoding="utf-8")
 
 df = df[df['main_body_hrefs'] != '[]']
 
