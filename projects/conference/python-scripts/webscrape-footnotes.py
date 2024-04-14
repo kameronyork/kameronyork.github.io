@@ -27,7 +27,7 @@ def extract_hrefs(url, section_class):
 # Read the dataset into a pandas DataFrame
 df = pd.read_csv("https://kameronyork.com/datasets/conference-talk-hyperlinks.csv", encoding="utf-8")
 
-
+# %%
 # Apply the function to each row in the DataFrame with tqdm
 tqdm.pandas(desc="Processing rows")
 df['main_body_hrefs'] = df['hyperlink'].progress_apply(lambda url: extract_hrefs(url, 'contentWrapper-n6Z8K'))
