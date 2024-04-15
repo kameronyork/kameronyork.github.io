@@ -6,16 +6,14 @@
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from tqdm import tqdm  # Import tqdm for the progress bar
 
-##### # %%
-# Define a function to extract hrefs from a given section
 def extract_hrefs(url, section_class):
     response = requests.get(url)
     soup = BeautifulSoup(response.content, 'html.parser')
     section = soup.find('div', class_=section_class)
     if section:
-        # Exclude links within the action bar section
         action_bar = section.find('div', class_='ActionBar')
         if action_bar:
             action_bar.extract()  # Remove the action bar from the section
@@ -24,21 +22,35 @@ def extract_hrefs(url, section_class):
     else:
         return []
 
+def get_hrefs_from_url(url):
+    return extract_hrefs(url, 'contentWrapper-n6Z8K')
+
 # Read the dataset into a pandas DataFrame
 df = pd.read_csv("https://kameronyork.com/datasets/conference-talk-hyperlinks.csv", encoding="utf-8")
 
-# %%
-# Apply the function to each row in the DataFrame with tqdm
-tqdm.pandas(desc="Processing rows")
-df['main_body_hrefs'] = df['hyperlink'].progress_apply(lambda url: extract_hrefs(url, 'contentWrapper-n6Z8K'))
-
+# Create a ThreadPoolExecutor to run multiple requests in parallel
+with ThreadPoolExecutor(max_workers=20) as executor:
+    # Submit all tasks to the executor
+    futures = [executor.submit(get_hrefs_from_url, url) for url in df['hyperlink']]
+    
+    # Initialize the progress bar
+    progress_bar = tqdm(as_completed(futures), total=len(futures), desc="Processing rows")
+    
+    # As each task completes, store the result
+    for future in progress_bar:
+        try:
+            hrefs = future.result()
+            url = [url for url, fut in zip(df['hyperlink'], futures) if fut == future][0]
+            df.loc[df['hyperlink'] == url, 'main_body_hrefs'] = str(hrefs)
+        except Exception as exc:
+            progress_bar.write(f'URL generated an exception: {exc}')
 
 # Save the DataFrame to a new CSV file
 ## # ## 
-df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output.csv", encoding="utf-8", index=False)
+df.to_csv("./backups/conference-talk-hyperlinks-output.csv", encoding="utf-8", index=False)
 
 ##### # %%
-## # ## df = pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output.csv", encoding="utf-8")
+## # ## df = pd.read_csv("./backups/conference-talk-hyperlinks-output.csv", encoding="utf-8")
 
 df = df[df['main_body_hrefs'] != '[]']
 
@@ -73,10 +85,10 @@ scripture_abbreviations = {
 swap_df['ref_check'] = swap_df['main_body_hrefs'].str.lstrip('[').str.lstrip().str.split('/').str[0].isin(scripture_abbreviations)
 
 ## # ## 
-swap_df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-2.csv", encoding="utf-8", index=False)
+swap_df.to_csv("./backups/conference-talk-hyperlinks-output-2.csv", encoding="utf-8", index=False)
 
 ##### # %%
-## # ## swap_df = pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-2.csv", encoding="utf-8")
+## # ## swap_df = pd.read_csv("./backups/conference-talk-hyperlinks-output-2.csv", encoding="utf-8")
 
 refs_df = swap_df.query("ref_check == True")
 
@@ -192,10 +204,10 @@ refs_df['scripture'] = refs_df['book_name'] + ' ' + refs_df['chapter_and_verse']
 
 
 ## # ## 
-refs_df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-3.csv", encoding="utf-8", index=False)
+refs_df.to_csv("./backups/conference-talk-hyperlinks-output-3.csv", encoding="utf-8", index=False)
 
 ##### # %%
-## # ## refs_df = pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-3.csv", encoding="utf-8")
+## # ## refs_df = pd.read_csv("./backups/conference-talk-hyperlinks-output-3.csv", encoding="utf-8")
 
 # Create an empty list to store the rows for the new DataFrame
 new_rows = []
@@ -240,10 +252,10 @@ def determine_scripture_type(scripture):
 new_df['scripture_type'] = new_df['scripture'].apply(determine_scripture_type)
 
 ## # ## 
-new_df.to_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-4.csv", encoding="utf-8", index=False)
+new_df.to_csv("./backups/conference-talk-hyperlinks-output-4.csv", encoding="utf-8", index=False)
 
 ##### # %%
-## # ## new_df = pd.read_csv("C:/Users/theka/Desktop/Projects/Gospel Buddy/conference-talk-hyperlinks-output-4.csv", encoding="utf-8")
+## # ## new_df = pd.read_csv("./backups/conference-talk-hyperlinks-output-4.csv", encoding="utf-8")
 
 # Creating a new df for single scriptures
 single_df = new_df.query("scripture_type == 'SINGLE'")
@@ -305,8 +317,6 @@ scriptures_df['quote_id'] = scriptures_df.reset_index().index
 # Filter out rows where the value immediately following ":" in the 'scripture' column is not a number
 scriptures_df = scriptures_df[scriptures_df['scripture'].str.split(':').str[1].str.isdigit()]
 
-
-##### # %%
 # Loading all conference talk data to merge to scriptures_df.  This will return the text of the talk.
 all_talks = pd.read_csv("https://kameronyork.com/datasets/general-conference-talks.csv", encoding="utf-8").filter(items=["id", "text"]).rename(columns={"id": "talk_id", "text": "talk_text"})
 
@@ -318,6 +328,12 @@ scriptures_df = pd.merge(scriptures_df, all_talks, on='talk_id', how='left')
 
 # Merge scriptures_df and all_verses on 'scripture'
 scriptures_df = pd.merge(scriptures_df, all_verses, on='scripture', how='left')
+
+## # ## 
+scriptures_df.to_csv("./backups/conference-talk-hyperlinks-output-5.csv", encoding="utf-8", index=False)
+
+##### # %%
+## # ## scriptures_df = pd.read_csv("./backups/conference-talk-hyperlinks-output-5.csv", encoding="utf-8")
 
 
 import re
