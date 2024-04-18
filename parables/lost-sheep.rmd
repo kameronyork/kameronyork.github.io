@@ -7,6 +7,12 @@ output:
       in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/headers/lost-sheep-header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
+<script>
+window.scripturesList = ["Matthew 18:11", "Matthew 18:12", "Matthew 18:13", "Matthew 18:14", "Luke 15:1", "Luke 15:2", "Luke 15:3", "Luke 15:4", "Luke 15:5", "Luke 15:6", "Luke 15:7"];
+</script>
+<script src="https://kameronyork.com/parables/gospel-buddy-table.js"></script>
+
+
 <br>
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
 <img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/lost-sheep.jpg" alt="Lost sheep parable image" style="float: right; width: 195px; height: 115px; padding: 5px;">
@@ -18,43 +24,21 @@ output:
 </p>
 </div>
 
+<br>
+<br>
+
 #### Insights here:
 
 This article is yet to be completed. Please check back later!
 
 
-<div style="margin-top: -10px;">
-#### General Conference Talks:
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2023/04/26christensen">“There Can Be Nothing So Exquisite and Sweet as Was My Joy”</a> - Craig C. Christensen, April 2023<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2023/04/34uceda">The Lord Jesus Christ Teaches Us to Minister</a> - Juan A. Uceda, April 2023<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2019/10/23alliaud">Found through the Power of the Book of Mormon</a> - Rubén V. Alliaud, October 2019<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2019/04/53gong">Good Shepherd, Lamb of God</a> - Gerrit W. Gong, April 2019<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2018/10/shepherding-souls">Shepherding Souls</a> - Gary E. Stevenson, October 2018<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2016/10/the-righteous-judge">The Righteous Judge</a> - Lynn G. Robbins, October 2016<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2016/04/to-the-rescue-we-can-do-it">To the Rescue: We Can Do It</a> - Mervyn B. Arnold, April 2016<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2016/04/he-will-place-you-on-his-shoulders-and-carry-you-home">He Will Place You on His Shoulders and Carry You Home</a> - Dieter F. Uchtdorf, April 2016<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2015/04/waiting-for-the-prodigal">Waiting for the Prodigal</a> - Brent H. Nielson, April 2015<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2013/04/the-power-of-the-priesthood-in-the-boy">The Power of the Priesthood in the Boy</a> - Tad R. Callister, April 2013<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2012/10/what-shall-a-man-give-in-exchange-for-his-soul">What Shall a Man Give in Exchange for His Soul?</a> - Robert C. Gay, October 2012<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2008/04/concern-for-the-one">Concern for the One</a> - Joseph B. Wirthlin, April 2008<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2005/10/if-christ-had-my-opportunities">“If Christ Had My Opportunities …”</a> - Paul K. Sybrowsky, October 2005<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2004/04/strengthen-thy-brethren">Strengthen Thy Brethren</a> - Mervyn B. Arnold, April 2004<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1999/10/feed-my-sheep">“Feed My Sheep”</a> - Ben B. Banks, October 1999<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1993/04/search-and-rescue">Search and Rescue</a> - Thomas S. Monson, April 1993<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1992/04/nourish-the-flock-of-christ">Nourish the Flock of Christ</a> - Alexander B. Morrison, April 1992<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1991/10/joy-and-mercy">Joy and Mercy</a> - Dallin H. Oaks, October 1991<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1991/04/teach-the-children">Teach the Children</a> - M. Russell Ballard, April 1991<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1984/10/personal-morality">Personal Morality</a> - David B. Haight, October 1984<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1983/10/become-a-star-thrower">Become a Star Thrower</a> - David B. Haight, October 1983<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1983/04/a-call-to-the-priesthood-feed-my-sheep">A Call to the Priesthood: “Feed My Sheep”</a> - Ezra Taft Benson, April 1983<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1981/10/people-to-people">People to People</a> - David B. Haight, October 1981<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1979/04/he-means-me">He Means Me</a> - Marion D. Hanks, April 1979<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1976/10/more-joy-and-rejoicing">More Joy and Rejoicing</a> - Marion D. Hanks, October 1976<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1975/04/feed-the-flock">Feed the Flock</a> - David B. Haight, April 1975<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1971/10/what-is-a-teacher">What Is a Teacher?</a> - Paul H. Dunn, October 1971<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1971/04/search-for-the-wanderers">Search for the Wanderers</a> - N. Eldon Tanner, April 1971<br>
-
-
+  <div id="scripture-table-container">
+      <div style="font-size: 8pt; display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+          <img src="https://kameronyork.com/docs/assets/gospel-buddy-icon.png" alt="Gospel Buddy Logo" style="height: 1em;">
+          Powered by the Gospel Buddy
+      </div>
+      <!-- The table HTML will be inserted here by your script -->
+  </div>
 
 
 ##### Check out my other articles:
