@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("scripture-table-container").innerHTML = tableHTML;
     }
 
-    // Define the scriptures here (array of desired scriptures)
-    const scripturesToDisplay = ["Alma 10:11", "Alma 10:12"]; // Change this to your desired scriptures
+    // Accessing global variable for scriptures
+    const scripturesToDisplay = window.scripturesList || ["Default Scripture"]; // Fallback to a default if not set
     displayTableForScripture(scripturesToDisplay);
 });
