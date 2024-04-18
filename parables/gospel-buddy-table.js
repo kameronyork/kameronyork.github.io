@@ -24,11 +24,11 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
         <table border="1" style="width: 100%; margin: auto; border-collapse: collapse; table-layout: fixed; margin-top:12px">
             <tr>
-                <th style="text-align: center; font-size: 12pt;"">%</th>
-                <th style="font-size: 12pt;">Year</th>
-                <th style="font-size: 12pt;">Month</th>
-                <th style="font-size: 12pt;">Speaker</th>
-                <th style="font-size: 12pt;">Talk Title</th>
+                <th style="text-align: center; font-size: 10pt;"">%</th>
+                <th style="font-size: 10pt;">Year</th>
+                <th style="font-size: 10pt;">Month</th>
+                <th style="font-size: 10pt;">Speaker</th>
+                <th style="font-size: 10pt;">Talk Title</th>
             </tr>`;
     
         uniqueEntriesArray.forEach(entry => {
