@@ -17,12 +17,12 @@ document.addEventListener("DOMContentLoaded", function() {
         uniqueEntriesArray.sort((a, b) => b.talk_id - a.talk_id);
     
         let tableHTML = `<br><br><div style="max-width: 100%; margin: auto; text-align: left;">
-            <a href="https://kameronyork.com/gospel-buddy/" style="font-size: 8pt; display: flex; align-items: center; gap: 5px; text-decoration: none; color: grey;">
+            <a href="https://kameronyork.com/gospel-buddy/" style="font-size: 12pt; display: flex; align-items: center; gap: 5px; text-decoration: none; color: grey;">
                 <img src="https://kameronyork.com/docs/assets/gospel-buddy-icon-nobg.png" alt="Gospel Buddy Logo" style="height: 1.5em;">
                 Powered by the Gospel Buddy
             </a>
         </div>
-        <table border="1" style="width: 100%; margin: auto; border-collapse: collapse; table-layout: fixed;">
+        <table border="1" style="width: 100%; margin: auto; border-collapse: collapse; table-layout: fixed; margin-top:12px">
             <tr>
                 <th style="text-align: center; font-size: 12pt;"">%</th>
                 <th style="font-size: 12pt;">Year</th>
