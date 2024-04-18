@@ -24,11 +24,11 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
         <table border="1" style="width: 100%; margin: auto; border-collapse: collapse; table-layout: fixed;">
             <tr>
-                <th style="text-align: center;">%</th>
-                <th>Year</th>
-                <th>Month</th>
-                <th>Speaker</th>
-                <th>Talk Title</th>
+                <th style="text-align: center; font-size: 12pt;"">%</th>
+                <th style="font-size: 12pt;">Year</th>
+                <th style="font-size: 12pt;">Month</th>
+                <th style="font-size: 12pt;">Speaker</th>
+                <th style="font-size: 12pt;">Talk Title</th>
             </tr>`;
     
         uniqueEntriesArray.forEach(entry => {
@@ -38,10 +38,10 @@ document.addEventListener("DOMContentLoaded", function() {
                     <div style="background-color: #F39C12; width: ${entry.perc_quoted}%; height: 100%; position: absolute; left: 0; top: 0;"></div>
                     <div style="position: relative; z-index: 1; font-size: 8pt;">${entry.perc_quoted}%</div>
                 </td>
-                <td style="font-size: 8pt;">${entry.talk_year}</td>
-                <td style="font-size: 8pt;">${entry.talk_month}</td>
-                <td style="font-size: 8pt;">${entry.speaker}</td>
-                <td style="font-size: 8pt;">${titleLink}</td>
+                <td style="font-size: 12pt;">${entry.talk_year}</td>
+                <td style="font-size: 12pt;">${entry.talk_month}</td>
+                <td style="font-size: 12pt;">${entry.speaker}</td>
+                <td style="font-size: 12pt;">${titleLink}</td>
             </tr>`;
         });
     
