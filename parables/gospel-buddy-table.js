@@ -22,15 +22,22 @@ document.addEventListener("DOMContentLoaded", function() {
                 Powered by the Gospel Buddy
             </a>
         </div>
-        <table border="1" style="width: 100%; margin: auto; border-collapse: collapse; table-layout: fixed; margin-top:12px">
+        <table border="1" style="width: 100%; margin: auto; border-collapse: collapse; margin-top:12px;">
+            <colgroup>
+                <col style="width: auto;">
+                <col style="width: auto;">
+                <col style="width: auto;">
+                <col style="width: auto;">
+                <col style="width: auto;">
+            </colgroup>
             <tr>
-                <th style="text-align: center; font-size: 10pt;"">%</th>
+                <th style="text-align: center; font-size: 10pt;">%</th>
                 <th style="text-align: center; font-size: 10pt;">Year</th>
                 <th style="text-align: center; font-size: 10pt;">Month</th>
                 <th style="text-align: center; font-size: 10pt;">Speaker</th>
                 <th style="text-align: center; font-size: 10pt;">Title</th>
             </tr>`;
-    
+
         uniqueEntriesArray.forEach(entry => {
             const titleLink = entry.hyperlink ? `<a href="${entry.hyperlink}" target="_blank">${entry.title}</a>` : entry.title;
             tableHTML += `<tr>
