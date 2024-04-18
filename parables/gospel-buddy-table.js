@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
             </tr>`;
         });
     
-        tableHTML += '</table>';
+        tableHTML += '</table><br><br><br>';
         return tableHTML;
     }
 
