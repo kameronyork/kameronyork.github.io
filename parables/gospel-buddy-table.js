@@ -36,12 +36,12 @@ document.addEventListener("DOMContentLoaded", function() {
             tableHTML += `<tr>
                 <td style="text-align: center; position: relative;">
                     <div style="background-color: #F39C12; width: ${entry.perc_quoted}%; height: 100%; position: absolute; left: 0; top: 0;"></div>
-                    <div style="position: relative; z-index: 1; font-size: 8pt;">${entry.perc_quoted}%</div>
+                    <div style="position: relative; z-index: 1; font-size: 10pt;">${entry.perc_quoted}%</div>
                 </td>
-                <td style="font-size: 12pt;">${entry.talk_year}</td>
-                <td style="font-size: 12pt;">${entry.talk_month}</td>
-                <td style="font-size: 12pt;">${entry.speaker}</td>
-                <td style="font-size: 12pt;">${titleLink}</td>
+                <td style="font-size: 10pt;">${entry.talk_year}</td>
+                <td style="font-size: 10pt;">${entry.talk_month}</td>
+                <td style="font-size: 10pt;">${entry.speaker}</td>
+                <td style="font-size: 10pt;">${titleLink}</td>
             </tr>`;
         });
     
