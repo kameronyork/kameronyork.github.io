@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <td>${entry.talk_month}</td>
                 <td>${entry.speaker}</td>
                 <td>${titleLink}</td>
-            </tr>`;
+            </tr><br><br><br>`;
         });
     
         tableHTML += '</table>';
