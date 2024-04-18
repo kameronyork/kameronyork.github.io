@@ -16,13 +16,13 @@ document.addEventListener("DOMContentLoaded", function() {
         const uniqueEntriesArray = Object.values(uniqueEntries);
         uniqueEntriesArray.sort((a, b) => b.talk_id - a.talk_id);
     
-        let tableHTML = `<br><br><div style="max-width: 800px; margin: auto; text-align: left;">
-            <a href="https://kameronyork.com/gospel-buddy/" style="font-size: 10pt; display: flex; align-items: center; gap: 10px; text-decoration: none; color: grey;">
-                <img src="https://kameronyork.com/docs/assets/gospel-buddy-icon-nobg.png" alt="Gospel Buddy Logo" style="height: 2em;">
+        let tableHTML = `<br><br><div style="max-width: 100%; margin: auto; text-align: left;">
+            <a href="https://kameronyork.com/gospel-buddy/" style="font-size: 8pt; display: flex; align-items: center; gap: 5px; text-decoration: none; color: grey;">
+                <img src="https://kameronyork.com/docs/assets/gospel-buddy-icon-nobg.png" alt="Gospel Buddy Logo" style="height: 1.5em;">
                 Powered by the Gospel Buddy
             </a>
         </div>
-        <table border="1" style="width: 100%; max-width: 800px; margin: auto; border-collapse: collapse; margin-top:12px">
+        <table border="1" style="width: 100%; margin: auto; border-collapse: collapse; table-layout: fixed;">
             <tr>
                 <th style="text-align: center;">%</th>
                 <th>Year</th>
@@ -36,12 +36,12 @@ document.addEventListener("DOMContentLoaded", function() {
             tableHTML += `<tr>
                 <td style="text-align: center; position: relative;">
                     <div style="background-color: #F39C12; width: ${entry.perc_quoted}%; height: 100%; position: absolute; left: 0; top: 0;"></div>
-                    <div style="position: relative; z-index: 1;">${entry.perc_quoted}%</div>
+                    <div style="position: relative; z-index: 1; font-size: 8pt;">${entry.perc_quoted}%</div>
                 </td>
-                <td>${entry.talk_year}</td>
-                <td>${entry.talk_month}</td>
-                <td>${entry.speaker}</td>
-                <td>${titleLink}</td>
+                <td style="font-size: 8pt;">${entry.talk_year}</td>
+                <td style="font-size: 8pt;">${entry.talk_month}</td>
+                <td style="font-size: 8pt;">${entry.speaker}</td>
+                <td style="font-size: 8pt;">${titleLink}</td>
             </tr>`;
         });
     
