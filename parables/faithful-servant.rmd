@@ -7,6 +7,14 @@ output:
       in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/headers/faithful-servant-header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
+<script>
+window.matthewVerses = ["Matthew 24:45", "Matthew 24:46", "Matthew 24:47", "Matthew 24:48", "Matthew 24:49", "Matthew 24:50", "Matthew 24:51"];
+window.markVerses = [];
+window.lukeVerses = ["Luke 12:41", "Luke 12:42", "Luke 12:43", "Luke 12:44", "Luke 12:45", "Luke 12:46", "Luke 12:47", "Luke 12:48"];
+window.johnVerses = [];
+</script>
+<script src="https://kameronyork.com/parables/gospel-buddy-table.js"></script>
+
 <br>
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
 <img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/faithful-servant.jpg" alt="Faithful servant parable image" style="float: right; width: 195px; height: 115px; padding: 5px;"><br>
@@ -17,23 +25,17 @@ output:
 </p>
 </div>
 
+<br>
+<br>
+
+
 #### Insights here:
 
 This article is yet to be completed. Please check back later!
 
-
-<div style="margin-top: -10px;">
-#### General Conference Talks:
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2013/04/followers-of-christ">Followers of Christ</a> - Dallin H. Oaks, April 2013<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2012/04/the-laborers-in-the-vineyard">The Laborers in the Vineyard</a> - Jeffrey R. Holland, April 2012<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2009/04/come-let-us-go-up-to-the-mountain-of-the-lord">Come Let Us Go Up to the Mountain of the Lord</a> - Elaine S. Dalton, April 2009<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1999/10/do-not-delay">Do Not Delay</a> - Henry B. Eyring, October 1999<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1987/10/sacrifice-and-self-sufficiency">Sacrifice and Self-Sufficiency</a> - M. Russell Ballard, October 1987<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1986/04/the-power-of-the-word">The Power of the Word</a> - Ezra Taft Benson, April 1986<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1982/10/the-lord-expects-righteousness">The Lord Expects Righteousness</a> - Spencer W. Kimball, October 1982<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1974/10/where-much-is-given-much-is-required">Where Much Is Given, Much Is Required</a> - Boyd K. Packer, October 1974<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1971/10/watch-that-ye-may-be-ready">“Watch, That Ye May Be Ready”</a> - Harold B. Lee, October 1971<br>
-
+<div id="scripture-table-container">
+    <!-- The table HTML will be inserted here by your script -->
+</div>
 
 
 

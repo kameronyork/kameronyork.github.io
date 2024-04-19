@@ -7,6 +7,14 @@ output:
       in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/headers/talents-or-minas-header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
+<script>
+window.matthewVerses = ["Matthew 25:14", "Matthew 25:15", "Matthew 25:16", "Matthew 25:17", "Matthew 25:18", "Matthew 25:19", "Matthew 25:20", "Matthew 25:21", "Matthew 25:22", "Matthew 25:23", "Matthew 25:24", "Matthew 25:25", "Matthew 25:26", "Matthew 25:27", "Matthew 25:28", "Matthew 25:29", "Matthew 25:30"];
+window.markVerses = [];
+window.lukeVerses = ["Luke 19:11", "Luke 19:12", "Luke 19:13", "Luke 19:14", "Luke 19:15", "Luke 19:16", "Luke 19:17", "Luke 19:18", "Luke 19:19", "Luke 19:20", "Luke 19:21", "Luke 19:22", "Luke 19:23", "Luke 19:24", "Luke 19:25", "Luke 19:26", "Luke 19:27"];
+window.johnVerses = [];
+</script>
+<script src="https://kameronyork.com/parables/gospel-buddy-table.js"></script>
+
 <br>
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
 <img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/talents-or-minas.jpg" alt="Talents or minas parable image" style="float: right; width: 195px; height: 115px; padding: 5px;">
@@ -18,65 +26,17 @@ output:
 </p>
 </div>
 
+<br>
+<br>
+
 #### Insights here:
 
 This article is yet to be completed. Please check back later!
 
 
-<div style="margin-top: -10px;">
-#### General Conference Talks:
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2023/10/31sabin">Hallmarks of Happiness</a> - Gary B. Sabin, October 2023<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2022/10/31causse">Our Earthly Stewardship</a> - Gérald Caussé, October 2022<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2022/04/18eyring">Steady in the Storms</a> - Henry B. Eyring, April 2022<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2020/10/12bednar">We Will Prove Them Herewith</a> - David A. Bednar, October 2020<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2020/04/53gimenez">Finding Refuge from the Storms of Life</a> - Ricardo P. Giménez, April 2020<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2017/10/repentance-is-always-positive">Repentance Is Always Positive</a> - Stephen W. Owen, October 2017<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2017/10/do-we-trust-him-hard-is-good">Do We Trust Him? Hard Is Good</a> - Stanley G. Ellis, October 2017<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2016/04/eternal-families">Eternal Families</a> - Henry B. Eyring, April 2016<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2015/10/you-are-not-alone-in-the-work">You Are Not Alone in the Work</a> - Henry B. Eyring, October 2015<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2015/04/priesthood-and-personal-prayer">Priesthood and Personal Prayer</a> - Henry B. Eyring, April 2015<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2014/04/if-ye-love-me-keep-my-commandments">“If Ye Love Me, Keep My Commandments”</a> - Robert D. Hales, April 2014<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2013/04/come-unto-me">“Come unto Me”</a> - Henry B. Eyring, April 2013<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2013/04/being-accepted-of-the-lord">Being Accepted of the Lord</a> - Erich W. Kopischke, April 2013<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2011/04/more-than-conquerors-through-him-that-loved-us">More Than Conquerors through Him That Loved Us</a> - Paul V. Johnson, April 2011<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2010/04/help-them-on-their-way-home">Help Them on Their Way Home</a> - Henry B. Eyring, April 2010<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2009/10/what-have-i-done-for-someone-today">What Have I Done for Someone Today?</a> - Thomas S. Monson, October 2009<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2007/10/three-goals-to-guide-you">Three Goals to Guide You</a> - Thomas S. Monson, October 2007<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2007/04/this-day">This Day</a> - Henry B. Eyring, April 2007<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2004/10/choose-you-this-day">Choose You This Day</a> - Thomas S. Monson, October 2004<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2004/04/in-the-strength-of-the-lord">In the Strength of the Lord</a> - Henry B. Eyring, April 2004<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2004/04/standing-spotless-before-the-lord">Standing Spotless before the Lord</a> - Clate W. Mask Jr., April 2004<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2003/10/bring-him-home">Bring Him Home</a> - Thomas S. Monson, October 2003<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2002/10/sacrifice-brings-forth-the-blessings-of-heaven">Sacrifice Brings Forth the Blessings of Heaven</a> - Robert K. Dellenbach, October 2002<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2002/10/i-believe-i-can-i-knew-i-could">I Believe I Can, I Knew I Could</a> - James E. Faust, October 2002<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2002/04/personal-worthiness-to-exercise-the-priesthood">Personal Worthiness to Exercise the Priesthood</a> - Gordon B. Hinckley, April 2002<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2001/10/some-great-thing">“Some Great Thing”</a> - James E. Faust, October 2001<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2001/10/be-thou-an-example">“Be Thou an Example”</a> - Thomas S. Monson, October 2001<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2001/04/plow-in-hope">“Plow in Hope”</a> - Neal A. Maxwell, April 2001<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2000/04/your-eternal-home">Your Eternal Home</a> - Thomas S. Monson, April 2000<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1998/10/come-let-us-walk-in-the-light-of-the-lord">Come, Let Us Walk in the Light of the Lord</a> - Mary Ellen W. Smoot, October 1998<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1998/04/in-harms-way">In Harm’s Way</a> - Thomas S. Monson, April 1998<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1997/04/true-to-the-truth">“True to the Truth”</a> - Joseph B. Wirthlin, April 1997<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1996/04/duty-calls">Duty Calls</a> - Thomas S. Monson, April 1996<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1994/04/five-loaves-and-two-fishes">Five Loaves and Two Fishes</a> - James E. Faust, April 1994<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1994/04/the-priesthood-a-sacred-trust">The Priesthood—A Sacred Trust</a> - Thomas S. Monson, April 1994<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1987/04/the-will-within">The Will Within</a> - Thomas S. Monson, April 1987<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1985/04/to-please-our-heavenly-father">To Please Our Heavenly Father</a> - Gordon B. Hinckley, April 1985<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1983/04/valiance-in-the-drama-of-life">Valiance in the Drama of Life</a> - Royden G. Derrick, April 1983<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1981/10/be-ye-prepared">“Be Ye Prepared”</a> - LeGrand Richards, October 1981<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1981/10/love-extends-beyond-convenience">Love Extends beyond Convenience</a> - J. Richard Clarke, October 1981<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1981/04/the-long-line-of-the-lonely">The Long Line of the Lonely</a> - Thomas S. Monson, April 1981<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1981/04/life-a-great-proving-ground">Life—A Great Proving Ground</a> - Franklin D. Richards, April 1981<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1978/10/the-cs-of-spirituality">The Cs of Spirituality</a> - Robert E. Wells, October 1978<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1978/10/successful-welfare-stewardship">Successful Welfare Stewardship</a> - J. Richard Clarke, October 1978<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1977/10/the-things-of-god-and-man">The Things of God and Man</a> - LeGrand Richards, October 1977<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1977/10/we-have-been-there-all-the-time">We Have Been There All the Time</a> - Paul H. Dunn, October 1977<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1977/10/rated-a">Rated A</a> - Marvin J. Ashton, October 1977<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1977/04/the-greatest-brotherhood">The Greatest Brotherhood</a> - N. Eldon Tanner, April 1977<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1977/04/but-be-ye-doers-of-the-word">“But Be Ye Doers of the Word”</a> - L. Tom Perry, April 1977<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1976/10/which-road-will-you-travel">Which Road Will You Travel?</a> - Thomas S. Monson, October 1976<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1973/10/no-greater-honor-the-womans-role">No Greater Honor: The Woman’s Role</a> - N. Eldon Tanner, October 1973<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1972/10/strange-creeds-of-christendom">Strange Creeds of Christendom</a> - LeGrand Richards, October 1972<br>
+<div id="scripture-table-container">
+    <!-- The table HTML will be inserted here by your script -->
+</div>
 
 
 

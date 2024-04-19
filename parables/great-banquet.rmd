@@ -7,6 +7,14 @@ output:
       in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/headers/great-banquet-header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
+<script>
+window.matthewVerses = ["Matthew 22:1", "Matthew 22:2", "Matthew 22:3", "Matthew 22:4", "Matthew 22:5", "Matthew 22:6", "Matthew 22:7", "Matthew 22:8", "Matthew 22:9", "Matthew 22:10", "Matthew 22:11", "Matthew 22:12", "Matthew 22:13", "Matthew 22:14"];
+window.markVerses = [];
+window.lukeVerses = ["Luke 14:16", "Luke 14:17", "Luke 14:18", "Luke 14:19", "Luke 14:20", "Luke 14:21", "Luke 14:22", "Luke 14:23", "Luke 14:24"];
+window.johnVerses = [];
+</script>
+<script src="https://kameronyork.com/parables/gospel-buddy-table.js"></script>
+
 <br>
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
 <img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/great-banquet.jpg" alt="Great banquet parable image" style="float: right; width: 195px; height: 115px; padding: 5px;">
@@ -18,22 +26,18 @@ output:
 </p>
 </div>
 
+<br>
+<br>
+
+
 #### Insights here:
 
 This article is yet to be completed. Please check back later!
 
 
-<div style="margin-top: -10px;">
-#### General Conference Talks:
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2022/10/28christofferson">The Doctrine of Belonging</a> - D. Todd Christofferson, October 2022<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2022/10/46bednar">Put On Thy Strength, O Zion</a> - David A. Bednar, October 2022<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2005/10/called-and-chosen">Called and Chosen</a> - James E. Faust, October 2005<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1999/10/for-this-cause-came-i-into-the-world">“For This Cause Came I into the World”</a> - Alexander B. Morrison, October 1999<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1998/10/think-to-thank">Think to Thank</a> - Thomas S. Monson, October 1998<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1996/10/according-to-the-desire-of-our-hearts">“According to the Desire of [Our] Hearts”</a> - Neal A. Maxwell, October 1996<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1972/04/joy-through-christ">Joy through Christ</a> - Marion D. Hanks, April 1972<br>
-
-
+<div id="scripture-table-container">
+    <!-- The table HTML will be inserted here by your script -->
+</div>
 
 
 ##### Check out my other articles:

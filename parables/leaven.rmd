@@ -7,6 +7,14 @@ output:
       in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/headers/leaven-header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
+<script>
+window.matthewVerses = ["Matthew 13:33"];
+window.markVerses = [];
+window.lukeVerses = ["Luke 13:20", "Luke 13:21"];
+window.johnVerses = [];
+</script>
+<script src="https://kameronyork.com/parables/gospel-buddy-table.js"></script>
+
 <br>
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
 <img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/leaven.jpeg" alt="Parable of leaven image" style="float: right; width: 195px; height: 115px; padding: 5px;">
@@ -17,6 +25,8 @@ output:
 <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/13?lang=eng&id=20-21#p20" target="_blank">Luke 13:20-21</a><br>
 </p>
 </div>
+
+<br>
 <br>
 
 
@@ -35,16 +45,10 @@ In this parable the Savior tells a story about a woman who adds yeast to a large
 <b>The Woman</b> - The Lord, placing the Christians where they need to go.<br>
 <br>
 
-<div style="margin-top: -10px;">
-#### General Conference Talks:
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2022/04/32porter">Lessons at the Well</a> - Susan H. Porter, April 2022<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2014/10/loving-others-and-living-with-differences">Loving Others and Living with Differences</a> - Dallin H. Oaks, October 2014<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1994/04/tithing">Tithing</a> - Dallin H. Oaks, April 1994<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1989/04/the-effects-of-television">The Effects of Television</a> - M. Russell Ballard, April 1989<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1978/10/let-your-light-so-shine">Let Your Light So Shine</a> - Joseph B. Wirthlin, October 1978<br>
+<div id="scripture-table-container">
+    <!-- The table HTML will be inserted here by your script -->
+</div>
 
-
-<br>
 
 ##### Check out my other articles:
 

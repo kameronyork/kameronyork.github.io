@@ -7,6 +7,14 @@ output:
       in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/headers/sheep-and-goats-header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
+<script>
+window.matthewVerses = ["Matthew 25:31", "Matthew 25:32", "Matthew 25:33", "Matthew 25:34", "Matthew 25:35", "Matthew 25:36", "Matthew 25:37", "Matthew 25:38", "Matthew 25:39", "Matthew 25:40", "Matthew 25:41", "Matthew 25:42", "Matthew 25:43", "Matthew 25:44", "Matthew 25:45", "Matthew 25:46"];
+window.markVerses = [];
+window.lukeVerses = [];
+window.johnVerses = [];
+</script>
+<script src="https://kameronyork.com/parables/gospel-buddy-table.js"></script>
+
 <br>
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
 <img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/sheep-and-goats.jpg" alt="Sheep and goats parable image" style="float: right; width: 195px; height: 115px; padding: 5px;">
@@ -17,118 +25,18 @@ output:
 </p>
 </div>
 
+<br>
+<br>
+
+
 #### Insights here:
 
 This article is yet to be completed. Please check back later!
 
 
-<div style="margin-top: -10px;">
-#### General Conference Talks:
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2023/10/16ardern">Love Thy Neighbour</a> - Ian S. Ardern, October 2023<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2023/10/31sabin">Hallmarks of Happiness</a> - Gary B. Sabin, October 2023<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2021/04/16gong">Room in the Inn</a> - Gerrit W. Gong, April 2021<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2020/04/54uchtdorf">Come and Belong</a> - Dieter F. Uchtdorf, April 2020<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2019/10/29rasband">Standing by Our Promises and Covenants</a> - Ronald A. Rasband, October 2019<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2019/10/46nelson">The Second Great Commandment</a> - Russell M. Nelson, October 2019<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2019/04/15waddell">Just as He Did</a> - W. Christopher Waddell, April 2019<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2018/10/becoming-a-shepherd">Becoming a Shepherd</a> - Bonnie H. Cordon, October 2018<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2017/04/overcoming-the-world">Overcoming the World</a> - Neil L. Andersen, April 2017<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2016/10/come-follow-me-by-practicing-christian-love-and-service">“Come, Follow Me” by Practicing Christian Love and Service</a> - Robert D. Hales, October 2016<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2016/04/i-was-a-stranger">“I Was a Stranger”</a> - Linda K. Burton, April 2016<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2016/04/trust-in-that-spirit-which-leadeth-to-do-good">Trust in That Spirit Which Leadeth to Do Good</a> - Henry B. Eyring, April 2016<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2016/04/refuge-from-the-storm">Refuge from the Storm</a> - Patrick Kearon, April 2016<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2015/04/is-not-this-the-fast-that-i-have-chosen">“Is Not This the Fast That I Have Chosen?”</a> - Henry B. Eyring, April 2015<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2014/10/our-personal-ministries">Our Personal Ministries</a> - Hugo E. Martinez, October 2014<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2014/04/where-your-treasure-is">Where Your Treasure Is</a> - Michael John U. Teh, April 2014<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2013/10/ye-are-no-more-strangers">Ye Are No More Strangers</a> - Gérald Caussé, October 2013<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2012/10/where-is-the-pavilion">Where Is the Pavilion?</a> - Henry B. Eyring, October 2012<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2012/10/first-observe-then-serve">First Observe, Then Serve</a> - Linda K. Burton, October 2012<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2012/10/the-caregiver">The Caregiver</a> - Henry B. Eyring, October 2012<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2011/10/waiting-upon-the-lord-thy-will-be-done">Waiting upon the Lord: Thy Will Be Done</a> - Robert D. Hales, October 2011<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2010/10/because-of-your-faith">Because of Your Faith</a> - Jeffrey R. Holland, October 2010<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2010/04/helping-hands-saving-hands">Helping Hands, Saving Hands</a> - Koichi Aoyagi, April 2010<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2009/10/what-have-i-done-for-someone-today">What Have I Done for Someone Today?</a> - Thomas S. Monson, October 2009<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2008/10/returning-home">Returning Home</a> - Eduardo Gavarret, October 2008<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2008/04/and-who-is-my-neighbor">And Who Is My Neighbor?</a> - H. David Burton, April 2008<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2007/10/service">Service</a> - Steven E. Snow, October 2007<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2005/04/strengthen-thy-brethren">Strengthen Thy Brethren</a> - Robert J. Whetten, April 2005<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2004/10/choose-you-this-day">Choose You This Day</a> - Thomas S. Monson, October 2004<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2004/10/the-least-of-these">The Least of These</a> - Boyd K. Packer, October 2004<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2004/04/strengthen-thy-brethren">Strengthen Thy Brethren</a> - Mervyn B. Arnold, April 2004<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2004/04/i-was-an-hungred-and-ye-gave-me-meat">“I Was an Hungred, and Ye Gave Me Meat”</a> - Gordon B. Hinckley, April 2004<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2003/10/the-bridge-builder">The Bridge Builder</a> - Thomas S. Monson, October 2003<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2003/10/come-follow-me">“Come, Follow Me”</a> - William W. Parmley, October 2003<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2002/10/i-ll-go-where-you-want-me-to-go">I’ll Go Where You Want Me to Go</a> - Dallin H. Oaks, October 2002<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2002/04/how-firm-our-foundation">How Firm Our Foundation</a> - Russell M. Nelson, April 2002<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2001/10/reaching-down-to-lift-another">Reaching Down to Lift Another</a> - Gordon B. Hinckley, October 2001<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2001/04/to-the-rescue">To the Rescue</a> - Thomas S. Monson, April 2001<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2001/04/the-law-of-the-fast">The Law of the Fast</a> - Joseph B. Wirthlin, April 2001<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1998/10/come-let-us-walk-in-the-light-of-the-lord">Come, Let Us Walk in the Light of the Lord</a> - Mary Ellen W. Smoot, October 1998<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1998/04/come-unto-christ">Come unto Christ</a> - Margaret D. Nadauld, April 1998<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1997/04/they-showed-the-way">They Showed the Way</a> - Thomas S. Monson, April 1997<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1996/10/be-thou-an-example">“Be Thou an Example”</a> - Thomas S. Monson, October 1996<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1995/04/as-jesus-sees-us">As Jesus Sees Us</a> - Cecil O. Samuelson Jr., April 1995<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1994/10/my-brothers-keeper">My Brother’s Keeper</a> - Thomas S. Monson, October 1994<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1994/10/the-fatherless-and-the-widows-beloved-of-god">The Fatherless and the Widows—Beloved of God</a> - Thomas S. Monson, October 1994<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1993/10/our-lord-and-savior">Our Lord and Savior</a> - Joseph B. Wirthlin, October 1993<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1992/10/the-golden-years">The Golden Years</a> - Robert L. Backman, October 1992<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1992/10/nobody-said-that-it-would-be-easy">Nobody Said That It Would Be Easy</a> - John B. Dickson, October 1992<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1992/04/the-royal-law">The Royal Law</a> - Marion D. Hanks, April 1992<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1992/04/a-more-excellent-way">A More Excellent Way</a> - Howard W. Hunter, April 1992<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1991/04/a-royal-priesthood">A Royal Priesthood</a> - Thomas S. Monson, April 1991<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1990/10/a-thousand-times">A Thousand Times</a> - Glenn L. Pace, October 1990<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1990/10/the-straight-and-narrow-way">The Straight and Narrow Way</a> - Joseph B. Wirthlin, October 1990<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1990/10/the-lighthouse-of-the-lord">The Lighthouse of the Lord</a> - Thomas S. Monson, October 1990<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1990/04/the-spirituality-of-service">The Spirituality of Service</a> - Derek A. Cuthbert, April 1990<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1990/04/ye-have-done-it-unto-me">“Ye Have Done It unto Me”</a> - Richard P. Lindsay, April 1990<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1989/10/the-service-that-counts">The Service That Counts</a> - Thomas S. Monson, October 1989<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1989/04/irony-the-crust-on-the-bread-of-adversity">Irony: The Crust on the Bread of Adversity</a> - Neal A. Maxwell, April 1989<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1989/04/lord-when-saw-we-thee-an-hungred">“Lord, When Saw We Thee an Hungred?”</a> - Joy F. Evans, April 1989<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1988/10/the-royal-law-of-love">The Royal Law of Love</a> - Marion D. Hanks, October 1988<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1988/10/the-quality-of-eternal-life">The Quality of Eternal Life</a> - William Grant Bangerter, October 1988<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1988/04/always-remember-him">Always Remember Him</a> - Dallin H. Oaks, April 1988<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1987/10/a-doorway-called-love">A Doorway Called Love</a> - Thomas S. Monson, October 1987<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1986/10/the-lords-touchstone">The Lord’s Touchstone</a> - Howard W. Hunter, October 1986<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1986/04/in-the-lords-own-way">In the Lord’s Own Way</a> - Russell M. Nelson, April 1986<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1986/04/a-provident-plan-a-precious-promise">A Provident Plan—A Precious Promise</a> - Thomas S. Monson, April 1986<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1985/10/the-gospel-of-love">The Gospel of Love</a> - Loren C. Dunn, October 1985<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1985/04/the-joy-of-service">The Joy of Service</a> - F. Arthur Kay, April 1985<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1985/04/spencer-w-kimball-a-true-disciple-of-christ">Spencer W. Kimball: A True Disciple of Christ</a> - Marvin J. Ashton, April 1985<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1985/04/selflessness-a-pattern-for-happiness">Selflessness: A Pattern for Happiness</a> - H. Burke Peterson, April 1985<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1984/10/why-do-we-serve">Why Do We Serve?</a> - Dallin H. Oaks, October 1984<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1984/10/the-works-of-god">The Works of God</a> - James E. Faust, October 1984<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1983/04/the-gospel-of-jesus-christ-and-basic-needs-of-people">The Gospel of Jesus Christ and Basic Needs of People</a> - James M. Paramore, April 1983<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1981/10/joseph-smith-prophet-to-our-generation">Joseph Smith: Prophet to Our Generation</a> - Ezra Taft Benson, October 1981<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1981/10/my-specialty-is-mercy">“My Specialty Is Mercy”</a> - Marion D. Hanks, October 1981<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1981/10/charity-never-faileth">“Charity Never Faileth”</a> - Gordon B. Hinckley, October 1981<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1981/10/relief-society-in-times-of-transition">Relief Society in Times of Transition</a> - Barbara B. Smith, October 1981<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1981/04/rendering-service-to-others">Rendering Service to Others</a> - Spencer W. Kimball, April 1981<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1981/04/the-long-line-of-the-lonely">The Long Line of the Lonely</a> - Thomas S. Monson, April 1981<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1980/10/the-saviors-touch">The Savior’s Touch</a> - M. Russell Ballard, October 1980<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1980/10/the-bishop-center-stage-in-welfare">The Bishop—Center Stage in Welfare</a> - Thomas S. Monson, October 1980<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1980/10/welfare-services-the-saviors-program">Welfare Services: The Savior’s Program</a> - Marion G. Romney, October 1980<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1980/04/willing-to-receive">Willing to Receive</a> - Marion D. Hanks, April 1980<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1980/04/the-prophet-and-the-prison">The Prophet and the Prison</a> - Marvin J. Ashton, April 1980<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1978/10/true-religion">True Religion</a> - Howard W. Hunter, October 1978<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1978/10/caring-for-the-poor-a-covenantal-obligation">Caring for the Poor—A Covenantal Obligation</a> - Marion G. Romney, October 1978<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1978/04/the-royal-law-of-love">The Royal Law of Love</a> - Marion G. Romney, April 1978<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1977/10/the-way-of-the-lord">The Way of the Lord</a> - Thomas S. Monson, October 1977<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1977/04/the-greatest-brotherhood">The Greatest Brotherhood</a> - N. Eldon Tanner, April 1977<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1977/04/do-unto-others">Do unto Others …</a> - Mark E. Petersen, April 1977<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1976/10/a-personal-relationship-with-the-savior">A Personal Relationship with the Savior</a> - James E. Faust, October 1976<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1976/10/the-dead-who-die-in-the-lord">The Dead Who Die in the Lord</a> - Bruce R. McConkie, October 1976<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1976/04/but-they-were-in-one">“But They Were in One”</a> - George P. Lee, April 1976<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1975/10/the-time-to-labor-is-now">The Time to Labor Is Now</a> - Spencer W. Kimball, October 1975<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1975/04/the-sanctity-of-life">The Sanctity of Life</a> - James E. Faust, April 1975<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1973/10/the-gospel-of-jesus-christ-is-the-golden-door">“The Gospel of Jesus Christ Is the Golden Door”</a> - Vaughn J. Featherstone, October 1973<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1973/10/he-took-him-by-the-hand">He Took Him by the Hand</a> - Marvin J. Ashton, October 1973<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1973/04/go-and-do-thou-likewise">“Go, and Do Thou Likewise”</a> - Robert L. Simpson, April 1973<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1972/10/what-is-a-friend">What Is a Friend?</a> - Marvin J. Ashton, October 1972<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1972/10/caring-for-the-poor-and-needy">Caring for the Poor and Needy</a> - Marion G. Romney, October 1972<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1972/04/judge-not-that-ye-be-not-judged">“Judge Not, That Ye Be Not Judged”</a> - N. Eldon Tanner, April 1972<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1971/10/let-the-spirit-of-oneness-prevail">Let the Spirit of Oneness Prevail</a> - Joseph Fielding Smith, October 1971<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1971/04/lost-battalions">Lost Battalions</a> - Thomas S. Monson, April 1971<br>
-
+<div id="scripture-table-container">
+    <!-- The table HTML will be inserted here by your script -->
+</div>
 
 
 ##### Check out my other articles:

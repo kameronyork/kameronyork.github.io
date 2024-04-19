@@ -2,7 +2,20 @@ document.addEventListener("DOMContentLoaded", function() {
     const MIN_QUOTE_PERCENTAGE = 20; // Minimum percentage for a verse to be counted
 
     async function fetchJSON() {
-        const response = await fetch("https://kameronyork.com/datasets/all-footnotes-apr-2024.json");
+        const currentDate = new Date();
+        const currentMonth = currentDate.getMonth(); // Note: getMonth() returns month from 0 (January) to 11 (December)
+        const currentYear = currentDate.getFullYear();
+
+        let url;
+        if (currentMonth >= 9 && currentMonth <= 11) { // October to December
+            url = `https://kameronyork.com/datasets/all-footnotes-oct-${currentYear}.json`;
+        } else if (currentMonth >= 3 && currentMonth <= 8) { // April to September
+            url = `https://kameronyork.com/datasets/all-footnotes-apr-${currentYear}.json`;
+        } else { // January to March
+            url = `https://kameronyork.com/datasets/all-footnotes-oct-${currentYear - 1}.json`;
+        }
+
+        const response = await fetch(url);
         return response.json();
     }
 

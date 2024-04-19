@@ -7,6 +7,14 @@ output:
       in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/headers/mustard-seed-header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
+<script>
+window.matthewVerses = ["Matthew 13:31", "Matthew 13:32"];
+window.markVerses = ["Mark 4:30", "Mark 4:31", "Mark 4:32"];
+window.lukeVerses = ["Luke 13:18", "Luke 13:19"];
+window.johnVerses = [];
+</script>
+<script src="https://kameronyork.com/parables/gospel-buddy-table.js"></script>
+
 <br>
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
 <img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/mustard-seed.jpg" alt="Mustard seed parable image" style="float: right; width: 195px; height: 115px; padding: 5px;">
@@ -17,7 +25,10 @@ output:
 <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/13?lang=eng&id=18-19#p18" target="_blank">Luke 13:18-19</a><br>
 </p>
 </div>
+
 <br>
+<br>
+
 
 #### What is the Parable of the Mustard Seed about?
 
@@ -37,6 +48,10 @@ The New Testament Institute manual says this, "When the Church was restored in 1
 The Church of Jesus Christ is meant to be a protection from the world.  In the parable the birds, "...lodge under the shadow of it." [(Mark 4:32)](https://www.churchofjesuschrist.org/study/scriptures/nt/mark/4?lang=eng&id=32#p32).  We can find the same refuge when we come unto Christ and participate in His church.  We can also learn that the Church came from small beginnings, and is promised to continue growing until it has become the "...greater than all..." [(Mark 4:32)](https://www.churchofjesuschrist.org/study/scriptures/nt/mark/4?lang=eng&id=32#p32).
 
 <br>
+
+<div id="scripture-table-container">
+    <!-- The table HTML will be inserted here by your script -->
+</div>
 
 ##### Check out my other articles:
 

@@ -7,6 +7,14 @@ output:
       in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/headers/prodigal-son-header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
+<script>
+window.matthewVerses = [];
+window.markVerses = [];
+window.lukeVerses = ["Luke 15:11", "Luke 15:12", "Luke 15:13", "Luke 15:14", "Luke 15:15", "Luke 15:16", "Luke 15:17", "Luke 15:18", "Luke 15:19", "Luke 15:20", "Luke 15:21", "Luke 15:22", "Luke 15:23", "Luke 15:24", "Luke 15:25", "Luke 15:26", "Luke 15:27", "Luke 15:28", "Luke 15:29", "Luke 15:30", "Luke 15:31", "Luke 15:32"];
+window.johnVerses = [];
+</script>
+<script src="https://kameronyork.com/parables/gospel-buddy-table.js"></script>
+
 <br>
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
 <img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/prodigal-son.jpg" alt="Prodigal son parable image" style="float: right; width: 195px; height: 115px; padding: 5px;">
@@ -17,54 +25,17 @@ output:
 </p>
 </div>
 
+<br>
+<br>
+
 #### Insights here:
 
 This article is yet to be completed. Please check back later!
 
 
-<div style="margin-top: -10px;">
-#### General Conference Talks:
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2023/10/45uchtdorf">The Prodigal and the Road That Leads Home</a> - Dieter F. Uchtdorf, October 2023<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2023/04/34uceda">The Lord Jesus Christ Teaches Us to Minister</a> - Juan A. Uceda, April 2023<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2022/04/42wright">Christ Heals That Which Is Broken</a> - Amy A. Wright, April 2022<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2021/10/51gong">Trust Again</a> - Gerrit W. Gong, October 2021<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2020/10/43soares">Seek Christ in Every Thought</a> - Ulisses Soares, October 2020<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2019/10/41gong">Covenant Belonging</a> - Gerrit W. Gong, October 2019<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2017/10/the-priesthood-and-the-saviors-atoning-power">The Priesthood and the Savior’s Atoning Power</a> - Dale G. Renlund, October 2017<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2016/10/come-follow-me-by-practicing-christian-love-and-service">“Come, Follow Me” by Practicing Christian Love and Service</a> - Robert D. Hales, October 2016<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2015/10/meeting-the-challenges-of-todays-world">Meeting the Challenges of Today’s World</a> - Robert D. Hales, October 2015<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2015/04/waiting-for-the-prodigal">Waiting for the Prodigal</a> - Brent H. Nielson, April 2015<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2012/04/coming-to-ourselves-the-sacrament-the-temple-and-sacrifice-in-service">Coming to Ourselves: The Sacrament, the Temple, and Sacrifice in Service</a> - Robert D. Hales, April 2012<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2011/04/the-miracle-of-the-atonement">The Miracle of the Atonement</a> - C. Scott Grow, April 2011<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2005/10/forgiveness">Forgiveness</a> - Gordon B. Hinckley, October 2005<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2004/04/with-all-the-feeling-of-a-tender-parent-a-message-of-hope-to-families">With All the Feeling of a Tender Parent: A Message of Hope to Families</a> - Robert D. Hales, April 2004<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2003/04/dear-are-the-sheep-that-have-wandered">Dear Are the Sheep That Have Wandered</a> - James E. Faust, April 2003<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2003/04/care-for-the-life-of-the-soul">Care for the Life of the Soul</a> - Neal A. Maxwell, April 2003<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2003/04/did-i-tell-you">Did I Tell You … ?</a> - Susan W. Tanner, April 2003<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2002/04/consecrate-thy-performance">Consecrate Thy Performance</a> - Neal A. Maxwell, April 2002<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2000/10/the-tugs-and-pulls-of-the-world">The Tugs and Pulls of the World</a> - Neal A. Maxwell, October 2000<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2000/04/keep-an-eternal-perspective">Keep an Eternal Perspective</a> - Jay E. Jensen, April 2000<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2000/04/content-with-the-things-allotted-unto-us">Content with the Things Allotted unto Us</a> - Neal A. Maxwell, April 2000<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1999/04/welcome-home">Welcome Home</a> - Keith B. McMullin, April 1999<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1996/10/according-to-the-desire-of-our-hearts">“According to the Desire of [Our] Hearts”</a> - Neal A. Maxwell, October 1996<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1996/04/the-prophetic-voice">The Prophetic Voice</a> - James E. Faust, April 1996<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1996/04/stay-on-the-true-course">Stay on the True Course</a> - Carlos E. Asay, April 1996<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1995/10/redeemer-of-israel">Redeemer of Israel</a> - Bruce D. Porter, October 1995<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1993/04/search-and-rescue">Search and Rescue</a> - Thomas S. Monson, April 1993<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1991/10/repentance">Repentance</a> - Neal A. Maxwell, October 1991<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1991/10/joy-and-mercy">Joy and Mercy</a> - Dallin H. Oaks, October 1991<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1990/04/endure-it-well">“Endure It Well”</a> - Neal A. Maxwell, April 1990<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1987/04/i-am-an-adult-now">“I Am an Adult Now”</a> - Marvin J. Ashton, April 1987<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1987/04/overcome-even-as-i-also-overcame">“Overcome … Even As I Also Overcame”</a> - Neal A. Maxwell, April 1987<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1984/10/if-thou-endure-it-well">“If Thou Endure It Well”</a> - Marvin J. Ashton, October 1984<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1982/10/however-faint-the-light-may-glow">“However Faint the Light May Glow”</a> - Vaughn J. Featherstone, October 1982<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1982/04/a-brother-offended">“A Brother Offended”</a> - Neal A. Maxwell, April 1982<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1980/10/of-you-it-is-required-to-forgive">“Of You It Is Required to Forgive”</a> - Gordon B. Hinckley, October 1980<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1979/04/he-means-me">He Means Me</a> - Marion D. Hanks, April 1979<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1977/10/seeing-the-five-a-s">Seeing the Five A’s</a> - Marion D. Hanks, October 1977<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1976/10/everything-to-gain-nothing-to-lose">Everything to Gain—Nothing to Lose</a> - Gordon B. Hinckley, October 1976<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1973/04/in-his-strength">In His Strength</a> - Marvin J. Ashton, April 1973<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1971/10/what-is-a-teacher">What Is a Teacher?</a> - Paul H. Dunn, October 1971<br>
+<div id="scripture-table-container">
+    <!-- The table HTML will be inserted here by your script -->
+</div>
 
 
 

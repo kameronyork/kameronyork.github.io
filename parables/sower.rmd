@@ -7,6 +7,14 @@ output:
       in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/headers/sower-header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
+<script>
+window.matthewVerses = ["Matthew 13:1", "Matthew 13:2", "Matthew 13:3", "Matthew 13:4", "Matthew 13:5", "Matthew 13:6", "Matthew 13:7", "Matthew 13:8", "Matthew 13:9"];
+window.markVerses = ["Mark 4:3", "Mark 4:4", "Mark 4:5", "Mark 4:6", "Mark 4:7", "Mark 4:8", "Mark 4:9"];
+window.lukeVerses = ["Luke 8:4", "Luke 8:5", "Luke 8:6", "Luke 8:7", "Luke 8:8"];
+window.johnVerses = [];
+</script>
+<script src="https://kameronyork.com/parables/gospel-buddy-table.js"></script>
+
 <br>
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
 <img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/sower.jpg" alt="Parable of the sower image" style="float: right; width: 195px; height: 115px; padding: 5px;">
@@ -19,6 +27,8 @@ output:
 </div>
 
 <br>
+<br>
+
 In 2015 Elder Dallin H. Oaks gave a talk entirely about this parable entitled, "The Parable of the Sower".  In describing the parable he said, "The parable of the sower is one of a small number of parables reported in all three of the synoptic Gospels. It is also one of an even smaller group of parables Jesus explained to His disciples."  We would like to briefly touch on the overall story, along with the similarities and difference between the accounts in each gospel.
 <br><br>
 
@@ -54,17 +64,9 @@ It is also interesting to me that the Lord describes different amounts being har
 
 
 
-
-
-
-<div style="margin-top: -10px;">
-#### General Conference Talks:
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2016/04/where-two-or-three-are-gathered?lang=eng" target="_blank">Where Two or Three Are Gathered</a> - Elder Henry B. Eyring, Apil 2016<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2015/04/the-parable-of-the-sower?lang=eng" target="_blank">The Parable of the Sower</a> - Elder Dallin H. Oaks, April 2015<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1999/10/of-seeds-and-soils?lang=eng" target="_blank">Of Seeds and Soils</a> - Elder James E. Faust, October 1999<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1978/10/who-will-forfeit-the-harvest?lang=eng" target="_blank">Who Will Forfeit the Harvest?</a> - Elder Marvin J. Ashton, October 1978<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1972/10/planting-gospel-seeds-of-spirituality?lang=eng" target="_blank">Planting Gospel Seeds of Spirituality</a> - Elder David B. Haight, October 1972<br>
-
+<div id="scripture-table-container">
+    <!-- The table HTML will be inserted here by your script -->
+</div>
 
 
 ##### Check out my other articles:

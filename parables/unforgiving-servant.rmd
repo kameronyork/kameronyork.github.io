@@ -7,6 +7,14 @@ output:
       in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/headers/unforgiving-servant-header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
+<script>
+window.matthewVerses = ["Matthew 18:21", "Matthew 18:22", "Matthew 18:23", "Matthew 18:24", "Matthew 18:25"];
+window.markVerses = [];
+window.lukeVerses = [];
+window.johnVerses = [];
+</script>
+<script src="https://kameronyork.com/parables/gospel-buddy-table.js"></script>
+
 <br>
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
 <img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/unforgiving-servant.jpg" alt="Unforgiving servant parable image" style="float: right; width: 195px; height: 115px; padding: 5px;">
@@ -17,19 +25,18 @@ output:
 </p>
 </div>
 
+<br>
+<br>
+
+
 #### Insights here:
 
 This article is yet to be completed. Please check back later!
 
 
-<div style="margin-top: -10px;">
-#### General Conference Talks:
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2018/04/until-seventy-times-seven">Until Seventy Times Seven</a> - Lynn G. Robbins, April 2018<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2013/04/the-savior-wants-to-forgive">The Savior Wants to Forgive</a> - Craig A. Cardon, April 2013<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1988/04/always-remember-him">Always Remember Him</a> - Dallin H. Oaks, April 1988<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1983/10/be-a-peacemaker">Be a Peacemaker</a> - Franklin D. Richards, October 1983<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1983/04/to-forgive-is-divine">To Forgive Is Divine</a> - Theodore M. Burton, April 1983<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1974/10/the-blessings-of-peace">The Blessings of Peace</a> - Franklin D. Richards, October 1974<br>
+<div id="scripture-table-container">
+    <!-- The table HTML will be inserted here by your script -->
+</div>
 
 
 

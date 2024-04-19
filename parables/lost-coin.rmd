@@ -7,6 +7,14 @@ output:
       in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/headers/lost-coin-header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
+<script>
+window.matthewVerses = [];
+window.markVerses = [];
+window.lukeVerses = ["Luke 15:8", "Luke 15:9"];
+window.johnVerses = [];
+</script>
+<script src="https://kameronyork.com/parables/gospel-buddy-table.js"></script>
+
 <br>
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
 <img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/lost-coin.jpg" alt="Parable of the lost coin image" style="float: right; width: 195px; height: 115px; padding: 5px;">
@@ -17,18 +25,18 @@ output:
 </p>
 </div>
 
+<br>
+<br>
+
+
 #### Insights here:
 
 This article is yet to be completed. Please check back later!
 
 
-<div style="margin-top: -10px;">
-#### General Conference Talks:
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2023/04/34uceda">The Lord Jesus Christ Teaches Us to Minister</a> - Juan A. Uceda, April 2023<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2015/04/waiting-for-the-prodigal">Waiting for the Prodigal</a> - Brent H. Nielson, April 2015<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1979/04/he-means-me">He Means Me</a> - Marion D. Hanks, April 1979<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1975/04/feed-the-flock">Feed the Flock</a> - David B. Haight, April 1975<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1971/10/what-is-a-teacher">What Is a Teacher?</a> - Paul H. Dunn, October 1971<br>
+<div id="scripture-table-container">
+    <!-- The table HTML will be inserted here by your script -->
+</div>
 
 
 

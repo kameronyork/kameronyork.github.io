@@ -7,6 +7,14 @@ output:
       in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/headers/watchful-householder-header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
+<script>
+window.matthewVerses = ["Matthew 24:43", "Matthew 24:44"];
+window.markVerses = [];
+window.lukeVerses = ["Luke 12:35", "Luke 12:36", "Luke 12:37", "Luke 12:38", "Luke 12:39", "Luke 12:40"];
+window.johnVerses = [];
+</script>
+<script src="https://kameronyork.com/parables/gospel-buddy-table.js"></script>
+
 <br>
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
 <img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/barren-fig-tree.jpg" alt="Barren fig tree parable image" style="float: right; width: 195px; height: 115px; padding: 5px;"><br> 
@@ -17,17 +25,18 @@ output:
 </p>
 </div>
 
+<br>
+<br>
+
+
 #### Insights here:
 
 This article is yet to be completed. Please check back later!
 
 
-<div style="margin-top: -10px;">
-#### General Conference Talks:
-<a href="https://www.churchofjesuschrist.org/study/general-conference/2004/04/preparation-for-the-second-coming">Preparation for the Second Coming</a> - Dallin H. Oaks, April 2004<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1977/10/obeying-the-right-voice">Obeying the Right Voice</a> - N. Eldon Tanner, October 1977<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1974/04/strength-of-the-spirit">Strength of the Spirit</a> - Joseph Anderson, April 1974<br>
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1971/10/watch-that-ye-may-be-ready">“Watch, That Ye May Be Ready”</a> - Harold B. Lee, October 1971<br>
+<div id="scripture-table-container">
+    <!-- The table HTML will be inserted here by your script -->
+</div>
 
 
 

@@ -7,6 +7,14 @@ output:
       in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/headers/unjust-steward-header.html"
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
+<script>
+window.matthewVerses = [];
+window.markVerses = [];
+window.lukeVerses = ["Luke 16:1", "Luke 16:2", "Luke 16:3", "Luke 16:4", "Luke 16:5", "Luke 16:6", "Luke 16:7", "Luke 16:8", "Luke 16:9", "Luke 16:10", "Luke 16:11", "Luke 16:12"];
+window.johnVerses = [];
+</script>
+<script src="https://kameronyork.com/parables/gospel-buddy-table.js"></script>
+
 <br>
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
 <img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/unjust-steward.jpg" alt="Unjust steward parable image" style="float: right; width: 195px; height: 115px; padding: 5px;">
@@ -17,14 +25,18 @@ output:
 </p>
 </div>
 
+<br>
+<br>
+
+
 #### Insights here:
 
 This article is yet to be completed. Please check back later!
 
 
-<div style="margin-top: -10px;">
-#### General Conference Talks:
-<a href="https://www.churchofjesuschrist.org/study/general-conference/1972/04/civic-standards-for-the-faithful-saints">Civic Standards for the Faithful Saints</a> - Ezra Taft Benson, April 1972<br>
+<div id="scripture-table-container">
+    <!-- The table HTML will be inserted here by your script -->
+</div>
 
 
 
