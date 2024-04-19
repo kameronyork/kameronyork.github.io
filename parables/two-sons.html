@@ -14930,7 +14930,20 @@ window.johnVerses = [];
     const MIN_QUOTE_PERCENTAGE = 20; // Minimum percentage for a verse to be counted
 
     async function fetchJSON() {
-        const response = await fetch("https://kameronyork.com/datasets/all-footnotes-apr-2024.json");
+        const currentDate = new Date();
+        const currentMonth = currentDate.getMonth(); // Note: getMonth() returns month from 0 (January) to 11 (December)
+        const currentYear = currentDate.getFullYear();
+
+        let url;
+        if (currentMonth >= 9 && currentMonth <= 11) { // October to December
+            url = `https://kameronyork.com/datasets/all-footnotes-oct-${currentYear}.json`;
+        } else if (currentMonth >= 3 && currentMonth <= 8) { // April to September
+            url = `https://kameronyork.com/datasets/all-footnotes-apr-${currentYear}.json`;
+        } else { // January to March
+            url = `https://kameronyork.com/datasets/all-footnotes-oct-${currentYear - 1}.json`;
+        }
+
+        const response = await fetch(url);
         return response.json();
     }
 
@@ -14942,10 +14955,10 @@ window.johnVerses = [];
                 uniqueEntries[talkId] = {
                     ...entry,
                     counts: {
-                        Matthew: 0,
-                        Mark: 0,
-                        Luke: 0,
-                        John: 0
+                        Matthew: new Set(),
+                        Mark: new Set(),
+                        Luke: new Set(),
+                        John: new Set()
                     },
                     totals: {
                         Matthew: matthewVerses.length,
@@ -14956,16 +14969,16 @@ window.johnVerses = [];
                 };
             }
             if (matthewVerses.includes(entry.scripture) && entry.perc_quoted >= MIN_QUOTE_PERCENTAGE) {
-                uniqueEntries[talkId].counts.Matthew += 1;
+                uniqueEntries[talkId].counts.Matthew.add(entry.scripture);
             }
             if (markVerses.includes(entry.scripture) && entry.perc_quoted >= MIN_QUOTE_PERCENTAGE) {
-                uniqueEntries[talkId].counts.Mark += 1;
+                uniqueEntries[talkId].counts.Mark.add(entry.scripture);
             }
             if (lukeVerses.includes(entry.scripture) && entry.perc_quoted >= MIN_QUOTE_PERCENTAGE) {
-                uniqueEntries[talkId].counts.Luke += 1;
+                uniqueEntries[talkId].counts.Luke.add(entry.scripture);
             }
             if (johnVerses.includes(entry.scripture) && entry.perc_quoted >= MIN_QUOTE_PERCENTAGE) {
-                uniqueEntries[talkId].counts.John += 1;
+                uniqueEntries[talkId].counts.John.add(entry.scripture);
             }
         });
 
@@ -14995,8 +15008,8 @@ window.johnVerses = [];
             </tr>`;
 
         uniqueEntriesArray.forEach(entry => {
-            const maxVersion = Object.keys(entry.counts).reduce((a, b) => entry.counts[a] > entry.counts[b] ? a : b);
-            const maxVersesQuoted = entry.counts[maxVersion];
+            const maxVersion = Object.keys(entry.counts).reduce((a, b) => entry.counts[a].size > entry.counts[b].size ? a : b);
+            const maxVersesQuoted = entry.counts[maxVersion].size;
             const totalVerses = entry.totals[maxVersion];
             const percentQuoted = totalVerses > 0 ? Math.round((maxVersesQuoted / totalVerses) * 100) : 0; // Check to prevent NaN
             const titleLink = entry.hyperlink ? `<a href="${entry.hyperlink}" target="_blank">${entry.title}</a>` : entry.title;
@@ -15057,7 +15070,7 @@ Reference:
 <div class="row">
 <div class="col-12 text-md-left">
 <nav class="pagination mt-3">
-<a class="nav nav-prev" href="https://kameronyork.com/parables/budding-fig-budding-tree.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" onmouseover="this.style.backgroundColor=&#39;lightgray&#39;;" onmouseout="this.style.backgroundColor=&#39;transparent&#39;;" onmousedown="this.style.backgroundColor=&#39;gray&#39;;" onmouseup="this.style.backgroundColor=&#39;lightgray&#39;;">
+<a class="nav nav-prev" href="https://kameronyork.com/parables/budding-fig-tree.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" onmouseover="this.style.backgroundColor=&#39;lightgray&#39;;" onmouseout="this.style.backgroundColor=&#39;transparent&#39;;" onmousedown="this.style.backgroundColor=&#39;gray&#39;;" onmouseup="this.style.backgroundColor=&#39;lightgray&#39;;">
 <i class="ti-arrow-left mr-2"></i> <span class="d-md-inline-block" style="display: none;">Budding Fig Tree</span> <span class="d-md-none" style="display: inline-block;">Budding Fig Tree</span> </a>
 <a class="nav nav-next ml-3" href="https://kameronyork.com/parables/wicked-husbandman.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" onmouseover="this.style.backgroundColor=&#39;lightgray&#39;;" onmouseout="this.style.backgroundColor=&#39;transparent&#39;;" onmousedown="this.style.backgroundColor=&#39;gray&#39;;" onmouseup="this.style.backgroundColor=&#39;lightgray&#39;;"> <span class="d-md-inline-block" style="display: none;">Wicked
 Husbandman</span> <span class="d-md-none" style="display: inline-block;">Wicked Husbandman</span>

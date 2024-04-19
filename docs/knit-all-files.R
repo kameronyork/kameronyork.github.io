@@ -12,3 +12,5 @@ rmd_files <- list.files("parables", pattern = "\\.rmd$", full.names = TRUE)
 for (file in rmd_files) {
   rmarkdown::render(file)
 }
+
+
