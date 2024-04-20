@@ -18,9 +18,7 @@ async function fetchJSON() {
 }
 
 function expandScriptureRange(reference) {
-    // Replace en-dashes with hyphens for consistency in sequence handling
     reference = reference.replace(/–/g, '-');
-
     let scriptures = [];
     let lastBookAndChapter = "";
     const sequences = reference.split(';').map(seq => seq.trim());
@@ -30,9 +28,8 @@ function expandScriptureRange(reference) {
         parts.forEach(part => {
             const trimmedPart = part.trim();
             if (trimmedPart.includes(':')) {
-                const chapterAndVerse = trimmedPart.split(':');
-                const verses = chapterAndVerse[1].split('-');
-                const bookAndChapter = chapterAndVerse[0];
+                const [bookAndChapter, verseRange] = trimmedPart.split(':');
+                const verses = verseRange.split('-');
                 lastBookAndChapter = bookAndChapter;
                 
                 if (verses.length > 1) {
@@ -43,7 +40,6 @@ function expandScriptureRange(reference) {
                     scriptures.push(`${bookAndChapter}:${verses[0]}`);
                 }
             } else {
-                // No colon means we're dealing with just verse numbers after a semicolon
                 const verses = trimmedPart.split('-');
                 if (verses.length > 1) {
                     for (let i = parseInt(verses[0]); i <= parseInt(verses[1]); i++) {
@@ -59,7 +55,6 @@ function expandScriptureRange(reference) {
     return scriptures;
 }
 
-
 function updateTable() {
     const inputScripture = document.getElementById('scriptureInput').value;
     try {
@@ -69,8 +64,6 @@ function updateTable() {
         document.getElementById('scripture-table-container').innerHTML = `<div style="color: #ccc; text-align: center; font-size: 16px;">${error.message}</div>`;
     }
 }
-
-
 
 async function displayTableForScripture(scriptures) {
     const data = await fetchJSON();
@@ -85,13 +78,12 @@ async function displayTableForScripture(scriptures) {
 }
 
 function createSingleScriptureView(entries) {
-    entries.sort((a, b) => b.talk_id - a.talk_id); // Sort by talk_id in descending order
-    let tableHTML = `<table border="1" style="width: 100%; margin: auto; border-collapse: collapse; margin-top:12px;"><tr><th>%</th><th>Year</th><th>Month</th><th>Speaker</th><th>Title</th></tr>`;
+    let tableHTML = `<div style="overflow-x: auto;"><table border="1" style="width: 100%; max-width: 600px; margin: auto; border-collapse: collapse; margin-top:12px;"><tr><th>%</th><th>Year</th><th>Month</th><th>Speaker</th><th>Title</th></tr>`;
     entries.forEach(entry => {
         tableHTML += `<tr>
-            <td style="text-align: center; position: relative;">
+            <td style="text-align: center; width: 50px;">
                 <div style="background-color: #F39C12; width: ${entry.perc_quoted}%; height: 100%; position: absolute; left: 0; top: 0;"></div>
-                <div style="position: relative; z-index: 1; font-size: 10pt;">${entry.perc_quoted}%</div>
+                <span style="position: relative; z-index: 1;">${entry.perc_quoted}%</span>
             </td>
             <td>${entry.talk_year}</td>
             <td>${entry.talk_month}</td>
@@ -99,7 +91,7 @@ function createSingleScriptureView(entries) {
             <td><a href="${entry.hyperlink}" target="_blank">${entry.title}</a></td>
         </tr>`;
     });
-    tableHTML += '</table>';
+    tableHTML += '</table></div>';
     return tableHTML;
 }
 
@@ -116,13 +108,13 @@ function createTableView(entries, scriptures) {
     });
 
     const sortedEntries = Object.values(uniqueEntries).sort((a, b) => b.talk_id - a.talk_id);
-    let tableHTML = `<table border="1" style="width: 100%; margin: auto; border-collapse: collapse; margin-top:12px;"><tr><th>%</th><th>Year</th><th>Month</th><th>Speaker</th><th>Title</th></tr>`;
+    let tableHTML = `<div style="overflow-x: auto;"><table border="1" style="width: 100%; max-width: 600px; margin: auto; border-collapse: collapse; margin-top:12px;"><tr><th>%</th><th>Year</th><th>Month</th><th>Speaker</th><th>Title</th></tr>`;
     sortedEntries.forEach(entry => {
         const percentQuoted = (entry.scripturesQuoted.size > 0 ? Math.round((entry.scripturesQuoted.size / scriptures.length) * 100) : 0);
         tableHTML += `<tr>
-            <td style="text-align: center; position: relative;">
+            <td style="text-align: center; width: 50px;">
                 <div style="background-color: #F39C12; width: ${percentQuoted}%; height: 100%; position: absolute; left: 0; top: 0;"></div>
-                <div style="position: relative; z-index: 1; font-size: 10pt;">${percentQuoted}%</div>
+                <span style="position:relative; z-index: 1;">${percentQuoted}%</span>
             </td>
             <td>${entry.talk_year}</td>
             <td>${entry.talk_month}</td>
@@ -130,7 +122,7 @@ function createTableView(entries, scriptures) {
             <td><a href="${entry.hyperlink}" target="_blank">${entry.title}</a></td>
         </tr>`;
     });
-    tableHTML += '</table>';
+    tableHTML += '</table></div>';
     return tableHTML;
 }
 

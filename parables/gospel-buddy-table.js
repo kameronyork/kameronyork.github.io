@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
             </tr>`;
         });
 
-        tableHTML += '</table><small style="color:#bababa; font-size: 6pt; margin-left:15px; margin-top:3px;">% Column = (Number of verses quoted / Total verses) within the most quoted version of the parable.</small><br><br>';
+        tableHTML += '</table><small style="color:#bababa; font-size: 6pt; margin-left:15px; margin-top:3px;">% Column = percent of the most quoted version of the parable.</small><br><br>';
         return tableHTML;
     }
 
