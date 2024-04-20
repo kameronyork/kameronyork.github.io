@@ -18,7 +18,9 @@ async function fetchJSON() {
 }
 
 function expandScriptureRange(reference) {
+    // Replace en-dashes with hyphens for consistency in sequence handling
     reference = reference.replace(/–/g, '-');
+
     let scriptures = [];
     let lastBookAndChapter = "";
     const sequences = reference.split(';').map(seq => seq.trim());
@@ -28,8 +30,9 @@ function expandScriptureRange(reference) {
         parts.forEach(part => {
             const trimmedPart = part.trim();
             if (trimmedPart.includes(':')) {
-                const [bookAndChapter, verseRange] = trimmedPart.split(':');
-                const verses = verseRange.split('-');
+                const chapterAndVerse = trimmedPart.split(':');
+                const verses = chapterAndVerse[1].split('-');
+                const bookAndChapter = chapterAndVerse[0];
                 lastBookAndChapter = bookAndChapter;
                 
                 if (verses.length > 1) {
@@ -40,6 +43,7 @@ function expandScriptureRange(reference) {
                     scriptures.push(`${bookAndChapter}:${verses[0]}`);
                 }
             } else {
+                // No colon means we're dealing with just verse numbers after a semicolon
                 const verses = trimmedPart.split('-');
                 if (verses.length > 1) {
                     for (let i = parseInt(verses[0]); i <= parseInt(verses[1]); i++) {
@@ -55,6 +59,7 @@ function expandScriptureRange(reference) {
     return scriptures;
 }
 
+
 function updateTable() {
     const inputScripture = document.getElementById('scriptureInput').value;
     try {
@@ -64,6 +69,8 @@ function updateTable() {
         document.getElementById('scripture-table-container').innerHTML = `<div style="color: #ccc; text-align: center; font-size: 16px;">${error.message}</div>`;
     }
 }
+
+
 
 async function displayTableForScripture(scriptures) {
     const data = await fetchJSON();
@@ -78,20 +85,27 @@ async function displayTableForScripture(scriptures) {
 }
 
 function createSingleScriptureView(entries) {
-    let tableHTML = `<div style="overflow-x: auto;"><table border="1" style="width: 100%; max-width: 600px; margin: auto; border-collapse: collapse; margin-top:12px;"><tr><th>%</th><th>Year</th><th>Month</th><th>Speaker</th><th>Title</th></tr>`;
+    let tableHTML = `<table style="width: 100%; margin: auto; border-collapse: collapse; font-size: 10pt;"><tr>
+        <th style="text-align: center;">%</th>
+        <th style="text-align: center;">Year</th>
+        <th style="text-align: center;">Month</th>
+        <th style="text-align: center;">Speaker</th>
+        <th style="text-align: center;">Title</th>
+    </tr>`;
     entries.forEach(entry => {
+        const percentQuoted = entry.perc_quoted;
         tableHTML += `<tr>
-            <td style="text-align: center; width: 50px;">
-                <div style="background-color: #F39C12; width: ${entry.perc_quoted}%; height: 100%; position: absolute; left: 0; top: 0;"></div>
-                <span style="position: relative; z-index: 1;">${entry.perc_quoted}%</span>
+            <td style="text-align: center; position: relative;">
+                <div style="background-color: #F39C12; width: ${percentQuoted}%; height: 100%; position: absolute; left: 0; top: 0;"></div>
+                <div style="position: relative; z-index: 1;">${percentQuoted}%</div>
             </td>
-            <td>${entry.talk_year}</td>
-            <td>${entry.talk_month}</td>
-            <td>${entry.speaker}</td>
-            <td><a href="${entry.hyperlink}" target="_blank">${entry.title}</a></td>
+            <td style="text-align: center;">${entry.talk_year}</td>
+            <td style="text-align: center;">${entry.talk_month}</td>
+            <td style="text-align: center;">${entry.speaker}</td>
+            <td style="text-align: center;"><a href="${entry.hyperlink}" target="_blank">${entry.title}</a></td>
         </tr>`;
     });
-    tableHTML += '</table></div>';
+    tableHTML += '</table>';
     return tableHTML;
 }
 
@@ -108,23 +122,33 @@ function createTableView(entries, scriptures) {
     });
 
     const sortedEntries = Object.values(uniqueEntries).sort((a, b) => b.talk_id - a.talk_id);
-    let tableHTML = `<div style="overflow-x: auto;"><table border="1" style="width: 100%; max-width: 600px; margin: auto; border-collapse: collapse; margin-top:12px;"><tr><th>%</th><th>Year</th><th>Month</th><th>Speaker</th><th>Title</th></tr>`;
+    let tableHTML = `<table style="width: 100%; margin: auto; border-collapse: collapse; font-size: 10pt;"><tr>
+        <th style="text-align: center;">%</th>
+        <th style="text-align: center;">Year</th>
+        <th style="text-align: center;">Month</th>
+        <th style="text-align: center;">Speaker</th>
+        <th style="text-align: center;">Title</th>
+    </tr>`;
     sortedEntries.forEach(entry => {
-        const percentQuoted = (entry.scripturesQuoted.size > 0 ? Math.round((entry.scripturesQuoted.size / scriptures.length) * 100) : 0);
+        const scripturesQuoted = entry.scripturesQuoted.size;
+        const totalScriptures = scriptures.length;
+        const percentQuoted = totalScriptures > 0 ? Math.round((scripturesQuoted / totalScriptures) * 100) : 0;
         tableHTML += `<tr>
-            <td style="text-align: center; width: 50px;">
+            <td style="text-align: center; position: relative;">
                 <div style="background-color: #F39C12; width: ${percentQuoted}%; height: 100%; position: absolute; left: 0; top: 0;"></div>
-                <span style="position:relative; z-index: 1;">${percentQuoted}%</span>
+                <div style="position: relative; z-index: 1;">${percentQuoted}%</div>
             </td>
-            <td>${entry.talk_year}</td>
-            <td>${entry.talk_month}</td>
-            <td>${entry.speaker}</td>
-            <td><a href="${entry.hyperlink}" target="_blank">${entry.title}</a></td>
+            <td style="text-align: center;">${entry.talk_year}</td>
+            <td style="text-align: center;">${entry.talk_month}</td>
+            <td style="text-align: center;">${entry.speaker}</td>
+            <td style="text-align: center;"><a href="${entry.hyperlink}" target="_blank">${entry.title}</a></td>
         </tr>`;
     });
-    tableHTML += '</table></div>';
+    tableHTML += '</table>';
     return tableHTML;
 }
+
+
 
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('scriptureInput').addEventListener('keypress', function(event) {

@@ -98,7 +98,7 @@ output:
 -->
 
 
-<script src="https://kameronyork.com/gospel-buddy/search.js"></script>
+<script src="C:/Users/theka/Desktop/Projects/Website_project/kameronyork.com/gospel-buddy/search.js"></script>
 
 <div style="text-align: center;">
   <input type="text" id="scriptureInput" placeholder="Enter scripture reference" style="width: 60%; padding: 10px; margin-top: 20px;">
