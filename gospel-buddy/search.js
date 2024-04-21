@@ -85,6 +85,18 @@ async function displayTableForScripture(scriptures) {
 }
 
 function createSingleScriptureView(entries) {
+    // Collect unique entries by talk_id
+    const uniqueEntries = {};
+    entries.forEach(entry => {
+        const talkId = entry.talk_id;
+        if (!uniqueEntries[talkId]) {
+            uniqueEntries[talkId] = entry;
+        }
+    });
+
+    // Convert object to array and sort by talk_id in descending order
+    const sortedEntries = Object.values(uniqueEntries).sort((a, b) => b.talk_id - a.talk_id);
+
     let tableHTML = `<table style="width: 100%; margin: auto; border-collapse: collapse; font-size: 10pt;"><tr>
         <th style="text-align: center;">%</th>
         <th style="text-align: center;">Year</th>
@@ -92,7 +104,7 @@ function createSingleScriptureView(entries) {
         <th style="text-align: center;">Speaker</th>
         <th style="text-align: center;">Title</th>
     </tr>`;
-    entries.forEach(entry => {
+    sortedEntries.forEach(entry => {
         const percentQuoted = entry.perc_quoted;
         tableHTML += `<tr>
             <td style="text-align: center; position: relative;">
@@ -121,7 +133,9 @@ function createTableView(entries, scriptures) {
         }
     });
 
+    // Convert object to array and sort by talk_id in descending order
     const sortedEntries = Object.values(uniqueEntries).sort((a, b) => b.talk_id - a.talk_id);
+
     let tableHTML = `<table style="width: 100%; margin: auto; border-collapse: collapse; font-size: 10pt;"><tr>
         <th style="text-align: center;">%</th>
         <th style="text-align: center;">Year</th>
@@ -147,6 +161,7 @@ function createTableView(entries, scriptures) {
     tableHTML += '</table>';
     return tableHTML;
 }
+
 
 
 
