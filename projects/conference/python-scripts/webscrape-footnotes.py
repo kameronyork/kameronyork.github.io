@@ -6,57 +6,65 @@
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
+from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from tqdm import tqdm  # Import tqdm for the progress bar
 
+# Function to extract hrefs from a given section
 def extract_hrefs(url, section_class):
-    response = requests.get(url)
-    soup = BeautifulSoup(response.content, 'html.parser')
-    section = soup.find('div', class_=section_class)
-    if section:
-        action_bar = section.find('div', class_='ActionBar')
-        if action_bar:
-            action_bar.extract()  # Remove the action bar from the section
-        hrefs = [a['href'] for a in section.find_all('a', href=True)]
-        return hrefs
-    else:
-        return []
+    try:
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, 'html.parser')
+        section = soup.find('div', class_=section_class)
+        if section:
+            action_bar = section.find('div', class_='ActionBar')
+            if action_bar:
+                action_bar.extract()  # Remove the action bar from the section
+            hrefs = [a['href'] for a in section.find_all('a', href=True)]
+            return hrefs
+        else:
+            return []
+    except Exception as e:
+        return []  # Handle exceptions
 
-def get_hrefs_from_url(url):
-    return extract_hrefs(url, 'contentWrapper-n6Z8K')
+# Function to handle concurrent requests
+def fetch_hrefs(urls, section_class):
+    hrefs_dict = {}
+    with ThreadPoolExecutor(max_workers=20) as executor:
+        # Start the load operations and mark each future with its URL
+        future_to_url = {executor.submit(extract_hrefs, url, section_class): url for url in urls}
+        for future in tqdm(as_completed(future_to_url), total=len(urls), desc="Processing rows"):
+            url = future_to_url[future]
+            try:
+                hrefs = future.result()
+                hrefs_dict[url] = hrefs
+            except Exception as e:
+                hrefs_dict[url] = []  # Store empty list in case of error
+    
+    # Sort the results by the original url order
+    sorted_hrefs_list = [hrefs_dict[url] for url in urls]
+    return sorted_hrefs_list
 
 # Read the dataset into a pandas DataFrame
 df = pd.read_csv("https://kameronyork.com/datasets/conference-talk-hyperlinks.csv", encoding="utf-8")
 
-# Create a ThreadPoolExecutor to run multiple requests in parallel
-with ThreadPoolExecutor(max_workers=20) as executor:
-    # Submit all tasks to the executor
-    futures = [executor.submit(get_hrefs_from_url, url) for url in df['hyperlink']]
-    
-    # Initialize the progress bar
-    progress_bar = tqdm(as_completed(futures), total=len(futures), desc="Processing rows")
-    
-    # As each task completes, store the result
-    for future in progress_bar:
-        try:
-            hrefs = future.result()
-            url = [url for url, fut in zip(df['hyperlink'], futures) if fut == future][0]
-            df.loc[df['hyperlink'] == url, 'main_body_hrefs'] = str(hrefs)
-        except Exception as exc:
-            progress_bar.write(f'URL generated an exception: {exc}')
+# Apply concurrent fetching
+urls = df['hyperlink'].tolist()
+results = fetch_hrefs(urls, 'contentWrapper-n6Z8K')
+df['main_body_hrefs'] = results
+
 
 # Save the DataFrame to a new CSV file
 ## # ## 
 df.to_csv("./backups/conference-talk-hyperlinks-output.csv", encoding="utf-8", index=False)
 
 ##### # %%
-## # ## df = pd.read_csv("./backups/conference-talk-hyperlinks-output.csv", encoding="utf-8")
+## # ## 
+df = pd.read_csv("./backups/conference-talk-hyperlinks-output.csv", encoding="utf-8")
 
 df = df[df['main_body_hrefs'] != '[]']
-
-# Remove all single quotation marks from 'main_body_hrefs' 
-df['main_body_hrefs'] = df['main_body_hrefs'].str.replace("[", "")
-df['main_body_hrefs'] = df['main_body_hrefs'].str.replace("]", "")
+ 
+# Remove all square brackets from 'main_body_hrefs' 
+df['main_body_hrefs'] = df['main_body_hrefs'].str.replace('[', '').replace(']', '')
 
 # Unlist the main_body_hrefs column and pivot the DataFrame
 df['main_body_hrefs'] = df['main_body_hrefs'].str.split("', '")
@@ -254,8 +262,10 @@ new_df['scripture_type'] = new_df['scripture'].apply(determine_scripture_type)
 ## # ## 
 new_df.to_csv("./backups/conference-talk-hyperlinks-output-4.csv", encoding="utf-8", index=False)
 
-##### # %%
-## # ## new_df = pd.read_csv("./backups/conference-talk-hyperlinks-output-4.csv", encoding="utf-8")
+##### 
+# %%
+## # ## 
+new_df = pd.read_csv("./backups/conference-talk-hyperlinks-output-4.csv", encoding="utf-8")
 
 # Creating a new df for single scriptures
 single_df = new_df.query("scripture_type == 'SINGLE'")
@@ -317,6 +327,8 @@ scriptures_df['quote_id'] = scriptures_df.reset_index().index
 # Filter out rows where the value immediately following ":" in the 'scripture' column is not a number
 scriptures_df = scriptures_df[scriptures_df['scripture'].str.split(':').str[1].str.isdigit()]
 
+
+##### # %%
 # Loading all conference talk data to merge to scriptures_df.  This will return the text of the talk.
 all_talks = pd.read_csv("https://kameronyork.com/datasets/general-conference-talks.csv", encoding="utf-8").filter(items=["id", "text"]).rename(columns={"id": "talk_id", "text": "talk_text"})
 
@@ -328,12 +340,6 @@ scriptures_df = pd.merge(scriptures_df, all_talks, on='talk_id', how='left')
 
 # Merge scriptures_df and all_verses on 'scripture'
 scriptures_df = pd.merge(scriptures_df, all_verses, on='scripture', how='left')
-
-## # ## 
-scriptures_df.to_csv("./backups/conference-talk-hyperlinks-output-5.csv", encoding="utf-8", index=False)
-
-##### # %%
-## # ## scriptures_df = pd.read_csv("./backups/conference-talk-hyperlinks-output-5.csv", encoding="utf-8")
 
 
 import re
@@ -358,9 +364,10 @@ def calculate_perc_quoted(row):
                 if dp[i][j] > max_length:
                     max_length = dp[i][j]
                     end_index = i
-    
+
     # Calculate percentage quoted
     perc_quoted = (max_length / len(scripture_words)) * 100 if max_length > 0 else 0
+    words_quoted = " ".join(scripture_words[end_index - max_length:end_index]) if perc_quoted >= 20 else ""
 
     # Simplified rounding logic
     if perc_quoted < 5:
@@ -368,59 +375,62 @@ def calculate_perc_quoted(row):
     else:
         perc_quoted_rounded = round(perc_quoted / 5) * 5
 
-    return perc_quoted_rounded
+    return {"perc_quoted": perc_quoted_rounded, "words_quoted": words_quoted}
 
+# Apply the function to each row to create the perc_quoted and words_quoted columns
+tqdm.pandas(desc="Calculating Quotes:")
+scriptures_df[['perc_quoted', 'words_quoted']] = scriptures_df.progress_apply(calculate_perc_quoted, axis=1, result_type='expand')
 
-# Apply the function to each row to create the perc_quoted column
-tqdm.pandas(desc="Percent Quoted:")
-scriptures_df['perc_quoted'] = scriptures_df.progress_apply(calculate_perc_quoted, axis=1)
+# %%
+
+## # ## 
+scriptures_df.to_csv("./backups/conference-talk-hyperlinks-output-5.csv", encoding="utf-8", index=False)
+
+##### # %%
+## # ## new_df = pd.read_csv("./backups/conference-talk-hyperlinks-output-5.csv", encoding="utf-8")
 
 
 ##### # %%
 # Drop the 'talk_text' and 'scripture_text' columns from the dataframe
 scriptures_df.drop(['talk_text', 'scripture_text'], axis=1, inplace=True)
 
-# Define the file path for the JSON file with the short list.  Grouped by scripture with the count of instances.
-file_path_short = "../../../datasets/all-footnotes-lookup.json"
+import datetime
 
-# Define the file path for the JSON file with the long list
-file_path_long = "../../../datasets/all-footnotes.json"
+# Get the current date
+now = datetime.datetime.now()
 
-# Define the file path for the JSON file with the short list of only footnotes from apostles
-apostle_path_short = "../../../datasets/apostle-all-footnotes-lookup.json"
+# Determine the conference based on the month and set the file path accordingly
+if 3 <= now.month <= 8:
+    conference_date = f"apr-{now.year}"
+elif 9 <= now.month <= 11:
+    conference_date = f"oct-{now.year}"
+else:
+    conference_date = f"oct-{now.year - 1}"
 
-# Define the file path for the JSON file with the long list of only footnotes from apostles
-apostle_path_long = "../../../datasets/apostle-all-footnotes.json"
+# Define the file paths including the determined conference date
+file_path_short = f"../../../datasets/all-footnotes-lookup-{conference_date}.json"
+file_path_long = f"../../../datasets/all-footnotes-{conference_date}.json"
+apostle_path_short = f"../../../datasets/apostle-all-footnotes-lookup-{conference_date}.json"
+apostle_path_long = f"../../../datasets/apostle-all-footnotes-{conference_date}.json"
 
-# Save the sorted and merged DataFrame as JSON
+# Continue with the rest of your code to process and save data
 scriptures_df.to_json(file_path_long, orient='records')
-
 scripture_counts = scriptures_df.groupby('scripture').size().reset_index(name='count')
-
 scripture_counts.to_json(file_path_short, orient='records')
 
-##### # %%
+# Further code to handle apostles data as before
 apostle_list = pd.read_csv("https://kameronyork.com/datasets/apostles.csv", encoding="utf-8")
 
 apostle_names = apostle_list[['Name']]
-
-# Define a function to check if the name is in the apostle_names DataFrame
 def check_apostle(name):
     if name in apostle_names['Name'].values:
         return 'Apostle'
     else:
         return 'General'
 
-# Apply the function to create a new column
 scriptures_df['apostle_check'] = scriptures_df['speaker'].apply(check_apostle)
-
 apostles_scriptures_df = scriptures_df.query("apostle_check == 'Apostle'")
-
-# Save the sorted and merged DataFrame as JSON
 apostles_scriptures_df.to_json(apostle_path_long, orient='records')
-
 apostles_scripture_counts = apostles_scriptures_df.groupby('scripture').size().reset_index(name='count')
-
 apostles_scripture_counts.to_json(apostle_path_short, orient='records')
-
 # %%
