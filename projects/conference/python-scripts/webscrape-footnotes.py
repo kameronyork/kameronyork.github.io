@@ -197,18 +197,25 @@ def decode_book_and_reference(href):
     parts = href.split('/')
     book_abbreviation = parts[0]
     book_name = book_decoder.get(book_abbreviation, book_abbreviation.capitalize())  # Lookup long name or capitalize abbreviation
-    chapter_and_verse = parts[1].split('?')[0]  # Extract chapter and verse section
+    
+    if 'id=' in href:  # Check if the new URL structure is present
+        # Extract chapter and verse section according to the new format
+        chapter_and_verse = parts[1].split('?')[0]  # Extract chapter from URL
+        chapter_and_verse += ':'  # Add ":" separator
+        chapter_and_verse += href.split('id=')[1].split('&')[0].replace('p', '').replace('-', ',')  # Extract verses from URL
+        if '#' in chapter_and_verse:
+            chapter_and_verse = chapter_and_verse.split('#')[0]  # Remove everything after "#"
+    else:
+        # Extract chapter and verse section according to the old format
+        chapter_and_verse = parts[1].split('?')[0].replace('.', ':')  # Replace "." with ":"
+        
     return book_name, chapter_and_verse
 
 # Apply the decoding function to each row and create new columns 'book_name' and 'chapter_and_verse'
 refs_df['book_name'], refs_df['chapter_and_verse'] = zip(*refs_df['main_body_hrefs'].apply(decode_book_and_reference))
 
-# Replace '.' with ':' in chapter_and_verse column
-refs_df['chapter_and_verse'] = refs_df['chapter_and_verse'].str.replace('.', ':', regex=False)
-
 # Create the "scripture" column by combining "book_name" and "chapter_and_verse" with a space
 refs_df['scripture'] = refs_df['book_name'] + ' ' + refs_df['chapter_and_verse']
-
 
 
 ## # ## 
@@ -262,10 +269,8 @@ new_df['scripture_type'] = new_df['scripture'].apply(determine_scripture_type)
 ## # ## 
 new_df.to_csv("./backups/conference-talk-hyperlinks-output-4.csv", encoding="utf-8", index=False)
 
-##### 
-# %%
-## # ## 
-new_df = pd.read_csv("./backups/conference-talk-hyperlinks-output-4.csv", encoding="utf-8")
+##### # %%
+## # ## new_df = pd.read_csv("./backups/conference-talk-hyperlinks-output-4.csv", encoding="utf-8")
 
 # Creating a new df for single scriptures
 single_df = new_df.query("scripture_type == 'SINGLE'")
@@ -381,7 +386,6 @@ def calculate_perc_quoted(row):
 tqdm.pandas(desc="Calculating Quotes:")
 scriptures_df[['perc_quoted', 'words_quoted']] = scriptures_df.progress_apply(calculate_perc_quoted, axis=1, result_type='expand')
 
-# %%
 
 ## # ## 
 scriptures_df.to_csv("./backups/conference-talk-hyperlinks-output-5.csv", encoding="utf-8", index=False)
@@ -389,8 +393,6 @@ scriptures_df.to_csv("./backups/conference-talk-hyperlinks-output-5.csv", encodi
 ##### # %%
 ## # ## new_df = pd.read_csv("./backups/conference-talk-hyperlinks-output-5.csv", encoding="utf-8")
 
-
-##### # %%
 # Drop the 'talk_text' and 'scripture_text' columns from the dataframe
 scriptures_df.drop(['talk_text', 'scripture_text'], axis=1, inplace=True)
 
