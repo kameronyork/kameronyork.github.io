@@ -13,4 +13,4 @@ Please check back later!
 
 <link rel=stylesheet href=https://kameronyork.github.io/scripting/themify-icons/themify-icons.css>
 
-<div style="display:block;margin:0;padding:0;border:0;outline:0;font-size:10px!important;color:#AAA!important;vertical-align:baseline;background:transparent;width:706px;"><iframe frameborder="0" height="500" scrolling="no" src="https://secure.rightsignature.com/signers/1390c9f6-d86b-4346-a8e1-9bfc075dd89f/sign?access_token=p-ufMbFWXAgTEd_e88QR" width="706"></iframe></div>
+<footer><div class="container"><div class="row"><div class="col-md-5 border text-md-left"><nav class="pagination mt-3"><a class="nav nav-prev" href="https://www.kameronyork.com/blog"><i class="ti-arrow-left mr-2"></i><span class="d-none d-md-block">   Home</span></a></nav></div><div class="col-md-7 border text-md-right"><nav class="pagination mt-3"><a class="nav nav-next" href="https://www.kameronyork.com/blog"><span class="d-none d-md-block">Next Post </span><i class="ti-arrow-right ml-2"></i></a></nav></div></div></div></footer>
