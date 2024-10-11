@@ -340,7 +340,11 @@ all_talks = pd.read_csv("https://kameronyork.com/datasets/general-conference-tal
 # Loading all scritpure verses.  This will return the full text of each verse.
 all_verses = pd.read_csv("https://kameronyork.com/datasets/scripture-verses.csv", encoding="utf-8").filter(items=["scripture", "text"]).rename(columns={"text": "scripture_text"})
 
-# Merge scriptures_df and all_talks on 'talk_id'
+# Convert 'talk_id' in both DataFrames to int64, handling any conversion issues
+scriptures_df['talk_id'] = pd.to_numeric(scriptures_df['talk_id'], errors='coerce', downcast='integer')
+all_talks['talk_id'] = pd.to_numeric(all_talks['talk_id'], errors='coerce', downcast='integer')
+
+# Now perform the merge operation
 scriptures_df = pd.merge(scriptures_df, all_talks, on='talk_id', how='left')
 
 # Merge scriptures_df and all_verses on 'scripture'
