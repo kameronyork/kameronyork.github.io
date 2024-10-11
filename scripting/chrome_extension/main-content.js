@@ -359,9 +359,9 @@ const bookDecoder = {
   
     chrome.storage.sync.get('apostleOnly', function (data) {
       const apostleOnly = data.apostleOnly;
-      let scriptureQuotedDataUrl = 'https://kameronyork.com/datasets/all-footnotes-apr-2024.json';
+      let scriptureQuotedDataUrl = 'https://kameronyork.com/datasets/all-footnotes-oct-2024.json';
       if (apostleOnly) {
-        scriptureQuotedDataUrl = 'https://kameronyork.com/datasets/apostle-all-footnotes-apr-2024.json';
+        scriptureQuotedDataUrl = 'https://kameronyork.com/datasets/apostle-all-footnotes-oct-2024.json';
       }
   
       if (scriptureCount === 0) {
@@ -564,9 +564,9 @@ const bookDecoder = {
           });
         });
   
-        let scriptureQuotedDataUrl = 'https://kameronyork.com/datasets/all-footnotes-lookup-apr-2024.json';
+        let scriptureQuotedDataUrl = 'https://kameronyork.com/datasets/all-footnotes-lookup-oct-2024.json';
         if (apostleOnly) {
-          scriptureQuotedDataUrl = 'https://kameronyork.com/datasets/apostle-all-footnotes-lookup-apr-2024.json';
+          scriptureQuotedDataUrl = 'https://kameronyork.com/datasets/apostle-all-footnotes-lookup-oct-2024.json';
         }
   
         const scriptureQuotedData = await fetchJSON(scriptureQuotedDataUrl);
