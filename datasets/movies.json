@@ -1,20 +1,20 @@
 [
-  {
-    "name": "Kam",
-    "pull_data_through": "2025-06-30",
-    "competition": "kamHolly1",
-    "movies": [
-      {"title": "Heretic", "imdb_id": "tt28015403"},
-      {"title": "Venom: The Last Dance", "imdb_id": "tt16366836"}
-    ]
-  },
-  {
-    "name": "Holly",
-    "pull_data_through": "2025-06-30",
-    "competition": "kamHolly1",
-    "movies": [
-      {"title": "The Wild Robot", "imdb_id": "tt29623480"},
-      {"title": "The Best Christmas Pageant Ever", "imdb_id": "tt2347285"}
-    ]
-  }
+    {
+        "name": "Kam",
+        "pull_data_through": "2025-06-30",
+        "competition": "kamHolly1",
+        "movies": [
+            {"title": "Heretic", "imdb_id": "rl2876014593"},
+            {"title": "Venom: The Last Dance", "imdb_id": "rl3290006273"}
+        ]
+    },
+    {
+        "name": "Holly",
+        "pull_data_through": "2025-06-30",
+        "competition": "kamHolly1",
+        "movies": [
+            {"title": "The Wild Robot", "imdb_id": "rl3443949569"},
+            {"title": "The Best Christmas Pageant Ever", "imdb_id": "rl457277441"}
+        ]
+    }
 ]
