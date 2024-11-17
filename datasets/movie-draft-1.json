@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Alice",
+    "movies": ["Heretic", "Venom: The Last Dance"]
+  },
+  {
+    "name": "Bob",
+    "movies": ["The Wild Robot", "The Best Christmas Pageant Ever"]
+  }
+]
