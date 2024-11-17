@@ -1,0 +1,70 @@
+import os
+import json
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+
+# Load the input JSON file
+input_file = 'datasets/movies.json'
+output_file = 'datasets/box-office-data.json'
+
+with open(input_file, 'r') as f:
+    people_movies = json.load(f)
+
+# Initialize list to store all data
+all_data = []
+
+# Function to scrape data from Box Office Mojo based on IMDb ID
+def scrape_box_office_data(imdb_id, title):
+    url = f"https://www.boxofficemojo.com/release/{imdb_id}/?ref_=bo_tt_gr_1"
+    response = requests.get(url)
+    
+    if response.status_code != 200:
+        print(f"Failed to fetch data for IMDb ID {imdb_id} ({title})")
+        return []
+
+    soup = BeautifulSoup(response.text, 'html.parser')
+
+    # Locate the table containing box office data
+    table = soup.find('table')
+    if not table:
+        print(f"No table found for IMDb ID {imdb_id} ({title})")
+        return []
+
+    # Extract headers
+    headers = [th.get_text(strip=True) for th in table.find_all('th')]
+
+    # Extract rows
+    rows = []
+    for tr in table.find_all('tr'):
+        cells = tr.find_all('td')
+        if not cells:
+            continue
+        row = [cell.get_text(strip=True) for cell in cells]
+        rows.append(row)
+
+    # Create a DataFrame and add extra columns
+    df = pd.DataFrame(rows, columns=headers)
+    df['IMDB_ID'] = imdb_id
+    df['Title'] = title
+    return df
+
+# Process each person's movies
+for person in people_movies:
+    for movie in person["movies"]:
+        imdb_id = movie.get("imdb_id")
+        title = movie.get("title")
+        if not imdb_id or not title:
+            print(f"Missing IMDb ID or title for {movie}")
+            continue
+        df = scrape_box_office_data(imdb_id, title)
+        if not df.empty:
+            all_data.append(df)
+
+# Concatenate all data into a single DataFrame
+if all_data:
+    final_df = pd.concat(all_data, ignore_index=True)
+    # Save to JSON file
+    final_df.to_json(output_file, orient='records', indent=4)
+else:
+    print("No data found. Output file will not be created.")
