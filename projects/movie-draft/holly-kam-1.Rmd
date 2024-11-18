@@ -1,0 +1,224 @@
+---
+title: "Holly and Kam - Test"
+output:
+  html_document:
+    includes:
+      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/projects/conference/headers/inspire-change-header.html"
+      after_body: "https://kameronyork.com/parables/footer.html"
+---
+<br>
+<br>
+
+<canvas id="earningsChart" width="400" height="200"></canvas>
+<div id="tables-container"></div>
+<style>
+  .expandable-row:hover {
+    background-color: rgba(255, 215, 0, 0.3); /* Transparent gold color */
+    cursor: pointer;
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// Function to toggle row visibility - moved outside to make it globally accessible
+function toggleRow(rowId) {
+  const row = document.getElementById(rowId);
+  if (row) {
+    row.style.display = row.style.display === 'none' ? 'table-row' : 'none';
+  }
+}
+
+document.addEventListener("DOMContentLoaded", async function() {
+  // Fetch data from the specified URLs
+  const dataUrl = "https://kameronyork.com/datasets/box-office-data.json";
+  const peopleUrl = "https://kameronyork.com/datasets/movies.json";
+  let movieData, peopleData;
+
+  try {
+    const movieResponse = await fetch(dataUrl);
+    const peopleResponse = await fetch(peopleUrl);
+
+    if (!movieResponse.ok || !peopleResponse.ok) {
+      throw new Error('Failed to fetch data.');
+    }
+
+    movieData = await movieResponse.json();
+    peopleData = await peopleResponse.json();
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return;
+  }
+
+  const cumulativeData = {};
+  const dateEarningsMap = {}; // For global chart data
+
+  // Get all unique dates from movieData and sort them
+  const allDates = Array.from(new Set(movieData.map(entry => entry.Date))).sort((a, b) => new Date(a) - new Date(b));
+
+  // Process movie data for each person
+  for (const person of peopleData) {
+    cumulativeData[person.name] = {
+      totalEarnings: 0,
+      movies: [],
+      earningsByDate: {} // Cumulative earnings over dates
+    };
+
+    for (const movie of person.movies) {
+      const movieTitle = movie.title;
+      const filteredMovieData = movieData.filter(entry => entry.Title === movieTitle);
+      let cumulativeEarnings = 0;
+      let earningsData = {};
+
+      // Initialize all dates for this movie with the last known cumulative value
+      allDates.forEach(date => {
+        earningsData[date] = cumulativeEarnings; // Carry forward previous earnings by default
+      });
+
+      for (const entry of filteredMovieData) {
+        const date = entry.Date;  // Directly use the Date field in ISO format
+        const dailyEarnings = parseInt(entry.Daily.replace(/[\$,]/g, '')) || 0;
+        cumulativeEarnings += dailyEarnings;
+        cumulativeData[person.name].totalEarnings += dailyEarnings;
+        earningsData[date] = cumulativeEarnings; // Update with current cumulative value
+      }
+
+      // Transform earningsData into an array for plotting, only include dates with non-zero amounts
+      const earningsArray = allDates
+        .map(date => ({ date, amount: earningsData[date] }))
+        .filter(entry => entry.amount > 0);
+
+      cumulativeData[person.name].movies.push({
+        title: movieTitle,
+        earnings: earningsArray,
+        periodToDateTotal: cumulativeEarnings
+      });
+
+      // Update overall earnings by date for this person
+      allDates.forEach(date => {
+        if (!cumulativeData[person.name].earningsByDate[date]) {
+          cumulativeData[person.name].earningsByDate[date] = 0;
+        }
+        cumulativeData[person.name].earningsByDate[date] += earningsData[date];
+      });
+    }
+  }
+
+  // Sort people by total earnings
+  const sortedPeople = Object.entries(cumulativeData).sort((a, b) => b[1].totalEarnings - a[1].totalEarnings);
+
+  // Prepare data for line chart
+  const datasets = sortedPeople.map(([personName, data], index) => {
+    const personData = allDates.map(date => data.earningsByDate[date] || 0);
+    // Assign a unique color for each person
+    const colors = ['rgb(75, 192, 192)', 'rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 206, 86)'];
+
+    return {
+      label: personName,
+      data: personData,
+      fill: false,
+      borderColor: colors[index % colors.length],
+      tension: 0.1
+    };
+  });
+
+  // Plot line chart
+  new Chart(document.getElementById("earningsChart"), {
+    type: "line",
+    data: {
+      labels: allDates,
+      datasets
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: true,
+          position: "top"
+        }
+      },
+      scales: {
+        x: { title: { display: true, text: "Date" } },
+        y: { title: { display: true, text: "Cumulative Earnings" } }
+      }
+    }
+  });
+
+  // Build a single table for all data below the chart
+  let tableHtml = `
+    <table border="1" style="width:100%; border-collapse: collapse;">
+      <thead>
+        <tr>
+          <th>Person</th>
+          <th>Total Earnings</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  sortedPeople.forEach(([personName, data], index) => {
+    const personRowId = `person-row-${index}`;
+    tableHtml += `
+      <tr class="expandable-row" onclick="toggleRow('${personRowId}')">
+        <td>${personName}</td>
+        <td>$${data.totalEarnings.toLocaleString()}</td>
+      </tr>
+      <tr id="${personRowId}" style="display: none;">
+        <td colspan="2">
+          <table border="1" style="width:100%; border-collapse: collapse;">
+            <thead>
+              <tr>
+                <th>Movie</th>
+                <th>Period-to-Date Total</th>
+              </tr>
+            </thead>
+            <tbody>
+    `;
+
+    data.movies.forEach((movie, movieIndex) => {
+      const movieRowId = `movie-row-${index}-${movieIndex}`;
+      tableHtml += `
+        <tr class="expandable-row" onclick="toggleRow('${movieRowId}')">
+          <td>${movie.title}</td>
+          <td>$${movie.periodToDateTotal.toLocaleString()}</td>
+        </tr>
+        <tr id="${movieRowId}" style="display: none;">
+          <td colspan="2">
+            <table border="1" style="width:100%; border-collapse: collapse;">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Cumulative Earnings</th>
+                </tr>
+              </thead>
+              <tbody>
+      `;
+      movie.earnings.forEach(entry => {
+        tableHtml += `
+          <tr>
+            <td>${entry.date}</td>
+            <td>$${entry.amount.toLocaleString()}</td>
+          </tr>
+        `;
+      });
+      tableHtml += `
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      `;
+    });
+
+    tableHtml += `
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    `;
+  });
+
+  tableHtml += `
+      </tbody>
+    </table>
+  `;
+  document.getElementById("tables-container").innerHTML = tableHtml;
+});
+</script>

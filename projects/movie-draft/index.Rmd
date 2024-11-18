@@ -1,0 +1,49 @@
+---
+title: "Movie Drafts"
+output:
+  html_document:
+    includes:
+      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/projects/conference/headers/inspire-change-header.html"
+      after_body: "https://kameronyork.com/parables/footer.html"
+---
+
+<div>
+  <input type="text" id="searchBar" placeholder="Search projects..." style="width: 100%; padding: 10px; font-size: 16px; margin-bottom: 20px;">
+</div>
+
+<ul id="projectList" style="list-style-type: none; padding: 0; font-size: 18px;">
+  <!-- Add your project hyperlinks here -->
+  <li><a href="https://kameronyork.com/projects/movie-draft/holly-kam-1" class="project-link">Holly and Kam - Test</a></li>
+</ul>
+
+<style>
+  .project-link {
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  .project-link:hover {
+    background-color: rgba(255, 215, 0, 0.3); /* Transparent gold */
+    color: black;
+  }
+  #searchBar {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+</style>
+
+<script>
+  document.getElementById('searchBar').addEventListener('input', function() {
+    const searchText = this.value.toLowerCase();
+    const projects = document.querySelectorAll('.project-link');
+    projects.forEach(project => {
+      if (project.textContent.toLowerCase().includes(searchText)) {
+        project.parentElement.style.display = '';
+      } else {
+        project.parentElement.style.display = 'none';
+      }
+    });
+  });
+</script>
