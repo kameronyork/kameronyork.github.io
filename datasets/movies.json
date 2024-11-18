@@ -4,8 +4,17 @@
         "pull_data_through": "2025-06-30",
         "competition": "kamHolly1",
         "movies": [
-            {"title": "Heretic", "imdb_id": "rl2876014593"},
-            {"title": "Venom: The Last Dance", "imdb_id": "rl3290006273"}
+            {"title": "Bird", "imdb_id": "rl2987819009", "points": 1},
+            {"title": "Red One", "imdb_id": "rl2841083905", "points": 7},
+            {"title": "Bonhoeffer: Pastor. Spy. Assassin.", "imdb_id": "rl2775351297", "points": 7},
+            {"title": "Gladiator II", "imdb_id": "rl1778156289", "points": 10},
+            {"title": "Werewolves", "imdb_id": "rl1433501697", "points": 1},
+            {"title": "Get Away", "imdb_id": "rl1409515521", "points": 5},
+            {"title": "Solo Leveling: ReAwakening", "imdb_id": "rl1091076097", "points": 3},
+            {"title": "Kraven the Hunter", "imdb_id": "rl259556097", "points": 18},
+            {"title": "The Lord of the Rings: The War of the Rohirrim", "imdb_id": "rl3123675905", "points": 8},
+            {"title": "Babygirl", "imdb_id": "rl2926346241", "points": 1},
+            {"title": "Sonic the Hedgehog 3", "imdb_id": "rl886211329", "points": 39}
         ]
     },
     {
@@ -13,8 +22,15 @@
         "pull_data_through": "2025-06-30",
         "competition": "kamHolly1",
         "movies": [
-            {"title": "The Wild Robot", "imdb_id": "rl3443949569"},
-            {"title": "The Best Christmas Pageant Ever", "imdb_id": "rl457277441"}
+            {"title": "Here", "imdb_id": "rl2858385409", "points": 8},
+            {"title": "The World According to Allee Willis", "imdb_id": "rl2115207169", "points": 5},
+            {"title": "Wicked", "imdb_id": "rl1199474177", "points": 20},
+            {"title": "Moana 2", "imdb_id": "rl862748673", "points": 23},
+            {"title": "Y2K", "imdb_id": "rl4218716161", "points": 2},
+            {"title": "September 5", "imdb_id": "rl2383183873", "points": 1},
+            {"title": "Homestead", "imdb_id": "rl2557247489", "points": 1},
+            {"title": "The Fire Inside", "imdb_id": "rl2778432257", "points": 1},
+            {"title": "Nosferatu", "imdb_id": "rl2537783297", "points": 1}
         ]
     }
 ]
