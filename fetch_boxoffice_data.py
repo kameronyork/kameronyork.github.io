@@ -32,7 +32,15 @@ def scrape_box_office_data(imdb_id, title):
         return None
 
     # Extract headers and ensure uniqueness
-    headers = [f"{th.get_text(strip=True)}_{i}" for i, th in enumerate(table.find_all('th'))]
+    headers = [th.get_text(strip=True) for th in table.find_all('th')]
+    
+    # Ensure headers are unique by appending a number if duplicates are found
+    seen = {}
+    for i, header in enumerate(headers):
+        count = seen.get(header, 0)
+        seen[header] = count + 1
+        if count > 0:
+            headers[i] = f"{header}_{count}"  # Rename duplicated headers with a suffix
 
     # Extract rows
     rows = []
