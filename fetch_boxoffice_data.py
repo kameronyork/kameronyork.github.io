@@ -70,6 +70,10 @@ def scrape_box_office_data(imdb_id, title):
     df = pd.DataFrame(rows, columns=headers)
     df['IMDB_ID'] = imdb_id
     df['Title'] = title
+
+    # Filter out rows where 'Date' or 'Daily' columns are blank
+    df = df[df['Date'].notna() & df['Date'].str.strip().ne('') & df['Daily'].notna() & df['Daily'].str.strip().ne('')]
+    
     return df
 
 # Process each person's movies
