@@ -574,23 +574,5 @@
         "Weekend":null,
         "Change":null,
         "Weekend_1":null
-    },
-    {
-        "Date":"Nov 15-17",
-        "DOW":null,
-        "Rank":"30",
-        "Daily":null,
-        "%\u00b1 YD":null,
-        "%\u00b1 LW":"-",
-        "Theaters":"9",
-        "Avg":"$1,789",
-        "To Date":"$16,101",
-        "Day":null,
-        "Estimated":"false",
-        "IMDB_ID":"rl2115207169",
-        "Title":"The World According to Allee Willis",
-        "Weekend":"$16,101",
-        "Change":"-",
-        "Weekend_1":"1"
     }
 ]
