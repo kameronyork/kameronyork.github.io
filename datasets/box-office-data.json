@@ -12,7 +12,10 @@
         "Day":"1",
         "Estimated":"false",
         "IMDB_ID":"rl2987819009",
-        "Title":"Bird"
+        "Title":"Bird",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-09",
@@ -27,7 +30,10 @@
         "Day":"2",
         "Estimated":"false",
         "IMDB_ID":"rl2987819009",
-        "Title":"Bird"
+        "Title":"Bird",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-10",
@@ -42,7 +48,10 @@
         "Day":"3",
         "Estimated":"false",
         "IMDB_ID":"rl2987819009",
-        "Title":"Bird"
+        "Title":"Bird",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-11",
@@ -57,7 +66,10 @@
         "Day":"4",
         "Estimated":"false",
         "IMDB_ID":"rl2987819009",
-        "Title":"Bird"
+        "Title":"Bird",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-12",
@@ -72,7 +84,10 @@
         "Day":"5",
         "Estimated":"false",
         "IMDB_ID":"rl2987819009",
-        "Title":"Bird"
+        "Title":"Bird",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-13",
@@ -87,12 +102,15 @@
         "Day":"6",
         "Estimated":"false",
         "IMDB_ID":"rl2987819009",
-        "Title":"Bird"
+        "Title":"Bird",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-14",
         "DOW":"2024-11-14",
-        "Rank":"28",
+        "Rank":"29",
         "Daily":"$2,240",
         "%\u00b1 YD":"-22.2%",
         "%\u00b1 LW":"-",
@@ -102,52 +120,172 @@
         "Day":"7",
         "Estimated":"false",
         "IMDB_ID":"rl2987819009",
-        "Title":"Bird"
+        "Title":"Bird",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
+    },
+    {
+        "Date":"2024-11-15",
+        "DOW":"2024-11-15",
+        "Rank":"22",
+        "Daily":"$13,990",
+        "%\u00b1 YD":"+524.6%",
+        "%\u00b1 LW":"+48.3%",
+        "Theaters":"150",
+        "Avg":"$93",
+        "To Date":"$50,433",
+        "Day":"8",
+        "Estimated":"false",
+        "IMDB_ID":"rl2987819009",
+        "Title":"Bird",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
+    },
+    {
+        "Date":"2024-11-16",
+        "DOW":"2024-11-16",
+        "Rank":"24",
+        "Daily":"$18,002",
+        "%\u00b1 YD":"+28.7%",
+        "%\u00b1 LW":"+61.9%",
+        "Theaters":"150",
+        "Avg":"$120",
+        "To Date":"$68,435",
+        "Day":"9",
+        "Estimated":"false",
+        "IMDB_ID":"rl2987819009",
+        "Title":"Bird",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
+    },
+    {
+        "Date":"2024-11-17",
+        "DOW":"2024-11-17",
+        "Rank":"23",
+        "Daily":"$15,505",
+        "%\u00b1 YD":"-13.9%",
+        "%\u00b1 LW":"+189.4%",
+        "Theaters":"150",
+        "Avg":"$103",
+        "To Date":"$83,940",
+        "Day":"10",
+        "Estimated":"false",
+        "IMDB_ID":"rl2987819009",
+        "Title":"Bird",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-15",
         "DOW":"2024-11-15",
         "Rank":"1",
-        "Daily":"$10,924,943",
+        "Daily":"$10,793,707",
         "%\u00b1 YD":"-",
         "%\u00b1 LW":"-",
         "Theaters":"4,032",
-        "Avg":"$2,709",
-        "To Date":"$10,924,943",
-        "Day":"6",
-        "Estimated":"true",
+        "Avg":"$2,677",
+        "To Date":"$10,793,707",
+        "Day":"1",
+        "Estimated":"false",
         "IMDB_ID":"rl2841083905",
-        "Title":"Red One"
+        "Title":"Red One",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-16",
         "DOW":"2024-11-16",
         "Rank":"1",
-        "Daily":"$13,227,717",
-        "%\u00b1 YD":"+21.1%",
+        "Daily":"$13,231,325",
+        "%\u00b1 YD":"+22.6%",
         "%\u00b1 LW":"-",
         "Theaters":"4,032",
-        "Avg":"$3,280",
-        "To Date":"$24,152,660",
-        "Day":"7",
-        "Estimated":"true",
+        "Avg":"$3,281",
+        "To Date":"$24,025,032",
+        "Day":"2",
+        "Estimated":"false",
         "IMDB_ID":"rl2841083905",
-        "Title":"Red One"
+        "Title":"Red One",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-17",
         "DOW":"2024-11-17",
         "Rank":"1",
-        "Daily":"$9,920,788",
-        "%\u00b1 YD":"-25%",
+        "Daily":"$8,081,080",
+        "%\u00b1 YD":"-38.9%",
         "%\u00b1 LW":"-",
         "Theaters":"4,032",
-        "Avg":"$2,460",
-        "To Date":"$34,073,448",
-        "Day":"8",
-        "Estimated":"true",
+        "Avg":"$2,004",
+        "To Date":"$32,106,112",
+        "Day":"3",
+        "Estimated":"false",
         "IMDB_ID":"rl2841083905",
-        "Title":"Red One"
+        "Title":"Red One",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
+    },
+    {
+        "Date":"2024-11-18",
+        "DOW":"2024-11-18",
+        "Rank":"1",
+        "Daily":"$1,664,260",
+        "%\u00b1 YD":"-79.4%",
+        "%\u00b1 LW":"-",
+        "Theaters":"4,032",
+        "Avg":"$412",
+        "To Date":"$33,770,372",
+        "Day":"4",
+        "Estimated":"false",
+        "IMDB_ID":"rl2841083905",
+        "Title":"Red One",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
+    },
+    {
+        "Date":"2024-11-19",
+        "DOW":"2024-11-19",
+        "Rank":"1",
+        "Daily":"$3,163,951",
+        "%\u00b1 YD":"+90.1%",
+        "%\u00b1 LW":"-",
+        "Theaters":"4,032",
+        "Avg":"$784",
+        "To Date":"$36,934,323",
+        "Day":"5",
+        "Estimated":"false",
+        "IMDB_ID":"rl2841083905",
+        "Title":"Red One",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
+    },
+    {
+        "Date":"2024-11-20",
+        "DOW":"2024-11-20",
+        "Rank":"1",
+        "Daily":"$1,485,371",
+        "%\u00b1 YD":"-53.1%",
+        "%\u00b1 LW":"-",
+        "Theaters":"4,032",
+        "Avg":"$368",
+        "To Date":"$38,419,694",
+        "Day":"6",
+        "Estimated":"false",
+        "IMDB_ID":"rl2841083905",
+        "Title":"Red One",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-01",
@@ -162,7 +300,10 @@
         "Day":"1",
         "Estimated":"false",
         "IMDB_ID":"rl2858385409",
-        "Title":"Here"
+        "Title":"Here",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-02",
@@ -177,7 +318,10 @@
         "Day":"2",
         "Estimated":"false",
         "IMDB_ID":"rl2858385409",
-        "Title":"Here"
+        "Title":"Here",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-03",
@@ -192,7 +336,10 @@
         "Day":"3",
         "Estimated":"false",
         "IMDB_ID":"rl2858385409",
-        "Title":"Here"
+        "Title":"Here",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-04",
@@ -207,7 +354,10 @@
         "Day":"4",
         "Estimated":"false",
         "IMDB_ID":"rl2858385409",
-        "Title":"Here"
+        "Title":"Here",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-05",
@@ -222,7 +372,10 @@
         "Day":"5",
         "Estimated":"false",
         "IMDB_ID":"rl2858385409",
-        "Title":"Here"
+        "Title":"Here",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-06",
@@ -237,7 +390,10 @@
         "Day":"6",
         "Estimated":"false",
         "IMDB_ID":"rl2858385409",
-        "Title":"Here"
+        "Title":"Here",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-07",
@@ -252,7 +408,10 @@
         "Day":"7",
         "Estimated":"false",
         "IMDB_ID":"rl2858385409",
-        "Title":"Here"
+        "Title":"Here",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-08",
@@ -267,7 +426,10 @@
         "Day":"8",
         "Estimated":"false",
         "IMDB_ID":"rl2858385409",
-        "Title":"Here"
+        "Title":"Here",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-09",
@@ -282,7 +444,10 @@
         "Day":"9",
         "Estimated":"false",
         "IMDB_ID":"rl2858385409",
-        "Title":"Here"
+        "Title":"Here",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-10",
@@ -297,7 +462,10 @@
         "Day":"10",
         "Estimated":"false",
         "IMDB_ID":"rl2858385409",
-        "Title":"Here"
+        "Title":"Here",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-11",
@@ -312,7 +480,10 @@
         "Day":"11",
         "Estimated":"false",
         "IMDB_ID":"rl2858385409",
-        "Title":"Here"
+        "Title":"Here",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-12",
@@ -327,7 +498,10 @@
         "Day":"12",
         "Estimated":"false",
         "IMDB_ID":"rl2858385409",
-        "Title":"Here"
+        "Title":"Here",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-13",
@@ -342,7 +516,10 @@
         "Day":"13",
         "Estimated":"false",
         "IMDB_ID":"rl2858385409",
-        "Title":"Here"
+        "Title":"Here",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-14",
@@ -357,51 +534,117 @@
         "Day":"14",
         "Estimated":"false",
         "IMDB_ID":"rl2858385409",
-        "Title":"Here"
+        "Title":"Here",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-15",
         "DOW":"2024-11-15",
         "Rank":"12",
-        "Daily":"$255,000",
-        "%\u00b1 YD":"+23.6%",
-        "%\u00b1 LW":"-65%",
+        "Daily":"$252,864",
+        "%\u00b1 YD":"+22.5%",
+        "%\u00b1 LW":"-65.3%",
         "Theaters":"1,774",
-        "Avg":"$143",
-        "To Date":"$11,031,215",
+        "Avg":"$142",
+        "To Date":"$11,029,079",
         "Day":"15",
-        "Estimated":"true",
+        "Estimated":"false",
         "IMDB_ID":"rl2858385409",
-        "Title":"Here"
+        "Title":"Here",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-16",
         "DOW":"2024-11-16",
         "Rank":"12",
-        "Daily":"$380,000",
-        "%\u00b1 YD":"+49%",
-        "%\u00b1 LW":"-62.2%",
+        "Daily":"$378,279",
+        "%\u00b1 YD":"+49.6%",
+        "%\u00b1 LW":"-62.4%",
         "Theaters":"1,774",
-        "Avg":"$214",
-        "To Date":"$11,411,215",
+        "Avg":"$213",
+        "To Date":"$11,407,358",
         "Day":"16",
-        "Estimated":"true",
+        "Estimated":"false",
         "IMDB_ID":"rl2858385409",
-        "Title":"Here"
+        "Title":"Here",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     },
     {
         "Date":"2024-11-17",
         "DOW":"2024-11-17",
         "Rank":"12",
-        "Daily":"$230,000",
-        "%\u00b1 YD":"-39.5%",
-        "%\u00b1 LW":"-65.6%",
+        "Daily":"$207,045",
+        "%\u00b1 YD":"-45.3%",
+        "%\u00b1 LW":"-69%",
         "Theaters":"1,774",
-        "Avg":"$129",
-        "To Date":"$11,641,215",
+        "Avg":"$116",
+        "To Date":"$11,614,403",
         "Day":"17",
-        "Estimated":"true",
+        "Estimated":"false",
         "IMDB_ID":"rl2858385409",
-        "Title":"Here"
+        "Title":"Here",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
+    },
+    {
+        "Date":"2024-11-18",
+        "DOW":"2024-11-18",
+        "Rank":"9",
+        "Daily":"$100,112",
+        "%\u00b1 YD":"-51.6%",
+        "%\u00b1 LW":"-74.6%",
+        "Theaters":"1,774",
+        "Avg":"$56",
+        "To Date":"$11,714,515",
+        "Day":"18",
+        "Estimated":"false",
+        "IMDB_ID":"rl2858385409",
+        "Title":"Here",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
+    },
+    {
+        "Date":"2024-11-19",
+        "DOW":"2024-11-19",
+        "Rank":"9",
+        "Daily":"$181,323",
+        "%\u00b1 YD":"+81.1%",
+        "%\u00b1 LW":"-58.3%",
+        "Theaters":"1,774",
+        "Avg":"$102",
+        "To Date":"$11,895,838",
+        "Day":"19",
+        "Estimated":"false",
+        "IMDB_ID":"rl2858385409",
+        "Title":"Here",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
+    },
+    {
+        "Date":"2024-11-20",
+        "DOW":"2024-11-20",
+        "Rank":"9",
+        "Daily":"$104,530",
+        "%\u00b1 YD":"-42.4%",
+        "%\u00b1 LW":"-59.9%",
+        "Theaters":"1,774",
+        "Avg":"$58",
+        "To Date":"$12,000,368",
+        "Day":"20",
+        "Estimated":"false",
+        "IMDB_ID":"rl2858385409",
+        "Title":"Here",
+        "Weekend":null,
+        "Change":null,
+        "Weekend_1":null
     }
 ]

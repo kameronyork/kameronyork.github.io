@@ -31,8 +31,16 @@ def scrape_box_office_data(imdb_id, title):
         print(f"No table found for IMDb ID {imdb_id} ({title})")
         return None
 
-    # Extract headers
+    # Extract headers and ensure uniqueness
     headers = [th.get_text(strip=True) for th in table.find_all('th')]
+    
+    # Ensure headers are unique by appending a number if duplicates are found
+    seen = {}
+    for i, header in enumerate(headers):
+        count = seen.get(header, 0)
+        seen[header] = count + 1
+        if count > 0:
+            headers[i] = f"{header}_{count}"  # Rename duplicated headers with a suffix
 
     # Extract rows
     rows = []
@@ -73,7 +81,7 @@ for person in people_movies:
             print(f"Missing IMDb ID or title for {movie}")
             continue
         df = scrape_box_office_data(imdb_id, title)
-        if df is not None:
+        if df is not None and not df.empty:
             all_data.append(df)
         else:
             print(f"No data found for IMDb ID {imdb_id} ({title})")
@@ -81,7 +89,10 @@ for person in people_movies:
 # Concatenate all data into a single DataFrame
 if all_data:
     final_df = pd.concat(all_data, ignore_index=True)
+    # Filter out rows where 'Daily' or 'Date' columns are null
+    final_df = final_df[final_df['Daily'].notna() & final_df['Date'].notna()]
     # Save to JSON file
     final_df.to_json(output_file, orient='records', indent=4)
+    print(f"Data successfully saved to {output_file}")
 else:
-    print("No data found. Output file will not be created.")
+    print("No valid data found. Output file will not be created.")

@@ -2,7 +2,8 @@ name: Fetch Box Office Data
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Runs daily at midnight UTC
+    - cron: '0 15 * * *' # 8 AM MST (3 PM UTC)
+    - cron: '0 0 * * *'  # 5 PM MST (12 AM UTC, next day)
   workflow_dispatch: # Allows manual triggering of the workflow
 
 jobs:
