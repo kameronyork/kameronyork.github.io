@@ -7221,6 +7221,9 @@ document.addEventListener("DOMContentLoaded", async function() {
     return;
   }
 
+  // Filter peopleData for competition "kamHolly1"
+  peopleData = peopleData.filter(person => person.competition === "kamHolly1");
+
   const cumulativeData = {};
   const dateEarningsMap = {}; // For global chart data
 
@@ -7275,14 +7278,38 @@ document.addEventListener("DOMContentLoaded", async function() {
     }
   }
 
-  // Sort people by total earnings
-  const sortedPeople = Object.entries(cumulativeData).sort((a, b) => b[1].totalEarnings - a[1].totalEarnings);
+  // Sort people alphabetically by name for the chart
+  const sortedPeopleForChart = Object.entries(cumulativeData).sort((a, b) => a[0].localeCompare(b[0]));
+
+  // Sort people by rank (total earnings, descending) for the table
+  const sortedPeopleForTable = Object.entries(cumulativeData).sort((a, b) => b[1].totalEarnings - a[1].totalEarnings);
 
   // Prepare data for line chart
-  const datasets = sortedPeople.map(([personName, data], index) => {
+  const colors = [
+    'rgb(255, 99, 132)',    // Red
+    'rgb(54, 162, 235)',    // Blue
+    'rgb(255, 206, 86)',    // Yellow
+    'rgb(0, 128, 0)',       // Green
+    'rgb(153, 102, 255)',   // Purple
+    'rgb(255, 159, 64)',    // Orange
+    'rgb(128, 0, 0)',       // Maroon
+    'rgb(0, 0, 128)',       // Navy
+    'rgb(128, 128, 0)',     // Olive
+    'rgb(128, 0, 128)',     // Violet
+    'rgb(0, 128, 128)',     // Dark Cyan
+    'rgb(220, 20, 60)',     // Crimson
+    'rgb(255, 69, 0)',      // Red-Orange
+    'rgb(50, 205, 50)',     // Lime Green
+    'rgb(70, 130, 180)',    // Steel Blue
+    'rgb(255, 140, 0)',     // Dark Orange
+    'rgb(75, 192, 192)',    // Teal
+    'rgb(154, 205, 50)',    // Yellow-Green
+    'rgb(139, 0, 139)',     // Dark Magenta
+    'rgb(0, 255, 255)'      // Aqua
+  ];
+
+  const datasets = sortedPeopleForChart.map(([personName, data], index) => {
     const personData = allDates.map(date => data.earningsByDate[date] || 0);
-    // Assign a unique color for each person
-    const colors = ['rgb(75, 192, 192)', 'rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 206, 86)'];
 
     return {
       label: personName,
@@ -7327,7 +7354,7 @@ document.addEventListener("DOMContentLoaded", async function() {
       <tbody>
   `;
 
-  sortedPeople.forEach(([personName, data], index) => {
+  sortedPeopleForTable.forEach(([personName, data], index) => {
     const personRowId = `person-row-${index}`;
     tableHtml += `
       <tr class="expandable-row" onclick="toggleRow('${personRowId}')">
@@ -7392,6 +7419,7 @@ document.addEventListener("DOMContentLoaded", async function() {
       </tbody>
     </table>
   `;
+
   document.getElementById("tables-container").innerHTML = tableHtml;
 });
 </script>

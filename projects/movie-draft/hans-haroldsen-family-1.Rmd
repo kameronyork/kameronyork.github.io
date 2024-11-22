@@ -1,5 +1,5 @@
 ---
-title: "Holly and Kam - Test"
+title: "Hans Haroldsen Family: 1"
 output:
   html_document:
     includes:
@@ -48,8 +48,8 @@ document.addEventListener("DOMContentLoaded", async function() {
     return;
   }
 
-  // Filter peopleData for competition "kamHolly1"
-  peopleData = peopleData.filter(person => person.competition === "kamHolly1");
+  // Filter peopleData for competition "hansFamily1"
+  peopleData = peopleData.filter(person => person.competition === "hansFamily1");
 
   const cumulativeData = {};
   const dateEarningsMap = {}; // For global chart data
