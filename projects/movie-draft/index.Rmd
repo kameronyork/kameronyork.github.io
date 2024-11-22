@@ -3,7 +3,7 @@ title: "Movie Drafts"
 output:
   html_document:
     includes:
-      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/projects/conference/headers/inspire-change-header.html"
+      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/projects/movie-draft/headers/movie-draft-header.html"
       after_body: "https://kameronyork.com/parables/footer.html"
 ---
 
