@@ -1,7 +1,6 @@
 [
     {
         "name": "Kam",
-        "pull_data_through": "2025-06-30",
         "competition": "kamHolly1",
         "movies": [
             {"title": "Bird", "imdb_id": "rl2987819009", "points": 1},
@@ -19,7 +18,6 @@
     },
     {
         "name": "Holly",
-        "pull_data_through": "2025-06-30",
         "competition": "kamHolly1",
         "movies": [
             {"title": "Here", "imdb_id": "rl2858385409", "points": 8},
@@ -32,6 +30,51 @@
             {"title": "Homestead", "imdb_id": "rl2557247489", "points": 1},
             {"title": "The Fire Inside", "imdb_id": "rl2778432257", "points": 1},
             {"title": "Nosferatu", "imdb_id": "rl2537783297", "points": 1}
+        ]
+    },
+    {
+        "name": "Hans",
+        "competition": "hansFamily1",
+        "movies": [
+            {"title": "Here", "imdb_id": "rl2858385409", "points": 11},
+            {"title": "Bird", "imdb_id": "rl2987819009", "points": 1},
+            {"title": "The World According to Allee Willis", "imdb_id": "rl2115207169", "points": 1},
+            {"title": "Werewolves", "imdb_id": "rl1433501697", "points": 6},
+            {"title": "Get Away", "imdb_id": "rl1409515521", "points": 1},
+            {"title": "The Fire Inside", "imdb_id": "rl2778432257", "points": 25},
+            {"title": "Nosferatu", "imdb_id": "rl2537783297", "points": 25}
+        ]
+    },
+    {
+        "name": "Jordyn",
+        "competition": "hansFamily1",
+        "movies": [
+            {"title": "Red One", "imdb_id": "rl2841083905", "points": 11},
+            {"title": "Wicked", "imdb_id": "rl1199474177", "points": 26},
+            {"title": "Gladiator II", "imdb_id": "rl1778156289", "points": 13},
+            {"title": "The Lord of the Rings: The War of the Rohirrim", "imdb_id": "rl3123675905", "points": 26}
+        ]
+    },
+    {
+        "name": "Lucy",
+        "competition": "hansFamily1",
+        "movies": [
+            {"title": "Moana 2", "imdb_id": "rl862748673", "points": 25},
+            {"title": "Y2K", "imdb_id": "rl4218716161", "points": 10},
+            {"title": "Solo Leveling: ReAwakening", "imdb_id": "rl1091076097", "points": 6},
+            {"title": "Mufasa: The Lion King", "imdb_id": "rl1511097089", "points": 59}
+        ]
+    },
+    {
+        "name": "Fletcher",
+        "competition": "hansFamily1",
+        "movies": [
+            {"title": "Bonhoeffer: Pastor. Spy. Assassin.", "imdb_id": "rl2775351297", "points": 12},
+            {"title": "September 5", "imdb_id": "rl2383183873", "points": 14},
+            {"title": "Kraven the Hunter", "imdb_id": "rl259556097", "points": 8},
+            {"title": "Babygirl", "imdb_id": "rl2926346241", "points": 10},
+            {"title": "Homestead", "imdb_id": "rl2557247489", "points": 10},
+            {"title": "Sonic the Hedgehog 3", "imdb_id": "rl886211329", "points": 46}
         ]
     }
 ]
