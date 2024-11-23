@@ -3,6 +3,7 @@ import json
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+from datetime import datetime
 
 # Load the input JSON file
 input_file = 'datasets/movies.json'
@@ -72,19 +73,41 @@ def scrape_box_office_data(imdb_id, title):
     df['Title'] = title
     return df
 
+# Get today's date
+today = datetime.today().date()
+
+# Set to track unique movies (since multiple people can have the same movie)
+unique_movies = set()
+
 # Process each person's movies
 for person in people_movies:
     for movie in person["movies"]:
-        imdb_id = movie.get("imdb_id")
         title = movie.get("title")
+        imdb_id = movie.get("imdb_id")
+        pull_through = movie.get("pull_through")
+
+        # Check if IMDb ID and title are present
         if not imdb_id or not title:
             print(f"Missing IMDb ID or title for {movie}")
             continue
-        df = scrape_box_office_data(imdb_id, title)
-        if df is not None and not df.empty:
-            all_data.append(df)
-        else:
-            print(f"No data found for IMDb ID {imdb_id} ({title})")
+
+        # Convert pull_through date to datetime object for comparison
+        if pull_through:
+            pull_through_date = datetime.strptime(pull_through, "%Y-%m-%d").date()
+            if pull_through_date <= today:
+                continue  # Skip movie if pull_through date is in the past
+
+        # Add movie to the unique set (this ensures we only process each movie once)
+        unique_movies.add((imdb_id, title))
+
+# Scrape box office data for each unique movie
+for imdb_id, title in unique_movies:
+    print(f"Fetching data for {title} ({imdb_id})")
+    df = scrape_box_office_data(imdb_id, title)
+    if df is not None and not df.empty:
+        all_data.append(df)
+    else:
+        print(f"No data found for IMDb ID {imdb_id} ({title})")
 
 # Concatenate all data into a single DataFrame
 if all_data:
