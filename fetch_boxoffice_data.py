@@ -1,4 +1,3 @@
-
 import os
 import json
 import requests
@@ -35,14 +34,12 @@ def scrape_box_office_data(imdb_id, title):
 
     # Extract headers and ensure uniqueness
     headers = [th.get_text(strip=True) for th in table.find_all('th')]
-    
-    # Ensure headers are unique by appending a number if duplicates are found
     seen = {}
     for i, header in enumerate(headers):
         count = seen.get(header, 0)
         seen[header] = count + 1
         if count > 0:
-            headers[i] = f"{header}_{count}"  # Rename duplicated headers with a suffix
+            headers[i] = f"{header}_{count}"
 
     # Extract rows
     rows = []
@@ -52,18 +49,14 @@ def scrape_box_office_data(imdb_id, title):
             continue
         row = []
         for cell in cells:
-            # Check if there is an anchor tag with an href
             link = cell.find('a', href=True)
             if link and 'date' in link['href']:
-                # Extract date from href
-                date = link['href'].split('/')[2]  # Get the date part from the URL
+                date = link['href'].split('/')[2]
                 row.append(date)
             else:
-                # Extract text content
                 row.append(cell.get_text(strip=True))
         rows.append(row)
 
-    # Check if rows are empty
     if not rows:
         print(f"No data rows found for IMDb ID {imdb_id} ({title})")
         return None
@@ -77,7 +70,7 @@ def scrape_box_office_data(imdb_id, title):
 # Get today's date
 today = datetime.today().date()
 
-# Set to track unique movies (since multiple people can have the same movie)
+# Set to track unique movies
 unique_movies = set()
 
 # Process each person's movies
@@ -87,18 +80,15 @@ for person in people_movies:
         imdb_id = movie.get("imdb_id")
         pull_through = movie.get("pull_through")
 
-        # Check if IMDb ID and title are present
         if not imdb_id or not title:
             print(f"Missing IMDb ID or title for {movie}")
             continue
 
-        # Convert pull_through date to datetime object for comparison
         if pull_through:
             pull_through_date = datetime.strptime(pull_through, "%Y-%m-%d").date()
             if pull_through_date <= today:
-                continue  # Skip movie if pull_through date is in the past
+                continue
 
-        # Add movie to the unique set (this ensures we only process each movie once)
         unique_movies.add((imdb_id, title))
 
 # Scrape box office data for each unique movie
@@ -113,10 +103,24 @@ for imdb_id, title in unique_movies:
 # Concatenate all data into a single DataFrame
 if all_data:
     final_df = pd.concat(all_data, ignore_index=True)
-    # Filter out rows where 'Daily' or 'Date' columns are null
     final_df = final_df[final_df['Daily'].notna() & final_df['Date'].notna()]
-    # Save to JSON file
-    final_df.to_json(output_file, orient='records', indent=4)
+
+    # Convert 'Daily' column to numeric and fill missing values
+    final_df['Daily'] = final_df['Daily'].replace('[\$,]', '', regex=True).astype(float)
+
+    # Generate a complete range of dates
+    all_dates = pd.date_range(final_df['Date'].min(), final_df['Date'].max())
+
+    # Pivot data to normalize movies across all dates
+    normalized_df = final_df.pivot(index='Date', columns='Title', values='Daily').reindex(all_dates)
+    normalized_df.index.name = 'Date'
+    normalized_df.fillna(0, inplace=True)
+
+    # Melt the normalized DataFrame back into a long format
+    final_long_df = normalized_df.reset_index().melt(id_vars=['Date'], var_name='Title', value_name='Daily')
+
+    # Save to JSON
+    final_long_df.to_json(output_file, orient='records', indent=4)
     print(f"Data successfully saved to {output_file}")
 else:
     print("No valid data found. Output file will not be created.")
