@@ -45,9 +45,19 @@ def scrape_box_office_data(imdb_id, title):
         print(f"Required columns missing for IMDb ID {imdb_id} ({title}): {df.columns}")
         return None
 
+    # Debugging: Check unique values in the Date column
+    print(f"Unique Date values for {title} ({imdb_id}): {df['Date'].unique()}")
+
     # Clean and transform the data
     df['Daily'] = df['Daily'].replace(r'[\$,]', '', regex=True).astype(float, errors='ignore')
-    df['Date'] = pd.to_datetime(df['Date'])
+
+    # Convert Date column to datetime, coercing errors
+    df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
+
+    # Drop rows with invalid dates
+    df = df.dropna(subset=['Date'])
+
+    # Add additional columns for metadata
     df['IMDB_ID'] = imdb_id
     df['Title'] = title
 
