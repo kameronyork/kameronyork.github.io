@@ -1,151 +1,89 @@
-import os
-import json
 import requests
-from bs4 import BeautifulSoup
 import pandas as pd
 from datetime import datetime, timedelta
 
-# Load the input JSON file
-input_file = 'datasets/movies.json'
-output_file = 'datasets/box-office-data.json'
-
-with open(input_file, 'r') as f:
-    people_movies = json.load(f)
-
-# Initialize list to store all data
-all_data = []
-
-# Function to scrape data from Box Office Mojo based on IMDb ID
-def scrape_box_office_data(imdb_id, title):
-    url = f"https://www.boxofficemojo.com/release/{imdb_id}/?ref_=bo_tt_gr_1"
-    response = requests.get(url)
-
-    if response.status_code != 200:
-        print(f"Failed to fetch data for IMDb ID {imdb_id} ({title})")
-        return None
-
-    soup = BeautifulSoup(response.text, 'html.parser')
-
-    # Locate the table containing box office data
-    table = soup.find('table')
-    if not table:
-        print(f"No table found for IMDb ID {imdb_id} ({title})")
-        return None
-
-    # Extract headers and ensure uniqueness
-    headers = [th.get_text(strip=True) for th in table.find_all('th')]
-    seen = {}
-    for i, header in enumerate(headers):
-        count = seen.get(header, 0)
-        seen[header] = count + 1
-        if count > 0:
-            headers[i] = f"{header}_{count}"  # Rename duplicated headers with a suffix
-
-    # Extract rows
-    rows = []
-    for tr in table.find_all('tr'):
-        cells = tr.find_all('td')
-        if not cells:
-            continue
-        row = []
-        for cell in cells:
-            link = cell.find('a', href=True)
-            if link and 'date' in link['href']:
-                date = link['href'].split('/')[2]  # Extract date from href
-                row.append(date)
-            else:
-                row.append(cell.get_text(strip=True))
-        rows.append(row)
-
-    # Check if rows are empty
-    if not rows:
-        print(f"No data rows found for IMDb ID {imdb_id} ({title})")
-        return None
-
-    # Create a DataFrame and add extra columns
-    df = pd.DataFrame(rows, columns=headers)
-    df['IMDB_ID'] = imdb_id
-    df['Title'] = title
-    return df
-
-# Function to fill missing dates and calculate "To Date"
-def fill_missing_dates(df):
-    # Ensure 'Date' is a datetime object and sort
-    df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
-    df = df.dropna(subset=['Date']).sort_values('Date')
-    df['Daily'] = df['Daily'].str.replace(',', '').str.replace('$', '', regex=False).astype(float, errors='ignore')
-
-    # Get minimum and maximum dates from the data
-    min_date = df['Date'].min()
-    max_date = datetime.today().date()
-
-    # Create a complete date range
-    full_date_range = pd.date_range(start=min_date, end=max_date)
-
-    # Reindex to include all dates
-    df = df.set_index('Date').reindex(full_date_range, fill_value=0).reset_index()
-    df.rename(columns={'index': 'Date'}, inplace=True)
-
-    # Fill missing data
-    df['Daily'] = df['Daily'].fillna(0)
-    df['To Date'] = 0
-    for i in range(len(df)):
-        if i == 0:
-            df.loc[i, 'To Date'] = df.loc[i, 'Daily']
+# Function to scrape box office data
+def fetch_boxoffice_data(imdb_ids):
+    data = []
+    
+    for imdb_id in imdb_ids:
+        url = f'https://www.boxofficemojo.com/data/?id={imdb_id}'
+        response = requests.get(url)
+        
+        if response.status_code == 200:
+            print(f"Fetching data for {imdb_id}")
+            # Extract data from response (replace with actual scraping logic)
+            # This is just a placeholder for the scraping part
+            movie_data = extract_movie_data(response.text, imdb_id)
+            if movie_data:
+                data.append(movie_data)
         else:
-            df.loc[i, 'To Date'] = df.loc[i - 1, 'To Date'] + df.loc[i, 'Daily']
+            print(f"Failed to fetch data for IMDb ID {imdb_id}")
+    
+    return pd.DataFrame(data)
 
-    # Fill other columns with placeholders where data is missing
-    for col in ['Rank', 'DOW', '%± YD', '%± LW', 'Theaters', 'Avg', 'Weekend', 'Change', 'Weekend_1']:
-        if col not in df.columns:
-            df[col] = None
+# Placeholder for the actual data extraction logic
+def extract_movie_data(response_text, imdb_id):
+    # Extract data such as daily box office collection and dates here
+    # This is just a dummy example, replace it with actual scraping
+    movie_data = {
+        'IMDb ID': imdb_id,
+        'Dates': ['2024-11-25', '2024-11-26', '2024-11-27'],  # Example dates
+        'Daily': ['$1,000,000', '$1,200,000', '$1,150,000']  # Example box office data
+    }
+    return movie_data
 
-    df['Rank'] = df['Rank'].fillna('-')
-    df['Title'] = df['Title'].fillna(df['Title'][0])
-    df['IMDB_ID'] = df['IMDB_ID'].fillna(df['IMDB_ID'][0])
-    df['Estimated'] = df['Estimated'].fillna('false')
-    df['Day'] = range(1, len(df) + 1)
-
+# Function to clean and process data
+def clean_and_process_data(df):
+    # Remove commas and dollar signs from the 'Daily' column and convert to float
+    df['Daily'] = df['Daily'].str.replace(',', '').str.replace('$', '', regex=False).astype(float, errors='ignore')
+    
+    # Fill missing dates
+    df = fill_missing_dates(df)
+    
     return df
 
-# Get today's date
-today = datetime.today().date()
+# Function to fill in missing dates
+def fill_missing_dates(df):
+    all_dates = pd.date_range(start=df['Dates'].min(), end=df['Dates'].max()).strftime('%Y-%m-%d')
+    
+    # Loop through each movie data and ensure all dates are present
+    filled_data = []
+    
+    for imdb_id, group in df.groupby('IMDb ID'):
+        # Create a date range for the movie's data
+        movie_dates = pd.to_datetime(group['Dates'])
+        movie_daily = group['Daily']
+        
+        # Create a DataFrame with all possible dates
+        full_dates = pd.DataFrame({
+            'IMDb ID': imdb_id,
+            'Dates': all_dates,
+            'Daily': [None] * len(all_dates)
+        })
+        
+        # Merge with the existing data to fill missing values
+        full_dates = pd.merge(full_dates, group[['Dates', 'Daily']], on='Dates', how='left')
+        
+        # Fill in missing 'Daily' values if needed (e.g., use 0 or a method like forward filling)
+        full_dates['Daily'].fillna(0, inplace=True)  # Replace missing with 0 (or another method)
+        
+        filled_data.append(full_dates)
+    
+    return pd.concat(filled_data, ignore_index=True)
 
-# Set to track unique movies
-unique_movies = set()
+# Main function to run the process
+def main():
+    imdb_ids = ['rl1199474177', 'rl2383183873', 'rl4218716161', 'rl2115207169']
+    
+    # Step 1: Fetch data from IMDb IDs
+    df = fetch_boxoffice_data(imdb_ids)
+    
+    # Step 2: Clean and process the data
+    df = clean_and_process_data(df)
+    
+    # Step 3: Print or save the final DataFrame
+    print(df)
 
-# Process each person's movies
-for person in people_movies:
-    for movie in person["movies"]:
-        title = movie.get("title")
-        imdb_id = movie.get("imdb_id")
-        pull_through = movie.get("pull_through")
-
-        if not imdb_id or not title:
-            print(f"Missing IMDb ID or title for {movie}")
-            continue
-
-        if pull_through:
-            pull_through_date = datetime.strptime(pull_through, "%Y-%m-%d").date()
-            if pull_through_date <= today:
-                continue
-
-        unique_movies.add((imdb_id, title))
-
-# Scrape box office data for each unique movie
-for imdb_id, title in unique_movies:
-    print(f"Fetching data for {title} ({imdb_id})")
-    df = scrape_box_office_data(imdb_id, title)
-    if df is not None and not df.empty:
-        df = fill_missing_dates(df)
-        all_data.append(df)
-    else:
-        print(f"No data found for IMDb ID {imdb_id} ({title})")
-
-# Concatenate all data into a single DataFrame
-if all_data:
-    final_df = pd.concat(all_data, ignore_index=True)
-    final_df.to_json(output_file, orient='records', indent=4, date_format='iso')
-    print(f"Data successfully saved to {output_file}")
-else:
-    print("No valid data found. Output file will not be created.")
+if __name__ == "__main__":
+    main()
