@@ -11,15 +11,17 @@ output:
 
 <canvas id="earningsChart" width="400" height="200"></canvas>
 <div id="tables-container"></div>
+
 <style>
   .expandable-row:hover {
     background-color: rgba(255, 215, 0, 0.3); /* Transparent gold color */
     cursor: pointer;
   }
 </style>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-// Function to toggle row visibility - moved outside to make it globally accessible
+// Function to toggle row visibility
 function toggleRow(rowId) {
   const row = document.getElementById(rowId);
   if (row) {
@@ -28,19 +30,17 @@ function toggleRow(rowId) {
 }
 
 document.addEventListener("DOMContentLoaded", async function() {
-  // Fetch data from the specified URLs
+  // URLs for data
   const dataUrl = "https://kameronyork.com/datasets/box-office-data.json";
   const peopleUrl = "https://kameronyork.com/datasets/movies.json";
+  
   let movieData, peopleData;
 
   try {
-    const movieResponse = await fetch(dataUrl);
-    const peopleResponse = await fetch(peopleUrl);
-
+    const [movieResponse, peopleResponse] = await Promise.all([fetch(dataUrl), fetch(peopleUrl)]);
     if (!movieResponse.ok || !peopleResponse.ok) {
       throw new Error('Failed to fetch data.');
     }
-
     movieData = await movieResponse.json();
     peopleData = await peopleResponse.json();
   } catch (error) {
@@ -52,64 +52,49 @@ document.addEventListener("DOMContentLoaded", async function() {
   peopleData = peopleData.filter(person => person.competition === "kamHolly1");
 
   const cumulativeData = {};
-  const dateEarningsMap = {}; // For global chart data
-
-  // Get all unique dates from movieData and sort them
   const allDates = Array.from(new Set(movieData.map(entry => entry.Date))).sort((a, b) => new Date(a) - new Date(b));
 
-  // Process movie data for each person
+  // Initialize cumulativeData with all dates set to 0 for each person
   for (const person of peopleData) {
     cumulativeData[person.name] = {
+      earningsByDate: {},
       totalEarnings: 0,
       movies: [],
-      earningsByDate: {} // Cumulative earnings over dates
     };
+    allDates.forEach(date => {
+      cumulativeData[person.name].earningsByDate[date] = 0;
+    });
+  }
 
+  // Sum cumulative earnings per person per day
+  for (const person of peopleData) {
     for (const movie of person.movies) {
-      const movieTitle = movie.title;
-      const filteredMovieData = movieData.filter(entry => entry.Title === movieTitle);
-      let cumulativeEarnings = 0;
-      let earningsData = {};
+      const movieEntries = movieData.filter(entry => entry.Title === movie.title);
 
-      // Initialize all dates for this movie with the last known cumulative value
+      let cumulativeSum = 0;
+      let movieEarningsByDate = [];
+
       allDates.forEach(date => {
-        earningsData[date] = cumulativeEarnings; // Carry forward previous earnings by default
-      });
-
-      for (const entry of filteredMovieData) {
-        const date = entry.Date;  // Directly use the Date field in ISO format
-        const dailyEarnings = parseInt(entry.Daily.replace(/[\$,]/g, '')) || 0;
-        cumulativeEarnings += dailyEarnings;
-        cumulativeData[person.name].totalEarnings += dailyEarnings;
-        earningsData[date] = cumulativeEarnings; // Update with current cumulative value
-      }
-
-      // Transform earningsData into an array for plotting, only include dates with non-zero amounts
-      const earningsArray = allDates
-        .map(date => ({ date, amount: earningsData[date] }))
-        .filter(entry => entry.amount > 0);
-
-      cumulativeData[person.name].movies.push({
-        title: movieTitle,
-        earnings: earningsArray,
-        periodToDateTotal: cumulativeEarnings
-      });
-
-      // Update overall earnings by date for this person
-      allDates.forEach(date => {
-        if (!cumulativeData[person.name].earningsByDate[date]) {
-          cumulativeData[person.name].earningsByDate[date] = 0;
+        const entry = movieEntries.find(e => e.Date === date);
+        if (entry) {
+          cumulativeSum += parseInt(entry.Daily.replace(/[\$,]/g, '')) || 0;
         }
-        cumulativeData[person.name].earningsByDate[date] += earningsData[date];
+        cumulativeData[person.name].earningsByDate[date] += cumulativeSum;
+        
+        // Track individual movie earnings
+        if (cumulativeSum > 0) {
+          movieEarningsByDate.push({ date, amount: cumulativeSum });
+        }
+      });
+
+      // Store movie details
+      cumulativeData[person.name].movies.push({
+        title: movie.title,
+        periodToDateTotal: cumulativeSum,
+        earnings: movieEarningsByDate
       });
     }
   }
-
-  // Sort people alphabetically by name for the chart
-  const sortedPeopleForChart = Object.entries(cumulativeData).sort((a, b) => a[0].localeCompare(b[0]));
-
-  // Sort people by rank (total earnings, descending) for the table
-  const sortedPeopleForTable = Object.entries(cumulativeData).sort((a, b) => b[1].totalEarnings - a[1].totalEarnings);
 
   // Prepare data for line chart
   const colors = [
@@ -135,58 +120,57 @@ document.addEventListener("DOMContentLoaded", async function() {
     'rgb(0, 255, 255)'      // Aqua
   ];
 
-  const datasets = sortedPeopleForChart.map(([personName, data], index) => {
-    const personData = allDates.map(date => data.earningsByDate[date] || 0);
+  const sortedNames = Object.keys(cumulativeData).sort();
 
-    return {
-      label: personName,
-      data: personData,
-      fill: false,
-      borderColor: colors[index % colors.length],
-      tension: 0.1
-    };
-  });
+  const datasets = sortedNames.map((name, index) => ({
+    label: name,
+    data: allDates.map(date => cumulativeData[name].earningsByDate[date]),
+    fill: false,
+    borderColor: colors[index % colors.length],
+    tension: 0.1
+  }));
 
-  // Plot line chart
+  // Plot the chart
   new Chart(document.getElementById("earningsChart"), {
     type: "line",
-    data: {
-      labels: allDates,
-      datasets
-    },
+    data: { labels: allDates, datasets },
     options: {
       responsive: true,
-      plugins: {
-        legend: {
-          display: true,
-          position: "top"
-        }
-      },
-      scales: {
-        x: { title: { display: true, text: "Date" } },
-        y: { title: { display: true, text: "Cumulative Earnings" } }
+      plugins: { legend: { display: true, position: "top" } },
+      scales: { 
+        x: { title: { display: true, text: "Date" } }, 
+        y: { title: { display: true, text: "Cumulative Earnings" } } 
       }
     }
   });
+
+  // Sort people by total earnings for table
+  const sortedPeople = Object.entries(cumulativeData)
+    .map(([personName, data]) => ({
+      name: personName,
+      totalEarnings: data.movies.reduce((sum, movie) => sum + movie.periodToDateTotal, 0),
+      data
+    }))
+    .sort((a, b) => b.totalEarnings - a.totalEarnings);
 
   // Build a single table for all data below the chart
   let tableHtml = `
     <table border="1" style="width:100%; border-collapse: collapse;">
       <thead>
         <tr>
-          <th>Person</th>
+          <th>Participant</th>
           <th>Total Earnings</th>
         </tr>
       </thead>
       <tbody>
   `;
 
-  sortedPeopleForTable.forEach(([personName, data], index) => {
+  sortedPeople.forEach(({ name, totalEarnings, data }, index) => {
     const personRowId = `person-row-${index}`;
     tableHtml += `
       <tr class="expandable-row" onclick="toggleRow('${personRowId}')">
-        <td>${personName}</td>
-        <td>$${data.totalEarnings.toLocaleString()}</td>
+        <td>${name}</td>
+        <td>$${totalEarnings.toLocaleString()}</td>
       </tr>
       <tr id="${personRowId}" style="display: none;">
         <td colspan="2">
