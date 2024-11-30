@@ -1,21 +1,9 @@
-import os
-import json
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 from datetime import datetime
 
-# Load the input JSON file
-input_file = 'datasets/movies.json'
-output_file = 'datasets/box-office-data.json'
-
-with open(input_file, 'r') as f:
-    people_movies = json.load(f)
-
-# Initialize list to store all data
-all_data = []
-
-# Function to scrape data from Box Office Mojo based on IMDb ID
+# Function to scrape box office data
 def scrape_box_office_data(imdb_id, title):
     url = f"https://www.boxofficemojo.com/release/{imdb_id}/?ref_=bo_tt_gr_1"
     response = requests.get(url)
@@ -32,8 +20,11 @@ def scrape_box_office_data(imdb_id, title):
         print(f"No table found for IMDb ID {imdb_id} ({title})")
         return None
 
-    # Extract headers
+    # Extract headers and ensure uniqueness
     headers = [th.get_text(strip=True) for th in table.find_all('th')]
+    if not headers or 'Daily' not in headers:
+        print(f"Unexpected headers or missing 'Daily' column for IMDb ID {imdb_id} ({title}): {headers}")
+        return None
 
     # Extract rows
     rows = []
@@ -41,88 +32,65 @@ def scrape_box_office_data(imdb_id, title):
         cells = tr.find_all('td')
         if not cells:
             continue
-        row = []
-        for cell in cells:
-            link = cell.find('a', href=True)
-            if link and 'date' in link['href']:
-                date = link['href'].split('/')[2]
-                row.append(date)
-            else:
-                row.append(cell.get_text(strip=True))
+        row = [cell.get_text(strip=True) for cell in cells]
         rows.append(row)
 
     if not rows:
         print(f"No data rows found for IMDb ID {imdb_id} ({title})")
         return None
 
-    # Create a DataFrame
+    # Create a DataFrame and validate columns
     df = pd.DataFrame(rows, columns=headers)
+    if 'Daily' not in df.columns or 'Date' not in df.columns:
+        print(f"Required columns missing for IMDb ID {imdb_id} ({title}): {df.columns}")
+        return None
+
+    # Clean 'Daily' column
+    df['Daily'] = df['Daily'].replace(r'[\$,]', '', regex=True).astype(float, errors='ignore')
     df['IMDB_ID'] = imdb_id
     df['Title'] = title
-
-    # Clean and process data
-    df.rename(columns={
-        'Date': 'Date',
-        'Daily': 'Daily',
-        'To Date': 'To Date',
-        'Rank': 'Rank',
-        'Day': 'Day',
-    }, inplace=True)
-    
-    # Convert Date to a readable format
-    df['Date'] = pd.to_datetime(df['Date'], errors='coerce').dt.strftime('%Y-%m-%d')
-    
-    # Clean monetary columns
-    df['Daily'] = df['Daily'].replace('[\$,]', '', regex=True).astype(float, errors='ignore')
-    df['To Date'] = df['To Date'].replace('[\$,]', '', regex=True).astype(float, errors='ignore')
-    
     return df
 
-# Get today's date
-today = datetime.today().date()
+# Main script
+if __name__ == "__main__":
+    # IMDb IDs and Titles to fetch
+    imdb_ids_titles = [
+        ("rl1511097089", "Mufasa: The Lion King"),
+        ("rl2115207169", "The World According to Allee Willis")
+    ]
 
-# Set to track unique movies
-unique_movies = set()
+    all_data = []
+    for imdb_id, title in imdb_ids_titles:
+        print(f"Fetching data for {title} ({imdb_id})")
+        df = scrape_box_office_data(imdb_id, title)
+        if df is not None:
+            all_data.append(df)
 
-# Process each person's movies
-for person in people_movies:
-    for movie in person["movies"]:
-        title = movie.get("title")
-        imdb_id = movie.get("imdb_id")
-        pull_through = movie.get("pull_through")
+    if all_data:
+        final_df = pd.concat(all_data, ignore_index=True)
 
-        if not imdb_id or not title:
-            print(f"Missing IMDb ID or title for {movie}")
-            continue
+        # Ensure 'Daily' and 'Date' exist before processing
+        if 'Daily' in final_df.columns and 'Date' in final_df.columns:
+            # Filter for rows with valid data
+            final_df = final_df[final_df['Daily'].notna() & final_df['Date'].notna()]
 
-        if pull_through:
-            pull_through_date = datetime.strptime(pull_through, "%Y-%m-%d").date()
-            if pull_through_date <= today:
-                continue
+            # Convert 'Daily' column to numeric
+            final_df['Daily'] = final_df['Daily'].replace(r'[\$,]', '', regex=True).astype(float)
 
-        unique_movies.add((imdb_id, title))
+            # Normalize data across all dates
+            all_dates = pd.date_range(final_df['Date'].min(), final_df['Date'].max())
+            normalized_df = final_df.pivot(index='Date', columns='Title', values='Daily').reindex(all_dates)
+            normalized_df.index.name = 'Date'
+            normalized_df.fillna(0, inplace=True)
 
-# Scrape box office data for each unique movie
-for imdb_id, title in unique_movies:
-    print(f"Fetching data for {title} ({imdb_id})")
-    df = scrape_box_office_data(imdb_id, title)
-    if df is not None and not df.empty:
-        all_data.append(df)
+            # Convert normalized data to long format
+            final_long_df = normalized_df.reset_index().melt(id_vars=['Date'], var_name='Title', value_name='Daily')
+
+            # Save data to a JSON file
+            output_file = "box_office_data.json"
+            final_long_df.to_json(output_file, orient='records', indent=4)
+            print(f"Data successfully saved to {output_file}")
+        else:
+            print("Missing required columns in final DataFrame. No output generated.")
     else:
-        print(f"No data found for IMDb ID {imdb_id} ({title})")
-
-# Concatenate all data into a single DataFrame
-if all_data:
-    final_df = pd.concat(all_data, ignore_index=True)
-
-    # Add missing fields if necessary
-    final_df['Estimated'] = final_df.get('Estimated', False)
-    final_df['Weekend'] = final_df.get('Weekend', None)
-    final_df['Change'] = final_df.get('Change', None)
-    final_df['Weekend_1'] = final_df.get('Weekend_1', None)
-
-    # Save to JSON
-    final_df.to_json(output_file, orient='records', indent=4, date_format='iso')
-    print(f"Data successfully saved to {output_file}")
-else:
-    print("No valid data found. Output file will not be created.")
+        print("No valid data found. Output file will not be created.")
