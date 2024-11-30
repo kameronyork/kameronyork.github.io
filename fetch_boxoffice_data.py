@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # Function to scrape box office data
 def scrape_box_office_data(imdb_id, title):
@@ -45,18 +45,69 @@ def scrape_box_office_data(imdb_id, title):
         print(f"Required columns missing for IMDb ID {imdb_id} ({title}): {df.columns}")
         return None
 
-    # Clean 'Daily' column
+    # Clean and transform the data
     df['Daily'] = df['Daily'].replace(r'[\$,]', '', regex=True).astype(float, errors='ignore')
+    df['Date'] = pd.to_datetime(df['Date'])
     df['IMDB_ID'] = imdb_id
     df['Title'] = title
+
+    # Sort the data by date
+    df.sort_values('Date', inplace=True)
     return df
+
+# Function to fill missing dates for all movies
+def normalize_data(all_data):
+    # Combine all dataframes into one
+    combined_df = pd.concat(all_data, ignore_index=True)
+
+    # Get the full date range across all movies
+    start_date = combined_df['Date'].min()
+    end_date = datetime.today()
+    all_dates = pd.date_range(start=start_date, end=end_date)
+
+    # Normalize data for each movie
+    movies = combined_df['Title'].unique()
+    normalized_data = []
+
+    for movie in movies:
+        movie_data = combined_df[combined_df['Title'] == movie].set_index('Date')
+        to_date = 0
+
+        for date in all_dates:
+            if date in movie_data.index:
+                row = movie_data.loc[date].to_dict()
+                to_date = row['To Date']
+            else:
+                row = {
+                    'Date': date,
+                    'DOW': date.strftime('%Y-%m-%d'),
+                    'Rank': None,
+                    'Daily': 0,
+                    '%± YD': None,
+                    '%± LW': None,
+                    'Theaters': None,
+                    'Avg': None,
+                    'To Date': to_date,
+                    'Day': None,
+                    'Estimated': False,
+                    'IMDB_ID': movie_data['IMDB_ID'].iloc[0] if not movie_data.empty else None,
+                    'Title': movie,
+                    'Weekend': None,
+                    'Change': None,
+                    'Weekend_1': None,
+                }
+            # Update cumulative To Date
+            row['To Date'] += row['Daily']
+            normalized_data.append(row)
+
+    return pd.DataFrame(normalized_data)
 
 # Main script
 if __name__ == "__main__":
     # IMDb IDs and Titles to fetch
     imdb_ids_titles = [
-        ("rl1511097089", "Mufasa: The Lion King"),
-        ("rl2115207169", "The World According to Allee Willis")
+        ("rl1199474177", "Wicked"),
+        ("rl2841083905", "Red One")
     ]
 
     all_data = []
@@ -67,30 +118,13 @@ if __name__ == "__main__":
             all_data.append(df)
 
     if all_data:
-        final_df = pd.concat(all_data, ignore_index=True)
+        # Normalize data to fill missing dates
+        normalized_df = normalize_data(all_data)
 
-        # Ensure 'Daily' and 'Date' exist before processing
-        if 'Daily' in final_df.columns and 'Date' in final_df.columns:
-            # Filter for rows with valid data
-            final_df = final_df[final_df['Daily'].notna() & final_df['Date'].notna()]
+        # Save data to a JSON file
+        output_file = "fixed_box_office_data.json"
+        normalized_df.to_json(output_file, orient='records', date_format='iso', indent=4)
 
-            # Convert 'Daily' column to numeric
-            final_df['Daily'] = final_df['Daily'].replace(r'[\$,]', '', regex=True).astype(float)
-
-            # Normalize data across all dates
-            all_dates = pd.date_range(final_df['Date'].min(), final_df['Date'].max())
-            normalized_df = final_df.pivot(index='Date', columns='Title', values='Daily').reindex(all_dates)
-            normalized_df.index.name = 'Date'
-            normalized_df.fillna(0, inplace=True)
-
-            # Convert normalized data to long format
-            final_long_df = normalized_df.reset_index().melt(id_vars=['Date'], var_name='Title', value_name='Daily')
-
-            # Save data to a JSON file
-            output_file = "box_office_data.json"
-            final_long_df.to_json(output_file, orient='records', indent=4)
-            print(f"Data successfully saved to {output_file}")
-        else:
-            print("Missing required columns in final DataFrame. No output generated.")
+        print(f"Data successfully saved to {output_file}")
     else:
         print("No valid data found. Output file will not be created.")
