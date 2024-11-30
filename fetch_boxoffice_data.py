@@ -1,9 +1,21 @@
+import os
+import json
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-from datetime import datetime, timedelta
+from datetime import datetime
 
-# Function to scrape box office data
+# Load the input JSON file
+input_file = 'datasets/movies.json'
+output_file = 'datasets/box-office-data.json'
+
+with open(input_file, 'r') as f:
+    people_movies = json.load(f)
+
+# Initialize list to store all data
+all_data = []
+
+# Function to scrape data from Box Office Mojo based on IMDb ID
 def scrape_box_office_data(imdb_id, title):
     url = f"https://www.boxofficemojo.com/release/{imdb_id}/?ref_=bo_tt_gr_1"
     response = requests.get(url)
@@ -22,9 +34,14 @@ def scrape_box_office_data(imdb_id, title):
 
     # Extract headers and ensure uniqueness
     headers = [th.get_text(strip=True) for th in table.find_all('th')]
-    if not headers or 'Daily' not in headers:
-        print(f"Unexpected headers or missing 'Daily' column for IMDb ID {imdb_id} ({title}): {headers}")
-        return None
+    
+    # Ensure headers are unique by appending a number if duplicates are found
+    seen = {}
+    for i, header in enumerate(headers):
+        count = seen.get(header, 0)
+        seen[header] = count + 1
+        if count > 0:
+            headers[i] = f"{header}_{count}"  # Rename duplicated headers with a suffix
 
     # Extract rows
     rows = []
@@ -32,109 +49,73 @@ def scrape_box_office_data(imdb_id, title):
         cells = tr.find_all('td')
         if not cells:
             continue
-        row = [cell.get_text(strip=True) for cell in cells]
+        row = []
+        for cell in cells:
+            # Check if there is an anchor tag with an href
+            link = cell.find('a', href=True)
+            if link and 'date' in link['href']:
+                # Extract date from href
+                date = link['href'].split('/')[2]  # Get the date part from the URL
+                row.append(date)
+            else:
+                # Extract text content
+                row.append(cell.get_text(strip=True))
         rows.append(row)
 
+    # Check if rows are empty
     if not rows:
         print(f"No data rows found for IMDb ID {imdb_id} ({title})")
         return None
 
-    # Create a DataFrame and validate columns
+    # Create a DataFrame and add extra columns
     df = pd.DataFrame(rows, columns=headers)
-    if 'Daily' not in df.columns or 'Date' not in df.columns:
-        print(f"Required columns missing for IMDb ID {imdb_id} ({title}): {df.columns}")
-        return None
-
-    # Debugging: Check unique values in the Date column
-    print(f"Unique Date values for {title} ({imdb_id}): {df['Date'].unique()}")
-
-    # Clean and transform the data
-    df['Daily'] = df['Daily'].replace(r'[\$,]', '', regex=True).astype(float, errors='ignore')
-
-    # Convert Date column to datetime, coercing errors
-    df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
-
-    # Drop rows with invalid dates
-    df = df.dropna(subset=['Date'])
-
-    # Add additional columns for metadata
     df['IMDB_ID'] = imdb_id
     df['Title'] = title
-
-    # Sort the data by date
-    df.sort_values('Date', inplace=True)
     return df
 
-# Function to fill missing dates for all movies
-def normalize_data(all_data):
-    # Combine all dataframes into one
-    combined_df = pd.concat(all_data, ignore_index=True)
+# Get today's date
+today = datetime.today().date()
 
-    # Get the full date range across all movies
-    start_date = combined_df['Date'].min()
-    end_date = datetime.today()
-    all_dates = pd.date_range(start=start_date, end=end_date)
+# Set to track unique movies (since multiple people can have the same movie)
+unique_movies = set()
 
-    # Normalize data for each movie
-    movies = combined_df['Title'].unique()
-    normalized_data = []
+# Process each person's movies
+for person in people_movies:
+    for movie in person["movies"]:
+        title = movie.get("title")
+        imdb_id = movie.get("imdb_id")
+        pull_through = movie.get("pull_through")
 
-    for movie in movies:
-        movie_data = combined_df[combined_df['Title'] == movie].set_index('Date')
-        to_date = 0
+        # Check if IMDb ID and title are present
+        if not imdb_id or not title:
+            print(f"Missing IMDb ID or title for {movie}")
+            continue
 
-        for date in all_dates:
-            if date in movie_data.index:
-                row = movie_data.loc[date].to_dict()
-                to_date = row['To Date']
-            else:
-                row = {
-                    'Date': date,
-                    'DOW': date.strftime('%Y-%m-%d'),
-                    'Rank': None,
-                    'Daily': 0,
-                    '%± YD': None,
-                    '%± LW': None,
-                    'Theaters': None,
-                    'Avg': None,
-                    'To Date': to_date,
-                    'Day': None,
-                    'Estimated': False,
-                    'IMDB_ID': movie_data['IMDB_ID'].iloc[0] if not movie_data.empty else None,
-                    'Title': movie,
-                    'Weekend': None,
-                    'Change': None,
-                    'Weekend_1': None,
-                }
-            # Update cumulative To Date
-            row['To Date'] += row['Daily']
-            normalized_data.append(row)
+        # Convert pull_through date to datetime object for comparison
+        if pull_through:
+            pull_through_date = datetime.strptime(pull_through, "%Y-%m-%d").date()
+            if pull_through_date <= today:
+                continue  # Skip movie if pull_through date is in the past
 
-    return pd.DataFrame(normalized_data)
+        # Add movie to the unique set (this ensures we only process each movie once)
+        unique_movies.add((imdb_id, title))
 
-# Main script
-if __name__ == "__main__":
-    # IMDb IDs and Titles to fetch
-    imdb_ids_titles = [
-        ("rl1199474177", "Wicked"),
-        ("rl2841083905", "Red One")
-    ]
-
-    all_data = []
-    for imdb_id, title in imdb_ids_titles:
-        print(f"Fetching data for {title} ({imdb_id})")
-        df = scrape_box_office_data(imdb_id, title)
-        if df is not None:
-            all_data.append(df)
-
-    if all_data:
-        # Normalize data to fill missing dates
-        normalized_df = normalize_data(all_data)
-
-        # Save data to a JSON file
-        output_file = "fixed_box_office_data.json"
-        normalized_df.to_json(output_file, orient='records', date_format='iso', indent=4)
-
-        print(f"Data successfully saved to {output_file}")
+# Scrape box office data for each unique movie
+for imdb_id, title in unique_movies:
+    print(f"Fetching data for {title} ({imdb_id})")
+    df = scrape_box_office_data(imdb_id, title)
+    if df is not None and not df.empty:
+        all_data.append(df)
     else:
-        print("No valid data found. Output file will not be created.")
+        print(f"No data found for IMDb ID {imdb_id} ({title})")
+
+# Concatenate all data into a single DataFrame
+if all_data:
+    final_df = pd.concat(all_data, ignore_index=True)
+    # Filter out rows where 'Daily' or 'Date' columns are null
+    final_df = final_df[final_df['Daily'].notna() & final_df['Date'].notna()]
+    # Save to JSON file
+    final_df.to_json(output_file, orient='records', indent=4)
+    print(f"Data successfully saved to {output_file}")
+else:
+    print("No valid data found. Output file will not be created.")
