@@ -3,7 +3,7 @@ title: "Wise Family (Jan 2025 - Apr 2025)"
 output:
   html_document:
     includes:
-      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/projects/movie-draft/headers/holly-kam-1.html"
+      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/projects/movie-draft/headers/wise-family-1.html"
       after_body: "https://kameronyork.com/parables/footer.html"
 ---
 <br>
