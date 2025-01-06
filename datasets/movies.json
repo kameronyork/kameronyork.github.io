@@ -82,5 +82,69 @@
             {"title": "Homestead", "imdb_id": "rl2557247489", "points": 10},
             {"title": "Sonic the Hedgehog 3", "imdb_id": "rl886211329", "points": 46}
         ]
+    },
+    {
+        "name": "Holly",
+        "pull_through": "2025-05-01",
+        "competition": "wiseFamily1",
+        "movies": [
+            {"title": "Den of Thieves 2: Pantera", "imdb_id": "rl1416265729", "points": "7"},
+            {"title": "Love Hurts", "imdb_id": "rl1868267521", "points": "12"},
+            {"title": "Mickey 17", "imdb_id": "rl2465301249", "points": "20"},
+            {"title": "A Minecraft Movie", "imdb_id": "rl746096129", "points": "51"}
+        ]
+    },
+    {
+        "name": "Becky",
+        "pull_through": "2025-05-01",
+        "competition": "wiseFamily1",
+        "movies": [
+            {"title": "Flight Risk", "imdb_id": "rl1365934081", "points": "15"},
+            {"title": "Captain America: Brave New World", "imdb_id": "rl2597421825", "points": "43"},
+            {"title": "The Unbreakable Boy", "imdb_id": "rl520323841", "points": "23"},
+            {"title": "Sinners", "imdb_id": "rl2153611265", "points": "19"} 
+        ]
+    },
+    {
+        "name": "Kam",
+        "pull_through": "2025-05-01",
+        "competition": "wiseFamily1",
+        "movies": [
+            {"title": "Drop", "imdb_id": "rl2439741441", "points": "8"},
+            {"title": "Last Breath", "imdb_id": "rl4101275649", "points": "6"},
+            {"title": "Night of the Zoopocalypse", "imdb_id": "rl4195123201", "points": "6"},
+            {"title": "Dog Man", "imdb_id": "rl3942942209", "points": "38"},
+            {"title": "The Accountant 2", "imdb_id": "Not Created", "points": "27"}
+        ]
+    },
+    {
+        "name": "Nate",
+        "pull_through": "2025-05-01",
+        "competition": "wiseFamily1",
+        "movies": [
+            {"title": "Wolf Man", "imdb_id": "rl3494150145", "points": "15"},
+            {"title": "Paddington in Peru", "imdb_id": "rl431260417", "points": "30"},
+            {"title": "Cleaner", "imdb_id": "rl505184257", "points": "10"},
+            {"title": "The Legend of Ochi", "imdb_id": "rl2802876417", "points": "12"},
+            {"title": "Until Dawn", "imdb_id": "rl923893761", "points": "26"},
+            {"title": "Black Bag", "imdb_id": "rl1400602625", "points": "7"}
+        ]
+    },
+    {
+        "name": "Whitney",
+        "pull_through": "2025-05-01",
+        "competition": "wiseFamily1",
+        "movies": [
+            {"title": "One of Them Days", "imdb_id": "rl4110974977", "points": "10"},
+            {"title": "Companion", "imdb_id": "rl3781722113", "points": "22"},
+            {"title": "Heart Eyes", "imdb_id": "rl2533982209", "points": "6"},
+            {"title": "My Dead Friend Zoe", "imdb_id": "rl2289270785", "points": "3"},
+            {"title": "Novocaine", "imdb_id": "rl3662970881", "points": "3"},
+            {"title": "Ash", "imdb_id": "rl3659628545", "points": "5"},
+            {"title": "Snow White", "imdb_id": "rl3856302849", "points": "25"},
+            {"title": "A Working Man", "imdb_id": "rl3457581057", "points": "7"},
+            {"title": "The Woman in the Yard", "imdb_id": "rl4048781313", "points": "7"},
+            {"title": "The Amateur", "imdb_id": "rl2241364737", "points": "10"}
+        ]
     }
 ]
