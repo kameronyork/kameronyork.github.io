@@ -30,10 +30,16 @@ function toggleRow(rowId) {
 }
 
 document.addEventListener("DOMContentLoaded", async function() {
+  // Define start date and cutoff date
+  const startDate = new Date("2024-11-01"); // Replace with your desired start date
+  const cutoffDate = new Date("2025-01-31"); // Replace with your desired cutoff date
+  const today = new Date();
+  const endDate = today <= cutoffDate ? today : cutoffDate;
+
   // URLs for data
   const dataUrl = "https://kameronyork.com/datasets/box-office-data.json";
   const peopleUrl = "https://kameronyork.com/datasets/movies.json";
-  
+
   let movieData, peopleData;
 
   try {
@@ -52,7 +58,14 @@ document.addEventListener("DOMContentLoaded", async function() {
   peopleData = peopleData.filter(person => person.competition === "hansFamily1");
 
   const cumulativeData = {};
-  const allDates = Array.from(new Set(movieData.map(entry => entry.Date))).sort((a, b) => new Date(a) - new Date(b));
+  
+  // Filter and sort dates based on start date and end date
+  const allDates = Array.from(new Set(movieData.map(entry => entry.Date)))
+    .filter(date => {
+      const currentDate = new Date(date);
+      return currentDate >= startDate && currentDate <= endDate;
+    })
+    .sort((a, b) => new Date(a) - new Date(b));
 
   // Initialize cumulativeData with all dates set to 0 for each person
   for (const person of peopleData) {
