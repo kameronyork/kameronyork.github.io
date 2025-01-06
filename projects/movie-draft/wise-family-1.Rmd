@@ -1,5 +1,6 @@
 ---
-title: "Wise Family (Jan 2025 - Apr 2025)"
+title: "Wise Family"
+subtitle: "(Jan 2025 - Apr 2025)"
 output:
   html_document:
     includes:
