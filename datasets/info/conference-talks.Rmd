@@ -1,68 +1,31 @@
 ---
-title: "General Conference Talks Dataset"
-author: "Kameron York"
-output: html_document
+title: "Search the Gospel Buddy"
+output:
+  html_document:
+    includes:
+      in_header: "https://www.mygospelbuddy.com/docs/header.html"
+      after_body: "https://www.mygospelbuddy.com/docs/footer.html"
 ---
+<style>
+  /* Center alignment for the title, text under the title, and buttons */
+  h1, .subtitle-text, .download-button {
+    text-align: center;
+  }
 
-```{r setup, include=FALSE, warning=FALSE, message=FALSE}
-library(ggplot2)
-library(DT)
-library(dplyr)
-library(pander)
+  /* Left alignment for paragraphs and their titles in the middle of the document */
+  h4 {
+    text-align: left;
+  }
+</style>
 
-df <- read.csv("https://www.kameronyork.com/datasets/general-conference-talks.csv", encoding = "utf-8")
-```
 
-A csv file of all General Conference Talks from the Church of Jesus Christ of Latter-Day Saints.  This csv dataset contains the full text and footnotes of all General Conference talks publicly available on churchofjesuschrist.org.  
+<script src="https://www.mygospelbuddy.com/search/search.js"></script>
 
-```{r, warning=FALSE, message=FALSE}
-
-# Assuming df is your data frame
-# Filter only numeric columns for histograms
-numeric_columns <- sapply(df, is.numeric)
-numeric_column_names <- names(df)[numeric_columns]
-
-for (column_name in numeric_column_names) {
-  p <- ggplot(df, aes_string(x=column_name)) + 
-    geom_histogram(bins=30, fill="blue", color="black") + 
-    theme_minimal()
-  
-  # Save the histogram as an image
-  ggsave(paste0(column_name, "_hist.png"), plot=p, width=5, height=3, dpi=300)
-}
-
-# For a categorical column example
-if ("your_categorical_column_name" %in% names(df)) {
-  p <- ggplot(df, aes_string(x="your_categorical_column_name")) + 
-    geom_bar(fill="blue", color="black") + 
-    theme_minimal()
-  
-  ggsave("your_categorical_column_name_bar.png", plot=p, width=5, height=3, dpi=300)
-}
-```
-
-# Your Document's Title
-
-## Column Distribution Histograms
-
-```{r echo=FALSE, results='asis'}
-library(knitr)
-# Assuming the images are saved in the working directory
-for (column_name in column_names) {
-  cat('![](', column_name, '_hist.png)', sep='')
-  cat('\n')
-}
-
-# Display the table
-kable(df)
-```
-
-This code chunk uses a loop to embed each histogram image above your table. The `kable` function from the `knitr` package is used to create a simple Markdown table from your data frame.
-
-### Notes
-
-- Ensure all histogram images are saved in the same directory as your Rmd file or specify the correct path to them.
-- Adjust the `width`, `height`, and `dpi` in `ggsave` to fit your needs.
-- This approach creates static images. If your data updates and you rerun the Rmd file, the histograms will update based on the current data.
-
-This method provides a basic way to include column distribution histograms in an R Markdown document. For more dynamic or interactive options, you might explore embedding HTML widgets or Shiny applications, although these may require a more complex setup.
+<div style="text-align: center;">
+  <input type="text" id="scriptureInput" placeholder="Enter scripture reference" style="width: 60%; padding: 10px; margin-top: 20px;">
+  <button onclick="updateTable()" style="padding: 10px 20px;">Search</button>
+</div>
+<br>
+<div id="scripture-table-container">
+  <!-- The table HTML will be inserted here by your script -->
+</div>

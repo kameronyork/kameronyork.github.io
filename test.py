@@ -1,106 +1,189 @@
 # %%
+import requests
 import pandas as pd
-import numpy as np
+from datetime import datetime
 
-# %%
+# Step 1: Get the authentication token
+auth_url = "https://api.thomsonreuters.com/gofileroom/api/v1/user/login"
 
-# Read the dataset into a pandas DataFrame
-df = pd.read_json("https://kameronyork.com/datasets/all-footnotes-apr-2024.json", encoding="utf-8")
+auth_data = {
+    "LoginName": "analytics@coopernorman.com",
+    "Password": "CNAPIaccess<3",
+    "Language": "en",
+    "Capcha": "",
+    "CapchaType": 0
+}
 
-# %%
-all_conferences = [
-    "April 2024", "October 2023", "April 2023", "October 2022", "April 2022", "October 2021", "April 2021", "October 2020", "April 2020", "October 2019", "April 2019", "October 2018", "April 2018", "October 2017", "April 2017", "October 2016", "April 2016", "October 2015", "April 2015", "October 2014", "April 2014", "October 2013", "April 2013", "October 2012", "April 2012", "October 2011", "April 2011", "October 2010", "April 2010", "October 2009", "April 2009", "October 2008", "April 2008", "October 2007", "April 2007", "October 2006", "April 2006", "October 2005", "April 2005", "October 2004", "April 2004", "October 2003", "April 2003", "October 2002", "April 2002", "October 2001", "April 2001", "October 2000", "April 2000", "October 1999", "April 1999", "October 1998", "April 1998", "October 1997", "April 1997", "October 1996", "April 1996", "October 1995", "April 1995", "October 1994", "April 1994", "October 1993", "April 1993", "October 1992", "April 1992", "October 1991", "April 1991", "October 1990", "April 1990", "October 1989", "April 1989", "October 1988", "April 1988", "October 1987", "April 1987", "October 1986", "April 1986", "October 1985", "April 1985", "October 1984", "April 1984", "October 1983", "April 1983", "October 1982", "April 1982", "October 1981", "April 1981", "October 1980", "April 1980", "October 1979", "April 1979", "October 1978", "April 1978", "October 1977", "April 1977", "October 1976", "April 1976", "October 1975", "April 1975", "October 1974", "April 1974", "October 1973", "April 1973", "October 1972", "April 1972", "October 1971", "April 1971"
-]
+# Headers for the token request
+auth_headers = {
+    "X-TR-API-APP-ID": "2y7Al06dtoQutiIXbyg3AA3OnHKGIOB6",
+    "Content-Type": "application/x-www-form-urlencoded"
+}
 
-# Create a DataFrame from the list
-df_conferences = pd.DataFrame(all_conferences, columns=["Conference Date"])
-
-# Add an explicit index column
-df_conferences['Index'] = range(1, len(df_conferences) + 1)
-
-# Reorder the DataFrame to have the index column first
-df_conferences = df_conferences[['Index', 'Conference Date']]
-
-
-# %%
-
-# Example sorting of df_conferences if needed
-df_conferences = df_conferences.sort_values(by='Index', ascending=False)
-
-# Convert 'talk_year' to string and create a unique conference identifier
-df['conference_id'] = df['talk_month'] + " " + df['talk_year'].astype(str)
-
-# Merge df with df_conferences to align scripture quotes with indexed conference dates
-df_merged = df.merge(df_conferences, left_on='conference_id', right_on='Conference Date', how='left')
-
-# Sort df_merged by Index to ensure the order is maintained for pivoting
-df_merged = df_merged.sort_values(by='Index', ascending=False)
-
-# Add a column to indicate quoting (used for aggregation)
-df_merged['quoted'] = 1
-
-# Pivot table to show if a scripture is quoted in each conference
-pivot_table = pd.pivot_table(df_merged, values='quoted', index='scripture', columns='Conference Date', aggfunc='sum', fill_value=0)
-
-# Since the 'Conference Date' columns might not be in the perfect sequential order, reorder them
-ordered_dates = df_conferences['Conference Date'].tolist()
-pivot_table = pivot_table.reindex(columns=ordered_dates)
-
-# %% 
-
-pivot_table.to_csv("./testing_pivot.csv", encoding="UTF-8")
+# Request to get the access token
+auth_response = requests.post(auth_url, headers=auth_headers, data=auth_data)
 
 
-# %%
 
-def calculate_streaks(dataframe):
-    # Initialize dictionaries to store the streaks
-    current_streaks = {}
-    max_streaks = {}
-    
-    # Iterate through each row (scripture)
-    for scripture, row in dataframe.iterrows():
-        max_count = 0
-        current_count = 0
-        max_streak = 0
-        current_streak = 0
-        
-        # Reverse iteration for current streak (starts from the most recent)
-        reversed_row = list(reversed(row))
-        for i in reversed_row:
-            if i > 0:
-                current_count += 1
-                current_streak = max(current_streak, current_count)
+# Check if the authentication was successful
+if auth_response.status_code == 200:
+    auth_token = auth_response.json().get("token")
+    print(f"Access token retrieved successfully! {auth_token}")
+
+    # URL for the FirmFlow report API
+    report_url = "https://api.thomsonreuters.com/gofileroom/api/v2/firmflowreports/TrackingReportByWorkFlow"
+
+    # Headers including the retrieved access token
+    report_headers = {
+        "X-TR-API-APP-ID": "2y7Al06dtoQutiIXbyg3AA3OnHKGIOB6",
+        "Authorization": f"Basic {auth_token}",
+        "Content-Type": "application/json"
+    }
+
+    # Initialize an empty DataFrame to hold the results
+    all_data = pd.DataFrame()
+
+    # First request to get initial report and pagination info
+    report_data = {
+        "DrawerID": "0000000001",
+        "PageNumber": 1  # Start with page 1
+    }
+
+    report_response = requests.post(report_url, headers=report_headers, json=report_data)
+
+    if report_response.status_code == 200:
+        print("FirmFlow Report Request Successful!")
+        report_json = report_response.json()
+
+        # Extract pagination information
+        total_records = report_json.get('totalRecords')
+        page_number = report_json.get('pageNumber')
+        page_size = report_json.get('pageSize')
+        total_pages = report_json.get('totalPages')
+
+        print(f"Total Records: {total_records}")
+        print(f"Page Number: {page_number}")
+        print(f"Page Size: {page_size}")
+        print(f"Total Pages: {total_pages}")
+
+        # Process the first page of data
+        firmflow_data = report_json.get('firmFlowReportResponse', [])
+        df = pd.DataFrame(firmflow_data)
+        all_data = pd.concat([all_data, df], ignore_index=True)
+
+        # Loop through the remaining pages and request data
+        for page in range(2, total_pages + 1):
+            print(f"Requesting page {page} of {total_pages}...")
+            report_data['PageNumber'] = page
+            report_response = requests.post(report_url, headers=report_headers, json=report_data)
+
+            if report_response.status_code == 200:
+                report_json = report_response.json()
+                firmflow_data = report_json.get('firmFlowReportResponse', [])
+                df = pd.DataFrame(firmflow_data)
+
+                # Concatenate the data from each page into the main DataFrame
+                all_data = pd.concat([all_data, df], ignore_index=True)
             else:
+                print(f"Failed to retrieve page {page}. Status code: {report_response.status_code}")
                 break
-        
-        # Forward iteration for maximum streak
-        for i in row:
-            if i > 0:
-                max_count += 1
-                max_streak = max(max_streak, max_count)
-            else:
-                max_count = 0
 
-        # Save the streaks
-        current_streaks[scripture] = current_streak if current_streak > 1 else 0
-        max_streaks[scripture] = max_streak if max_streak > 1 else 0
+        # Final DataFrame with all pages of data
+        print(f"Full DataFrame created with {len(all_data)} rows and {len(all_data.columns)} columns.")
+        print(all_data.head())  # Show the first few rows of the full DataFrame
+
+    else:
+        print(f"Failed to retrieve report. Status code: {report_response.status_code}")
+        print(report_response.text)  # Error message or details
+else:
+    print(f"Authentication failed. Status code: {auth_response.status_code}")
+    print(auth_response.text)  # Error message or details
+
+
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from tqdm import tqdm
+import time
+
+# Function to get routing history for a given filing ID
+def get_routing_history(filing_id, auth_token):
+    url = f"https://api.thomsonreuters.com/gofileroom/firmflow/api/V1/Workflow/RoutingHistory"
+    headers = {
+        "X-TR-API-APP-ID": "2y7Al06dtoQutiIXbyg3AA3OnHKGIOB6",  # API key
+        "Authorization": f"Basic {auth_token}"
+    }
+    params = {
+        "filingId": filing_id
+    }
     
-    # Create DataFrame from dictionaries
-    streaks_df = pd.DataFrame({
-        "Scripture": list(current_streaks.keys()),
-        "Current Conference Streak": list(current_streaks.values()),
-        "Max Streak": list(max_streaks.values())
-    })
-    streaks_df.set_index('Scripture', inplace=True)
-    return streaks_df
+    try:
+        response = requests.get(url, headers=headers, params=params)
+        if response.status_code == 200:
+            return response.json()  # Return the routing history for the filing ID
+        else:
+            print(f"Failed to retrieve data for Filing ID {filing_id}. Status code: {response.status_code}")
+            return None
+    except Exception as e:
+        print(f"Error occurred for Filing ID {filing_id}: {e}")
+        return None
 
-# Apply the function to calculate streaks
-streaks_df = calculate_streaks(pivot_table.iloc[:, :-1])  # Exclude any non-relevant columns
-streaks_df
+# Get the current year and previous year as strings
+current_year = str(datetime.now().year)
+previous_year = str(datetime.now().year - 1)
 
-# %%
-streaks_df.to_csv("./testing_streaks.csv", encoding="UTF-8")
+# Filter the DataFrame to include rows where 'year' is either the current year or the previous year
+filtered_data = all_data[all_data['year'].isin([current_year, previous_year])]
 
+# Step 2: Get unique filing IDs from the filtered data
+unique_filing_ids = filtered_data['filingID'].unique()
+
+# Number of concurrent threads and batch size
+MAX_WORKERS = 20  # Number of concurrent threads (adjust based on API and system capacity)
+BATCH_SIZE = 100  # Number of filing IDs per batch
+
+# Function to process a batch of filing IDs
+def process_batch(filing_ids_batch, auth_token):
+    results = []
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        futures = {executor.submit(get_routing_history, filing_id, auth_token): filing_id for filing_id in filing_ids_batch}
+        
+        # As futures complete, aggregate the results with a progress bar
+        for future in tqdm(as_completed(futures), total=len(futures), desc="Processing Filing IDs"):
+            filing_id = futures[future]
+            try:
+                result = future.result()
+                if result:
+                    results.append(result)
+            except Exception as e:
+                print(f"Error processing Filing ID {filing_id}: {e}")
+    return results
+
+# Step 3: Iterate through filing IDs in batches
+def process_filing_ids_in_batches(filing_ids, auth_token, batch_size):
+    all_results = []
+    total_batches = len(filing_ids) // batch_size + (1 if len(filing_ids) % batch_size > 0 else 0)
+    
+    for i in range(0, len(filing_ids), batch_size):
+        filing_ids_batch = filing_ids[i:i + batch_size]
+        print(f"Processing batch {i // batch_size + 1} of {total_batches}...")
+        
+        batch_results = process_batch(filing_ids_batch, auth_token)
+        all_results.extend(batch_results)
+
+        # Introduce a small delay between batches to avoid overwhelming the server (adjust if needed)
+        time.sleep(2)
+
+    return all_results
+
+# Process all filing IDs in batches and collect the results
+print(f"Processing {len(unique_filing_ids)} filing IDs in batches with {BATCH_SIZE} per batch...")
+
+all_routing_history = process_filing_ids_in_batches(unique_filing_ids, auth_token, BATCH_SIZE)
+
+# Step 4: Convert the collected routing history into a pandas DataFrame
+routing_history_df = pd.DataFrame(all_routing_history)
+
+# Display the full DataFrame with all routing history details
+print(f"Routing history data collected for {len(routing_history_df)} records.")
+print(routing_history_df.head())
 
 # %%

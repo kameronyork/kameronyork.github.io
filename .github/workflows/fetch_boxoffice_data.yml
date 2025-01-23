@@ -1,0 +1,39 @@
+name: Fetch Box Office Data
+
+on:
+  schedule:
+    - cron: '0 15 * * *' # 8 AM MST (3 PM UTC)
+    - cron: '0 0 * * *'  # 5 PM MST (12 AM UTC, next day)
+  workflow_dispatch: # Allows manual triggering of the workflow
+
+jobs:
+  fetch-boxoffice-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4 pandas
+
+      - name: Run Python script to fetch data
+        run: |
+          python fetch_boxoffice_data.py
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add datasets/box-office-data.json
+          git commit -m "Update box office data [skip ci]" || echo "No changes to commit"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

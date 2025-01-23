@@ -1,0 +1,44 @@
+---
+title: "Random String Generator"
+output:
+  html_document:
+    code_folding: hide
+    includes:
+      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/projects/conference/headers/inspire-change-header.html"
+      after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
+---
+
+<script>
+function generateRandomString(length) {
+    const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return result;
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("random10").textContent = generateRandomString(10);
+    document.getElementById("random25").textContent = generateRandomString(25);
+    document.getElementById("random50").textContent = generateRandomString(50);
+    document.getElementById("random75").textContent = generateRandomString(75);
+    document.getElementById("random100").textContent = generateRandomString(100);
+});
+</script>
+
+
+##### 10 Characters
+<div id="random10"></div>
+
+##### 25 Characters
+<div id="random25"></div>
+
+##### 50 Characters
+<div id="random50"></div>
+
+##### 75 Characters
+<div id="random75"></div>
+
+##### 100 Characters
+<div id="random100"></div>

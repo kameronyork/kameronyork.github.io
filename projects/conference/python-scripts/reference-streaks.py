@@ -15,7 +15,11 @@ grouped_df = df.groupby(['talk_year', 'talk_month', 'scripture']).size().reset_i
 unique_scriptures = grouped_df['scripture'].unique()
 
 # Step 2: Generate a unique list of all possible general conferences from 1970 to the most recent conference
+<<<<<<< HEAD
+start_year = 1971
+=======
 start_year = 1970
+>>>>>>> 75fde3b26bba5556a3ed4275ec76bd80d8cb41a8
 current_year = datetime.now().year
 current_month = datetime.now().month
 
