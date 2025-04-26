@@ -3,10 +3,9 @@ Instructions for collection General Conference data after a new Conference.
 ---------------------------------------------------------------------------
                         Copying the Data in Excel
 ---------------------------------------------------------------------------
-The first step is manual.  Open the Conferen on the Church's website, then
+The first step is manual.  Open the Conference on the Church's website, then
 open the excel file in this folder.  You will first copy the names in the 
-left sidebar to add the speakers.  Then input the titles.  Then go talk by
-talk copying the text and footnotes and clicking the buttons to add them to
+left sidebar to add the speakers.  (OPTIONALLY you could run the "find-hyperlinks.py" file in this folder to return the URLs for each talk.  Remember, that script will include sustainings and auditing reports which should not be kept in the dataset files). Then input the titles.  Then go talk by talk copying the text and footnotes and clicking the buttons to add them to
 the table.  Once this is complete, add this data to the "general-Conference
 -talks.csv" file in the datasets folder.
 
