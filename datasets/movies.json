@@ -1,641 +1,150 @@
 [
-  {
-    "name": "Kam",
-    "pull_through": "2025-04-01",
-    "competition": "kamHolly1",
-    "title": "Bird",
-    "imdb_id": "rl2987819009",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BMGYzZDI4OTktZWJkZC00NjdiLTlkMjYtMzA1ZTVjMDU2M2FhXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 1
-  },
-  {
-    "name": "Kam",
-    "pull_through": "2025-04-01",
-    "competition": "kamHolly1",
-    "title": "Red One",
-    "imdb_id": "rl2841083905",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BZmFkMjE4NjQtZTVmZS00MDZjLWE2ZmEtZTkzODljNjhlNWUxXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 7
-  },
-  {
-    "name": "Kam",
-    "pull_through": "2025-04-01",
-    "competition": "kamHolly1",
-    "title": "Bonhoeffer: Pastor. Spy. Assassin.",
-    "imdb_id": "rl2775351297",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BMmU2MzcyNDUtYjFmMC00NzQwLTgzODUtNWQ2OTExN2ExOTdiXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 7
-  },
-  {
-    "name": "Kam",
-    "pull_through": "2025-04-01",
-    "competition": "kamHolly1",
-    "title": "Gladiator II",
-    "imdb_id": "rl1778156289",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BMWYzZTM5ZGQtOGE5My00NmM2LWFlMDEtMGNjYjdmOWM1MzA1XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 10
-  },
-  {
-    "name": "Kam",
-    "pull_through": "2025-04-01",
-    "competition": "kamHolly1",
-    "title": "Werewolves",
-    "imdb_id": "rl1433501697",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BOTc3NDA5ODQtYjQzYS00NWE3LWE1YjYtNjAxNzlhOTE4NjAzXkEyXkFqcGc@._V1_SY139_CR0,0,92,139_.jpg",
-    "points": 1
-  },
-  {
-    "name": "Kam",
-    "pull_through": "2025-04-01",
-    "competition": "kamHolly1",
-    "title": "Get Away",
-    "imdb_id": "rl1409515521",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BNGM1NmM3ZDAtNDA4ZC00N2NhLWE0NTAtMTYwYTRjMzIwYmY5XkEyXkFqcGc@._V1_SY139_CR98,0,92,139_.jpg",
-    "points": 5
-  },
-  {
-    "name": "Kam",
-    "pull_through": "2025-04-01",
-    "competition": "kamHolly1",
-    "title": "Solo Leveling: ReAwakening",
-    "imdb_id": "rl1091076097",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BYTIwYzk3YmQtZmMwNS00ZDAwLTk5Y2MtOTEwODFlZmExMzliXkEyXkFqcGc@._V1_SY139_CR0,0,92,139_.jpg",
-    "points": 3
-  },
-  {
-    "name": "Kam",
-    "pull_through": "2025-04-01",
-    "competition": "kamHolly1",
-    "title": "Kraven the Hunter",
-    "imdb_id": "rl259556097",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BZDU0YTI5ODAtN2NmMS00YTg3LTgyNDItN2RmOWEzOTkzZjcyXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 18
-  },
-  {
-    "name": "Kam",
-    "pull_through": "2025-04-01",
-    "competition": "kamHolly1",
-    "title": "The Lord of the Rings: The War of the Rohirrim",
-    "imdb_id": "rl3123675905",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BMmU1YzZkMjAtYjNjOC00ZDFhLWE3Y2QtZTM2ZTdkZWM1OGM3XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 8
-  },
-  {
-    "name": "Kam",
-    "pull_through": "2025-04-01",
-    "competition": "kamHolly1",
-    "title": "Babygirl",
-    "imdb_id": "rl2926346241",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BMmUwODYwODAtYWZkZS00YmUwLWFmMWEtOGNjMjE2NDk3OWIwXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
-    "points": 1
-  },
-  {
-    "name": "Kam",
-    "pull_through": "2025-04-01",
-    "competition": "kamHolly1",
-    "title": "Sonic the Hedgehog 3",
-    "imdb_id": "rl886211329",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BZTkyMGFlNzMtMTljOC00ZDMyLWE5NWItMzVjMDZmNzA2Yjc2XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 39
-  },
-  {
-    "name": "Holly",
-    "pull_through": "2025-04-01",
-    "competition": "kamHolly1",
-    "title": "Here",
-    "imdb_id": "rl2858385409",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BYWQ5ZDQ5YWQtMThiMS00MGM4LTk2NjktYTllYzg2NTRiNTMxXkEyXkFqcGc@._V1_SY139_CR0,0,92,139_.jpg",
-    "points": 8
-  },
-  {
-    "name": "Holly",
-    "pull_through": "2025-04-01",
-    "competition": "kamHolly1",
-    "title": "The World According to Allee Willis",
-    "imdb_id": "rl2115207169",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BYTc2ZTk4MjgtNjVmOC00ZmUxLWE5YjktNDQ1NWIxZDJhODU2XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 5
-  },
-  {
-    "name": "Holly",
-    "pull_through": "2025-04-01",
-    "competition": "kamHolly1",
-    "title": "Wicked",
-    "imdb_id": "rl1199474177",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BOWMwYjYzYmMtMWQ2Ni00NWUwLTg2MzAtYzkzMDBiZDIwOTMwXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
-    "points": 20
-  },
-  {
-    "name": "Holly",
-    "pull_through": "2025-04-01",
-    "competition": "kamHolly1",
-    "title": "Moana 2",
-    "imdb_id": "rl862748673",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BZDUxNThhYTUtYjgxNy00MGQ4LTgzOTEtZjg1YTU5NTcwNThlXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 23
-  },
-  {
-    "name": "Holly",
-    "pull_through": "2025-04-01",
-    "competition": "kamHolly1",
-    "title": "Y2K",
-    "imdb_id": "rl4218716161",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BYTQxNWJmYTEtZTMzMS00MDk1LTlkMTgtYmRhOTRmMjdkOGRiXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 2
-  },
-  {
-    "name": "Holly",
-    "pull_through": "2025-04-01",
-    "competition": "kamHolly1",
-    "title": "5-Sep",
-    "imdb_id": "rl2383183873",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BOWUxY2YyYzctYWY3Yi00ZGJjLTkzMDktZjYzMTIzZjNhNmM2XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 1
-  },
-  {
-    "name": "Holly",
-    "pull_through": "2025-04-01",
-    "competition": "kamHolly1",
-    "title": "Mufasa: The Lion King",
-    "imdb_id": "rl1511097089",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BYjBkOWUwODYtYWI3YS00N2I0LWEyYTktOTJjM2YzOTc3ZDNlXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 1
-  },
-  {
-    "name": "Holly",
-    "pull_through": "2025-04-01",
-    "competition": "kamHolly1",
-    "title": "Homestead",
-    "imdb_id": "rl2557247489",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BYjA2Y2IzMGQtMzY3Zi00YzI2LWIyOGUtMzkwYzVkYmU5ZWY5XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 1
-  },
-  {
-    "name": "Holly",
-    "pull_through": "2025-04-01",
-    "competition": "kamHolly1",
-    "title": "The Fire Inside",
-    "imdb_id": "rl2778432257",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BYjI4YmU1MTAtOGVkZi00NWI5LTljMGItZjhlYWU2YzEzNzg1XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 1
-  },
-  {
-    "name": "Holly",
-    "pull_through": "2025-04-01",
-    "competition": "kamHolly1",
-    "title": "Nosferatu",
-    "imdb_id": "rl2537783297",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BYTQ3NGFjNTktNjdmYi00NDc1LTllZTYtOGMyZGE4OWQzMjRiXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 1
-  },
-  {
-    "name": "Hans",
-    "pull_through": "2025-04-01",
-    "competition": "hansFamily1",
-    "title": "Here",
-    "imdb_id": "rl2858385409",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BYWQ5ZDQ5YWQtMThiMS00MGM4LTk2NjktYTllYzg2NTRiNTMxXkEyXkFqcGc@._V1_SY139_CR0,0,92,139_.jpg",
-    "points": 11
-  },
-  {
-    "name": "Hans",
-    "pull_through": "2025-04-01",
-    "competition": "hansFamily1",
-    "title": "Bird",
-    "imdb_id": "rl2987819009",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BMGYzZDI4OTktZWJkZC00NjdiLTlkMjYtMzA1ZTVjMDU2M2FhXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 1
-  },
-  {
-    "name": "Hans",
-    "pull_through": "2025-04-01",
-    "competition": "hansFamily1",
-    "title": "The World According to Allee Willis",
-    "imdb_id": "rl2115207169",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BYTc2ZTk4MjgtNjVmOC00ZmUxLWE5YjktNDQ1NWIxZDJhODU2XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 1
-  },
-  {
-    "name": "Hans",
-    "pull_through": "2025-04-01",
-    "competition": "hansFamily1",
-    "title": "Werewolves",
-    "imdb_id": "rl1433501697",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BOTc3NDA5ODQtYjQzYS00NWE3LWE1YjYtNjAxNzlhOTE4NjAzXkEyXkFqcGc@._V1_SY139_CR0,0,92,139_.jpg",
-    "points": 6
-  },
-  {
-    "name": "Hans",
-    "pull_through": "2025-04-01",
-    "competition": "hansFamily1",
-    "title": "Get Away",
-    "imdb_id": "rl1409515521",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BNGM1NmM3ZDAtNDA4ZC00N2NhLWE0NTAtMTYwYTRjMzIwYmY5XkEyXkFqcGc@._V1_SY139_CR98,0,92,139_.jpg",
-    "points": 1
-  },
-  {
-    "name": "Hans",
-    "pull_through": "2025-04-01",
-    "competition": "hansFamily1",
-    "title": "The Fire Inside",
-    "imdb_id": "rl2778432257",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BYjI4YmU1MTAtOGVkZi00NWI5LTljMGItZjhlYWU2YzEzNzg1XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 25
-  },
-  {
-    "name": "Hans",
-    "pull_through": "2025-04-01",
-    "competition": "hansFamily1",
-    "title": "Nosferatu",
-    "imdb_id": "rl2537783297",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BYTQ3NGFjNTktNjdmYi00NDc1LTllZTYtOGMyZGE4OWQzMjRiXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 25
-  },
-  {
-    "name": "Jordyn",
-    "pull_through": "2025-04-01",
-    "competition": "hansFamily1",
-    "title": "Red One",
-    "imdb_id": "rl2841083905",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BZmFkMjE4NjQtZTVmZS00MDZjLWE2ZmEtZTkzODljNjhlNWUxXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 11
-  },
-  {
-    "name": "Jordyn",
-    "pull_through": "2025-04-01",
-    "competition": "hansFamily1",
-    "title": "Wicked",
-    "imdb_id": "rl1199474177",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BOWMwYjYzYmMtMWQ2Ni00NWUwLTg2MzAtYzkzMDBiZDIwOTMwXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
-    "points": 26
-  },
-  {
-    "name": "Jordyn",
-    "pull_through": "2025-04-01",
-    "competition": "hansFamily1",
-    "title": "Gladiator II",
-    "imdb_id": "rl1778156289",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BMWYzZTM5ZGQtOGE5My00NmM2LWFlMDEtMGNjYjdmOWM1MzA1XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 13
-  },
-  {
-    "name": "Jordyn",
-    "pull_through": "2025-04-01",
-    "competition": "hansFamily1",
-    "title": "The Lord of the Rings: The War of the Rohirrim",
-    "imdb_id": "rl3123675905",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BMmU1YzZkMjAtYjNjOC00ZDFhLWE3Y2QtZTM2ZTdkZWM1OGM3XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 26
-  },
-  {
-    "name": "Lucy",
-    "pull_through": "2025-04-01",
-    "competition": "hansFamily1",
-    "title": "Moana 2",
-    "imdb_id": "rl862748673",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BZDUxNThhYTUtYjgxNy00MGQ4LTgzOTEtZjg1YTU5NTcwNThlXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 25
-  },
-  {
-    "name": "Lucy",
-    "pull_through": "2025-04-01",
-    "competition": "hansFamily1",
-    "title": "Y2K",
-    "imdb_id": "rl4218716161",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BYTQxNWJmYTEtZTMzMS00MDk1LTlkMTgtYmRhOTRmMjdkOGRiXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 10
-  },
-  {
-    "name": "Lucy",
-    "pull_through": "2025-04-01",
-    "competition": "hansFamily1",
-    "title": "Solo Leveling: ReAwakening",
-    "imdb_id": "rl1091076097",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BYTIwYzk3YmQtZmMwNS00ZDAwLTk5Y2MtOTEwODFlZmExMzliXkEyXkFqcGc@._V1_SY139_CR0,0,92,139_.jpg",
-    "points": 6
-  },
-  {
-    "name": "Lucy",
-    "pull_through": "2025-04-01",
-    "competition": "hansFamily1",
-    "title": "Mufasa: The Lion King",
-    "imdb_id": "rl1511097089",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BYjBkOWUwODYtYWI3YS00N2I0LWEyYTktOTJjM2YzOTc3ZDNlXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 59
-  },
-  {
-    "name": "Fletcher",
-    "pull_through": "2025-04-01",
-    "competition": "hansFamily1",
-    "title": "Bonhoeffer: Pastor. Spy. Assassin.",
-    "imdb_id": "rl2775351297",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BMmU2MzcyNDUtYjFmMC00NzQwLTgzODUtNWQ2OTExN2ExOTdiXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 12
-  },
-  {
-    "name": "Fletcher",
-    "pull_through": "2025-04-01",
-    "competition": "hansFamily1",
-    "title": "5-Sep",
-    "imdb_id": "rl2383183873",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BOWUxY2YyYzctYWY3Yi00ZGJjLTkzMDktZjYzMTIzZjNhNmM2XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 14
-  },
-  {
-    "name": "Fletcher",
-    "pull_through": "2025-04-01",
-    "competition": "hansFamily1",
-    "title": "Kraven the Hunter",
-    "imdb_id": "rl259556097",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BZDU0YTI5ODAtN2NmMS00YTg3LTgyNDItN2RmOWEzOTkzZjcyXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 8
-  },
-  {
-    "name": "Fletcher",
-    "pull_through": "2025-04-01",
-    "competition": "hansFamily1",
-    "title": "Babygirl",
-    "imdb_id": "rl2926346241",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BMmUwODYwODAtYWZkZS00YmUwLWFmMWEtOGNjMjE2NDk3OWIwXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
-    "points": 10
-  },
-  {
-    "name": "Fletcher",
-    "pull_through": "2025-04-01",
-    "competition": "hansFamily1",
-    "title": "Homestead",
-    "imdb_id": "rl2557247489",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BYjA2Y2IzMGQtMzY3Zi00YzI2LWIyOGUtMzkwYzVkYmU5ZWY5XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 10
-  },
-  {
-    "name": "Fletcher",
-    "pull_through": "2025-04-01",
-    "competition": "hansFamily1",
-    "title": "Sonic the Hedgehog 3",
-    "imdb_id": "rl886211329",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BZTkyMGFlNzMtMTljOC00ZDMyLWE5NWItMzVjMDZmNzA2Yjc2XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 46
-  },
-  {
-    "name": "Holly",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "Den of Thieves 2: Pantera",
-    "imdb_id": "rl1416265729",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BZGIyYTI5N2QtZmQ5ZC00NDE4LThhYWMtNGE5NjI1OGU2M2NjXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 7
-  },
-  {
-    "name": "Holly",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "Love Hurts",
-    "imdb_id": "rl1868267521",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BYjI2MDRlYzgtZGE0Mi00ODE1LTk2OTAtNThmZGI0NjVlNWZmXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
-    "points": 12
-  },
-  {
-    "name": "Holly",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "Mickey 17",
-    "imdb_id": "rl2465301249",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BOTZmY2E4YjUtNzU1OC00NGQ2LWFlMmItNDk4NDA2OTg3OGIyXkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
-    "points": 20
-  },
-  {
-    "name": "Holly",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "A Minecraft Movie",
-    "imdb_id": "rl746096129",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BNzE2OThhN2EtNWJmNy00MDdhLTk3NmEtYTE1MWRjMGIwNjAzXkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
-    "points": 51
-  },
-  {
-    "name": "Becky",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "Flight Risk",
-    "imdb_id": "rl1365934081",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BY2Q3YjMyZjItNjdjNS00NzFjLTljMWYtMmZjMGQ5YTVjYWY5XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 15
-  },
-  {
-    "name": "Becky",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "Captain America: Brave New World",
-    "imdb_id": "rl2597421825",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BZDBlZTAzYzYtYjczZS00MmQyLTlkYjMtNzY2MzU3YjRjYTJiXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 43
-  },
-  {
-    "name": "Becky",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "The Unbreakable Boy",
-    "imdb_id": "rl520323841",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BYjYzN2MwNTItNmZkZS00YmEyLWIwYmQtNzAyYzQxZWVhMTBlXkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
-    "points": 23
-  },
-  {
-    "name": "Becky",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "Sinners",
-    "imdb_id": "rl2153611265",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BYThkYmJiZTQtZGUzMy00OTllLTg1NmYtZmMyZjQ3ODdjYjc0XkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
-    "points": 19
-  },
-  {
-    "name": "Kam",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "Drop",
-    "imdb_id": "rl2439741441",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BYzM0ZjlmMjgtMDU2OC00ZDMwLTk5Y2UtNjVkMzViYjFjNWI4XkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
-    "points": 8
-  },
-  {
-    "name": "Kam",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "Last Breath",
-    "imdb_id": "rl4101275649",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BNzVlNTAyYjktZjQ1Yy00Yzg1LTlkZTUtMDYzMDQ5NjRmOTE3XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 6
-  },
-  {
-    "name": "Kam",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "Night of the Zoopocalypse",
-    "imdb_id": "rl4195123201",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BY2Y0NDY1ZDItMGJjYS00MGQ3LThhNzYtZGRkN2Y0ZWE3ZjYxXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 6
-  },
-  {
-    "name": "Kam",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "Dog Man",
-    "imdb_id": "rl3942942209",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BZTBiOTViYzktMTM5Mi00ZTdmLWE0ZjQtNDk3NTc3NmM5Y2I3XkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
-    "points": 38
-  },
-  {
-    "name": "Kam",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "The Accountant 2",
-    "imdb_id": "rl1178501121",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BYjFiY2I0NTEtNjdjNy00MTljLThkOWYtMzNiYjYyMDcxYjhkXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 27
-  },
-  {
-    "name": "Nate",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "Wolf Man",
-    "imdb_id": "rl3494150145",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BYmFkYTNhMWUtMjEyNy00MWE0LWJlYTQtMWFmNDUwNmFjMzAxXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
-    "points": 15
-  },
-  {
-    "name": "Nate",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "Paddington in Peru",
-    "imdb_id": "rl431260417",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BNzMyNWZlYmYtZDgxMC00ZTU3LWFiYzctNGE0ZDc0OTlhZTRlXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 30
-  },
-  {
-    "name": "Nate",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "Cleaner",
-    "imdb_id": "rl505184257",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BMzNjZDZmMmMtYTM3NC00NTUzLWI2ZTItODlkMDAwOWNiNzAzXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 10
-  },
-  {
-    "name": "Nate",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "The Legend of Ochi",
-    "imdb_id": "rl2802876417",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BN2U1NTk2MmYtYWNlYi00NzdjLTg5YTEtNTY5MjYwYzM4OTk0XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 12
-  },
-  {
-    "name": "Nate",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "Until Dawn",
-    "imdb_id": "rl923893761",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BZWU4NDY0ODktOGI3OC00NWE1LWIwYmQtNmJiZWU3NmZlMDhkXkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
-    "points": 26
-  },
-  {
-    "name": "Nate",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "Black Bag",
-    "imdb_id": "rl1400602625",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BMzU5MzkzZjQtZDlmMi00MDAxLTk5MDktNWM4YTdkNDhjMWQ1XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 7
-  },
-  {
-    "name": "Whitney",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "One of Them Days",
-    "imdb_id": "rl4110974977",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BOWI3MTYyZDQtNDJmZi00MzIwLTk4YTgtNWFkZDFlOWZhMzcyXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 10
-  },
-  {
-    "name": "Whitney",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "Companion",
-    "imdb_id": "rl3781722113",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BNDFjNmUxM2ItZWZiNC00ZjNhLWFiNTAtNWE2NzUyOWIyNmEyXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 22
-  },
-  {
-    "name": "Whitney",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "Heart Eyes",
-    "imdb_id": "rl2533982209",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BZWU0Zjk0YzMtNmZiMi00YTcxLWIwN2UtY2ZjZmIwMTUyMDkyXkEyXkFqcGc@._V1_SY139_CR0,0,92,139_.jpg",
-    "points": 6
-  },
-  {
-    "name": "Whitney",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "My Dead Friend Zoe",
-    "imdb_id": "rl2289270785",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BMGMzOTI1NGEtOTU4OC00ZTNiLWFhMjQtNmU5ZWZkYjQ3ODkxXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 3
-  },
-  {
-    "name": "Whitney",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "Novocaine",
-    "imdb_id": "rl3662970881",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BMWU4MmUxODktMWUwYy00YzM0LTg1ZmItNzVlMTZhOWVlNWFjXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 3
-  },
-  {
-    "name": "Whitney",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "Ash",
-    "imdb_id": "rl3659628545",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BNTI5NDY2ODMtMjc5Mi00N2UzLTljOWYtMzljMjEzZmQyNzc2XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 5
-  },
-  {
-    "name": "Whitney",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "Snow White",
-    "imdb_id": "rl3856302849",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BY2RlZDc3ZjYtYWJlNC00MzFiLTlmMGItYmUzYjY3Mjc1Yzc2XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 25
-  },
-  {
-    "name": "Whitney",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "A Working Man",
-    "imdb_id": "rl3457581057",
-    "hyperlink": "https://m.media-amazon.com/images/G/01/boxofficemojo/nopicture/180x268/film-173410679._CB467826904_SY139_SX92_.png",
-    "points": 7
-  },
-  {
-    "name": "Whitney",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "The Woman in the Yard",
-    "imdb_id": "rl4048781313",
-    "hyperlink": "https://m.media-amazon.com/images/G/01/boxofficemojo/nopicture/180x268/film-173410679._CB467826904_SY139_SX92_.png",
-    "points": 7
-  },
-  {
-    "name": "Whitney",
-    "pull_through": "2025-05-01",
-    "competition": "wiseFamily1",
-    "title": "The Amateur",
-    "imdb_id": "rl2241364737",
-    "hyperlink": "https://m.media-amazon.com/images/M/MV5BOWU4NjNjNzYtYWFhYy00MTA2LWIwNzctNmQwY2VlMzQ3MTZmXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
-    "points": 10
-  }
+    {
+        "name": "Kam",
+        "pull_through": "2025-04-01",
+        "competition": "kamHolly1",
+        "movies": [
+            {"title": "Bird", "imdb_id": "rl2987819009", "points": 1},
+            {"title": "Red One", "imdb_id": "rl2841083905", "points": 7},
+            {"title": "Bonhoeffer: Pastor. Spy. Assassin.", "imdb_id": "rl2775351297", "points": 7},
+            {"title": "Gladiator II", "imdb_id": "rl1778156289", "points": 10},
+            {"title": "Werewolves", "imdb_id": "rl1433501697", "points": 1},
+            {"title": "Get Away", "imdb_id": "rl1409515521", "points": 5},
+            {"title": "Solo Leveling: ReAwakening", "imdb_id": "rl1091076097", "points": 3},
+            {"title": "Kraven the Hunter", "imdb_id": "rl259556097", "points": 18},
+            {"title": "The Lord of the Rings: The War of the Rohirrim", "imdb_id": "rl3123675905", "points": 8},
+            {"title": "Babygirl", "imdb_id": "rl2926346241", "points": 1},
+            {"title": "Sonic the Hedgehog 3", "imdb_id": "rl886211329", "points": 39}
+        ]
+    },
+    {
+        "name": "Holly",
+        "pull_through": "2025-04-01",
+        "competition": "kamHolly1",
+        "movies": [
+            {"title": "Here", "imdb_id": "rl2858385409", "points": 8},
+            {"title": "The World According to Allee Willis", "imdb_id": "rl2115207169", "points": 5},
+            {"title": "Wicked", "imdb_id": "rl1199474177", "points": 20},
+            {"title": "Moana 2", "imdb_id": "rl862748673", "points": 23},
+            {"title": "Y2K", "imdb_id": "rl4218716161", "points": 2},
+            {"title": "September 5", "imdb_id": "rl2383183873", "points": 1},
+            {"title": "Mufasa: The Lion King", "imdb_id": "rl1511097089", "points": 1},
+            {"title": "Homestead", "imdb_id": "rl2557247489", "points": 1},
+            {"title": "The Fire Inside", "imdb_id": "rl2778432257", "points": 1},
+            {"title": "Nosferatu", "imdb_id": "rl2537783297", "points": 1}
+        ]
+    },
+    {
+        "name": "Hans",
+        "pull_through": "2025-04-01",
+        "competition": "hansFamily1",
+        "movies": [
+            {"title": "Here", "imdb_id": "rl2858385409", "points": 11},
+            {"title": "Bird", "imdb_id": "rl2987819009", "points": 1},
+            {"title": "The World According to Allee Willis", "imdb_id": "rl2115207169", "points": 1},
+            {"title": "Werewolves", "imdb_id": "rl1433501697", "points": 6},
+            {"title": "Get Away", "imdb_id": "rl1409515521", "points": 1},
+            {"title": "The Fire Inside", "imdb_id": "rl2778432257", "points": 25},
+            {"title": "Nosferatu", "imdb_id": "rl2537783297", "points": 25}
+        ]
+    },
+    {
+        "name": "Jordyn",
+        "pull_through": "2025-04-01",
+        "competition": "hansFamily1",
+        "movies": [
+            {"title": "Red One", "imdb_id": "rl2841083905", "points": 11},
+            {"title": "Wicked", "imdb_id": "rl1199474177", "points": 26},
+            {"title": "Gladiator II", "imdb_id": "rl1778156289", "points": 13},
+            {"title": "The Lord of the Rings: The War of the Rohirrim", "imdb_id": "rl3123675905", "points": 26}
+        ]
+    },
+    {
+        "name": "Lucy",
+        "pull_through": "2025-04-01",
+        "competition": "hansFamily1",
+        "movies": [
+            {"title": "Moana 2", "imdb_id": "rl862748673", "points": 25},
+            {"title": "Y2K", "imdb_id": "rl4218716161", "points": 10},
+            {"title": "Solo Leveling: ReAwakening", "imdb_id": "rl1091076097", "points": 6},
+            {"title": "Mufasa: The Lion King", "imdb_id": "rl1511097089", "points": 59}
+        ]
+    },
+    {
+        "name": "Fletcher",
+        "pull_through": "2025-04-01",
+        "competition": "hansFamily1",
+        "movies": [
+            {"title": "Bonhoeffer: Pastor. Spy. Assassin.", "imdb_id": "rl2775351297", "points": 12},
+            {"title": "September 5", "imdb_id": "rl2383183873", "points": 14},
+            {"title": "Kraven the Hunter", "imdb_id": "rl259556097", "points": 8},
+            {"title": "Babygirl", "imdb_id": "rl2926346241", "points": 10},
+            {"title": "Homestead", "imdb_id": "rl2557247489", "points": 10},
+            {"title": "Sonic the Hedgehog 3", "imdb_id": "rl886211329", "points": 46}
+        ]
+    },
+    {
+        "name": "Holly",
+        "pull_through": "2025-05-01",
+        "competition": "wiseFamily1",
+        "movies": [
+            {"title": "Den of Thieves 2: Pantera", "imdb_id": "rl1416265729", "points": "7"},
+            {"title": "Love Hurts", "imdb_id": "rl1868267521", "points": "12"},
+            {"title": "Mickey 17", "imdb_id": "rl2465301249", "points": "20"},
+            {"title": "A Minecraft Movie", "imdb_id": "rl746096129", "points": "51"}
+        ]
+    },
+    {
+        "name": "Becky",
+        "pull_through": "2025-05-01",
+        "competition": "wiseFamily1",
+        "movies": [
+            {"title": "Flight Risk", "imdb_id": "rl1365934081", "points": "15"},
+            {"title": "Captain America: Brave New World", "imdb_id": "rl2597421825", "points": "43"},
+            {"title": "The Unbreakable Boy", "imdb_id": "rl520323841", "points": "23"},
+            {"title": "Sinners", "imdb_id": "rl2153611265", "points": "19"} 
+        ]
+    },
+    {
+        "name": "Kam",
+        "pull_through": "2025-05-01",
+        "competition": "wiseFamily1",
+        "movies": [
+            {"title": "Drop", "imdb_id": "rl2439741441", "points": "8"},
+            {"title": "Last Breath", "imdb_id": "rl4101275649", "points": "6"},
+            {"title": "Night of the Zoopocalypse", "imdb_id": "rl4195123201", "points": "6"},
+            {"title": "Dog Man", "imdb_id": "rl3942942209", "points": "38"},
+            {"title": "The Accountant 2", "imdb_id": "Not Created", "points": "27"}
+        ]
+    },
+    {
+        "name": "Nate",
+        "pull_through": "2025-05-01",
+        "competition": "wiseFamily1",
+        "movies": [
+            {"title": "Wolf Man", "imdb_id": "rl3494150145", "points": "15"},
+            {"title": "Paddington in Peru", "imdb_id": "rl431260417", "points": "30"},
+            {"title": "Cleaner", "imdb_id": "rl505184257", "points": "10"},
+            {"title": "The Legend of Ochi", "imdb_id": "rl2802876417", "points": "12"},
+            {"title": "Until Dawn", "imdb_id": "rl923893761", "points": "26"},
+            {"title": "Black Bag", "imdb_id": "rl1400602625", "points": "7"}
+        ]
+    },
+    {
+        "name": "Whitney",
+        "pull_through": "2025-05-01",
+        "competition": "wiseFamily1",
+        "movies": [
+            {"title": "One of Them Days", "imdb_id": "rl4110974977", "points": "10"},
+            {"title": "Companion", "imdb_id": "rl3781722113", "points": "22"},
+            {"title": "Heart Eyes", "imdb_id": "rl2533982209", "points": "6"},
+            {"title": "My Dead Friend Zoe", "imdb_id": "rl2289270785", "points": "3"},
+            {"title": "Novocaine", "imdb_id": "rl3662970881", "points": "3"},
+            {"title": "Ash", "imdb_id": "rl3659628545", "points": "5"},
+            {"title": "Snow White", "imdb_id": "rl3856302849", "points": "25"},
+            {"title": "A Working Man", "imdb_id": "rl3457581057", "points": "7"},
+            {"title": "The Woman in the Yard", "imdb_id": "rl4048781313", "points": "7"},
+            {"title": "The Amateur", "imdb_id": "rl2241364737", "points": "10"}
+        ]
+    }
 ]
