@@ -1,0 +1,402 @@
+[
+  {
+    "id": "rl2858385409",
+    "title": "Here",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYWQ5ZDQ5YWQtMThiMS00MGM4LTk2NjktYTllYzg2NTRiNTMxXkEyXkFqcGc@._V1_SY139_CR0,0,92,139_.jpg",
+    "description": "A generational story about families and the special place they inhabit, sharing in love, loss, laughter, and life.",
+    "release_date": "2024-11-01",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl2987819009",
+    "title": "Bird",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMGYzZDI4OTktZWJkZC00NjdiLTlkMjYtMzA1ZTVjMDU2M2FhXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Bailey lives with her brother Hunter and her father Bug, who raises them alone in a squat in northern Kent. Bug doesn't have much time to devote to them. Bailey looks for attention and adventure elsewhere.",
+    "release_date": "2024-11-08",
+    "rating": "R"
+  },
+  {
+    "id": "rl2841083905",
+    "title": "Red One",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BZmFkMjE4NjQtZTVmZS00MDZjLWE2ZmEtZTkzODljNjhlNWUxXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "After Santa Claus (code name: Red One) is kidnapped, the North Pole's Head of Security (Dwayne Johnson) must team up with the world's most infamous bounty hunter (Chris Evans) in a globe-trotting, action-packed mission to save Christmas.",
+    "release_date": "2024-11-10",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl2115207169",
+    "title": "The World According to Allee Willis",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYTc2ZTk4MjgtNjVmOC00ZmUxLWE5YjktNDQ1NWIxZDJhODU2XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Songwriter/artist Allee Willis began filming her life as a kid in 1950s Detroit and never stopped. She pursued creative expression at all costs while struggling to fit established gender and sexual norms - until she found a path to love.",
+    "release_date": "2024-11-15",
+    "rating": "NR"
+  },
+  {
+    "id": "rl1199474177",
+    "title": "Wicked",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BOWMwYjYzYmMtMWQ2Ni00NWUwLTg2MzAtYzkzMDBiZDIwOTMwXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+    "description": "Elphaba, a misunderstood young woman because of her green skin, and Glinda, a popular girl, become friends at Shiz University in the Land of Oz. After an encounter with the Wonderful Wizard of Oz, their friendship reaches a crossroads.",
+    "release_date": "2024-11-22",
+    "rating": "PG"
+  },
+  {
+    "id": "rl2775351297",
+    "title": "Bonhoeffer: Pastor. Spy. Assassin.",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMmU2MzcyNDUtYjFmMC00NzQwLTgzODUtNWQ2OTExN2ExOTdiXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "As the world teeters on the brink of annihilation, Dietrich Bonhoeffer joins a deadly plot to assassinate Hitler, risking his faith and fate to save millions of Jews from genocide.",
+    "release_date": "2024-11-22",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl1778156289",
+    "title": "Gladiator II",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMWYzZTM5ZGQtOGE5My00NmM2LWFlMDEtMGNjYjdmOWM1MzA1XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "After his home is conquered by the tyrannical emperors who now lead Rome, Lucius is forced to enter the Colosseum and must look to his past to find strength to return the glory of Rome to its people.",
+    "release_date": "2024-11-22",
+    "rating": "R"
+  },
+  {
+    "id": "rl862748673",
+    "title": "Moana 2",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BZDUxNThhYTUtYjgxNy00MGQ4LTgzOTEtZjg1YTU5NTcwNThlXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "After receiving an unexpected call from her wayfinding ancestors, Moana must journey to the far seas of Oceania and into dangerous, long-lost waters for an adventure unlike anything she's ever faced.",
+    "release_date": "2024-11-27",
+    "rating": "PG"
+  },
+  {
+    "id": "rl1433501697",
+    "title": "Werewolves",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BOTc3NDA5ODQtYjQzYS00NWE3LWE1YjYtNjAxNzlhOTE4NjAzXkEyXkFqcGc@._V1_SY139_CR0,0,92,139_.jpg",
+    "description": "Two scientists try to stop a mutation that turns people into werewolves after being touched by a super-moon the year before.",
+    "release_date": "2024-12-06",
+    "rating": "R"
+  },
+  {
+    "id": "rl4218716161",
+    "title": "Y2K",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYTQxNWJmYTEtZTMzMS00MDk1LTlkMTgtYmRhOTRmMjdkOGRiXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Two high school nobodies make the decision to crash the last major celebration before the new millennium on New Year's Eve 1999. The night becomes even crazier than they could have ever dreamed when the clock strikes midnight.",
+    "release_date": "2024-12-06",
+    "rating": "R"
+  },
+  {
+    "id": "rl1409515521",
+    "title": "Get Away",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNGM1NmM3ZDAtNDA4ZC00N2NhLWE0NTAtMTYwYTRjMzIwYmY5XkEyXkFqcGc@._V1_SY139_CR98,0,92,139_.jpg",
+    "description": "A family's vacation to a remote getaway takes an unexpected turn when they discover the island they're on is inhabited by a serial killer.",
+    "release_date": "2024-12-06",
+    "rating": "R"
+  },
+  {
+    "id": "rl1091076097",
+    "title": "Solo Leveling: ReAwakening",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYTIwYzk3YmQtZmMwNS00ZDAwLTk5Y2MtOTEwODFlZmExMzliXkEyXkFqcGc@._V1_SY139_CR0,0,92,139_.jpg",
+    "description": "Over a decade after 'gates' connecting worlds appeared, awakening 'hunters' with superpowers, weakest hunter Sung Jinwoo encounters a double dungeon and accepts a mysterious quest, becoming the only one able to level up, changing his fate.",
+    "release_date": "2024-12-06",
+    "rating": "R"
+  },
+  {
+    "id": "rl2383183873",
+    "title": "September 5",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BOWUxY2YyYzctYWY3Yi00ZGJjLTkzMDktZjYzMTIzZjNhNmM2XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "During the 1972 Munich Olympics, an American sports broadcasting crew finds itself thrust into covering the hostage crisis involving Israeli athletes.",
+    "release_date": "2024-12-13",
+    "rating": "R"
+  },
+  {
+    "id": "rl259556097",
+    "title": "Kraven the Hunter",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BZDU0YTI5ODAtN2NmMS00YTg3LTgyNDItN2RmOWEzOTkzZjcyXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Kraven's complex relationship with his ruthless father, Nikolai Kravinoff, starts him down a path of vengeance with brutal consequences, motivating him to become not only the greatest hunter in the world, but also one of its most feared.",
+    "release_date": "2024-12-13",
+    "rating": "R"
+  },
+  {
+    "id": "rl3123675905",
+    "title": "The Lord of the Rings: The War of the Rohirrim",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMmU1YzZkMjAtYjNjOC00ZDFhLWE3Y2QtZTM2ZTdkZWM1OGM3XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A sudden attack by Wulf, a clever and ruthless Dunlending lord seeking vengeance for the death of his father, forces Helm Hammerhand, the King of Rohan, and his people to make a daring last stand in the ancient stronghold of the Hornburg.",
+    "release_date": "2024-12-13",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl2926346241",
+    "title": "Babygirl",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMmUwODYwODAtYWZkZS00YmUwLWFmMWEtOGNjMjE2NDk3OWIwXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+    "description": "A high-powered CEO puts her career and family on the line when she begins a torrid affair with her much-younger intern.",
+    "release_date": "2024-12-20",
+    "rating": "R"
+  },
+  {
+    "id": "rl2557247489",
+    "title": "Homestead",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYjA2Y2IzMGQtMzY3Zi00YzI2LWIyOGUtMzkwYzVkYmU5ZWY5XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "During a rapid collapse of society, a rich man's mountain compound struggles between the military compulsions of its veteran operators and the rural values of its member families.",
+    "release_date": "2024-12-20",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl886211329",
+    "title": "Sonic the Hedgehog 3",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BZTkyMGFlNzMtMTljOC00ZDMyLWE5NWItMzVjMDZmNzA2Yjc2XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Sonic, Knuckles, and Tails reunite against a powerful new adversary, Shadow, a mysterious villain with powers unlike anything they have faced before. With their abilities outmatched, Team Sonic must seek out an unlikely alliance.",
+    "release_date": "2024-12-20",
+    "rating": "PG"
+  },
+  {
+    "id": "rl2778432257",
+    "title": "The Fire Inside",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYjI4YmU1MTAtOGVkZi00NWI5LTljMGItZjhlYWU2YzEzNzg1XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "The story of Claressa 'T-Rex' Shields, a boxer from Flint, Michigan who trained to become the first woman in her country's history to win an Olympic gold medal in the sport.",
+    "release_date": "2024-12-25",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl2537783297",
+    "title": "Nosferatu",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYTQ3NGFjNTktNjdmYi00NDc1LTllZTYtOGMyZGE4OWQzMjRiXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A gothic tale of obsession between a haunted young woman and the terrifying vampire infatuated with her, causing untold horror in its wake.",
+    "release_date": "2024-12-25",
+    "rating": "R"
+  },
+  {
+    "id": "rl1416265729",
+    "title": "Den of Thieves 2: Pantera",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BZGIyYTI5N2QtZmQ5ZC00NDE4LThhYWMtNGE5NjI1OGU2M2NjXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Big Nick is back on the hunt in Europe and closing in on Donnie, who is embroiled in the treacherous world of diamond thieves and the infamous Panther mafia, as they plot a massive heist of the world's largest diamond exchange.",
+    "release_date": "2025-01-10",
+    "rating": "R"
+  },
+  {
+    "id": "rl4110974977",
+    "title": "One of Them Days",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BOWI3MTYyZDQtNDJmZi00MzIwLTk4YTgtNWFkZDFlOWZhMzcyXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "When best friends and roommates Dreux and Alyssa discover Alyssa's boyfriend has blown their rent money, the duo finds themselves going to extremes in a race against the clock to avoid eviction and keep their friendship intact.",
+    "release_date": "2025-01-17",
+    "rating": "R"
+  },
+  {
+    "id": "rl3494150145",
+    "title": "Wolf Man",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYmFkYTNhMWUtMjEyNy00MWE0LWJlYTQtMWFmNDUwNmFjMzAxXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+    "description": "A family at a remote farmhouse is attacked by an unseen animal, but as the night stretches on, the father begins to transform into something unrecognizable.",
+    "release_date": "2025-01-17",
+    "rating": "R"
+  },
+  {
+    "id": "rl1365934081",
+    "title": "Flight Risk",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BY2Q3YjMyZjItNjdjNS00NzFjLTljMWYtMmZjMGQ5YTVjYWY5XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A pilot transports an Air Marshal accompanying a fugitive to trial. As they cross the Alaskan wilderness, tensions soar and trust is tested, as not everyone on board is who they seem.",
+    "release_date": "2025-01-24",
+    "rating": "R"
+  },
+  {
+    "id": "rl3781722113",
+    "title": "Companion",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNDFjNmUxM2ItZWZiNC00ZjNhLWFiNTAtNWE2NzUyOWIyNmEyXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A billionaire's death sets off a chain of events for Iris and her friends during a weekend trip to his lakeside estate.",
+    "release_date": "2025-01-31",
+    "rating": "R"
+  },
+  {
+    "id": "rl3942942209",
+    "title": "Dog Man",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BZTBiOTViYzktMTM5Mi00ZTdmLWE0ZjQtNDk3NTc3NmM5Y2I3XkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+    "description": "Dog Man, half dog and half man, he is sworn to protect and serve as he doggedly pursues the feline supervillain Petey the Cat.",
+    "release_date": "2025-01-31",
+    "rating": "PG"
+  },
+  {
+    "id": "rl2533982209",
+    "title": "Heart Eyes",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BZWU0Zjk0YzMtNmZiMi00YTcxLWIwN2UtY2ZjZmIwMTUyMDkyXkEyXkFqcGc@._V1_SY139_CR0,0,92,139_.jpg",
+    "description": "For the past several years, the \"Heart Eyes Killer\" has wreaked havoc on Valentine's Day by stalking and murdering romantic couples. This Valentine's Day, no couple is safe.",
+    "release_date": "2025-02-07",
+    "rating": "R"
+  },
+  {
+    "id": "rl1868267521",
+    "title": "Love Hurts",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYjI2MDRlYzgtZGE0Mi00ODE1LTk2OTAtNThmZGI0NjVlNWZmXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+    "description": "A realtor is pulled back into the life he left behind after his former partner-in-crime resurfaces with an ominous message. With his crime-lord brother also on his trail, he must confront his past and the history he never fully buried.",
+    "release_date": "2025-02-07",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl2597421825",
+    "title": "Captain America: Brave New World",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BZDBlZTAzYzYtYjczZS00MmQyLTlkYjMtNzY2MzU3YjRjYTJiXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Sam Wilson, the new Captain America, finds himself in the middle of an international incident and must discover the motive behind a nefarious global plan.",
+    "release_date": "2025-02-14",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl431260417",
+    "title": "Paddington in Peru",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNzMyNWZlYmYtZDgxMC00ZTU3LWFiYzctNGE0ZDc0OTlhZTRlXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Paddington returns to Peru to visit his beloved Aunt Lucy, who now resides at the Home for Retired Bears. With the Brown family in tow, a thrilling adventure ensues when a mystery plunges them into an unexpected journey.",
+    "release_date": "2025-02-14",
+    "rating": "PG"
+  },
+  {
+    "id": "rl505184257",
+    "title": "Cleaner",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMzNjZDZmMmMtYTM3NC00NTUzLWI2ZTItODlkMDAwOWNiNzAzXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Criminal activists hijack a gala, taking 300 hostages. One extremist plans mass murder as a message to the world. An Ex-soldier turned window cleaner now works to rescue the hostages.",
+    "release_date": "2025-02-21",
+    "rating": "R"
+  },
+  {
+    "id": "rl520323841",
+    "title": "The Unbreakable Boy",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYjYzN2MwNTItNmZkZS00YmEyLWIwYmQtNzAyYzQxZWVhMTBlXkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
+    "description": "A young boy with both a rare brittle-bone disease and autism. But what makes him truly unique is his joyous, funny, life-affirming world view that transforms and unites everyone around him.",
+    "release_date": "2025-02-21",
+    "rating": "PG"
+  },
+  {
+    "id": "rl4101275649",
+    "title": "Last Breath",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNzVlNTAyYjktZjQ1Yy00Yzg1LTlkZTUtMDYzMDQ5NjRmOTE3XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A true story that follows seasoned deep-sea divers as they battle the raging elements to rescue their crew mate trapped hundreds of feet below the ocean's surface.",
+    "release_date": "2025-02-28",
+    "rating": "R"
+  },
+  {
+    "id": "rl2289270785",
+    "title": "My Dead Friend Zoe",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMGMzOTI1NGEtOTU4OC00ZTNiLWFhMjQtNmU5ZWZkYjQ3ODkxXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Engaged in a mysterious relationship with her dead best friend from the Army, a female Afghanistan veteran comes head to head with her Vietnam vet grandfather at the family's ancestral lake house.",
+    "release_date": "2025-02-28",
+    "rating": "R"
+  },
+  {
+    "id": "rl2802876417",
+    "title": "The Legend of Ochi",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BN2U1NTk2MmYtYWNlYi00NzdjLTg5YTEtNTY5MjYwYzM4OTk0XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "In a remote village, a young girl is raised to never go outside after dark and fear the reclusive forest creatures known as the ochi. When a baby ochi is left behind by its pack, she embarks on an adventure to reunite it with its family.",
+    "release_date": "2025-02-28",
+    "rating": "PG"
+  },
+  {
+    "id": "rl2465301249",
+    "title": "Mickey 17",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BOTZmY2E4YjUtNzU1OC00NGQ2LWFlMmItNDk4NDA2OTg3OGIyXkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
+    "description": "Mickey 17, known as an \"expendable,\" goes on a dangerous journey to colonize an ice planet.",
+    "release_date": "2025-03-07",
+    "rating": "R"
+  },
+  {
+    "id": "rl4195123201",
+    "title": "Night of the Zoopocalypse",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BY2Y0NDY1ZDItMGJjYS00MGQ3LThhNzYtZGRkN2Y0ZWE3ZjYxXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A wolf and mountain lion team up when a meteor unleashes a virus turning zoo animals into zombies. They join forces with other survivors to rescue the zoo and stop the deranged mutant leader from spreading the virus.",
+    "release_date": "2025-03-07",
+    "rating": "PG"
+  },
+  {
+    "id": "rl1400602625",
+    "title": "Black Bag",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMzU5MzkzZjQtZDlmMi00MDAxLTk5MDktNWM4YTdkNDhjMWQ1XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "When intelligence agent Kathryn Woodhouse is suspected of betraying the nation, her husband - also a legendary agent - faces the ultimate test of whether to be loyal to his marriage, or his country.",
+    "release_date": "2025-03-14",
+    "rating": "R"
+  },
+  {
+    "id": "rl3662970881",
+    "title": "Novocaine",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMWU4MmUxODktMWUwYy00YzM0LTg1ZmItNzVlMTZhOWVlNWFjXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "When the girl of his dreams is kidnapped, a man incapable of feeling physical pain turns his rare condition into an unexpected advantage in the fight to rescue her.",
+    "release_date": "2025-03-14",
+    "rating": "R"
+  },
+  {
+    "id": "rl1461944321",
+    "title": "Opus",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BZDJhOWVkNmUtNTBmZS00M2FjLWI2M2YtM2E2Yzg0MDQwNzVhXkEyXkFqcGc@._V1_SY139_CR77,0,92,139_.jpg",
+    "description": "An iconic pop star returns after decades missing.",
+    "release_date": "2025-03-14",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl3659628545",
+    "title": "Ash",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNTI5NDY2ODMtMjc5Mi00N2UzLTljOWYtMzljMjEzZmQyNzc2XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A woman wakes up on a distant planet and finds the crew of her space station viciously killed. Her investigation into what happened sets in motion a terrifying chain of events.",
+    "release_date": "2025-03-21",
+    "rating": "R"
+  },
+  {
+    "id": "rl3856302849",
+    "title": "Snow White",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BY2RlZDc3ZjYtYWJlNC00MzFiLTlmMGItYmUzYjY3Mjc1Yzc2XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Live-action adaptation of the 1937 Disney animated film 'Snow White and the Seven Dwarfs'.",
+    "release_date": "2025-03-21",
+    "rating": "PG"
+  },
+  {
+    "id": "rl3457581057",
+    "title": "A Working Man",
+    "image_url": "https://m.media-amazon.com/images/G/01/boxofficemojo/nopicture/180x268/film-173410679._CB467826904_SY139_SX92_.png",
+    "description": "Levon Cade left his profession behind to work construction and be a good dad to his daughter. But when a local girl vanishes, he's asked to return to the skills that made him a mythic figure in the shadowy world of counter-terrorism.",
+    "release_date": "2025-03-28",
+    "rating": "R"
+  },
+  {
+    "id": "rl4048781313",
+    "title": "The Woman in the Yard",
+    "image_url": "https://m.media-amazon.com/images/G/01/boxofficemojo/nopicture/180x268/film-173410679._CB467826904_SY139_SX92_.png",
+    "description": "N/A",
+    "release_date": "2025-03-28",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl746096129",
+    "title": "A Minecraft Movie",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNzE2OThhN2EtNWJmNy00MDdhLTk3NmEtYTE1MWRjMGIwNjAzXkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
+    "description": "Four misfits are suddenly pulled through a mysterious portal into a bizarre, cubic wonderland that thrives on imagination. To get back home, they'll have to master this world while embarking on a quest with an unexpected, expert crafter.",
+    "release_date": "2025-04-04",
+    "rating": "PG"
+  },
+  {
+    "id": "rl2439741441",
+    "title": "Drop",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYzM0ZjlmMjgtMDU2OC00ZDMwLTk5Y2UtNjVkMzViYjFjNWI4XkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+    "description": "A widowed mother's first date in years takes a terrifying turn when she's bombarded with anonymous threatening messages on her phone during their upscale dinner, leaving her questioning if her charming date is behind the harassment.",
+    "release_date": "2025-04-11",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl2241364737",
+    "title": "The Amateur",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BOWU4NjNjNzYtYWFhYy00MTA2LWIwNzctNmQwY2VlMzQ3MTZmXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A CIA cryptographer manages to blackmail his agency into training him to let him go after a group of terrorist who killed his wife.",
+    "release_date": "2025-04-11",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl2153611265",
+    "title": "Sinners",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYThkYmJiZTQtZGUzMy00OTllLTg1NmYtZmMyZjQ3ODdjYjc0XkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
+    "description": "Trying to leave their troubled lives behind, twin brothers return to their hometown to start again, only to discover that an even greater evil is waiting to welcome them back.",
+    "release_date": "2025-04-18",
+    "rating": "R"
+  },
+  {
+    "id": "Not Created",
+    "title": "The Accountant 2",
+    "image_url": "https://www.imdb.com/title/tt7068946/mediaviewer/rm1134009858/?ref_=tt_ov_i",
+    "description": "Sequel to the 2016 film, The Accountant.",
+    "release_date": "2025-04-25",
+    "rating": "R"
+  },
+  {
+    "id": "rl923893761",
+    "title": "Until Dawn",
+    "image_url": "https://m.media-amazon.com/images/G/01/boxofficemojo/nopicture/180x268/film-173410679._CB467826904_SY139_SX92_.png",
+    "description": "A group spends the weekend in a ski lodge on the anniversary of their friends' disappearance, unaware that they are not alone.",
+    "release_date": "2025-04-25",
+    "rating": "R"
+  }
+]
