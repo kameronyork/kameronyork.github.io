@@ -1,6 +1,7 @@
 import os
 import json
 import requests
+import subprocess
 from bs4 import BeautifulSoup
 import pandas as pd
 from datetime import datetime, timedelta
@@ -146,6 +147,8 @@ for imdb_id, title in unique_movies:
     else:
         print(f"No data found for IMDb ID {imdb_id} ({title})")
 
+import subprocess
+
 # Combine and save
 if all_data:
     final_df = pd.concat(all_data, ignore_index=True)
@@ -153,5 +156,18 @@ if all_data:
         final_df = final_df[final_df['Daily'].notna() & final_df['Date'].notna()]
     final_df.to_json(output_file, orient='records', indent=4)
     print(f"Data successfully saved to {output_file}")
+
+    # Git operations: configure, pull, commit, and push
+    try:
+        subprocess.run(['git', 'config', '--local', 'user.email', 'github-actions[bot]@users.noreply.github.com'], check=True)
+        subprocess.run(['git', 'config', '--local', 'user.name', 'github-actions[bot]'], check=True)
+        subprocess.run(['git', 'add', output_file], check=True)
+        subprocess.run(['git', 'commit', '-m', 'Update box office data [skip ci]'], check=True)
+        subprocess.run(['git', 'pull', '--rebase'], check=True)
+        subprocess.run(['git', 'push'], check=True)
+        print("Changes committed and pushed successfully.")
+    except subprocess.CalledProcessError as e:
+        print(f"Git operation failed: {e}")
 else:
     print("No valid data found. Output file will not be created.")
+
