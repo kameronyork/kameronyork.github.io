@@ -152,14 +152,14 @@
     "pull_through": "2025-09-01",
     "competition": "wiseFamily2",
     "movies": [
-        {"Title": "Juliet & Romeo", "imdb_id": "rl2137751553", "points": "2"},
-        {"Title": "Dan Da Dan: Evil Eye", "imdb_id": "rl2168094721", "points": "7"},
-        {"Title": "Elio", "imdb_id": "rl1561428737", "points": "30"},
-        {"Title": "Smurfs", "imdb_id": "rl3459023617", "points": "16"},
-        {"Title": "The Naked Gun", "imdb_id": "rl3528753153", "points": "10"},
-        {"Title": "Weapons", "imdb_id": "rl3882385409", "points": "18"},
-        {"Title": "Caught Stealing", "imdb_id": "rl1210810369", "points": "7"},
-        {"Title": "The Toxic Avenger", "imdb_id": "rl3695017985", "points": "10"}
+        {"title": "Juliet & Romeo", "imdb_id": "rl2137751553", "points": "2"},
+        {"title": "Dan Da Dan: Evil Eye", "imdb_id": "rl2168094721", "points": "7"},
+        {"title": "Elio", "imdb_id": "rl1561428737", "points": "30"},
+        {"title": "Smurfs", "imdb_id": "rl3459023617", "points": "16"},
+        {"title": "The Naked Gun", "imdb_id": "rl3528753153", "points": "10"},
+        {"title": "Weapons", "imdb_id": "rl3882385409", "points": "18"},
+        {"title": "Caught Stealing", "imdb_id": "rl1210810369", "points": "7"},
+        {"title": "The Toxic Avenger", "imdb_id": "rl3695017985", "points": "10"}
     ]
   },
   {
@@ -167,11 +167,11 @@
     "pull_through": "2025-09-01",
     "competition": "wiseFamily2",
     "movies": [
-        {"Title": "Final Destination: Bloodlines", "imdb_id": "rl1478393857", "points": "7"},
-        {"Title": "How to Train Your Dragon", "imdb_id": "rl1921090305", "points": "23"},
-        {"Title": "F1", "imdb_id": "rl2507374593", "points": "18"},
-        {"Title": "M3GAN 2.0", "imdb_id": "rl1392018177", "points": "15"},
-        {"Title": "Freakier Friday", "imdb_id": "rl443908097", "points": "36"}      
+        {"title": "Final Destination: Bloodlines", "imdb_id": "rl1478393857", "points": "7"},
+        {"title": "How to Train Your Dragon", "imdb_id": "rl1921090305", "points": "23"},
+        {"title": "F1", "imdb_id": "rl2507374593", "points": "18"},
+        {"title": "M3GAN 2.0", "imdb_id": "rl1392018177", "points": "15"},
+        {"title": "Freakier Friday", "imdb_id": "rl443908097", "points": "36"}      
     ]
   },
   {
@@ -179,11 +179,11 @@
     "pull_through": "2025-09-01",
     "competition": "wiseFamily2",
     "movies": [
-        {"Title": "Fight or Flight", "imdb_id": "rl1680572417", "points": "4"},
-        {"Title": "Hurry Up Tomorrow", "imdb_id": "rl1327726593", "points": "2"},
-        {"Title": "Mission: Impossible - The Final Reckoning", "imdb_id": "rl1913226753", "points": "16"},
-        {"Title": "Lilo & Stitch", "imdb_id": "rl3104735233", "points": "25"},
-        {"Title": "The Fantastic Four: First Steps", "imdb_id": "rl2429649665", "points": "45"}
+        {"title": "Fight or Flight", "imdb_id": "rl1680572417", "points": "4"},
+        {"title": "Hurry Up Tomorrow", "imdb_id": "rl1327726593", "points": "2"},
+        {"title": "Mission: Impossible - The Final Reckoning", "imdb_id": "rl1913226753", "points": "16"},
+        {"title": "Lilo & Stitch", "imdb_id": "rl3104735233", "points": "25"},
+        {"title": "The Fantastic Four: First Steps", "imdb_id": "rl2429649665", "points": "45"}
     ]
   },
   {
@@ -191,11 +191,11 @@
     "pull_through": "2025-09-01",
     "competition": "wiseFamily2",
     "movies": [
-        {"Title": "The Ruse", "imdb_id": "rl825196545", "points": "10"},
-        {"Title": "Ballerina", "imdb_id": "rl965378817", "points": "7"},
-        {"Title": "The Ritual", "imdb_id": "rl3811475457", "points": "18"},
-        {"Title": "28 Years Later", "imdb_id": "rl375947265", "points": "18"},
-        {"Title": "Jurassic World: Rebirth", "imdb_id": "rl3058794497", "points": "47"}      
+        {"title": "The Ruse", "imdb_id": "rl825196545", "points": "10"},
+        {"title": "Ballerina", "imdb_id": "rl965378817", "points": "7"},
+        {"title": "The Ritual", "imdb_id": "rl3811475457", "points": "18"},
+        {"title": "28 Years Later", "imdb_id": "rl375947265", "points": "18"},
+        {"title": "Jurassic World: Rebirth", "imdb_id": "rl3058794497", "points": "47"}      
     ]
   },
   {
@@ -203,11 +203,11 @@
     "pull_through": "2025-09-01",
     "competition": "wiseFamily2",
     "movies": [
-        {"Title": "Thunderbolts*", "imdb_id": "rl2647753473", "points": "15"},
-        {"Title": "Karate Kid: Legends", "imdb_id": "rl3470426881", "points": "28"},
-        {"Title": "The Phoenician Scheme", "imdb_id": "rl2620358657", "points": "6"},
-        {"Title": "I Know What You Did Last Summer", "imdb_id": "rl2372632577", "points": "13"},
-        {"Title": "The Bad Guys 2", "imdb_id": "rl1472103169", "points": "38"}      
+        {"title": "Thunderbolts*", "imdb_id": "rl2647753473", "points": "15"},
+        {"title": "Karate Kid: Legends", "imdb_id": "rl3470426881", "points": "28"},
+        {"title": "The Phoenician Scheme", "imdb_id": "rl2620358657", "points": "6"},
+        {"title": "I Know What You Did Last Summer", "imdb_id": "rl2372632577", "points": "13"},
+        {"title": "The Bad Guys 2", "imdb_id": "rl1472103169", "points": "38"}      
     ]
   },
   {
@@ -215,16 +215,16 @@
     "pull_through": "2025-09-01",
     "competition": "wiseFamily2",
     "movies": [
-        {"Title": "Rosario", "imdb_id": "rl2671411201", "points": "1"},
-        {"Title": "Shadow Force", "imdb_id": "rl1160806401", "points": "2"},
-        {"Title": "Clown in a Cornfield", "imdb_id": "rl605847553", "points": "3"},
-        {"Title": "Bring Her Back", "imdb_id": "rl3492904961", "points": "1"},
-        {"Title": "Dangerous Animals", "imdb_id": "rl2335277057", "points": "4"},
-        {"Title": "Materialists", "imdb_id": "rl3442638849", "points": "6"},
-        {"Title": "Superman", "imdb_id": "rl1543340801", "points": "41"},
-        {"Title": "Eddington", "imdb_id": "rl1111392257", "points": "7"},
-        {"Title": "Clika", "imdb_id": "rl3744628737", "points": "11"},
-        {"Title": "Nobody 2", "imdb_id": "rl511016961", "points": "18"}      
+        {"title": "Rosario", "imdb_id": "rl2671411201", "points": "1"},
+        {"title": "Shadow Force", "imdb_id": "rl1160806401", "points": "2"},
+        {"title": "Clown in a Cornfield", "imdb_id": "rl605847553", "points": "3"},
+        {"title": "Bring Her Back", "imdb_id": "rl3492904961", "points": "1"},
+        {"title": "Dangerous Animals", "imdb_id": "rl2335277057", "points": "4"},
+        {"title": "Materialists", "imdb_id": "rl3442638849", "points": "6"},
+        {"title": "Superman", "imdb_id": "rl1543340801", "points": "41"},
+        {"title": "Eddington", "imdb_id": "rl1111392257", "points": "7"},
+        {"title": "Clika", "imdb_id": "rl3744628737", "points": "11"},
+        {"title": "Nobody 2", "imdb_id": "rl511016961", "points": "18"}      
     ]
   }
 ]
