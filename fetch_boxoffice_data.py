@@ -1,6 +1,7 @@
 import os
 import json
 import requests
+import subprocess
 from bs4 import BeautifulSoup
 import pandas as pd
 from datetime import datetime, timedelta
