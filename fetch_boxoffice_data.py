@@ -6,72 +6,85 @@ from bs4 import BeautifulSoup
 import pandas as pd
 from datetime import datetime, timedelta
 
-# Load the input JSON file
 input_file = 'datasets/movies.json'
 output_file = 'datasets/box-office-data.json'
 
 with open(input_file, 'r') as f:
     people_movies = json.load(f)
 
-# Initialize list to store all data
 all_data = []
 
-def fetch_daily_data(imdb_id, title):
-    url = f"https://www.boxofficemojo.com/release/{imdb_id}/?ref_=bo_tt_gr_1"
-    response = requests.get(url)
-    if response.status_code != 200:
-        return None
+def fetch_data(imdb_id, title):
+    base_url = f"https://www.boxofficemojo.com/release/{imdb_id}/"
+    response = requests.get(base_url, allow_redirects=True)
+    final_url = response.url
 
     soup = BeautifulSoup(response.text, 'html.parser')
+
+    if '/weekend/' in final_url:
+        print(f"Daily data not available for {title}, using weekend data")
+        return fetch_weekend_data(imdb_id, title)
+    else:
+        print(f"Using daily data for {title}")
+        return fetch_daily_data(soup, imdb_id, title)
+
+def fetch_daily_data(soup, imdb_id, title):
     table = soup.find('table')
     if not table:
-        return None
+        print(f"No daily table found for {title}")
+        return []
 
-    headers = [th.get_text(strip=True) for th in table.find_all('th')]
-    seen = {}
-    for i, header in enumerate(headers):
-        count = seen.get(header, 0)
-        seen[header] = count + 1
-        if count > 0:
-            headers[i] = f"{header}_{count}"
+    rows = table.find_all('tr')
+    if len(rows) <= 1:
+        print(f"Daily table found but no data for {title}")
+        return []
 
-    rows = []
-    for tr in table.find_all('tr'):
-        cells = tr.find_all('td')
+    headers = [th.get_text(strip=True) for th in rows[0].find_all('th')]
+    data = []
+    for row in rows[1:]:
+        cells = row.find_all('td')
         if not cells:
             continue
-        row = []
-        for cell in cells:
-            link = cell.find('a', href=True)
+        values = [td.get_text(strip=True) for td in cells]
+        if len(values) == len(headers):
+            record = dict(zip(headers, values))
+            record['IMDB_ID'] = imdb_id
+            record['Title'] = title
+
+            # Extract date logic similar to old code
+            link = cells[0].find('a', href=True)
             if link and 'date' in link['href']:
-                date = link['href'].split('/')[2]
-                row.append(date)
-            else:
-                row.append(cell.get_text(strip=True))
-        rows.append(row)
+                date_str = link['href'].split('/')[2]  # Extract date from URL part
+                try:
+                    date = datetime.strptime(date_str, "%Y-%m-%d").date()
+                    record['Date'] = date.strftime("%Y-%m-%d")
+                except ValueError:
+                    print(f"Error parsing date for {title}")
+                    continue
 
-    if not rows:
-        return None
+            data.append(record)
 
-    df = pd.DataFrame(rows, columns=headers)
-    df['IMDB_ID'] = imdb_id
-    df['Title'] = title
-    return df
+    return data
 
 def fetch_weekend_data(imdb_id, title):
     url = f"https://www.boxofficemojo.com/release/{imdb_id}/weekend/"
     response = requests.get(url)
     if response.status_code != 200:
-        return None
+        print(f"Failed to fetch weekend data for {title} ({imdb_id})")
+        return []
 
     soup = BeautifulSoup(response.text, 'html.parser')
     table = soup.find('table')
     if not table:
-        return None
+        print(f"No weekend table found for {title}")
+        return []
 
     rows = table.find_all('tr')
-    headers = [th.get_text(strip=True) for th in rows[0].find_all('th')]
+    if len(rows) <= 1:
+        print(f"Weekend table found but no data for {title}")
+        return []
 
+    headers = [th.get_text(strip=True) for th in rows[0].find_all('th')]
     weekend_data = []
     for row in rows[1:]:
         cells = row.find_all('td')
@@ -106,7 +119,7 @@ def fetch_weekend_data(imdb_id, title):
                 day = start_date + timedelta(days=i)
                 cumulative_total += daily_gross
                 weekend_data.append({
-                    "Date": day.strftime("%Y-%m-%d"),
+                    "Date": day.strftime("%Y-%m-%d"),  # Updated to use formatted date
                     "DOW": day.strftime("%Y-%m-%d"),
                     "Rank": "-",
                     "Daily": f"${daily_gross:,.2f}",
@@ -121,57 +134,56 @@ def fetch_weekend_data(imdb_id, title):
                     "Title": title
                 })
         except Exception as e:
-            print(f"Error parsing weekend data for {title} ({imdb_id}): {e}")
+            print(f"Error parsing weekend data for {title}: {e}")
+            continue
 
-    return weekend_data if weekend_data else None
+    return weekend_data
 
-# Collect all unique movies
+# Process movies
+today = datetime.today().date()
 unique_movies = set()
+
 for person in people_movies:
     for movie in person["movies"]:
         title = movie.get("title")
         imdb_id = movie.get("imdb_id")
-        if title and imdb_id:
-            unique_movies.add((imdb_id, title))
+        pull_through = movie.get("pull_through")
 
-# Fetch data for each movie
+        if not imdb_id or not title:
+            continue
+        if pull_through:
+            try:
+                pull_through_date = datetime.strptime(pull_through, "%Y-%m-%d").date()
+                if pull_through_date <= today:
+                    continue
+            except ValueError:
+                continue
+
+        unique_movies.add((imdb_id, title))
+
 for imdb_id, title in unique_movies:
-    print(f"Fetching data for {title} ({imdb_id})...")
-    df = fetch_daily_data(imdb_id, title)
-    if df is not None and not df.empty:
-        all_data.append(df)
-        print(f"✓ Using daily data for {title}")
-    else:
-        print(f"⚠ No daily data for {title}, trying weekend fallback...")
-        weekend_data = fetch_weekend_data(imdb_id, title)
-        if weekend_data:
-            all_data.extend(weekend_data)
-            print(f"✓ Using weekend data for {title}")
-        else:
-            print(f"✗ No box office data found for {title}")
+    print(f"Fetching data for {title} ({imdb_id})")
+    movie_data = fetch_data(imdb_id, title)
+    if movie_data:
+        all_data.extend(movie_data)
 
-# Save to JSON
 if all_data:
-    if isinstance(all_data[0], pd.DataFrame):
-        final_df = pd.concat(all_data, ignore_index=True)
-    else:
-        final_df = pd.DataFrame(all_data)
-
-    final_df = final_df[final_df['Date'].notna() & final_df['Daily'].notna()]
+    final_df = pd.DataFrame(all_data)
     final_df.to_json(output_file, orient='records', indent=4)
-    print(f"✅ Data successfully saved to {output_file}")
+    print(f"Data saved to {output_file}")
 else:
-    print("⚠ No valid data found. Output file will not be created.")
+    print("No data found.")
 
 # Git commit & push
 try:
     subprocess.run(['git', 'config', '--local', 'user.email', 'github-actions[bot]@users.noreply.github.com'], check=True)
     subprocess.run(['git', 'config', '--local', 'user.name', 'github-actions[bot]'], check=True)
+    subprocess.run(['git', 'remote', 'set-url', 'origin', 'https://github.com/kameronyork/kameronyork.github.io.git'], check=True)
     subprocess.run(['git', 'pull', '--rebase'], check=True)
     subprocess.run(['git', 'add', output_file], check=True)
     subprocess.run(['git', 'commit', '-m', 'Update box office data [skip ci]'], check=True)
     subprocess.run(['git', 'push'], check=True)
-    print("✅ Changes committed and pushed successfully.")
+    print("Changes committed and pushed successfully.")
 except subprocess.CalledProcessError as e:
-    print(f"❌ Git operation failed: {e}")
+    print(f"Git error: {e}")
     subprocess.run(['git', 'rebase', '--abort'], check=False)
