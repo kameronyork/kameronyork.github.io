@@ -3,7 +3,7 @@ import json
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # Load the input JSON file
 input_file = 'datasets/movies.json'
@@ -34,49 +34,89 @@ def scrape_box_office_data(imdb_id, title):
 
     # Extract headers and ensure uniqueness
     headers = [th.get_text(strip=True) for th in table.find_all('th')]
-    
+
     # Ensure headers are unique by appending a number if duplicates are found
     seen = {}
     for i, header in enumerate(headers):
         count = seen.get(header, 0)
         seen[header] = count + 1
         if count > 0:
-            headers[i] = f"{header}_{count}"  # Rename duplicated headers with a suffix
+            headers[i] = f"{header}_{count}"
 
-    # Extract rows
+    is_weekend = headers[0] == "Weekend"
     rows = []
+
     for tr in table.find_all('tr'):
         cells = tr.find_all('td')
         if not cells:
             continue
-        row = []
+        row_data = []
         for cell in cells:
-            # Check if there is an anchor tag with an href
             link = cell.find('a', href=True)
             if link and 'date' in link['href']:
                 # Extract date from href
-                date = link['href'].split('/')[2]  # Get the date part from the URL
-                row.append(date)
+                date = link['href'].split('/')[2]
+                row_data.append(date)
             else:
-                # Extract text content
-                row.append(cell.get_text(strip=True))
-        rows.append(row)
+                row_data.append(cell.get_text(strip=True))
+        if row_data:
+            rows.append(row_data)
 
-    # Check if rows are empty
     if not rows:
         print(f"No data rows found for IMDb ID {imdb_id} ({title})")
         return None
 
-    # Create a DataFrame and add extra columns
-    df = pd.DataFrame(rows, columns=headers)
-    df['IMDB_ID'] = imdb_id
-    df['Title'] = title
-    return df
+    if not is_weekend:
+        # Daily data: simple DataFrame
+        df = pd.DataFrame(rows, columns=headers)
+        df['IMDB_ID'] = imdb_id
+        df['Title'] = title
+        return df
+    else:
+        # Weekend data: need to split entries by individual days
+        weekend_dfs = []
+        for row in rows:
+            row_dict = dict(zip(headers, row))
+
+            weekend_range = row_dict.get("Weekend")
+            gross = row_dict.get("Gross")
+
+            if not weekend_range or not gross:
+                continue
+
+            try:
+                # Split range like 'May 2–4'
+                date_parts = weekend_range.replace('–', '-').replace('—', '-').split('-')
+                if len(date_parts) != 2:
+                    continue
+                start_str, end_str = date_parts
+                # Add year if missing
+                today = datetime.today()
+                year = today.year
+
+                start_date = datetime.strptime(f"{start_str.strip()} {year}", "%b %d %Y")
+                end_date = datetime.strptime(f"{end_str.strip()} {year}", "%b %d %Y")
+
+                num_days = (end_date - start_date).days + 1
+                gross_val = gross.replace('$', '').replace(',', '')
+                gross_per_day = round(float(gross_val) / num_days, 2)
+
+                for i in range(num_days):
+                    day = start_date + timedelta(days=i)
+                    new_row = {key: row_dict.get(key, '') for key in headers}
+                    new_row['Date'] = day.strftime('%Y-%m-%d')
+                    new_row['Daily'] = f"${gross_per_day:,.2f}"
+                    new_row['IMDB_ID'] = imdb_id
+                    new_row['Title'] = title
+                    weekend_dfs.append(new_row)
+            except Exception as e:
+                print(f"Error parsing weekend row for {title}: {e}")
+                continue
+
+        return pd.DataFrame(weekend_dfs)
 
 # Get today's date
 today = datetime.today().date()
-
-# Set to track unique movies (since multiple people can have the same movie)
 unique_movies = set()
 
 # Process each person's movies
@@ -86,18 +126,15 @@ for person in people_movies:
         imdb_id = movie.get("imdb_id")
         pull_through = movie.get("pull_through")
 
-        # Check if IMDb ID and title are present
         if not imdb_id or not title:
             print(f"Missing IMDb ID or title for {movie}")
             continue
 
-        # Convert pull_through date to datetime object for comparison
         if pull_through:
             pull_through_date = datetime.strptime(pull_through, "%Y-%m-%d").date()
             if pull_through_date <= today:
-                continue  # Skip movie if pull_through date is in the past
+                continue
 
-        # Add movie to the unique set (this ensures we only process each movie once)
         unique_movies.add((imdb_id, title))
 
 # Scrape box office data for each unique movie
@@ -109,12 +146,11 @@ for imdb_id, title in unique_movies:
     else:
         print(f"No data found for IMDb ID {imdb_id} ({title})")
 
-# Concatenate all data into a single DataFrame
+# Combine and save
 if all_data:
     final_df = pd.concat(all_data, ignore_index=True)
-    # Filter out rows where 'Daily' or 'Date' columns are null
-    final_df = final_df[final_df['Daily'].notna() & final_df['Date'].notna()]
-    # Save to JSON file
+    if 'Daily' in final_df.columns and 'Date' in final_df.columns:
+        final_df = final_df[final_df['Daily'].notna() & final_df['Date'].notna()]
     final_df.to_json(output_file, orient='records', indent=4)
     print(f"Data successfully saved to {output_file}")
 else:
