@@ -5,7 +5,11 @@ Instructions for collection General Conference data after a new Conference.
 ---------------------------------------------------------------------------
 The first step is manual.  Open the Conference on the Church's website, then
 open the excel file in this folder.  You will first copy the names in the 
-left sidebar to add the speakers.  (OPTIONALLY you could run the "find-hyperlinks.py" file in this folder to return the URLs for each talk.  Remember, that script will include sustainings and auditing reports which should not be kept in the dataset files). Then input the titles.  Then go talk by talk copying the text and footnotes and clicking the buttons to add them to
+left sidebar to add the speakers.  (OPTIONALLY you could run the 
+"find-hyperlinks.py" file in this folder to return the URLs for each talk.  
+Remember, that script will include sustainings and auditing reports which 
+should not be kept in the dataset files). Then input the titles.  Then go talk 
+by talk copying the text and footnotes and clicking the buttons to add them to
 the table.  Once this is complete, add this data to the "general-Conference
 -talks.csv" file in the datasets folder.
 
@@ -48,3 +52,11 @@ footnotes.JSON file instead.
 
 The files are the backbone of the Gospel Buddy extension.  Once they are 
 completed and published to GitHub the extension will include the new data.
+
+---------------------------------------------------------------------------
+                    Making Sure all Files are Updated
+---------------------------------------------------------------------------
+Then run the file convert-conference-talks-CSV-to-JSON.py. This will convert 
+the CSV file you updated into the JSON used by the www.mygospelbuddy.com 
+script to search the text of conference talks. If this is not updated it will
+become outdated.
