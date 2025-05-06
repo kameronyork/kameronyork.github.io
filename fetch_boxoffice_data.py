@@ -15,8 +15,7 @@ with open(input_file, 'r') as f:
 
 # Sort movies by title and remove duplicates based on imdb_id for each person
 for person in people_movies:
-    # Remove duplicates by imdb_id and sort by title
-    unique_movies = {movie['imdb_id']: movie for movie in person["movies"]}  # Keeps only the last occurrence of each imdb_id
+    unique_movies = {movie['imdb_id']: movie for movie in person["movies"]}
     person["movies"] = sorted(unique_movies.values(), key=lambda x: x.get("title", "").lower())
 
 # Initialize list to store all data
@@ -32,17 +31,12 @@ def scrape_box_office_data(imdb_id, title):
         return None
 
     soup = BeautifulSoup(response.text, 'html.parser')
-
-    # Locate the table containing box office data
     table = soup.find('table')
     if not table:
         print(f"No table found for IMDb ID {imdb_id} ({title})")
         return None
 
-    # Extract headers and ensure uniqueness
     headers = [th.get_text(strip=True) for th in table.find_all('th')]
-
-    # Ensure headers are unique by appending a number if duplicates are found
     seen = {}
     for i, header in enumerate(headers):
         count = seen.get(header, 0)
@@ -61,7 +55,6 @@ def scrape_box_office_data(imdb_id, title):
         for cell in cells:
             link = cell.find('a', href=True)
             if link and 'date' in link['href']:
-                # Extract date from href
                 date = link['href'].split('/')[2]
                 row_data.append(date)
             else:
@@ -74,30 +67,24 @@ def scrape_box_office_data(imdb_id, title):
         return None
 
     if not is_weekend:
-        # Daily data: simple DataFrame
         df = pd.DataFrame(rows, columns=headers)
         df['IMDB_ID'] = imdb_id
         df['Title'] = title
         return df
     else:
-        # Weekend data: need to split entries by individual days
         weekend_dfs = []
         for row in rows:
             row_dict = dict(zip(headers, row))
-
             weekend_range = row_dict.get("Weekend")
             gross = row_dict.get("Gross")
-
             if not weekend_range or not gross:
                 continue
 
             try:
-                # Split range like 'May 2–4'
                 date_parts = weekend_range.replace('–', '-').replace('—', '-').split('-')
                 if len(date_parts) != 2:
                     continue
                 start_str, end_str = date_parts
-                # Add year if missing
                 today = datetime.today()
                 year = today.year
 
@@ -144,7 +131,7 @@ for person in people_movies:
 
         unique_movies.add((imdb_id, title))
 
-# Scrape box office data for each unique movie
+# Scrape box office data
 for imdb_id, title in unique_movies:
     print(f"Fetching data for {title} ({imdb_id})")
     df = scrape_box_office_data(imdb_id, title)
@@ -153,27 +140,27 @@ for imdb_id, title in unique_movies:
     else:
         print(f"No data found for IMDb ID {imdb_id} ({title})")
 
-import subprocess
-
 # Combine and save
 if all_data:
     final_df = pd.concat(all_data, ignore_index=True)
     if 'Daily' in final_df.columns and 'Date' in final_df.columns:
         final_df = final_df[final_df['Daily'].notna() & final_df['Date'].notna()]
-    final_df.to_json(output_file, orient='records', indent=4)
+    final_df.to_json(output_file, orient='records', indent=4, force_ascii=False)
     print(f"Data successfully saved to {output_file}")
 
-    # Git operations: configure, pull, commit, and push
+    # Git commit & push
     try:
         subprocess.run(['git', 'config', '--local', 'user.email', 'github-actions[bot]@users.noreply.github.com'], check=True)
         subprocess.run(['git', 'config', '--local', 'user.name', 'github-actions[bot]'], check=True)
+        subprocess.run(['git', 'remote', 'set-url', 'origin', 'https://github.com/kameronyork/kameronyork.github.io.git'], check=True)
+        subprocess.run(['git', 'pull', '--rebase'], check=True)
         subprocess.run(['git', 'add', output_file], check=True)
         subprocess.run(['git', 'commit', '-m', 'Update box office data [skip ci]'], check=True)
-        subprocess.run(['git', 'pull', '--rebase'], check=True)
         subprocess.run(['git', 'push'], check=True)
         print("Changes committed and pushed successfully.")
     except subprocess.CalledProcessError as e:
         print(f"Git operation failed: {e}")
+        print("Trying to resolve by aborting rebase (if needed)...")
+        subprocess.run(['git', 'rebase', '--abort'], check=False)
 else:
     print("No valid data found. Output file will not be created.")
-
