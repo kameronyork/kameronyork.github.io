@@ -162,20 +162,12 @@ for person in people_movies:
     for movie in person["movies"]:
         title = movie.get("title")
         imdb_id = movie.get("imdb_id")
-        pull_through = movie.get("pull_through")
 
         # Check if IMDb ID and title are present
         if not imdb_id or not title:
             print(f"Missing IMDb ID or title for {movie}")
             continue
 
-        # Convert pull_through date to datetime object for comparison
-        if pull_through:
-            pull_through_date = datetime.strptime(pull_through, "%Y-%m-%d").date()
-            if pull_through_date <= today:
-                continue  # Skip movie if pull_through date is in the past
-
-        # Add movie to the unique set (this ensures we only process each movie once)
         unique_movies.add((imdb_id, title))
 
 # Initialize list for all scraped data
