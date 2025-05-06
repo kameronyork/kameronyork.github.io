@@ -13,6 +13,12 @@ output_file = 'datasets/box-office-data.json'
 with open(input_file, 'r') as f:
     people_movies = json.load(f)
 
+# Sort movies by title and remove duplicates based on imdb_id for each person
+for person in people_movies:
+    # Remove duplicates by imdb_id and sort by title
+    unique_movies = {movie['imdb_id']: movie for movie in person["movies"]}  # Keeps only the last occurrence of each imdb_id
+    person["movies"] = sorted(unique_movies.values(), key=lambda x: x.get("title", "").lower())
+
 # Initialize list to store all data
 all_data = []
 
