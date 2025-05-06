@@ -1,150 +1,230 @@
 [
-    {
-        "name": "Kam",
-        "pull_through": "2025-04-01",
-        "competition": "kamHolly1",
-        "movies": [
-            {"title": "Bird", "imdb_id": "rl2987819009", "points": 1},
-            {"title": "Red One", "imdb_id": "rl2841083905", "points": 7},
-            {"title": "Bonhoeffer: Pastor. Spy. Assassin.", "imdb_id": "rl2775351297", "points": 7},
-            {"title": "Gladiator II", "imdb_id": "rl1778156289", "points": 10},
-            {"title": "Werewolves", "imdb_id": "rl1433501697", "points": 1},
-            {"title": "Get Away", "imdb_id": "rl1409515521", "points": 5},
-            {"title": "Solo Leveling: ReAwakening", "imdb_id": "rl1091076097", "points": 3},
-            {"title": "Kraven the Hunter", "imdb_id": "rl259556097", "points": 18},
-            {"title": "The Lord of the Rings: The War of the Rohirrim", "imdb_id": "rl3123675905", "points": 8},
-            {"title": "Babygirl", "imdb_id": "rl2926346241", "points": 1},
-            {"title": "Sonic the Hedgehog 3", "imdb_id": "rl886211329", "points": 39}
-        ]
-    },
-    {
-        "name": "Holly",
-        "pull_through": "2025-04-01",
-        "competition": "kamHolly1",
-        "movies": [
-            {"title": "Here", "imdb_id": "rl2858385409", "points": 8},
-            {"title": "The World According to Allee Willis", "imdb_id": "rl2115207169", "points": 5},
-            {"title": "Wicked", "imdb_id": "rl1199474177", "points": 20},
-            {"title": "Moana 2", "imdb_id": "rl862748673", "points": 23},
-            {"title": "Y2K", "imdb_id": "rl4218716161", "points": 2},
-            {"title": "September 5", "imdb_id": "rl2383183873", "points": 1},
-            {"title": "Mufasa: The Lion King", "imdb_id": "rl1511097089", "points": 1},
-            {"title": "Homestead", "imdb_id": "rl2557247489", "points": 1},
-            {"title": "The Fire Inside", "imdb_id": "rl2778432257", "points": 1},
-            {"title": "Nosferatu", "imdb_id": "rl2537783297", "points": 1}
-        ]
-    },
-    {
-        "name": "Hans",
-        "pull_through": "2025-04-01",
-        "competition": "hansFamily1",
-        "movies": [
-            {"title": "Here", "imdb_id": "rl2858385409", "points": 11},
-            {"title": "Bird", "imdb_id": "rl2987819009", "points": 1},
-            {"title": "The World According to Allee Willis", "imdb_id": "rl2115207169", "points": 1},
-            {"title": "Werewolves", "imdb_id": "rl1433501697", "points": 6},
-            {"title": "Get Away", "imdb_id": "rl1409515521", "points": 1},
-            {"title": "The Fire Inside", "imdb_id": "rl2778432257", "points": 25},
-            {"title": "Nosferatu", "imdb_id": "rl2537783297", "points": 25}
-        ]
-    },
-    {
-        "name": "Jordyn",
-        "pull_through": "2025-04-01",
-        "competition": "hansFamily1",
-        "movies": [
-            {"title": "Red One", "imdb_id": "rl2841083905", "points": 11},
-            {"title": "Wicked", "imdb_id": "rl1199474177", "points": 26},
-            {"title": "Gladiator II", "imdb_id": "rl1778156289", "points": 13},
-            {"title": "The Lord of the Rings: The War of the Rohirrim", "imdb_id": "rl3123675905", "points": 26}
-        ]
-    },
-    {
-        "name": "Lucy",
-        "pull_through": "2025-04-01",
-        "competition": "hansFamily1",
-        "movies": [
-            {"title": "Moana 2", "imdb_id": "rl862748673", "points": 25},
-            {"title": "Y2K", "imdb_id": "rl4218716161", "points": 10},
-            {"title": "Solo Leveling: ReAwakening", "imdb_id": "rl1091076097", "points": 6},
-            {"title": "Mufasa: The Lion King", "imdb_id": "rl1511097089", "points": 59}
-        ]
-    },
-    {
-        "name": "Fletcher",
-        "pull_through": "2025-04-01",
-        "competition": "hansFamily1",
-        "movies": [
-            {"title": "Bonhoeffer: Pastor. Spy. Assassin.", "imdb_id": "rl2775351297", "points": 12},
-            {"title": "September 5", "imdb_id": "rl2383183873", "points": 14},
-            {"title": "Kraven the Hunter", "imdb_id": "rl259556097", "points": 8},
-            {"title": "Babygirl", "imdb_id": "rl2926346241", "points": 10},
-            {"title": "Homestead", "imdb_id": "rl2557247489", "points": 10},
-            {"title": "Sonic the Hedgehog 3", "imdb_id": "rl886211329", "points": 46}
-        ]
-    },
-    {
-        "name": "Holly",
-        "pull_through": "2025-05-01",
-        "competition": "wiseFamily1",
-        "movies": [
-            {"title": "Den of Thieves 2: Pantera", "imdb_id": "rl1416265729", "points": "7"},
-            {"title": "Love Hurts", "imdb_id": "rl1868267521", "points": "12"},
-            {"title": "Mickey 17", "imdb_id": "rl2465301249", "points": "20"},
-            {"title": "A Minecraft Movie", "imdb_id": "rl746096129", "points": "51"}
-        ]
-    },
-    {
-        "name": "Becky",
-        "pull_through": "2025-05-01",
-        "competition": "wiseFamily1",
-        "movies": [
-            {"title": "Flight Risk", "imdb_id": "rl1365934081", "points": "15"},
-            {"title": "Captain America: Brave New World", "imdb_id": "rl2597421825", "points": "43"},
-            {"title": "The Unbreakable Boy", "imdb_id": "rl520323841", "points": "23"},
-            {"title": "Sinners", "imdb_id": "rl2153611265", "points": "19"} 
-        ]
-    },
-    {
-        "name": "Kam",
-        "pull_through": "2025-05-01",
-        "competition": "wiseFamily1",
-        "movies": [
-            {"title": "Drop", "imdb_id": "rl2439741441", "points": "8"},
-            {"title": "Last Breath", "imdb_id": "rl4101275649", "points": "6"},
-            {"title": "Night of the Zoopocalypse", "imdb_id": "rl4195123201", "points": "6"},
-            {"title": "Dog Man", "imdb_id": "rl3942942209", "points": "38"},
-            {"title": "The Accountant 2", "imdb_id": "Not Created", "points": "27"}
-        ]
-    },
-    {
-        "name": "Nate",
-        "pull_through": "2025-05-01",
-        "competition": "wiseFamily1",
-        "movies": [
-            {"title": "Wolf Man", "imdb_id": "rl3494150145", "points": "15"},
-            {"title": "Paddington in Peru", "imdb_id": "rl431260417", "points": "30"},
-            {"title": "Cleaner", "imdb_id": "rl505184257", "points": "10"},
-            {"title": "The Legend of Ochi", "imdb_id": "rl2802876417", "points": "12"},
-            {"title": "Until Dawn", "imdb_id": "rl923893761", "points": "26"},
-            {"title": "Black Bag", "imdb_id": "rl1400602625", "points": "7"}
-        ]
-    },
-    {
-        "name": "Whitney",
-        "pull_through": "2025-05-01",
-        "competition": "wiseFamily1",
-        "movies": [
-            {"title": "One of Them Days", "imdb_id": "rl4110974977", "points": "10"},
-            {"title": "Companion", "imdb_id": "rl3781722113", "points": "22"},
-            {"title": "Heart Eyes", "imdb_id": "rl2533982209", "points": "6"},
-            {"title": "My Dead Friend Zoe", "imdb_id": "rl2289270785", "points": "3"},
-            {"title": "Novocaine", "imdb_id": "rl3662970881", "points": "3"},
-            {"title": "Ash", "imdb_id": "rl3659628545", "points": "5"},
-            {"title": "Snow White", "imdb_id": "rl3856302849", "points": "25"},
-            {"title": "A Working Man", "imdb_id": "rl3457581057", "points": "7"},
-            {"title": "The Woman in the Yard", "imdb_id": "rl4048781313", "points": "7"},
-            {"title": "The Amateur", "imdb_id": "rl2241364737", "points": "10"}
-        ]
-    }
+  {
+      "name": "Kam",
+      "pull_through": "2025-04-01",
+      "competition": "kamHolly1",
+      "movies": [
+          {"title": "Bird", "imdb_id": "rl2987819009", "points": 1},
+          {"title": "Red One", "imdb_id": "rl2841083905", "points": 7},
+          {"title": "Bonhoeffer: Pastor. Spy. Assassin.", "imdb_id": "rl2775351297", "points": 7},
+          {"title": "Gladiator II", "imdb_id": "rl1778156289", "points": 10},
+          {"title": "Werewolves", "imdb_id": "rl1433501697", "points": 1},
+          {"title": "Get Away", "imdb_id": "rl1409515521", "points": 5},
+          {"title": "Solo Leveling: ReAwakening", "imdb_id": "rl1091076097", "points": 3},
+          {"title": "Kraven the Hunter", "imdb_id": "rl259556097", "points": 18},
+          {"title": "The Lord of the Rings: The War of the Rohirrim", "imdb_id": "rl3123675905", "points": 8},
+          {"title": "Babygirl", "imdb_id": "rl2926346241", "points": 1},
+          {"title": "Sonic the Hedgehog 3", "imdb_id": "rl886211329", "points": 39}
+      ]
+  },
+  {
+      "name": "Holly",
+      "pull_through": "2025-04-01",
+      "competition": "kamHolly1",
+      "movies": [
+          {"title": "Here", "imdb_id": "rl2858385409", "points": 8},
+          {"title": "The World According to Allee Willis", "imdb_id": "rl2115207169", "points": 5},
+          {"title": "Wicked", "imdb_id": "rl1199474177", "points": 20},
+          {"title": "Moana 2", "imdb_id": "rl862748673", "points": 23},
+          {"title": "Y2K", "imdb_id": "rl4218716161", "points": 2},
+          {"title": "September 5", "imdb_id": "rl2383183873", "points": 1},
+          {"title": "Mufasa: The Lion King", "imdb_id": "rl1511097089", "points": 1},
+          {"title": "Homestead", "imdb_id": "rl2557247489", "points": 1},
+          {"title": "The Fire Inside", "imdb_id": "rl2778432257", "points": 1},
+          {"title": "Nosferatu", "imdb_id": "rl2537783297", "points": 1}
+      ]
+  },
+  {
+      "name": "Hans",
+      "pull_through": "2025-04-01",
+      "competition": "hansFamily1",
+      "movies": [
+          {"title": "Here", "imdb_id": "rl2858385409", "points": 11},
+          {"title": "Bird", "imdb_id": "rl2987819009", "points": 1},
+          {"title": "The World According to Allee Willis", "imdb_id": "rl2115207169", "points": 1},
+          {"title": "Werewolves", "imdb_id": "rl1433501697", "points": 6},
+          {"title": "Get Away", "imdb_id": "rl1409515521", "points": 1},
+          {"title": "The Fire Inside", "imdb_id": "rl2778432257", "points": 25},
+          {"title": "Nosferatu", "imdb_id": "rl2537783297", "points": 25}
+      ]
+  },
+  {
+      "name": "Jordyn",
+      "pull_through": "2025-04-01",
+      "competition": "hansFamily1",
+      "movies": [
+          {"title": "Red One", "imdb_id": "rl2841083905", "points": 11},
+          {"title": "Wicked", "imdb_id": "rl1199474177", "points": 26},
+          {"title": "Gladiator II", "imdb_id": "rl1778156289", "points": 13},
+          {"title": "The Lord of the Rings: The War of the Rohirrim", "imdb_id": "rl3123675905", "points": 26}
+      ]
+  },
+  {
+      "name": "Lucy",
+      "pull_through": "2025-04-01",
+      "competition": "hansFamily1",
+      "movies": [
+          {"title": "Moana 2", "imdb_id": "rl862748673", "points": 25},
+          {"title": "Y2K", "imdb_id": "rl4218716161", "points": 10},
+          {"title": "Solo Leveling: ReAwakening", "imdb_id": "rl1091076097", "points": 6},
+          {"title": "Mufasa: The Lion King", "imdb_id": "rl1511097089", "points": 59}
+      ]
+  },
+  {
+      "name": "Fletcher",
+      "pull_through": "2025-04-01",
+      "competition": "hansFamily1",
+      "movies": [
+          {"title": "Bonhoeffer: Pastor. Spy. Assassin.", "imdb_id": "rl2775351297", "points": 12},
+          {"title": "September 5", "imdb_id": "rl2383183873", "points": 14},
+          {"title": "Kraven the Hunter", "imdb_id": "rl259556097", "points": 8},
+          {"title": "Babygirl", "imdb_id": "rl2926346241", "points": 10},
+          {"title": "Homestead", "imdb_id": "rl2557247489", "points": 10},
+          {"title": "Sonic the Hedgehog 3", "imdb_id": "rl886211329", "points": 46}
+      ]
+  },
+  {
+      "name": "Holly",
+      "pull_through": "2025-05-01",
+      "competition": "wiseFamily1",
+      "movies": [
+          {"title": "Den of Thieves 2: Pantera", "imdb_id": "rl1416265729", "points": "7"},
+          {"title": "Love Hurts", "imdb_id": "rl1868267521", "points": "12"},
+          {"title": "Mickey 17", "imdb_id": "rl2465301249", "points": "20"},
+          {"title": "A Minecraft Movie", "imdb_id": "rl746096129", "points": "51"}
+      ]
+  },
+  {
+      "name": "Becky",
+      "pull_through": "2025-05-01",
+      "competition": "wiseFamily1",
+      "movies": [
+          {"title": "Flight Risk", "imdb_id": "rl1365934081", "points": "15"},
+          {"title": "Captain America: Brave New World", "imdb_id": "rl2597421825", "points": "43"},
+          {"title": "The Unbreakable Boy", "imdb_id": "rl520323841", "points": "23"},
+          {"title": "Sinners", "imdb_id": "rl2153611265", "points": "19"} 
+      ]
+  },
+  {
+      "name": "Kam",
+      "pull_through": "2025-05-01",
+      "competition": "wiseFamily1",
+      "movies": [
+          {"title": "Drop", "imdb_id": "rl2439741441", "points": "8"},
+          {"title": "Last Breath", "imdb_id": "rl4101275649", "points": "6"},
+          {"title": "Night of the Zoopocalypse", "imdb_id": "rl4195123201", "points": "6"},
+          {"title": "Dog Man", "imdb_id": "rl3942942209", "points": "38"},
+          {"title": "The Accountant 2", "imdb_id": "Not Created", "points": "27"}
+      ]
+  },
+  {
+      "name": "Nate",
+      "pull_through": "2025-05-01",
+      "competition": "wiseFamily1",
+      "movies": [
+          {"title": "Wolf Man", "imdb_id": "rl3494150145", "points": "15"},
+          {"title": "Paddington in Peru", "imdb_id": "rl431260417", "points": "30"},
+          {"title": "Cleaner", "imdb_id": "rl505184257", "points": "10"},
+          {"title": "The Legend of Ochi", "imdb_id": "rl2802876417", "points": "12"},
+          {"title": "Until Dawn", "imdb_id": "rl923893761", "points": "26"},
+          {"title": "Black Bag", "imdb_id": "rl1400602625", "points": "7"}
+      ]
+  },
+  {
+      "name": "Whitney",
+      "pull_through": "2025-05-01",
+      "competition": "wiseFamily1",
+      "movies": [
+          {"title": "One of Them Days", "imdb_id": "rl4110974977", "points": "10"},
+          {"title": "Companion", "imdb_id": "rl3781722113", "points": "22"},
+          {"title": "Heart Eyes", "imdb_id": "rl2533982209", "points": "6"},
+          {"title": "My Dead Friend Zoe", "imdb_id": "rl2289270785", "points": "3"},
+          {"title": "Novocaine", "imdb_id": "rl3662970881", "points": "3"},
+          {"title": "Ash", "imdb_id": "rl3659628545", "points": "5"},
+          {"title": "Snow White", "imdb_id": "rl3856302849", "points": "25"},
+          {"title": "A Working Man", "imdb_id": "rl3457581057", "points": "7"},
+          {"title": "The Woman in the Yard", "imdb_id": "rl4048781313", "points": "7"},
+          {"title": "The Amateur", "imdb_id": "rl2241364737", "points": "10"}
+      ]
+  },
+  {
+    "name": "Becky",
+    "pull_through": "2025-09-01",
+    "competition": "wiseFamily2",
+    "movies": [
+        {"Title": "Juliet & Romeo", "imdb_id": "rl2137751553", "points": "2"},
+        {"Title": "Dan Da Dan: Evil Eye", "imdb_id": "rl2168094721", "points": "7"},
+        {"Title": "Elio", "imdb_id": "rl1561428737", "points": "30"},
+        {"Title": "Smurfs", "imdb_id": "rl3459023617", "points": "16"},
+        {"Title": "The Naked Gun", "imdb_id": "rl3528753153", "points": "10"},
+        {"Title": "Weapons", "imdb_id": "rl3882385409", "points": "18"},
+        {"Title": "Caught Stealing", "imdb_id": "rl1210810369", "points": "7"},
+        {"Title": "The Toxic Avenger", "imdb_id": "rl3695017985", "points": "10"}
+    ]
+  },
+  {
+    "name": "Holly",
+    "pull_through": "2025-09-01",
+    "competition": "wiseFamily2",
+    "movies": [
+        {"Title": "Final Destination: Bloodlines", "imdb_id": "rl1478393857", "points": "7"},
+        {"Title": "How to Train Your Dragon", "imdb_id": "rl1921090305", "points": "23"},
+        {"Title": "F1", "imdb_id": "rl2507374593", "points": "18"},
+        {"Title": "M3GAN 2.0", "imdb_id": "rl1392018177", "points": "15"},
+        {"Title": "Freakier Friday", "imdb_id": "rl443908097", "points": "36"}      
+    ]
+  },
+  {
+    "name": "Kam",
+    "pull_through": "2025-09-01",
+    "competition": "wiseFamily2",
+    "movies": [
+        {"Title": "Fight or Flight", "imdb_id": "rl1680572417", "points": "4"},
+        {"Title": "Hurry Up Tomorrow", "imdb_id": "rl1327726593", "points": "2"},
+        {"Title": "Mission: Impossible - The Final Reckoning", "imdb_id": "rl1913226753", "points": "16"},
+        {"Title": "Lilo & Stitch", "imdb_id": "rl3104735233", "points": "25"},
+        {"Title": "The Fantastic Four: First Steps", "imdb_id": "rl2429649665", "points": "45"}
+    ]
+  },
+  {
+    "name": "Lindsay",
+    "pull_through": "2025-09-01",
+    "competition": "wiseFamily2",
+    "movies": [
+        {"Title": "The Ruse", "imdb_id": "rl825196545", "points": "10"},
+        {"Title": "Ballerina", "imdb_id": "rl965378817", "points": "7"},
+        {"Title": "The Ritual", "imdb_id": "rl3811475457", "points": "18"},
+        {"Title": "28 Years Later", "imdb_id": "rl375947265", "points": "18"},
+        {"Title": "Jurassic World: Rebirth", "imdb_id": "rl3058794497", "points": "47"}      
+    ]
+  },
+  {
+    "name": "Nate",
+    "pull_through": "2025-09-01",
+    "competition": "wiseFamily2",
+    "movies": [
+        {"Title": "Thunderbolts*", "imdb_id": "rl2647753473", "points": "15"},
+        {"Title": "Karate Kid: Legends", "imdb_id": "rl3470426881", "points": "28"},
+        {"Title": "The Phoenician Scheme", "imdb_id": "rl2620358657", "points": "6"},
+        {"Title": "I Know What You Did Last Summer", "imdb_id": "rl2372632577", "points": "13"},
+        {"Title": "The Bad Guys 2", "imdb_id": "rl1472103169", "points": "38"}      
+    ]
+  },
+  {
+    "name": "Whitney",
+    "pull_through": "2025-09-01",
+    "competition": "wiseFamily2",
+    "movies": [
+        {"Title": "Rosario", "imdb_id": "rl2671411201", "points": "1"},
+        {"Title": "Shadow Force", "imdb_id": "rl1160806401", "points": "2"},
+        {"Title": "Clown in a Cornfield", "imdb_id": "rl605847553", "points": "3"},
+        {"Title": "Bring Her Back", "imdb_id": "rl3492904961", "points": "1"},
+        {"Title": "Dangerous Animals", "imdb_id": "rl2335277057", "points": "4"},
+        {"Title": "Materialists", "imdb_id": "rl3442638849", "points": "6"},
+        {"Title": "Superman", "imdb_id": "rl1543340801", "points": "41"},
+        {"Title": "Eddington", "imdb_id": "rl1111392257", "points": "7"},
+        {"Title": "Clika", "imdb_id": "rl3744628737", "points": "11"},
+        {"Title": "Nobody 2", "imdb_id": "rl511016961", "points": "18"}      
+    ]
+  }
 ]
