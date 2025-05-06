@@ -398,5 +398,309 @@
     "description": "A group spends the weekend in a ski lodge on the anniversary of their friends' disappearance, unaware that they are not alone.",
     "release_date": "2025-04-25",
     "rating": "R"
+  },
+  {
+      "id": "rl2671411201",
+      "title": "Rosario",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BZWFhZDJiODYtZTA5My00NWYyLTgzY2YtOTUwMGYxZTFkYzdjXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+      "description": "Rosario spends the night with her grandmother's body while she waits for the ambulance to arrive, during a severe snowfall, Rosario is attacked by otherworldly entities that have taken control of her grandmother's body.",
+      "release_date": "2025-05-02",
+      "rating": "R"
+  },
+  {
+      "id": "rl2647753473",
+      "title": "Thunderbolts*",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BMjQ2MzFiZDktOGQ3NC00NjQxLTkzYjEtMWQ4YThmMjFjNjUzXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+      "description": "After finding themselves ensnared in a death trap, an unconventional team of antiheroes must embark on a dangerous mission that will force them to confront the darkest corners of their pasts.",
+      "release_date": "2025-05-02",
+      "rating": "PG-13"
+  },
+  {
+      "id": "rl1160806401",
+      "title": "Shadow Force",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BMTUyZTUyOTMtOGU5OC00MmM1LTk0NWUtMjNlMTU4ZTkwMDRjXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+      "description": "An estranged couple with a bounty on their heads must go on the run with their son to avoid their former employer, a unit of shadow ops that has been sent to kill them.",
+      "release_date": "2025-05-09",
+      "rating": "R"
+  },
+  {
+      "id": "rl2137751553",
+      "title": "Juliet & Romeo",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BY2I0Mjk3YTAtNDc3Ny00ZTQ3LThiYmEtZmY5NGZjNTEzNjgwXkEyXkFqcGc@._V1_SY139_CR2,0,92,139_.jpg",
+      "description": "Based on the real story that inspired Shakespeare's Romeo and Juliet, follows the greatest love story of all time, set as an original pop musical.",
+      "release_date": "2025-05-09",
+      "rating": "PG-13"
+  },
+  {
+      "id": "rl1680572417",
+      "title": "Fight or Flight",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BMmE4YTQxMjctMWFlZC00OTY5LWJiNTctZjFhNTJlMmIxMmViXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+      "description": "A mercenary takes on the job of tracking down a target on a plane but must protect her when they're surrounded by people trying to kill both of them.",
+      "release_date": "2025-05-09",
+      "rating": "R"
+  },
+  {
+      "id": "rl605847553",
+      "title": "Clown in a Cornfield",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BOGUwNzQwMzYtZTkyYi00OTM3LWJiOGEtNzVkN2UxOGZlMmE3XkEyXkFqcGc@._V1_SY139_CR0,0,92,139_.jpg",
+      "description": "A fading midwestern town in which Frendo the clown, a symbol of bygone success, reemerges as a terrifying scourge.",
+      "release_date": "2025-05-09",
+      "rating": "R"
+  },
+  {
+      "id": "rl1478393857",
+      "title": "Final Destination: Bloodlines",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BMzc3OWFhZWItMTE2Yy00N2NmLTg1YTktNGVlNDY0ODQ5YjNlXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+      "description": "Plagued by a recurring violent nightmare, a college student returns home to find the one person who can break the cycle and save her family from the horrific fate that inevitably awaits them.",
+      "release_date": "2025-05-16",
+      "rating": "R"
+  },
+  {
+      "id": "rl825196545",
+      "title": "The Ruse",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BOTE3ZGEyYjItYWQwYy00NTk4LTgxM2ItYTVjOTg1ODM2OGE1XkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+      "description": "An in-home caregiver fears for her life after being assigned to a mysterious elderly patient in a remote seaside home.",
+      "release_date": "2025-05-16",
+      "rating": "R"
+  },
+  {
+      "id": "rl1327726593",
+      "title": "Hurry Up Tomorrow",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BNDQ2MGIyNDQtYjVhOS00ZjI1LWFmYzctMWI2MGZhZGFhZWM4XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+      "description": "An insomniac musician encounters a mysterious stranger, leading to a journey that challenges everything he knows about himself.",
+      "release_date": "2025-05-16",
+      "rating": "R"
+  },
+  {
+      "id": "rl1913226753",
+      "title": "Mission: Impossible - The Final Reckoning",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BZGQ5NGEyYTItMjNiMi00Y2EwLTkzOWItMjc5YjJiMjMyNTI0XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+      "description": "Our lives are the sum of our choices. Tom Cruise is Ethan Hunt in Mission: Impossible - The Final Reckoning.",
+      "release_date": "2025-05-23",
+      "rating": "PG-13"
+  },
+  {
+      "id": "rl3104735233",
+      "title": "Lilo & Stitch",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BYTBmMDBhNWYtNTk4MS00NzBmLTk5ZWItM2ZlZjY4NTYxNWQzXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+      "description": "A lonely Hawaiian girl befriends a runaway alien, helping to mend her fragmented family.",
+      "release_date": "2025-05-23",
+      "rating": "PG"
+  },
+  {
+      "id": "rl3492904961",
+      "title": "Bring Her Back",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BMGY3ZjhhZDMtNTM2My00MjdhLTg0YjQtNGEwNWMyMjQ3MmJjXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+      "description": "A brother and sister uncover a terrifying ritual at the secluded home of their new foster mother.",
+      "release_date": "2025-05-30",
+      "rating": "R"
+  },
+  {
+      "id": "rl3470426881",
+      "title": "Karate Kid: Legends",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BM2MwYTlkY2MtNmUzNy00MTljLThjNDAtZGUzNzMxMzcxNzM5XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+      "description": "After kung fu prodigy Li Fong relocates to New York City, he attracts unwanted attention from a local karate champion and embarks on a journey to enter the ultimate karate competition with the help of Mr. Han and Daniel LaRusso.",
+      "release_date": "2025-05-30",
+      "rating": "PG"
+  },
+  {
+      "id": "rl965378817",
+      "title": "Ballerina",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BNzdhZmY2OTQtYWI4OC00ZThkLTlhZjAtNzE2YzRjM2Q5YjJlXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+      "description": "An assassin trained in the traditions of the Ruska Roma organization sets out to seek revenge after her father's death.",
+      "release_date": "2025-06-06",
+      "rating": "R"
+  },
+  {
+      "id": "rl3811475457",
+      "title": "The Ritual",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BMzk2NWU3Y2QtZTA4OC00MTg1LTljNTUtMDMyODJjYzM4MjkyXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+      "description": "Two priests, one in crisis with his faith and the other confronting a turbulent past, must overcome their differences to perform a risky exorcism.",
+      "release_date": "2025-06-06",
+      "rating": "R"
+  },
+  {
+      "id": "rl2168094721",
+      "title": "Dan Da Dan: Evil Eye",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BODY1NzNkYmQtN2I4My00NzdlLWExOTgtNmJhMGFmY2VkYThiXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+      "description": "Momo and Okarun set out on their latest adventure, traveling to a hot springs town home rented by Jiji, Momo's childhood friend and former crush, with the goal to solve the mystery surrounding his family.",
+      "release_date": "2025-06-06",
+      "rating": "R"
+  },
+  {
+      "id": "rl2335277057",
+      "title": "Dangerous Animals",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BNzZhYzU1MTAtMmM2MS00MGY2LWFiMjktMGVjYmFmZDViNWJkXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+      "description": "When Zephyr, a savvy and free-spirited surfer, is abducted by a shark-obsessed serial killer and held captive on his boat, she must figure out how to escape before he carries out a ritualistic feeding to the sharks below.",
+      "release_date": "2025-06-06",
+      "rating": "R"
+  },
+  {
+      "id": "rl2620358657",
+      "title": "The Phoenician Scheme",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BNTJmODQzYmItNTZlMy00Mjg0LTk1NjctYjM4ZGI0NTM3ZTVjXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+      "description": "The story of a family and a family business.",
+      "release_date": "2025-06-06",
+      "rating": "PG-13"
+  },
+  {
+      "id": "rl1921090305",
+      "title": "How to Train Your Dragon",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BODA5Y2M0NjctNWQzMy00ODRhLWE0MzUtYmE1YTAzZjYyYmQyXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+      "description": "As an ancient threat endangers both Vikings and dragons alike on the isle of Berk, the friendship between Hiccup, an inventive Viking, and Toothless, a Night Fury dragon, becomes the key to both species forging a new future together.",
+      "release_date": "2025-06-13",
+      "rating": "PG"
+  },
+  {
+      "id": "rl3442638849",
+      "title": "Materialists",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BNmQxMTI1YmEtOGY3Yi00NzVlLWEzMjAtYTI1NWZkNDFiMDg1XkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+      "description": "A matchmaker's lucrative business is complicated when she falls into a toxic love triangle that threatens her clients.",
+      "release_date": "2025-06-13",
+      "rating": "R"
+  },
+  {
+      "id": "rl375947265",
+      "title": "28 Years Later",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BNjgwYTI0YjctMWYzNS00MmI1LWI5YTctNmE1YjBkNDFlNWMxXkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
+      "description": "A group of survivors of the rage virus lives on a small island. When one of the group leaves the island on a mission into the mainland, he discovers secrets, wonders, and horrors that have mutated not only the infected but other survivors.",
+      "release_date": "2025-06-20",
+      "rating": "R"
+  },
+  {
+      "id": "rl1561428737",
+      "title": "Elio",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BOWE5ZDMyMWEtOTZjMi00YzFhLWE4OTEtNDc3MDMzZjFmMmIzXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+      "description": "Elio, a space fanatic with an active imagination, finds himself on a cosmic misadventure where he must form new bonds with alien lifeforms, navigate a crisis of intergalactic proportions and somehow discover who he is truly meant to be.",
+      "release_date": "2025-06-20",
+      "rating": "PG"
+  },
+  {
+      "id": "rl2507374593",
+      "title": "F1",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BNGI0MDI4NjEtOWU3ZS00ODQyLWFhYTgtNGYxM2ZkM2Q2YjE3XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+      "description": "A Formula One driver comes out of retirement to mentor and team with a younger driver.",
+      "release_date": "2025-06-27",
+      "rating": "PG-13"
+  },
+  {
+      "id": "rl1392018177",
+      "title": "M3GAN 2.0",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BMzFmNjVjZWQtZjI5Zi00YThiLTg0ZWItZDdjYzhhZDE1NTE2XkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+      "description": "Two years after M3GAN's rampage, her creator, Gemma, resorts to resurrecting her infamous creation in order to take down Amelia, the military-grade weapon who was built by a defense contractor who stole M3GAN's underlying tech.",
+      "release_date": "2025-06-27",
+      "rating": "PG-13"
+  },
+  {
+      "id": "rl3058794497",
+      "title": "Jurassic World: Rebirth",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BYjlmODRkM2YtMDAxOS00ZTA5LTgyYWYtZWI2NjRjMzRkODU0XkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+      "description": "Five years post-Jurassic World Dominion, an expedition braves isolated equatorial regions to extract DNA from three massive prehistoric creatures for a groundbreaking medical breakthrough.",
+      "release_date": "2025-07-02",
+      "rating": "PG-13"
+  },
+  {
+      "id": "rl1543340801",
+      "title": "Superman",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BZjFhZmU5NzUtZTg4Zi00ZjRjLWI0YmQtODk2MzI4YjNhYTdkXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+      "description": "Follows the titular superhero as he reconciles his heritage with his human upbringing. He is the embodiment of truth, justice and the human way in a world that views this as old-fashioned.",
+      "release_date": "2025-07-11",
+      "rating": "PG-13"
+  },
+  {
+      "id": "rl1111392257",
+      "title": "Eddington",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BMDgzZTgzOTEtMTllZS00ZDdjLWE4NWUtOTkwOTk0Mjk3ODA5XkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
+      "description": "In May of 2020, a standoff between a small-town sheriff and mayor sparks a powder keg as neighbor is pitted against neighbor in Eddington, New Mexico.",
+      "release_date": "2025-07-18",
+      "rating": "R"
+  },
+  {
+      "id": "rl3459023617",
+      "title": "Smurfs",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BODJhNzZhMDItYWNjYy00YmFhLTgyMjEtZTI4MjA1ZGEyZGFkXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+      "description": "When Papa Smurf is taken by evil wizards Razamel and Gargamel, Smurfette leads the Smurfs on a mission to the real world to save him.",
+      "release_date": "2025-07-18",
+      "rating": "PG"
+  },
+  {
+      "id": "rl2372632577",
+      "title": "I Know What You Did Last Summer",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BZDYwNDcwMWUtNjNhNi00N2ZhLWE1MzItMjg3MDg2MGI0ZjNiXkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
+      "description": "A group of friends are terrorized by a stalker who knows about a gruesome incident from their past.",
+      "release_date": "2025-07-18",
+      "rating": "R"
+  },
+  {
+      "id": "rl2429649665",
+      "title": "The Fantastic Four: First Steps",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BY2U5MjM2MWEtYTU2ZC00YjkyLWE2ZTctYzI1ZDI3Y2IzNGVkXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+      "description": "Forced to balance their roles as heroes with the strength of their family bond, the Fantastic Four must defend Earth from a ravenous space god called Galactus and his enigmatic Herald, Silver Surfer.",
+      "release_date": "2025-07-25",
+      "rating": "PG-13"
+  },
+  {
+      "id": "rl1472103169",
+      "title": "The Bad Guys 2",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BZTAyZDA2MmEtYjFlMy00MDAxLWJlMDEtZGNiNGUyYTVmNGVlXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+      "description": "The Bad Guys are struggling to find trust and acceptance in their newly minted lives as Good Guys, when they are pulled out of retirement and forced to do \"one last job\" by an all-female squad of criminals.",
+      "release_date": "2025-08-01",
+      "rating": "PG"
+  },
+  {
+      "id": "rl3528753153",
+      "title": "The Naked Gun",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BOGZjOTBkY2MtM2MzZS00NTlhLWI0NzItMzBhNGQxMTZlNjlmXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+      "description": "Only one man has the particular set of skills - to lead Police Squad and save the world.",
+      "release_date": "2025-08-01",
+      "rating": "PG-13"
+  },
+  {
+      "id": "rl443908097",
+      "title": "Freakier Friday",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BODliMjA5ODItZDczMi00YmM2LWFjZDMtZWM4YTk5YmE5ODViXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+      "description": "22 years after Tess and Anna endured an identity crisis, Anna now has a daughter and a soon-to-be stepdaughter. As they navigate the challenges that come when two families merge, Tess and Anna discover that lightning might strike twice.",
+      "release_date": "2025-08-08",
+      "rating": "PG"
+  },
+  {
+      "id": "rl3882385409",
+      "title": "Weapons",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BNTk5MWI5NzktNzI0Mi00NWU4LTk4ZjctZmNjM2Y2NGNkZjJlXkEyXkFqcGc@._V1_SY139_CR77,0,92,139_.jpg",
+      "description": "An interrelated, multistory horror epic about the disappearance of high school students in a small town.",
+      "release_date": "2025-08-08",
+      "rating": "R"
+  },
+  {
+      "id": "rl3744628737",
+      "title": "Clika",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BNzEyYjAyNWMtY2Y3Yy00YjRmLTllNDYtMThkMDFlNWI3YTkwXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+      "description": "A small town musician pushes to carve out a place for himself in the new wave of Mexican-American music after a clip of him performing one of his songs goes viral.",
+      "release_date": "2025-08-15",
+      "rating": "R"
+  },
+  {
+      "id": "rl511016961",
+      "title": "Nobody 2",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BNTdmODYzMTMtMTdmYy00YmM1LWE0ZTAtZmRkMjkwOWMyNzAzXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+      "description": "Suburban dad Hutch Mansell, a former lethal assassin, is pulled back into his violent past after thwarting a home invasion, setting off a chain of events that unravels secrets about his wife Becca's past and his own.",
+      "release_date": "2025-08-15",
+      "rating": "R"
+  },
+  {
+      "id": "rl1210810369",
+      "title": "Caught Stealing",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BYjk4YTdmODktZjI5Ny00MDA0LTg3MDAtYzEzMjBjZmVmMjU5XkEyXkFqcGc@._V1_SY139_CR10,0,92,139_.jpg",
+      "description": "Burned-out ex-baseball player Hank Thompson unexpectedly finds himself embroiled in a dangerous struggle for survival amidst the criminal underbelly of 1990s New York City, forced to navigate a treacherous underworld he never imagined.",
+      "release_date": "2025-08-29",
+      "rating": "R"
+  },
+  {
+      "id": "rl3695017985",
+      "title": "The Toxic Avenger",
+      "image_url": "https://m.media-amazon.com/images/M/MV5BNzFhOGIyYTUtZTAwZi00NzE4LWIxMTEtYmUxODViNjk5Y2VlXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+      "description": "A horrible toxic accident transforms downtrodden janitor, Winston Gooze into a new evolution of hero: The Toxic Avenger.",
+      "release_date": "2025-08-29",
+      "rating": "R"
   }
 ]
