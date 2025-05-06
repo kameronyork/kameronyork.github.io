@@ -65,7 +65,7 @@ It is also interesting to me that the Lord describes different amounts being har
 
 
 <div id="scripture-table-container">
-    <!-- The table HTML will be inserted here by your script -->
+    <!-- Loading the Gospel Buddy... -->
 </div>
 
 

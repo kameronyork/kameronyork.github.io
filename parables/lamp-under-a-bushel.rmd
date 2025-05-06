@@ -51,7 +51,7 @@ This parable is meant to teach us about the divine mission of the Savior.  Jesus
 
 
 <div id="scripture-table-container">
-    <!-- The table HTML will be inserted here by your script -->
+    <!-- Loading the Gospel Buddy... -->
 </div>
 
 

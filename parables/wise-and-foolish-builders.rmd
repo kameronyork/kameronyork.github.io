@@ -55,7 +55,7 @@ Life is hard for everyone, this parable does not promise followers of Christ an 
 
 
 <div id="scripture-table-container">
-    <!-- The table HTML will be inserted here by your script -->
+    <!-- Loading the Gospel Buddy... -->
 </div>
 
 

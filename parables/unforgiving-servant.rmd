@@ -8,7 +8,7 @@ output:
       after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
 ---
 <script>
-window.matthewVerses = ["Matthew 18:21", "Matthew 18:22", "Matthew 18:23", "Matthew 18:24", "Matthew 18:25"];
+window.matthewVerses = ["Matthew 18:21", "Matthew 18:22", "Matthew 18:23", "Matthew 18:24", "Matthew 18:25", "Matthew 18:26", "Matthew 18:27", "Matthew 18:28", "Matthew 18:29", "Matthew 18:30", "Matthew 18:31", "Matthew 18:32", "Matthew 18:33", "Matthew 18:34", "Matthew 18:35"];
 window.markVerses = [];
 window.lukeVerses = [];
 window.johnVerses = [];
@@ -21,7 +21,7 @@ window.johnVerses = [];
 <br>
 <h4 style="text-align: left; margin: 0;">Reference:</h4>
 <p style="text-align: left; margin: 0;">
-<a href="https://www.churchofjesuschrist.org/study/scriptures/nt/matt/18?lang=eng&id=21-25#p21" target="_blank">Matthew 18:21-25</a>
+<a href="https://www.churchofjesuschrist.org/study/scriptures/nt/matt/18?lang=eng&id=21-35#p21" target="_blank">Matthew 18:21-35</a>
 </p>
 </div>
 
@@ -35,7 +35,7 @@ This article is yet to be completed. Please check back later!
 
 
 <div id="scripture-table-container">
-    <!-- The table HTML will be inserted here by your script -->
+    <!-- Loading the Gospel Buddy... -->
 </div>
 
 

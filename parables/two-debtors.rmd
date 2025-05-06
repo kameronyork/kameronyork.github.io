@@ -66,7 +66,7 @@ Jesus saying that people we repent little love little makes sense.  Our repentan
 
 
 <div id="scripture-table-container">
-    <!-- The table HTML will be inserted here by your script -->
+    <!-- Loading the Gospel Buddy... -->
 </div>
 
 

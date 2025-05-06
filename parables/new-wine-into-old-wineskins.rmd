@@ -54,7 +54,7 @@ It is important to note that added context can be gleaned from the Joseph Smith 
 With the added context of this passage it is easy to see the meaning of the parable. Of this the New Testament Institute manual says, <i>"In the context of the Savior’s response to the Pharisees, the Savior seemed to be teaching that the gospel He offered was meant not merely to mend Judaism, but to replace many religious and cultural practices of His day. In the same way, the Savior came to make us not just better men and women, but new creatures." </i>
 
 <div id="scripture-table-container">
-    <!-- The table HTML will be inserted here by your script -->
+    <!-- Loading the Gospel Buddy... -->
 </div>
 
 ##### Check out my other articles:
