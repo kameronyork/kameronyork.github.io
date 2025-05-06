@@ -6,10 +6,11 @@ from bs4 import BeautifulSoup
 import pandas as pd
 from datetime import datetime, timedelta
 
-# Load the input JSON file
+# Paths to files in the GitHub repository
 input_file = 'datasets/movies.json'
 output_file = 'datasets/box-office-data.json'
 
+# Load the input JSON file from the repository
 with open(input_file, 'r') as f:
     people_movies = json.load(f)
 
