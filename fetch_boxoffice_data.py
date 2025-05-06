@@ -211,5 +211,3 @@ except subprocess.CalledProcessError as e:
     print(f"Git operation failed: {e}")
     print("Trying to resolve by aborting rebase (if needed)...")
     subprocess.run(['git', 'rebase', '--abort'], check=False)
-else:
-print("No valid data found. Output file will not be created.")
