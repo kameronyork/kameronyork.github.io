@@ -1,7 +1,6 @@
 import os
 import json
 import requests
-import subprocess
 from bs4 import BeautifulSoup
 import pandas as pd
 from datetime import datetime, timedelta
@@ -13,15 +12,63 @@ output_file = 'datasets/box-office-data.json'
 with open(input_file, 'r') as f:
     people_movies = json.load(f)
 
-# Sort movies by title and remove duplicates based on imdb_id for each person
-for person in people_movies:
-    unique_movies = {movie['imdb_id']: movie for movie in person["movies"]}
-    person["movies"] = sorted(unique_movies.values(), key=lambda x: x.get("title", "").lower())
-
 # Initialize list to store all data
 all_data = []
 
-# Function to scrape data from Box Office Mojo based on IMDb ID
+# Function to handle weekend tables
+def parse_weekend_table(table, imdb_id, title):
+    rows = table.find_all('tr')
+    headers = [th.get_text(strip=True) for th in rows[0].find_all('th')]
+
+    parsed_rows = []
+
+    for row in rows[1:]:  # Skip header
+        cells = row.find_all('td')
+        if len(cells) < 3:
+            continue
+
+        date_range = cells[0].get_text(strip=True)
+        gross = cells[2].get_text(strip=True)
+
+        try:
+            date_range = date_range.replace('\xa0', ' ').replace('–', '-').replace('—', '-')
+            parts = date_range.split('-')
+            if len(parts) != 2:
+                continue
+
+            start_str, end_str = parts[0].strip(), parts[1].strip()
+            current_year = datetime.today().year
+
+            # Parse start date
+            start_date = datetime.strptime(f"{start_str} {current_year}", "%b %d %Y")
+
+            # If end_str doesn't include a month, use the start's month
+            try:
+                end_date = datetime.strptime(f"{end_str} {current_year}", "%b %d %Y")
+            except ValueError:
+                end_day = int(end_str)
+                end_date = datetime(year=current_year, month=start_date.month, day=end_day)
+
+            num_days = (end_date - start_date).days + 1
+            gross_val = float(gross.replace('$', '').replace(',', ''))
+            daily_gross = round(gross_val / num_days, 2)
+
+            for i in range(num_days):
+                day = start_date + timedelta(days=i)
+                parsed_rows.append({
+                    "Date": day.strftime("%Y-%m-%d"),
+                    "Daily": f"${daily_gross:,.2f}",
+                    "IMDB_ID": imdb_id,
+                    "Title": title
+                })
+
+        except Exception as e:
+            print(f"Error parsing weekend row for {title}: {e}")
+            continue
+
+    return pd.DataFrame(parsed_rows)
+
+# Function to scrape box office data based on IMDb ID
 def scrape_box_office_data(imdb_id, title):
     url = f"https://www.boxofficemojo.com/release/{imdb_id}/?ref_=bo_tt_gr_1"
     response = requests.get(url)
@@ -36,7 +83,16 @@ def scrape_box_office_data(imdb_id, title):
         print(f"No table found for IMDb ID {imdb_id} ({title})")
         return None
 
+    # Check if it's a weekend table
+    first_header = table.find('th')
+    if first_header and 'Weekend' in first_header.get_text(strip=True):
+        print(f"Parsing weekend table for {title}")
+        return parse_weekend_table(table, imdb_id, title)
+
+    # Otherwise parse normally
     headers = [th.get_text(strip=True) for th in table.find_all('th')]
+    
+    # Ensure headers are unique
     seen = {}
     for i, header in enumerate(headers):
         count = seen.get(header, 0)
@@ -44,76 +100,37 @@ def scrape_box_office_data(imdb_id, title):
         if count > 0:
             headers[i] = f"{header}_{count}"
 
-    is_weekend = headers[0] == "Weekend"
     rows = []
-
     for tr in table.find_all('tr'):
         cells = tr.find_all('td')
         if not cells:
             continue
-        row_data = []
+        row = []
         for cell in cells:
             link = cell.find('a', href=True)
             if link and 'date' in link['href']:
                 date = link['href'].split('/')[2]
-                row_data.append(date)
+                row.append(date)
             else:
-                row_data.append(cell.get_text(strip=True))
-        if row_data:
-            rows.append(row_data)
+                row.append(cell.get_text(strip=True))
+        rows.append(row)
 
     if not rows:
         print(f"No data rows found for IMDb ID {imdb_id} ({title})")
         return None
 
-    if not is_weekend:
-        df = pd.DataFrame(rows, columns=headers)
-        df['IMDB_ID'] = imdb_id
-        df['Title'] = title
-        return df
-    else:
-        weekend_dfs = []
-        for row in rows:
-            row_dict = dict(zip(headers, row))
-            weekend_range = row_dict.get("Weekend")
-            gross = row_dict.get("Gross")
-            if not weekend_range or not gross:
-                continue
+    df = pd.DataFrame(rows, columns=headers)
+    df['IMDB_ID'] = imdb_id
+    df['Title'] = title
+    return df
 
-            try:
-                date_parts = weekend_range.replace('–', '-').replace('—', '-').split('-')
-                if len(date_parts) != 2:
-                    continue
-                start_str, end_str = date_parts
-                today = datetime.today()
-                year = today.year
-
-                start_date = datetime.strptime(f"{start_str.strip()} {year}", "%b %d %Y")
-                end_date = datetime.strptime(f"{end_str.strip()} {year}", "%b %d %Y")
-
-                num_days = (end_date - start_date).days + 1
-                gross_val = gross.replace('$', '').replace(',', '')
-                gross_per_day = round(float(gross_val) / num_days, 2)
-
-                for i in range(num_days):
-                    day = start_date + timedelta(days=i)
-                    new_row = {key: row_dict.get(key, '') for key in headers}
-                    new_row['Date'] = day.strftime('%Y-%m-%d')
-                    new_row['Daily'] = f"${gross_per_day:,.2f}"
-                    new_row['IMDB_ID'] = imdb_id
-                    new_row['Title'] = title
-                    weekend_dfs.append(new_row)
-            except Exception as e:
-                print(f"Error parsing weekend row for {title}: {e}")
-                continue
-
-        return pd.DataFrame(weekend_dfs)
-
-# Get today's date
+# Today's date
 today = datetime.today().date()
+
+# Set to track unique movies
 unique_movies = set()
 
-# Process each person's movies
+# Deduplicate and filter movies
 for person in people_movies:
     for movie in person["movies"]:
         title = movie.get("title")
@@ -131,7 +148,7 @@ for person in people_movies:
 
         unique_movies.add((imdb_id, title))
 
-# Scrape box office data
+# Fetch data
 for imdb_id, title in unique_movies:
     print(f"Fetching data for {title} ({imdb_id})")
     df = scrape_box_office_data(imdb_id, title)
