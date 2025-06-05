@@ -33,7 +33,7 @@ function toggleRow(rowId) {
 document.addEventListener("DOMContentLoaded", async function() {
   // Define start date and cutoff date
   const startDate = new Date("2025-01-01"); // Replace with your desired start date
-  const cutoffDate = new Date("2025-05-31"); // Replace with your desired cutoff date
+  const cutoffDate = new Date("2025-04-30"); // Replace with your desired cutoff date
   const today = new Date();
   const endDate = today <= cutoffDate ? today : cutoffDate;
 
