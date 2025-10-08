@@ -10,8 +10,14 @@ left sidebar to add the speakers.  (OPTIONALLY you could run the
 Remember, that script will include sustainings and auditing reports which 
 should not be kept in the dataset files). Then input the titles.  Then go talk 
 by talk copying the text and footnotes and clicking the buttons to add them to
-the table.  Once this is complete, add this data to the "general-Conference
--talks.csv" file in the datasets folder.
+the table.  Once this is complete, add this data to the "general-conference
+-talks.csv" file in the datasets folder. 
+
+When done with the CSV file, save it and run the script: 
+convert-conference-talks-CSV-to-JSON.py. Then, enter the newly added talks 
+and hyperlinks to the CSV file: "conference-talk-hyperlinks.csv". Once done, 
+publish the changes to GitHub.This is necessary because the remaining scripts 
+rely on the online versions of the CSV and JSON files.
 
 ---------------------------------------------------------------------------
                         Creating the talk URLs
