@@ -405,10 +405,10 @@ else:
     conference_date = f"oct-{now.year - 1}"
 
 # Define the file paths including the determined conference date
-file_path_short = f"../../../datasets/all-footnotes-lookup-{conference_date}-new.json"
-file_path_long = f"../../../datasets/all-footnotes-{conference_date}-new.json"
-apostle_path_short = f"../../../datasets/apostle-all-footnotes-lookup-{conference_date}-new.json"
-apostle_path_long = f"../../../datasets/apostle-all-footnotes-{conference_date}-new.json"
+file_path_short = f"../../../datasets/all-footnotes-lookup-{conference_date}.json"
+file_path_long = f"../../../datasets/all-footnotes-{conference_date}.json"
+apostle_path_short = f"../../../datasets/apostle-all-footnotes-lookup-{conference_date}.json"
+apostle_path_long = f"../../../datasets/apostle-all-footnotes-{conference_date}.json"
 
 # Continue with the rest of your code to process and save data
 scriptures_df.to_json(file_path_long, orient='records')
