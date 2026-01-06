@@ -55,8 +55,8 @@ document.addEventListener("DOMContentLoaded", async function() {
     return;
   }
 
-  // Filter peopleData for competition "wiseFamily3"
-  peopleData = peopleData.filter(person => person.competition === "wiseFamily3");
+  // Filter peopleData for competition "wiseFamily4"
+  peopleData = peopleData.filter(person => person.competition === "wiseFamily4");
 
   const cumulativeData = {};
   
