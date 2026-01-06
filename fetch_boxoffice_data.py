@@ -8,8 +8,7 @@ from datetime import datetime, timedelta
 
 # Input your release dates here. Format: "IMDB_ID": "YYYY-MM-DD"
 MOVIE_RELEASE_DATES = {
-    "tt15239678": "2024-11-22",
-    "tt1678720": "2024-12-20",
+    "rl2127396865": "2025-09-19"
     # Add more movies as needed
 }
 
