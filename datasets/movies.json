@@ -945,185 +945,237 @@
     ]
   },
 
-
-
-  
-
-    {
-    "name": null,
+  {
+    "name": "Curtis",
     "pull_through": "2026-04-30",
     "competition": "wiseFamily4",
     "movies": [
       {
         "title": "Greenland 2: Migration",
         "imdb_id": "rl2715320321",
-        "points": null
-      },
-      {
-        "title": "Primate",
-        "imdb_id": "rl1406959617",
-        "points": null
-      },
-      {
-        "title": "28 Years Later: The Bone Temple",
-        "imdb_id": "rl1562607617",
-        "points": null
-      },
-      {
-        "title": "Charlie the Wonderdog",
-        "imdb_id": "rl434405377",
-        "points": null
-      },
-      {
-        "title": "Clika",
-        "imdb_id": "rl3744628737",
-        "points": null
-      },
-      {
-        "title": "Mercy",
-        "imdb_id": "rl1781235713",
-        "points": null
-      },
-      {
-        "title": "Return to Silent Hill",
-        "imdb_id": "rl3922296833",
-        "points": null
-      },
-      {
-        "title": "Send Help",
-        "imdb_id": "rl4147019777",
-        "points": null
-      },
-      {
-        "title": "Shelter",
-        "imdb_id": "rl2951446529",
-        "points": null
-      },
-      {
-        "title": "Dracula",
-        "imdb_id": "rl2934341633",
-        "points": null
-      },
-      {
-        "title": "Solo Mio",
-        "imdb_id": "rl2967437313",
-        "points": null
-      },
-      {
-        "title": "The Strangers: Chapter 3",
-        "imdb_id": "rl754941953",
-        "points": null
-      },
-      {
-        "title": "Broken Bird",
-        "imdb_id": "rl182616065",
-        "points": null
-      },
-      {
-        "title": "Crime 101",
-        "imdb_id": null,
-        "points": null
-      },
-      {
-        "title": "GOAT",
-        "imdb_id": "rl2725019649",
-        "points": null
-      },
-      {
-        "title": "Good Luck, Have Fun, Don't Die",
-        "imdb_id": "rl1088585729",
-        "points": null
-      },
-      {
-        "title": "Wuthering Heights",
-        "imdb_id": "rl723550209",
-        "points": null
-      },
-      {
-        "title": "How to Make a Killing",
-        "imdb_id": "rl4143808513",
-        "points": null
-      },
-      {
-        "title": "I Can Only Imagine 2",
-        "imdb_id": "rl221872129",
-        "points": null
-      },
-      {
-        "title": "Psycho Killer",
-        "imdb_id": "rl3369435137",
-        "points": null
-      },
-      {
-        "title": "EPiC: Elvis Presley in Concert",
-        "imdb_id": "rl1535148033",
-        "points": null
+        "points": 23
       },
       {
         "title": "Scream 7",
         "imdb_id": "rl1359839233",
-        "points": null
-      },
-      {
-        "title": "Hoppers",
-        "imdb_id": "rl284918529",
-        "points": null
-      },
-      {
-        "title": "The Bride",
-        "imdb_id": "rl1985511425",
-        "points": null
-      },
-      {
-        "title": "Reminders of Him",
-        "imdb_id": "rl2970583041",
-        "points": null
-      },
-      {
-        "title": "The Breadwinner",
-        "imdb_id": "rl4181426177",
-        "points": null
-      },
-      {
-        "title": "Undertone",
-        "imdb_id": "rl1978564609",
-        "points": null
-      },
-      {
-        "title": "Project Hail Mary",
-        "imdb_id": "rl1993768961",
-        "points": null
-      },
-      {
-        "title": "Ready or Not 2: Here I Come",
-        "imdb_id": "rl2429190145",
-        "points": null
+        "points": 40
       },
       {
         "title": "They Will Kill You",
         "imdb_id": "rl3572334593",
-        "points": null
+        "points": 20
+      }
+    ]
+  },
+  {
+    "name": "Brent",
+    "pull_through": "2026-04-30",
+    "competition": "wiseFamily4",
+    "movies": [
+      {
+        "title": "Primate",
+        "imdb_id": "rl1406959617",
+        "points": 24
       },
       {
-        "title": "The Drama",
-        "imdb_id": "rl1676574721",
-        "points": null
+        "title": "Return to Silent Hill",
+        "imdb_id": "rl3922296833",
+        "points": 14
       },
       {
-        "title": "The Super Mario Galaxy Movie",
-        "imdb_id": "rl3344662529",
-        "points": null
-      },
-      {
-        "title": "You, Me & Tuscany",
-        "imdb_id": "rl599818241",
-        "points": null
+        "title": "Undertone",
+        "imdb_id": "rl1978564609",
+        "points": 18
       },
       {
         "title": "Michael",
         "imdb_id": "rl1246593025",
-        "points": null
+        "points": 44
       }
     ]
-  }  
+  },
+  {
+    "name": "Holly",
+    "pull_through": "2026-04-30",
+    "competition": "wiseFamily4",
+    "movies": [
+      {
+        "title": "28 Years Later: The Bone Temple",
+        "imdb_id": "rl1562607617",
+        "points": 15
+      },
+      {
+        "title": "Broken Bird",
+        "imdb_id": "rl182616065",
+        "points": 5
+      },
+      {
+        "title": "Wuthering Heights",
+        "imdb_id": "rl723550209",
+        "points": 31
+      },
+      {
+        "title": "Ready or Not 2: Here I Come",
+        "imdb_id": "rl2429190145",
+        "points": 38
+      }
+    ]
+  },
+  {
+    "name": "Nate",
+    "pull_through": "2026-04-30",
+    "competition": "wiseFamily4",
+    "movies": [
+      {
+        "title": "Charlie the Wonderdog",
+        "imdb_id": "rl434405377",
+        "points": 15
+      },
+      {
+        "title": "Shelter",
+        "imdb_id": "rl2951446529",
+        "points": 10
+      },
+      {
+        "title": "EPiC: Elvis Presley in Concert",
+        "imdb_id": "rl1535148033",
+        "points": 12
+      },
+      {
+        "title": "Hoppers",
+        "imdb_id": "rl284918529",
+        "points": 38
+      }
+    ]
+  },
+  {
+    "name": "Whitney",
+    "pull_through": "2026-04-30",
+    "competition": "wiseFamily4",
+    "movies": [
+      {
+        "title": "Clika",
+        "imdb_id": "rl3744628737",
+        "points": 0
+      },
+      {
+        "title": "Send Help",
+        "imdb_id": "rl4147019777",
+        "points": 18
+      },
+      {
+        "title": "Dracula",
+        "imdb_id": "rl2934341633",
+        "points": 25
+      },
+      {
+        "title": "Good Luck, Have Fun, Don't Die",
+        "imdb_id": "rl1088585729",
+        "points": 18
+      },
+      {
+        "title": "How to Make a Killing",
+        "imdb_id": "rl4143808513",
+        "points": 26
+      }
+    ]
+  },
+  {
+    "name": "Kam",
+    "pull_through": "2026-04-30",
+    "competition": "wiseFamily4",
+    "movies": [
+      {
+        "title": "Mercy",
+        "imdb_id": "rl1781235713",
+        "points": 25
+      },
+      {
+        "title": "The Drama",
+        "imdb_id": "rl1676574721",
+        "points": 24
+      },
+      {
+        "title": "The Super Mario Galaxy Movie",
+        "imdb_id": "rl3344662529",
+        "points": 45
+      }
+    ]
+  },
+  {
+    "name": "Becky",
+    "pull_through": "2026-04-30",
+    "competition": "wiseFamily4",
+    "movies": [
+      {
+        "title": "Solo Mio",
+        "imdb_id": "rl2967437313",
+        "points": 15
+      },
+      {
+        "title": "Crime 101",
+        "imdb_id": null,
+        "points": 8
+      },
+      {
+        "title": "I Can Only Imagine 2",
+        "imdb_id": "rl221872129",
+        "points": 9
+      },
+      {
+        "title": "Reminders of Him",
+        "imdb_id": "rl2970583041",
+        "points": 14
+      },
+      {
+        "title": "The Breadwinner",
+        "imdb_id": "rl4181426177",
+        "points": 26
+      },
+      {
+        "title": "You, Me & Tuscany",
+        "imdb_id": "rl599818241",
+        "points": 28
+      }
+    ]
+  },
+  {
+    "name": "Lindsay",
+    "pull_through": "2026-04-30",
+    "competition": "wiseFamily4",
+    "movies": [
+      {
+        "title": "The Strangers: Chapter 3",
+        "imdb_id": "rl754941953",
+        "points": 12
+      },
+      {
+        "title": "Psycho Killer",
+        "imdb_id": "rl3369435137",
+        "points": 12
+      },
+      {
+        "title": "Project Hail Mary",
+        "imdb_id": "rl1993768961",
+        "points": 76
+      }
+    ]
+  },
+  {
+    "name": "Lucas",
+    "pull_through": "2026-04-30",
+    "competition": "wiseFamily4",
+    "movies": [
+      {
+        "title": "GOAT",
+        "imdb_id": "rl2725019649",
+        "points": 21
+      },
+      {
+        "title": "The Bride",
+        "imdb_id": "rl1985511425",
+        "points": 51
+      }
+    ]
+  }
 ]
