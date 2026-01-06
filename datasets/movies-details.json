@@ -702,5 +702,365 @@
       "description": "A horrible toxic accident transforms downtrodden janitor, Winston Gooze into a new evolution of hero: The Toxic Avenger.",
       "release_date": "2025-08-29",
       "rating": "R"
+  },
+  {
+    "id": "rl987791361",
+    "title": "The Conjuring: Last Rites",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BM2VmMzRkYzgtMzg2ZC00OTFkLTkwMTYtNTMxNjM2YzI1MjgyXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Paranormal investigators Ed and Lorraine Warren take on one last terrifying case involving mysterious entities they must confront.",
+    "release_date": "2025-09-05",
+    "rating": "R"
+  },
+  {
+    "id": "rl3206709249",
+    "title": "Light of the World",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYjkyMDNjNTYtODdmMy00NTkzLWIzYTgtNWE0YjBhZGVhZmQyXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Follows Jesus' life from ministry beginnings through crucifixion, resurrection, as seen through Apostle John's eyes.",
+    "release_date": "2025-09-05",
+    "rating": "PG"
+  },
+  {
+    "id": "rl1457225729",
+    "title": "Hamilton",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYTc3MWIyMzAtMTZmNC00YmNjLWIyZTgtMmU4NjZkYzZkOThkXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "The real life of one of America's foremost founding fathers and first Secretary of the Treasury, Alexander Hamilton. Captured live on Broadway from the Richard Rodgers Theater with the original Broadway cast.",
+    "release_date": "2025-09-05",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl1014267905",
+    "title": "Downton Abbey: The Grand Finale",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BZTUxOWRkN2UtZjBlMS00NWU0LWE2M2ItZmY5MDJjMzlhYTk4XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "When Mary finds herself in a public scandal and the family faces financial trouble, the household grapples with the threat of social disgrace. The Crawleys must embrace change with the next generation leading Downton Abbey into the future.",
+    "release_date": "2025-09-12",
+    "rating": "PG"
+  },
+  {
+    "id": "rl624590849",
+    "title": "The Long Walk",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNmE4YmIxNWQtMzJhMy00NDI5LWFmYjEtMGYyMmFhNzdjODVmXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A group of teenage boys compete in an annual contest known as \"The Long Walk,\" where they must maintain a certain walking speed or get shot.",
+    "release_date": "2025-09-12",
+    "rating": "R"
+  },
+  {
+    "id": "rl2127396865",
+    "title": "Predators",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNmNiZTc2NTAtMmEzNi00Mzc4LWI5YTItZmNjYmVlNGNkOWE0XkEyXkFqcGc@._V1_SY139_CR2,0,92,139_.jpg",
+    "description": "Exploring the controversial NBC series that caught potential child predators in sting operations, leading to arrests, and its eventual cancellation.",
+    "release_date": "2025-09-19",
+    "rating": "R"
+  },
+  {
+    "id": "rl3446243329",
+    "title": "Him",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BZjE1OGY1OGItZWIxZi00ZDc0LTg0OTgtMzMwNTdiNzNhZDhhXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+    "description": "A young athlete descends into a world or terror when he's invited to train with a legendary champion whose charisma curdles into something darker.",
+    "release_date": "2025-09-19",
+    "rating": "R"
+  },
+  {
+    "id": "rl2281799681",
+    "title": "A Big Bold Beautiful Journey",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMzMwZWJiYjEtM2RkMi00ZDhjLTk4ZmMtZDQ2NDY2YTJkOTE5XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "An imaginative tale of two strangers and the unbelievable journey that connects them.",
+    "release_date": "2025-09-19",
+    "rating": "PG"
+  },
+  {
+    "id": "rl825786369",
+    "title": "The Strangers: Chapter 2",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMDY4ZTJmZmQtNWNmMS00MjEwLWI1ZTYtNzEzNGFjZTBhMzE4XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "On the final day of their cross country road trip, a couple's vehicle breaks down, forcing them to take refuge in a remote Airbnb. As night falls, three masked strangers terrorize them until dawn.",
+    "release_date": "2025-09-26",
+    "rating": "R"
+  },
+  {
+    "id": "rl584417281",
+    "title": "BFFs",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BM2UwNjRhNTYtMTg0Mi00OGMyLTlhMjgtZTQzMzg5YTRkMjViXkEyXkFqcGc@._V1_SY139_CR0,0,92,139_.jpg",
+    "description": "Jerry trying to reconnect with childhood friend Henry. As their practical jokes escalate, it threatens Henry's current life with potentially fatal consequences.",
+    "release_date": "2025-09-26",
+    "rating": "R"
+  },
+  {
+    "id": "rl1784184833",
+    "title": "One Battle After Another",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYzA5ZTMyMWYtMWEwZS00MTU4LTgwMjktYTE5OTU1YzFjMGRiXkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
+    "description": "When their evil enemy resurfaces after 16 years, a group of ex-revolutionaries reunite to rescue one of their own's daughter.",
+    "release_date": "2025-09-26",
+    "rating": "R"
+  },
+  {
+    "id": "rl845447169",
+    "title": "Gabby's Dollhouse: The Movie",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMmUwNTg3ODMtZGQxZi00Y2VmLWJhMTEtZTc5ZGM1Nzc5MDViXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+    "description": "Gabby and Grandma Gigi's road trip takes an unexpected turn when Gabby's prized dollhouse ends up with eccentric cat lady Vera. Gabby embarks on a adventure to reunite the Gabby Cats and retrieve her beloved dollhouse before it's too late.",
+    "release_date": "2025-09-26",
+    "rating": "PG"
+  },
+  {
+    "id": "rl2453307393",
+    "title": "The Smashing Machine",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BOWYxZTM1ZGMtMjg5MC00NzcyLTk0ZTEtZWI0ZThkNDJiYjZmXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+    "description": "The story of mixed-martial arts and UFC champion Mark Kerr.",
+    "release_date": "2025-10-03",
+    "rating": "R"
+  },
+  {
+    "id": "rl4247683073",
+    "title": "After the Hunt",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMzYyOTAwODEtZTY4My00MjVkLWJjYjUtMjE2N2UzYTE3MTY3XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A college professor finds herself at a personal and professional crossroads when a star pupil levels an accusation against one of her colleagues and a dark secret from her own past threatens to come to light.",
+    "release_date": "2025-10-10",
+    "rating": "R"
+  },
+  {
+    "id": "rl1094680577",
+    "title": "Soul on Fire",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYTVlNDY1OWUtMjFmNy00MjA4LThiNWEtNzRjMGM2MGUzNjZmXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "After suffering a accident, a young boy ends up relying on his family, his faith, and his community in his fight for survival.",
+    "release_date": "2025-10-10",
+    "rating": "PG"
+  },
+  {
+    "id": "rl979468289",
+    "title": "Tron: Ares",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYzk0NjE4NzYtZjc5Ni00MTkxLTgyY2QtZjliOTA5N2U2YzM1XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A highly sophisticated Program, Ares, is sent from the digital world into the real world on a dangerous mission.",
+    "release_date": "2025-10-10",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl4023746561",
+    "title": "Kiss of the Spider Woman",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYzBkNmYzN2MtNDVmMi00ZjQ0LTk0MDYtMDMwOGVmYjBiODk1XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Valentín, a political prisoner, shares a cell with Molina, convicted for public indecency. An unlikely bond forms as Molina recounts a Hollywood musical plot starring Ingrid Luna.",
+    "release_date": "2025-10-10",
+    "rating": "R"
+  },
+  {
+    "id": "rl1561493505",
+    "title": "Roofman",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYjU4OTkyN2MtYjI0Mi00MjE3LWFkNTktZDNjODc3OTdiMDdiXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A charismatic criminal, while on the run from the police, hides on the roof of a toy store. There, he adopts a new identity and becomes involved with an employee, beginning a relationship as unlikely as it is risky.",
+    "release_date": "2025-10-10",
+    "rating": "R"
+  },
+  {
+    "id": "rl3084156929",
+    "title": "Pets on A Train",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMTZlOWZkOGYtYWY4Yi00OGI1LTgwZDMtZjRkOWRlYzM4YmRjXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "When a crew of animal bandits embark on a routine swindle, they find themselves caught up in a train heist. It's up to Falcon, a petty thief raccoon, and Rex, a righteous police-dog, to save the animals on this high-speed runway train.",
+    "release_date": "2025-10-17",
+    "rating": "PG"
+  },
+  {
+    "id": "rl2813821697",
+    "title": "Black Phone 2",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMTVjMzNmZGYtOWU5NS00NDYzLThhZTktZGNlODIwYWVhMDRmXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+    "description": "As Finn, now 17, struggles with life after his captivity, his sister begins receiving calls in her dreams from the black phone and seeing disturbing visions of three boys being stalked at a winter camp known as Alpine Lake.",
+    "release_date": "2025-10-17",
+    "rating": "R"
+  },
+  {
+    "id": "rl3524624385",
+    "title": "Good Fortune",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMDYzMzk4MGYtNDcwZi00ZGRmLWJmNTQtYjMyNGJjZmY2ODQ2XkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
+    "description": "A well-meaning but rather inept angel named Gabriel meddles in the lives of a struggling gig worker and a wealthy venture capitalist.",
+    "release_date": "2025-10-17",
+    "rating": "R"
+  },
+  {
+    "id": "rl4079190017",
+    "title": "Regretting You",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNTNlM2MzM2MtZGU3OC00ZTM0LWFhYmYtYTQ1M2RhZTcwYjViXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Centers on the strained relationship between young mother Morgan Grant and her teenage daughter Clara, exacerbated by Morgan's husband Chris's tragic death, forcing them to navigate life's challenges together.",
+    "release_date": "2025-10-24",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl717651969",
+    "title": "Springsteen: Deliver Me from Nowhere",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYjNmN2FiNjQtYWZhNC00Mjc3LTg4MTAtOTJhMjU5Nzk3NjI4XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Bruce Springsteen's journey crafting his 1982 album Nebraska, which emerged as he recorded Born in the USA with the E Street Band. Based on Warren Zanes' book.",
+    "release_date": "2025-10-24",
+    "rating": "R"
+  },
+  {
+    "id": "rl601391105",
+    "title": "Anniversary",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYWJmMWJiZDgtYTZhYi00N2ZkLTg3ODQtZGU0Y2I0YjY4NGYxXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A provocative thriller about a very close-knit family that is torn apart as a new movement \"The Change\" envelops the country.",
+    "release_date": "2025-10-29",
+    "rating": "R"
+  },
+  {
+    "id": "rl1859813377",
+    "title": "Stitch Head",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYWUwNWE1YjctMDYyOC00YmJjLWFkZTMtYzhjNmI3NTI4ZTMxXkEyXkFqcGc@._V1_SY139_CR0,0,92,139_.jpg",
+    "description": "Follows Stitch Head, a small creature awoken by a Mad Professor in a castle to protect the professor's other creations from the townspeople of Grubbers Nubbin.",
+    "release_date": "2025-10-29",
+    "rating": "PG"
+  },
+  {
+    "id": "rl1239121921",
+    "title": "Sarah's Oil",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BODYwNmM0NjUtMGFlMS00YjIzLWEwYTAtZGE3ZWYzMGUxMmZkXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "The remarkable true story of eleven year old Sarah Rector, an African American girl born in Oklahoma Indian Territory in the early 1900s, who believes there is oil beneath the barren land she's allotted and whose faith is proven right.",
+    "release_date": "2025-11-07",
+    "rating": "PG"
+  },
+  {
+    "id": "rl2417000449",
+    "title": "Predator: Badlands",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BOGI4ZDI2NDYtYjBiYi00NzgwLTk1ZTAtYWQwNmY5OWUxNGYyXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A young Predator outcast from his clan finds an unlikely ally on his journey in search of the ultimate adversary.",
+    "release_date": "2025-11-07",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl3768321",
+    "title": "Now You See Me: Now You Don't",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNTZlYzdjMzgtYjU2ZC00MGQ5LWFiMDYtOTIwNzQ0M2MyNmU2XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A diamond heist reunites retired Horsemen illusionists with new performers Greenblatt, Smith and Sessa as they target dangerous criminals.",
+    "release_date": "2025-11-14",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl2165080065",
+    "title": "The Running Man",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMTczMzFjOTUtNGRlZS00MDM3LWExYjEtYWYxZDNmNzI2YTRmXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A man joins a game show where contestants, allowed to go anywhere in the world, are pursued by \"hunters\" hired to kill them.",
+    "release_date": "2025-11-14",
+    "rating": "R"
+  },
+  {
+    "id": "rl2277539841",
+    "title": "Sisu: Road to Revenge",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BM2ZiNDZiZDQtMjYyOC00MWY1LTkyZjgtNDM1MmMwZTdhOWFkXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A man returns to dismantle his family's house, where they were murdered in war, to rebuild it elsewhere. When the killer, a Red Army commander, tracks him down, a brutal cross-country pursuit begins.",
+    "release_date": "2025-11-21",
+    "rating": "R"
+  },
+  {
+    "id": "rl3587538945",
+    "title": "Rental Family",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYmMxN2I3MWYtYjRhNS00ZDM1LWE4MDEtNzU2YTI4ZjNlYjg2XkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
+    "description": "An American actor in Tokyo struggling to find purpose lands an unusual gig: working for a Japanese \"rental family\" agency, playing stand-in roles for strangers. He rediscovers purpose, belonging, and the beauty of human connection.",
+    "release_date": "2025-11-21",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl2185003777",
+    "title": "Wicked: For Good",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNzRhNTE4ZTYtNTM0Mi00MzU3LTk4MTktYWE3MzQ2NTU0MDNlXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+    "description": "Elphaba, the future Wicked Witch of the West and her relationship with Glinda, the Good Witch of the North. The second of a two-part feature film adaptation of the Broadway musical.",
+    "release_date": "2025-11-21",
+    "rating": "PG"
+  },
+  {
+    "id": "rl2303754241",
+    "title": "Zootopia 2",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BODY1OTExZDMtOWY5ZC00NTE2LTkzOTAtNzYwMDliZmE1YTMwXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Brave rabbit cop Judy Hopps and her friend, the fox Nick Wilde, team up again to crack a new case, the most perilous and intricate of their careers.",
+    "release_date": "2025-11-26",
+    "rating": "PG"
+  },
+  {
+    "id": "rl316178433",
+    "title": "Eternity",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNzlmZTNiOTAtNzhlOC00ZTA1LWJhNTgtMDQ4YmY4NWIyNTA4XkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+    "description": "In an afterlife where souls have one week to decide where to spend eternity, Joan is faced with the impossible choice between the man she spent her life with and her first love, who died young and has waited decades for her to arrive.",
+    "release_date": "2025-11-26",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl2490073089",
+    "title": "Five Nights at Freddy's 2",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BZjkwYzE2OTQtNGZiZC00M2UyLWJjNTEtMTMxNDgwMzY1N2RkXkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
+    "description": "1987, after a rather unstable life, Jeremy Fitzgerald found work as a security guard at the new Freddy's Fazbear Pizzeria, but when he entered there he would realize that not everything there is as it seems.",
+    "release_date": "2025-12-05",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl4029579265",
+    "title": "Ella McCay",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BZWU2Y2FjY2YtNTQ3My00MzdkLWJmNWEtNGViNGE1ZDZkNWU1XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "An idealistic young woman juggles her family and work life in a comedy about the people you love and how to survive them.",
+    "release_date": "2025-12-12",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl3972628481",
+    "title": "Silent Night, Deadly Night",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNTg2NjlmMDItNTkyNi00Y2NlLWFjMTUtOTY2ZTIzY2RiYWVhXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A child witnesses his parents' murder by a man in a Santa suit. Years later, as an adult, he dons a Santa costume himself and embarks on a violent quest for retribution against those responsible for the traumatic event from his childhood.",
+    "release_date": "2025-12-12",
+    "rating": "R"
+  },
+  {
+    "id": "rl1421901825",
+    "title": "Hamnet",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNDMwZjljOGEtNTEzZS00NWU1LWE1MjUtZGZjNTIwMWNjOTRlXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A powerful story of love and loss that inspired the creation of Shakespeare's timeless masterpiece, Hamlet.",
+    "release_date": "2025-11-27",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl1743487745",
+    "title": "The SpongeBob Movie: Search for Squarepants",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMjRjMzcyOTItYmJhZS00MDU4LThjZTItOWMzYzFiYjIzYWNlXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "SpongeBob journeys to the ocean's depths to face the Flying Dutchman's ghost, encountering challenges and uncovering marine mysteries.",
+    "release_date": "2025-12-19",
+    "rating": "PG"
+  },
+  {
+    "id": "rl3389031937",
+    "title": "Avatar: Fire and Ash",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BZDY0MDA5ZWUtZWZjYS00ZDBkLWI0NGEtZDc2YzE3NDBkZmZkXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Jake and Neytiri's family grapples with grief after Neteyam's death, encountering a new, aggressive Na'vi tribe, the Ash People, who are led by the fiery Varang, as the conflict on Pandora escalates and a new moral focus emerges.",
+    "release_date": "2025-12-19",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl1512275969",
+    "title": "The Housemaid",
+    "image_url": "https://m.media-amazon.com/images/G/01/boxofficemojo/nopicture/180x268/film-173410679._CB467826904_SY139_SX92_.png",
+    "description": "Follows a struggling woman who is happy to start over as a housemaid for an affluent, elite couple.",
+    "release_date": "2025-12-19",
+    "rating": "R"
+  },
+  {
+    "id": "rl3151921153",
+    "title": "Is This Thing On?",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNmYxYWQ2ZDYtMzM4Zi00ODQ4LTkyMTMtNjcxOGNmZjIyNjY5XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "As their marriage unravels, Alex faces middle age and divorce, seeking new purpose in the New York comedy scene while wife Tess confronts the sacrifices she made for their family-forcing them to navigate co-parenting and identity.",
+    "release_date": "2025-12-19",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl1411612673",
+    "title": "Marty Supreme",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYTNhNjdkMDEtN2IzZi00NzM3LTg4NWYtOTEyYjQ2MDMzOTdhXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+    "description": "Marty Mauser, a young man with a dream no one respects, goes to hell and back in pursuit of greatness.",
+    "release_date": "2025-12-25",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl1260617729",
+    "title": "Anaconda",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BZjAxNWI5YzgtNjJjOC00YTZhLTgwOTAtMjJlYmI4ZWIwNGM5XkEyXkFqcGc@._V1_SY139_CR3,0,92,139_.jpg",
+    "description": "A re-interpretation of the iconic '90s creature feature, in which a group of circus athletes - having found themselves stranded in a rain forest - come face-to-face with the elements, a bloodthirsty poacher, and a formidable giant snake.",
+    "release_date": "2025-12-25",
+    "rating": "R"
+  },
+  {
+    "id": "rl1119977473",
+    "title": "Song Sung Blue",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMTYyYmRiYWMtZjIyOS00NzQxLTgxNGItOGQ1MzQ0Y2M3ZWI3XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Lightning and Thunder, a Milwaukee husband and wife Neil Diamond tribute act, experience soaring success and devastating heartbreak in their musical journey together.",
+    "release_date": "2025-12-25",
+    "rating": "PG-13"
   }
 ]
