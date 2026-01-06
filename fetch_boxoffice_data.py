@@ -207,7 +207,8 @@ try:
     subprocess.run(['git', 'config', '--local', 'user.email', 'github-actions[bot]@users.noreply.github.com'], check=True)
     subprocess.run(['git', 'config', '--local', 'user.name', 'github-actions[bot]'], check=True)
     subprocess.run(['git', 'remote', 'set-url', 'origin', 'https://github.com/kameronyork/kameronyork.github.io.git'], check=True)
-    subprocess.run(['git', 'pull', '--rebase'], check=True)
+    # Added --autostash to handle the modified json file during rebase
+    subprocess.run(['git', 'pull', '--rebase', '--autostash'], check=True)
     subprocess.run(['git', 'add', output_file], check=True)
     subprocess.run(['git', 'commit', '-m', 'Update box office data [skip ci]'], check=True)
     subprocess.run(['git', 'push'], check=True)
