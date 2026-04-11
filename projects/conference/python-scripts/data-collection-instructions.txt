@@ -20,18 +20,6 @@ publish the changes to GitHub.This is necessary because the remaining scripts
 rely on the online versions of the CSV and JSON files.
 
 ---------------------------------------------------------------------------
-                        Creating the talk URLs
----------------------------------------------------------------------------
-Scraping the references for the Gospel Buddy extension needs the URLs for 
-each talk.  Next you should copy and paste the talk speaker, title, and 
-session information to the "conference-talk-hyperlinks.csv" file in the 
-datasets folder.  Then go and find the URLs for each talk and copy them 
-There.  OPTIONALLY you could run the "find-hyperlinks.py" file in this 
-folder to return the URLs for each talk.  Remember, that script will 
-include sustainings and auditing reports which should not be kept in the 
-dataset files.  Once the dataset files are updated, publish to GitHub.
-
----------------------------------------------------------------------------
                     Generating Gospel Buddy References
 ---------------------------------------------------------------------------
 Once the new talk hyperlinks are added to the hyperlinks dataset file you 
@@ -41,6 +29,11 @@ tabs of every conference talk in the hyperlinks dataset.  The script should
 be run on all talks periodically instead of just new talks.  This will 
 ensure ALL gospel buddy references are correct in case the Church updates
 past talk footnotes.
+
+* IMPORTANT NOTE * I tested a new version that would simply count the
+number of words in the scripture that appear in the talk. However, please
+still use the COMPLEX version. That will determine the longest continuous
+string from the scripture that appears in the talk text.
 
 The "webscrape-footnotes.py" file is designed to output four datasets in
 JSON format to the datasets folder.  They have unique filters and purposes.
