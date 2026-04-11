@@ -10,6 +10,11 @@ df = pd.DataFrame(columns=["year", "month", "speaker", "title", "hyperlink"])
 # Define the DataFrame containing hyperlinks
 data = {
     'Hyperlink': [
+        'https://www.churchofjesuschrist.org/study/general-conference/2026/04',
+        'https://www.churchofjesuschrist.org/study/general-conference/2025/10',
+        'https://www.churchofjesuschrist.org/study/general-conference/2025/04',
+        'https://www.churchofjesuschrist.org/study/general-conference/2024/10',
+        'https://www.churchofjesuschrist.org/study/general-conference/2024/04',
         'https://www.churchofjesuschrist.org/study/general-conference/2023/10',
         'https://www.churchofjesuschrist.org/study/general-conference/2023/04',
         'https://www.churchofjesuschrist.org/study/general-conference/2022/10',
@@ -122,58 +127,70 @@ data = {
 # Iterate through the hyperlinks
 for url in data['Hyperlink']:
     # Extract year and month from the URL
-    url_parts = url.split("/")
+    url_parts = url.strip("/").split("/")
     year = url_parts[-2]
     month = url_parts[-1]
 
-    # Send an HTTP GET request to the URL
-    response = requests.get(url)
+    try:
+        # Send an HTTP GET request
+        response = requests.get(url)
 
-    # Check if the request was successful
-    if response.status_code == 200:
-        # Parse the HTML content of the page
+        if response.status_code != 200:
+            print(f"Failed to retrieve the webpage {url}. Status code: {response.status_code}")
+            continue
+
+        # Parse HTML
         soup = BeautifulSoup(response.text, 'html.parser')
 
-        # Find the section containing the table of contents
-        table_of_contents = soup.find("section", class_="sidePanel-sfJHO tableOfContentsPanel-qvxa4")
+        # Find ALL talk links (more stable than relying on weird class names)
+        talk_items = soup.select('a[href*="/study/general-conference/"]')
 
-        if table_of_contents:
-            # Initialize lists to store the data
-            speakers, titles, hyperlinks = [], [], []
+        # Initialize lists
+        speakers, titles, hyperlinks = [], [], []
 
-            # Find the list of talks within the table of contents
-            talk_items = table_of_contents.find_all("a", class_="item-U_5Ca")
+        for talk_item in talk_items:
+            href = talk_item.get('href')
 
-            # Extract data for each talk
-            for talk_item in talk_items:
-                speaker_element = talk_item.find("p", class_="subtitle-LKtQp")
-                title_element = talk_item.find("span")
-                speaker = speaker_element.text.strip() if speaker_element else "N/A"
-                title = title_element.text.strip() if title_element else "N/A"
-                hyperlink = "https://www.churchofjesuschrist.org" + talk_item['href']
+            # Skip invalid or navigation links
+            if not href or href.count("/") < 5:
+                continue
 
-                # Append the data to the lists
-                speakers.append(speaker)
-                titles.append(title)
-                hyperlinks.append(hyperlink)
+            # Extract title
+            title_element = talk_item.find("span")
+            title = title_element.text.strip() if title_element else "N/A"
 
-            # Create a temporary DataFrame for the current URL
-            temp_df = pd.DataFrame({
-                "year": year,
-                "month": month,
-                "speaker": speakers,
-                "title": titles,
-                "hyperlink": hyperlinks
-            })
+            # Extract speaker (if available)
+            speaker_element = talk_item.find("p")
+            speaker = speaker_element.text.strip() if speaker_element else "N/A"
 
-            # Append the temporary DataFrame to the main DataFrame
-            df = pd.concat([df, temp_df], ignore_index=True)
+            # Build full link
+            full_link = "https://www.churchofjesuschrist.org" + href
 
-        else:
-            print(f"Table of contents not found on the page: {url}")
+            speakers.append(speaker)
+            titles.append(title)
+            hyperlinks.append(full_link)
 
-    else:
-        print(f"Failed to retrieve the webpage {url}. Status code: {response.status_code}")
+        # Skip if nothing found
+        if not titles:
+            print(f"No talks found on page: {url}")
+            continue
+
+        # Create DataFrame
+        temp_df = pd.DataFrame({
+            "year": year,
+            "month": month,
+            "speaker": speakers,
+            "title": titles,
+            "hyperlink": hyperlinks
+        })
+
+        # Append to main df
+        df = pd.concat([df, temp_df], ignore_index=True)
+
+        print(f"Finished: {year}-{month}")
+
+    except Exception as e:
+        print(f"Error processing {url}: {e}")
 
 # Print the final DataFrame with data from all hyperlinks
 print(df)
