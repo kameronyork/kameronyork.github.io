@@ -19,6 +19,10 @@ and hyperlinks to the CSV file: "conference-talk-hyperlinks.csv". Once done,
 publish the changes to GitHub.This is necessary because the remaining scripts 
 rely on the online versions of the CSV and JSON files.
 
+As a final cleaning to remove non breaking space characters and other HTML 
+left-overs, run "normalize-talk-spacing.py" to clean the talk data. If this 
+isn't run, the "Prophet Names over Time" graph won't function correctly.
+
 ---------------------------------------------------------------------------
                     Generating Gospel Buddy References
 ---------------------------------------------------------------------------
