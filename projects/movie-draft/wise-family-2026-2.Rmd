@@ -1,10 +1,10 @@
 ---
-title: "Wise Family 2026 v1"
-subtitle: "(Jan 2026 - Apr 2026)"
+title: "Wise Family 2026 v2"
+subtitle: "(May 2026 - Aug 2026)"
 output:
   html_document:
     includes:
-      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/projects/movie-draft/headers/wise-family-2026-1.html"
+      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/projects/movie-draft/headers/wise-family-2026-2.html"
       after_body: "https://kameronyork.com/parables/footer.html"
 ---
 <br>
@@ -32,8 +32,8 @@ function toggleRow(rowId) {
 
 document.addEventListener("DOMContentLoaded", async function() {
   // Define start date and cutoff date
-  const startDate = new Date("2026-01-01"); // Replace with your desired start date
-  const cutoffDate = new Date("2026-04-30"); // Replace with your desired cutoff date
+  const startDate = new Date("2026-05-01"); // Replace with your desired start date
+  const cutoffDate = new Date("2026-08-31"); // Replace with your desired cutoff date
   const today = new Date();
   const endDate = today <= cutoffDate ? today : cutoffDate;
 
@@ -55,8 +55,8 @@ document.addEventListener("DOMContentLoaded", async function() {
     return;
   }
 
-  // Filter peopleData for competition "wiseFamily4"
-  peopleData = peopleData.filter(person => person.competition === "wiseFamily4");
+  // Filter peopleData for competition "wiseFamily5"
+  peopleData = peopleData.filter(person => person.competition === "wiseFamily5");
 
   const cumulativeData = {};
   
