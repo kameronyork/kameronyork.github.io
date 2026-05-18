@@ -1062,5 +1062,277 @@
     "description": "Lightning and Thunder, a Milwaukee husband and wife Neil Diamond tribute act, experience soaring success and devastating heartbreak in their musical journey together.",
     "release_date": "2025-12-25",
     "rating": "PG-13"
+  },
+  {
+    "id": "rl2715320321",
+    "title": "Greenland 2: Migration",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BOWEzM2IzZTMtYzA2Yi00NjY0LWE1ODktNTllZmI3ZTI1MzBmXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "The surviving Garrity family must leave the safety of the Greenland bunker and embark on a perilous journey across the decimated frozen wasteland of Europe to find a new home.",
+    "release_date": "1/9/2026",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl1406959617",
+    "title": "Primate",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMTA5MDI3MjctMGQ1My00ODI1LWFmNjctMjdlNDdiYzcyMWMwXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A group of friends' tropical vacation turns into a terrifying, primal tale of horror and survival.",
+    "release_date": "1/9/2026",
+    "rating": "R"
+  },
+  {
+    "id": "rl1562607617",
+    "title": "28 Years Later: The Bone Temple",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYmY3MmRhMWMtY2FhNS00M2VmLWFmNzEtYTMyZWU0OTVlYzQ4XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "As Spike is inducted into Jimmy Crystal's gang on the mainland, Dr. Kelson makes a discovery that could alter the world.",
+    "release_date": "1/16/2026",
+    "rating": "R"
+  },
+  {
+    "id": "rl434405377",
+    "title": "Charlie the Wonderdog",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMWQ1ZDI5MjYtZmJiNS00NjM4LWJmNmMtODJiNjMzNTBlNmQ0XkEyXkFqcGc@._V1_SY139_CR2,0,92,139_.jpg",
+    "description": "A dog gains superpowers after he is abducted by aliens. Together, they battle an evil cat threatening humanity while the dog becomes a famous superhero.",
+    "release_date": "1/16/2026",
+    "rating": "PG"
+  },
+  {
+    "id": "rl3744628737",
+    "title": "Clika",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNzEyYjAyNWMtY2Y3Yy00YjRmLTllNDYtMThkMDFlNWI3YTkwXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A small town musician pushes to carve out a place for himself in the new wave of Mexican-American music after a clip of him performing one of his songs goes viral.",
+    "release_date": "1/23/2026",
+    "rating": "R"
+  },
+  {
+    "id": "rl1781235713",
+    "title": "Mercy",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMWJmYjcwMTMtMDU1ZC00ZGI5LTlmZDAtODI3NDA2ZTE5ZGVlXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "In the near future, a detective (Chris Pratt) stands on trial accused of murdering his wife. He has 90 minutes to prove his innocence to the advanced A.I. Judge (Rebecca Ferguson) he once championed, before it determines his fate.",
+    "release_date": "1/23/2026",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl3922296833",
+    "title": "Return to Silent Hill",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BOWVjYjU0ZTAtNGVlNi00NGM1LTgzZjctNTZjMjAyYTc4N2VlXkEyXkFqcGc@._V1_SY139_CR0,0,92,139_.jpg",
+    "description": "When a man receives a mysterious letter from his lost love, he is drawn to Silent Hill, a once familiar town now consumed by darkness.",
+    "release_date": "1/23/2026",
+    "rating": "R"
+  },
+  {
+    "id": "rl4147019777",
+    "title": "Send Help",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNTk0YTYyZjctOTZhZS00YjZkLTlhYTctZmJmM2ZjZjRiZTQ1XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Two colleagues become stranded on a deserted island, the only survivors of a plane crash. On the island, they must overcome past grievances and work together to survive, but ultimately, it's a battle of wills and wits to make it out alive.",
+    "release_date": "1/30/2026",
+    "rating": "R"
+  },
+  {
+    "id": "rl2951446529",
+    "title": "Shelter",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMzI2ODY3MzQtYzllNy00YWM1LWExZTgtOGIwNjk2MmE2MmY2XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A recluse on a remote Scottish island rescues a girl from the sea, unleashing a perilous sequence of events that culminate in an attack on his home, compelling him to face his turbulent history.",
+    "release_date": "1/30/2026",
+    "rating": "PG"
+  },
+  {
+    "id": "rl2934341633",
+    "title": "Dracula",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BY2IyZTVkOWMtOTJjZS00NzM2LWFmYTgtM2NlMjhkY2E5NWZjXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "When a 15th-century prince denounces God after the loss of his wife he inherits an eternal curse: he becomes Dracula. Condemned to wander the centuries, he defies fate and death, guided by a single hope - to be reunited with his lost love.",
+    "release_date": "2/6/2026",
+    "rating": "R"
+  },
+  {
+    "id": "rl2967437313",
+    "title": "Solo Mio",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNDRhNzUwYWMtNWFmZS00NTU2LTk5YTYtZjJlYTlkMWMzM2JmXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "After being left at the altar in Rome, a man decides to go on his honeymoon alone.",
+    "release_date": "2/6/2026",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl754941953",
+    "title": "The Strangers: Chapter 3",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BZGQ2ZDJlMjgtYmMwNi00MjAxLWIzOWYtMzE0YTFjZWYyNmEzXkEyXkFqcGc@._V1_SY139_CR0,0,92,139_.jpg",
+    "description": "In the \"Strangers\" finale, survivors face new threats from masked strangers. Secrets emerge, jeopardizing their lives as the line between reality and peril blurs in their battle for survival.",
+    "release_date": "2/6/2026",
+    "rating": "R"
+  },
+  {
+    "id": "rl182616065",
+    "title": "Broken Bird",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMjllM2IwNGMtZGNkYy00MDdkLWI4ODMtMmZlMmQ4ZDU4NWYyXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Sybil works at an undertakers. It's a lonely job, with few perks. So she takes solace where she can.",
+    "release_date": "2/13/2026",
+    "rating": "R"
+  },
+  {
+    "id": "",
+    "title": "Crime 101",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYWVmZWE1OTktZmI3Ny00NjM3LWI1NjktOWY4ZmRhN2NkNWViXkEyXkFqcGc@._V1_.jpg",
+    "description": "An elusive thief, eyeing his final score, encounters a disillusioned insurance broker at her own crossroads. As their paths intertwine, a relentless detective trails them hoping to thwart the multi-million dollar heist they are planning.",
+    "release_date": "2/13/2026",
+    "rating": "R"
+  },
+  {
+    "id": "rl2725019649",
+    "title": "GOAT",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYzE5OTJkOGMtYWFiNi00NTlkLWE3ZWItY2ZlNjkyOWVhMjMyXkEyXkFqcGc@._V1_SY139_CR0,0,92,139_.jpg",
+    "description": "A small goat with big dreams gets a once-in-a-lifetime shot to join the pros and play roarball, a high-intensity, co-ed, full-contact sport dominated by the fastest, fiercest animals in the world.",
+    "release_date": "2/13/2026",
+    "rating": "PG"
+  },
+  {
+    "id": "rl1088585729",
+    "title": "Good Luck, Have Fun, Don't Die",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BODAyZjc4NjUtNTQ5My00YmMxLTk3OGItYjQ5MGVmYjcxZjVjXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A \"Man From the Future\" arrives at a diner in Los Angeles where he must recruit the precise combination of disgruntled patrons to join him on a one-night quest to save the world from the terminal threat of a rogue artificial intelligence",
+    "release_date": "2/13/2026",
+    "rating": "R"
+  },
+  {
+    "id": "rl723550209",
+    "title": "Wuthering Heights",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMGFlMTVkMDktZGMzMC00Yjk4LWFmNzEtNTFmMzM2YzM3MWFkXkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
+    "description": "A passionate and tumultuous love story set against the backdrop of the Yorkshire moors, exploring the intense and destructive relationship between Heathcliff and Catherine Earnshaw.",
+    "release_date": "2/13/2026",
+    "rating": "R"
+  },
+  {
+    "id": "rl4143808513",
+    "title": "How to Make a Killing",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNDM3M2FlYzgtOTk2Yi00NmZmLWJjNTUtYzU4YjE5ZGY3NWY5XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Disowned at birth by his obscenely wealthy family, blue-collar Becket Redfellow will stop at nothing to reclaim his inheritance, no matter how many relatives stand in his way.",
+    "release_date": "2/20/2026",
+    "rating": "R"
+  },
+  {
+    "id": "rl221872129",
+    "title": "I Can Only Imagine 2",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNDJiMTFmZDItZmIwNC00NjgwLTllZmQtNzEwZjZmOTEwNDFhXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Bart Millard, lead singer of MercyMe, faces a personal crisis at the peak of his success. As his world unravels, he struggles with his beliefs and inner demons while seeking a path through adversity.",
+    "release_date": "2/20/2026",
+    "rating": "PG"
+  },
+  {
+    "id": "rl3369435137",
+    "title": "Psycho Killer",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNDE0MTQyZTctM2RhOC00ZmJlLThhNjYtMjQ2ZDMyNjcxZTM1XkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
+    "description": "A police officer tracks a killer after her husband, a highway patrolman, becomes one of his victims.",
+    "release_date": "2/20/2026",
+    "rating": "R"
+  },
+  {
+    "id": "rl1535148033",
+    "title": "EPiC: Elvis Presley in Concert",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYzFmZGM4ZDktNzg0My00OTVlLWJjMDEtNTY0ZmY0YzBiMWFhXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Follows Elvis Presley, featuring never-before-seen footage and recordings.",
+    "release_date": "2/27/2026",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl1359839233",
+    "title": "Scream 7",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYTIxMTYxY2YtMGMxNi00Y2U0LWE5OWYtMDNjZDYzODIwOGU4XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "When a new Ghostface killer emerges in the town where Sidney Prescott has built a new life, her darkest fears are realized as her daughter becomes the next target.",
+    "release_date": "2/27/2026",
+    "rating": "R"
+  },
+  {
+    "id": "rl284918529",
+    "title": "Hoppers",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNzRiMzZlMTMtNmU3OC00MDUwLThmNDUtMTBjZmQ3MWQ4NTljXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A 19-year-old animal lover uses technology that places her consciousness into a robotic beaver to uncover mysteries within the animal world beyond her imagination.",
+    "release_date": "3/6/2026",
+    "rating": "PG"
+  },
+  {
+    "id": "rl1985511425",
+    "title": "The Bride",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYzc4OTM0ZTgtZWE0Yy00ODA1LWI0OTktNGJkN2ViNjQwZTE5XkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
+    "description": "In 1930s Chicago, Frankenstein asks Dr. Euphronius to help create a companion. They give life to a murdered woman as the Bride, sparking romance, police interest, and radical social change.",
+    "release_date": "3/6/2026",
+    "rating": "R"
+  },
+  {
+    "id": "rl2970583041",
+    "title": "Reminders of Him",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNjI4OGM1NDEtYzA1NS00ZDg3LWFmZjUtMjg1MGQ4MTk3NjQzXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+    "description": "After prison, a woman attempts to reconnect with her young daughter but faces resistance from everyone except a bar owner with ties to her child. As they grow closer, she must confront her past mistakes to build a hopeful future.",
+    "release_date": "3/13/2026",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl4181426177",
+    "title": "The Breadwinner",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNzUxODk2ZWUtZmI5Zi00ZDNlLTliOGYtMmU3ODcyMGQ0Y2UzXkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
+    "description": "A supermom lands a Shark Tank deal, switching roles with her breadwinner husband. He struggles to adapt as a stay-at-home dad to their three daughters.",
+    "release_date": "3/13/2026",
+    "rating": "PG"
+  },
+  {
+    "id": "rl1978564609",
+    "title": "Undertone",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNDk0YjFhZGEtOTMwMS00ZWQzLWJmMmMtYjNjNTA5ZGE1YjAxXkEyXkFqcGc@._V1_SY139_CR58,0,92,139_.jpg",
+    "description": "A podcast host covering spooky content moves in to care for her dying mother. When sent recordings of a pregnant couple's paranormal encounters, she discovers their story parallels hers, each tape pushing her toward madness.",
+    "release_date": "3/13/2026",
+    "rating": "R"
+  },
+  {
+    "id": "rl1993768961",
+    "title": "Project Hail Mary",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYTI4MzYxYzAtMDk1Yi00MDljLWEyM2ItODZmNzZhNTUwMmU4XkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
+    "description": "An astronaut tries to save Earth while alone in outer space.",
+    "release_date": "3/20/2026",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl2429190145",
+    "title": "Ready or Not 2: Here I Come",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYTczZTUxYjEtMWIyNi00Y2MyLThhN2EtZmE0ODg0YWRiMDQ1XkEyXkFqcGc@._V1_SY139_CR0,0,92,139_.jpg",
+    "description": "After surviving one deadly game, Grace and her sister Faith must now outrun four rival families competing for a powerful throne - winner takes all.",
+    "release_date": "3/27/2026",
+    "rating": "R"
+  },
+  {
+    "id": "rl3572334593",
+    "title": "They Will Kill You",
+    "image_url": "/film-173410679.png",
+    "description": "A woman takes a job as a housekeeper in a NYC high-rise, unaware of the building's history of disappearances. She soon realizes the community is shrouded in mystery.",
+    "release_date": "3/27/2026",
+    "rating": "R"
+  },
+  {
+    "id": "rl1676574721",
+    "title": "The Drama",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMzFjZjQ4ZmYtZmVkZC00MTU4LWI5N2MtNDA1NjI5Njg1MGY0XkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+    "description": "A happily engaged couple is put to the test when an unexpected turn sends their wedding week off the rails.",
+    "release_date": "4/3/2026",
+    "rating": "R"
+  },
+  {
+    "id": "rl3344662529",
+    "title": "The Super Mario Galaxy Movie",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNmI4YWM2MzktYjNjNy00YmM1LThhNmItOWM1ODkzMDYyZTk0XkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+    "description": "Mario, Luigi, and Princess Peach go on a cosmic adventure across space to stop Bowser's son, Bowser Jr., from unleashing chaos, introducing Princess Rosalina and Lumas as they journey through vibrant, planet-hopping worlds with familiar themes of teamwork and perseverance",
+    "release_date": "4/3/2026",
+    "rating": "PG"
+  },
+  {
+    "id": "rl599818241",
+    "title": "You, Me & Tuscany",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BZjg0MjliNDctMDE3NS00ZmMzLWE1ODUtZDcyN2I3NDE2YmUxXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+    "description": "When a woman crashes at an empty Italian villa, posing as the owner's fiancée, she discovers an unexpected romance that may transform her life.",
+    "release_date": "4/10/2026",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl1246593025",
+    "title": "Michael",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMjg1MmRiODQtMjU1OC00Nzc5LTlhNjktNzllMmUwODIzMDU2XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "The story of the famous musician Michael Jackson, known as the King of Pop.",
+    "release_date": "4/24/2026",
+    "rating": "PG-13"
   }
 ]
