@@ -1,0 +1,106 @@
+---
+title: "Building a Pocket-Sized Library"
+output:
+  html_document:
+    includes:
+      in_header: "https://kameronyork.com/blog/headers/e-reader-ocr.html"
+      after_body: "https://kameronyork.com/parables/footer.html"
+---
+
+<div style="max-width: 900px; margin: auto; line-height: 1.8; font-size: 1.1em;">
+
+<br><br>
+
+#### Introduction
+
+Recently, I decided to get back into reading. The last time I can remember starting and finishing a book in a reasonable amount of time was when I was a kid. My main struggle with reading is finding time to do it! I know that’s not a good excuse. After all, I find time for TV every day.
+
+Then I saw an ad for the <a href="https://www.xteink.com/?srsltid=AfmBOopFE_mg_d9bg1X-nz-7e2gcC_E0qu8oIpjYh2EKZStcMJj1utfS">XTEINK X4</a>, an e-reader that can fit in your pocket!
+
+I envisioned a future in which I would carry this e-reader around and read in my downtime. I could reach for this instead of my phone! But there was only one problem: this e-reader can only read “Digital Rights Management” (DRM)-free e-books. That means I can’t download Libby or Kindle e-books to read. I would need to find DRM-free e-books—which are usually really old, or books whose publishers actively decided not to implement DRM—or I would have to create my own.
+
+After talking with a copyright expert, I became determined to scan my personal book library onto this e-reader. If I physically own the books, create the DRM-free EPUB files myself, and don’t distribute them in any way, then I would be legally in the clear.
+
+Once again, there was only one problem: I had no idea how to do this!
+
+---
+
+#### Scanning Books to PDFs
+
+Book scanning is an expensive hobby! There are plenty of purchasable solutions that will run you $1,000 or more. I felt discouraged seeing these prices since I wanted to minimize costs in this project.
+
+Then I stumbled upon a <a href="https://www.instructables.com/Bargain-Price-Book-Scanner-From-A-Cardboard-Box/">tutorial about a homemade solution</a>. I figured I could handle building that!
+
+I got to work cutting up a cardboard box for a base. This would hold the book in position so I could scan the pages. The tutorial used a camera on a tripod to scan the pages. In my implementation, I used the standard scanning feature on my iPhone.
+
+<div style="text-align: center; margin: 2rem 0;">
+  <img src="https://kameronyork.com/docs/assets/ocr-cardboard.png"
+       alt="Book scanning setup"
+       style="max-width: 100%; height: auto; border-radius: 8px;" />
+
+  <p style="font-size: 0.85em; color: #666; margin-top: 0.5rem;">
+    The cardboard book holder.
+  </p>
+</div>
+
+A quick trip to Hobby Lobby resulted in a pane of clear glass meant for stained-glass projects and a glass cutter. I split the glass pane in half and 3D-printed angled holders to hold each pane in place. This would hold the pages flat so I could scan them clearly.
+
+<div style="text-align: center; margin: 2rem 0;">
+  <img src="https://kameronyork.com/docs/assets/ocr-scan-setup.png"
+       alt="Completed book scanning setup"
+       style="max-width: 100%; height: auto; border-radius: 8px;" />
+
+  <p style="font-size: 0.85em; color: #666; margin-top: 0.5rem;">
+    The completed book-scanning setup.
+  </p>
+</div>
+
+Now I was ready to start scanning my first book!
+
+Scanning *The Hitchhiker’s Guide to the Galaxy* took about two hours. Now that I had a 200+ page PDF, I needed to find some way to extract the words from the pages.
+
+---
+
+#### Learning OCR
+
+Thankfully, extracting words from PDF pages is a well-trodden path! Optical Character Recognition (OCR) is the process by which companies like Google, Microsoft, and others make PDFs searchable and copyable.
+
+I worked with AI to code an app that I could provide my PDF to and have the words extracted. However, page numbers and the occasional book or chapter title at the top of pages are common OCR hiccups. I didn’t want to include those in my final EPUB file.
+
+I worked through several iterations of automated ways to ignore these extra page components. None of them worked. Well, that’s not entirely fair. They worked... just not very well!
+
+Eventually, I decided to ditch the “automatic” aspect of the requirement and reworked my app to include a page-cropping feature. Code would split the PDF into image files, from which I could crop out just the text I wanted to OCR. Once I had the cropped text images, I could pass them through my OCR process.
+
+This worked amazingly well!
+
+Of course, there were still some common issues, like particles of dust being interpreted as punctuation or page bleed-through being extracted as Chinese characters or nonsense text. I started using black construction paper behind each scanned page to cancel out the bleed-through, and I used Calibre, an e-book management software, to locate and remove misidentified characters.
+
+After all of this, I finally had an EPUB file of *The Hitchhiker’s Guide to the Galaxy*!
+
+<div style="text-align: center; margin: 2rem 0;">
+  <img src="https://kameronyork.com/docs/assets/ocr-final.png"
+       alt="Final EPUB file displayed on the e-reader"
+       style="max-width: 100%; height: auto; border-radius: 8px;" />
+
+  <p style="font-size: 0.85em; color: #666; margin-top: 0.5rem;">
+    The finished EPUB loaded onto my pocket-sized e-reader.
+  </p>
+</div>
+
+---
+
+#### Conclusion
+
+At the time of writing, I have six EPUB files loaded onto my pocket-sized e-reader. I’m still working through reading all of them! I read far more frequently than I used to. Having my current book in my pocket is the convenience I needed to feel inspired to read.
+
+It doesn’t hurt that I feel obligated to read the books now that I’ve put so much effort into scanning, OCR-ing, and properly formatting them!
+
+This project has taught me a lot about project management and the limitations of technology. When I set out to scan books, I figured there would be countless free, off-the-shelf AI solutions that would work perfectly every time. In fact, I originally went down the path of implementing an AI vision model to read each page. That approach was far more costly and time-consuming than using the tried-and-true OCR method.
+
+While AI is revolutionizing many parts of life, it has not yet surpassed the quality of tried-and-true OCR methods for this kind of task.
+
+If you would like to use the code I created in this project to create an EPUB file from a PDF, click here. That’s a starter ZIP file for the Python project I’ve been using to create my EPUB files.
+
+Best of luck on your e-reader journey!
+
+</div>
