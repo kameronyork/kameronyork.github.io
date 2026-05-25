@@ -100,7 +100,7 @@ This project has taught me a lot about project management and the limitations of
 
 While AI is revolutionizing many parts of life, it has not yet surpassed the quality of tried-and-true OCR methods for this kind of task.
 
-If you would like to use the code I created in this project to create an EPUB file from a PDF, click here. That’s a starter ZIP file for the Python project I’ve been using to create my EPUB files.
+If you would like to use the code I created in this project to create an EPUB file from a PDF, <a href="https://kameronyork.com/docs/zip-files/book2epub_sample.zip">click here</a>. That’s a starter ZIP file for the Python project I’ve been using to create my EPUB files.
 
 Best of luck on your e-reader journey!
 
