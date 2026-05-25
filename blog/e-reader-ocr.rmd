@@ -2,6 +2,7 @@
 title: "Building a Pocket-Sized Library"
 output:
   html_document:
+    self_contained: false
     includes:
       in_header: "https://kameronyork.com/blog/headers/e-reader-ocr.html"
       after_body: "https://kameronyork.com/parables/footer.html"
@@ -9,7 +10,7 @@ output:
 
 <div style="max-width: 900px; margin: auto; line-height: 1.8; font-size: 1.1em;">
 
-<br><br>
+<br>
 
 #### Introduction
 
