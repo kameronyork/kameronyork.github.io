@@ -1,44 +1,23 @@
 <!doctype html>
-<html lang="en-us">
+<html lang=en-us>
   <head>
-    <meta charset="utf-8">
-
+    <meta charset=utf-8>
     <title>Building a Pocket-Sized Library</title>
+    <meta name=generator content="Hugo 0.74.3">
+    <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
+    <link rel=stylesheet href="https://kameronyork.github.io/scripting/bootstrap/bootstrap.min.css">
+    <link rel=stylesheet href="https://kameronyork.github.io/scripting/themify-icons/themify-icons.css">
+    <link rel=stylesheet href="https://kameronyork.github.io/scripting/highlight/hybrid.css">
+    <link rel=icon href="https://www.kameronyork.com/docs/assets/icon.png" type=image/x-icon>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel=stylesheet>
 
-    <meta name="generator" content="Hugo 0.74.3">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <!-- Primary Meta -->
-    <meta name="title" content="Building a Pocket-Sized Library">
-    <meta name="description" content="Using Python code and a pocket-sized e-reader to start reading on the go.">
-
-    <!-- Open Graph -->
+    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Building a Pocket-Sized Library">
     <meta property="og:description" content="Using Python code and a pocket-sized e-reader to start reading on the go.">
-    <meta property="og:image" content="https://kameronyork.com/docs/assets/ocr-header.png">
-    <meta property="og:url" content="https://kameronyork.com/blog/e-reader-ocr.html">
-    <meta property="og:type" content="article">
-    <meta property="og:site_name" content="Kameron York">
+    <meta property="og:image" content="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/ocr-header.png"> <!-- Replace with the URL of your image -->
+    <meta property="og:url" content="https://kameronyork.com/blog/e-reader-ocr.html"> <!-- Replace with your URL -->
+    <meta property="og:type" content="website">
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Building a Pocket-Sized Library">
-    <meta name="twitter:description" content="Using Python code and a pocket-sized e-reader to start reading on the go.">
-    <meta name="twitter:image" content="https://kameronyork.com/docs/assets/ocr-header.png">
-
-    <!-- Favicon -->
-    <link rel="icon" href="https://www.kameronyork.com/docs/assets/ocr-header.png" type="image/png">
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
-
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="https://kameronyork.github.io/scripting/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="https://kameronyork.github.io/scripting/themify-icons/themify-icons.css">
-    <link rel="stylesheet" href="https://kameronyork.github.io/scripting/highlight/hybrid.css">
-    <link rel="stylesheet" href="https://kameronyork.github.io/scripting/css/articles.style.min.css" media="screen">
-
-    <!-- Custom Styling -->
     <style>
       :root {
         --primary-color: #02007e;
@@ -47,97 +26,45 @@
         --text-color-dark: #242738;
         --white-color: #ffffff;
         --light-color: #f8f9fa;
-        --font-family: Roboto, sans-serif;
-      }
-
-      body {
-        background-color: var(--body-color);
-        color: var(--text-color);
-        font-family: var(--font-family);
-      }
-
-      .navbar {
-        background-color: #ffffff !important;
-        opacity: 1 !important;
-      }
-
-      .navbar .nav-link {
-        color: #242738 !important;
-        font-weight: 500;
-        transition: color 0.2s ease-in-out;
-      }
-
-      .navbar .nav-link:hover {
-        color: #02007e !important;
-      }
-
-      .shadow-bottom {
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        --font-family: Roboto
       }
     </style>
-
-    <!-- Scripts -->
+    <link href="https://kameronyork.github.io/scripting/css/articles.style.min.css" rel=stylesheet media=screen>
     <script src="https://kameronyork.github.io/scripting/jquery/projects.jquery-1.12.4.js"></script>
     <script src="https://kameronyork.github.io/scripting/jquery/projects.jquery-ui.js"></script>
     <script src="https://kameronyork.github.io/scripting/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="https://kameronyork.github.io/scripting/match-height/jquery.matchHeight.js"></script>
     <script src="https://kameronyork.github.io/scripting/highlight/highlight.pack.js"></script>
-
     <script>
       hljs.initHighlightingOnLoad();
     </script>
   </head>
-
-  <body>
-    <header class="shadow-bottom sticky-top">
-      <nav class="navbar navbar-expand-md navbar-light bg-white">
-        <div class="container">
-
-          <button
-            class="navbar-toggler border-0 mx-auto"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navigation"
-            aria-controls="navigation"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse text-center" id="navigation">
-            <ul class="navbar-nav ml-auto">
-
-              <li class="nav-item">
-                <a class="nav-link" href="https://www.kameronyork.com/">
-                  Home
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="https://www.kameronyork.com/projects/">
-                  Projects
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="https://www.kameronyork.com/blog/">
-                  Blog
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="https://www.kameronyork.com/docs/contact/">
-                  Contact
-                </a>
-              </li>
-
-            </ul>
-          </div>
-        </div>
-      </nav>
+<body>
+    <header class="shadow-bottom sticky-top bg-white">
+        <nav class="navbar navbar-expand-md navbar-light">
+            <div class="container">
+                <button class="navbar-toggler border-0 mx-auto" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse text-center" id="navigation">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="https://www.kameronyork.com/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="https://www.kameronyork.com/projects/">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="https://www.kameronyork.com/blog/">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="https://www.kameronyork.com/docs/contact/">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
-
     <script src="https://kameronyork.github.io/scripting/js/script.min.js"></script>
-  </body>
+</body>
 </html>
