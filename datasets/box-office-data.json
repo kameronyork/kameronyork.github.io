@@ -140863,5 +140863,50 @@
         "Estimated":"false",
         "IMDB_ID":"rl365461505",
         "Title":"The Devil Wears Prada 2"
+    },
+    {
+        "Date":"2026-06-22",
+        "DOW":"Monday",
+        "Rank":"11",
+        "Daily":"$96,626",
+        "%\u00b1 YD":"-60.7%",
+        "%\u00b1 LW":"-57.9%",
+        "Theaters":"520",
+        "Avg":"$185",
+        "To Date":"$64,705,144",
+        "Day":"46",
+        "Estimated":"false",
+        "IMDB_ID":"rl1601339393",
+        "Title":"The Sheep Detectives"
+    },
+    {
+        "Date":"2026-06-22",
+        "DOW":"Monday",
+        "Rank":"17",
+        "Daily":"$12,835",
+        "%\u00b1 YD":"-54.3%",
+        "%\u00b1 LW":"-73.2%",
+        "Theaters":"234",
+        "Avg":"$54",
+        "To Date":"$429,655,565",
+        "Day":"83",
+        "Estimated":"false",
+        "IMDB_ID":"rl3344662529",
+        "Title":"The Super Mario Galaxy Movie"
+    },
+    {
+        "Date":"2026-06-22",
+        "DOW":"Monday",
+        "Rank":"1",
+        "Daily":"$17,301,436",
+        "%\u00b1 YD":"-57.6%",
+        "%\u00b1 LW":"-",
+        "Theaters":"4,425",
+        "Avg":"$3,909",
+        "To Date":"$176,979,273",
+        "Day":"4",
+        "Estimated":"false",
+        "IMDB_ID":"rl3344859137",
+        "Title":"Toy Story 5"
     }
 ]
