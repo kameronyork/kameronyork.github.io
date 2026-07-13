@@ -29,16 +29,20 @@ except Exception:  # pragma: no cover - fallback for environments without tqdm
 TALKS_DATASET_URL = "https://kameronyork.com/datasets/general-conference-talks.json"
 ALLOWED_WORDS_DATASET_URL = "https://kameronyork.com/datasets/conference-bingo-allowed-words.json"
 
-# This mirrors the ../../../datasets/ path style from your existing scripts.
-LOCAL_ALLOWED_WORDS_PATH = Path("C:/Users/kamsy/Desktop/Projects/Website_project/kameronyork.com/datasets/conference-bingo-allowed-words.json")
-OUTPUT_JSON_PATH = Path("C:/Users/kamsy/Desktop/Projects/Website_project/kameronyork.com/datasets/conference-bingo-allowed-words-with-difficulty.json")
+# This mirrors the local datasets folder in your website project.
+LOCAL_ALLOWED_WORDS_PATH = Path(
+    "C:/Users/kamsy/Desktop/Projects/Website_project/kameronyork.com/datasets/conference-bingo-allowed-words.json"
+)
+OUTPUT_JSON_PATH = Path(
+    "C:/Users/kamsy/Desktop/Projects/Website_project/kameronyork.com/datasets/conference-bingo-allowed-words-with-difficulty.json"
+)
 
 # A backup copy is also saved next to this script for easy inspection.
 BACKUP_DIR = Path("./backups")
 BACKUP_JSON_PATH = BACKUP_DIR / "conference-bingo-allowed-words-with-difficulty.json"
 
 # Difficulty is based on the percent of conference sessions where the word appears
-# at least once. These are intentionally easy to tune over time.
+# at least once.
 EASY_SESSION_PERCENT = 97.0
 MEDIUM_SESSION_PERCENT = 65.0
 
@@ -75,22 +79,28 @@ def normalize_single_word(
     normalization_map: dict[str, str],
 ) -> str:
     normalized = normalize_key(word)
+
+    # Remove leading/trailing apostrophes and non-letter characters.
     normalized = re.sub(r"^'+|'+$", "", normalized)
     normalized = re.sub(r"^[^a-z]+|[^a-z]+$", "", normalized)
 
     if not normalized:
         return ""
 
+    # Remove possessive ending.
     if normalized.endswith("'s"):
         normalized = normalized[:-2]
 
+    # First try exact normalization map.
     mapped = normalization_map.get(normalized)
     if mapped:
         return mapped if mapped in allowed_words else ""
 
+    # Then try exact allowed word.
     if normalized in allowed_words:
         return normalized
 
+    # Then try singular form.
     singular = singularize_word(normalized)
     if not singular:
         return ""
@@ -113,14 +123,17 @@ def tokenize_to_allowed_words(
     cleaned = (
         str(text or "")
         .lower()
-        .replace("/u2018", "'")
-        .replace("/u2019", "'")
+        .replace("\u2018", "'")
+        .replace("\u2019", "'")
     )
-    cleaned = re.sub(r"[^a-z'/s-]", " ", cleaned)
+
+    # Keep letters, apostrophes, whitespace, and hyphens.
+    # IMPORTANT: this must use \s, not /s.
+    cleaned = re.sub(r"[^a-z'\s-]", " ", cleaned)
     cleaned = cleaned.replace("-", " ")
 
     tokens: list[str] = []
-    for raw_token in re.split(r"/s+", cleaned):
+    for raw_token in re.split(r"\s+", cleaned):
         token = normalize_single_word(raw_token, allowed_words, normalization_map)
         if token:
             tokens.append(token)
@@ -132,12 +145,16 @@ def clean_phrase_text(text: str) -> str:
     cleaned = (
         str(text or "")
         .lower()
-        .replace("/u2018", "'")
-        .replace("/u2019", "'")
+        .replace("\u2018", "'")
+        .replace("\u2019", "'")
     )
-    cleaned = re.sub(r"[^a-z'/s-]", " ", cleaned)
+
+    # Keep letters, apostrophes, whitespace, and hyphens.
+    # IMPORTANT: this must use \s, not /s.
+    cleaned = re.sub(r"[^a-z'\s-]", " ", cleaned)
     cleaned = cleaned.replace("-", " ")
-    return re.sub(r"/s+", " ", cleaned).strip()
+
+    return re.sub(r"\s+", " ", cleaned).strip()
 
 
 def count_phrase_occurrences(cleaned_text: str, phrase: str) -> int:
@@ -168,13 +185,13 @@ def build_phrase_normalization_entries(
     seen: set[tuple[str, str]] = set()
 
     for word in allowed_words:
-        if re.search(r"/s", word):
+        if re.search(r"\s", word):
             entry = (word, word)
             entries.append(entry)
             seen.add(entry)
 
     for key, value in normalization_map.items():
-        if re.search(r"/s", key) and value in allowed_word_set:
+        if re.search(r"\s", key) and value in allowed_word_set:
             entry = (key, value)
             if entry not in seen:
                 entries.append(entry)
@@ -205,11 +222,13 @@ def load_talks_dataset(url: str) -> pd.DataFrame:
         raise ValueError("The talks dataset must be a non-empty JSON array.")
 
     df = pd.DataFrame(data)
+
     if "text" not in df.columns:
         raise ValueError("The talks dataset must include a text column.")
 
     df = df[df["text"].notna()].copy()
     df["text"] = df["text"].astype(str)
+
     return df
 
 
@@ -223,6 +242,7 @@ def parse_allowed_words_config(config: Any) -> tuple[list[str], dict[str, str]]:
 
     words: list[str] = []
     seen: set[str] = set()
+
     for item in raw_words:
         if isinstance(item, dict):
             word = normalize_key(item.get("word"))
@@ -238,9 +258,11 @@ def parse_allowed_words_config(config: Any) -> tuple[list[str], dict[str, str]]:
         raw_map = {}
 
     normalization_map: dict[str, str] = {}
+
     for key, value in raw_map.items():
         normalized_key = normalize_key(key)
         normalized_value = normalize_key(value)
+
         if normalized_key and normalized_value:
             normalization_map[normalized_key] = normalized_value
 
@@ -270,6 +292,7 @@ def validate_normalization_map_targets(
 
 def build_session_key(row: pd.Series) -> str:
     parts: list[str] = []
+
     for column in SESSION_KEY_COLUMNS:
         value = row[column] if column in row.index else ""
         value = "" if pd.isna(value) else str(value).strip()
@@ -289,8 +312,34 @@ def assign_difficulty(session_appearance_rate: float) -> str:
 
 
 def difficulty_sort_value(difficulty: str) -> int:
-    order = {"easy": 0, "medium": 1, "hard": 2}
+    order = {
+        "easy": 0,
+        "medium": 1,
+        "hard": 2,
+    }
     return order.get(difficulty, 99)
+
+
+def print_tokenizer_smoke_test(
+    allowed_word_set: set[str],
+    normalization_map: dict[str, str],
+) -> None:
+    sample_text = "God loves His children. God's work is great."
+    sample_tokens = tokenize_to_allowed_words(
+        sample_text,
+        allowed_word_set,
+        normalization_map,
+    )
+
+    print("\nTokenizer smoke test:")
+    print(f"  Input:  {sample_text}")
+    print(f"  Output: {sample_tokens}")
+
+    if "god" not in sample_tokens:
+        raise ValueError(
+            "Tokenizer smoke test failed: 'god' was not detected. "
+            "Check tokenizer regex escaping and allowedWords."
+        )
 
 
 # -----------------------------------------------------------------------------
@@ -305,18 +354,30 @@ def main() -> None:
 
     allowed_source = LOCAL_ALLOWED_WORDS_PATH if LOCAL_ALLOWED_WORDS_PATH.exists() else ALLOWED_WORDS_DATASET_URL
     print(f"Loading allowed words from {allowed_source}")
-    allowed_config = load_json_from_path_or_url(LOCAL_ALLOWED_WORDS_PATH, ALLOWED_WORDS_DATASET_URL)
+
+    allowed_config = load_json_from_path_or_url(
+        LOCAL_ALLOWED_WORDS_PATH,
+        ALLOWED_WORDS_DATASET_URL,
+    )
 
     allowed_words, normalization_map = parse_allowed_words_config(allowed_config)
     allowed_word_set = set(allowed_words)
 
     validate_normalization_map_targets(normalization_map, allowed_word_set)
 
+    print(f"Parsed {len(allowed_words):,} allowed words.")
+    print(f"Parsed {len(normalization_map):,} normalization mappings.")
+
+    # Quick safety check so regex/tokenizer issues are caught immediately.
+    print_tokenizer_smoke_test(allowed_word_set, normalization_map)
+
     phrase_entries = build_phrase_normalization_entries(
         allowed_words=allowed_words,
         normalization_map=normalization_map,
         allowed_word_set=allowed_word_set,
     )
+
+    print(f"Parsed {len(phrase_entries):,} phrase normalization entries.")
 
     total_counts: Counter[str] = Counter()
     word_to_sessions: defaultdict[str, set[str]] = defaultdict(set)
@@ -326,6 +387,7 @@ def main() -> None:
     for index, row in tqdm(talks_df.iterrows(), total=len(talks_df), desc="Scoring allowed words"):
         session_key = build_session_key(row)
         talk_id = str(row["id"]) if "id" in row.index and not pd.isna(row["id"]) else str(index)
+
         session_keys.add(session_key)
 
         text = row["text"]
@@ -334,8 +396,10 @@ def main() -> None:
 
         if phrase_entries:
             cleaned_text = clean_phrase_text(text)
+
             for phrase, target_word in phrase_entries:
                 phrase_count = count_phrase_occurrences(cleaned_text, phrase)
+
                 if phrase_count:
                     counts[target_word] += phrase_count
 
@@ -425,8 +489,13 @@ def main() -> None:
     with BACKUP_JSON_PATH.open("w", encoding="utf-8") as file:
         json.dump(output, file, ensure_ascii=False, indent=2)
 
-    print(f"Saved {len(allowed_word_entries):,} allowed words to {OUTPUT_JSON_PATH}")
+    print(f"\nSaved {len(allowed_word_entries):,} allowed words to {OUTPUT_JSON_PATH}")
     print(f"Saved backup copy to {BACKUP_JSON_PATH}")
+
+    god_entry = next((entry for entry in allowed_word_entries if entry["word"] == "god"), None)
+    if god_entry:
+        print("\nGod scoring check:")
+        print(json.dumps(god_entry, indent=2))
 
 
 ##### # %%
