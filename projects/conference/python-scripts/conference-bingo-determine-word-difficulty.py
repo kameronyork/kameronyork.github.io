@@ -39,9 +39,8 @@ BACKUP_JSON_PATH = BACKUP_DIR / "conference-bingo-allowed-words-with-difficulty.
 
 # Difficulty is based on the percent of conference sessions where the word appears
 # at least once. These are intentionally easy to tune over time.
-EASY_SESSION_PERCENT = 95.0
-MEDIUM_SESSION_PERCENT = 66.0
-HARD_SESSION_PERCENT = 33.0
+EASY_SESSION_PERCENT = 97.0
+MEDIUM_SESSION_PERCENT = 65.0
 
 SESSION_KEY_COLUMNS = ["year", "month", "session"]
 
@@ -70,7 +69,11 @@ def normalize_key(value: Any) -> str:
     return str(value or "").strip().lower()
 
 
-def normalize_single_word(word: str, allowed_words: set[str], normalization_map: dict[str, str]) -> str:
+def normalize_single_word(
+    word: str,
+    allowed_words: set[str],
+    normalization_map: dict[str, str],
+) -> str:
     normalized = normalize_key(word)
     normalized = re.sub(r"^'+|'+$", "", normalized)
     normalized = re.sub(r"^[^a-z]+|[^a-z]+$", "", normalized)
@@ -102,7 +105,11 @@ def normalize_single_word(word: str, allowed_words: set[str], normalization_map:
     return ""
 
 
-def tokenize_to_allowed_words(text: str, allowed_words: set[str], normalization_map: dict[str, str]) -> list[str]:
+def tokenize_to_allowed_words(
+    text: str,
+    allowed_words: set[str],
+    normalization_map: dict[str, str],
+) -> list[str]:
     cleaned = (
         str(text or "")
         .lower()
@@ -140,6 +147,40 @@ def count_phrase_occurrences(cleaned_text: str, phrase: str) -> int:
 
     pattern = re.compile(rf"(?<![a-z]){re.escape(cleaned_phrase)}(?![a-z])")
     return len(pattern.findall(cleaned_text))
+
+
+def build_phrase_normalization_entries(
+    allowed_words: list[str],
+    normalization_map: dict[str, str],
+    allowed_word_set: set[str],
+) -> list[tuple[str, str]]:
+    """
+    Builds phrase-matching rules.
+
+    This supports two cases:
+    1. A phrase is directly in allowedWords, such as "eternal life".
+    2. A phrase appears in normalizationMap, such as "eternal life": "eternal".
+
+    The returned tuples are:
+    phrase_to_find, word_to_count
+    """
+    entries: list[tuple[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+
+    for word in allowed_words:
+        if re.search(r"\s", word):
+            entry = (word, word)
+            entries.append(entry)
+            seen.add(entry)
+
+    for key, value in normalization_map.items():
+        if re.search(r"\s", key) and value in allowed_word_set:
+            entry = (key, value)
+            if entry not in seen:
+                entries.append(entry)
+                seen.add(entry)
+
+    return entries
 
 
 # -----------------------------------------------------------------------------
@@ -209,6 +250,24 @@ def parse_allowed_words_config(config: Any) -> tuple[list[str], dict[str, str]]:
     return words, normalization_map
 
 
+def validate_normalization_map_targets(
+    normalization_map: dict[str, str],
+    allowed_word_set: set[str],
+) -> None:
+    invalid_targets = sorted({
+        value
+        for value in normalization_map.values()
+        if value not in allowed_word_set
+    })
+
+    if invalid_targets:
+        preview = ", ".join(invalid_targets[:25])
+        raise ValueError(
+            "Every normalizationMap value must exist in allowedWords. "
+            f"These targets are missing from allowedWords: {preview}"
+        )
+
+
 def build_session_key(row: pd.Series) -> str:
     parts: list[str] = []
     for column in SESSION_KEY_COLUMNS:
@@ -222,15 +281,15 @@ def build_session_key(row: pd.Series) -> str:
 def assign_difficulty(session_appearance_rate: float) -> str:
     if session_appearance_rate >= EASY_SESSION_PERCENT:
         return "easy"
+
     if session_appearance_rate >= MEDIUM_SESSION_PERCENT:
         return "medium"
-    if session_appearance_rate >= HARD_SESSION_PERCENT:
-        return "hard"
-    return "rare"
+
+    return "hard"
 
 
 def difficulty_sort_value(difficulty: str) -> int:
-    order = {"easy": 0, "medium": 1, "hard": 2, "rare": 3}
+    order = {"easy": 0, "medium": 1, "hard": 2}
     return order.get(difficulty, 99)
 
 
@@ -247,9 +306,17 @@ def main() -> None:
     allowed_source = LOCAL_ALLOWED_WORDS_PATH if LOCAL_ALLOWED_WORDS_PATH.exists() else ALLOWED_WORDS_DATASET_URL
     print(f"Loading allowed words from {allowed_source}")
     allowed_config = load_json_from_path_or_url(LOCAL_ALLOWED_WORDS_PATH, ALLOWED_WORDS_DATASET_URL)
+
     allowed_words, normalization_map = parse_allowed_words_config(allowed_config)
     allowed_word_set = set(allowed_words)
-    phrase_words = [word for word in allowed_words if re.search(r"\s", word)]
+
+    validate_normalization_map_targets(normalization_map, allowed_word_set)
+
+    phrase_entries = build_phrase_normalization_entries(
+        allowed_words=allowed_words,
+        normalization_map=normalization_map,
+        allowed_word_set=allowed_word_set,
+    )
 
     total_counts: Counter[str] = Counter()
     word_to_sessions: defaultdict[str, set[str]] = defaultdict(set)
@@ -265,17 +332,18 @@ def main() -> None:
         tokens = tokenize_to_allowed_words(text, allowed_word_set, normalization_map)
         counts = Counter(tokens)
 
-        if phrase_words:
+        if phrase_entries:
             cleaned_text = clean_phrase_text(text)
-            for phrase in phrase_words:
+            for phrase, target_word in phrase_entries:
                 phrase_count = count_phrase_occurrences(cleaned_text, phrase)
                 if phrase_count:
-                    counts[phrase] += phrase_count
+                    counts[target_word] += phrase_count
 
         if not counts:
             continue
 
         total_counts.update(counts)
+
         for word in counts.keys():
             word_to_sessions[word].add(session_key)
             word_to_talks[word].add(talk_id)
@@ -284,11 +352,23 @@ def main() -> None:
     total_talks = len(talks_df)
 
     allowed_word_entries: list[dict[str, Any]] = []
+
     for word in allowed_words:
         sessions_with_word = len(word_to_sessions[word])
         talks_with_word = len(word_to_talks[word])
-        session_appearance_rate = (sessions_with_word / total_sessions * 100) if total_sessions else 0.0
-        talk_appearance_rate = (talks_with_word / total_talks * 100) if total_talks else 0.0
+
+        session_appearance_rate = (
+            sessions_with_word / total_sessions * 100
+            if total_sessions
+            else 0.0
+        )
+
+        talk_appearance_rate = (
+            talks_with_word / total_talks * 100
+            if total_talks
+            else 0.0
+        )
+
         difficulty = assign_difficulty(session_appearance_rate)
 
         allowed_word_entries.append({
@@ -322,18 +402,17 @@ def main() -> None:
             "thresholds": {
                 "easySessionPercent": EASY_SESSION_PERCENT,
                 "mediumSessionPercent": MEDIUM_SESSION_PERCENT,
-                "hardSessionPercent": HARD_SESSION_PERCENT,
             },
             "difficultyRules": [
                 f"easy: sessionAppearanceRate >= {EASY_SESSION_PERCENT}",
                 f"medium: {MEDIUM_SESSION_PERCENT} <= sessionAppearanceRate < {EASY_SESSION_PERCENT}",
-                f"hard: {HARD_SESSION_PERCENT} <= sessionAppearanceRate < {MEDIUM_SESSION_PERCENT}",
-                f"rare: sessionAppearanceRate < {HARD_SESSION_PERCENT}; included only when the RMD uses random mode",
+                f"hard: sessionAppearanceRate < {MEDIUM_SESSION_PERCENT}",
             ],
             "totalAllowedWords": len(allowed_word_entries),
             "totalSessions": total_sessions,
             "totalTalks": total_talks,
             "sessionKeyColumns": SESSION_KEY_COLUMNS,
+            "phraseNormalizationCount": len(phrase_entries),
         },
         "allowedWords": allowed_word_entries,
         "normalizationMap": normalization_map,
@@ -353,3 +432,5 @@ def main() -> None:
 ##### # %%
 if __name__ == "__main__":
     main()
+
+# %%
