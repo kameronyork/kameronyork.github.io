@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generatedAt": "2026-07-13T21:21:04.485376+00:00",
+    "generatedAt": "2026-07-13T22:11:44.370917+00:00",
     "sourceDatasetUrl": "https://kameronyork.com/datasets/general-conference-talks.json",
     "allowedWordsSource": "https://kameronyork.com/datasets/conference-bingo-allowed-words.json",
     "difficultyMetric": "sessionAppearanceRate",
@@ -14,7 +14,7 @@
       "medium: 65.0 <= sessionAppearanceRate < 97.0",
       "hard: sessionAppearanceRate < 65.0"
     ],
-    "totalAllowedWords": 200,
+    "totalAllowedWords": 299,
     "totalSessions": 419,
     "totalTalks": 4043,
     "sessionKeyColumns": [
@@ -400,6 +400,17 @@
       "talkAppearanceRate": 65.4
     },
     {
+      "word": "seek",
+      "difficulty": "easy",
+      "sessionAppearanceRate": 98.81,
+      "sessionsWithWord": 414,
+      "totalSessions": 419,
+      "totalCount": 4686,
+      "talksWithWord": 2219,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 54.88
+    },
+    {
       "word": "example",
       "difficulty": "easy",
       "sessionAppearanceRate": 98.81,
@@ -409,6 +420,17 @@
       "talksWithWord": 2104,
       "totalTalks": 4043,
       "talkAppearanceRate": 52.04
+    },
+    {
+      "word": "desire",
+      "difficulty": "easy",
+      "sessionAppearanceRate": 98.81,
+      "sessionsWithWord": 414,
+      "totalSessions": 419,
+      "totalCount": 3888,
+      "talksWithWord": 2027,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 50.14
     },
     {
       "word": "truth",
@@ -488,6 +510,17 @@
       "talkAppearanceRate": 49.44
     },
     {
+      "word": "faithful",
+      "difficulty": "easy",
+      "sessionAppearanceRate": 98.33,
+      "sessionsWithWord": 412,
+      "totalSessions": 419,
+      "totalCount": 3802,
+      "talksWithWord": 1962,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 48.53
+    },
+    {
       "word": "holy",
       "difficulty": "easy",
       "sessionAppearanceRate": 98.09,
@@ -519,6 +552,17 @@
       "talksWithWord": 1825,
       "totalTalks": 4043,
       "talkAppearanceRate": 45.14
+    },
+    {
+      "word": "saint",
+      "difficulty": "easy",
+      "sessionAppearanceRate": 97.85,
+      "sessionsWithWord": 410,
+      "totalSessions": 419,
+      "totalCount": 5516,
+      "talksWithWord": 2293,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 56.72
     },
     {
       "word": "soul",
@@ -620,6 +664,39 @@
       "talkAppearanceRate": 50.7
     },
     {
+      "word": "choose",
+      "difficulty": "easy",
+      "sessionAppearanceRate": 97.14,
+      "sessionsWithWord": 407,
+      "totalSessions": 419,
+      "totalCount": 3676,
+      "talksWithWord": 1633,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 40.39
+    },
+    {
+      "word": "inspiration",
+      "difficulty": "easy",
+      "sessionAppearanceRate": 97.14,
+      "sessionsWithWord": 407,
+      "totalSessions": 419,
+      "totalCount": 2991,
+      "talksWithWord": 1630,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 40.32
+    },
+    {
+      "word": "principle",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 96.9,
+      "sessionsWithWord": 406,
+      "totalSessions": 419,
+      "totalCount": 4351,
+      "talksWithWord": 1849,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 45.73
+    },
+    {
       "word": "joy",
       "difficulty": "medium",
       "sessionAppearanceRate": 96.9,
@@ -686,6 +763,17 @@
       "talkAppearanceRate": 41.06
     },
     {
+      "word": "wonderful",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 95.7,
+      "sessionsWithWord": 401,
+      "totalSessions": 419,
+      "totalCount": 2220,
+      "talksWithWord": 1329,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 32.87
+    },
+    {
       "word": "temple",
       "difficulty": "medium",
       "sessionAppearanceRate": 95.47,
@@ -706,6 +794,17 @@
       "talksWithWord": 1837,
       "totalTalks": 4043,
       "talkAppearanceRate": 45.44
+    },
+    {
+      "word": "testify",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 95.23,
+      "sessionsWithWord": 399,
+      "totalSessions": 419,
+      "totalCount": 3832,
+      "talksWithWord": 2099,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 51.92
     },
     {
       "word": "conference",
@@ -774,6 +873,17 @@
       "talkAppearanceRate": 41.6
     },
     {
+      "word": "elder",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 94.75,
+      "sessionsWithWord": 397,
+      "totalSessions": 419,
+      "totalCount": 3752,
+      "talksWithWord": 1663,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 41.13
+    },
+    {
       "word": "plan",
       "difficulty": "medium",
       "sessionAppearanceRate": 94.51,
@@ -785,6 +895,17 @@
       "talkAppearanceRate": 41.33
     },
     {
+      "word": "save",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 94.51,
+      "sessionsWithWord": 396,
+      "totalSessions": 419,
+      "totalCount": 3053,
+      "talksWithWord": 1663,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 41.13
+    },
+    {
       "word": "peace",
       "difficulty": "medium",
       "sessionAppearanceRate": 94.27,
@@ -794,6 +915,17 @@
       "talksWithWord": 1710,
       "totalTalks": 4043,
       "talkAppearanceRate": 42.3
+    },
+    {
+      "word": "house",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 94.27,
+      "sessionsWithWord": 395,
+      "totalSessions": 419,
+      "totalCount": 3018,
+      "talksWithWord": 1430,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 35.37
     },
     {
       "word": "counsel",
@@ -829,6 +961,17 @@
       "talkAppearanceRate": 27.38
     },
     {
+      "word": "beautiful",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 93.56,
+      "sessionsWithWord": 392,
+      "totalSessions": 419,
+      "totalCount": 1987,
+      "talksWithWord": 1213,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 30.0
+    },
+    {
       "word": "grateful",
       "difficulty": "medium",
       "sessionAppearanceRate": 93.32,
@@ -838,6 +981,17 @@
       "talksWithWord": 1198,
       "totalTalks": 4043,
       "talkAppearanceRate": 29.63
+    },
+    {
+      "word": "worthiness",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 93.08,
+      "sessionsWithWord": 390,
+      "totalSessions": 419,
+      "totalCount": 2257,
+      "talksWithWord": 1217,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 30.1
     },
     {
       "word": "righteousness",
@@ -873,6 +1027,17 @@
       "talkAppearanceRate": 36.71
     },
     {
+      "word": "willingness",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 92.12,
+      "sessionsWithWord": 386,
+      "totalSessions": 419,
+      "totalCount": 1915,
+      "talksWithWord": 1181,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 29.21
+    },
+    {
       "word": "calling",
       "difficulty": "medium",
       "sessionAppearanceRate": 91.41,
@@ -882,6 +1047,17 @@
       "talksWithWord": 1151,
       "totalTalks": 4043,
       "talkAppearanceRate": 28.47
+    },
+    {
+      "word": "school",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 91.17,
+      "sessionsWithWord": 382,
+      "totalSessions": 419,
+      "totalCount": 1964,
+      "talksWithWord": 1040,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 25.72
     },
     {
       "word": "apostle",
@@ -904,6 +1080,17 @@
       "talksWithWord": 1417,
       "totalTalks": 4043,
       "talkAppearanceRate": 35.05
+    },
+    {
+      "word": "daughter",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 90.69,
+      "sessionsWithWord": 380,
+      "totalSessions": 419,
+      "totalCount": 2615,
+      "talksWithWord": 1280,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 31.66
     },
     {
       "word": "grow",
@@ -950,6 +1137,17 @@
       "talkAppearanceRate": 34.11
     },
     {
+      "word": "behold",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 89.5,
+      "sessionsWithWord": 375,
+      "totalSessions": 419,
+      "totalCount": 2529,
+      "talksWithWord": 1369,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 33.86
+    },
+    {
       "word": "salvation",
       "difficulty": "medium",
       "sessionAppearanceRate": 89.5,
@@ -981,6 +1179,17 @@
       "talksWithWord": 996,
       "totalTalks": 4043,
       "talkAppearanceRate": 24.64
+    },
+    {
+      "word": "fear",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 89.26,
+      "sessionsWithWord": 374,
+      "totalSessions": 419,
+      "totalCount": 1746,
+      "talksWithWord": 1029,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 25.45
     },
     {
       "word": "bishop",
@@ -1093,6 +1302,17 @@
       "talkAppearanceRate": 28.22
     },
     {
+      "word": "establish",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 86.87,
+      "sessionsWithWord": 364,
+      "totalSessions": 419,
+      "totalCount": 1731,
+      "talksWithWord": 1068,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 26.42
+    },
+    {
       "word": "restore",
       "difficulty": "medium",
       "sessionAppearanceRate": 86.63,
@@ -1126,6 +1346,28 @@
       "talkAppearanceRate": 28.82
     },
     {
+      "word": "perfect",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 86.4,
+      "sessionsWithWord": 362,
+      "totalSessions": 419,
+      "totalCount": 2074,
+      "talksWithWord": 1200,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 29.68
+    },
+    {
+      "word": "wish",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 86.4,
+      "sessionsWithWord": 362,
+      "totalSessions": 419,
+      "totalCount": 1363,
+      "talksWithWord": 893,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 22.09
+    },
+    {
       "word": "respect",
       "difficulty": "medium",
       "sessionAppearanceRate": 85.44,
@@ -1135,6 +1377,17 @@
       "talksWithWord": 817,
       "totalTalks": 4043,
       "talkAppearanceRate": 20.21
+    },
+    {
+      "word": "privilege",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 84.96,
+      "sessionsWithWord": 356,
+      "totalSessions": 419,
+      "totalCount": 1383,
+      "talksWithWord": 942,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 23.3
     },
     {
       "word": "angel",
@@ -1170,6 +1423,17 @@
       "talkAppearanceRate": 23.99
     },
     {
+      "word": "glorious",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 84.25,
+      "sessionsWithWord": 353,
+      "totalSessions": 419,
+      "totalCount": 1259,
+      "talksWithWord": 909,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 22.48
+    },
+    {
       "word": "marriage",
       "difficulty": "medium",
       "sessionAppearanceRate": 84.01,
@@ -1190,6 +1454,17 @@
       "talksWithWord": 855,
       "totalTalks": 4043,
       "talkAppearanceRate": 21.15
+    },
+    {
+      "word": "encouragement",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 83.77,
+      "sessionsWithWord": 351,
+      "totalSessions": 419,
+      "totalCount": 1085,
+      "talksWithWord": 795,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 19.66
     },
     {
       "word": "eternity",
@@ -1234,6 +1509,28 @@
       "talksWithWord": 1006,
       "totalTalks": 4043,
       "talkAppearanceRate": 24.88
+    },
+    {
+      "word": "nature",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 82.1,
+      "sessionsWithWord": 344,
+      "totalSessions": 419,
+      "totalCount": 1277,
+      "talksWithWord": 863,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 21.35
+    },
+    {
+      "word": "obtain",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 81.86,
+      "sessionsWithWord": 343,
+      "totalSessions": 419,
+      "totalCount": 1201,
+      "talksWithWord": 817,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 20.21
     },
     {
       "word": "miracle",
@@ -1357,6 +1654,83 @@
       "talkAppearanceRate": 25.95
     },
     {
+      "word": "obey",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 79.47,
+      "sessionsWithWord": 333,
+      "totalSessions": 419,
+      "totalCount": 1211,
+      "talksWithWord": 796,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 19.69
+    },
+    {
+      "word": "ponder",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 78.52,
+      "sessionsWithWord": 329,
+      "totalSessions": 419,
+      "totalCount": 1071,
+      "talksWithWord": 750,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 18.55
+    },
+    {
+      "word": "serious",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 77.57,
+      "sessionsWithWord": 325,
+      "totalSessions": 419,
+      "totalCount": 857,
+      "talksWithWord": 645,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 15.95
+    },
+    {
+      "word": "endure",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 77.09,
+      "sessionsWithWord": 323,
+      "totalSessions": 419,
+      "totalCount": 1654,
+      "talksWithWord": 929,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 22.98
+    },
+    {
+      "word": "forgive",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 77.09,
+      "sessionsWithWord": 323,
+      "totalSessions": 419,
+      "totalCount": 1592,
+      "talksWithWord": 688,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 17.02
+    },
+    {
+      "word": "dedicate",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 77.09,
+      "sessionsWithWord": 323,
+      "totalSessions": 419,
+      "totalCount": 1193,
+      "talksWithWord": 739,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 18.28
+    },
+    {
+      "word": "healing",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 76.61,
+      "sessionsWithWord": 321,
+      "totalSessions": 419,
+      "totalCount": 1960,
+      "talksWithWord": 813,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 20.11
+    },
+    {
       "word": "israel",
       "difficulty": "medium",
       "sessionAppearanceRate": 76.37,
@@ -1388,6 +1762,17 @@
       "talksWithWord": 665,
       "totalTalks": 4043,
       "talkAppearanceRate": 16.45
+    },
+    {
+      "word": "marvelous",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 75.89,
+      "sessionsWithWord": 318,
+      "totalSessions": 419,
+      "totalCount": 977,
+      "talksWithWord": 704,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 17.41
     },
     {
       "word": "mortality",
@@ -1423,6 +1808,17 @@
       "talkAppearanceRate": 17.88
     },
     {
+      "word": "ordain",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 74.46,
+      "sessionsWithWord": 312,
+      "totalSessions": 419,
+      "totalCount": 1197,
+      "talksWithWord": 680,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 16.82
+    },
+    {
       "word": "satan",
       "difficulty": "medium",
       "sessionAppearanceRate": 74.22,
@@ -1432,6 +1828,17 @@
       "talksWithWord": 677,
       "totalTalks": 4043,
       "talkAppearanceRate": 16.74
+    },
+    {
+      "word": "fulness",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 73.75,
+      "sessionsWithWord": 309,
+      "totalSessions": 419,
+      "totalCount": 1203,
+      "talksWithWord": 811,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 20.06
     },
     {
       "word": "sustain",
@@ -1478,6 +1885,17 @@
       "talkAppearanceRate": 15.21
     },
     {
+      "word": "companionship",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 72.08,
+      "sessionsWithWord": 302,
+      "totalSessions": 419,
+      "totalCount": 789,
+      "talksWithWord": 541,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 13.38
+    },
+    {
       "word": "hymn",
       "difficulty": "medium",
       "sessionAppearanceRate": 71.36,
@@ -1498,6 +1916,17 @@
       "talksWithWord": 578,
       "totalTalks": 4043,
       "talkAppearanceRate": 14.3
+    },
+    {
+      "word": "ministry",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 71.12,
+      "sessionsWithWord": 298,
+      "totalSessions": 419,
+      "totalCount": 1014,
+      "talksWithWord": 721,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 17.83
     },
     {
       "word": "offering",
@@ -1588,6 +2017,17 @@
       "talkAppearanceRate": 13.21
     },
     {
+      "word": "war",
+      "difficulty": "medium",
+      "sessionAppearanceRate": 67.78,
+      "sessionsWithWord": 284,
+      "totalSessions": 419,
+      "totalCount": 1019,
+      "talksWithWord": 534,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 13.21
+    },
+    {
       "word": "charity",
       "difficulty": "medium",
       "sessionAppearanceRate": 67.06,
@@ -1608,17 +2048,6 @@
       "talksWithWord": 509,
       "totalTalks": 4043,
       "talkAppearanceRate": 12.59
-    },
-    {
-      "word": "dedicate",
-      "difficulty": "medium",
-      "sessionAppearanceRate": 66.11,
-      "sessionsWithWord": 277,
-      "totalSessions": 419,
-      "totalCount": 702,
-      "talksWithWord": 508,
-      "totalTalks": 4043,
-      "talkAppearanceRate": 12.56
     },
     {
       "word": "devotion",
@@ -1698,6 +2127,28 @@
       "talkAppearanceRate": 13.55
     },
     {
+      "word": "business",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 64.68,
+      "sessionsWithWord": 271,
+      "totalSessions": 419,
+      "totalCount": 753,
+      "talksWithWord": 508,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 12.56
+    },
+    {
+      "word": "profound",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 63.96,
+      "sessionsWithWord": 268,
+      "totalSessions": 419,
+      "totalCount": 584,
+      "talksWithWord": 491,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 12.14
+    },
+    {
       "word": "grace",
       "difficulty": "hard",
       "sessionAppearanceRate": 63.72,
@@ -1709,6 +2160,28 @@
       "talkAppearanceRate": 13.6
     },
     {
+      "word": "dream",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 63.72,
+      "sessionsWithWord": 267,
+      "totalSessions": 419,
+      "totalCount": 699,
+      "talksWithWord": 427,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 10.56
+    },
+    {
+      "word": "treasure",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 63.25,
+      "sessionsWithWord": 265,
+      "totalSessions": 419,
+      "totalCount": 696,
+      "talksWithWord": 455,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 11.25
+    },
+    {
       "word": "celestial",
       "difficulty": "hard",
       "sessionAppearanceRate": 62.53,
@@ -1718,6 +2191,17 @@
       "talksWithWord": 500,
       "totalTalks": 4043,
       "talkAppearanceRate": 12.37
+    },
+    {
+      "word": "tithing",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 62.29,
+      "sessionsWithWord": 261,
+      "totalSessions": 419,
+      "totalCount": 1322,
+      "talksWithWord": 477,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 11.8
     },
     {
       "word": "convert",
@@ -1753,6 +2237,17 @@
       "talkAppearanceRate": 10.02
     },
     {
+      "word": "worldly",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 60.86,
+      "sessionsWithWord": 255,
+      "totalSessions": 419,
+      "totalCount": 524,
+      "talksWithWord": 409,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 10.12
+    },
+    {
       "word": "pride",
       "difficulty": "hard",
       "sessionAppearanceRate": 60.14,
@@ -1773,6 +2268,50 @@
       "talksWithWord": 423,
       "totalTalks": 4043,
       "talkAppearanceRate": 10.46
+    },
+    {
+      "word": "safety",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 59.9,
+      "sessionsWithWord": 251,
+      "totalSessions": 419,
+      "totalCount": 595,
+      "talksWithWord": 405,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 10.02
+    },
+    {
+      "word": "temporal",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 59.43,
+      "sessionsWithWord": 249,
+      "totalSessions": 419,
+      "totalCount": 664,
+      "talksWithWord": 399,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 9.87
+    },
+    {
+      "word": "fundamental",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 59.19,
+      "sessionsWithWord": 248,
+      "totalSessions": 419,
+      "totalCount": 580,
+      "talksWithWord": 426,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 10.54
+    },
+    {
+      "word": "discouragement",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 59.19,
+      "sessionsWithWord": 248,
+      "totalSessions": 419,
+      "totalCount": 539,
+      "talksWithWord": 404,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 9.99
     },
     {
       "word": "begotten",
@@ -1852,6 +2391,39 @@
       "talkAppearanceRate": 10.07
     },
     {
+      "word": "harmony",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 55.61,
+      "sessionsWithWord": 233,
+      "totalSessions": 419,
+      "totalCount": 466,
+      "talksWithWord": 380,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 9.4
+    },
+    {
+      "word": "nephite",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 54.65,
+      "sessionsWithWord": 229,
+      "totalSessions": 419,
+      "totalCount": 561,
+      "talksWithWord": 360,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 8.9
+    },
+    {
+      "word": "ultimate",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 54.65,
+      "sessionsWithWord": 229,
+      "totalSessions": 419,
+      "totalCount": 468,
+      "talksWithWord": 376,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 9.3
+    },
+    {
       "word": "pioneer",
       "difficulty": "hard",
       "sessionAppearanceRate": 54.42,
@@ -1872,6 +2444,17 @@
       "talksWithWord": 366,
       "totalTalks": 4043,
       "talkAppearanceRate": 9.05
+    },
+    {
+      "word": "chapel",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 54.42,
+      "sessionsWithWord": 228,
+      "totalSessions": 419,
+      "totalCount": 485,
+      "talksWithWord": 338,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 8.36
     },
     {
       "word": "transgression",
@@ -1907,6 +2490,17 @@
       "talkAppearanceRate": 8.81
     },
     {
+      "word": "congregation",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 52.51,
+      "sessionsWithWord": 220,
+      "totalSessions": 419,
+      "totalCount": 427,
+      "talksWithWord": 329,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 8.14
+    },
+    {
       "word": "unity",
       "difficulty": "hard",
       "sessionAppearanceRate": 52.03,
@@ -1916,6 +2510,17 @@
       "talksWithWord": 321,
       "totalTalks": 4043,
       "talkAppearanceRate": 7.94
+    },
+    {
+      "word": "loyal",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 51.79,
+      "sessionsWithWord": 217,
+      "totalSessions": 419,
+      "totalCount": 483,
+      "talksWithWord": 328,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 8.11
     },
     {
       "word": "sabbath",
@@ -1929,6 +2534,28 @@
       "talkAppearanceRate": 9.2
     },
     {
+      "word": "baby",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 51.31,
+      "sessionsWithWord": 215,
+      "totalSessions": 419,
+      "totalCount": 475,
+      "talksWithWord": 287,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 7.1
+    },
+    {
+      "word": "remission",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 51.07,
+      "sessionsWithWord": 214,
+      "totalSessions": 419,
+      "totalCount": 443,
+      "talksWithWord": 313,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 7.74
+    },
+    {
       "word": "redemption",
       "difficulty": "hard",
       "sessionAppearanceRate": 50.6,
@@ -1938,6 +2565,17 @@
       "talksWithWord": 355,
       "totalTalks": 4043,
       "talkAppearanceRate": 8.78
+    },
+    {
+      "word": "financial",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 50.6,
+      "sessionsWithWord": 212,
+      "totalSessions": 419,
+      "totalCount": 459,
+      "talksWithWord": 311,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 7.69
     },
     {
       "word": "melchizedek",
@@ -1962,6 +2600,17 @@
       "talkAppearanceRate": 6.33
     },
     {
+      "word": "translate",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 48.21,
+      "sessionsWithWord": 202,
+      "totalSessions": 419,
+      "totalCount": 449,
+      "talksWithWord": 303,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 7.49
+    },
+    {
       "word": "revelator",
       "difficulty": "hard",
       "sessionAppearanceRate": 48.21,
@@ -1971,6 +2620,17 @@
       "talksWithWord": 325,
       "totalTalks": 4043,
       "talkAppearanceRate": 8.04
+    },
+    {
+      "word": "star",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 47.73,
+      "sessionsWithWord": 200,
+      "totalSessions": 419,
+      "totalCount": 448,
+      "talksWithWord": 298,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 7.37
     },
     {
       "word": "veil",
@@ -1984,6 +2644,17 @@
       "talkAppearanceRate": 7.54
     },
     {
+      "word": "tragedy",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 47.26,
+      "sessionsWithWord": 198,
+      "totalSessions": 419,
+      "totalCount": 363,
+      "talksWithWord": 279,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 6.9
+    },
+    {
       "word": "creator",
       "difficulty": "hard",
       "sessionAppearanceRate": 46.78,
@@ -1993,6 +2664,28 @@
       "talksWithWord": 311,
       "totalTalks": 4043,
       "talkAppearanceRate": 7.69
+    },
+    {
+      "word": "liberty",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 46.54,
+      "sessionsWithWord": 195,
+      "totalSessions": 419,
+      "totalCount": 451,
+      "talksWithWord": 293,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 7.25
+    },
+    {
+      "word": "illness",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 46.54,
+      "sessionsWithWord": 195,
+      "totalSessions": 419,
+      "totalCount": 341,
+      "talksWithWord": 280,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 6.93
     },
     {
       "word": "conversion",
@@ -2015,6 +2708,17 @@
       "talksWithWord": 273,
       "totalTalks": 4043,
       "talkAppearanceRate": 6.75
+    },
+    {
+      "word": "friendship",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 45.35,
+      "sessionsWithWord": 190,
+      "totalSessions": 419,
+      "totalCount": 373,
+      "talksWithWord": 259,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 6.41
     },
     {
       "word": "pornography",
@@ -2048,6 +2752,28 @@
       "talksWithWord": 268,
       "totalTalks": 4043,
       "talkAppearanceRate": 6.63
+    },
+    {
+      "word": "calm",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 41.77,
+      "sessionsWithWord": 175,
+      "totalSessions": 419,
+      "totalCount": 276,
+      "talksWithWord": 224,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 5.54
+    },
+    {
+      "word": "grief",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 41.53,
+      "sessionsWithWord": 174,
+      "totalSessions": 419,
+      "totalCount": 327,
+      "talksWithWord": 247,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 6.11
     },
     {
       "word": "messiah",
@@ -2094,6 +2820,17 @@
       "talkAppearanceRate": 5.22
     },
     {
+      "word": "steadfast",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 37.47,
+      "sessionsWithWord": 157,
+      "totalSessions": 419,
+      "totalCount": 328,
+      "talksWithWord": 230,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 5.69
+    },
+    {
       "word": "nauvoo",
       "difficulty": "hard",
       "sessionAppearanceRate": 36.75,
@@ -2103,6 +2840,61 @@
       "talksWithWord": 217,
       "totalTalks": 4043,
       "talkAppearanceRate": 5.37
+    },
+    {
+      "word": "foolish",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 36.52,
+      "sessionsWithWord": 153,
+      "totalSessions": 419,
+      "totalCount": 270,
+      "talksWithWord": 199,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 4.92
+    },
+    {
+      "word": "philosophy",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 36.28,
+      "sessionsWithWord": 152,
+      "totalSessions": 419,
+      "totalCount": 288,
+      "talksWithWord": 218,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 5.39
+    },
+    {
+      "word": "crucify",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 35.8,
+      "sessionsWithWord": 150,
+      "totalSessions": 419,
+      "totalCount": 255,
+      "talksWithWord": 212,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 5.24
+    },
+    {
+      "word": "anxiety",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 35.08,
+      "sessionsWithWord": 147,
+      "totalSessions": 419,
+      "totalCount": 211,
+      "talksWithWord": 189,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 4.67
+    },
+    {
+      "word": "admire",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 34.61,
+      "sessionsWithWord": 145,
+      "totalSessions": 419,
+      "totalCount": 189,
+      "talksWithWord": 172,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 4.25
     },
     {
       "word": "fellowship",
@@ -2149,6 +2941,28 @@
       "talkAppearanceRate": 4.45
     },
     {
+      "word": "adopt",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 31.74,
+      "sessionsWithWord": 133,
+      "totalSessions": 419,
+      "totalCount": 207,
+      "talksWithWord": 170,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 4.2
+    },
+    {
+      "word": "lamanite",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 31.03,
+      "sessionsWithWord": 130,
+      "totalSessions": 419,
+      "totalCount": 316,
+      "talksWithWord": 169,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 4.18
+    },
+    {
       "word": "dominion",
       "difficulty": "hard",
       "sessionAppearanceRate": 30.79,
@@ -2158,6 +2972,127 @@
       "talksWithWord": 173,
       "totalTalks": 4043,
       "talkAppearanceRate": 4.28
+    },
+    {
+      "word": "priceless",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 30.55,
+      "sessionsWithWord": 128,
+      "totalSessions": 419,
+      "totalCount": 172,
+      "talksWithWord": 160,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 3.96
+    },
+    {
+      "word": "oil",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 30.31,
+      "sessionsWithWord": 127,
+      "totalSessions": 419,
+      "totalCount": 345,
+      "talksWithWord": 151,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 3.73
+    },
+    {
+      "word": "comforter",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 30.31,
+      "sessionsWithWord": 127,
+      "totalSessions": 419,
+      "totalCount": 219,
+      "talksWithWord": 150,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 3.71
+    },
+    {
+      "word": "reap",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 29.59,
+      "sessionsWithWord": 124,
+      "totalSessions": 419,
+      "totalCount": 204,
+      "talksWithWord": 154,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 3.81
+    },
+    {
+      "word": "boat",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 27.68,
+      "sessionsWithWord": 116,
+      "totalSessions": 419,
+      "totalCount": 257,
+      "talksWithWord": 134,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 3.31
+    },
+    {
+      "word": "pleasant",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 27.45,
+      "sessionsWithWord": 115,
+      "totalSessions": 419,
+      "totalCount": 164,
+      "talksWithWord": 145,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 3.59
+    },
+    {
+      "word": "earthquake",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 26.73,
+      "sessionsWithWord": 112,
+      "totalSessions": 419,
+      "totalCount": 236,
+      "talksWithWord": 141,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 3.49
+    },
+    {
+      "word": "emergency",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 26.73,
+      "sessionsWithWord": 112,
+      "totalSessions": 419,
+      "totalCount": 176,
+      "talksWithWord": 131,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 3.24
+    },
+    {
+      "word": "healthy",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 26.73,
+      "sessionsWithWord": 112,
+      "totalSessions": 419,
+      "totalCount": 150,
+      "talksWithWord": 131,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 3.24
+    },
+    {
+      "word": "construction",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 26.01,
+      "sessionsWithWord": 109,
+      "totalSessions": 419,
+      "totalCount": 225,
+      "talksWithWord": 146,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 3.61
+    },
+    {
+      "word": "patriarchal",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 25.3,
+      "sessionsWithWord": 106,
+      "totalSessions": 419,
+      "totalCount": 295,
+      "talksWithWord": 127,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 3.14
     },
     {
       "word": "stewardship",
@@ -2193,6 +3128,17 @@
       "talkAppearanceRate": 3.41
     },
     {
+      "word": "science",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 23.63,
+      "sessionsWithWord": 99,
+      "totalSessions": 419,
+      "totalCount": 153,
+      "talksWithWord": 118,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 2.92
+    },
+    {
       "word": "hebrew",
       "difficulty": "hard",
       "sessionAppearanceRate": 23.63,
@@ -2202,6 +3148,83 @@
       "talksWithWord": 118,
       "totalTalks": 4043,
       "talkAppearanceRate": 2.92
+    },
+    {
+      "word": "comparison",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 21.72,
+      "sessionsWithWord": 91,
+      "totalSessions": 419,
+      "totalCount": 123,
+      "talksWithWord": 103,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 2.55
+    },
+    {
+      "word": "calvary",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 21.0,
+      "sessionsWithWord": 88,
+      "totalSessions": 419,
+      "totalCount": 134,
+      "talksWithWord": 112,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 2.77
+    },
+    {
+      "word": "mansion",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 19.81,
+      "sessionsWithWord": 83,
+      "totalSessions": 419,
+      "totalCount": 118,
+      "talksWithWord": 95,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 2.35
+    },
+    {
+      "word": "meridian",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 19.33,
+      "sessionsWithWord": 81,
+      "totalSessions": 419,
+      "totalCount": 99,
+      "talksWithWord": 94,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 2.33
+    },
+    {
+      "word": "consecration",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 19.09,
+      "sessionsWithWord": 80,
+      "totalSessions": 419,
+      "totalCount": 203,
+      "talksWithWord": 101,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 2.5
+    },
+    {
+      "word": "moon",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 19.09,
+      "sessionsWithWord": 80,
+      "totalSessions": 419,
+      "totalCount": 125,
+      "talksWithWord": 94,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 2.33
+    },
+    {
+      "word": "foreordain",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 18.62,
+      "sessionsWithWord": 78,
+      "totalSessions": 419,
+      "totalCount": 136,
+      "talksWithWord": 90,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 2.23
     },
     {
       "word": "motherhood",
@@ -2215,6 +3238,39 @@
       "talkAppearanceRate": 2.13
     },
     {
+      "word": "birthright",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 16.95,
+      "sessionsWithWord": 71,
+      "totalSessions": 419,
+      "totalCount": 107,
+      "talksWithWord": 78,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 1.93
+    },
+    {
+      "word": "handcart",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 15.99,
+      "sessionsWithWord": 67,
+      "totalSessions": 419,
+      "totalCount": 204,
+      "talksWithWord": 84,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 2.08
+    },
+    {
+      "word": "abomination",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 13.37,
+      "sessionsWithWord": 56,
+      "totalSessions": 419,
+      "totalCount": 69,
+      "talksWithWord": 62,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 1.53
+    },
+    {
       "word": "fatherhood",
       "difficulty": "hard",
       "sessionAppearanceRate": 9.55,
@@ -2224,68 +3280,215 @@
       "talksWithWord": 43,
       "totalTalks": 4043,
       "talkAppearanceRate": 1.06
+    },
+    {
+      "word": "zarahemla",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 8.59,
+      "sessionsWithWord": 36,
+      "totalSessions": 419,
+      "totalCount": 44,
+      "talksWithWord": 38,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 0.94
+    },
+    {
+      "word": "telestial",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 7.64,
+      "sessionsWithWord": 32,
+      "totalSessions": 419,
+      "totalCount": 49,
+      "talksWithWord": 34,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 0.84
+    },
+    {
+      "word": "terrestrial",
+      "difficulty": "hard",
+      "sessionAppearanceRate": 6.44,
+      "sessionsWithWord": 27,
+      "totalSessions": 419,
+      "totalCount": 44,
+      "talksWithWord": 28,
+      "totalTalks": 4043,
+      "talkAppearanceRate": 0.69
     }
   ],
   "normalizationMap": {
+    "abominations": "abomination",
+    "admires": "admire",
+    "admired": "admire",
+    "admiring": "admire",
+    "adopted": "adopt",
+    "adopting": "adopt",
+    "adoption": "adopt",
+    "adopts": "adopt",
     "angels": "angel",
+    "anxieties": "anxiety",
     "apostles": "apostle",
+    "babies": "baby",
     "beliefs": "belief",
+    "birthrights": "birthright",
     "bishops": "bishop",
     "blessings": "blessing",
+    "boats": "boat",
     "brotherhood": "brotherhood",
+    "calmed": "calm",
+    "calming": "calm",
+    "chapels": "chapel",
     "charities": "charity",
     "children": "child",
     "children's": "child",
+    "chose": "choose",
+    "chosen": "choose",
+    "chooses": "choose",
+    "choosing": "choose",
     "christ's": "christ",
     "churches": "church",
+    "comforters": "comforter",
     "comforts": "comfort",
     "commandments": "commandment",
+    "companions": "companionship",
+    "companionships": "companionship",
+    "comparisons": "comparison",
+    "congregations": "congregation",
+    "consecrations": "consecration",
+    "constructions": "construction",
     "conversions": "conversion",
     "covenants": "covenant",
     "creators": "creator",
+    "crucified": "crucify",
+    "crucifies": "crucify",
+    "crucifying": "crucify",
+    "daughters": "daughter",
+    "daughter's": "daughter",
     "dedicated": "dedicate",
+    "dedicates": "dedicate",
+    "dedicating": "dedicate",
+    "dedication": "dedicate",
+    "dedications": "dedicate",
+    "desires": "desire",
+    "desired": "desire",
+    "desiring": "desire",
     "disciples": "disciple",
+    "discouraged": "discouragement",
+    "discouragements": "discouragement",
+    "discourages": "discouragement",
+    "discouraging": "discouragement",
     "doctrines": "doctrine",
+    "earthquakes": "earthquake",
+    "elder's": "elder",
+    "elders": "elder",
+    "emergencies": "emergency",
+    "encouraged": "encouragement",
+    "encouragements": "encouragement",
+    "encourages": "encouragement",
+    "encouraging": "encouragement",
+    "endured": "endure",
+    "endures": "endure",
+    "enduring": "endure",
+    "established": "establish",
+    "establishes": "establish",
+    "establishing": "establish",
     "eternities": "eternity",
     "examples": "example",
+    "faithfully": "faithful",
+    "faithfulness": "faithful",
     "families": "family",
     "fatherhoods": "fatherhood",
     "fathers": "father",
+    "foreordained": "foreordain",
+    "foreordaining": "foreordain",
+    "foreordination": "foreordain",
+    "foreordains": "foreordain",
+    "forgave": "forgive",
+    "forgiven": "forgive",
     "forgivenesses": "forgiveness",
+    "forgives": "forgive",
+    "forgiving": "forgive",
     "freedoms": "freedom",
+    "friendships": "friendship",
+    "fullness": "fulness",
+    "gloriously": "glorious",
     "god's": "god",
     "gospels": "gospel",
     "graces": "grace",
+    "griefs": "grief",
     "guidances": "guidance",
+    "handcarts": "handcart",
+    "heal": "healing",
+    "healed": "healing",
+    "heals": "healing",
     "heavens": "heaven",
     "homes": "home",
     "hopes": "hope",
+    "house's": "house",
+    "houses": "house",
     "humble": "humility",
+    "illnesses": "illness",
+    "inspirations": "inspiration",
+    "inspired": "inspiration",
+    "inspires": "inspiration",
+    "inspiring": "inspiration",
     "jesus's": "jesus",
     "judgments": "judgment",
     "kindnesses": "kindness",
+    "lamanites": "lamanite",
+    "liberties": "liberty",
     "lights": "light",
     "lord's": "lord",
     "lords": "lord",
     "loved": "love",
+    "loyalty": "loyal",
+    "mansions": "mansion",
+    "marvellous": "marvelous",
+    "marvellously": "marvelous",
+    "marvelously": "marvelous",
     "mercies": "mercy",
+    "meridians": "meridian",
+    "ministries": "ministry",
+    "ministry's": "ministry",
     "missionaries": "missionary",
+    "moons": "moon",
     "motherhoods": "motherhood",
     "mothers": "mother",
+    "nephites": "nephite",
+    "obeyed": "obey",
+    "obeying": "obey",
+    "obeys": "obey",
+    "obtained": "obtain",
+    "obtaining": "obtain",
+    "obtains": "obtain",
     "offerings": "offering",
+    "ordained": "ordain",
+    "ordaining": "ordain",
+    "ordains": "ordain",
+    "ordination": "ordain",
+    "ordinations": "ordain",
     "ordinances": "ordinance",
+    "philosophies": "philosophy",
     "pioneers": "pioneer",
+    "ponders": "ponder",
+    "pondered": "ponder",
+    "pondering": "ponder",
     "powers": "power",
     "prayers": "prayer",
     "priesthoods": "priesthood",
+    "principles": "principle",
+    "privileges": "privilege",
     "promised": "promise",
     "promises": "promise",
     "prophets": "prophet",
     "purities": "purity",
     "purposes": "purpose",
+    "reaped": "reap",
+    "reaping": "reap",
+    "reaps": "reap",
     "redeemers": "redeemer",
     "redemptions": "redemption",
     "remembered": "remember",
+    "remissions": "remission",
     "repentances": "repentance",
     "restorations": "restoration",
     "restored": "restore",
@@ -2293,22 +3496,51 @@
     "revelations": "revelation",
     "righteousnesses": "righteousness",
     "sabbaths": "sabbath",
-    "sacraments": "sacrament",
     "sacrifices": "sacrifice",
+    "sacraments": "sacrament",
+    "saint's": "saint",
+    "saints": "saint",
     "salvations": "salvation",
+    "saved": "save",
+    "saves": "save",
+    "saving": "save",
     "scriptures": "scripture",
     "sealed": "seal",
+    "seeks": "seek",
+    "seeking": "seek",
     "services": "service",
     "sins": "sin",
     "souls": "soul",
     "spirits": "spirit",
+    "stars": "star",
+    "steadfastness": "steadfast",
     "stewardships": "stewardship",
+    "sought": "seek",
     "temples": "temple",
+    "testified": "testify",
+    "testifies": "testify",
+    "testifying": "testify",
     "testimonies": "testimony",
+    "tithe": "tithing",
+    "tithed": "tithing",
+    "tithes": "tithing",
+    "tragedies": "tragedy",
+    "translated": "translate",
+    "translates": "translate",
+    "translating": "translate",
+    "treasured": "treasure",
+    "treasures": "treasure",
     "truths": "truth",
     "virtues": "virtue",
+    "willing": "willingness",
+    "wishes": "wish",
+    "wished": "wish",
+    "wishing": "wish",
     "witnesses": "witness",
     "works": "work",
+    "worldliness": "worldly",
+    "worthinesses": "worthiness",
+    "worthy": "worthiness",
     "worships": "worship"
   }
 }
