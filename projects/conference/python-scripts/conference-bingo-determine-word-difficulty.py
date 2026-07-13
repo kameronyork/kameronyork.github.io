@@ -30,8 +30,8 @@ TALKS_DATASET_URL = "https://kameronyork.com/datasets/general-conference-talks.j
 ALLOWED_WORDS_DATASET_URL = "https://kameronyork.com/datasets/conference-bingo-allowed-words.json"
 
 # This mirrors the ../../../datasets/ path style from your existing scripts.
-LOCAL_ALLOWED_WORDS_PATH = Path("../../../datasets/conference-bingo-allowed-words.json")
-OUTPUT_JSON_PATH = Path("../../../datasets/conference-bingo-allowed-words-with-difficulty.json")
+LOCAL_ALLOWED_WORDS_PATH = Path("C:/Users/kamsy/Desktop/Projects/Website_project/kameronyork.com/datasets/conference-bingo-allowed-words.json")
+OUTPUT_JSON_PATH = Path("C:/Users/kamsy/Desktop/Projects/Website_project/kameronyork.com/datasets/conference-bingo-allowed-words-with-difficulty.json")
 
 # A backup copy is also saved next to this script for easy inspection.
 BACKUP_DIR = Path("./backups")
@@ -113,14 +113,14 @@ def tokenize_to_allowed_words(
     cleaned = (
         str(text or "")
         .lower()
-        .replace("\u2018", "'")
-        .replace("\u2019", "'")
+        .replace("/u2018", "'")
+        .replace("/u2019", "'")
     )
-    cleaned = re.sub(r"[^a-z'\s-]", " ", cleaned)
+    cleaned = re.sub(r"[^a-z'/s-]", " ", cleaned)
     cleaned = cleaned.replace("-", " ")
 
     tokens: list[str] = []
-    for raw_token in re.split(r"\s+", cleaned):
+    for raw_token in re.split(r"/s+", cleaned):
         token = normalize_single_word(raw_token, allowed_words, normalization_map)
         if token:
             tokens.append(token)
@@ -132,12 +132,12 @@ def clean_phrase_text(text: str) -> str:
     cleaned = (
         str(text or "")
         .lower()
-        .replace("\u2018", "'")
-        .replace("\u2019", "'")
+        .replace("/u2018", "'")
+        .replace("/u2019", "'")
     )
-    cleaned = re.sub(r"[^a-z'\s-]", " ", cleaned)
+    cleaned = re.sub(r"[^a-z'/s-]", " ", cleaned)
     cleaned = cleaned.replace("-", " ")
-    return re.sub(r"\s+", " ", cleaned).strip()
+    return re.sub(r"/s+", " ", cleaned).strip()
 
 
 def count_phrase_occurrences(cleaned_text: str, phrase: str) -> int:
@@ -168,13 +168,13 @@ def build_phrase_normalization_entries(
     seen: set[tuple[str, str]] = set()
 
     for word in allowed_words:
-        if re.search(r"\s", word):
+        if re.search(r"/s", word):
             entry = (word, word)
             entries.append(entry)
             seen.add(entry)
 
     for key, value in normalization_map.items():
-        if re.search(r"\s", key) and value in allowed_word_set:
+        if re.search(r"/s", key) and value in allowed_word_set:
             entry = (key, value)
             if entry not in seen:
                 entries.append(entry)
