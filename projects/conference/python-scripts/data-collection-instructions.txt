@@ -57,6 +57,19 @@ The files are the backbone of the Gospel Buddy extension.  Once they are
 completed and published to GitHub the extension will include the new data.
 
 ---------------------------------------------------------------------------
+                    OPTIONAL: Updating Conference Bingo
+---------------------------------------------------------------------------
+Once General Conference talks have been updated on the website dataset,
+optionally you can run the conference-bingo-identify-words.py file to 
+manually identify a whole list of words that could be included in the
+conference bingo dataset.
+
+Second, you could run the conference-bingo-determine-word-counts.py file 
+to update the information on word stats now that new talks are included in
+the dataset. Word difficulties likely won't change much from conference to 
+conference, but changes could happen on a decade scale.
+
+---------------------------------------------------------------------------
                     Making Sure all Files are Updated
 ---------------------------------------------------------------------------
 Then run the file convert-conference-talks-CSV-to-JSON.py. This will convert 
