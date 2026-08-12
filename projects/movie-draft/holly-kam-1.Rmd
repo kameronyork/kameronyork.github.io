@@ -9,13 +9,201 @@ output:
 <br>
 <br>
 
-<canvas id="earningsChart" width="400" height="200"></canvas>
-<div id="tables-container"></div>
+<div class="cn-chart-wrap">
+  <canvas id="earningsChart" width="400" height="200"></canvas>
+</div>
+
+<ul class="cn-tab-nav" id="cnTabNav">
+  <li><a href="#" class="cn-tab-link active" data-target="participants-panel" onclick="cnShowTab(event, 'participants-panel')">Participants</a></li>
+  <li><a href="#" class="cn-tab-link" data-target="metrics-panel" onclick="cnShowTab(event, 'metrics-panel')">Movie Metrics</a></li>
+  <li><a href="#" class="cn-tab-link" data-target="upcoming-panel" onclick="cnShowTab(event, 'upcoming-panel')">Upcoming Movies</a></li>
+</ul>
+
+<div id="participants-panel" class="cn-tab-panel">
+  <div id="tables-container"></div>
+</div>
+<div id="metrics-panel" class="cn-tab-panel" style="display:none;">
+  <div id="metrics-container"></div>
+</div>
+<div id="upcoming-panel" class="cn-tab-panel" style="display:none;">
+  <div id="upcoming-container"></div>
+</div>
 
 <style>
   .expandable-row:hover {
     background-color: rgba(255, 215, 0, 0.3); /* Transparent gold color */
     cursor: pointer;
+  }
+
+  .cn-chart-wrap {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  #earningsChart {
+    max-width: 100%;
+  }
+
+  .cn-tab-nav {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0 0;
+    border-bottom: 2px solid #e0e0e0;
+    gap: 4px;
+  }
+  .cn-tab-nav li {
+    margin: 0;
+  }
+  .cn-tab-link {
+    display: inline-block;
+    padding: 10px 18px;
+    text-decoration: none;
+    color: #636363;
+    font-weight: 500;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    background-color: #f8f9fa;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+  .cn-tab-link:hover {
+    background-color: #eef0f5;
+    color: var(--primary-color, #02007e);
+  }
+  .cn-tab-link.active {
+    background-color: #ffffff;
+    color: var(--primary-color, #02007e);
+    border-color: #e0e0e0;
+    border-bottom: 2px solid #ffffff;
+    margin-bottom: -2px;
+    font-weight: 700;
+  }
+  .cn-tab-panel {
+    padding-top: 16px;
+  }
+
+  .cn-table-scroll {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .cn-movie-old-row td {
+    color: #aaaaaa !important;
+    opacity: 0.55;
+  }
+  .cn-movie-caption-row td {
+    font-size: 0.82em;
+    color: #888888;
+    border-top: none;
+    padding-top: 2px;
+    padding-bottom: 10px;
+    background-color: #fafafa;
+  }
+  .cn-upcoming-table img {
+    width: 60px;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+  }
+  .cn-upcoming-table td {
+    vertical-align: top;
+    padding: 8px;
+  }
+
+  .cn-movie-poster-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 4px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .cn-movie-poster-detail img {
+    width: 50px;
+    height: auto;
+    border-radius: 4px;
+    flex-shrink: 0;
+    display: block;
+  }
+  .cn-movie-poster-detail p {
+    margin: 0;
+    font-size: 0.85em;
+    color: #555555;
+  }
+
+  .cn-controls-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: flex-end;
+    margin-bottom: 12px;
+  }
+  .cn-control {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.85em;
+    color: #555555;
+  }
+  .cn-control select {
+    padding: 5px 8px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 0.95em;
+    background-color: #ffffff;
+  }
+  .cn-checkbox-control {
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9em;
+    cursor: pointer;
+  }
+  .cn-checkbox-control input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    cursor: pointer;
+    vertical-align: middle;
+  }
+  .cn-checkbox-control span {
+    line-height: 1;
+  }
+  .cn-direction-btn {
+    padding: 7px 14px;
+    border: 1px solid var(--primary-color, #02007e);
+    background-color: #ffffff;
+    color: var(--primary-color, #02007e);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+  }
+  .cn-direction-btn:hover {
+    background-color: var(--primary-color, #02007e);
+    color: #ffffff;
+  }
+
+  @media (max-width: 600px) {
+    .cn-tab-link {
+      padding: 8px 12px;
+      font-size: 0.85em;
+    }
+    table {
+      font-size: 0.82em;
+    }
+    .cn-controls-row {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .cn-direction-btn {
+      align-self: stretch;
+    }
+    .cn-upcoming-table img,
+    .cn-movie-poster-detail img {
+      width: 42px;
+    }
   }
 </style>
 
@@ -29,6 +217,22 @@ function toggleRow(rowId) {
   }
 }
 
+// Function to switch between tabs
+function cnShowTab(event, targetId) {
+  event.preventDefault();
+  document.querySelectorAll('.cn-tab-panel').forEach(panel => {
+    panel.style.display = 'none';
+  });
+  const target = document.getElementById(targetId);
+  if (target) {
+    target.style.display = '';
+  }
+  document.querySelectorAll('.cn-tab-link').forEach(link => {
+    link.classList.remove('active');
+  });
+  event.currentTarget.classList.add('active');
+}
+
 document.addEventListener("DOMContentLoaded", async function() {
   // Define start date and cutoff date
   const startDate = new Date("2024-11-01"); // Replace with your desired start date
@@ -39,16 +243,18 @@ document.addEventListener("DOMContentLoaded", async function() {
   // URLs for data
   const dataUrl = "https://kameronyork.com/datasets/box-office-data.json";
   const peopleUrl = "https://kameronyork.com/datasets/movies.json";
+  const detailsUrl = "https://kameronyork.com/datasets/movies-details.json";
 
-  let movieData, peopleData;
+  let movieData, peopleData, movieDetailsData;
 
   try {
-    const [movieResponse, peopleResponse] = await Promise.all([fetch(dataUrl), fetch(peopleUrl)]);
-    if (!movieResponse.ok || !peopleResponse.ok) {
+    const [movieResponse, peopleResponse, detailsResponse] = await Promise.all([fetch(dataUrl), fetch(peopleUrl), fetch(detailsUrl)]);
+    if (!movieResponse.ok || !peopleResponse.ok || !detailsResponse.ok) {
       throw new Error('Failed to fetch data.');
     }
     movieData = await movieResponse.json();
     peopleData = await peopleResponse.json();
+    movieDetailsData = await detailsResponse.json();
   } catch (error) {
     console.error("Error fetching data:", error);
     return;
@@ -57,8 +263,15 @@ document.addEventListener("DOMContentLoaded", async function() {
   // Filter peopleData for competition "kamHolly1"
   peopleData = peopleData.filter(person => person.competition === "kamHolly1");
 
+  // Lookup of movie poster/description/release date by IMDB id, used by the
+  // Participants tab (poster + description on expand) and the Upcoming Movies tab.
+  const detailsById = {};
+  movieDetailsData.forEach(detail => {
+    detailsById[detail.id] = detail;
+  });
+
   const cumulativeData = {};
-  
+
   // Filter and sort dates based on start date and end date
   const allDates = Array.from(new Set(movieData.map(entry => entry.Date)))
     .filter(date => {
@@ -82,7 +295,7 @@ document.addEventListener("DOMContentLoaded", async function() {
   // Sum cumulative earnings per person per day
   for (const person of peopleData) {
     for (const movie of person.movies) {
-      const movieEntries = movieData.filter(entry => entry.Title === movie.title);
+      const movieEntries = movieData.filter(entry => entry.IMDB_ID === movie.imdb_id);
 
       let cumulativeSum = 0;
       let movieEarningsByDate = [];
@@ -93,7 +306,7 @@ document.addEventListener("DOMContentLoaded", async function() {
           cumulativeSum += parseInt(entry.Daily.replace(/[\$,]/g, '')) || 0;
         }
         cumulativeData[person.name].earningsByDate[date] += cumulativeSum;
-        
+
         // Track individual movie earnings
         if (cumulativeSum > 0) {
           movieEarningsByDate.push({ date, amount: cumulativeSum });
@@ -103,6 +316,8 @@ document.addEventListener("DOMContentLoaded", async function() {
       // Store movie details
       cumulativeData[person.name].movies.push({
         title: movie.title,
+        imdb_id: movie.imdb_id,
+        points: movie.points,
         periodToDateTotal: cumulativeSum,
         earnings: movieEarningsByDate
       });
@@ -150,9 +365,9 @@ document.addEventListener("DOMContentLoaded", async function() {
     options: {
       responsive: true,
       plugins: { legend: { display: true, position: "top" } },
-      scales: { 
-        x: { title: { display: true, text: "Date" } }, 
-        y: { title: { display: true, text: "Cumulative Earnings" } } 
+      scales: {
+        x: { title: { display: true, text: "Date" } },
+        y: { title: { display: true, text: "Cumulative Earnings" } }
       }
     }
   });
@@ -168,6 +383,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
   // Build a single table for all data below the chart
   let tableHtml = `
+    <div class="cn-table-scroll">
     <table border="1" style="width:100%; border-collapse: collapse;">
       <thead>
         <tr>
@@ -199,6 +415,8 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     data.movies.forEach((movie, movieIndex) => {
       const movieRowId = `movie-row-${index}-${movieIndex}`;
+      const movieDetails = detailsById[movie.imdb_id] || {};
+
       tableHtml += `
         <tr class="expandable-row" onclick="toggleRow('${movieRowId}')">
           <td>${movie.title}</td>
@@ -206,6 +424,10 @@ document.addEventListener("DOMContentLoaded", async function() {
         </tr>
         <tr id="${movieRowId}" style="display: none;">
           <td colspan="2">
+            <div class="cn-movie-poster-detail">
+              ${movieDetails.image_url ? `<img src="${movieDetails.image_url}" alt="${movie.title}">` : ''}
+              <p>${movieDetails.description || 'No description available.'}</p>
+            </div>
             <table border="1" style="width:100%; border-collapse: collapse;">
               <thead>
                 <tr>
@@ -242,8 +464,304 @@ document.addEventListener("DOMContentLoaded", async function() {
   tableHtml += `
       </tbody>
     </table>
+    </div>
   `;
 
   document.getElementById("tables-container").innerHTML = tableHtml;
+
+  // Build a per-movie aggregate used by the Movie Metrics and Upcoming Movies tabs.
+  // Each movie in this competition is auctioned to exactly one buyer, so there is
+  // one aggregate row per movie. A handful of draft picks have no imdb_id yet
+  // (still-untitled/unannounced movies) — fall back to a synthetic per-person key
+  // so two such movies never collide and silently overwrite one another.
+  const movieAggregate = {};
+  Object.entries(cumulativeData).forEach(([personName, data]) => {
+    data.movies.forEach(movie => {
+      const aggregateKey = movie.imdb_id || `no-id::${personName}::${movie.title}`;
+      movieAggregate[aggregateKey] = {
+        title: movie.title,
+        imdb_id: aggregateKey,
+        points: movie.points || 0,
+        gross: movie.periodToDateTotal,
+        owner: personName
+      };
+    });
+  });
+
+  // Rank every drafted movie by its period-to-date gross (1 = highest grossing) —
+  // shared by the Movie Metrics and Upcoming Movies tabs
+  const grossRanked = Object.values(movieAggregate).slice().sort((a, b) => b.gross - a.gross);
+  const rankById = {};
+  grossRanked.forEach((movie, index) => {
+    rankById[movie.imdb_id] = index + 1;
+  });
+  const totalDraftedMovies = grossRanked.length;
+
+  // ---- Movie Metrics tab ----
+  // One row per movie (Movie grouping)
+  const metricsByMovie = Object.values(movieAggregate).map(movie => ({
+    name: movie.title,
+    imdb_id: movie.imdb_id,
+    owner: movie.owner,
+    points: movie.points,
+    gross: movie.gross,
+    dollarsPerPoint: movie.points > 0 ? movie.gross / movie.points : null,
+    rank: rankById[movie.imdb_id]
+  }));
+
+  // One row per participant, with totals across all of their movies (Participant grouping)
+  const participantTotals = {};
+  Object.values(movieAggregate).forEach(movie => {
+    if (!participantTotals[movie.owner]) {
+      participantTotals[movie.owner] = { name: movie.owner, points: 0, gross: 0 };
+    }
+    participantTotals[movie.owner].points += movie.points;
+    participantTotals[movie.owner].gross += movie.gross;
+  });
+
+  // Rank participants by their total gross (1 = highest grossing participant)
+  const participantGrossRanked = Object.values(participantTotals).slice().sort((a, b) => b.gross - a.gross);
+  const participantRankByName = {};
+  participantGrossRanked.forEach((participant, index) => {
+    participantRankByName[participant.name] = index + 1;
+  });
+
+  const metricsByParticipant = Object.values(participantTotals).map(participant => ({
+    name: participant.name,
+    points: participant.points,
+    gross: participant.gross,
+    dollarsPerPoint: participant.points > 0 ? participant.gross / participant.points : null,
+    rank: participantRankByName[participant.name]
+  }));
+
+  const metricsShell = `
+    <div class="cn-controls-row">
+      <label class="cn-control">
+        Group by
+        <select id="metricsGroupBy">
+          <option value="movie" selected>Movie</option>
+          <option value="participant">Participant</option>
+        </select>
+      </label>
+      <label class="cn-control">
+        Filter by participant
+        <select id="metricsOwnerFilter">
+          <option value="all">All Participants</option>
+          ${sortedNames.map(name => `<option value="${name}">${name}</option>`).join('')}
+        </select>
+      </label>
+      <label class="cn-control">
+        Sort by
+        <select id="metricsSortColumn">
+          <option value="gross">Total Domestic Gross</option>
+          <option value="dollarsPerPoint" selected>Dollars per Point</option>
+          <option value="rank">Rank</option>
+          <option value="name" id="metricsSortNameOption">Movie</option>
+        </select>
+      </label>
+      <button type="button" id="metricsSortDirection" class="cn-direction-btn" data-direction="desc">Descending &#9660;</button>
+    </div>
+    <div class="cn-table-scroll">
+      <table border="1" style="width:100%; border-collapse: collapse;">
+        <thead id="metricsThead"></thead>
+        <tbody id="metricsTbody"></tbody>
+      </table>
+    </div>
+  `;
+
+  document.getElementById("metrics-container").innerHTML = metricsShell;
+
+  function renderMetricsTable() {
+    const groupBy = document.getElementById('metricsGroupBy').value;
+    const ownerFilter = document.getElementById('metricsOwnerFilter').value;
+    const sortColumn = document.getElementById('metricsSortColumn').value;
+    const directionBtn = document.getElementById('metricsSortDirection');
+    const direction = directionBtn.getAttribute('data-direction');
+    const isMovieMode = groupBy === 'movie';
+
+    let rows = (isMovieMode ? metricsByMovie : metricsByParticipant).slice();
+    if (ownerFilter !== 'all') {
+      rows = rows.filter(row => (isMovieMode ? row.owner : row.name) === ownerFilter);
+    }
+
+    rows.sort((a, b) => {
+      const valA = a[sortColumn];
+      const valB = b[sortColumn];
+
+      // Rows with no points spent have a null Dollars per Point (N/A) — always
+      // sink those to the bottom regardless of sort direction.
+      if (sortColumn === 'dollarsPerPoint') {
+        if (valA === null && valB === null) return 0;
+        if (valA === null) return 1;
+        if (valB === null) return -1;
+      }
+
+      let cmp;
+      if (typeof valA === 'string') {
+        cmp = valA.localeCompare(valB);
+      } else {
+        cmp = valA - valB;
+      }
+      return direction === 'asc' ? cmp : -cmp;
+    });
+
+    const thead = document.getElementById('metricsThead');
+    thead.innerHTML = isMovieMode
+      ? `<tr><th>Movie</th><th>Bought By</th><th>Points Spent</th><th>Total Domestic Gross</th><th>Rank</th><th>Dollars per Point</th></tr>`
+      : `<tr><th>Participant</th><th>Points Spent</th><th>Total Domestic Gross</th><th>Rank</th><th>Dollars per Point</th></tr>`;
+
+    const tbody = document.getElementById('metricsTbody');
+    tbody.innerHTML = rows.map(row => {
+      const dollarsPerPointDisplay = row.dollarsPerPoint === null
+        ? 'N/A'
+        : '$' + Math.round(row.dollarsPerPoint).toLocaleString();
+
+      if (isMovieMode) {
+        return `
+          <tr>
+            <td>${row.name}</td>
+            <td>${row.owner}</td>
+            <td>${row.points.toLocaleString()}</td>
+            <td>$${row.gross.toLocaleString()}</td>
+            <td>${row.rank}</td>
+            <td>${dollarsPerPointDisplay}</td>
+          </tr>
+        `;
+      }
+      return `
+        <tr>
+          <td>${row.name}</td>
+          <td>${row.points.toLocaleString()}</td>
+          <td>$${row.gross.toLocaleString()}</td>
+          <td>${row.rank}</td>
+          <td>${dollarsPerPointDisplay}</td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  document.getElementById('metricsGroupBy').addEventListener('change', function() {
+    document.getElementById('metricsSortNameOption').textContent = this.value === 'movie' ? 'Movie' : 'Participant';
+    renderMetricsTable();
+  });
+  document.getElementById('metricsOwnerFilter').addEventListener('change', renderMetricsTable);
+  document.getElementById('metricsSortColumn').addEventListener('change', renderMetricsTable);
+  document.getElementById('metricsSortDirection').addEventListener('click', function() {
+    const isDesc = this.getAttribute('data-direction') === 'desc';
+    const newDirection = isDesc ? 'asc' : 'desc';
+    this.setAttribute('data-direction', newDirection);
+    this.innerHTML = newDirection === 'asc' ? 'Ascending &#9650;' : 'Descending &#9660;';
+    renderMetricsTable();
+  });
+
+  renderMetricsTable();
+
+  // ---- Upcoming Movies tab ----
+  // Parse a release date value as a local calendar date (no time component), so
+  // comparisons against "today" aren't thrown off by UTC-vs-local parsing quirks.
+  // Handles a plain "YYYY-MM-DD" prefix (even if trailing time/timezone text is
+  // attached to it) and falls back to native Date parsing for any other format
+  // (ISO datetime, "Month D, YYYY", timestamps, etc.) so a format we didn't
+  // anticipate degrades to "unknown" instead of silently breaking every row.
+  function parseReleaseDate(dateValue) {
+    if (!dateValue && dateValue !== 0) return null;
+
+    const isoMatch = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(dateValue).trim());
+    if (isoMatch) {
+      const year = Number(isoMatch[1]);
+      const month = Number(isoMatch[2]);
+      const day = Number(isoMatch[3]);
+      const parsed = new Date(year, month - 1, day);
+      if (!isNaN(parsed.getTime())) return parsed;
+    }
+
+    const fallback = new Date(dateValue);
+    if (!isNaN(fallback.getTime())) {
+      return new Date(fallback.getFullYear(), fallback.getMonth(), fallback.getDate());
+    }
+
+    return null;
+  }
+
+  // Movies release on or before today are considered released: greyed out, and
+  // excluded when "Upcoming Only" is checked.
+  const todayDateOnly = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+  const farFutureDate = new Date(8640000000000000); // used to push unknown release dates to the end when sorting
+
+  const upcomingRows = Object.values(movieAggregate).map(movie => {
+    const details = detailsById[movie.imdb_id] || {};
+    const releaseDateObj = parseReleaseDate(details.release_date);
+    const isReleased = releaseDateObj !== null && releaseDateObj <= todayDateOnly;
+    return {
+      title: movie.title,
+      imdb_id: movie.imdb_id,
+      owner: movie.owner,
+      image_url: details.image_url || '',
+      description: details.description || '',
+      release_date: details.release_date || null,
+      gross: movie.gross,
+      rank: rankById[movie.imdb_id],
+      isReleased
+    };
+  });
+
+  // Sort by release date ASC, then title ASC
+  upcomingRows.sort((a, b) => {
+    const dateA = parseReleaseDate(a.release_date) || farFutureDate;
+    const dateB = parseReleaseDate(b.release_date) || farFutureDate;
+    const dateDiff = dateA - dateB;
+    if (dateDiff !== 0) return dateDiff;
+    return a.title.localeCompare(b.title);
+  });
+
+  const upcomingShell = `
+    <div class="cn-controls-row">
+      <label class="cn-control cn-checkbox-control">
+        <input type="checkbox" id="upcomingOnlyFilter">
+        <span>Upcoming Only</span>
+      </label>
+    </div>
+    <div class="cn-table-scroll">
+      <table border="1" class="cn-upcoming-table" style="width:100%; border-collapse: collapse;">
+        <thead>
+          <tr>
+            <th>Poster</th>
+            <th>Title &amp; Description</th>
+            <th>Release Date</th>
+          </tr>
+        </thead>
+        <tbody id="upcomingTbody"></tbody>
+      </table>
+    </div>
+  `;
+
+  document.getElementById("upcoming-container").innerHTML = upcomingShell;
+
+  function renderUpcomingRows() {
+    const upcomingOnly = document.getElementById('upcomingOnlyFilter').checked;
+    const rows = upcomingOnly ? upcomingRows.filter(row => !row.isReleased) : upcomingRows;
+
+    const tbody = document.getElementById('upcomingTbody');
+    tbody.innerHTML = rows.map(row => {
+      const rowClass = row.isReleased ? 'cn-movie-old-row' : '';
+      const captionClass = row.isReleased ? 'cn-movie-old-row cn-movie-caption-row' : 'cn-movie-caption-row';
+
+      return `
+        <tr class="${rowClass}">
+          <td>${row.image_url ? `<img src="${row.image_url}" alt="${row.title}">` : ''}</td>
+          <td><strong>${row.title}</strong><br>${row.description || ''}</td>
+          <td>${row.release_date || 'Unknown'}</td>
+        </tr>
+        <tr class="${captionClass}">
+          <td colspan="3">Total Domestic Gross: $${row.gross.toLocaleString()} &nbsp;&bull;&nbsp; Rank: #${row.rank} of ${totalDraftedMovies} drafted movies &nbsp;&bull;&nbsp; Drafted by: ${row.owner}</td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  document.getElementById('upcomingOnlyFilter').addEventListener('change', renderUpcomingRows);
+
+  renderUpcomingRows();
 });
 </script>
