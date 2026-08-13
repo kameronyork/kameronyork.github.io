@@ -7162,7 +7162,6 @@ display: none;
 </div>
 
 
-<hr />
 <p><br> <br></p>
 <div class="cn-chart-wrap">
 <div class="cn-chart-canvas-box">
@@ -7177,7 +7176,6 @@ display: none;
 <option value="200" selected>1x</option>
 <option value="133">1.5x</option> <option value="100">2x</option>
 </select>
-<button type="button" id="cnAnimResetBtn" class="cn-anim-reset-btn" disabled aria-label="Reset animation" title="Reset">↻</button>
 </div>
 </div>
 <ul class="cn-tab-nav" id="cnTabNav">
@@ -7894,9 +7892,8 @@ document.addEventListener("DOMContentLoaded", async function() {
     const playPauseBtn = document.getElementById('cnPlayPauseBtn');
     const scrubber = document.getElementById('cnAnimScrubber');
     const speedSelect = document.getElementById('cnAnimSpeed');
-    const resetBtn = document.getElementById('cnAnimResetBtn');
-
-    if (!playPauseBtn || !scrubber || !speedSelect || !resetBtn) {
+    
+    if (!playPauseBtn || !scrubber || !speedSelect) {
       return;
     }
 
@@ -8051,13 +8048,6 @@ document.addEventListener("DOMContentLoaded", async function() {
       }
     });
 
-    resetBtn.addEventListener('click', function() {
-      if (isPlaying) {
-        cancelPlayLoop();
-        setPlayingUI(false);
-      }
-      setInstantFrame(lastDayIndex);
-    });
 
     if (totalDays === 1) {
       scrubber.max = '0';
@@ -8068,7 +8058,6 @@ document.addEventListener("DOMContentLoaded", async function() {
       scrubber.disabled = false;
       scrubber.max = String(lastDayIndex);
       speedSelect.disabled = false;
-      resetBtn.disabled = false;
       setInstantFrame(lastDayIndex);
     }
   })();
