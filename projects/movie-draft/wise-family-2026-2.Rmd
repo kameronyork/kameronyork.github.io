@@ -7,11 +7,26 @@ output:
       in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/projects/movie-draft/headers/wise-family-2026-2.html"
       after_body: "https://kameronyork.com/parables/footer.html"
 ---
+---
 <br>
 <br>
 
 <div class="cn-chart-wrap">
+  <div class="cn-chart-canvas-box">
   <canvas id="earningsChart" width="400" height="200"></canvas>
+  </div>
+  <div class="cn-anim-bar" id="cnAnimBar">
+  <button type="button" id="cnPlayPauseBtn" class="cn-play-btn" aria-label="Play animation" disabled>&#9654;</button>
+  <input type="range" id="cnAnimScrubber" class="cn-anim-scrubber" min="0" max="0" value="0" step="1" disabled aria-label="Timeline scrubber">
+  <select id="cnAnimSpeed" class="cn-anim-speed" disabled aria-label="Playback speed">
+  <option value="400">0.5x</option>
+  <option value="267">0.75x</option>
+  <option value="200" selected>1x</option>
+  <option value="133">1.5x</option>
+  <option value="100">2x</option>
+  </select>
+  <button type="button" id="cnAnimResetBtn" class="cn-anim-reset-btn" disabled aria-label="Reset animation" title="Reset">&#8635;</button>
+  </div>
 </div>
 
 <ul class="cn-tab-nav" id="cnTabNav">
@@ -38,10 +53,107 @@ output:
 
   .cn-chart-wrap {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 0 auto 28px;
+  }
+  /* The "padding-top hack": height is set as a percentage of THIS box's own
+     width (50% = a 2:1 ratio), never measured off the canvas inside it. The
+     canvas is pulled out of layout flow with position:absolute so it can
+     never feed its own size back into this box's height - that circular
+     feedback (canvas height:100% of a parent whose height is in turn
+     influenced by the canvas) is exactly what made an earlier version of
+     this grow taller forever on every resize check. This is Chart.js's own
+     documented pattern for maintainAspectRatio:false containers. */
+  .cn-chart-canvas-box {
+    position: relative;
+    width: 100%;
+    padding-top: 50%;
   }
   #earningsChart {
-    max-width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* Deliberately understated - this is a fun bonus feature riding along
+     below the chart, not a control panel that should compete with it or
+     with the table below. Kept fully greyscale (no brand color) and set
+     off from both with its own soft, translucent card. */
+  .cn-anim-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 6px 12px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 10px;
+  }
+  .cn-play-btn {
+    flex: 0 0 auto;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    color: rgba(90, 90, 90, 0.75);
+    font-size: 0.72em;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cn-play-btn:hover:not(:disabled) {
+    background-color: rgba(0, 0, 0, 0.06);
+    color: rgba(70, 70, 70, 0.9);
+  }
+  .cn-play-btn:disabled {
+    color: rgba(150, 150, 150, 0.4);
+    cursor: not-allowed;
+  }
+  .cn-anim-scrubber {
+    flex: 1 1 auto;
+    min-width: 60px;
+    height: 14px;
+    accent-color: rgba(120, 120, 120, 0.8);
+    opacity: 0.85;
+  }
+  .cn-anim-scrubber:disabled {
+    cursor: not-allowed;
+    opacity: 0.35;
+  }
+  .cn-anim-speed {
+    flex: 0 0 auto;
+    padding: 1px 2px;
+    border: none;
+    background-color: transparent;
+    color: rgba(120, 120, 120, 0.75);
+    font-size: 0.72em;
+    cursor: pointer;
+  }
+  .cn-anim-speed:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+  .cn-anim-reset-btn {
+    flex: 0 0 auto;
+    padding: 0 2px;
+    border: none;
+    background-color: transparent;
+    color: rgba(120, 120, 120, 0.7);
+    font-size: 0.8em;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .cn-anim-reset-btn:hover:not(:disabled) {
+    color: rgba(70, 70, 70, 0.95);
+  }
+  .cn-anim-reset-btn:disabled {
+    color: rgba(180, 180, 180, 0.4);
+    cursor: not-allowed;
   }
 
   .cn-tab-nav {
@@ -258,6 +370,10 @@ document.addEventListener("DOMContentLoaded", async function() {
     movieDetailsData = await detailsResponse.json();
   } catch (error) {
     console.error("Error fetching data:", error);
+    const animDateLabelOnError = document.getElementById('cnAnimDateLabel');
+    if (animDateLabelOnError) {
+      animDateLabelOnError.textContent = 'Unable to load chart data.';
+    }
     return;
   }
 
@@ -351,27 +467,454 @@ document.addEventListener("DOMContentLoaded", async function() {
 
   const sortedNames = Object.keys(cumulativeData).sort();
 
+  // Each dataset's values stay a plain array of numbers (one per day) - the
+  // pristine source of truth used for axis-max lookups and to build
+  // whatever portion of the line the playback controls decide to reveal. It
+  // never gets mutated after this.
+  const fullDatasetsData = sortedNames.map(name =>
+    allDates.map(date => cumulativeData[name].earningsByDate[date])
+  );
+  const fullLabels = allDates.slice();
+  const totalDays = fullLabels.length;
+
+  // The highest value visible THROUGH a given day, across everyone. Since
+  // cumulative earnings only ever go up, the max across everyone AT day N
+  // is already the max across everyone through day N.
+  const maxByFrame = fullLabels.map((_, dayIndex) => {
+    let m = 0;
+    for (let i = 0; i < fullDatasetsData.length; i++) {
+      if (fullDatasetsData[i][dayIndex] > m) m = fullDatasetsData[i][dayIndex];
+    }
+    return m;
+  });
+
+  // Return a deliberately round y-axis ceiling and a matching round tick
+  // interval. The ceiling changes only when the data needs the next clean
+  // level (for example, $500,000,000 to $600,000,000), never for every raw
+  // dollar added to the underlying data.
+  function niceAxisBounds(rawMax) {
+    if (!(rawMax > 0)) return { max: 1, step: 1 };
+
+    const targetTicks = 6;
+    const roughStep = rawMax / targetTicks;
+    const exponent = Math.floor(Math.log10(roughStep));
+    const magnitude = Math.pow(10, exponent);
+    const fraction = roughStep / magnitude;
+
+    let niceFraction;
+    if (fraction <= 1) niceFraction = 1;
+    else if (fraction <= 2) niceFraction = 2;
+    else if (fraction <= 2.5) niceFraction = 2.5;
+    else if (fraction <= 5) niceFraction = 5;
+    else niceFraction = 10;
+
+    // Dollar ticks must always be whole-dollar values, even in the unlikely
+    // event that the chart is still near zero at the start of the season.
+    const step = Math.max(1, Math.round(niceFraction * magnitude));
+    const max = Math.max(step, Math.ceil(rawMax / step) * step);
+    return { max, step };
+  }
+
+  // Precompute the round y-axis state required at each completed date. During
+  // playback the engine only animates when two neighboring dates require
+  // different states; otherwise the y-axis remains completely still.
+  const yBoundsByFrame = maxByFrame.map(rawMax =>
+    niceAxisBounds(Math.max(1, rawMax || 0))
+  );
+
+  // Date-label helpers for the numeric day-index x-axis.
+  const MONTH_ABBR = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  function shortTickLabel(dateStr) {
+    const match = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(dateStr));
+    if (!match) return String(dateStr);
+    const month = MONTH_ABBR[Number(match[2]) - 1] || match[2];
+    const day = Number(match[3]);
+    return `${month} ${day}`;
+  }
+
+  // Fewer anchor ticks on narrow screens. These are stable reference ticks;
+  // the currently revealed date is added separately on every render so the
+  // x-axis can never appear one or more dates behind the line.
+  const xTickTargetCount = (typeof window !== 'undefined' && window.innerWidth < 480) ? 5 : 8;
+  const xTickInterval = Math.max(1, Math.ceil(Math.max(1, totalDays) / xTickTargetCount));
+  const lastDayIndex = Math.max(0, totalDays - 1);
+  const X_RIGHT_PAD_DAYS = 0.5;
+  const xAxisFullMax = Math.max(1, lastDayIndex + X_RIGHT_PAD_DAYS);
+  const desiredTickValues = [];
+  for (let i = 0; i < totalDays; i += xTickInterval) desiredTickValues.push(i);
+
+  // Values read by the scale callbacks during chart.update('none'). They are
+  // updated immediately before each render.
+  let liveXEndpointIndex = lastDayIndex;
+  let liveYTickStep = 1;
+
+  function visibleXTickValues(axisMax) {
+    if (totalDays === 0) return [];
+
+    const endpoint = Math.max(0, Math.min(lastDayIndex, liveXEndpointIndex));
+    const visibleSpan = Math.max(1, axisMax);
+    const minimumEndpointGap = Math.max(
+      1,
+      Math.ceil((visibleSpan / xTickTargetCount) * 0.65)
+    );
+
+    // Keep the stable anchor ticks, but remove an anchor that is too close to
+    // the current endpoint. The endpoint itself is always inserted last, so
+    // a final label such as Aug 12 cannot be replaced by Aug 10 or clipped.
+    const ticks = desiredTickValues.filter(value =>
+      value < endpoint &&
+      (value === 0 || endpoint - value > minimumEndpointGap)
+    );
+
+    if (!ticks.includes(0)) ticks.unshift(0);
+    if (!ticks.includes(endpoint)) ticks.push(endpoint);
+    return ticks.sort((a, b) => a - b);
+  }
+
+  function roundYTickValues(axisMax, requestedStep) {
+    let step = Math.max(1, Math.round(requestedStep || 1));
+    let tickCount = Math.floor((axisMax + step * 1e-9) / step) + 1;
+
+    // A defensive fallback only: normal niceAxisBounds states stay near six
+    // ticks, but this prevents a malformed input from producing hundreds.
+    if (tickCount > 12) {
+      step = niceAxisBounds(axisMax).step;
+      tickCount = Math.floor((axisMax + step * 1e-9) / step) + 1;
+    }
+
+    const ticks = [];
+    for (let i = 0; i < tickCount; i++) {
+      ticks.push(i * step);
+    }
+    return ticks;
+  }
+
+  // Builds the visible portion of one line. Completed dates use their real
+  // points. A fractional helper point reveals the connecting segment smoothly,
+  // but its marker is hidden so a point never appears below its real value and
+  // then climbs into place; the real marker appears only at its actual value.
+  function buildRevealedPoints(datasetIndex, pos) {
+    if (totalDays === 0) return [];
+
+    const values = fullDatasetsData[datasetIndex];
+    const clampedPos = Math.max(0, Math.min(pos, lastDayIndex));
+    const completedIndex = Math.floor(clampedPos);
+    const points = [];
+
+    for (let i = 0; i <= completedIndex; i++) {
+      points.push({ x: i, y: values[i], _cnRevealTip: false });
+    }
+
+    const fraction = clampedPos - completedIndex;
+    if (fraction > 1e-9 && completedIndex < lastDayIndex) {
+      const y0 = values[completedIndex];
+      const y1 = values[completedIndex + 1];
+      points.push({
+        x: clampedPos,
+        y: y0 + (y1 - y0) * fraction,
+        _cnRevealTip: true
+      });
+    }
+
+    return points;
+  }
+
+  // Determine the y-axis state for an exact fractional reveal position. The
+  // scale is constant while the required round ceiling is unchanged. When a
+  // new ceiling is needed, it expands smoothly from the old round amount to
+  // the new round amount over that date-to-date segment. easeOutCubic keeps
+  // the expanding axis safely ahead of the line while still settling gently.
+  function yAxisStateAtPosition(pos) {
+    if (totalDays === 0) return { max: 1, tickStep: 1 };
+
+    const clampedPos = Math.max(0, Math.min(pos, lastDayIndex));
+    const fromIndex = Math.floor(clampedPos);
+    const toIndex = Math.min(lastDayIndex, fromIndex + 1);
+    const fraction = clampedPos - fromIndex;
+    const fromBounds = yBoundsByFrame[fromIndex] || niceAxisBounds(1);
+    const toBounds = yBoundsByFrame[toIndex] || fromBounds;
+
+    if (toIndex === fromIndex || toBounds.max === fromBounds.max) {
+      return { max: fromBounds.max, tickStep: fromBounds.step };
+    }
+
+    const eased = 1 - Math.pow(1 - fraction, 3);
+    return {
+      max: fromBounds.max + (toBounds.max - fromBounds.max) * eased,
+      // Keep the old grid interval throughout the expansion. At the exact
+      // new date, any newly appropriate interval takes over; existing round
+      // gridlines stay in place and only unneeded intermediate lines vanish.
+      tickStep: fromBounds.step
+    };
+  }
+
+  const initialRevealPos = lastDayIndex;
   const datasets = sortedNames.map((name, index) => ({
     label: name,
-    data: allDates.map(date => cumulativeData[name].earningsByDate[date]),
+    data: buildRevealedPoints(index, initialRevealPos),
     fill: false,
     borderColor: colors[index % colors.length],
-    tension: 0.1
+    tension: 0.1,
+    pointRadius: context => context.raw && context.raw._cnRevealTip ? 0 : 3,
+    pointHoverRadius: context => context.raw && context.raw._cnRevealTip ? 0 : 4,
+    pointHitRadius: context => context.raw && context.raw._cnRevealTip ? 0 : 1
   }));
 
-  // Plot the chart
-  new Chart(document.getElementById("earningsChart"), {
+  const initialYBounds = totalDays > 0
+    ? yBoundsByFrame[lastDayIndex]
+    : niceAxisBounds(1);
+  liveYTickStep = initialYBounds.step;
+
+  const earningsChartInstance = new Chart(document.getElementById("earningsChart"), {
     type: "line",
-    data: { labels: allDates, datasets },
+    data: { datasets },
     options: {
       responsive: true,
-      plugins: { legend: { display: true, position: "top" } },
+      maintainAspectRatio: false,
+      // Playback owns every visual frame. Chart.js animation is disabled so
+      // there is only one animation engine and no competing interpolation.
+      animation: false,
+      plugins: {
+        legend: { display: true, position: "top" },
+        tooltip: {
+          callbacks: {
+            title: function(items) {
+              if (!items.length) return '';
+              const idx = Math.max(0, Math.min(lastDayIndex, Math.round(items[0].parsed.x)));
+              return fullLabels[idx] ? shortTickLabel(fullLabels[idx]) : '';
+            }
+          }
+        }
+      },
       scales: {
-        x: { title: { display: true, text: "Date" } },
-        y: { title: { display: true, text: "Cumulative Earnings" } }
+        x: {
+          type: 'linear',
+          min: 0,
+          max: xAxisFullMax,
+          title: { display: true, text: "Date" },
+          afterBuildTicks: function(axis) {
+            axis.ticks = visibleXTickValues(axis.max)
+              .filter(value => value <= axis.max + 1e-9)
+              .map(value => ({ value }));
+          },
+          ticks: {
+            autoSkip: false,
+            includeBounds: false,
+            align: 'inner',
+            maxRotation: 0,
+            minRotation: 0,
+            callback: function(value) {
+              const idx = Math.max(0, Math.min(lastDayIndex, Math.round(value)));
+              return fullLabels[idx] ? shortTickLabel(fullLabels[idx]) : '';
+            }
+          }
+        },
+        y: {
+          title: { display: true, text: "Cumulative Earnings" },
+          min: 0,
+          max: initialYBounds.max,
+          afterBuildTicks: function(axis) {
+            axis.ticks = roundYTickValues(axis.max, liveYTickStep)
+              .map(value => ({ value }));
+          },
+          ticks: {
+            autoSkip: false,
+            includeBounds: false,
+            stepSize: initialYBounds.step,
+            callback: value => '$' + Math.round(Number(value)).toLocaleString()
+          }
+        }
       }
     }
   });
+
+  // ---- Chart playback controls (play/pause, scrub, speed) ----
+  // One continuous reveal position drives the line, x-axis, and y-axis. The
+  // x-axis always includes the last fully revealed date plus a small endpoint
+  // pad, and the y-axis moves only between precomputed round ceiling states.
+  (function setupChartPlayback() {
+    const playPauseBtn = document.getElementById('cnPlayPauseBtn');
+    const scrubber = document.getElementById('cnAnimScrubber');
+    const speedSelect = document.getElementById('cnAnimSpeed');
+    const resetBtn = document.getElementById('cnAnimResetBtn');
+
+    if (!playPauseBtn || !scrubber || !speedSelect || !resetBtn) {
+      return;
+    }
+
+    if (totalDays === 0) {
+      return;
+    }
+
+    const DEFAULT_MS_PER_DAY = 200;
+    const MIN_X_SPAN = 1;
+    const END_EPSILON = 1e-7;
+
+    let currentPos = lastDayIndex;
+    let isPlaying = false;
+    let rafHandle = null;
+    let msPerDay = Number(speedSelect.value) || DEFAULT_MS_PER_DAY;
+    let playStartTime = 0;
+    let playStartPos = 0;
+
+    function clampPosition(pos) {
+      return Math.max(0, Math.min(Number(pos) || 0, lastDayIndex));
+    }
+
+    function renderFrame(pos) {
+      const clampedPos = clampPosition(pos);
+      currentPos = clampedPos;
+      liveXEndpointIndex = Math.min(
+        lastDayIndex,
+        Math.floor(clampedPos + END_EPSILON)
+      );
+
+      const yState = yAxisStateAtPosition(clampedPos);
+      liveYTickStep = yState.tickStep;
+
+      earningsChartInstance.data.datasets.forEach((dataset, index) => {
+        dataset.data = buildRevealedPoints(index, clampedPos);
+      });
+
+      // The half-day pad keeps the live endpoint and its final date label
+      // inside the plot instead of putting them directly on a clipping edge.
+      earningsChartInstance.options.scales.x.max = Math.min(
+        xAxisFullMax,
+        Math.max(MIN_X_SPAN, clampedPos + X_RIGHT_PAD_DAYS)
+      );
+      earningsChartInstance.options.scales.y.max = yState.max;
+      earningsChartInstance.options.scales.y.ticks.stepSize = liveYTickStep;
+      earningsChartInstance.update('none');
+    }
+
+    function cancelPlayLoop() {
+      if (rafHandle !== null) {
+        cancelAnimationFrame(rafHandle);
+        rafHandle = null;
+      }
+    }
+
+    function setInstantFrame(frameIndex) {
+      cancelPlayLoop();
+      const clampedFrame = Math.max(
+        0,
+        Math.min(Math.round(Number(frameIndex) || 0), lastDayIndex)
+      );
+      renderFrame(clampedFrame);
+      scrubber.value = String(clampedFrame);
+    }
+
+    function anchorPlayLoop(fromPos) {
+      playStartPos = clampPosition(fromPos);
+      playStartTime = performance.now();
+    }
+
+    function setPlayingUI(playing) {
+      isPlaying = playing;
+      playPauseBtn.textContent = playing ? '\u23F8' : '\u25B6';
+      playPauseBtn.setAttribute('aria-label', playing ? 'Pause animation' : 'Play animation');
+    }
+
+    function playbackPositionAt(now) {
+      return Math.min(
+        lastDayIndex,
+        playStartPos + (now - playStartTime) / msPerDay
+      );
+    }
+
+    function playTick(now) {
+      const pos = playbackPositionAt(now);
+
+      renderFrame(pos);
+      scrubber.value = String(liveXEndpointIndex);
+
+      if (pos >= lastDayIndex - END_EPSILON) {
+        // Land on the exact final integer position so both axes finish on
+        // their exact final date and exact round y-axis ceiling.
+        renderFrame(lastDayIndex);
+        scrubber.value = String(lastDayIndex);
+        setPlayingUI(false);
+        rafHandle = null;
+        return;
+      }
+
+      rafHandle = requestAnimationFrame(playTick);
+    }
+
+    function startPlayback() {
+      if (totalDays < 2) return;
+
+      cancelPlayLoop();
+      const startPos = currentPos >= lastDayIndex - END_EPSILON
+        ? 0
+        : currentPos;
+
+      if (startPos === 0) {
+        setInstantFrame(0);
+      }
+
+      anchorPlayLoop(startPos);
+      setPlayingUI(true);
+      rafHandle = requestAnimationFrame(playTick);
+    }
+
+    function pausePlayback() {
+      // Resolve the exact wall-clock position before stopping. Nothing snaps
+      // backward or forward, and Play resumes from the identical visual state.
+      currentPos = playbackPositionAt(performance.now());
+      cancelPlayLoop();
+      renderFrame(currentPos);
+      scrubber.value = String(liveXEndpointIndex);
+      setPlayingUI(false);
+    }
+
+    playPauseBtn.addEventListener('click', function() {
+      if (isPlaying) pausePlayback();
+      else startPlayback();
+    });
+
+    scrubber.addEventListener('input', function() {
+      if (isPlaying) {
+        cancelPlayLoop();
+        setPlayingUI(false);
+      }
+      setInstantFrame(Number(scrubber.value));
+    });
+
+    speedSelect.addEventListener('change', function() {
+      if (isPlaying) {
+        const now = performance.now();
+        currentPos = playbackPositionAt(now);
+        renderFrame(currentPos);
+        msPerDay = Number(speedSelect.value) || DEFAULT_MS_PER_DAY;
+        anchorPlayLoop(currentPos);
+      } else {
+        msPerDay = Number(speedSelect.value) || DEFAULT_MS_PER_DAY;
+      }
+    });
+
+    resetBtn.addEventListener('click', function() {
+      if (isPlaying) {
+        cancelPlayLoop();
+        setPlayingUI(false);
+      }
+      setInstantFrame(lastDayIndex);
+    });
+
+    if (totalDays === 1) {
+      scrubber.max = '0';
+      setInstantFrame(0);
+      playPauseBtn.title = 'Need at least two days of data to animate';
+    } else {
+      playPauseBtn.disabled = false;
+      scrubber.disabled = false;
+      scrubber.max = String(lastDayIndex);
+      speedSelect.disabled = false;
+      resetBtn.disabled = false;
+      setInstantFrame(lastDayIndex);
+    }
+  })();
+
 
   // Sort people by total earnings for table
   const sortedPeople = Object.entries(cumulativeData)
