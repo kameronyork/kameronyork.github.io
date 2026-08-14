@@ -8,11 +8,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
         let url;
         if (currentMonth >= 9 && currentMonth <= 11) { // October to December
-            url = `https://www.kameronyork.com/datasets/all-footnotes-oct-${currentYear}.json`;
+            url = `https://kameronyork.com/datasets/all-footnotes-oct-${currentYear}.json`;
         } else if (currentMonth >= 3 && currentMonth <= 8) { // April to September
-            url = `https://www.kameronyork.com/datasets/all-footnotes-apr-${currentYear}.json`;
+            url = `https://kameronyork.com/datasets/all-footnotes-apr-${currentYear}.json`;
         } else { // January to March
-            url = `https://www.kameronyork.com/datasets/all-footnotes-oct-${currentYear - 1}.json`;
+            url = `https://kameronyork.com/datasets/all-footnotes-oct-${currentYear - 1}.json`;
         }
 
         const response = await fetch(url);
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         let tableHTML = `<br><br><div style="max-width: 100%; margin: auto; text-align: left;">
             <a href="https://www.mygospelbuddy.com/" style="font-size: 10pt; display: flex; align-items: center; gap: 5px; text-decoration: none; color: grey;">
-                <img src="https://www.kameronyork.com/assets/img/gospel-buddy-icon-nobg.png" alt="Gospel Buddy Logo" style="height: 1.8em;">
+                <img src="https://kameronyork.com/assets/img/gospel-buddy-icon-nobg.png" alt="Gospel Buddy Logo" style="height: 1.8em;">
                 Powered by the Gospel Buddy
             </a>
         </div>
