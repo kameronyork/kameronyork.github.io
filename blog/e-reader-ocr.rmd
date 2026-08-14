@@ -8,19 +8,26 @@ output:
         - "https://www.kameronyork.com/_includes/nav.html"
         - "https://www.kameronyork.com/_includes/backbar-blog.html"
       after_body: "https://www.kameronyork.com/_includes/footer.html"
-header-includes:
-  - '<link rel="canonical" href="https://www.kameronyork.com/blog/e-reader-ocr.html">'
-  - '<meta property="og:title" content="Building a Pocket-Sized Library">'
-  - '<meta property="og:description" content="Using Python code and a pocket-sized e-reader to start reading on the go.">'
-  - '<meta property="og:image" content="https://www.kameronyork.com/assets/img/ocr-header.png">'
-  - '<meta property="og:url" content="https://www.kameronyork.com/blog/e-reader-ocr.html">'
-  - '<meta property="og:type" content="website">'
-  - '<meta property="og:site_name" content="Kameron York">'
-  - '<meta name="twitter:card" content="summary_large_image">'
-  - '<meta name="twitter:title" content="Building a Pocket-Sized Library">'
-  - '<meta name="twitter:description" content="Using Python code and a pocket-sized e-reader to start reading on the go.">'
-  - '<meta name="twitter:image" content="https://www.kameronyork.com/assets/img/ocr-header.png">'
 ---
+
+```{r meta-tags, echo=FALSE, include = FALSE}
+library(metathis)
+
+meta() %>%
+  meta_description(
+    "Using Python code and a pocket-sized e-reader to start reading on the go."
+  ) %>%
+  meta_social(
+    title = "Building a Pocket-Sized Library",
+    description = "Using Python code and a pocket-sized e-reader to start reading on the go.",
+    url = "https://www.kameronyork.com/blog/e-reader-ocr.html",
+    image = "https://www.kameronyork.com/assets/img/ocr-header.png",
+    image_alt = "A homemade book scanner built from a cardboard box",
+    og_type = "article",
+    og_site_name = "Kameron York",
+    twitter_card_type = "summary_large_image"
+  )
+```
 
 <div style="max-width: 900px; margin: auto; line-height: 1.8; font-size: 1.1em;">
 
@@ -28,13 +35,13 @@ header-includes:
 
 #### Introduction
 
-Recently, I decided to get back into reading. The last time I can remember starting and finishing a book in a reasonable amount of time was when I was a kid. My main struggle with reading is finding time to do it! I know that’s not a good excuse. After all, I find time for TV every day.
+Recently, I decided to get back into reading. The last time I can remember starting and finishing a book in a reasonable amount of time was when I was a kid. My main struggle with reading is finding time to do it! I know that's not a good excuse. After all, I find time for TV every day.
 
 Then I saw an ad for the <a href="https://www.xteink.com/?srsltid=AfmBOopFE_mg_d9bg1X-nz-7e2gcC_E0qu8oIpjYh2EKZStcMJj1utfS">XTEINK X4</a>, an e-reader that can fit in your pocket!
 
-I envisioned a future in which I would carry this e-reader around and read in my downtime. I could reach for this instead of my phone! But there was only one problem: this e-reader can only read “Digital Rights Management” (DRM)-free e-books. That means I can’t download Libby or Kindle e-books to read. I would need to find DRM-free e-books—which are usually really old, or books whose publishers actively decided not to implement DRM—or I would have to create my own.
+I envisioned a future in which I would carry this e-reader around and read in my downtime. I could reach for this instead of my phone! But there was only one problem: this e-reader can only read "Digital Rights Management" (DRM)-free e-books. That means I can't download Libby or Kindle e-books to read. I would need to find DRM-free e-books—which are usually really old, or books whose publishers actively decided not to implement DRM—or I would have to create my own.
 
-After talking with a copyright expert, I became determined to scan my personal book library onto this e-reader. If I physically own the books, create the DRM-free EPUB files myself, and don’t distribute them in any way, then I would be legally in the clear.
+After talking with a copyright expert, I became determined to scan my personal book library onto this e-reader. If I physically own the books, create the DRM-free EPUB files myself, and don't distribute them in any way, then I would be legally in the clear.
 
 Once again, there was only one problem: I had no idea how to do this!
 
@@ -72,7 +79,7 @@ A quick trip to Hobby Lobby resulted in a pane of clear glass meant for stained-
 
 Now I was ready to start scanning my first book!
 
-Scanning *The Hitchhiker’s Guide to the Galaxy* took about two hours. Now that I had a 200+ page PDF, I needed to find some way to extract the words from the pages.
+Scanning *The Hitchhiker's Guide to the Galaxy* took about two hours. Now that I had a 200+ page PDF, I needed to find some way to extract the words from the pages.
 
 ---
 
@@ -80,17 +87,17 @@ Scanning *The Hitchhiker’s Guide to the Galaxy* took about two hours. Now that
 
 Thankfully, extracting words from PDF pages is a well-trodden path! Optical Character Recognition (OCR) is the process by which companies like Google, Microsoft, and others make PDFs searchable and copyable.
 
-I worked with AI to code an app that I could provide my PDF to and have the words extracted. However, page numbers and the occasional book or chapter title at the top of pages are common OCR hiccups. I didn’t want to include those in my final EPUB file.
+I worked with AI to code an app that I could provide my PDF to and have the words extracted. However, page numbers and the occasional book or chapter title at the top of pages are common OCR hiccups. I didn't want to include those in my final EPUB file.
 
-I worked through several iterations of automated ways to ignore these extra page components. None of them worked. Well, that’s not entirely fair. They worked... just not very well!
+I worked through several iterations of automated ways to ignore these extra page components. None of them worked. Well, that's not entirely fair. They worked... just not very well!
 
-Eventually, I decided to ditch the “automatic” aspect of the requirement and reworked my app to include a page-cropping feature. Code would split the PDF into image files, from which I could crop out just the text I wanted to OCR. Once I had the cropped text images, I could pass them through my OCR process.
+Eventually, I decided to ditch the "automatic" aspect of the requirement and reworked my app to include a page-cropping feature. Code would split the PDF into image files, from which I could crop out just the text I wanted to OCR. Once I had the cropped text images, I could pass them through my OCR process.
 
 This worked amazingly well!
 
 Of course, there were still some common issues, like particles of dust being interpreted as punctuation or page bleed-through being extracted as Chinese characters or nonsense text. I started using black construction paper behind each scanned page to cancel out the bleed-through, and I used Calibre, an e-book management software, to locate and remove misidentified characters.
 
-After all of this, I finally had an EPUB file of *The Hitchhiker’s Guide to the Galaxy*!
+After all of this, I finally had an EPUB file of *The Hitchhiker's Guide to the Galaxy*!
 
 <div style="text-align: center; margin: 2rem 0;">
   <img src="https://www.kameronyork.com/assets/img/ocr-final.png"
@@ -106,15 +113,15 @@ After all of this, I finally had an EPUB file of *The Hitchhiker’s Guide to th
 
 #### Conclusion
 
-At the time of writing, I have six EPUB files loaded onto my pocket-sized e-reader. I’m still working through reading all of them! I read far more frequently than I used to. Having my current book in my pocket is the convenience I needed to feel inspired to read.
+At the time of writing, I have six EPUB files loaded onto my pocket-sized e-reader. I'm still working through reading all of them! I read far more frequently than I used to. Having my current book in my pocket is the convenience I needed to feel inspired to read.
 
-It doesn’t hurt that I feel obligated to read the books now that I’ve put so much effort into scanning, OCR-ing, and properly formatting them!
+It doesn't hurt that I feel obligated to read the books now that I've put so much effort into scanning, OCR-ing, and properly formatting them!
 
 This project has taught me a lot about project management and the limitations of technology. When I set out to scan books, I figured there would be countless free, off-the-shelf AI solutions that would work perfectly every time. In fact, I originally went down the path of implementing an AI vision model to read each page. That approach was far more costly and time-consuming than using the tried-and-true OCR method.
 
 While AI is revolutionizing many parts of life, it has not yet surpassed the quality of tried-and-true OCR methods for this kind of task.
 
-If you would like to use the code I created in this project to create an EPUB file from a PDF, <a href="https://www.kameronyork.com/docs/zip-files/book2epub_sample.zip">click here</a>. That’s a starter ZIP file for the Python project I’ve been using to create my EPUB files.
+If you would like to use the code I created in this project to create an EPUB file from a PDF, <a href="https://www.kameronyork.com/docs/zip-files/book2epub_sample.zip">click here</a>. That's a starter ZIP file for the Python project I've been using to create my EPUB files.
 
 Best of luck on your e-reader journey!
 
