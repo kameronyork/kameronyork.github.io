@@ -4,23 +4,13 @@ subtitle: "by Kameron York"
 output:
   html_document:
     includes:
-      in_header: "https://www.kameronyork.com/_includes/head-shared.html"
+      in_header:
+        - "https://www.kameronyork.com/_includes/head-shared.html"
+        - "https://www.kameronyork.com/_includes/meta/parables-tares.html"
       before_body:
         - "https://www.kameronyork.com/_includes/nav.html"
         - "https://www.kameronyork.com/_includes/backbar-parables.html"
       after_body: "https://www.kameronyork.com/_includes/footer.html"
-header-includes:
-  - '<link rel="canonical" href="https://www.kameronyork.com/parables/tares.html">'
-  - '<meta property="og:title" content="The Tares">'
-  - '<meta property="og:description" content="The parable of the tares">'
-  - '<meta property="og:image" content="https://www.kameronyork.com/assets/img/tares.jpg">'
-  - '<meta property="og:url" content="https://www.kameronyork.com/parables/tares.html">'
-  - '<meta property="og:type" content="website">'
-  - '<meta property="og:site_name" content="Kameron York">'
-  - '<meta name="twitter:card" content="summary_large_image">'
-  - '<meta name="twitter:title" content="The Tares">'
-  - '<meta name="twitter:description" content="The parable of the tares">'
-  - '<meta name="twitter:image" content="https://www.kameronyork.com/assets/img/tares.jpg">'
 ---
 <script>
 window.matthewVerses = ["Matthew 13:24", "Matthew 13:25", "Matthew 13:26", "Matthew 13:27", "Matthew 13:28", "Matthew 13:29", "Matthew 13:30"];

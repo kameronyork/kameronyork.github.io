@@ -4,23 +4,13 @@ subtitle: "(Sep 2025 - Dec 2025)"
 output:
   html_document:
     includes:
-      in_header: "https://www.kameronyork.com/_includes/head-shared.html"
+      in_header:
+        - "https://www.kameronyork.com/_includes/head-shared.html"
+        - "https://www.kameronyork.com/_includes/meta/projects-movie-draft-wise-family-2025-3.html"
       before_body:
         - "https://www.kameronyork.com/_includes/nav.html"
         - "https://www.kameronyork.com/_includes/backbar-movie-draft.html"
       after_body: "https://www.kameronyork.com/_includes/footer.html"
-header-includes:
-  - '<link rel="canonical" href="https://www.kameronyork.com/projects/movie-draft/wise-family-2025-3.html">'
-  - '<meta property="og:title" content="Wise Family - Box Office Competition!">'
-  - '<meta property="og:description" content="Competitors wager points to purchase upcoming box office releases. Who will have the highest earnings of them all?">'
-  - '<meta property="og:image" content="https://www.kameronyork.com/assets/img/popcorn.png">'
-  - '<meta property="og:url" content="https://www.kameronyork.com/projects/movie-draft/wise-family-2025-3.html">'
-  - '<meta property="og:type" content="website">'
-  - '<meta property="og:site_name" content="Kameron York">'
-  - '<meta name="twitter:card" content="summary_large_image">'
-  - '<meta name="twitter:title" content="Wise Family - Box Office Competition!">'
-  - '<meta name="twitter:description" content="Competitors wager points to purchase upcoming box office releases. Who will have the highest earnings of them all?">'
-  - '<meta name="twitter:image" content="https://www.kameronyork.com/assets/img/popcorn.png">'
 ---
 <br>
 <br>

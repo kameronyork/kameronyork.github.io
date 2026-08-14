@@ -72,6 +72,19 @@ body {
   padding: 0.5rem 0;
   font-family: var(--font-family), sans-serif;
   font-size: 0.9rem;
+  /* Breathing room between this bar and the page title that follows it.
+     The bar sits in `before_body`, so the title renders immediately after
+     with no gap of its own. */
+  margin-bottom: 2.5rem;
+}
+
+/* Belt and braces: rmarkdown's title block sits right after the back bar,
+   and some pages hide it (h1.title{display:none}) which would collapse the
+   margin above. This keeps the gap consistent either way. */
+.gb-backbar + div > h1.title,
+.gb-backbar + h1.title,
+.gb-backbar + div#header {
+  margin-top: 0.5rem;
 }
 
 .gb-backbar__link {
@@ -106,5 +119,6 @@ body {
 @media (max-width: 575px) {
   .gb-backbar {
     font-size: 0.85rem;
+    margin-bottom: 1.75rem;
   }
 }

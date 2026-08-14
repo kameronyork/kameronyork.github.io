@@ -3,23 +3,13 @@ title: "Collecting General Conference Data"
 output:
   html_document:
     includes:
-      in_header: "https://www.kameronyork.com/_includes/head-shared.html"
+      in_header:
+        - "https://www.kameronyork.com/_includes/head-shared.html"
+        - "https://www.kameronyork.com/_includes/meta/blog-quote-collecting.html"
       before_body:
         - "https://www.kameronyork.com/_includes/nav.html"
         - "https://www.kameronyork.com/_includes/backbar-blog.html"
       after_body: "https://www.kameronyork.com/_includes/footer.html"
-header-includes:
-  - '<link rel="canonical" href="https://www.kameronyork.com/blog/quote-collecting.html">'
-  - '<meta property="og:title" content="Collecting General Conference Data">'
-  - '<meta property="og:description" content="How the General Conference talk and footnote dataset was collected and cleaned.">'
-  - '<meta property="og:image" content="https://www.kameronyork.com/assets/img/inspire-change-header.png">'
-  - '<meta property="og:url" content="https://www.kameronyork.com/blog/quote-collecting.html">'
-  - '<meta property="og:type" content="website">'
-  - '<meta property="og:site_name" content="Kameron York">'
-  - '<meta name="twitter:card" content="summary_large_image">'
-  - '<meta name="twitter:title" content="Collecting General Conference Data">'
-  - '<meta name="twitter:description" content="How the General Conference talk and footnote dataset was collected and cleaned.">'
-  - '<meta name="twitter:image" content="https://www.kameronyork.com/assets/img/inspire-change-header.png">'
 ---
 <small>Last Updated:  12/6/2023</small>
 

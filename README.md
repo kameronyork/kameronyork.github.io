@@ -18,7 +18,8 @@ datasets/                Published JSON/CSV datasets
 contact/                 Contact page (moved from /docs/contact/)
 resume/                  Resume page
 docs/contact/            Redirect stub only — keeps the old contact URL alive
-_includes/               Shared head/nav/footer/back-bar partials
+_includes/               Shared partials (head, nav, footer, back bars)
+  meta/                  Per-page Open Graph / Twitter tags, one file per page
 _drafts/                 Work-in-progress, not linked or knitted
 _archive/                Old backups and stray data files
 assets/
@@ -75,9 +76,12 @@ Jekyll strips `_`-prefixed directories and every include URL 404s.
 `_includes/nav.html` is the one and only navbar. Edit it there and every
 knitted page updates.
 
-The brand on the left is now a standardized **Home** link on every page.
-Previously it read "Kameron York" on the homepage and was blank everywhere
-else, so subsection pages had no obvious way back to the top of the site.
+There is deliberately **no brand text on the left**. Bootstrap styles
+`.navbar-brand` differently from `.nav-link` (larger, different weight), so a
+label there looked mismatched against the rest of the bar. This matches the
+mygospelbuddy.com nav, which is also links-only. "Home" is still the first
+item in the link list on the right, so there is always a way back to the top
+of the site.
 
 ## Section back bars
 
@@ -99,17 +103,42 @@ a link to themselves — e.g. `/projects/movie-draft/index.Rmd` links back to
 
 ## Open Graph tags per page
 
-Each page's `header-includes:` block holds its own link-preview tags, so
-iMessage/Twitter/Facebook previews are unique per page without touching any
-shared file:
+Each page has its own metadata file in `_includes/meta/`, loaded through the
+`in_header:` list in that page's YAML:
 
 ```yaml
-header-includes:
-  - '<meta property="og:title" content="Page Title">'
-  - '<meta property="og:description" content="One sentence about this page.">'
-  - '<meta property="og:image" content="https://www.kameronyork.com/assets/img/some-image.png">'
-  - '<meta property="og:url" content="https://www.kameronyork.com/path/">'
+      in_header:
+        - "https://www.kameronyork.com/_includes/head-shared.html"
+        - "https://www.kameronyork.com/_includes/meta/parables-sower.html"
 ```
+
+The first file is the shared head (fonts, css, js) used by every page. The
+second holds only this page's description, canonical link, Open Graph, and
+Twitter card tags. To change how a page looks when shared in iMessage,
+Twitter/X, Facebook, Slack, or Discord, edit its file in `_includes/meta/`
+-- nothing else changes and no other page is affected.
+
+Files are named after the page's route: `parables-sower.html`,
+`projects-movie-draft-wise-family-2026-1.html`, `blog-e-reader-ocr.html`,
+`home.html`, and so on.
+
+### Why these are separate files and not YAML
+
+An earlier version of this setup put the tags in a `header-includes:` block
+inside each `.Rmd`, which would have been tidier. **That does not work in
+this project's rmarkdown/pandoc version** -- the block rendered as nothing at
+all and every page's link previews came out blank (verified with
+opengraph.xyz: og:image, og:description, twitter:card and the meta
+description were all missing).
+
+Loading the tags with the `metathis` package in an R chunk was also tried and
+does not work here either -- with `include=FALSE` the tags never render, and
+without it the raw HTML gets dumped into the page body instead of the
+`<head>`.
+
+Passing them as an include file is the mechanism that has always worked on
+this site: it is how the movie drafts and the e-reader OCR post had working
+previews before the reorg.
 
 ## Why `.gb-fullbleed`
 

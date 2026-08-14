@@ -4,23 +4,13 @@ subtitle: "by Kameron York"
 output:
   html_document:
     includes:
-      in_header: "https://www.kameronyork.com/_includes/head-shared.html"
+      in_header:
+        - "https://www.kameronyork.com/_includes/head-shared.html"
+        - "https://www.kameronyork.com/_includes/meta/parables-pharisee-and-the-tax-collector.html"
       before_body:
         - "https://www.kameronyork.com/_includes/nav.html"
         - "https://www.kameronyork.com/_includes/backbar-parables.html"
       after_body: "https://www.kameronyork.com/_includes/footer.html"
-header-includes:
-  - '<link rel="canonical" href="https://www.kameronyork.com/parables/pharisee-and-the-tax-collector.html">'
-  - '<meta property="og:title" content="The Pharisee and the Tax Collector">'
-  - '<meta property="og:description" content="The parable of the pharisee and the tax collector">'
-  - '<meta property="og:image" content="https://www.kameronyork.com/assets/img/pharisee-and-tax-collector.jpg">'
-  - '<meta property="og:url" content="https://www.kameronyork.com/parables/pharisee-and-the-tax-collector.html">'
-  - '<meta property="og:type" content="website">'
-  - '<meta property="og:site_name" content="Kameron York">'
-  - '<meta name="twitter:card" content="summary_large_image">'
-  - '<meta name="twitter:title" content="The Pharisee and the Tax Collector">'
-  - '<meta name="twitter:description" content="The parable of the pharisee and the tax collector">'
-  - '<meta name="twitter:image" content="https://www.kameronyork.com/assets/img/pharisee-and-tax-collector.jpg">'
 ---
 <script>
 window.matthewVerses = [];

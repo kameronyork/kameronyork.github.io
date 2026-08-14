@@ -4,23 +4,13 @@ subtitle: "by Kameron York"
 output:
   html_document:
     includes:
-      in_header: "https://www.kameronyork.com/_includes/head-shared.html"
+      in_header:
+        - "https://www.kameronyork.com/_includes/head-shared.html"
+        - "https://www.kameronyork.com/_includes/meta/parables-mustard-seed.html"
       before_body:
         - "https://www.kameronyork.com/_includes/nav.html"
         - "https://www.kameronyork.com/_includes/backbar-parables.html"
       after_body: "https://www.kameronyork.com/_includes/footer.html"
-header-includes:
-  - '<link rel="canonical" href="https://www.kameronyork.com/parables/mustard-seed.html">'
-  - '<meta property="og:title" content="The Mustard Seed">'
-  - '<meta property="og:description" content="The parable of the mustard seed">'
-  - '<meta property="og:image" content="https://www.kameronyork.com/assets/img/mustard-seed.jpg">'
-  - '<meta property="og:url" content="https://www.kameronyork.com/parables/mustard-seed.html">'
-  - '<meta property="og:type" content="website">'
-  - '<meta property="og:site_name" content="Kameron York">'
-  - '<meta name="twitter:card" content="summary_large_image">'
-  - '<meta name="twitter:title" content="The Mustard Seed">'
-  - '<meta name="twitter:description" content="The parable of the mustard seed">'
-  - '<meta name="twitter:image" content="https://www.kameronyork.com/assets/img/mustard-seed.jpg">'
 ---
 <script>
 window.matthewVerses = ["Matthew 13:31", "Matthew 13:32"];

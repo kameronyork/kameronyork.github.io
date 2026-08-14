@@ -4,23 +4,13 @@ subtitle: "by Kameron York"
 output:
   html_document:
     includes:
-      in_header: "https://www.kameronyork.com/_includes/head-shared.html"
+      in_header:
+        - "https://www.kameronyork.com/_includes/head-shared.html"
+        - "https://www.kameronyork.com/_includes/meta/parables-rich-fool.html"
       before_body:
         - "https://www.kameronyork.com/_includes/nav.html"
         - "https://www.kameronyork.com/_includes/backbar-parables.html"
       after_body: "https://www.kameronyork.com/_includes/footer.html"
-header-includes:
-  - '<link rel="canonical" href="https://www.kameronyork.com/parables/rich-fool.html">'
-  - '<meta property="og:title" content="The Rich Fool">'
-  - '<meta property="og:description" content="Kameron York - Article about the Parables of Jesus Christ">'
-  - '<meta property="og:image" content="https://www.kameronyork.com/assets/img/rich-fool.jpg">'
-  - '<meta property="og:url" content="https://www.kameronyork.com/parables/rich-fool.html">'
-  - '<meta property="og:type" content="website">'
-  - '<meta property="og:site_name" content="Kameron York">'
-  - '<meta name="twitter:card" content="summary_large_image">'
-  - '<meta name="twitter:title" content="The Rich Fool">'
-  - '<meta name="twitter:description" content="Kameron York - Article about the Parables of Jesus Christ">'
-  - '<meta name="twitter:image" content="https://www.kameronyork.com/assets/img/rich-fool.jpg">'
 ---
 <script>
 window.matthewVerses = [];

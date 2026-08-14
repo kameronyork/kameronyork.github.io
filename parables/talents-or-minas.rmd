@@ -4,23 +4,13 @@ subtitle: "by Kameron York"
 output:
   html_document:
     includes:
-      in_header: "https://www.kameronyork.com/_includes/head-shared.html"
+      in_header:
+        - "https://www.kameronyork.com/_includes/head-shared.html"
+        - "https://www.kameronyork.com/_includes/meta/parables-talents-or-minas.html"
       before_body:
         - "https://www.kameronyork.com/_includes/nav.html"
         - "https://www.kameronyork.com/_includes/backbar-parables.html"
       after_body: "https://www.kameronyork.com/_includes/footer.html"
-header-includes:
-  - '<link rel="canonical" href="https://www.kameronyork.com/parables/talents-or-minas.html">'
-  - '<meta property="og:title" content="The Talents or Minas">'
-  - '<meta property="og:description" content="The parable of the talents or minas">'
-  - '<meta property="og:image" content="https://www.kameronyork.com/assets/img/talents-or-minas.jpg">'
-  - '<meta property="og:url" content="https://www.kameronyork.com/parables/talents-or-minas.html">'
-  - '<meta property="og:type" content="website">'
-  - '<meta property="og:site_name" content="Kameron York">'
-  - '<meta name="twitter:card" content="summary_large_image">'
-  - '<meta name="twitter:title" content="The Talents or Minas">'
-  - '<meta name="twitter:description" content="The parable of the talents or minas">'
-  - '<meta name="twitter:image" content="https://www.kameronyork.com/assets/img/talents-or-minas.jpg">'
 ---
 <script>
 window.matthewVerses = ["Matthew 25:14", "Matthew 25:15", "Matthew 25:16", "Matthew 25:17", "Matthew 25:18", "Matthew 25:19", "Matthew 25:20", "Matthew 25:21", "Matthew 25:22", "Matthew 25:23", "Matthew 25:24", "Matthew 25:25", "Matthew 25:26", "Matthew 25:27", "Matthew 25:28", "Matthew 25:29", "Matthew 25:30"];

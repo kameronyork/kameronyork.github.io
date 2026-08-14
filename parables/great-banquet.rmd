@@ -4,23 +4,13 @@ subtitle: "by Kameron York"
 output:
   html_document:
     includes:
-      in_header: "https://www.kameronyork.com/_includes/head-shared.html"
+      in_header:
+        - "https://www.kameronyork.com/_includes/head-shared.html"
+        - "https://www.kameronyork.com/_includes/meta/parables-great-banquet.html"
       before_body:
         - "https://www.kameronyork.com/_includes/nav.html"
         - "https://www.kameronyork.com/_includes/backbar-parables.html"
       after_body: "https://www.kameronyork.com/_includes/footer.html"
-header-includes:
-  - '<link rel="canonical" href="https://www.kameronyork.com/parables/great-banquet.html">'
-  - '<meta property="og:title" content="The Great Banquet">'
-  - '<meta property="og:description" content="The parable of the great banquet">'
-  - '<meta property="og:image" content="https://www.kameronyork.com/assets/img/great-banquet.jpg">'
-  - '<meta property="og:url" content="https://www.kameronyork.com/parables/great-banquet.html">'
-  - '<meta property="og:type" content="website">'
-  - '<meta property="og:site_name" content="Kameron York">'
-  - '<meta name="twitter:card" content="summary_large_image">'
-  - '<meta name="twitter:title" content="The Great Banquet">'
-  - '<meta name="twitter:description" content="The parable of the great banquet">'
-  - '<meta name="twitter:image" content="https://www.kameronyork.com/assets/img/great-banquet.jpg">'
 ---
 <script>
 window.matthewVerses = ["Matthew 22:1", "Matthew 22:2", "Matthew 22:3", "Matthew 22:4", "Matthew 22:5", "Matthew 22:6", "Matthew 22:7", "Matthew 22:8", "Matthew 22:9", "Matthew 22:10", "Matthew 22:11", "Matthew 22:12", "Matthew 22:13", "Matthew 22:14"];

@@ -4,23 +4,13 @@ subtitle: "by Kameron York"
 output:
   html_document:
     includes:
-      in_header: "https://www.kameronyork.com/_includes/head-shared.html"
+      in_header:
+        - "https://www.kameronyork.com/_includes/head-shared.html"
+        - "https://www.kameronyork.com/_includes/meta/parables-unforgiving-servant.html"
       before_body:
         - "https://www.kameronyork.com/_includes/nav.html"
         - "https://www.kameronyork.com/_includes/backbar-parables.html"
       after_body: "https://www.kameronyork.com/_includes/footer.html"
-header-includes:
-  - '<link rel="canonical" href="https://www.kameronyork.com/parables/unforgiving-servant.html">'
-  - '<meta property="og:title" content="The Unforgiving Servant">'
-  - '<meta property="og:description" content="The parable of the unforgiving servant">'
-  - '<meta property="og:image" content="https://www.kameronyork.com/assets/img/unforgiving-servant.jpg">'
-  - '<meta property="og:url" content="https://www.kameronyork.com/parables/unforgiving-servant.html">'
-  - '<meta property="og:type" content="website">'
-  - '<meta property="og:site_name" content="Kameron York">'
-  - '<meta name="twitter:card" content="summary_large_image">'
-  - '<meta name="twitter:title" content="The Unforgiving Servant">'
-  - '<meta name="twitter:description" content="The parable of the unforgiving servant">'
-  - '<meta name="twitter:image" content="https://www.kameronyork.com/assets/img/unforgiving-servant.jpg">'
 ---
 <script>
 window.matthewVerses = ["Matthew 18:21", "Matthew 18:22", "Matthew 18:23", "Matthew 18:24", "Matthew 18:25", "Matthew 18:26", "Matthew 18:27", "Matthew 18:28", "Matthew 18:29", "Matthew 18:30", "Matthew 18:31", "Matthew 18:32", "Matthew 18:33", "Matthew 18:34", "Matthew 18:35"];

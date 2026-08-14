@@ -11,16 +11,21 @@
   brand text ("Kameron York") appeared only on the hand-written homepage
   and was blank everywhere else.
 
-  Now there is exactly one copy. The brand is a standardized "Home" link on
-  every page, so there is always an obvious way back to the top of the site.
+  Now there is exactly one copy.
+
+  There is deliberately NO brand text on the left. Bootstrap styles
+  .navbar-brand differently from .nav-link (larger, different weight), so a
+  "Home" label there looked mismatched against the rest of the bar. This
+  matches the mygospelbuddy.com nav, which is also links-only. "Home" is
+  still the first item in the link list on the right.
+
   Section-level "back" navigation is handled separately by the
   _includes/backbar-*.html partials -- see the README.
 -->
 <header class="shadow-bottom sticky-top bg-white gb-fullbleed">
   <nav class="navbar navbar-expand-md navbar-light">
     <div class="container">
-      <a class="navbar-brand px-2" href="https://www.kameronyork.com/">Home</a>
-      <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler border-0 mx-auto" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse text-center" id="navigation">

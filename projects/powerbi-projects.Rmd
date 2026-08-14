@@ -3,23 +3,13 @@ title: "Power BI Portfolio"
 output:
   html_document:
     includes:
-      in_header: "https://www.kameronyork.com/_includes/head-shared.html"
+      in_header:
+        - "https://www.kameronyork.com/_includes/head-shared.html"
+        - "https://www.kameronyork.com/_includes/meta/projects-powerbi-projects.html"
       before_body:
         - "https://www.kameronyork.com/_includes/nav.html"
         - "https://www.kameronyork.com/_includes/backbar-projects.html"
       after_body: "https://www.kameronyork.com/_includes/footer.html"
-header-includes:
-  - '<link rel="canonical" href="https://www.kameronyork.com/projects/powerbi-projects.html">'
-  - '<meta property="og:title" content="Kameron York''s Power BI Portfolio">'
-  - '<meta property="og:description" content="A portfolio of my projects through my years of experience in Power BI.">'
-  - '<meta property="og:image" content="https://www.kameronyork.com/assets/img/powerbi-portfolio-header.png">'
-  - '<meta property="og:url" content="https://www.kameronyork.com/projects/powerbi-projects.html">'
-  - '<meta property="og:type" content="website">'
-  - '<meta property="og:site_name" content="Kameron York">'
-  - '<meta name="twitter:card" content="summary_large_image">'
-  - '<meta name="twitter:title" content="Kameron York''s Power BI Portfolio">'
-  - '<meta name="twitter:description" content="A portfolio of my projects through my years of experience in Power BI.">'
-  - '<meta name="twitter:image" content="https://www.kameronyork.com/assets/img/powerbi-portfolio-header.png">'
 ---
 <style>
   /* Center alignment for the title, text under the title, and buttons */

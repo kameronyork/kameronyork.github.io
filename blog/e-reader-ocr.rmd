@@ -3,31 +3,14 @@ title: "Building a Pocket-Sized Library"
 output:
   html_document:
     includes:
-      in_header: "https://www.kameronyork.com/_includes/head-shared.html"
+      in_header:
+        - "https://www.kameronyork.com/_includes/head-shared.html"
+        - "https://www.kameronyork.com/_includes/meta/blog-e-reader-ocr.html"
       before_body:
         - "https://www.kameronyork.com/_includes/nav.html"
         - "https://www.kameronyork.com/_includes/backbar-blog.html"
       after_body: "https://www.kameronyork.com/_includes/footer.html"
 ---
-
-```{r meta-tags, echo=FALSE, include = FALSE}
-library(metathis)
-
-meta() %>%
-  meta_description(
-    "Using Python code and a pocket-sized e-reader to start reading on the go."
-  ) %>%
-  meta_social(
-    title = "Building a Pocket-Sized Library",
-    description = "Using Python code and a pocket-sized e-reader to start reading on the go.",
-    url = "https://www.kameronyork.com/blog/e-reader-ocr.html",
-    image = "https://www.kameronyork.com/assets/img/ocr-header.png",
-    image_alt = "A homemade book scanner built from a cardboard box",
-    og_type = "article",
-    og_site_name = "Kameron York",
-    twitter_card_type = "summary_large_image"
-  )
-```
 
 <div style="max-width: 900px; margin: auto; line-height: 1.8; font-size: 1.1em;">
 
