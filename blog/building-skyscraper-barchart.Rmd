@@ -3,8 +3,23 @@ title: "Skyscraper Barchart"
 output:
   html_document:
     includes:
-      in_header: "https://kameronyork.com/blog/headers/skyscraper-barchart-header.html"
-      after_body: "https://kameronyork.com/parables/footer.html"
+      in_header: "https://www.kameronyork.com/_includes/head-shared.html"
+      before_body:
+        - "https://www.kameronyork.com/_includes/nav.html"
+        - "https://www.kameronyork.com/_includes/backbar-blog.html"
+      after_body: "https://www.kameronyork.com/_includes/footer.html"
+header-includes:
+  - '<link rel="canonical" href="https://www.kameronyork.com/blog/building-skyscraper-barchart.html">'
+  - '<meta property="og:title" content="Power BI Skyscraper Bar Chart">'
+  - '<meta property="og:description" content="Transform your data into a city skyline with this custom Power Bi visual!">'
+  - '<meta property="og:image" content="https://www.kameronyork.com/assets/img/scraper-icon.png">'
+  - '<meta property="og:url" content="https://www.kameronyork.com/blog/building-skyscraper-barchart.html">'
+  - '<meta property="og:type" content="website">'
+  - '<meta property="og:site_name" content="Kameron York">'
+  - '<meta name="twitter:card" content="summary_large_image">'
+  - '<meta name="twitter:title" content="Power BI Skyscraper Bar Chart">'
+  - '<meta name="twitter:description" content="Transform your data into a city skyline with this custom Power Bi visual!">'
+  - '<meta name="twitter:image" content="https://www.kameronyork.com/assets/img/scraper-icon.png">'
 ---
 <style>
   /* Center alignment for the title, text under the title, and buttons */
@@ -101,9 +116,9 @@ To build a custom visual I had to learn how to generate basic project files usin
 I created the look of the visual myself in Canva.  I modeled the skyscrapers after the One World Trade Center in New York City and designed a background of rolling hills.  In experimenting with the settings capabilities I decided to utilize the dropdown feature.  Through a dropdown, the user can pick the time of day displayed in the visual (Day, sunset, or night).  To make this possible I created three versions of the skyscrapers and background in different lightings.  I am very proud of the way these designs turned out!  
 <br>
 <div style="display: flex; justify-content: space-around; align-items: center;">
-  <img src="https://kameronyork.com/docs/assets/scraper-day-example.png" style="width: 30%; margin-right: 1%;">
-  <img src="https://kameronyork.com/docs/assets/scraper-sunset-example.png" style="width: 30%; margin-right: 1%;">
-  <img src="https://kameronyork.com/docs/assets/scraper-night-example.png" style="width: 30%;">
+  <img src="https://www.kameronyork.com/assets/img/scraper-day-example.png" style="width: 30%; margin-right: 1%;">
+  <img src="https://www.kameronyork.com/assets/img/scraper-sunset-example.png" style="width: 30%; margin-right: 1%;">
+  <img src="https://www.kameronyork.com/assets/img/scraper-night-example.png" style="width: 30%;">
 </div>
 
 #### My Biggest Take-Aways from this Project
@@ -118,8 +133,8 @@ To download this Power Bi custom visual simply click on the button below.  Once 
 <br>
 <br>
 <div class="subtitle-text">
-  <a href="https://kameronyork.com/docs/skyscraper-barchart.pbiviz" class="download-button">
-    <img src="https://kameronyork.com/docs/assets/powerbi-logo.png" alt="Google Chrome Logo">
+  <a href="https://www.kameronyork.com/docs/skyscraper-barchart.pbiviz" class="download-button">
+    <img src="https://www.kameronyork.com/assets/img/powerbi-logo.png" alt="Google Chrome Logo">
     Download Here
   </a>
 </div>

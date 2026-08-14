@@ -3,8 +3,23 @@ title: "Skyscraper Barchart"
 output:
   html_document:
     includes:
-      in_header: "https://kameronyork.com/blog/headers/skyscraper-barchart-header.html"
-      after_body: "https://kameronyork.com/parables/footer.html"
+      in_header: "https://www.kameronyork.com/_includes/head-shared.html"
+      before_body:
+        - "https://www.kameronyork.com/_includes/nav.html"
+        - "https://www.kameronyork.com/_includes/backbar-projects.html"
+      after_body: "https://www.kameronyork.com/_includes/footer.html"
+header-includes:
+  - '<link rel="canonical" href="https://www.kameronyork.com/projects/skyscraper-barchart.html">'
+  - '<meta property="og:title" content="Power BI Skyscraper Bar Chart">'
+  - '<meta property="og:description" content="Transform your data into a city skyline with this custom Power Bi visual!">'
+  - '<meta property="og:image" content="https://www.kameronyork.com/assets/img/scraper-icon.png">'
+  - '<meta property="og:url" content="https://www.kameronyork.com/projects/skyscraper-barchart.html">'
+  - '<meta property="og:type" content="website">'
+  - '<meta property="og:site_name" content="Kameron York">'
+  - '<meta name="twitter:card" content="summary_large_image">'
+  - '<meta name="twitter:title" content="Power BI Skyscraper Bar Chart">'
+  - '<meta name="twitter:description" content="Transform your data into a city skyline with this custom Power Bi visual!">'
+  - '<meta name="twitter:image" content="https://www.kameronyork.com/assets/img/scraper-icon.png">'
 ---
 <style>
   /* Center alignment for the title, text under the title, and buttons */
@@ -90,8 +105,8 @@ output:
 </style>
 
 <div class="subtitle-text">
-  <a href="https://kameronyork.com/docs/skyscraper-barchart.pbiviz" class="download-button">
-    <img src="https://kameronyork.com/docs/assets/powerbi-logo.png" alt="Google Chrome Logo">
+  <a href="https://www.kameronyork.com/docs/skyscraper-barchart.pbiviz" class="download-button">
+    <img src="https://www.kameronyork.com/assets/img/powerbi-logo.png" alt="Google Chrome Logo">
     Download Here
   </a>
 </div>
@@ -110,9 +125,9 @@ The time of day can be changed in the visualization settings pane.  In settings,
 
 <br>
 <div style="display: flex; justify-content: space-around; align-items: center;">
-  <img src="https://kameronyork.com/docs/assets/scraper-day-example.png" style="width: 30%; margin-right: 1%;">
-  <img src="https://kameronyork.com/docs/assets/scraper-sunset-example.png" style="width: 30%; margin-right: 1%;">
-  <img src="https://kameronyork.com/docs/assets/scraper-night-example.png" style="width: 30%;">
+  <img src="https://www.kameronyork.com/assets/img/scraper-day-example.png" style="width: 30%; margin-right: 1%;">
+  <img src="https://www.kameronyork.com/assets/img/scraper-sunset-example.png" style="width: 30%; margin-right: 1%;">
+  <img src="https://www.kameronyork.com/assets/img/scraper-night-example.png" style="width: 30%;">
 </div>
 <i>Above are three images displaying the style of each "time of day" setting.</i>
 
@@ -136,6 +151,6 @@ I created the Skyscraper Barchart as a way to learn how Power BI visuals work.  
 
 Along with gaining a basic understanding of Power BI custom visuals I used this project as an opportunity to practice design.  Using Canva I created every image displayed in the visual from the skyscrapers to the backgrounds.  This was a learning curve for me, but I am extremely proud of the look and feel of the visual.
 
-To learn more about the process of building this custom visual [click here](https://kameronyork.com/blog/building-skyscraper-barchart.html).
+To learn more about the process of building this custom visual [click here](https://www.kameronyork.com/blog/building-skyscraper-barchart.html).
 <br>
 <br>

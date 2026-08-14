@@ -2,10 +2,24 @@
 title: "Building a Pocket-Sized Library"
 output:
   html_document:
-    self_contained: false
     includes:
-      in_header: "https://kameronyork.com/blog/headers/e-reader-ocr.html"
-      after_body: "https://kameronyork.com/parables/footer.html"
+      in_header: "https://www.kameronyork.com/_includes/head-shared.html"
+      before_body:
+        - "https://www.kameronyork.com/_includes/nav.html"
+        - "https://www.kameronyork.com/_includes/backbar-blog.html"
+      after_body: "https://www.kameronyork.com/_includes/footer.html"
+header-includes:
+  - '<link rel="canonical" href="https://www.kameronyork.com/blog/e-reader-ocr.html">'
+  - '<meta property="og:title" content="Building a Pocket-Sized Library">'
+  - '<meta property="og:description" content="Using Python code and a pocket-sized e-reader to start reading on the go.">'
+  - '<meta property="og:image" content="https://www.kameronyork.com/assets/img/ocr-header.png">'
+  - '<meta property="og:url" content="https://www.kameronyork.com/blog/e-reader-ocr.html">'
+  - '<meta property="og:type" content="website">'
+  - '<meta property="og:site_name" content="Kameron York">'
+  - '<meta name="twitter:card" content="summary_large_image">'
+  - '<meta name="twitter:title" content="Building a Pocket-Sized Library">'
+  - '<meta name="twitter:description" content="Using Python code and a pocket-sized e-reader to start reading on the go.">'
+  - '<meta name="twitter:image" content="https://www.kameronyork.com/assets/img/ocr-header.png">'
 ---
 
 <div style="max-width: 900px; margin: auto; line-height: 1.8; font-size: 1.1em;">
@@ -35,7 +49,7 @@ Then I stumbled upon a <a href="https://www.instructables.com/Bargain-Price-Book
 I got to work cutting up a cardboard box for a base. This would hold the book in position so I could scan the pages. The tutorial used a camera on a tripod to scan the pages. In my implementation, I used the standard scanning feature on my iPhone.
 
 <div style="text-align: center; margin: 2rem 0;">
-  <img src="https://kameronyork.com/docs/assets/ocr-cardboard.png"
+  <img src="https://www.kameronyork.com/assets/img/ocr-cardboard.png"
        alt="Book scanning setup"
        style="max-width: 100%; height: auto; border-radius: 8px;" />
 
@@ -47,7 +61,7 @@ I got to work cutting up a cardboard box for a base. This would hold the book in
 A quick trip to Hobby Lobby resulted in a pane of clear glass meant for stained-glass projects and a glass cutter. I split the glass pane in half and 3D-printed angled holders to hold each pane in place. This would hold the pages flat so I could scan them clearly.
 
 <div style="text-align: center; margin: 2rem 0;">
-  <img src="https://kameronyork.com/docs/assets/ocr-scan-setup.png"
+  <img src="https://www.kameronyork.com/assets/img/ocr-scan-setup.png"
        alt="Completed book scanning setup"
        style="max-width: 100%; height: auto; border-radius: 8px;" />
 
@@ -79,7 +93,7 @@ Of course, there were still some common issues, like particles of dust being int
 After all of this, I finally had an EPUB file of *The Hitchhiker’s Guide to the Galaxy*!
 
 <div style="text-align: center; margin: 2rem 0;">
-  <img src="https://kameronyork.com/docs/assets/ocr-final.png"
+  <img src="https://www.kameronyork.com/assets/img/ocr-final.png"
        alt="Final EPUB file displayed on the e-reader"
        style="max-width: 100%; height: auto; border-radius: 8px;" />
 
@@ -100,7 +114,7 @@ This project has taught me a lot about project management and the limitations of
 
 While AI is revolutionizing many parts of life, it has not yet surpassed the quality of tried-and-true OCR methods for this kind of task.
 
-If you would like to use the code I created in this project to create an EPUB file from a PDF, <a href="https://kameronyork.com/docs/zip-files/book2epub_sample.zip">click here</a>. That’s a starter ZIP file for the Python project I’ve been using to create my EPUB files.
+If you would like to use the code I created in this project to create an EPUB file from a PDF, <a href="https://www.kameronyork.com/docs/zip-files/book2epub_sample.zip">click here</a>. That’s a starter ZIP file for the Python project I’ve been using to create my EPUB files.
 
 Best of luck on your e-reader journey!
 

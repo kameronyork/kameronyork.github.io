@@ -1,18 +1,32 @@
 ---
 title: "What is the Most Quoted Scripture in General Conference?"
-author: "Kameron York"
 output:
   html_document:
     includes:
-      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/projects/conference/headers/inspire-change-header.html"
-      after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
+      in_header: "https://www.kameronyork.com/_includes/head-shared.html"
+      before_body:
+        - "https://www.kameronyork.com/_includes/nav.html"
+        - "https://www.kameronyork.com/_includes/backbar-blog.html"
+      after_body: "https://www.kameronyork.com/_includes/footer.html"
+header-includes:
+  - '<link rel="canonical" href="https://www.kameronyork.com/blog/quotes.html">'
+  - '<meta property="og:title" content="What is the Most Quoted Scripture in General Conference?">'
+  - '<meta property="og:description" content="Is there a definitive most-referenced scripture in General Conference?">'
+  - '<meta property="og:image" content="https://www.kameronyork.com/assets/img/inspire-change-header.png">'
+  - '<meta property="og:url" content="https://www.kameronyork.com/blog/quotes.html">'
+  - '<meta property="og:type" content="website">'
+  - '<meta property="og:site_name" content="Kameron York">'
+  - '<meta name="twitter:card" content="summary_large_image">'
+  - '<meta name="twitter:title" content="What is the Most Quoted Scripture in General Conference?">'
+  - '<meta name="twitter:description" content="Is there a definitive most-referenced scripture in General Conference?">'
+  - '<meta name="twitter:image" content="https://www.kameronyork.com/assets/img/inspire-change-header.png">'
 ---
 <small>Last Updated:  12/6/2023</small>
 ```{r setup, include=FALSE}
 library(tidyverse)
 
-verses <- read.csv("https://kameronyork.com/datasets/scripture-verses.csv", encoding = "UTF-8")
-quotes <- read.csv("https://kameronyork.com/datasets/conference-quotes.csv", encoding = "UTF-8") %>% 
+verses <- read.csv("https://www.kameronyork.com/datasets/scripture-verses.csv", encoding = "UTF-8")
+quotes <- read.csv("https://www.kameronyork.com/datasets/conference-quotes.csv", encoding = "UTF-8") %>% 
   mutate(decade = (talk_year %/% 10) * 10) %>% 
   filter(scripture != "null null:null")
 
@@ -362,7 +376,7 @@ words_2020_10 <- (verses %>% filter(scripture == ref_2020_10))[1, 8]
 <br>
 The General Conference of the Church of Jesus Christ of Latter-Day Saints is a worldwide church service held bi-annually.  Members of the world-wide church tune in to listen to the Church's leadership share messages of hope, faith, and prayer.  Leaders often quote scriptures in these messages, but what scripture is quoted the most?
 
-Data for this article was gathered from the Church's website.  Some scripture references have been excluded.  To learn more about these exclusions and how the data was collected read my article about [Collecting General Conference Data](https://kameronyork.com/blog/quote-collecting.html).
+Data for this article was gathered from the Church's website.  Some scripture references have been excluded.  To learn more about these exclusions and how the data was collected read my article about [Collecting General Conference Data](https://www.kameronyork.com/blog/quote-collecting.html).
 
 The most quoted scripture of all time is Moses 1:39.  A fitting first place as this scripture clearly sets forth God's purpose and plan for His Children.  While Moses 1:39 claimed first place from the 70's to the 90's the 2000's have seen other verses take the top spot.  
 

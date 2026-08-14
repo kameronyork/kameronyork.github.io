@@ -1,0 +1,110 @@
+/* =========================================================================
+   kameronyork.com — shared site styles
+
+   Consolidated from the <style> blocks that were duplicated inside all 49
+   of the old header files. Edit this ONE file to change the look
+   everywhere. Page-specific content (which Open Graph image, which back
+   bar) lives in each page's own .Rmd / include.
+   ========================================================================= */
+
+:root {
+  --primary-color: #02007e;
+  --body-color: #f9f9f9;
+  --text-color: #636363;
+  --text-color-dark: #242738;
+  --white-color: #ffffff;
+  --light-color: #f8f9fa;
+  --font-family: Roboto;
+
+  --backbar-bg: #f1f1f4;
+  --backbar-border: #e0e0e6;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  /* 100vw (used by .gb-fullbleed below) includes the vertical scrollbar's
+     width, so full-bleed elements overhang by a few px and would otherwise
+     add a horizontal scrollbar. */
+  overflow-x: hidden;
+}
+
+/* Remove the extra margin Bootstrap adds under the top nav bar */
+.shadow-bottom,
+.navbar,
+.container {
+  margin-bottom: 0;
+}
+
+/* -------------------------------------------------------------------------
+   FULL-BLEED UTILITY — important, read before editing
+
+   rmarkdown places `before_body` content *inside* its
+   `<div class="container-fluid main-container">`, which has a max-width and
+   side padding. Without this class the nav bar and back bar stop short of
+   the window edges instead of spanning it.
+
+   The old site got full-width by accident: each header file was a whole
+   <!DOCTYPE><html><head>…<body> document injected into <head>, so the
+   browser bailed out of <head>, opened <body> early, and dropped the nav
+   OUTSIDE main-container. Right look, invalid markup.
+
+   This class gets the same result from valid markup. It uses margins (not
+   position/transform) so it doesn't interfere with Bootstrap's .sticky-top.
+   ------------------------------------------------------------------------- */
+.gb-fullbleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+/* -------------------------------------------------------------------------
+   SECTION BACK BAR
+
+   A slim bar directly under the nav that returns the reader to the index of
+   whatever section they're in (all parables, movie drafts, projects…).
+   Markup lives in _includes/backbar-*.html; pages opt in by adding the
+   relevant partial to their `before_body:` list.
+   ------------------------------------------------------------------------- */
+.gb-backbar {
+  background-color: var(--backbar-bg);
+  border-bottom: 1px solid var(--backbar-border);
+  padding: 0.5rem 0;
+  font-family: var(--font-family), sans-serif;
+  font-size: 0.9rem;
+}
+
+.gb-backbar__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--text-color-dark);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.gb-backbar__link:hover,
+.gb-backbar__link:focus {
+  color: var(--primary-color);
+  background-color: rgba(255, 215, 0, 0.3); /* matches the movie-draft link hover */
+  text-decoration: none;
+}
+
+.gb-backbar__arrow {
+  font-size: 1.05rem;
+  line-height: 1;
+  transition: transform 0.15s ease;
+}
+
+.gb-backbar__link:hover .gb-backbar__arrow {
+  transform: translateX(-2px);
+}
+
+@media (max-width: 575px) {
+  .gb-backbar {
+    font-size: 0.85rem;
+  }
+}

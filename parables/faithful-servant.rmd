@@ -1,11 +1,26 @@
 ---
-title: "The Faithful Servant"  # Sets the Title.
+title: "The Faithful Servant"
 subtitle: "by Kameron York"
 output:
   html_document:
     includes:
-      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/headers/faithful-servant-header.html"
-      after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
+      in_header: "https://www.kameronyork.com/_includes/head-shared.html"
+      before_body:
+        - "https://www.kameronyork.com/_includes/nav.html"
+        - "https://www.kameronyork.com/_includes/backbar-parables.html"
+      after_body: "https://www.kameronyork.com/_includes/footer.html"
+header-includes:
+  - '<link rel="canonical" href="https://www.kameronyork.com/parables/faithful-servant.html">'
+  - '<meta property="og:title" content="The Faithful Servant">'
+  - '<meta property="og:description" content="The parable of the faithful servant">'
+  - '<meta property="og:image" content="https://www.kameronyork.com/assets/img/faithful-servant.jpg">'
+  - '<meta property="og:url" content="https://www.kameronyork.com/parables/faithful-servant.html">'
+  - '<meta property="og:type" content="website">'
+  - '<meta property="og:site_name" content="Kameron York">'
+  - '<meta name="twitter:card" content="summary_large_image">'
+  - '<meta name="twitter:title" content="The Faithful Servant">'
+  - '<meta name="twitter:description" content="The parable of the faithful servant">'
+  - '<meta name="twitter:image" content="https://www.kameronyork.com/assets/img/faithful-servant.jpg">'
 ---
 <script>
 window.matthewVerses = ["Matthew 24:45", "Matthew 24:46", "Matthew 24:47", "Matthew 24:48", "Matthew 24:49", "Matthew 24:50", "Matthew 24:51"];
@@ -13,11 +28,11 @@ window.markVerses = [];
 window.lukeVerses = ["Luke 12:41", "Luke 12:42", "Luke 12:43", "Luke 12:44", "Luke 12:45", "Luke 12:46", "Luke 12:47", "Luke 12:48"];
 window.johnVerses = [];
 </script>
-<script src="https://kameronyork.com/parables/gospel-buddy-table.js"></script>
+<script src="https://www.kameronyork.com/assets/js/gospel-buddy-table.js"></script>
 
 <br>
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
-<img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/faithful-servant.jpg" alt="Faithful servant parable image" style="float: right; width: 195px; height: 115px; padding: 5px;"><br>
+<img src="https://www.kameronyork.com/assets/img/faithful-servant.jpg" alt="Faithful servant parable image" style="float: right; width: 195px; height: 115px; padding: 5px;"><br>
 <h4 style="text-align: left; margin: 0;">Reference:</h4>
 <p style="text-align: left; margin: 0;">
 <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/matt/24?lang=eng&id=45-51#p45" target="_blank">Matthew 24:45-51</a><br>
@@ -41,12 +56,12 @@ This article is yet to be completed. Please check back later!
 
 ##### Check out my other articles:
 
-<link rel="stylesheet" href="https://kameronyork.github.io/scripting/themify-icons/themify-icons.css">
+<link rel="stylesheet" href="https://www.kameronyork.com/assets/vendor/themify-icons/themify-icons.css">
 <div class="container">
 <div class="row">
 <div class="col-12 text-md-left">
 <nav class="pagination mt-3">
-<a class="nav nav-prev" href="https://kameronyork.com/parables/watchful-householder.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" 
+<a class="nav nav-prev" href="https://www.kameronyork.com/parables/watchful-householder.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" 
 onmouseover="this.style.backgroundColor='lightgray';" 
 onmouseout="this.style.backgroundColor='transparent';" 
 onmousedown="this.style.backgroundColor='gray';" 
@@ -55,7 +70,7 @@ onmouseup="this.style.backgroundColor='lightgray';">
 <span style="display: none;" class="d-md-inline-block">Watchful Householder</span>
 <span style="display: inline-block;" class="d-md-none">Watchful Householder</span>
 </a>
-<a class="nav nav-next ml-3" href="https://kameronyork.com/parables/ten-virgins.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" 
+<a class="nav nav-next ml-3" href="https://www.kameronyork.com/parables/ten-virgins.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" 
 onmouseover="this.style.backgroundColor='lightgray';" 
 onmouseout="this.style.backgroundColor='transparent';" 
 onmousedown="this.style.backgroundColor='gray';" 

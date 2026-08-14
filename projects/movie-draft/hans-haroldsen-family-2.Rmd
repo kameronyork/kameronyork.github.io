@@ -3,8 +3,23 @@ title: "Hans Haroldsen Family: 2"
 output:
   html_document:
     includes:
-      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/projects/movie-draft/headers/hans-haroldsen-family-2.html"
-      after_body: "https://kameronyork.com/parables/footer.html"
+      in_header: "https://www.kameronyork.com/_includes/head-shared.html"
+      before_body:
+        - "https://www.kameronyork.com/_includes/nav.html"
+        - "https://www.kameronyork.com/_includes/backbar-movie-draft.html"
+      after_body: "https://www.kameronyork.com/_includes/footer.html"
+header-includes:
+  - '<link rel="canonical" href="https://www.kameronyork.com/projects/movie-draft/hans-haroldsen-family-2.html">'
+  - '<meta property="og:title" content="Hans Haroldsen Family - Box Office Competition!">'
+  - '<meta property="og:description" content="Competitors wager points to purchase upcoming box office releases. Who will have the highest earnings of them all?">'
+  - '<meta property="og:image" content="https://www.kameronyork.com/assets/img/popcorn.png">'
+  - '<meta property="og:url" content="https://www.kameronyork.com/projects/movie-draft/hans-haroldsen-family-2.html">'
+  - '<meta property="og:type" content="website">'
+  - '<meta property="og:site_name" content="Kameron York">'
+  - '<meta name="twitter:card" content="summary_large_image">'
+  - '<meta name="twitter:title" content="Hans Haroldsen Family - Box Office Competition!">'
+  - '<meta name="twitter:description" content="Competitors wager points to purchase upcoming box office releases. Who will have the highest earnings of them all?">'
+  - '<meta name="twitter:image" content="https://www.kameronyork.com/assets/img/popcorn.png">'
 ---
 <br>
 <br>
@@ -351,9 +366,9 @@ document.addEventListener("DOMContentLoaded", async function() {
   const endDate = today <= cutoffDate ? today : cutoffDate;
 
   // URLs for data
-  const dataUrl = "https://kameronyork.com/datasets/box-office-data.json";
-  const peopleUrl = "https://kameronyork.com/datasets/movies.json";
-  const detailsUrl = "https://kameronyork.com/datasets/movies-details.json";
+  const dataUrl = "https://www.kameronyork.com/datasets/box-office-data.json";
+  const peopleUrl = "https://www.kameronyork.com/datasets/movies.json";
+  const detailsUrl = "https://www.kameronyork.com/datasets/movies-details.json";
 
   let movieData, peopleData, movieDetailsData;
 

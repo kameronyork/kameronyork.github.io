@@ -1,0 +1,27 @@
+---
+title: "Test Post"
+output:
+  html_document:
+    includes:
+      in_header: "https://www.kameronyork.com/_includes/head-shared.html"
+      before_body:
+        - "https://www.kameronyork.com/_includes/nav.html"
+      after_body: "https://www.kameronyork.com/_includes/footer.html"
+header-includes:
+  - '<link rel="canonical" href="https://www.kameronyork.com/_drafts/test.html">'
+  - '<meta property="og:title" content="Test Post">'
+  - '<meta property="og:image" content="https://www.kameronyork.com/assets/img/icon.png">'
+  - '<meta property="og:url" content="https://www.kameronyork.com/_drafts/test.html">'
+  - '<meta property="og:type" content="website">'
+  - '<meta property="og:site_name" content="Kameron York">'
+  - '<meta name="twitter:card" content="summary_large_image">'
+  - '<meta name="twitter:title" content="Test Post">'
+  - '<meta name="twitter:image" content="https://www.kameronyork.com/assets/img/icon.png">'
+---
+
+This article is yet to be completed.
+Please check back later!
+
+<link rel=stylesheet href=https://www.kameronyork.com/assets/vendor/themify-icons/themify-icons.css>
+
+<footer><div class="container"><div class="row"><div class="col-md-5 border text-md-left"><nav class="pagination mt-3"><a class="nav nav-prev" href="https://www.kameronyork.com/blog"><i class="ti-arrow-left mr-2"></i><span class="d-none d-md-block">   Home</span></a></nav></div><div class="col-md-7 border text-md-right"><nav class="pagination mt-3"><a class="nav nav-next" href="https://www.kameronyork.com/blog"><span class="d-none d-md-block">Next Post </span><i class="ti-arrow-right ml-2"></i></a></nav></div></div></div></footer>

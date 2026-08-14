@@ -3,8 +3,23 @@ title: "Building the Gospel Buddy"
 output:
   html_document:
     includes:
-      in_header: "https://kameronyork.com/gospel-buddy/headers/gospel-buddy-header.html"
-      after_body: "https://kameronyork.com/parables/footer.html"
+      in_header: "https://www.kameronyork.com/_includes/head-shared.html"
+      before_body:
+        - "https://www.kameronyork.com/_includes/nav.html"
+        - "https://www.kameronyork.com/_includes/backbar-blog.html"
+      after_body: "https://www.kameronyork.com/_includes/footer.html"
+header-includes:
+  - '<link rel="canonical" href="https://www.kameronyork.com/blog/building-gospel-buddy.html">'
+  - '<meta property="og:title" content="Building the Gospel Buddy">'
+  - '<meta property="og:description" content="A google chrome extension to add better references from the scriptures to the general conference talks of the Church of Jesus Christ of Latter-Day Saints">'
+  - '<meta property="og:image" content="https://www.kameronyork.com/assets/img/gb-article-header.png">'
+  - '<meta property="og:url" content="https://www.kameronyork.com/blog/building-gospel-buddy.html">'
+  - '<meta property="og:type" content="website">'
+  - '<meta property="og:site_name" content="Kameron York">'
+  - '<meta name="twitter:card" content="summary_large_image">'
+  - '<meta name="twitter:title" content="Building the Gospel Buddy">'
+  - '<meta name="twitter:description" content="A google chrome extension to add better references from the scriptures to the general conference talks of the Church of Jesus Christ of Latter-Day Saints">'
+  - '<meta name="twitter:image" content="https://www.kameronyork.com/assets/img/gb-article-header.png">'
 ---
 
 <style>
@@ -79,7 +94,7 @@ output:
 
 #### The Idea for the Gospel Buddy Extension
 
-Creating the Gospel Buddy extension all started with one question: "What is the most quoted scripture in General Conference Talks".  Asking this question led to the creation of my project titled [Can a Prophet Inspire Change?](https://kameronyork.com/projects/conference/inspire-change.html)  To build that project I gathered data and built a file of every scripture quoted in General Conference.  To read about how I collected that data [Click Here](https://www.kameronyork.com/blog/quote-collecting.html).  The data for the Gospel Buddy was collected in a slightly different way which will be discussed later.  So, if we know what scriptures are referenced in General Conference talks how can we make this information useful to the average person?  What if users could see the number of times a scripture has been referenced in General Conference talks along with links to the specific talks?  That is the question that finalized the idea for the Gospel Buddy.
+Creating the Gospel Buddy extension all started with one question: "What is the most quoted scripture in General Conference Talks".  Asking this question led to the creation of my project titled [Can a Prophet Inspire Change?](https://www.kameronyork.com/projects/conference/inspire-change.html)  To build that project I gathered data and built a file of every scripture quoted in General Conference.  To read about how I collected that data [Click Here](https://www.kameronyork.com/blog/quote-collecting.html).  The data for the Gospel Buddy was collected in a slightly different way which will be discussed later.  So, if we know what scriptures are referenced in General Conference talks how can we make this information useful to the average person?  What if users could see the number of times a scripture has been referenced in General Conference talks along with links to the specific talks?  That is the question that finalized the idea for the Gospel Buddy.
 
 #### How was the Data Collected for the Gospel Buddy Extension
 
@@ -98,11 +113,11 @@ This process can identify verse numbers and replace them with Verse Buttons in t
 <br>
 <div class="subtitle-text">
   <a href="https://chromewebstore.google.com/detail/gospel-buddy/mlimohmgngjmnpllmnbjgkggclnmcdbn?hl=en" class="download-button">
-    <img src="https://kameronyork.com/docs/assets/chrome-logo.png" alt="Google Chrome Logo">
+    <img src="https://www.kameronyork.com/assets/img/chrome-logo.png" alt="Google Chrome Logo">
     Add to Chrome
   </a>
   <a href="https://chromewebstore.google.com/detail/gospel-buddy/mlimohmgngjmnpllmnbjgkggclnmcdbn?hl=en" class="download-button">
-    <img src="https://kameronyork.com/docs/assets/edge-logo.png" alt="Microsoft Edge Logo">
+    <img src="https://www.kameronyork.com/assets/img/edge-logo.png" alt="Microsoft Edge Logo">
     Add to Edge
   </a>
 </div>

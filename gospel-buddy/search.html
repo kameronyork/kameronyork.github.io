@@ -262,8 +262,8 @@ src: url(data:font/ttf;base64,AAEAAAASAQAABAAgR0RFRgWRBcAAAHxwAAAAZEdQT1Ooqq8oAA
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="The Gospel Buddy">
   <meta property="og:description" content="A google chrome extension to add better references from the scriptures to the general conference talks of the Church of Jesus Christ of Latter-Day Saints">
-  <meta property="og:image" content="https://kameronyork.com/docs/assets/gb-article-header.png"> <!-- Replace with the URL of your image -->
-  <meta property="og:url" content="https://kameronyork.com/gospel-buddy/"> <!-- Replace with your URL -->
+  <meta property="og:image" content="https://www.kameronyork.com/assets/img/gb-article-header.png"> <!-- Replace with the URL of your image -->
+  <meta property="og:url" content="https://www.kameronyork.com/gospel-buddy/"> <!-- Replace with your URL -->
   <meta property="og:type" content="website">
 
   <style>
@@ -7050,7 +7050,7 @@ margin-top: -1px;
                           <a class="nav-link text-dark" href="https://www.kameronyork.com/blog/">Blog</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link text-dark" href="https://www.kameronyork.com/docs/contact/">Contact</a>
+                          <a class="nav-link text-dark" href="https://www.kameronyork.com/contact/">Contact</a>
                       </li>
                   </ul>
               </div>
@@ -7267,11 +7267,11 @@ line-height: 30px;
 
 <div class="subtitle-text">
   <a href="https://chromewebstore.google.com/detail/gospel-buddy/mlimohmgngjmnpllmnbjgkggclnmcdbn?hl=en" class="download-button">
-    <img src="https://kameronyork.com/docs/assets/chrome-logo.png" alt="Google Chrome Logo">
+    <img src="https://www.kameronyork.com/assets/img/chrome-logo.png" alt="Google Chrome Logo">
     Add to Chrome
   </a>
   <a href="https://microsoftedge.microsoft.com/addons/detail/gospel-buddy/mjpbfipgpeclaihceppjnkgeibgjdoig" class="download-button">
-    <img src="https://kameronyork.com/docs/assets/edge-logo.png" alt="Microsoft Edge Logo">
+    <img src="https://www.kameronyork.com/assets/img/edge-logo.png" alt="Microsoft Edge Logo">
     Add to Edge
   </a>
 </div>
@@ -7289,11 +7289,11 @@ async function fetchJSON() {
     let url;
 
     if (currentMonth >= 9 && currentMonth <= 11) {
-        url = `https://kameronyork.com/datasets/all-footnotes-oct-${currentYear}.json`;
+        url = `https://www.kameronyork.com/datasets/all-footnotes-oct-${currentYear}.json`;
     } else if (currentMonth >= 3 && currentMonth <= 8) {
-        url = `https://kameronyork.com/datasets/all-footnotes-apr-${currentYear}.json`;
+        url = `https://www.kameronyork.com/datasets/all-footnotes-apr-${currentYear}.json`;
     } else {
-        url = `https://kameronyork.com/datasets/all-footnotes-oct-${currentYear - 1}.json`;
+        url = `https://www.kameronyork.com/datasets/all-footnotes-oct-${currentYear - 1}.json`;
     }
 
     return await (await fetch(url)).json();

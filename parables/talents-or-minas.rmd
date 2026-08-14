@@ -1,11 +1,26 @@
 ---
-title: "The Talents or Minas"  # Sets the Title.
+title: "The Talents or Minas"
 subtitle: "by Kameron York"
 output:
   html_document:
     includes:
-      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/headers/talents-or-minas-header.html"
-      after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
+      in_header: "https://www.kameronyork.com/_includes/head-shared.html"
+      before_body:
+        - "https://www.kameronyork.com/_includes/nav.html"
+        - "https://www.kameronyork.com/_includes/backbar-parables.html"
+      after_body: "https://www.kameronyork.com/_includes/footer.html"
+header-includes:
+  - '<link rel="canonical" href="https://www.kameronyork.com/parables/talents-or-minas.html">'
+  - '<meta property="og:title" content="The Talents or Minas">'
+  - '<meta property="og:description" content="The parable of the talents or minas">'
+  - '<meta property="og:image" content="https://www.kameronyork.com/assets/img/talents-or-minas.jpg">'
+  - '<meta property="og:url" content="https://www.kameronyork.com/parables/talents-or-minas.html">'
+  - '<meta property="og:type" content="website">'
+  - '<meta property="og:site_name" content="Kameron York">'
+  - '<meta name="twitter:card" content="summary_large_image">'
+  - '<meta name="twitter:title" content="The Talents or Minas">'
+  - '<meta name="twitter:description" content="The parable of the talents or minas">'
+  - '<meta name="twitter:image" content="https://www.kameronyork.com/assets/img/talents-or-minas.jpg">'
 ---
 <script>
 window.matthewVerses = ["Matthew 25:14", "Matthew 25:15", "Matthew 25:16", "Matthew 25:17", "Matthew 25:18", "Matthew 25:19", "Matthew 25:20", "Matthew 25:21", "Matthew 25:22", "Matthew 25:23", "Matthew 25:24", "Matthew 25:25", "Matthew 25:26", "Matthew 25:27", "Matthew 25:28", "Matthew 25:29", "Matthew 25:30"];
@@ -13,11 +28,11 @@ window.markVerses = [];
 window.lukeVerses = ["Luke 19:11", "Luke 19:12", "Luke 19:13", "Luke 19:14", "Luke 19:15", "Luke 19:16", "Luke 19:17", "Luke 19:18", "Luke 19:19", "Luke 19:20", "Luke 19:21", "Luke 19:22", "Luke 19:23", "Luke 19:24", "Luke 19:25", "Luke 19:26", "Luke 19:27"];
 window.johnVerses = [];
 </script>
-<script src="https://kameronyork.com/parables/gospel-buddy-table.js"></script>
+<script src="https://www.kameronyork.com/assets/js/gospel-buddy-table.js"></script>
 
 <br>
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
-<img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/talents-or-minas.jpg" alt="Talents or minas parable image" style="float: right; width: 195px; height: 115px; padding: 5px;">
+<img src="https://www.kameronyork.com/assets/img/talents-or-minas.jpg" alt="Talents or minas parable image" style="float: right; width: 195px; height: 115px; padding: 5px;">
 <br>
 <h4 style="text-align: left; margin: 0;">Reference:</h4>
 <p style="text-align: left; margin: 0;">
@@ -42,12 +57,12 @@ This article is yet to be completed. Please check back later!
 
 ##### Check out my other articles:
 
-<link rel="stylesheet" href="https://kameronyork.github.io/scripting/themify-icons/themify-icons.css">
+<link rel="stylesheet" href="https://www.kameronyork.com/assets/vendor/themify-icons/themify-icons.css">
 <div class="container">
 <div class="row">
 <div class="col-12 text-md-left">
 <nav class="pagination mt-3">
-<a class="nav nav-prev" href="https://kameronyork.com/parables/workers-in-the-vineyard.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" 
+<a class="nav nav-prev" href="https://www.kameronyork.com/parables/workers-in-the-vineyard.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" 
 onmouseover="this.style.backgroundColor='lightgray';" 
 onmouseout="this.style.backgroundColor='transparent';" 
 onmousedown="this.style.backgroundColor='gray';" 
@@ -56,7 +71,7 @@ onmouseup="this.style.backgroundColor='lightgray';">
 <span style="display: none;" class="d-md-inline-block">Vineyard Workers</span>
 <span style="display: inline-block;" class="d-md-none">Vineyard Workers</span>
 </a>
-<a class="nav nav-next ml-3" href="https://kameronyork.com/parables/budding-fig-tree.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" 
+<a class="nav nav-next ml-3" href="https://www.kameronyork.com/parables/budding-fig-tree.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" 
 onmouseover="this.style.backgroundColor='lightgray';" 
 onmouseout="this.style.backgroundColor='transparent';" 
 onmousedown="this.style.backgroundColor='gray';" 

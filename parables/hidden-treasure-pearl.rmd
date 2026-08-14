@@ -1,11 +1,26 @@
 ---
-title: "The Hidden Treasure & the Pearl"  # Sets the Title.
+title: "The Hidden Treasure & the Pearl"
 subtitle: "by Kameron York"
 output:
   html_document:
     includes:
-      in_header: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/headers/pearl-header.html"
-      after_body: "https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/parables/footer.html"
+      in_header: "https://www.kameronyork.com/_includes/head-shared.html"
+      before_body:
+        - "https://www.kameronyork.com/_includes/nav.html"
+        - "https://www.kameronyork.com/_includes/backbar-parables.html"
+      after_body: "https://www.kameronyork.com/_includes/footer.html"
+header-includes:
+  - '<link rel="canonical" href="https://www.kameronyork.com/parables/hidden-treasure-pearl.html">'
+  - '<meta property="og:title" content="The Pearl">'
+  - '<meta property="og:description" content="The parable of the pearl">'
+  - '<meta property="og:image" content="https://www.kameronyork.com/assets/img/pearl.jpg">'
+  - '<meta property="og:url" content="https://www.kameronyork.com/parables/hidden-treasure-pearl.html">'
+  - '<meta property="og:type" content="website">'
+  - '<meta property="og:site_name" content="Kameron York">'
+  - '<meta name="twitter:card" content="summary_large_image">'
+  - '<meta name="twitter:title" content="The Pearl">'
+  - '<meta name="twitter:description" content="The parable of the pearl">'
+  - '<meta name="twitter:image" content="https://www.kameronyork.com/assets/img/pearl.jpg">'
 ---
 <script>
 window.matthewVerses = ["Matthew 13:44", "Matthew 13:45", "Matthew 13:46"];
@@ -13,11 +28,11 @@ window.markVerses = [];
 window.lukeVerses = [];
 window.johnVerses = [];
 </script>
-<script src="https://kameronyork.com/parables/gospel-buddy-table.js"></script>
+<script src="https://www.kameronyork.com/assets/js/gospel-buddy-table.js"></script>
 
 <br>
 <div style="border: 1px solid lightgray; padding: 10px; overflow: hidden;">
-<img src="https://raw.githubusercontent.com/kameronyork/kameronyork.github.io/main/docs/assets/hidden-treasure-pearl.png" alt="Parable of the hidden treasure image" style="float: right; width: 195px; height: 115px; padding: 5px;">
+<img src="https://www.kameronyork.com/assets/img/hidden-treasure-pearl.png" alt="Parable of the hidden treasure image" style="float: right; width: 195px; height: 115px; padding: 5px;">
 <br>
 <h4 style="text-align: left; margin: 0;">Reference:</h4>
 <p style="text-align: left; margin: 0;">
@@ -65,12 +80,12 @@ His Possessions - Worldly things / Beliefs.
 
 ##### Check out my other articles:
 
-<link rel="stylesheet" href="https://kameronyork.github.io/scripting/themify-icons/themify-icons.css">
+<link rel="stylesheet" href="https://www.kameronyork.com/assets/vendor/themify-icons/themify-icons.css">
 <div class="container">
 <div class="row">
 <div class="col-12 text-md-left">
 <nav class="pagination mt-3">
-<a class="nav nav-prev" href="https://kameronyork.com/parables/leaven.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" 
+<a class="nav nav-prev" href="https://www.kameronyork.com/parables/leaven.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" 
 onmouseover="this.style.backgroundColor='lightgray';" 
 onmouseout="this.style.backgroundColor='transparent';" 
 onmousedown="this.style.backgroundColor='gray';" 
@@ -79,7 +94,7 @@ onmouseup="this.style.backgroundColor='lightgray';">
 <span style="display: none;" class="d-md-inline-block">Leaven</span>
 <span style="display: inline-block;" class="d-md-none">Leaven</span>
 </a>
-<a class="nav nav-next ml-3" href="https://kameronyork.com/parables/drawing-in-the-net.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" 
+<a class="nav nav-next ml-3" href="https://www.kameronyork.com/parables/drawing-in-the-net.html" style="background-color: transparent; color: black; padding: 5px 10px; border: 1px solid lightgray; cursor: pointer; white-space: nowrap; font-size: 12px; display: flex; align-items: center;" 
 onmouseover="this.style.backgroundColor='lightgray';" 
 onmouseout="this.style.backgroundColor='transparent';" 
 onmousedown="this.style.backgroundColor='gray';" 
