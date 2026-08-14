@@ -5,12 +5,12 @@ output:
   html_document:
     includes:
       in_header:
-        - "https://www.kameronyork.com/_includes/head-shared.html"
-        - "https://www.kameronyork.com/_includes/meta/projects-movie-draft-wise-family-2025-2.html"
+        - "https://kameronyork.com/_includes/head-shared.html"
+        - "https://kameronyork.com/_includes/meta/projects-movie-draft-wise-family-2025-2.html"
       before_body:
-        - "https://www.kameronyork.com/_includes/nav.html"
-        - "https://www.kameronyork.com/_includes/backbar-movie-draft.html"
-      after_body: "https://www.kameronyork.com/_includes/footer.html"
+        - "https://kameronyork.com/_includes/nav.html"
+        - "https://kameronyork.com/_includes/backbar-movie-draft.html"
+      after_body: "https://kameronyork.com/_includes/footer.html"
 ---
 <br>
 <br>
@@ -357,9 +357,9 @@ document.addEventListener("DOMContentLoaded", async function() {
   const endDate = today <= cutoffDate ? today : cutoffDate;
 
   // URLs for data
-  const dataUrl = "https://www.kameronyork.com/datasets/box-office-data.json";
-  const peopleUrl = "https://www.kameronyork.com/datasets/movies.json";
-  const detailsUrl = "https://www.kameronyork.com/datasets/movies-details.json";
+  const dataUrl = "https://kameronyork.com/datasets/box-office-data.json";
+  const peopleUrl = "https://kameronyork.com/datasets/movies.json";
+  const detailsUrl = "https://kameronyork.com/datasets/movies-details.json";
 
   let movieData, peopleData, movieDetailsData;
 
