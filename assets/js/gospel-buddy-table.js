@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
         uniqueEntriesArray.sort((a, b) => b.talk_id - a.talk_id);
 
         let tableHTML = `<br><br><div style="max-width: 100%; margin: auto; text-align: left;">
-            <a href="https://www.kameronyork.com/gospel-buddy/" style="font-size: 10pt; display: flex; align-items: center; gap: 5px; text-decoration: none; color: grey;">
+            <a href="https://www.mygospelbuddy.com/" style="font-size: 10pt; display: flex; align-items: center; gap: 5px; text-decoration: none; color: grey;">
                 <img src="https://www.kameronyork.com/assets/img/gospel-buddy-icon-nobg.png" alt="Gospel Buddy Logo" style="height: 1.8em;">
                 Powered by the Gospel Buddy
             </a>

@@ -21,11 +21,6 @@
       <priority>0.9</priority>
    </url>
    <url>
-      <loc>https://www.kameronyork.com/gospel-buddy/</loc>
-      <changefreq>monthly</changefreq>
-      <priority>0.8</priority>
-   </url>
-   <url>
       <loc>https://www.kameronyork.com/projects/movie-draft/</loc>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>

@@ -13,7 +13,6 @@ projects/
   conference/            General Conference analysis project
   movie-draft/           Box office draft competitions
   crossword/             Crossword leaderboard tooling
-gospel-buddy/            Gospel Buddy extension pages
 datasets/                Published JSON/CSV datasets
 contact/                 Contact page (moved from /docs/contact/)
 resume/                  Resume page
@@ -51,7 +50,7 @@ Absolute URLs mean paths resolve the same no matter how deep a page sits —
 no `../` counting and no "file not found" when knitting.
 
 **This replaced 49 near-identical header files** in `parables/headers/`,
-`blog/headers/`, `gospel-buddy/headers/`, `projects/conference/headers/` and
+`blog/headers/`, `projects/conference/headers/` and
 `projects/movie-draft/headers/`. They were clones differing only in `<title>`
 and Open Graph tags, and had drifted badly — several pages were serving Open
 Graph tags copy-pasted from an unrelated article (see "What was fixed").
@@ -95,7 +94,6 @@ they're in. Pages opt in by adding the relevant partial to `before_body:`:
 | `backbar-projects.html` | `/projects/` |
 | `backbar-blog.html` | `/blog/` |
 | `backbar-conference.html` | the conference project |
-| `backbar-gospel-buddy.html` | `/gospel-buddy/` |
 
 Section index pages deliberately get the *parent* bar (or none) rather than
 a link to themselves — e.g. `/projects/movie-draft/index.Rmd` links back to
@@ -189,6 +187,18 @@ source("scripts/knit-all-files.R")
 - Contact moved `/docs/contact/` -> `/contact/` with a redirect stub behind it.
 
 ## Known open items
+
+- The Gospel Buddy section has been **removed** from this site -- it now lives
+  at its own site, mygospelbuddy.com. Deleted: the `/gospel-buddy/` pages,
+  their meta files, `backbar-gospel-buddy.html`, the projects-index card, the
+  sitemap entry, and the two scripts only those pages used
+  (`scriptureDisplay.js`, `search.js`). Old `/gospel-buddy/` URLs will 404 by
+  choice -- no redirect stub was left.
+  Two things were deliberately kept: the blog post
+  `blog/building-gospel-buddy.Rmd` (it's portfolio writing, not a product
+  page), and `assets/js/gospel-buddy-table.js`, which renders the scripture
+  reference tables on ~30 parable pages. That script's "Powered by the Gospel
+  Buddy" attribution now points at mygospelbuddy.com.
 
 - `parables/hidden-treasure-pearl.rmd` outputs to `hidden-treasure-pearl.html`
   but its canonical/OG URL historically pointed at `/parables/pearl.html`.
