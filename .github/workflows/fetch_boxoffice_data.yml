@@ -26,7 +26,7 @@ jobs:
 
       - name: Run Python script to fetch data
         run: |
-          python fetch_boxoffice_data.py
+          python scripts/fetch_boxoffice_data.py
 
       - name: Commit and push changes
         run: |
