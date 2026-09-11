@@ -1670,5 +1670,405 @@
     "description": "In a post-apocalyptic world, a virus wipes out humanity. Survivors face roaming scavengers called Reapers. Protagonist Hig, a pilot, survived the flu but lost his wife.",
     "release_date": "8/28/2026",
     "rating": "R"
+  },
+  {
+    "id": "rl2930278401",
+    "title": "Fall 2: Deadpoint",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BOTI4MjNjNDgtOWY2ZC00YTdjLThhMGItZjZiYjRhNmVhY2JhXkEyXkFqcGc@._V1_SY139_CR0,0,92,139_.jpg",
+    "description": "Grieving her sister Shiloh's death, Jax Hunter bonds with Shiloh's bold friend Luce. Together they tackle dangerous Mount Kwan in Thailand. When a rockslide traps them on a narrow plank 4,000 feet up, Jax must face her fears to survive.",
+    "release_date": "2026-09-02",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl564363265",
+    "title": "By Any Means",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BZTUwODQ5N2QtMGM3Ny00YTk1LWJlZTctMTE5ZTAzNTMwOGQxXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A notorious mafia hitman and a young Black FBI agent team up to investigate the murders of civil rights leaders in 1966 Mississippi.",
+    "release_date": "2026-09-04",
+    "rating": "R"
+  },
+  {
+    "id": "rl3332407297",
+    "title": "Tom and Jerry: Forbidden Compass",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMWQ3OTU0ZWYtYWE5OS00Zjc4LTg4ZTctMzcyZDQ2YjU1Yjk4XkEyXkFqcGc@._V1_SY139_CR2,0,92,139_.jpg",
+    "description": "During a chase inside a museum, Tom and Jerry find a magical object and end up being transported through time. Lost in a distant era, they will need to work together to find a way back home.",
+    "release_date": "2026-09-04",
+    "rating": "PG"
+  },
+  {
+    "id": "rl2125561857",
+    "title": "The Fix",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYjhiYzQ5YjQtZTlhZS00YTQ0LTk5YzMtNmRjY2EwYmFhYmIzXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Disillusioned by the end of the war in Afghanistan, a group of disgraced, war torn ex-CIA operators set out to Tehran to take down a life changing score.",
+    "release_date": "2026-09-11",
+    "rating": "R"
+  },
+  {
+    "id": "rl3888283649",
+    "title": "Practical Magic 2",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMWUyY2UyNjgtYTg5MC00MDZmLWE1MzEtZmU2YWE2ZTMzMjUwXkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
+    "description": "A multi generational family of witches, cursed to be loveless for centuries, attempts to break the spell by confronting dark secrets and sacrificing for each other.",
+    "release_date": "2026-09-11",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl3955130369",
+    "title": "Runner",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BOThmN2YyMzMtN2Y2Zi00MjViLTg2NzQtNGM0ZDU3ZDAyYThhXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A former soldier and his unlikely partner become the targets of a ruthless cartel while racing to complete a critical medical delivery and save the life of a little girl.",
+    "release_date": "2026-09-11",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl2644869121",
+    "title": "The Uprising",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYmNiZjVhOGItZTUxMi00MDUwLWJlNDItYTg2MTViZmQzMmU0XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Based on the true story of the uprising that inspired the legend of Robin Hood, Andrew Garfield stars as the leader of a rebellion against the tyranny of King Richard II in a fight for justice.",
+    "release_date": "2026-09-11",
+    "rating": "R"
+  },
+  {
+    "id": "rl2493153281",
+    "title": "Shaun the Sheep: The Beast of Mossy Bottom",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BOTA5NWIxODktNjcwOC00MjNjLWE1ZDctNWNmODkzYzc2Y2RhXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "On Halloween Eve at Mossy Bottom Farm, excitement turns to dismay when the clumsy Farmer ruins the pumpkin patch. Shaun tries fixing it with science experiments, but things go wrong when a wild beast appears in the woods.",
+    "release_date": "2026-09-18",
+    "rating": "PG"
+  },
+  {
+    "id": "rl3744759809",
+    "title": "Resident Evil",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BODIwYTk4MWYtMGUxYS00OWUzLTg5MDYtNzg5MmYyNzcyNThkXkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
+    "description": "Follows a hapless courier tasked with delivering a package to a remote hospital. He soon finds himself caught in the middle of an outbreak and must fight through hordes of mutated creatures to survive.",
+    "release_date": "2026-09-18",
+    "rating": "R"
+  },
+  {
+    "id": "rl1765835009",
+    "title": "The Stunt Driver",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYzgwNzI1ZTYtN2MxZC00ZGI4LWE5ZjAtYWQ0ZGRmMzcyNmQ5XkEyXkFqcGc@._V1_SY139_CR2,0,92,139_.jpg",
+    "description": "The film chronicles the daredevil stuntman Ken Carter's quest to execute a bold stunt of launching a rocket car across the St. Lawrence River from Canada to the United States in the 1970s, facing absurd challenges along the way.",
+    "release_date": "2026-09-25",
+    "rating": "R"
+  },
+  {
+    "id": "rl1027834113",
+    "title": "Primetime",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMTcyZGI2NWQtOTU3NS00NTEyLTliNDItNTQyNmFkMGZmZGQzXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "In 2006, To Catch a Predator host Chris Hansen sets out to make television history.",
+    "release_date": "2026-09-25",
+    "rating": "R"
+  },
+  {
+    "id": "rl1698857217",
+    "title": "Victorian Psycho",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNjdmNmYwMzEtMzJmYS00MDkxLThiNGItZjA0MGJlMjU4MTNmXkEyXkFqcGc@._V1_SY139_CR0,0,92,139_.jpg",
+    "description": "In 1858, an eccentric young governess, Winifred Notty, arrives at the remote gothic manor Ensor House. As Winifred assimilates, staff begin to inexplicably disappear, and the owners wonder if something is amiss about this new governess.",
+    "release_date": "2026-09-25",
+    "rating": "R"
+  },
+  {
+    "id": "rl2998304769",
+    "title": "Your Mother Your Mother Your Mother",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BZDEwMjk2MjMtMTI3ZS00ODg5LWI2ZDYtOTVkOGZlNzIyYzRjXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Follows Latif, a devoutly religious hitman, who embarks on a desperate journey across Houston to protect his children after his wife dies, confronting forces closing in and beliefs threatening to unravel.",
+    "release_date": "2026-10-09",
+    "rating": "R"
+  },
+  {
+    "id": "rl2930475009",
+    "title": "Heart of the Beast",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMDVlMTRhMjgtMjdmZi00NjJhLWExMmYtODExNWJkZGZjNjdhXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "After a harrowing plane crash, a Special Forces officer and his combat dog find themselves stranded deep in the Alaskan wilderness. Together, they are forced into a brutal fight for survival against the elements.",
+    "release_date": "2026-09-25",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl1161789441",
+    "title": "Forgotten Island",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMWJlY2JiNTMtYTAwYy00NGFiLTkwYTEtM2VmNDc4MzM5YmJiXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+    "description": "Two best friends become stranded on the mystical world of Nakali, where their only escape might cost them their shared lifetime of memories.",
+    "release_date": "2026-09-25",
+    "rating": "PG"
+  },
+  {
+    "id": "rl790986753",
+    "title": "Digger",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BN2E0YTg1M2YtOGQyYi00NDFkLTk3NzUtYmEyNTZhYThhZDQ0XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "The most powerful man in the world embarks on a frantic mission to prove he is humanity's savior before the disaster he's unleashed destroys everything.",
+    "release_date": "2026-10-02",
+    "rating": "R"
+  },
+  {
+    "id": "rl2486730753",
+    "title": "Verity",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BZmE0OWRiNzktY2MwMy00YzQ5LWFkMzctNjI1ZWQ1NTRiZGM3XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Lowen Ashleigh is hired to ghostwrite for Verity Crawford. After she uncovers what appears to be Verity's autobiographical notes, she wrestles with the confessions about Verity's husband, and finds it hard to separate fiction from reality.",
+    "release_date": "2026-10-02",
+    "rating": "R"
+  },
+  {
+    "id": "rl1062174977",
+    "title": "Rolling Loud",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNWJlZDBmMGQtNjFiYy00ZGUwLTk5ZjMtNzYzNDU5MWIyY2I1XkEyXkFqcGc@._V1_SY139_CR61,0,92,139_.jpg",
+    "description": "A father makes a bad parenting choice by taking his young son to a wild hip-hop festival, leading to chaos as they navigate crowds, security, and family dynamics with eccentric companions.",
+    "release_date": "2026-10-02",
+    "rating": "R"
+  },
+  {
+    "id": "rl1875148801",
+    "title": "Other Mommy",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNWU2MzZlNmItYzVmYi00Y2Y4LWI4NTktNTg3NDE0MGE5NGRkXkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
+    "description": "Bela, an 8-year-old girl living in a home with marital problems, confronts a sinister entity that comes out of her closet. The presence, who she calls \"Other Mommy,\" becomes increasingly threatening to her and her family.",
+    "release_date": "2026-10-09",
+    "rating": "R"
+  },
+  {
+    "id": "rl1195868417",
+    "title": "Angel and the Badman",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BZmJhNjU3ODUtOTI1YS00M2RlLWJiZDEtZGU0NjRhYTBiNWNhXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A wounded outlaw finds unexpected mercy in the care of a rancher's daughter. The hope of love pulls him toward a different life until the law, and his violent past, close in on his new home. Now he must choose the kind of man he'll become.",
+    "release_date": "2026-10-09",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl49971201",
+    "title": "Sense and Sensibility",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BY2U1N2ExYTMtNGM2NS00ZmNiLTlkODktNzZmMjhjZGEzYjgyXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "From Focus Features and Working Title comes an irresistible new take on Jane Austen's iconic Sense and Sensibility: a charming, witty, and deeply relatable story of love and sisterhood starring Daisy Edgar-Jones and Esmé Creed-Miles.",
+    "release_date": "2026-10-16",
+    "rating": "PG"
+  },
+  {
+    "id": "rl1608024065",
+    "title": "Whalefall",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BN2FjZmNjYzctNDEzNC00YTNmLWFmOTItMjAyMDUxNWY1NmFkXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Follows a scuba diver who, while looking for his father's remains, is swallowed by an 80-foot, 60-ton sperm whale and has just one hour to get out before his oxygen runs out.",
+    "release_date": "2026-10-16",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl480804865",
+    "title": "Crawlers",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYjQzNTk0OTUtNGIxMy00YzNmLTk4MTMtOWNhNGIxMDgyZTA1XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Tenants at Paradiso Palms apartments fight a deadly spider invasion while the cunning building manager might be their only hope for survival.",
+    "release_date": "2026-10-16",
+    "rating": "R"
+  },
+  {
+    "id": "rl4489473",
+    "title": "The Only Living Pickpocket in New York",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BODc3NTVjOGMtMzVjYy00NzQ0LTg3MmYtODg3NzljMzNlOTJmXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "When a theft goes awry, a veteran pickpocket is sent on a mission through New York to reclaim it.",
+    "release_date": "2026-10-30",
+    "rating": "R"
+  },
+  {
+    "id": "rl1752465409",
+    "title": "Street Fighter",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYjhlN2EyNGUtY2U4YS00ZTQ3LTg0NTgtNGIxZmVhMDlmMjIyXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Street Fighters Ryu and Ken reunite when Chun-Li recruits them for the World Warrior Tournament. As they face a hidden conspiracy, they must confront each other and their past-or face destruction.",
+    "release_date": "2026-10-16",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl3542188033",
+    "title": "Clayface",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYTAyMjgxZjctMjRjNC00Zjg1LWJiNzctMDkxYzk0NWVmODMwXkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
+    "description": "Rising Hollywood star Matt Hagen descends into a horrifying revenge-filled monster when scientific ambition strips him of his identity and humanity.",
+    "release_date": "2026-10-23",
+    "rating": "R"
+  },
+  {
+    "id": "rl3065282561",
+    "title": "Wildwood",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNWI3NWZjNDEtNzRmMS00M2M0LWI3Y2YtNDk3NjY5ZWI4OGYwXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+    "description": "The adventures of Prue McKeel as she sets off to the forests outside Portland to find her kidnapped brother.",
+    "release_date": "2026-10-23",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl1538555905",
+    "title": "Wicker",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNTM2MmRkNGEtMjY4Mi00MjFjLWIyZWYtZWVlYWNhYmQ2ZTA1XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "An ostracized fisherwoman commissions the local basketmaker to weave her a husband, but when her wicker creation proves unexpectedly extraordinary, his presence ignites jealousy and upheaval that threatens their quiet village.",
+    "release_date": "2026-10-23",
+    "rating": "R"
+  },
+  {
+    "id": "rl1084391425",
+    "title": "Klara and the Sun",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNjQ1YzgwMTMtZDRhNC00MDE0LWFmODctM2ZlNjg5MmNiMDI1XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A robot girl designed to prevent loneliness tries to save a heartbroken family of humans.",
+    "release_date": "2026-10-23",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl2353824001",
+    "title": "The Mongoose",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNDBmN2E2YTQtMWE2Ni00ZjMxLWE4NGItODk2ZDZjZDU0MjdlXkEyXkFqcGc@._V1_SY139_CR0,0,92,139_.jpg",
+    "description": "A highly decorated combat vet, Ryan ''Fang'' Flanagan, is fleeing a murder scene at 130 miles an hour in a Mustang Shelby Super Snake GT350",
+    "release_date": "2026-10-30",
+    "rating": "R"
+  },
+  {
+    "id": "rl3954212865",
+    "title": "Christmas at the Kringles",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BZjk4ZTkyNTktMzRmOC00MDMzLTk4N2YtN2VlZTYyMmJjNzVlXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "The Severson family move to a suburban neighborhood where their neighbors, the Kringles, celebrate Christmas year-round and harbor sinister intentions to hypnotize and indoctrinate them.",
+    "release_date": "2026-10-30",
+    "rating": "R"
+  },
+  {
+    "id": "rl3544285441",
+    "title": "Drummer Boy",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYWQzYzFmODctMTcxZS00MzNjLWI3N2MtNjAzNWNmZWFjYmUxXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+    "description": "In this musical, two brothers are driven onto opposite sides of the Revolutionary War. With love, loyalty, and family caught in the crossfire, each must decide who he will become as the fight for freedom becomes a battle for forgiveness.",
+    "release_date": "2026-11-06",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl3834216449",
+    "title": "Godzilla Minus Zero",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYzY2OWFhMTgtODJhMi00NDIyLWIzNTQtYjc4MjE4YTBjYzllXkEyXkFqcGc@._V1_SY139_CR0,0,92,139_.jpg",
+    "description": "Set in 1949, the Shikishima family confronts a fresh catastrophe two years after surviving their previous ordeal with the legendary monster.",
+    "release_date": "2026-11-06",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl3529146369",
+    "title": "The Cat in the Hat",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BZmJhNzk4OGMtOTlmNC00ODAxLWFkYjYtY2RhYWVmNDg5YmViXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Meet the Cat in the Hat you don't know in an all-new, epic adventure where mischief, magic and mayhem reign supreme.",
+    "release_date": "2026-11-06",
+    "rating": "PG"
+  },
+  {
+    "id": "rl4237524993",
+    "title": "Wild Horse Nine",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNDc5ZDAzNmEtNTI2OS00YWI0LWE5MTYtZTJiN2RkNzRmMjA0XkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
+    "description": "CIA agents Chris and Lee face a trust-testing mission from Santiago to Easter Island during 1973 in Chile.",
+    "release_date": "2026-11-06",
+    "rating": "R"
+  },
+  {
+    "id": "rl2056355841",
+    "title": "I Play Rocky",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNDZlN2IyYjUtM2FhMi00OTQ0LTk5YjktNTdiZGM1ZDg3NzIxXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Sylvester Stallone, then a failing actor, writes the ultimate underdog story and must fight for his chance to play the role of a lifetime - Rocky Balboa.",
+    "release_date": "2026-11-06",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl754089985",
+    "title": "Ebenezer: A Christmas Carol",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BY2Y0NWM2N2EtMjdkMS00NTc0LTg4NDctZmUyYTA4YWZlY2EwXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A thrilling ghost story set in Dickens' London, following one man's supernatural journey to face his past, present and future as he fights for a second chance at redemption.",
+    "release_date": "2026-11-13",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl1488224257",
+    "title": "How to Rob a Bank",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BODY5YWIzZTAtMzA5OC00MDgwLTgxZjQtZGIwZTg2YTk3YWE1XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Bank robbers are posting their heists on social media, causing police to chase them.",
+    "release_date": "2026-11-13",
+    "rating": "R"
+  },
+  {
+    "id": "rl2490269697",
+    "title": "The Hunger Games: Sunrise on the Reaping",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNGRkYmM2MjUtZTY4Yi00YTNhLTk1MDEtYTQ3YjFiOTljM2Y1XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Revisit the world of Panem 24 years before the events of The Hunger Games, starting on the morning of the reaping of the 50th Hunger Games, also known as the Second Quarter Quell.",
+    "release_date": "2026-11-20",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl3186130945",
+    "title": "Hexed",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMjQ4NDg5Y2YtZmQ3Ny00N2FjLWIyMGMtYzU1YzEyZTgyZjIwXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "An awkward teen and her Type-A mother learn her peculiarities might be magical powers, transforming their lives and revealing a hidden magical realm.",
+    "release_date": "2026-11-25",
+    "rating": "PG"
+  },
+  {
+    "id": "rl1480753409",
+    "title": "Hershey",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BN2ViZTQ2N2QtZDRmMC00MTU2LTlhM2EtZjg2YzA0YzI4NzRkXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Driven by grit and relentless optimism, Milton Hershey climbs from bankruptcy to candy-making success. But when his wife falls ill, she inspires an even bolder dream: using their fortune to build a lasting legacy.",
+    "release_date": "2026-11-25",
+    "rating": "PG"
+  },
+  {
+    "id": "rl2026930177",
+    "title": "Focker-in-Law",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BOGI0NjhmMmEtNDAxZC00MDFjLThlNzUtYTUwMDkzMjMxNGIzXkEyXkFqcGc@._V1_SX92_CR0,0,92,139_.jpg",
+    "description": "A young man named Henry, son of Greg and Pam Focker, faces family chaos when he decides to marry a strong-willed woman who appears to be his complete mismatch.",
+    "release_date": "2026-11-25",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl4006379521",
+    "title": "Violent Night 2",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNWY3ZmRhOTQtZDE4ZS00NmNlLWIwNjgtZTdkY2I4NjRmMjY5XkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
+    "description": "Stranded in a crumbling New Jersey mall and cut off from the North Pole, Santa Claus is trapped dishing out violent justice to a ruthless Crime Lord and his henchmen overrunning the town's mall.",
+    "release_date": "2026-12-04",
+    "rating": "R"
+  },
+  {
+    "id": "rl3135209473",
+    "title": "Zero A.D.: The Birth of Christ",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BZTgzOGI2MjgtZDg3NC00NDI4LWIwYTAtZjc1OTNhZjk0Y2Y2XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A star rises over Bethlehem as Christ is born. But when Herod orders the slaughter of the innocents, Mary and Joseph must protect the child promised to save the world.",
+    "release_date": "2026-12-11",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl3460727041",
+    "title": "Dune: Part Three",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BYjk1NjgwZDMtYzI5OS00Y2Q4LWI1NmItNTE5OGU2NDVmMTAxXkEyXkFqcGc@._V1_SY139_CR9,0,92,139_.jpg",
+    "description": "Emperor Paul Atreides faces the fallout from his ascent to power as political plots and a galaxy-wide holy war endanger the future only he can see.",
+    "release_date": "2026-12-18",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl2479981313",
+    "title": "Avengers: Doomsday",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNGEwYWZkN2UtOTQ5Mi00MGQzLWEzNjYtMWMyNDBkMTkzMWNkXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Heroes from three different worlds must unite when they're thrust together to confront a catastrophic danger that could destroy everything they know.",
+    "release_date": "2026-12-18",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl3091169281",
+    "title": "The Angry Birds Movie 3",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNjk4N2IwMzUtZDI2Ny00NTE2LTk4ZTMtODVhYjU2YjUwZDM5XkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "Red faces his greatest challenge yet, which is being a dad - and also saving the world.",
+    "release_date": "2026-12-23",
+    "rating": "PG"
+  },
+  {
+    "id": "rl504528897",
+    "title": "Jumanji: Open World",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BZjgxZmExZDYtNDhkZS00YWI0LTlmOWQtZWRhYzY0ZWY4ODljXkEyXkFqcGc@._V1_SY139_CR45,0,92,139_.jpg",
+    "description": "The players have escaped the ever-changing jungles of Jumanji, but this time the game breaks free of its console, unleashing chaos into our world.",
+    "release_date": "2026-12-25",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl479297537",
+    "title": "Mr. Irrelevant",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BNjllOWE3OWQtNmVhYS00MzM0LTk2NTEtZjQzNTEzNTc2MTc3XkEyXkFqcGc@._V1_SY139_CR58,0,92,139_.jpg",
+    "description": "The heartfelt story of the inspiring, enduring impact John Tuggle had on his team and teammates after being drafted by the New York Giants.",
+    "release_date": "2026-12-25",
+    "rating": "PG-13"
+  },
+  {
+    "id": "rl1512603649",
+    "title": "Werwulf",
+    "image_url": "https://m.media-amazon.com/images/M/MV5BMDVhOGE4MzItMmEyYi00ZWNiLTk0YTUtODM1YWIwNmVmMWIyXkEyXkFqcGc@._V1_SY139_CR1,0,92,139_.jpg",
+    "description": "A tale of devotion, damnation and the devil within.",
+    "release_date": "2026-12-25",
+    "rating": "R"
   }
 ]
