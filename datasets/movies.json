@@ -1688,6 +1688,28 @@
     ]
   },
   {
+    "name": "Curtis",
+    "pull_through": "2027-01-01",
+    "competition": "wiseFamily6",
+    "movies": [
+      {
+        "title": "Fall 2: Deadpoint",
+        "imdb_id": "rl2930278401",
+        "points": 0
+      },
+      {
+        "title": "The Mongoose",
+        "imdb_id": "rl2353824001",
+        "points": 14
+      },
+      {
+        "title": "The Hunger Games: Sunrise on the Reaping",
+        "imdb_id": "rl2490269697",
+        "points": 86
+      }
+    ]
+  },
+  {
     "name": "Kam",
     "pull_through": "2027-01-01",
     "competition": "wiseFamily6",
