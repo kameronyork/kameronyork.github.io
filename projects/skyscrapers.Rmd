@@ -14,7 +14,7 @@ output:
 <br>
 For this project I started with the question: "Which country has the most skyscrapers per person?" I then expanded the question to finding three values: 1) The country with the highest number of skyscrapers, 2) the country with the most skyscrapers per person, and 3) the country with the most skyscrapers in relation to GDP.
 
-```{r include = FALSE}
+```{r include = FALSE, echo=FALSE}
 library(tidyverse)
 library(readr)
 library(downloader)
@@ -25,7 +25,7 @@ library(pander)
 ```
 
 
-```{r include=FALSE}
+```{r include=FALSE, echo=FALSE}
 # Code downloading and wrangling GDP data since 1960:
 # GDP is in Billions.
 gdp_1960 <- read.csv("https://www.kameronyork.com/datasets/gdp-data.csv", sep = ",") %>% 
@@ -89,7 +89,7 @@ data_merge <- skyscraper_1960 %>%
 
 ### Data Demonstration:
 
-```{r}
+```{r, echo=FALSE}
 # Analysis to visualize USA GDP vs. UK GDP:
 USA_analysis <- data_merge %>% 
   filter(country_name %in% c("United Kingdom", "United States"))
@@ -123,7 +123,7 @@ This plot showcases one of the features of my created data set: GDP by country p
 
 ### Skyscrapers in General:
 
-```{r}
+```{r, echo=FALSE}
 # Code determining labels for the top three countries:
 highest_skyscraper <- data_merge %>% 
   filter(country_name %in% c("China", "United States", "United Arab Emirates")) %>%
@@ -162,7 +162,7 @@ This plot displays number of skyscrapers by country. From this visualization I f
 
 Highlighted in Gold you will see the United Arab Emirates. Note their construction of hundreds of skyscrapers since the early 2000's, quickly moving them from the bottom of the pack to having the third most skyscrapers in the world! Keep your eye on them, as the United Arab Emirates will play a major part of the following visualizations. In fact, this jump can be illustrated by this table:
 
-```{r}
+```{r, echo=FALSE}
 # table to find top three countries in 1960:
 table1 <- data_merge %>% 
   filter(year == 1960) %>% 
@@ -196,7 +196,7 @@ This table shows the change in skyscraper dominant countries from 1960 to 2020. 
 
 ### Skyscrapers per Capita:
 
-```{r}
+```{r, echo=FALSE}
 # Filtering out countries with only one skyscraper to keep data consistent:
 data_per_cap <- data_merge %>% 
   mutate("per_capita" = Skyscraper / (POP * 1000000000)) %>% 
@@ -249,7 +249,7 @@ Here you can see a plot of the top five countries with the most skyscrapers per 
 
 The most notable in this group is the United Arab Emirates (I told you to keep an eye on them!). Although they are third place in terms of skyscrapers generally, they have the most skyscrapers per person in the world! To make this point more clear I have created the following visualization showing just the top three countries in terms of skyscrapers in general:
 
-```{r}
+```{r, echo=FALSE}
 # table to filter down to just the top three countries for skyscrapers:
 uae_analysis <- data_per_cap %>%  
   filter(country_name %in% c("United Arab Emirates", "United States", "China"))
@@ -302,7 +302,7 @@ For this section I decided to create a whole new statistic (at least one that I 
 
 I felt this stat would best show the number of skyscrapers relative to GDP as dividing the number of skyscrapers by the GDP would cause countries with low skyscrapers and low GDP's to be ranked higher than countries with moderate skyscrapers and high GDP's.
 
-```{r warning=FALSE, message=FALSE}
+```{r warning=FALSE, message=FALSE, echo=FALSE}
 # Table to show the empire stat per country:
 sky_gdp <- data_merge %>% 
   mutate("gdp_capita" = GDP / POP) %>% 

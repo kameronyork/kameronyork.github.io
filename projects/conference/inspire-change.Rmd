@@ -12,7 +12,7 @@ output:
       after_body: "https://www.kameronyork.com/_includes/footer.html"
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, echo=FALSE}
 library(tidyverse)
 library(pander)
 library(plotly)
@@ -23,14 +23,14 @@ library(mosaic)
 
 ```
 
-```{r, include=FALSE}
+```{r, include=FALSE, echo=FALSE}
 # Loading in the Data
 talks_data <- read.csv("https://www.kameronyork.com/datasets/general-conference-talks.csv", encoding="UTF-8")
 dedication_data <- read.csv("https://www.kameronyork.com/datasets/dedication-data.csv", encoding="UTF-8") %>% 
   mutate(year = str_sub(dedicated, 0, 4))
 ```
 
-```{r, include=FALSE}
+```{r, include=FALSE, echo=FALSE}
 # Loading in the quotes data
 quotes <- read.csv("https://www.kameronyork.com/datasets/conference-quotes.csv", encoding="UTF-8")
 ```
@@ -60,7 +60,7 @@ Of temples President Hinckley said, <i>"We are determined, brethren, to take the
 During his time as Prophet nearly 80 temples were dedicated - an impressive number as when he was called to the position there were less than 50 in operation.  Through the design and construction of smaller temples, and an increase in the rate at which temples were announced and built, President Hinckley introduced the church to a new age of temple availability that continues to this day.  
 
 This plot shows the number of temples in the world by year:
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 temple_data <- talks_data %>%
   mutate(
     temple_count = str_count(tolower(text), "\\btemple\\b") + str_count(tolower(text), "\\btemples\\b"),
@@ -96,7 +96,7 @@ Clearly the number of temples in the world has increased, but has the culture of
 ##### Scatter Plots
 This plot shows there seems to be an increase in temple-related words following President Hinckley's sustaining as prophet.  The large gap in the middle is due to the sudden jump from 63 temples in 1999 to 102 temples in 2000.  There are no dots through that section because no General Conference addresses were given in that time frame.
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 
 ggplot(data = temple_by_year) +
   geom_point(mapping = aes(x = temples, y = total), color = "forestgreen") +
@@ -112,7 +112,7 @@ ggplot(data = temple_by_year) +
 ```
 
 This time the phrases are shown in different colors.
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 temple_pivot <- temple_data %>% 
   select(year, speaker, title, temple_count, house_of_the_lord_count, house_of_god_count) %>% 
   pivot_longer(
@@ -149,7 +149,7 @@ ggplot(data = temple_pivot) +
 
 This boxplot shows that there is an increase in temple-related words between before President Hinckley was the prophet and our current Post-President Hinckley era.  It seems temples are being talked about more now than they were before his sustaining.
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 temple_boxes <- temple_by_year %>% 
   mutate(group = case_when(
     year < 1995 ~ "Before Call",
@@ -171,7 +171,7 @@ ggplot(data = temple_boxes) +
 
 Numerical Summary:
 
-```{r}
+```{r, echo=FALSE}
 pander( favstats(total ~ group, data = temple_boxes)[, -10] )
 
 ```
@@ -184,7 +184,7 @@ This T Test is a statistical test meant to tell us if the means of both populati
 
 On top of that, based on the box plots of the previous tab, it is easy to conclude that Temples are mentioned more after President Hinckley's call than before he was the prophet!
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 t.test(total ~ group, data = temple_boxes, mu = 0, alternative = "two.sided", conf.level = 0.95) %>% 
   pander()
 ```
@@ -193,7 +193,7 @@ t.test(total ~ group, data = temple_boxes, mu = 0, alternative = "two.sided", co
 
 This linear model table gives us information about the slope and intercepts of the line for each of the phrases we are tracking in General Conference talks.  However, the Y-intercept is attempting to estimate the number of mentions of each phrase at the year 0.  Because that statistic is not meaningful it should be ignored.
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 # Perform multiple linear regression
 model <- lm(total ~ type_label * year, data = temple_pivot)
 
@@ -229,7 +229,7 @@ While these two phrases don't actually show much change, the phrase "Temple" sho
 
 How did this calling to action effect the number of quotes from the Book of Mormon in General Conference talks?
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 bom_data <- talks_data %>%
   mutate(
     total_bom = str_count(tolower(text), "(?i)\\bbook of mormon\\b")
@@ -239,7 +239,7 @@ bom_data <- talks_data %>%
 
 ##### Scatter Plots
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 bom_quotes <- quotes %>% 
   filter(overall_book == "Book of Mormon") %>% 
   group_by(talk_year) %>% 
@@ -266,7 +266,7 @@ The following tabs will attempt to prove, statistically, that this positive chan
 
 ##### Box Plot
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 bom_boxes <- bom_quotes %>% 
   mutate(group = case_when(
     talk_year < 1986 ~ "Before Talk", 
@@ -291,7 +291,7 @@ ggplot(data = bom_boxes) +
 
 
 Numerical Summary:
-```{r}
+```{r, echo=FALSE}
 pander( favstats(total ~ group, data = bom_boxes)[, -10] )
 
 ```
@@ -303,7 +303,7 @@ However, in contrast, in the years following the prophet's message we typically 
 
 ##### T Test
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 t.test(total ~ group, data = bom_boxes, mu = 0, alternative = "two.sided", conf.level = 0.95) %>% 
   pander()
 ```
@@ -316,7 +316,7 @@ From this result and the boxplots in the previous tab we can conclude that there
 
 This linear model table gives us information about the slope and intercepts of the line for the number of Book of Mormon quotes over time.  Like with the Temple mentions linear model, the Y-intercept is trying to estimate the number of Book of Mormon quotes in the year 0 which is not meaningful.  Because of this it should be ignored.
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 mylm <- lm(total ~ talk_year, data = bom_quotes)
 summary(mylm) %>% 
   pander()
@@ -327,7 +327,7 @@ This table shows us that the slope of our linear model is `1.35`, a positive slo
 
 ##### Bible Comparison
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 bible_compare <- quotes %>% 
   filter(overall_book %in% c("Book of Mormon", "Bible")) %>% 
   group_by(talk_year, overall_book) %>% 
@@ -341,7 +341,7 @@ ggplot(data  = bible_compare) +
 ```
 
 Is there a difference in boxplots Pre President Benson and Post President Benson?
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 benson_check <- bible_compare %>% 
   mutate(group = case_when(
     talk_year < 1986 ~ "Before Talk",
@@ -370,7 +370,7 @@ Has this focus permeated the church as a whole?  Here we have conducted a simple
 
 ##### Scatter Plots
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 gathering_data <- talks_data %>%
   mutate(
     gathering1 = str_count(tolower(text), "(?i)\\bgathering of israel\\b"),
@@ -415,7 +415,7 @@ Our statistical models have shown that this difference is significant!  Therefor
 
 ##### Box Plot
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 
 ggplot(data = gathering_pivot) + 
   geom_boxplot(mapping = aes(x = group, y = total)) + 
@@ -431,7 +431,7 @@ ggplot(data = gathering_pivot) +
 
 
 Numerical Summary:
-```{r}
+```{r, echo=FALSE}
 pander( favstats(total ~ group, data = gathering_pivot)[, -10] )
 
 ```
@@ -442,7 +442,7 @@ In stark contrast, the group of years following President Nelson's call has neve
 
 ##### T Test
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 t.test(total ~ group, data = gathering_pivot, mu = 0, alternative = "two.sided", conf.level = 0.95) %>% 
   pander()
 ```

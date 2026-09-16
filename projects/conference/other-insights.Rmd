@@ -12,7 +12,7 @@ output:
       after_body: "https://www.kameronyork.com/_includes/footer.html"
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, echo=FALSE}
 library(tidyverse)
 library(pander)
 library(plotly)
@@ -22,14 +22,14 @@ library(stringr)
 
 ```
 
-```{r, include=FALSE}
+```{r, include=FALSE, echo=FALSE}
 # Loading in the Data
 talks_data <- read.csv("https://www.kameronyork.com/datasets/general-conference-talks.csv", encoding="UTF-8")
 dedication_data <- read.csv("https://www.kameronyork.com/datasets/dedication-data.csv", encoding="UTF-8") %>% 
   mutate(year = str_sub(dedicated, 0, 4))
 ```
 
-```{r, include=FALSE}
+```{r, include=FALSE, echo=FALSE}
 # Loading in the quotes data
 quotes <- read.csv("https://www.kameronyork.com/datasets/conference-quotes.csv", encoding="UTF-8")
 ```
@@ -41,7 +41,7 @@ Below are insights I have found from the General Conference data used in my prev
 ### Family History and Genealogy
 ("Family History", "Genealogy")
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 family_search_data <- talks_data %>%
   mutate(
     family_history = str_count(tolower(text), "(?i)\\bfamily history\\b"),
@@ -80,7 +80,7 @@ By 2010 the term, "Genealogy" was nearly completely phased out of General Confer
 ### Gospel of Jesus Christ
 ("Faith", "Repentance", "Baptism", "Gift of the Holy Ghost", "Endure to the End")
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 gospel_principles <- talks_data %>%
   mutate(
     faith = str_count(tolower(text), "(?i)\\bfaith\\b"),
@@ -115,7 +115,7 @@ ggplot(data = gospel_pivot) +
   )
 ```
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 ggplot(data = filter(gospel_pivot, type != "faith")) +
   geom_point(mapping = aes(x = year, y = total, color = type)) +
   geom_smooth(se = FALSE, mapping = aes(x = year, y = total, color = type)) + 
@@ -132,7 +132,7 @@ ggplot(data = filter(gospel_pivot, type != "faith")) +
 
 ```
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 gospel_principles <- talks_data %>%
   mutate(
     gospel = str_count(tolower(text), "(?i)\\bgospel of jesus christ\\b")
@@ -167,7 +167,7 @@ ggplot(data = gospel_pivot) +
 ### Satan
 ("Satan", "Adversary")
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 satan_data <- talks_data %>%
   mutate(
     satan = str_count(tolower(text), "(?i)\\bsatan\\b"),
@@ -209,7 +209,7 @@ This is an interesting observation, but I am unsure of what could be causing it!
 ### Jesus
 ("Jesus", "Lord", "Savior")
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 jesus_data <- talks_data %>%
   mutate(
     jesus = str_count(tolower(text), "(?i)\\bjesus\\b"),
@@ -247,7 +247,7 @@ ggplot(data = jesus_pivot) +
 ### Prophet Names
 ("President Nelson", "Russell M. Nelson", "Russell Nelson")
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 prophets_data <- talks_data %>%
   mutate(
     nelson1 = str_count(tolower(text), "(?i)\\bpresident nelson\\b"),
@@ -318,7 +318,7 @@ ggplot(data = prophets_pivot) +
 
 ```
 
-```{r}
+```{r, echo=FALSE}
 ggplot(data = filter(prophets_pivot, 
                      !type %in% c("nelson"))) +
   geom_point(mapping = aes(x = year, y = total), color = "grey") +
@@ -345,7 +345,7 @@ ggplot(data = filter(prophets_pivot,
 ### Relief Society President Names
 ("President Bingham", "Jean B. Bingham", "Jean Bingham", "Sister Bingham")
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 rs_data <- talks_data %>%
   mutate(
     spafford1 = str_count(tolower(text), "(?i)\\bpresident spafford\\b"),
@@ -487,7 +487,7 @@ ggplotly(rs_plot)
 ### Jesus and God
 ("God", "Heavenly Father", "Father in Heaven" | "Jesus", "Lord", "Savior")
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 god_data <- talks_data %>%
   mutate(
     god = str_count(tolower(text), "(?i)\\bgod\\b") + str_count(tolower(text), "(?i)\\bheavenly father\\b") + str_count(tolower(text), "(?i)\\father in heaven\\b"),
@@ -522,7 +522,7 @@ ggplot(data = god_pivot) +
 ### Jesus and God
 ("God" | "Jesus")
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 god_data2 <- talks_data %>%
   mutate(
     god = str_count(tolower(text), "(?i)\\bgod\\b"),
@@ -559,7 +559,7 @@ ggplot(data = god_pivot2) +
 ### The Official Name of the Church
 ("The Church of Jesus Christ of Latter-Day Saints")
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 church_name_data <- talks_data %>%
   mutate(
     Name = str_count(tolower(text), "(?i)\\bthe church of jesus christ of latter-day saints\\b") + str_count(tolower(text), "(?i)\\bthe church of jesus christ of latter day saints\\b")
@@ -593,7 +593,7 @@ ggplot(data = church_name_pivot) +
 Compared to other names of the Church:
 ("Mormon Church", "LDS Church")
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 church_name_data2 <- talks_data %>%
   mutate(
     Correct = str_count(tolower(text), "(?i)\\bthe church of jesus christ of latter-day saints\\b") + str_count(tolower(text), "(?i)\\bthe church of jesus christ of latter day saints\\b"),

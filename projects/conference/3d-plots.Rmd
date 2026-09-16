@@ -72,7 +72,7 @@ chapters <- verses %>%
 ## Testing 3D Plot Knitting:
 
 All Verses:
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
 # Remove zero values in quote_count
 plot_3d <- verses %>% 
   mutate(quote_count = ifelse(quote_count == 0, NA, quote_count))
@@ -97,7 +97,7 @@ fig
 ```
 
 All Chapters:
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
 # Plotting the Book Chapter Image in 3D:
 
 chapter_fig <- plot_ly(data = chapters, x = ~chapter, y = ~factor(chapters$book, levels = book_ordering), z = ~quote_count) %>% 
