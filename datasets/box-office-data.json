@@ -161837,7 +161837,7 @@
     {
         "Date":"2026-09-16",
         "DOW":"Wednesday",
-        "Rank":"18",
+        "Rank":"20",
         "Daily":"$376",
         "%\u00b1 YD":"-35.8%",
         "%\u00b1 LW":"-81.5%",
@@ -161897,7 +161897,7 @@
     {
         "Date":"2026-09-16",
         "DOW":"Wednesday",
-        "Rank":"15",
+        "Rank":"16",
         "Daily":"$34,125",
         "%\u00b1 YD":"-25.4%",
         "%\u00b1 LW":"-84.8%",
@@ -161957,7 +161957,7 @@
     {
         "Date":"2026-09-16",
         "DOW":"Wednesday",
-        "Rank":"16",
+        "Rank":"18",
         "Daily":"$4,893",
         "%\u00b1 YD":"-12.2%",
         "%\u00b1 LW":"-80.4%",
@@ -161968,5 +161968,35 @@
         "Estimated":"false",
         "IMDB_ID":"rl3344859137",
         "Title":"Toy Story 5"
+    },
+    {
+        "Date":"2026-09-16",
+        "DOW":"Wednesday",
+        "Rank":"15",
+        "Daily":"$65,304",
+        "%\u00b1 YD":"-33.1%",
+        "%\u00b1 LW":"-61.9%",
+        "Theaters":"1,024",
+        "Avg":"$63",
+        "To Date":"$4,855,106",
+        "Day":"15",
+        "Estimated":"false",
+        "IMDB_ID":"rl2930278401",
+        "Title":"Fall 2: Deadpoint"
+    },
+    {
+        "Date":"2026-09-16",
+        "DOW":"Wednesday",
+        "Rank":"17",
+        "Daily":"$9,380",
+        "%\u00b1 YD":"-26.4%",
+        "%\u00b1 LW":"-86.3%",
+        "Theaters":"203",
+        "Avg":"$46",
+        "To Date":"$15,829,783",
+        "Day":"27",
+        "Estimated":"false",
+        "IMDB_ID":"rl3593568257",
+        "Title":"Mutiny"
     }
 ]
