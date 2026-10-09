@@ -98,7 +98,7 @@ swap_df.to_csv("./backups/conference-talk-hyperlinks-output-2.csv", encoding="ut
 ##### # %%
 ## # ## swap_df = pd.read_csv("./backups/conference-talk-hyperlinks-output-2.csv", encoding="utf-8")
 
-refs_df = swap_df.query("ref_check == True")
+refs_df = swap_df.query("ref_check == True").copy()
 
 
 book_decoder = {
@@ -354,37 +354,59 @@ scriptures_df = pd.merge(scriptures_df, all_verses, on='scripture', how='left')
 import re
 
 def calculate_perc_quoted(row):
-    # Function to remove punctuation and lower the case
+    # Remove punctuation, normalize case, and split into words
     def preprocess_text(text):
-        return re.sub(r'[^\w\s]', '', text).lower().split()
+        if pd.isna(text):
+            return []
+
+        return re.sub(r'[^\w\s]', '', str(text)).lower().split()
 
     scripture_words = preprocess_text(row['scripture_text'])
     talk_words = preprocess_text(row['talk_text'])
 
+    # Can't calculate a quote percentage without scripture text
+    if not scripture_words:
+        return {
+            "perc_quoted": 0,
+            "words_quoted": ""
+        }
+
     # Initialize DP table
-    dp = [[0] * (len(talk_words) + 1) for _ in range(len(scripture_words) + 1)]
+    dp = [[0] * (len(talk_words) + 1)
+          for _ in range(len(scripture_words) + 1)]
+
     max_length, end_index = 0, 0
 
     # Fill DP table
     for i in range(1, len(scripture_words) + 1):
         for j in range(1, len(talk_words) + 1):
-            if scripture_words[i-1] == talk_words[j-1]:
-                dp[i][j] = dp[i-1][j-1] + 1
+            if scripture_words[i - 1] == talk_words[j - 1]:
+                dp[i][j] = dp[i - 1][j - 1] + 1
+
                 if dp[i][j] > max_length:
                     max_length = dp[i][j]
                     end_index = i
 
     # Calculate percentage quoted
-    perc_quoted = (max_length / len(scripture_words)) * 100 if max_length > 0 else 0
-    words_quoted = " ".join(scripture_words[end_index - max_length:end_index]) if perc_quoted >= 20 else ""
+    perc_quoted = (max_length / len(scripture_words)) * 100
 
-    # Simplified rounding logic
+    words_quoted = (
+        " ".join(
+            scripture_words[end_index - max_length:end_index]
+        )
+        if perc_quoted >= 20
+        else ""
+    )
+
     if perc_quoted < 5:
         perc_quoted_rounded = round(perc_quoted)
     else:
         perc_quoted_rounded = round(perc_quoted / 5) * 5
 
-    return {"perc_quoted": perc_quoted_rounded, "words_quoted": words_quoted}
+    return {
+        "perc_quoted": perc_quoted_rounded,
+        "words_quoted": words_quoted
+    }
 
 # Apply the function to each row to create the perc_quoted and words_quoted columns
 tqdm.pandas(desc="Calculating Quotes:")

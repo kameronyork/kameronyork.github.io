@@ -54,7 +54,8 @@ filtered to talks by apostles only.
 footnotes.JSON file instead.
 
 The files are the backbone of the Gospel Buddy extension.  Once they are 
-completed and published to GitHub the extension will include the new data.
+completed and published to GitHub the extension will need to be updated with
+the new filename references in order to use them.
 
 ---------------------------------------------------------------------------
                     OPTIONAL: Updating Conference Bingo
