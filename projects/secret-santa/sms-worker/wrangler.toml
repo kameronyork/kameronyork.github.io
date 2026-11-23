@@ -1,0 +1,7 @@
+name = "secret-santa-sms"
+main = "worker.mjs"
+compatibility_date = "2025-04-01"
+[[ratelimits]]
+name = "SMS_RATE_LIMIT"
+namespace_id = "1001"
+simple = { limit = 20, period = 60 }
