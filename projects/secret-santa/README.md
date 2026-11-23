@@ -2,9 +2,49 @@
 
 A standalone, responsive HTML/CSS/JavaScript app for family gift exchanges. Open the project via HTTPS GitHub Pages or a localhost web server. No hosted account or backend is needed for drawing. The public GitHub repository contains only code and no participant names or assignments.
 
+## Storage, privacy, and manual GitHub sync
+
+**Your browser is the working copy.** Events are encrypted with AES-256-GCM before being saved to localStorage. Saving and editing is automatic locally. Nothing goes to GitHub until you click **↑ Sync to GitHub**. The status strip clearly says **Not synced** when the local encrypted copy differs from the last successfully synced copy.
+
+Clicking **Sync to GitHub** saves your encrypted collection into the JSON file at `projects/secret-santa/events.encrypted.json`.
+
+The repository is **public**. This JSON stores only random salts, IVs, encrypted ciphertext, and non-secret metadata, never readable names, assignments, or passphrases. **Anyone can download the encrypted JSON and attempt offline guesses of the passphrase.** Use a long, unique passphrase that is not easy to guess; do not use a secret you have already shared publicly.
+
+Each family/person has their own encryption passphrase and encrypted collection. Each collection holds many years of family events. The page never stores your passphrase or a recoverable passphrase hash. It uses PBKDF2-HMAC-SHA-256 with 600,000 iterations and a random salt to derive the AES-256-GCM encryption key. A new random nonce is used on every write.
+
+### Initial setup to upload to GitHub
+
+1. Go to your GitHub account’s **Settings → Developer settings → Personal access tokens → Fine-grained tokens** or https://github.com/settings/personal-access-tokens/new.
+2. Create a token scoped to the **kameronyork/kameronyork.github.io** repository **only**, granting **Contents: Read and write**. No other permissions are needed. GitHub may require an expiration date; create a new token when it expires.
+3. Open your Secret Santa webpage using HTTPS, create or unlock your events, and click **Sync to GitHub**.
+4. Paste the token when prompted. The token is sent over HTTPS *only* to GitHub’s REST API. It is held **only in memory** until you lock the page or reload it; it is never stored in localStorage or committed to GitHub.
+5. Wait for the page to confirm **Synced to GitHub**. You can check the repository JSON file and GitHub commit history for the encrypted update.
+
+GitHub Pages is a static site and has no secret server credentials. **Without that token, anyone can download synced encrypted events, but cannot upload/edit the GitHub data.** Other users with their own PINs will need a repository-authorized token to sync their changes, or you can sync on their behalf. Do not enter the token on a page you do not trust.
+
+### On a new phone or after clearing site data
+
+1. Open the same Secret Santa webpage.
+2. Click **↓ Load saved events from GitHub** (no GitHub token needed for download).
+3. Unlock with the *same* passphrase you used when you synced. The page can also attempt to download automatically when an unlock attempt finds no matching local collection.
+4. Your complete synced event history is restored locally. Any edits **since the last successful sync** cannot be recovered from GitHub.
+
+If you have older events saved unencrypted by the first version, create a passphrase on the **original browser and hostname**. Those existing local events will be encrypted and imported. Then click **Sync to GitHub**.
+
+### Change a PIN to a passphrase
+
+Previously created numeric PINs (6–12 digits) still unlock existing collections. New passphrases support 8–128 printable ASCII characters, including letters, numbers and symbols (without spaces). You can use **Change passphrase** while your collection is unlocked: enter the existing PIN and the new passphrase twice. The collection is re-encrypted with a fresh salt. **Sync right afterward:** until you do, your GitHub backup still uses the previous PIN.
+
+No passphrase is ever hardcoded in the public website or repository. No one with repo access can change an existing user’s local encrypted collection without their existing PIN and browser storage.
+
+### Conflicts and backup status
+
+Each click on Sync uses GitHub’s file revision SHA. If the same collection was edited on another device since your last download, the app **refuses to overwrite that newer GitHub copy**. It displays a conflict warning rather than silently losing data. When you are locked, **Load saved events from GitHub** refreshes clean local copies; unsynced local edits are never overwritten. To avoid conflicts, sync before changing devices, then download the current copy before making changes on another device.
+
+Clearing *only* cookies generally leaves localStorage intact; clearing **site data** can remove localStorage. Deleting browser site data before a successful sync can permanently lose unsynced events. Keeping your passphrase safe is essential: there is no online account password recovery.
 ## Using the app
 
-1. Create a 6–12 digit PIN (8 or more digits strongly recommended) to make a personal encrypted event collection in this browser, or unlock one with your existing PIN. Each PIN has its own set of events.
+1. Create an 8+ character passphrase (letters and numbers are supported) or unlock with your existing PIN/passphrase. Each passphrase opens its own family history.
 2. Name the event, optionally enter a USD gift limit, and add names (one per line).
 3. Expand each participant's exclusion list. With "Apply changes both ways" checked, excluding a spouse automatically excludes the reverse pairing too. Uncheck it for directional exclusions. Self-draw prevention is checked by default.
 4. Optionally check **Exclude the person each participant drew in a previous event**, then choose a completed previous event under the same PIN. Names match case-insensitively after trimming whitespace. The page lists matched giver → recipient pairs and unmatched people (including former recipients no longer participating). If names change, edit them and recheck the match list. The historical restriction combines with all manually chosen exclusions. Reusing a drawn event for next year automatically enables the prior-event restriction and selects the original drawing.
@@ -13,26 +53,9 @@ A standalone, responsive HTML/CSS/JavaScript app for family gift exchanges. Open
 7. Select Send text next to a participant and enter their phone number. No assignment is shown in that dialog.
 8. Use New event to keep separate family events. Reuse for next year copies the participants, exclusions, settings and budget but not assignments or notification history. You can edit the copied event name and year.
 
-## PIN privacy and encryption
+## Automated tests
 
-- A PIN is required before events and past assignments appear. Select **Lock** when finished.
-- Each PIN opens a separate event collection on the **same browser and website origin**. Different relatives can set different PINs and see only their own events locally. There is **no cloud storage, sync between devices, or PIN recovery**. A new PIN on a different device starts an empty collection.
-- Your event names, participants, exclusions, assignments, sent status, and optional SMS endpoint are encrypted with browser **AES-256-GCM**. The encryption key is derived using **PBKDF2-HMAC-SHA-256** with a per-collection random salt and 600,000 iterations. A fresh random IV is generated for every write.
-- The browser stores only the salt, IV, encryption parameters, collection ID and encrypted ciphertext in localStorage (key `secret-santa.vaults.v2`). It never stores the PIN itself or an easily reversible hash. In technical terms, **a hash cannot be decoded to recover names**; encryption is required to display those details again.
-- Previous events saved by the older unencrypted version (`secret-santa.v1`) are migrated **when the first PIN is created in that browser**. They are encrypted under that new PIN, verified, and the old unencrypted entry is then removed. Create the initial PIN from the same browser and domain where you originally used the app. If events were saved under a different hostname (such as `www` versus non-`www`), that is different browser storage and will not be automatically imported.
-- This is **device-level convenience privacy**, not an online identity system. Someone who knows or guesses your PIN, anyone who uses your browser while it is unlocked, or malicious scripts with access to the page can read the decrypted results. A copied encrypted file can be attacked offline; longer unpredictable PINs are safer. On shared devices, always click **Lock**.
-- Browser data deletion, private browsing and storage clearing can permanently erase your events. The repository has no backup. Phone numbers entered for sending are not saved. Never commit private participant data to GitHub.
-
-### Local test commands
-
-```sh
-node draw.test.cjs
-node history.test.cjs
-node vault.test.cjs
-```
-The encryption test requires Node.js 20 or later. Open the live webpage over HTTPS (Web Crypto needs a secure context).
-
-
+Run `node draw.test.cjs`, `node history.test.cjs`, `node vault.test.cjs` and `node cloud.test.cjs` (Node 20+).
 
 ## Text messages: two options
 

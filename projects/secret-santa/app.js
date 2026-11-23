@@ -2,14 +2,36 @@
 const $=id=>document.getElementById(id);
 const makeEvent=()=>({id:crypto.randomUUID(),name:'',budget:'',noSelf:true,mutual:true,names:[],exclusions:[],avoidPrevious:false,previousEventId:'',draw:null,sent:{}});
 let state=null, session=null, writes=Promise.resolve(), savingFailed=false, vaultBusy=false;
+let githubToken='', syncing=false;
 let active=()=>state.events.find(e=>e.id===state.active)||state.events[0];
 let revealed=new Set(), textIndex=-1, accessKey='', sending=false;
+function syncIndicator(message, good=false){
+  $('syncStatus').className=good?'sync-saved':'sync-unsaved';
+  $('syncStatus').textContent=message;
+}
+async function refreshSyncStatus(){
+  if(!session)return;
+  const expected=session;
+  try{
+    const record=SantaVault.recordFor(session);
+    const latest=await SantaCloud.fingerprint(record);
+    if(session!==expected)return;
+    if(latest&&latest===SantaCloud.lastSynced(session.id)){
+      syncIndicator('✓ Synced to GitHub',true);
+      $('syncInfo').textContent='Your encrypted event history is backed up.';
+    }else{
+      syncIndicator('● Not synced — changes are only on this device');
+      $('syncInfo').textContent='Click Sync to back up your encrypted events to GitHub.';
+    }
+  }catch(err){if(session===expected)syncIndicator('● Not synced — could not check backup status');}
+}
 function save(){
   if(!state||!session)return Promise.resolve();
+  syncIndicator('● Not synced — saving locally…');
   const snapshot=JSON.parse(JSON.stringify(state));
   const currentSession=session;
   writes=writes.catch(()=>{}).then(()=>SantaVault.save(currentSession,snapshot)).then(()=>{
-    if(currentSession===session){savingFailed=false;$('storageWarning').hidden=true;}
+    if(currentSession===session){savingFailed=false;$('storageWarning').hidden=true;refreshSyncStatus();}
   }).catch(err=>{
     if(currentSession===session){savingFailed=true;$('storageWarning').textContent='Encrypted save failed: '+err.message+'. Changes may be lost if you reload or lock.';$('storageWarning').hidden=false;}
   });
@@ -28,8 +50,8 @@ function gateMessage(msg){$('vaultError').textContent=msg||'';}
 function gateRefresh(){
   try{
     const count=SantaVault.list().vaults.length;
-    $('legacyHint').hidden=!(SantaVault.legacy()&&count===0);
-    $('unlockForm').hidden=count===0;
+    $('legacyHint').hidden=!SantaVault.legacy();
+    $('unlockForm').hidden=false;
     gateMessage('');
   }catch(err){gateMessage(err.message);}
 }
@@ -40,22 +62,29 @@ function activate(result){
   $('unlockPin').value='';$('createPin').value='';$('confirmPin').value='';
   $('vaultGate').hidden=true;$('appRoot').hidden=false;
   $('storageWarning').hidden=true;
-  gateMessage('');render();
+  gateMessage('');render();refreshSyncStatus();
 }
 $('unlockForm').addEventListener('submit',async ev=>{
   ev.preventDefault();if(vaultBusy)return;
   vaultBusy=true;gateMessage('');const b=$('unlockForm').querySelector('button');b.disabled=true;
-  try{activate(await SantaVault.unlock($('unlockPin').value));}
-  catch(err){gateMessage(err.message);}
+  try{
+    const pin=$('unlockPin').value;
+    try { activate(await SantaVault.unlock(pin)); }
+    catch(err) {
+      if(!err.message.includes('No event collection matched'))throw err;
+      await loadFromGitHub();
+      activate(await SantaVault.unlock(pin));
+    }
+  }catch(err){gateMessage(err.message);}
   finally{vaultBusy=false;b.disabled=false;$('unlockPin').value='';}
 });
 $('createForm').addEventListener('submit',async ev=>{
   ev.preventDefault();if(vaultBusy)return;
   const pin=$('createPin').value;
-  if(pin!==$('confirmPin').value){gateMessage('PINs do not match.');return;}
+  if(pin!==$('confirmPin').value){gateMessage('Passphrases do not match.');return;}
   vaultBusy=true;gateMessage('');const b=$('createForm').querySelector('button');b.disabled=true;
   try{
-    const data=SantaVault.legacy()&&SantaVault.list().vaults.length===0?SantaVault.legacy():emptyState();
+    const data=SantaVault.legacy()||emptyState();
     activate(await SantaVault.create(pin,data));
   }catch(err){gateMessage(err.message);}
   finally{vaultBusy=false;b.disabled=false;$('createPin').value='';$('confirmPin').value='';}
@@ -72,11 +101,103 @@ $('lockVault').addEventListener('click',async()=>{
   $('lockVault').disabled=true;
   try{await writes;}catch{}
   if(savingFailed&&!confirm('Encrypted save failed. Locking now may discard unsaved changes. Lock anyway?')){$('lockVault').disabled=false;return;}
-  session=null;state=null;accessKey='';revealed.clear();
+  session=null;state=null;accessKey='';githubToken='';revealed.clear();
   ['textDialog','settingsDialog'].forEach(id=>{if($(id).open)$(id).close();});
   purgePrivateView();
   $('appRoot').hidden=true;$('vaultGate').hidden=false;gateRefresh();
   $('lockVault').disabled=false;
+});
+async function loadFromGitHub(){
+  $('cloudGateStatus').textContent='Loading encrypted collections from GitHub…';
+  const remote=await SantaCloud.get();
+  const existing=new Map(SantaVault.list().vaults.map(record=>[record.id,record]));
+  const replacements=[];
+  for(const record of remote.store.vaults){
+    const local=existing.get(record.id);
+    if(!local)continue;
+    const oldFingerprint=await SantaCloud.fingerprint(local);
+    const newFingerprint=await SantaCloud.fingerprint(record);
+    if(oldFingerprint!==newFingerprint && oldFingerprint===SantaCloud.lastSynced(record.id))replacements.push(record.id);
+  }
+  const result=SantaVault.importRemote(remote.store.vaults,replacements);
+  for(const record of remote.store.vaults){
+    if(result.added.includes(record.id)||result.updated.includes(record.id)||
+       (existing.has(record.id)&&(await SantaCloud.fingerprint(existing.get(record.id)))===(await SantaCloud.fingerprint(record)))) {
+      SantaCloud.setLastSynced(record.id,await SantaCloud.fingerprint(record));
+    }
+  }
+  $('cloudGateStatus').textContent=result.added.length+' encrypted collection(s) downloaded; '+result.updated.length+' refreshed. '+(result.skipped.length?result.skipped.length+' existing collection(s) with local changes were left unchanged. ':'')+'Unlock using your original passphrase.';
+  gateRefresh();
+  return result;
+}
+$('loadCloud').onclick=async()=>{
+  if(vaultBusy)return;
+  vaultBusy=true;const button=$('loadCloud');button.disabled=true;gateMessage('');
+  try{await loadFromGitHub();}
+  catch(err){gateMessage('Could not load from GitHub: '+err.message);$('cloudGateStatus').textContent='Download failed. No local events were changed.';}
+  finally{vaultBusy=false;button.disabled=false;}
+};
+function showSyncDialog(error){
+  $('githubToken').value=githubToken;
+  $('syncDialogError').textContent=error||'';
+  if(!$('syncDialog').open)$('syncDialog').showModal();
+}
+async function performSync(){
+  if(syncing||!session)return;
+  syncing=true;$('syncNow').disabled=true;
+  syncIndicator('● Syncing encrypted events to GitHub…');
+  try{
+    await writes;
+    if(savingFailed)throw new Error('Local encrypted save failed. Fix local storage before syncing.');
+    const localSession=session;
+    const record=SantaVault.recordFor(localSession);
+    if(!record)throw new Error('Encrypted event collection is missing.');
+    const outcome=await SantaCloud.push(record,githubToken,SantaCloud.lastSynced(localSession.id));
+    SantaCloud.setLastSynced(localSession.id,outcome.fingerprint);
+    if(localSession===session) {
+      await refreshSyncStatus();
+      $('syncInfo').textContent=outcome.unchanged?'GitHub already contains this version.':'GitHub accepted your encrypted backup.';
+    }
+    if($('syncDialog').open)$('syncDialog').close();
+  }catch(err){
+    if(session) {
+      syncIndicator('● Not synced — GitHub upload failed');
+      $('syncInfo').textContent=err.message;
+      showSyncDialog(err.message);
+    }
+  }finally{
+    syncing=false;$('syncNow').disabled=false;
+    $('githubToken').value='';
+  }
+}
+$('syncNow').onclick=()=>{if(!githubToken)showSyncDialog();else performSync();};
+$('syncForm').addEventListener('submit',ev=>{
+  ev.preventDefault();if(syncing)return;
+  githubToken=$('githubToken').value.trim();
+  if(!githubToken){$('syncDialogError').textContent='Enter a GitHub access token.';return;}
+  performSync();
+});
+$('changePin').onclick=()=>{
+  $('changeError').textContent='';
+  for(const id of ['oldPin','newPin','newPinConfirm'])$(id).value='';
+  $('changeDialog').showModal();
+};
+$('changeForm').addEventListener('submit',async ev=>{
+  ev.preventDefault();if(syncing||sending||vaultBusy)return;
+  if($('newPin').value!==$('newPinConfirm').value){$('changeError').textContent='New passphrases do not match.';return;}
+  vaultBusy=true;
+  $('changeError').textContent='';
+  const button=$('changeForm').querySelector('[type="submit"]');button.disabled=true;
+  try{
+    await writes;
+    if(savingFailed)throw new Error('Encrypted local changes have not been saved. Try again after fixing storage.');
+    const result=await SantaVault.changePassphrase(session,$('oldPin').value,$('newPin').value);
+    session=result.session;state=normalizeState(result.data);
+    $('changeDialog').close();render();
+    await refreshSyncStatus();
+    $('syncInfo').textContent='Passphrase changed locally. Sync now to update the GitHub backup.';
+  }catch(err){$('changeError').textContent=err.message;}
+  finally{vaultBusy=false;button.disabled=false;for(const id of ['oldPin','newPin','newPinConfirm'])$(id).value='';}
 });
 gateRefresh();
 function node(tag,cls,text){const el=document.createElement(tag);if(cls)el.className=cls;if(text!==undefined)el.textContent=text;return el;}

@@ -33,8 +33,8 @@ async function main(){
   assert.equal(v.list().vaults.length,1);
   const opened = await v.unlock('12345678');
   assert.equal(opened.data.events[0].names[1],'Bob');
-  await assert.rejects(v.unlock('87654321'),/PIN not found/);
-  await assert.rejects(v.create('12345678',firstState),/already has a collection/);
+  await assert.rejects(v.unlock('87654321'),/No event collection matched/);
+  await assert.rejects(v.create('12345678',firstState),/already opens a collection/);
   firstState.events[0].name='Updated Test';
   await v.save(first.session,firstState);
   assert.equal((await v.unlock('12345678')).data.events[0].name,'Updated Test');
@@ -43,6 +43,17 @@ async function main(){
   assert.equal((await v.unlock('98765432')).data.events[0].name,'Another person');
   assert.equal((await v.unlock('12345678')).data.events[0].name,'Updated Test');
   assert.ok(!storage.getItem('secret-santa.vaults.v2').includes('Another person'));
-  console.log('Encrypted PIN vault, migration, wrong PIN, updates and account separation passed');
+  const rekeyed=await v.changePassphrase((await v.unlock('12345678')).session,'12345678','strongNewPassphrase73!');
+  assert.equal(rekeyed.data.events[0].name,'Updated Test');
+  await assert.rejects(v.unlock('12345678'),/No event collection matched/);
+  assert.equal((await v.unlock('strongNewPassphrase73!')).data.events[0].name,'Updated Test');
+  await assert.rejects(v.changePassphrase(rekeyed.session,'12345678','NewSecretLong1'),/Current passphrase is incorrect/);
+  const snapshot=JSON.parse(JSON.stringify(v.list().vaults));
+  storage.removeItem('secret-santa.vaults.v2');
+  const imported=v.importRemote(snapshot);
+  assert.equal(imported.added.length,2);
+  assert.equal(imported.updated.length,0);
+  assert.equal((await v.unlock('strongNewPassphrase73!')).data.events[0].name,'Updated Test');
+  console.log('Encrypted vault migration, rekeying, import, wrong PIN, updates and separation passed');
 }
 main().catch(err=>{console.error(err);process.exitCode=1;});
