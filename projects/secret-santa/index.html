@@ -7,22 +7,43 @@
 <meta name="theme-color" content="#15473c">
 <title>Secret Santa | Gift Exchange</title>
 <link rel="stylesheet" href="style.css">
-<script defer src="draw.js"></script><script defer src="app.js"></script>
+<script defer src="draw.js"></script><script defer src="history.js"></script><script defer src="vault.js"></script><script defer src="app.js"></script>
 </head>
 <body>
 <header class="top"><div class="wrap top-inner"><a href="../" class="back">← Projects</a><span class="brand">✦ &nbsp; THE GIFT EXCHANGE</span><span class="top-note">Made for family traditions</span></div></header>
-<main class="wrap">
+<section id="vaultGate" class="wrap" aria-label="Private event access">
+<div class="panel gate-card">
+<p class="eyebrow">PRIVATE FAMILY TRADITIONS</p><h1>Your Christmas events, locked.</h1>
+<p class="help">Every PIN opens its own encrypted events on this browser. Nothing is published to GitHub. Use the same PIN here next time to see your saved events.</p>
+<p id="legacyHint" class="notice" hidden>Existing events were found in this browser. The first new PIN will encrypt and import them; no event names are shown until then.</p>
+<div class="gate-columns">
+<form id="unlockForm"><h2>Unlock my events</h2><p class="help">Returning to a PIN you created on this browser?</p>
+<label for="unlockPin">Your PIN</label><input id="unlockPin" type="password" inputmode="numeric" autocomplete="off" pattern="[0-9]{6,12}" minlength="6" maxlength="12" required placeholder="6–12 digits">
+<button type="submit" class="primary">Unlock events</button></form>
+<form id="createForm"><h2>Start a private collection</h2><p class="help">Create a separate PIN for your family events. Eight or more digits is recommended.</p>
+<label for="createPin">Create PIN</label><input id="createPin" type="password" inputmode="numeric" autocomplete="new-password" pattern="[0-9]{6,12}" minlength="6" maxlength="12" required placeholder="6–12 digits">
+<label for="confirmPin">Confirm PIN</label><input id="confirmPin" type="password" inputmode="numeric" autocomplete="new-password" pattern="[0-9]{6,12}" minlength="6" maxlength="12" required placeholder="Enter PIN again">
+<button type="submit" class="primary">Create PIN</button></form>
+</div>
+<p id="vaultError" class="error" role="alert" aria-live="polite"></p>
+<p class="help">There is no PIN recovery or cross-device sync. Do not clear this browser's site data if you want to keep your events. A short PIN is less resistant to someone who copies the encrypted browser data.</p>
+</div></section>
+<main class="wrap" id="appRoot" hidden>
 <section class="hero"><div><p class="eyebrow">A LITTLE CHRISTMAS MAGIC</p><h1>Secret <em>Santa.</em></h1><p class="intro">Bring everyone together, draw names in secret, and make the holidays a little merrier.</p></div><div class="illustration" aria-hidden="true"><svg viewBox="0 0 190 170" fill="none"><path d="M23 69h145v23H23z" fill="#d3a550"/><path d="M33 91h125v66H33z" fill="#c24b43"/><path d="M82 69h27v88H82z" fill="#f2d493"/><path d="M95 69C47 68 43 24 64 26c17 2 28 27 31 43ZM95 69c47-1 52-45 31-43-17 2-28 27-31 43Z" stroke="#f2d493" stroke-width="7" stroke-linejoin="round"/><path d="M18 20v20M8 30h20M167 9v25m-12-12h24M12 119v12m-6-6h12M178 111v17m-8-8h16" stroke="#d3a550" stroke-width="2.5" stroke-linecap="round"/></svg></div></section>
-<section class="toolbar panel" aria-label="Saved events"><div class="event-picker"><label for="eventSelect">Your events</label><select id="eventSelect"></select></div><div class="actions"><button id="newEvent" class="primary">+ New event</button><button id="duplicateEvent">Reuse for next year</button><button id="deleteEvent" class="danger">Delete</button></div></section>
+<section class="toolbar panel" aria-label="Saved events"><div class="event-picker"><label for="eventSelect">Your events</label><select id="eventSelect"></select></div><div class="actions"><button id="newEvent" class="primary">+ New event</button><button id="duplicateEvent">Reuse for next year</button><button id="deleteEvent" class="danger">Delete</button><button id="lockVault">🔒 Lock</button></div></section>
 <p id="storageWarning" class="notice" role="status" hidden></p>
 <div id="setup">
 <section class="panel"><div class="section-head"><span class="step">01</span><div><h2>Event details</h2><p>Give your exchange a name and set the gift budget.</p></div></div><div class="fields"><label>Event name<input id="eventName" maxlength="100" placeholder="e.g. York Family Christmas 2026"></label><label>Spending limit (USD)<div class="money"><span>$</span><input id="budget" type="number" min="0" max="100000" step="0.01" placeholder="25.00"></div></label></div><label class="check"><input id="noSelf" type="checkbox" checked> Prevent participants from drawing themselves</label></section>
 <section class="panel"><div class="section-head"><span class="step">02</span><div><h2>Who's joining?</h2><p>Add each person taking part, one at a time or on separate lines.</p></div><span class="pill" id="count"></span></div><form id="addForm" class="add"><label class="sr" for="newNames">Participant names</label><textarea id="newNames" rows="2" maxlength="10000" placeholder="Enter a name, or paste one name per line"></textarea><button class="primary" type="submit">+ Add people</button></form><p id="addError" class="error" role="alert"></p><div id="people" class="people"></div></section>
-<section class="panel"><div class="section-head"><span class="step">03</span><div><h2>Exclusions</h2><p>Keep spouses or other people from drawing each other.</p></div></div><label class="check"><input id="mutual" type="checkbox" checked> Apply changes both ways (recommended for spouses)</label><div id="exclusions"></div></section>
+<section class="panel"><div class="section-head"><span class="step">03</span><div><h2>Exclusions</h2><p>Keep spouses or other people from drawing each other.</p></div></div><label class="check"><input id="mutual" type="checkbox" checked> Apply changes both ways (recommended for spouses)</label><div id="exclusions"></div>
+<div class="history-rule"><label class="check"><input id="avoidPrevious" type="checkbox"> Exclude the person each participant drew in a previous event</label>
+<div id="previousControls" hidden><label for="previousEvent">Previous completed event</label><select id="previousEvent"></select>
+<div id="previousSummary" class="history-summary" aria-live="polite"></div></div>
+</div></section>
 <section class="draw-bar"><div><h2>Ready to draw?</h2><p>Everyone gets exactly one name, and everyone is drawn once.</p><p id="drawError" class="error" role="alert"></p></div><button id="draw" class="gold">✦ &nbsp; Draw names</button></section>
 </div>
 <section id="results" class="panel" hidden><div class="section-head"><span class="step">✓</span><div><p class="eyebrow">THE NAMES ARE DRAWN</p><h2 id="resultTitle"></h2><p id="resultMeta"></p></div></div><div class="result-actions"><button id="hideAll">Hide all names</button><button id="resetDraw" class="danger">Reset drawing</button><button id="smsSettings">SMS settings</button></div><p class="help">Assignments stay hidden until you tap an eye. You can send a message without revealing the name to yourself.</p><div id="resultRows"></div><p id="sentProgress" class="help" aria-live="polite"></p></section>
-<footer>Saved on this browser only. No account required. Hidden names are a visual privacy feature, not encryption. <a href="README.md">Setup &amp; help</a>.</footer>
+<footer>PIN-encrypted and saved on this browser only. No account or server required. Blur is only a visual privacy feature; lock your events to protect assignments. <a href="README.md">Setup &amp; help</a>.</footer>
 </main>
 <dialog id="textDialog"><form id="textForm"><div class="dialog-head"><div><p class="eyebrow">SECRET DELIVERY</p><h2 id="textTitle">Send a text</h2></div><button type="button" class="close" data-close="textDialog" aria-label="Close">×</button></div><p class="help">The message includes the event, their assigned person, and the spending limit. No assignment is shown here.</p><label>Participant's phone number<input id="phone" type="tel" inputmode="tel" autocomplete="off" placeholder="208-555-0123" required></label><p class="help">US numbers default to +1; international numbers need a country code.</p><div id="textMode" class="notice"></div><label id="keyLabel" hidden>SMS access key<input id="smsKey" type="password" autocomplete="off"></label><p id="textStatus" class="error" role="status" aria-live="polite"></p><div class="actions"><button type="submit" id="send" class="primary">Send text</button><button type="button" id="markManual" hidden>I sent it</button><button type="button" data-close="textDialog">Cancel</button></div><button type="button" id="openSmsSettings" class="link-button">Configure direct SMS</button></form></dialog>
 <dialog id="settingsDialog"><form id="settingsForm"><div class="dialog-head"><h2>SMS settings</h2><button type="button" class="close" data-close="settingsDialog" aria-label="Close">×</button></div><p>Direct SMS uses a separate Twilio number through your own securely configured serverless endpoint. It does not use your personal Messages app.</p><label>HTTPS SMS endpoint<input id="endpoint" type="url" placeholder="https://secret-santa-sms.example.workers.dev"></label><p class="help">Leave blank to use your device's Messages app instead. See <a href="README.md" target="_blank" rel="noopener">setup instructions</a>. No API credentials are stored in the website.</p><p id="settingsError" role="alert" class="error"></p><div class="actions"><button class="primary" type="submit">Save settings</button><button type="button" data-close="settingsDialog">Cancel</button></div></form></dialog>

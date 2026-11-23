@@ -1,13 +1,84 @@
 'use strict';
 const $=id=>document.getElementById(id);
-const KEY='secret-santa.v1';
-const makeEvent=()=>({id:crypto.randomUUID(),name:'',budget:'',noSelf:true,mutual:true,names:[],exclusions:[],draw:null,sent:{}});
-let state;
-try{state=JSON.parse(localStorage.getItem(KEY));}catch{}
-if(!state||!Array.isArray(state.events)||!state.events.length) {const e=makeEvent();state={events:[e],active:e.id,endpoint:''};}
+const makeEvent=()=>({id:crypto.randomUUID(),name:'',budget:'',noSelf:true,mutual:true,names:[],exclusions:[],avoidPrevious:false,previousEventId:'',draw:null,sent:{}});
+let state=null, session=null, writes=Promise.resolve(), savingFailed=false, vaultBusy=false;
 let active=()=>state.events.find(e=>e.id===state.active)||state.events[0];
 let revealed=new Set(), textIndex=-1, accessKey='', sending=false;
-function save(){try{localStorage.setItem(KEY,JSON.stringify(state));$('storageWarning').hidden=true;}catch{$('storageWarning').textContent='Browser storage is unavailable. Keep this tab open or your events may be lost.';$('storageWarning').hidden=false;}}
+function save(){
+  if(!state||!session)return Promise.resolve();
+  const snapshot=JSON.parse(JSON.stringify(state));
+  const currentSession=session;
+  writes=writes.catch(()=>{}).then(()=>SantaVault.save(currentSession,snapshot)).then(()=>{
+    if(currentSession===session){savingFailed=false;$('storageWarning').hidden=true;}
+  }).catch(err=>{
+    if(currentSession===session){savingFailed=true;$('storageWarning').textContent='Encrypted save failed: '+err.message+'. Changes may be lost if you reload or lock.';$('storageWarning').hidden=false;}
+  });
+  return writes;
+}
+function emptyState(){
+  const e=makeEvent();
+  return {events:[e],active:e.id,endpoint:''};
+}
+function normalizeState(data){
+  if(!data||!Array.isArray(data.events)||!data.events.length)return emptyState();
+  data.events.forEach(e=>{if(!Array.isArray(e.names))e.names=[];if(!Array.isArray(e.exclusions))e.exclusions=e.names.map(()=>[]);if(!e.sent)e.sent={};if(typeof e.avoidPrevious!=='boolean')e.avoidPrevious=false;if(typeof e.previousEventId!=='string')e.previousEventId='';if(!e.exclusions.length&&e.names.length)e.exclusions=e.names.map(()=>[]);});
+  return data;
+}
+function gateMessage(msg){$('vaultError').textContent=msg||'';}
+function gateRefresh(){
+  try{
+    const count=SantaVault.list().vaults.length;
+    $('legacyHint').hidden=!(SantaVault.legacy()&&count===0);
+    $('unlockForm').hidden=count===0;
+    gateMessage('');
+  }catch(err){gateMessage(err.message);}
+}
+function activate(result){
+  session=result.session;
+  state=normalizeState(result.data);
+  revealed.clear();accessKey='';textIndex=-1;
+  $('unlockPin').value='';$('createPin').value='';$('confirmPin').value='';
+  $('vaultGate').hidden=true;$('appRoot').hidden=false;
+  $('storageWarning').hidden=true;
+  gateMessage('');render();
+}
+$('unlockForm').addEventListener('submit',async ev=>{
+  ev.preventDefault();if(vaultBusy)return;
+  vaultBusy=true;gateMessage('');const b=$('unlockForm').querySelector('button');b.disabled=true;
+  try{activate(await SantaVault.unlock($('unlockPin').value));}
+  catch(err){gateMessage(err.message);}
+  finally{vaultBusy=false;b.disabled=false;$('unlockPin').value='';}
+});
+$('createForm').addEventListener('submit',async ev=>{
+  ev.preventDefault();if(vaultBusy)return;
+  const pin=$('createPin').value;
+  if(pin!==$('confirmPin').value){gateMessage('PINs do not match.');return;}
+  vaultBusy=true;gateMessage('');const b=$('createForm').querySelector('button');b.disabled=true;
+  try{
+    const data=SantaVault.legacy()&&SantaVault.list().vaults.length===0?SantaVault.legacy():emptyState();
+    activate(await SantaVault.create(pin,data));
+  }catch(err){gateMessage(err.message);}
+  finally{vaultBusy=false;b.disabled=false;$('createPin').value='';$('confirmPin').value='';}
+});
+function purgePrivateView(){
+  $('resultRows').replaceChildren();$('people').replaceChildren();$('exclusions').replaceChildren();
+  $('previousSummary').replaceChildren();$('eventSelect').replaceChildren();$('previousEvent').replaceChildren();
+  ['eventName','budget','newNames','phone','smsKey','endpoint'].forEach(id=>$(id).value='');
+  ['resultTitle','resultMeta','sentProgress','textStatus','textTitle'].forEach(id=>$(id).textContent='');
+  $('storageWarning').hidden=true;
+}
+$('lockVault').addEventListener('click',async()=>{
+  if(sending)return;
+  $('lockVault').disabled=true;
+  try{await writes;}catch{}
+  if(savingFailed&&!confirm('Encrypted save failed. Locking now may discard unsaved changes. Lock anyway?')){$('lockVault').disabled=false;return;}
+  session=null;state=null;accessKey='';revealed.clear();
+  ['textDialog','settingsDialog'].forEach(id=>{if($(id).open)$(id).close();});
+  purgePrivateView();
+  $('appRoot').hidden=true;$('vaultGate').hidden=false;gateRefresh();
+  $('lockVault').disabled=false;
+});
+gateRefresh();
 function node(tag,cls,text){const el=document.createElement(tag);if(cls)el.className=cls;if(text!==undefined)el.textContent=text;return el;}
 function button(text,cls,fn){const b=node('button',cls,text);b.type='button';b.addEventListener('click',fn);return b;}
 function money(b){return b===''?'No spending limit':Number(b).toLocaleString('en-US',{style:'currency',currency:'USD'});}
@@ -15,8 +86,39 @@ function picker(){const s=$('eventSelect');s.replaceChildren();for(const e of st
 function render(){const e=active();picker();$('setup').hidden=!!e.draw;$('results').hidden=!e.draw;$('drawError').textContent='';$('addError').textContent='';if(e.draw){renderResults();return;}$('eventName').value=e.name;$('budget').value=e.budget;$('noSelf').checked=e.noSelf;$('mutual').checked=e.mutual;renderPeople();renderExclusions();}
 function renderPeople(){const e=active(), p=$('people');p.replaceChildren();$('count').textContent=e.names.length+' people';if(!e.names.length)p.append(node('p','empty','No participants yet. Add your family above.'));
 e.names.forEach((name,i)=>{const row=node('div','person');const remove=button('×','danger',()=>{e.names.splice(i,1);e.exclusions.splice(i,1);e.exclusions=e.exclusions.map(a=>a.filter(j=>j!==i).map(j=>j>i?j-1:j));save();renderPeople();renderExclusions();});remove.setAttribute('aria-label','Remove '+name);const edit=button('Edit','',()=>{const next=prompt('Edit participant name',name);if(next===null)return;const v=next.trim();if(!v||v.length>80||e.names.some((x,j)=>i!==j&&x.toLowerCase()===v.toLowerCase())){alert('Use a unique name from 1 to 80 characters.');return;}e.names[i]=v;save();renderPeople();renderExclusions();});const controls=node('div','actions');controls.append(edit,remove);row.append(node('span','',name),controls);p.append(row);});}
-function renderExclusions(){const e=active(), root=$('exclusions');root.replaceChildren();if(e.names.length<2){root.append(node('p','empty','Add at least two people to set exclusions.'));return;}
+function renderExclusions(){const e=active(), root=$('exclusions');root.replaceChildren();renderHistory();if(e.names.length<2){root.append(node('p','empty','Add at least two people to set exclusions.'));return;}
 e.names.forEach((name,i)=>{const d=node('details','ex-row'), title=node('summary',''), body=node('div','ex-options');const refresh=()=>{title.textContent=name+' — '+e.exclusions[i].length+' excluded';};refresh();d.append(title,body);e.names.forEach((other,j)=>{if(i===j)return;const label=node('label','check'), c=node('input');c.type='checkbox';c.checked=e.exclusions[i].includes(j);c.dataset.from=i;c.dataset.to=j;c.addEventListener('change',()=>{function set(a,b,on){e.exclusions[a]=e.exclusions[a].filter(x=>x!==b);if(on)e.exclusions[a].push(b);}set(i,j,c.checked);if(e.mutual){set(j,i,c.checked);const reverse=root.querySelector('input[data-from="'+j+'"][data-to="'+i+'"]');if(reverse){reverse.checked=c.checked;reverse.closest('details').querySelector('summary').textContent=e.names[j]+' — '+e.exclusions[j].length+' excluded';}}refresh();save();});label.append(c,document.createTextNode(other));body.append(label);});root.append(d);});}
+function renderHistory(){
+  const e=active(), checkbox=$('avoidPrevious'), controls=$('previousControls'), dropdown=$('previousEvent'), summary=$('previousSummary');
+  checkbox.checked=!!e.avoidPrevious;
+  controls.hidden=!e.avoidPrevious;
+  dropdown.replaceChildren();
+  const empty=node('option','','Select a previous event');empty.value='';dropdown.append(empty);
+  const completed=state.events.filter(x=>x.id!==e.id&&Array.isArray(x.draw)&&x.draw.length===x.names.length);
+  completed.forEach(x=>{const option=node('option','',x.name.trim()||'Untitled event');option.value=x.id;dropdown.append(option);});
+  dropdown.value=completed.some(x=>x.id===e.previousEventId)?e.previousEventId:'';
+  dropdown.disabled=!completed.length;
+  summary.replaceChildren();
+  if(!e.avoidPrevious)return;
+  if(!completed.length){summary.append(node('p','error','No other completed events under this PIN. Draw another event first.'));return;}
+  const old=completed.find(x=>x.id===e.previousEventId);
+  if(!old){summary.append(node('p','help','Choose an event above to check name matches.'));return;}
+  const matched=previousMatches(e,old);
+  summary.append(node('p','help',matched.matched.length+' matches will be excluded from the new drawing. '+matched.unmatched.length+' names were not matched.'));
+  if(matched.matched.length){const details=node('details','history-details'),heading=node('summary','','Matched previous recipients'),list=node('ul','history-list');matched.matched.forEach(m=>list.append(node('li','',m.giver+' → '+m.recipient)));details.append(heading,list);summary.append(details);}
+  if(matched.unmatched.length){const details=node('details','history-details'),heading=node('summary','','Unmatched names — check spelling'),list=node('ul','history-list');details.open=true;matched.unmatched.forEach(m=>list.append(node('li','',m.giver+': '+m.reason+(m.recipient?' ('+m.recipient+')':''))));details.append(heading,list);summary.append(details);}
+}
+$('avoidPrevious').addEventListener('change',()=>{active().avoidPrevious=$('avoidPrevious').checked;save();renderHistory();});
+$('previousEvent').addEventListener('change',()=>{active().previousEventId=$('previousEvent').value;save();renderHistory();});
+function effectiveExclusions(e){
+  const combined=e.exclusions.map(ex=>ex.slice());
+  if(!e.avoidPrevious)return combined;
+  const old=state.events.find(x=>x.id===e.previousEventId&&x.id!==e.id&&Array.isArray(x.draw));
+  if(!old)return null;
+  const matches=previousMatches(e,old);
+  matches.exclusions.forEach((ex,i)=>ex.forEach(j=>{if(!combined[i].includes(j))combined[i].push(j);}));
+  return combined;
+}
 $('addForm').addEventListener('submit',ev=>{ev.preventDefault();const e=active(), names=$('newNames').value.split(/\r?\n/).map(n=>n.trim()).filter(Boolean), skipped=[];for(const n of names){if(n.length>80||e.names.length>=100||e.names.some(x=>x.toLowerCase()===n.toLowerCase())){skipped.push(n);continue;}e.names.push(n);e.exclusions.push([]);}$('addError').textContent=skipped.length?'Skipped duplicate, overlong or excess names: '+skipped.join(', '):'';$('newNames').value='';save();renderPeople();renderExclusions();});
 $('eventName').addEventListener('input',()=>{active().name=$('eventName').value;save();picker();});
 $('budget').addEventListener('input',()=>{active().budget=$('budget').value;save();});
@@ -24,9 +126,9 @@ $('noSelf').addEventListener('change',()=>{active().noSelf=$('noSelf').checked;s
 $('mutual').addEventListener('change',()=>{active().mutual=$('mutual').checked;save();});
 $('eventSelect').addEventListener('change',()=>{state.active=$('eventSelect').value;revealed.clear();save();render();});
 $('newEvent').onclick=()=>{const e=makeEvent();state.events.push(e);state.active=e.id;revealed.clear();save();render();$('eventName').focus();};
-$('duplicateEvent').onclick=()=>{const old=active(), next=makeEvent();next.name=old.name.replace(/\s+\d{4}\s*$/, '')+' '+(new Date().getFullYear()+1);next.name=next.name.trim();next.budget=old.budget;next.noSelf=old.noSelf;next.mutual=old.mutual;next.names=old.names.slice();next.exclusions=old.exclusions.map(a=>a.slice());state.events.push(next);state.active=next.id;revealed.clear();save();render();$('eventName').focus();};
+$('duplicateEvent').onclick=()=>{const old=active(), next=makeEvent();const year=old.name.match(/\b(20\d{2})\s*$/);next.name=old.name.replace(/\s+\d{4}\s*$/, '')+' '+(year?Number(year[1])+1:new Date().getFullYear()+1);next.name=next.name.trim();next.budget=old.budget;next.noSelf=old.noSelf;next.mutual=old.mutual;next.names=old.names.slice();next.exclusions=old.exclusions.map(a=>a.slice());next.avoidPrevious=!!old.draw;next.previousEventId=old.draw?old.id:'';state.events.push(next);state.active=next.id;revealed.clear();save();render();$('eventName').focus();};
 $('deleteEvent').onclick=()=>{if(!confirm('Delete this event and all its saved assignments?'))return;state.events=state.events.filter(e=>e.id!==active().id);if(!state.events.length)state.events.push(makeEvent());state.active=state.events[0].id;revealed.clear();save();render();};
-$('draw').onclick=()=>{const e=active(), err=$('drawError');err.textContent='';if(!e.name.trim()){err.textContent='Enter an event name first.';$('eventName').focus();return;}if(!$('budget').checkValidity()){err.textContent='Enter a valid nonnegative spending limit, or leave blank.';$('budget').reportValidity();return;}if(e.names.length<2){err.textContent='Add at least two participants.';return;}const p=drawAssignments(e.names,e.exclusions,e.noSelf,()=>crypto.getRandomValues(new Uint32Array(1))[0]/4294967296);if(!p){err.textContent='No valid drawing is possible with these exclusions. Remove an exclusion or add participants and try again.';return;}e.draw=p;e.sent={};revealed.clear();save();render();$('results').scrollIntoView({behavior:'smooth'});};
+$('draw').onclick=()=>{const e=active(), err=$('drawError');err.textContent='';if(!e.name.trim()){err.textContent='Enter an event name first.';$('eventName').focus();return;}if(!$('budget').checkValidity()){err.textContent='Enter a valid nonnegative spending limit, or leave blank.';$('budget').reportValidity();return;}if(e.names.length<2){err.textContent='Add at least two participants.';return;}const exclusions=effectiveExclusions(e);if(!exclusions){err.textContent='Choose a completed previous event or turn off previous-event exclusions.';return;}const p=drawAssignments(e.names,exclusions,e.noSelf,()=>crypto.getRandomValues(new Uint32Array(1))[0]/4294967296);if(!p){err.textContent='No valid drawing is possible with these exclusions. Remove an exclusion or add participants and try again.';return;}e.draw=p;e.sent={};revealed.clear();save();render();$('results').scrollIntoView({behavior:'smooth'});};
 function eyeIcon(open){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/>'+(open?'<path d="m3 3 18 18"/>':'')+'</svg>';}
 function renderResults(){const e=active();$('resultTitle').textContent=e.name;$('resultMeta').textContent=e.names.length+' participants · '+money(e.budget)+(e.budget!==''?' limit':'');const root=$('resultRows');root.replaceChildren();e.names.forEach((name,i)=>{const row=node('div','result-row'), giver=node('div','giver');giver.append(node('span','row-label','Participant'),document.createTextNode(name));const as=node('div','assignment'), value=node('span','recipient'), eye=button('','eye',()=>{if(revealed.has(i))revealed.delete(i);else revealed.add(i);refresh();});function refresh(){const open=revealed.has(i);value.classList.toggle('blurred',!open);value.textContent=open?e.names[e.draw[i]]:'Secret name';value.setAttribute('aria-label',open?value.textContent:'Hidden assignment');eye.innerHTML=eyeIcon(open);eye.setAttribute('aria-label',(open?'Hide':'Reveal')+' assignment for '+name);eye.setAttribute('aria-pressed',String(open));}refresh();as.append(value,eye);const actions=node('div','text-actions');const sent=e.sent[i];actions.append(button(sent?'Text again':'Send text','',()=>openText(i)));if(sent)actions.append(node('span','status',sent==='manual'?'Marked sent':'SMS accepted'));row.append(giver,as,actions);root.append(row);});$('sentProgress').textContent=Object.keys(e.sent).length+' of '+e.names.length+' notifications sent or marked sent.';}
 $('hideAll').onclick=()=>{revealed.clear();renderResults();};
@@ -43,4 +145,4 @@ $('smsSettings').onclick=settings;$('openSmsSettings').onclick=settings;
 $('settingsForm').addEventListener('submit',ev=>{ev.preventDefault();const v=$('endpoint').value.trim();if(v){try{const u=new URL(v);if(u.protocol!=='https:'||u.username||u.password||u.hash||u.search)throw Error();}catch{$('settingsError').textContent='Enter an HTTPS endpoint URL without credentials, query or fragment.';return;}}if(v!==state.endpoint)accessKey='';state.endpoint=v;save();$('settingsDialog').close();});
 document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>{if(!sending)$(b.dataset.close).close();});
 $('textDialog').addEventListener('cancel',e=>{if(sending)e.preventDefault();});
-save();render();
+gateRefresh();

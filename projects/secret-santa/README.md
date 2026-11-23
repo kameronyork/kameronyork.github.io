@@ -1,17 +1,38 @@
 # Secret Santa
 
-A standalone, responsive HTML/CSS/JavaScript app for family gift exchanges. Open the project via GitHub Pages or a local HTTP server. No account or backend is needed for drawing. The public page does not contain any actual family data.
+A standalone, responsive HTML/CSS/JavaScript app for family gift exchanges. Open the project via HTTPS GitHub Pages or a localhost web server. No hosted account or backend is needed for drawing. The public GitHub repository contains only code and no participant names or assignments.
 
 ## Using the app
 
-1. Name the event, optionally enter a USD gift limit, and add names (one per line).
-2. Expand each participant's exclusion list. With "Apply changes both ways" checked, excluding a spouse automatically excludes the reverse pairing too. Uncheck it for directional exclusions. Self-draw prevention is checked by default.
-3. Draw names. Each participant receives exactly one assignment, and each recipient appears once. If the constraints are impossible, the app explains that instead of creating an invalid draw.
-4. The results page hides assignments behind a blurred placeholder until the eye is clicked. "Hide all names" closes reveals. Resetting a draw requires confirmation and does not recall notifications.
-5. Select Send text next to a participant and enter their phone number. No assignment is shown in that dialog.
-6. Use New event to keep separate family events. Reuse for next year copies the participants, exclusions, settings and budget but not assignments or notification history. You can edit the copied event name and year.
+1. Create a 6–12 digit PIN (8 or more digits strongly recommended) to make a personal encrypted event collection in this browser, or unlock one with your existing PIN. Each PIN has its own set of events.
+2. Name the event, optionally enter a USD gift limit, and add names (one per line).
+3. Expand each participant's exclusion list. With "Apply changes both ways" checked, excluding a spouse automatically excludes the reverse pairing too. Uncheck it for directional exclusions. Self-draw prevention is checked by default.
+4. Optionally check **Exclude the person each participant drew in a previous event**, then choose a completed previous event under the same PIN. Names match case-insensitively after trimming whitespace. The page lists matched giver → recipient pairs and unmatched people (including former recipients no longer participating). If names change, edit them and recheck the match list. The historical restriction combines with all manually chosen exclusions. Reusing a drawn event for next year automatically enables the prior-event restriction and selects the original drawing.
+5. Draw names. Each participant receives exactly one assignment, and each recipient appears once. If the constraints are impossible, the app explains that instead of creating an invalid draw.
+6. The results page hides assignments behind a blurred placeholder until the eye is clicked. "Hide all names" closes reveals. Resetting a draw requires confirmation and does not recall notifications.
+7. Select Send text next to a participant and enter their phone number. No assignment is shown in that dialog.
+8. Use New event to keep separate family events. Reuse for next year copies the participants, exclusions, settings and budget but not assignments or notification history. You can edit the copied event name and year.
 
-Events and assignments are saved in localStorage on the current browser/origin. No cloud sync, encryption, or login. Clearing browser data can erase events; avoid using a shared browser if secrecy matters. Phone numbers are not persisted by the app. A hidden assignment is not protected from someone who inspects browser storage. Do not put any real participant data in this repository.
+## PIN privacy and encryption
+
+- A PIN is required before events and past assignments appear. Select **Lock** when finished.
+- Each PIN opens a separate event collection on the **same browser and website origin**. Different relatives can set different PINs and see only their own events locally. There is **no cloud storage, sync between devices, or PIN recovery**. A new PIN on a different device starts an empty collection.
+- Your event names, participants, exclusions, assignments, sent status, and optional SMS endpoint are encrypted with browser **AES-256-GCM**. The encryption key is derived using **PBKDF2-HMAC-SHA-256** with a per-collection random salt and 600,000 iterations. A fresh random IV is generated for every write.
+- The browser stores only the salt, IV, encryption parameters, collection ID and encrypted ciphertext in localStorage (key `secret-santa.vaults.v2`). It never stores the PIN itself or an easily reversible hash. In technical terms, **a hash cannot be decoded to recover names**; encryption is required to display those details again.
+- Previous events saved by the older unencrypted version (`secret-santa.v1`) are migrated **when the first PIN is created in that browser**. They are encrypted under that new PIN, verified, and the old unencrypted entry is then removed. Create the initial PIN from the same browser and domain where you originally used the app. If events were saved under a different hostname (such as `www` versus non-`www`), that is different browser storage and will not be automatically imported.
+- This is **device-level convenience privacy**, not an online identity system. Someone who knows or guesses your PIN, anyone who uses your browser while it is unlocked, or malicious scripts with access to the page can read the decrypted results. A copied encrypted file can be attacked offline; longer unpredictable PINs are safer. On shared devices, always click **Lock**.
+- Browser data deletion, private browsing and storage clearing can permanently erase your events. The repository has no backup. Phone numbers entered for sending are not saved. Never commit private participant data to GitHub.
+
+### Local test commands
+
+```sh
+node draw.test.cjs
+node history.test.cjs
+node vault.test.cjs
+```
+The encryption test requires Node.js 20 or later. Open the live webpage over HTTPS (Web Crypto needs a secure context).
+
+
 
 ## Text messages: two options
 
