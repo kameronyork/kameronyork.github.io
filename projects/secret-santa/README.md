@@ -1,38 +1,47 @@
 # Secret Santa
 
-A responsive family Secret Santa webpage that keeps multiple years of events, exclusions, and assignments encrypted in the browser. Only the website owner can upload an encrypted collection to the shared GitHub JSON.
+A standalone, responsive HTML/CSS/JavaScript app for family gift exchanges. Open the project via HTTPS GitHub Pages or a localhost web server. No hosted account or backend is needed for drawing. The public GitHub repository contains only code and no participant names or assignments.
 
-## GitHub sync via OAuth — owner only
+## Storage, privacy, and manual GitHub sync
 
-**Everyone can create and use local events. Only the verified GitHub repository owner can click Sync and upload.**
+**Your browser is the working copy.** Events are encrypted with AES-256-GCM before being saved to localStorage. Saving and editing is automatic locally. Nothing goes to GitHub until you click **↑ Sync to GitHub**. The status strip clearly says **Not synced** when the local encrypted copy differs from the last successfully synced copy.
 
-- **Local first:** Everything you edit is saved encrypted in your browser. A visible **Not synced** indicator warns you when your changes are not yet uploaded.
-- **Shared encrypted file:** All collections that the owner syncs accumulate in `projects/secret-santa/events.encrypted.json`. Existing collections remain intact when another collection is updated. The file lives in the public GitHub Pages repository.
-- **Only the GitHub owner may upload:** The Sync button sends the owner through GitHub OAuth. A separate Cloudflare Worker verifies the signed-in identity matches **kameronyork (GitHub user ID 122046751)** before it can write anything. Other GitHub accounts receive **403 Forbidden** and cannot upload.
-- **No GitHub token form:** You never paste a GitHub token into the website, and no GitHub OAuth client secret is put in the public HTML or JavaScript. A one-time Cloudflare Worker + OAuth App setup is still necessary.
-- **Getting your events back after clearing your phone:** Open the website, choose **Load saved events from GitHub**, then unlock the collection with its original passphrase. Events not synced before local storage was cleared cannot be recovered.
+Clicking **Sync to GitHub** saves your encrypted collection into the JSON file at `projects/secret-santa/events.encrypted.json`.
 
-### Important: owner setup is required once
+The repository is **public**. This JSON stores only random salts, IVs, encrypted ciphertext, and non-secret metadata, never readable names, assignments, or passphrases. **Anyone can download the encrypted JSON and attempt offline guesses of the passphrase.** Use a long, unique passphrase that is not easy to guess; do not use a secret you have already shared publicly.
 
-The OAuth Worker is included as source code in [sync-worker/](sync-worker/README.md), but it **is not deployed merely by committing it**. To enable the Sync button, the owner must:
+Each family/person has their own encryption passphrase and encrypted collection. Each collection holds many years of family events. The page never stores your passphrase or a recoverable passphrase hash. It uses PBKDF2-HMAC-SHA-256 with 600,000 iterations and a random salt to derive the AES-256-GCM encryption key. A new random nonce is used on every write.
 
-1. Deploy `sync-worker/worker.mjs` to a Cloudflare Worker.
-2. Create a GitHub OAuth App with the Worker's `/auth/callback` URL.
-3. Store the OAuth App Client ID, Client Secret and a random session-encryption key in **Cloudflare Worker secrets**.
-4. Set the Worker's public HTTPS origin in `sync-config.js`, then push that small configuration update.
+### Initial setup to upload to GitHub
 
-Follow the full [one-time setup guide](sync-worker/README.md). Until then, your local encrypted events continue to work, but uploading is unavailable. **No GitHub token is requested from the webpage.**
+1. Go to your GitHub account’s **Settings → Developer settings → Personal access tokens → Fine-grained tokens** or https://github.com/settings/personal-access-tokens/new.
+2. Create a token scoped to the **kameronyork/kameronyork.github.io** repository **only**, granting **Contents: Read and write**. No other permissions are needed. GitHub may require an expiration date; create a new token when it expires.
+3. Open your Secret Santa webpage using HTTPS, create or unlock your events, and click **Sync to GitHub**.
+4. Paste the token when prompted. The token is sent over HTTPS *only* to GitHub’s REST API. It is held **only in memory** until you lock the page or reload it; it is never stored in localStorage or committed to GitHub.
+5. Wait for the page to confirm **Synced to GitHub**. You can check the repository JSON file and GitHub commit history for the encrypted update.
 
-### Security and scope
+GitHub Pages is a static site and has no secret server credentials. **Without that token, anyone can download synced encrypted events, but cannot upload/edit the GitHub data.** Other users with their own PINs will need a repository-authorized token to sync their changes, or you can sync on their behalf. Do not enter the token on a page you do not trust.
 
-Passphrases do not appear in GitHub. AES-256-GCM encryption is performed in the browser with a key derived using PBKDF2-HMAC-SHA-256 (600,000 iterations) and a per-collection random salt. Every local save uses a new random IV. Older 6–12 digit PINs are still accepted when unlocking old vaults; new passphrases support 8–128 non-space printable ASCII characters. Change a PIN in the unlocked app and sync afterward.
+### On a new phone or after clearing site data
 
-The public GitHub JSON contains ciphertext only, but anyone can download it and attempt offline guessing. Use a strong, unique passphrase. There is no PIN recovery.
+1. Open the same Secret Santa webpage.
+2. Click **↓ Load saved events from GitHub** (no GitHub token needed for download).
+3. Unlock with the *same* passphrase you used when you synced. The page can also attempt to download automatically when an unlock attempt finds no matching local collection.
+4. Your complete synced event history is restored locally. Any edits **since the last successful sync** cannot be recovered from GitHub.
 
-**GitHub OAuth Apps request the `public_repo` scope**, which grants broader access to the owner's public repositories than just this one file. The Worker itself is restricted to the exact Secret Santa JSON path and checks the owner's immutable GitHub user ID before uploads. A future GitHub App implementation could narrow GitHub-granted permissions further.
+If you have older events saved unencrypted by the first version, create a passphrase on the **original browser and hostname**. Those existing local events will be encrypted and imported. Then click **Sync to GitHub**.
 
-Sync uses GitHub file SHA checks and per-collection fingerprints. If someone has changed a collection since your previous successful sync, your update is refused instead of overwriting it. Other family members' local events cannot be synced by them; to add them to the shared GitHub backup, the owner would first need to receive their encrypted data.
+### Change a PIN to a passphrase
 
+Previously created numeric PINs (6–12 digits) still unlock existing collections. New passphrases support 8–128 printable ASCII characters, including letters, numbers and symbols (without spaces). You can use **Change passphrase** while your collection is unlocked: enter the existing PIN and the new passphrase twice. The collection is re-encrypted with a fresh salt. **Sync right afterward:** until you do, your GitHub backup still uses the previous PIN.
+
+No passphrase is ever hardcoded in the public website or repository. No one with repo access can change an existing user’s local encrypted collection without their existing PIN and browser storage.
+
+### Conflicts and backup status
+
+Each click on Sync uses GitHub’s file revision SHA. If the same collection was edited on another device since your last download, the app **refuses to overwrite that newer GitHub copy**. It displays a conflict warning rather than silently losing data. When you are locked, **Load saved events from GitHub** refreshes clean local copies; unsynced local edits are never overwritten. To avoid conflicts, sync before changing devices, then download the current copy before making changes on another device.
+
+Clearing *only* cookies generally leaves localStorage intact; clearing **site data** can remove localStorage. Deleting browser site data before a successful sync can permanently lose unsynced events. Keeping your passphrase safe is essential: there is no online account password recovery.
 ## Using the app
 
 1. Create an 8+ character passphrase (letters and numbers are supported) or unlock with your existing PIN/passphrase. Each passphrase opens its own family history.
@@ -46,7 +55,7 @@ Sync uses GitHub file SHA checks and per-collection fingerprints. If someone has
 
 ## Automated tests
 
-Run `node draw.test.cjs`, `node history.test.cjs`, `node vault.test.cjs`, `node cloud.test.cjs`, and `node --test sync-worker/worker.test.mjs` (Node 20+).
+Run `node draw.test.cjs`, `node history.test.cjs`, `node vault.test.cjs` and `node cloud.test.cjs` (Node 20+).
 
 ## Text messages: two options
 

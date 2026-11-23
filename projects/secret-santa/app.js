@@ -2,7 +2,7 @@
 const $=id=>document.getElementById(id);
 const makeEvent=()=>({id:crypto.randomUUID(),name:'',budget:'',noSelf:true,mutual:true,names:[],exclusions:[],avoidPrevious:false,previousEventId:'',draw:null,sent:{}});
 let state=null, session=null, writes=Promise.resolve(), savingFailed=false, vaultBusy=false;
-let syncing=false;
+let githubToken='', syncing=false;
 let active=()=>state.events.find(e=>e.id===state.active)||state.events[0];
 let revealed=new Set(), textIndex=-1, accessKey='', sending=false;
 function syncIndicator(message, good=false){
@@ -101,7 +101,7 @@ $('lockVault').addEventListener('click',async()=>{
   $('lockVault').disabled=true;
   try{await writes;}catch{}
   if(savingFailed&&!confirm('Encrypted save failed. Locking now may discard unsaved changes. Lock anyway?')){$('lockVault').disabled=false;return;}
-  session=null;state=null;accessKey='';SantaCloud.resetOwnerSession();revealed.clear();
+  session=null;state=null;accessKey='';githubToken='';revealed.clear();
   ['textDialog','settingsDialog'].forEach(id=>{if($(id).open)$(id).close();});
   purgePrivateView();
   $('appRoot').hidden=true;$('vaultGate').hidden=false;gateRefresh();
@@ -137,66 +137,46 @@ $('loadCloud').onclick=async()=>{
   catch(err){gateMessage('Could not load from GitHub: '+err.message);$('cloudGateStatus').textContent='Download failed. No local events were changed.';}
   finally{vaultBusy=false;button.disabled=false;}
 };
-async function performSync(recordOverride=null,resumeFromOAuth=false) {
-  if(syncing)return;
-  const lockedSession=session;
-  if(!lockedSession&&!recordOverride)return;
-  syncing=true;
-  $('syncNow').disabled=true;
-  if(!resumeFromOAuth)syncIndicator('● Syncing encrypted events to GitHub…');
-  try {
-    if(!recordOverride){
-      await writes;
-      if(savingFailed)throw new Error('Encrypted local save failed. Fix storage before syncing.');
-    }
-    const record=recordOverride||SantaVault.recordFor(lockedSession);
-    if(!record)throw new Error('The encrypted event collection was not found on this device.');
-    if(!SantaCloud.configured())throw new Error('GitHub OAuth sync needs one-time owner setup. The website owner must deploy the OAuth Worker and configure its HTTPS address.');
-    if(!SantaCloud.hasOwnerSession()){
-      if(resumeFromOAuth)throw new Error('GitHub owner authorization is missing.');
-      $('syncInfo').textContent='Opening GitHub to verify the repository owner. Encrypted changes remain saved on this device.';
-      SantaCloud.beginOwnerSignIn(record.id);
-      return;
-    }
-    const outcome=await SantaCloud.push(record,SantaCloud.lastSynced(record.id));
-    SantaCloud.setLastSynced(record.id,outcome.fingerprint);
-    if(session&&session.id===record.id){
+function showSyncDialog(error){
+  $('githubToken').value=githubToken;
+  $('syncDialogError').textContent=error||'';
+  if(!$('syncDialog').open)$('syncDialog').showModal();
+}
+async function performSync(){
+  if(syncing||!session)return;
+  syncing=true;$('syncNow').disabled=true;
+  syncIndicator('● Syncing encrypted events to GitHub…');
+  try{
+    await writes;
+    if(savingFailed)throw new Error('Local encrypted save failed. Fix local storage before syncing.');
+    const localSession=session;
+    const record=SantaVault.recordFor(localSession);
+    if(!record)throw new Error('Encrypted event collection is missing.');
+    const outcome=await SantaCloud.push(record,githubToken,SantaCloud.lastSynced(localSession.id));
+    SantaCloud.setLastSynced(localSession.id,outcome.fingerprint);
+    if(localSession===session) {
       await refreshSyncStatus();
-      $('syncInfo').textContent=outcome.unchanged?'GitHub already has this encrypted version.':'GitHub accepted your encrypted event backup.';
+      $('syncInfo').textContent=outcome.unchanged?'GitHub already contains this version.':'GitHub accepted your encrypted backup.';
     }
-    if(resumeFromOAuth||!session){
-      $('cloudGateStatus').textContent=outcome.unchanged?'✓ This event collection was already synced to GitHub. Unlock to continue.':'✓ Encrypted event collection synced to GitHub. Unlock your events to continue.';
-    }
+    if($('syncDialog').open)$('syncDialog').close();
   }catch(err){
-    if(resumeFromOAuth||!session){
-      $('cloudGateStatus').textContent='Not synced — '+err.message+' Your local events were left untouched.';
-    }else{
+    if(session) {
       syncIndicator('● Not synced — GitHub upload failed');
       $('syncInfo').textContent=err.message;
+      showSyncDialog(err.message);
     }
   }finally{
-    syncing=false;
-    $('syncNow').disabled=false;
+    syncing=false;$('syncNow').disabled=false;
+    $('githubToken').value='';
   }
 }
-$('syncNow').onclick=()=>performSync();
-async function resumeOwnerSync() {
-  let signedIn=false;
-  try{
-    signedIn=SantaCloud.consumeOwnerReturn();
-    if(!signedIn)return;
-    const id=SantaCloud.pendingId();
-    if(!id)throw new Error('GitHub sign-in succeeded. Unlock your events and click Sync to continue.');
-    const record=SantaVault.recordFor({id});
-    if(!record)throw new Error('The pending encrypted event collection was not found on this device.');
-    await performSync(record,true);
-  }catch(err){
-    $('cloudGateStatus').textContent='Not synced — '+err.message;
-  }finally{
-    if(signedIn)SantaCloud.clearPending();
-  }
-}
-resumeOwnerSync();
+$('syncNow').onclick=()=>{if(!githubToken)showSyncDialog();else performSync();};
+$('syncForm').addEventListener('submit',ev=>{
+  ev.preventDefault();if(syncing)return;
+  githubToken=$('githubToken').value.trim();
+  if(!githubToken){$('syncDialogError').textContent='Enter a GitHub access token.';return;}
+  performSync();
+});
 $('changePin').onclick=()=>{
   $('changeError').textContent='';
   for(const id of ['oldPin','newPin','newPinConfirm'])$(id).value='';
