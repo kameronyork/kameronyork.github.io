@@ -1,81 +1,89 @@
-/* Public encrypted JSON in GitHub; write access only through a user-supplied token. */
+/* Public reads; owner-only sync through a separately deployed GitHub OAuth Worker. */
 (function (root) {
   'use strict';
-  const URL = 'https://api.github.com/repos/kameronyork/kameronyork.github.io/contents/projects/secret-santa/events.encrypted.json';
+  const GITHUB_JSON = 'https://api.github.com/repos/kameronyork/kameronyork.github.io/contents/projects/secret-santa/events.encrypted.json';
   const META = 'secret-santa.sync-status.v1';
-  const encoder = new TextEncoder();
-  const decoder = new TextDecoder();
-  function base64(bytes) {
-    let out = '';
-    for (let i=0; i<bytes.length; i+=8192) out += String.fromCharCode(...bytes.slice(i,i+8192));
-    return btoa(out);
+  const PENDING = 'secret-santa.pending-owner-oauth-sync';
+  const encoder=new TextEncoder(),decoder=new TextDecoder();
+  let ownerSession=null;
+  function apiBase(){
+    const raw=String(root.SantaSyncConfig?.endpoint||'').trim().replace(/\/+$/,'');
+    if(!raw)return '';
+    try {const url=new URL(raw);return url.protocol==='https:'&&!url.username&&!url.password&&!url.search&&!url.hash&&url.pathname==='/'?url.origin:'';}
+    catch{return '';}
   }
-  function unbase64(b64) {
-    const raw = atob(b64.replace(/\s+/g,''));
-    const out = new Uint8Array(raw.length);
-    for(let i=0;i<raw.length;i++)out[i]=raw.charCodeAt(i);
-    return out;
+  function configured(){return !!apiBase();}
+  function base64Decode(value){
+    const decoded=atob(value.replace(/\s/g,''));
+    const bytes=new Uint8Array(decoded.length);
+    for(let i=0;i<decoded.length;i++)bytes[i]=decoded.charCodeAt(i);
+    return bytes;
   }
-  function validateStore(data) {
-    if (!data || data.version !== 2 || !Array.isArray(data.vaults) || data.vaults.length>1000) {
-      throw new Error('The GitHub JSON is not a valid encrypted Secret Santa data file.');
-    }
-    return data;
+  function metadata(){
+    try {const data=JSON.parse(localStorage.getItem(META)||'{}');return data&&typeof data==='object'&&!Array.isArray(data)?data:{};}
+    catch{return {};}
   }
-  function metadata() {
-    try {
-      const data = JSON.parse(localStorage.getItem(META) || '{}');
-      return data && typeof data === 'object' && !Array.isArray(data) ? data : {};
-    } catch { return {}; }
+  function lastSynced(id){return metadata()[id]||null;}
+  function setLastSynced(id,signature){const all=metadata();all[id]=signature;localStorage.setItem(META,JSON.stringify(all));}
+  async function fingerprint(record){
+    if(!record)return '';
+    const bytes=encoder.encode(record.id+':'+record.salt+':'+record.iterations+':'+record.iv+':'+record.data);
+    const hash=new Uint8Array(await crypto.subtle.digest('SHA-256',bytes));
+    return Array.from(hash,x=>x.toString(16).padStart(2,'0')).join('');
   }
-  function lastSynced(id) { return metadata()[id] || null; }
-  function setLastSynced(id, fingerprint) {
-    const meta = metadata(); meta[id] = fingerprint;
-    localStorage.setItem(META, JSON.stringify(meta));
+  function validateStore(value){
+    if(!value||value.version!==2||!Array.isArray(value.vaults)||value.vaults.length>1000)
+      throw new Error('GitHub did not return a valid encrypted Secret Santa JSON file.');
+    return value;
   }
-  async function fingerprint(record) {
-    if (!record) return '';
-    const raw = encoder.encode(record.id+':'+record.salt+':'+record.iterations+':'+record.iv+':'+record.data);
-    const digest = new Uint8Array(await crypto.subtle.digest('SHA-256', raw));
-    return Array.from(digest, b=>b.toString(16).padStart(2,'0')).join('');
+  async function get(){
+    const response=await fetch(GITHUB_JSON+'?ref=main',{headers:{Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'},cache:'no-store'});
+    if(response.status===404)return {store:{version:2,vaults:[]},sha:null};
+    if(!response.ok)throw new Error('GitHub backup could not be downloaded (HTTP '+response.status+').');
+    const object=await response.json();
+    if(typeof object.content!=='string'||typeof object.sha!=='string')throw new Error('Unexpected GitHub backup format.');
+    try {return {store:validateStore(JSON.parse(decoder.decode(base64Decode(object.content)))),sha:object.sha};}
+    catch(err){throw new Error('GitHub backup could not be parsed: '+err.message);}
   }
-  async function get(token) {
-    const headers = {'Accept':'application/vnd.github+json', 'X-GitHub-Api-Version':'2022-11-28'};
-    if(token)headers.Authorization='Bearer '+token;
-    const response = await fetch(URL+'?ref=main',{headers,cache:'no-store'});
-    if(response.status === 404) {
-      if(token) throw new Error('Repository data file not found or token cannot access it.');
-      return {store:{version:2,vaults:[]},sha:null};
-    }
-    if(!response.ok)throw new Error('GitHub read failed (HTTP '+response.status+').');
-    const obj = await response.json();
-    if(typeof obj.sha!=='string'||typeof obj.content!=='string')throw new Error('GitHub did not return the expected JSON file.');
-    let store;
-    try{store=validateStore(JSON.parse(decoder.decode(unbase64(obj.content))));}
-    catch(err){throw new Error('Could not read GitHub encrypted JSON: '+err.message);}
-    return {store,sha:obj.sha};
+  function hasOwnerSession(){return typeof ownerSession==='string'&&ownerSession.length>20;}
+  function consumeOwnerReturn(){
+    const prefix='#santa_owner_session=';
+    if(!location.hash.startsWith(prefix))return false;
+    const raw=location.hash.slice(prefix.length);
+    history.replaceState(null,'',location.pathname+location.search);
+    let session;
+    try{session=decodeURIComponent(raw);}catch{throw new Error('GitHub returned an invalid owner session.');}
+    if(!/^[A-Za-z0-9_.-]{80,5000}$/.test(session))throw new Error('GitHub returned an invalid owner session.');
+    ownerSession=session;
+    return true;
   }
-  async function push(record, token, expectedFingerprint) {
-    if(!/^([a-zA-Z0-9_-]{12,})$/.test(token||'')) throw new Error('Enter a valid GitHub fine-grained access token.');
-    const {store,sha} = await get(token);
-    const index = store.vaults.findIndex(x=>x.id===record.id);
-    const localFingerprint = await fingerprint(record);
-    if(index !== -1) {
-      const remoteFingerprint = await fingerprint(store.vaults[index]);
-      if(remoteFingerprint === localFingerprint)return {fingerprint:localFingerprint,unchanged:true};
-      if(!expectedFingerprint || expectedFingerprint !== remoteFingerprint) {
-        throw new Error('This collection was changed on GitHub since your last download/sync. No data was overwritten. Load GitHub data in another browser or resolve the conflict before syncing.');
-      }
-      store.vaults[index]=record;
-    } else {
-      store.vaults.push(record);
-    }
-    const body = {message:'Sync encrypted Secret Santa event histories',content:base64(encoder.encode(JSON.stringify(store,null,2))),branch:'main'};
-    if(sha)body.sha=sha;
-    const response=await fetch(URL,{method:'PUT',headers:{'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify(body),cache:'no-store'});
-    if(response.status===409||response.status===422)throw new Error('GitHub rejected a concurrent update. Retry after reloading the latest encrypted file.');
-    if(!response.ok)throw new Error('GitHub could not save the file (HTTP '+response.status+'). Verify the token has Contents: Read and write access to this repository.');
-    return {fingerprint:localFingerprint,unchanged:false};
+  function pendingId(){return sessionStorage.getItem(PENDING);}
+  function clearPending(){sessionStorage.removeItem(PENDING);}
+  function beginOwnerSignIn(collectionId) {
+    const api=apiBase();
+    if(!api)throw new Error('The owner has not configured the secure GitHub OAuth sync service yet. See the setup guide.');
+    if(!collectionId)throw new Error('No encrypted collection is selected.');
+    sessionStorage.setItem(PENDING,collectionId);
+    location.assign(api+'/auth/start?site_origin='+encodeURIComponent(location.origin));
   }
-  root.SantaCloud = {get,push,fingerprint,lastSynced,setLastSynced};
+  function resetOwnerSession(){ownerSession=null;clearPending();}
+  async function push(record,expectedFingerprint){
+    const api=apiBase();
+    if(!api)throw new Error('GitHub OAuth sync is not configured yet. Contact the website owner.');
+    if(!hasOwnerSession())throw new Error('Owner GitHub sign-in required.');
+    const localFingerprint=await fingerprint(record);
+    const response=await fetch(api+'/api/sync',{
+      method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+ownerSession},
+      body:JSON.stringify({record,expectedFingerprint:expectedFingerprint||null}),
+      cache:'no-store'
+    });
+    let payload;
+    try{payload=await response.json();}catch{throw new Error('Sync service did not return JSON (HTTP '+response.status+').');}
+    if(response.status===401)ownerSession=null;
+    if(!response.ok||!payload.ok)throw new Error(payload.error||'GitHub sync failed (HTTP '+response.status+').');
+    if(payload.fingerprint!==localFingerprint)throw new Error('Sync service returned an unexpected encryption fingerprint.');
+    return {fingerprint:localFingerprint,unchanged:!!payload.unchanged};
+  }
+  root.SantaCloud={configured,get,push,fingerprint,lastSynced,setLastSynced,hasOwnerSession,consumeOwnerReturn,
+    pendingId,clearPending,beginOwnerSignIn,resetOwnerSession};
 })(window);
