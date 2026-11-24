@@ -1,11 +1,67 @@
 'use strict';
 const $=id=>document.getElementById(id);
+const GUEST_KEY='secret-santa.guest.v1';
 const makeEvent=()=>({id:crypto.randomUUID(),name:'',budget:'',noSelf:true,mutual:true,names:[],exclusions:[],avoidPrevious:false,previousEventId:'',draw:null,sent:{}});
-let state=null, session=null, writes=Promise.resolve(), savingFailed=false, vaultBusy=false;
-let githubToken='', syncing=false;
+const newState=()=>{const event=makeEvent();return {events:[event],active:event.id,endpoint:''};};
+let state=null,session=null,writes=Promise.resolve(),savingFailed=false,vaultBusy=false;
+let githubToken='',syncing=false,accessKey='',sending=false,textIndex=-1,revealed=new Set();
 let active=()=>state.events.find(e=>e.id===state.active)||state.events[0];
-let revealed=new Set(), textIndex=-1, accessKey='', sending=false;
-function syncIndicator(message, good=false){
+const signedIn=()=>!!session;
+function sanitizeGuestEvent(source){
+  if(!source||typeof source!=='object'||!Array.isArray(source.names)||source.names.length>100)
+    throw new Error('The guest event backup is not valid.');
+  const names=source.names;
+  if(names.some(x=>typeof x!=='string'||!x.trim()||x.length>80)||new Set(names.map(x=>x.toLowerCase())).size!==names.length)
+    throw new Error('Guest event has duplicate or invalid participant names.');
+  const exclusions=Array.isArray(source.exclusions)&&source.exclusions.length===names.length?
+    source.exclusions.map((list,i)=>{
+      if(!Array.isArray(list))throw new Error('Invalid exclusions in the guest event.');
+      return [...new Set(list.filter(n=>Number.isInteger(n)&&n>=0&&n<names.length&&n!==i))];
+    }):names.map(()=>[]);
+  let draw=null;
+  if(source.draw!==null&&source.draw!==undefined){
+    if(!Array.isArray(source.draw)||source.draw.length!==names.length||
+      source.draw.some(n=>!Number.isInteger(n)||n<0||n>=names.length)||new Set(source.draw).size!==names.length)
+      throw new Error('Guest backup has an invalid drawing.');
+    draw=source.draw.slice();
+  }
+  const budget=source.budget===''?'':String(source.budget??'');
+  if(budget!==''&&(!Number.isFinite(Number(budget))||Number(budget)<0||Number(budget)>100000))
+    throw new Error('Guest backup has an invalid spending limit.');
+  const sent={};
+  if(source.sent&&typeof source.sent==='object'){
+    for(const [k,v] of Object.entries(source.sent)){
+      if(/^\d{1,3}$/.test(k)&&Number(k)<names.length&&(v==='manual'||v==='direct'))sent[k]=v;
+    }
+  }
+  return {id:crypto.randomUUID(),name:typeof source.name==='string'?source.name.slice(0,100):'',
+    budget,noSelf:source.noSelf!==false,mutual:source.mutual!==false,names:names.slice(),
+    exclusions,avoidPrevious:false,previousEventId:'',draw,sent};
+}
+function loadGuest(){
+  try{
+    const stored=JSON.parse(localStorage.getItem(GUEST_KEY)||'null');
+    if(stored?.event){
+      const event=sanitizeGuestEvent(stored.event);
+      return {events:[event],active:event.id,endpoint:typeof stored.endpoint==='string'?stored.endpoint:''};
+    }
+  }catch(err){console.warn('Could not read the previous guest event.',err);}
+  return newState();
+}
+function updateViewMode(){
+  const owner=signedIn();
+  for(const id of ['ownerEventPicker','duplicateEvent','deleteEvent','changePin','syncNow','lockVault','ownerSyncStrip','menuSignOut'])
+    $(id).hidden=!owner;
+  for(const id of ['guestNotice','menuSignIn','menuGuestDownload','menuGuestImport','guestDownload'])
+    $(id).hidden=owner;
+  $('historyRule').hidden=!owner;
+  $('menuMode').textContent=owner?'Kameron · encrypted events':'Guest · local event only';
+  $('footerMode').textContent=owner?
+    'Your event history is PIN-encrypted locally; click Sync to back it up to GitHub. ':
+    'Guest events are saved on this browser only. Download a backup if you want to keep a copy. ';
+}
+function syncIndicator(message,good=false){
+  if(!signedIn())return;
   $('syncStatus').className=good?'sync-saved':'sync-unsaved';
   $('syncStatus').textContent=message;
 }
@@ -26,23 +82,28 @@ async function refreshSyncStatus(){
   }catch(err){if(session===expected)syncIndicator('● Not synced — could not check backup status');}
 }
 function save(){
-  if(!state||!session)return Promise.resolve();
+  if(!state)return Promise.resolve();
+  if(!signedIn()){
+    try {
+      localStorage.setItem(GUEST_KEY,JSON.stringify({event:active(),endpoint:state.endpoint||''}));
+      $('storageWarning').hidden=true;
+    }catch(err){
+      $('storageWarning').textContent='Unable to save this guest event on this device. Download a backup before leaving or reloading.';
+      $('storageWarning').hidden=false;
+    }
+    return Promise.resolve();
+  }
   syncIndicator('● Not synced — saving locally…');
-  const snapshot=JSON.parse(JSON.stringify(state));
-  const currentSession=session;
+  const snapshot=JSON.parse(JSON.stringify(state)),currentSession=session;
   writes=writes.catch(()=>{}).then(()=>SantaVault.save(currentSession,snapshot)).then(()=>{
     if(currentSession===session){savingFailed=false;$('storageWarning').hidden=true;refreshSyncStatus();}
   }).catch(err=>{
-    if(currentSession===session){savingFailed=true;$('storageWarning').textContent='Encrypted save failed: '+err.message+'. Changes may be lost if you reload or lock.';$('storageWarning').hidden=false;}
+    if(currentSession===session){savingFailed=true;$('storageWarning').textContent='Encrypted save failed: '+err.message+'. Changes may be lost if you reload or sign out.';$('storageWarning').hidden=false;}
   });
   return writes;
 }
-function emptyState(){
-  const e=makeEvent();
-  return {events:[e],active:e.id,endpoint:''};
-}
 function normalizeState(data){
-  if(!data||!Array.isArray(data.events)||!data.events.length)return emptyState();
+  if(!data||!Array.isArray(data.events)||!data.events.length)return newState();
   data.events.forEach(e=>{if(!Array.isArray(e.names))e.names=[];if(!Array.isArray(e.exclusions))e.exclusions=e.names.map(()=>[]);if(!e.sent)e.sent={};if(typeof e.avoidPrevious!=='boolean')e.avoidPrevious=false;if(typeof e.previousEventId!=='string')e.previousEventId='';if(!e.exclusions.length&&e.names.length)e.exclusions=e.names.map(()=>[]);});
   return data;
 }
@@ -52,25 +113,35 @@ function gateRefresh(){
     const count=SantaVault.list().vaults.length;
     $('legacyHint').hidden=!SantaVault.legacy();
     $('unlockForm').hidden=false;
+    $('createForm').hidden=count>0;
     gateMessage('');
   }catch(err){gateMessage(err.message);}
+}
+function openKameronSignIn(){
+  if(signedIn()||sending||syncing)return;
+  $('siteMenu').open=false;
+  gateRefresh();
+  $('cloudGateStatus').textContent='On a new phone? Load your encrypted GitHub backup before unlocking.';
+  $('vaultGate').showModal();
 }
 function activate(result){
   session=result.session;
   state=normalizeState(result.data);
   revealed.clear();accessKey='';textIndex=-1;
   $('unlockPin').value='';$('createPin').value='';$('confirmPin').value='';
-  $('vaultGate').hidden=true;$('appRoot').hidden=false;
+  if($('vaultGate').open)$('vaultGate').close();
   $('storageWarning').hidden=true;
-  gateMessage('');render();refreshSyncStatus();
+  gateMessage('');
+  updateViewMode();render();refreshSyncStatus();
 }
+$('menuSignIn').onclick=openKameronSignIn;
 $('unlockForm').addEventListener('submit',async ev=>{
   ev.preventDefault();if(vaultBusy)return;
   vaultBusy=true;gateMessage('');const b=$('unlockForm').querySelector('button');b.disabled=true;
   try{
     const pin=$('unlockPin').value;
-    try { activate(await SantaVault.unlock(pin)); }
-    catch(err) {
+    try{activate(await SantaVault.unlock(pin));}
+    catch(err){
       if(!err.message.includes('No event collection matched'))throw err;
       await loadFromGitHub();
       activate(await SantaVault.unlock(pin));
@@ -84,29 +155,34 @@ $('createForm').addEventListener('submit',async ev=>{
   if(pin!==$('confirmPin').value){gateMessage('Passphrases do not match.');return;}
   vaultBusy=true;gateMessage('');const b=$('createForm').querySelector('button');b.disabled=true;
   try{
-    const data=SantaVault.legacy()||emptyState();
+    const data=SantaVault.legacy()||newState();
     activate(await SantaVault.create(pin,data));
   }catch(err){gateMessage(err.message);}
   finally{vaultBusy=false;b.disabled=false;$('createPin').value='';$('confirmPin').value='';}
 });
 function purgePrivateView(){
-  $('resultRows').replaceChildren();$('people').replaceChildren();$('exclusions').replaceChildren();
-  $('previousSummary').replaceChildren();$('eventSelect').replaceChildren();$('previousEvent').replaceChildren();
-  ['eventName','budget','newNames','phone','smsKey','endpoint'].forEach(id=>$(id).value='');
-  ['resultTitle','resultMeta','sentProgress','textStatus','textTitle'].forEach(id=>$(id).textContent='');
+  for(const id of ['resultRows','people','exclusions','previousSummary','eventSelect','previousEvent'])$(id).replaceChildren();
+  for(const id of ['eventName','budget','newNames','phone','smsKey','endpoint','githubToken','unlockPin','createPin','confirmPin','oldPin','newPin','newPinConfirm'])$(id).value='';
+  for(const id of ['resultTitle','resultMeta','sentProgress','textStatus','textTitle'])$(id).textContent='';
   $('storageWarning').hidden=true;
 }
-$('lockVault').addEventListener('click',async()=>{
-  if(sending)return;
+async function signOut(){
+  if(!signedIn()||sending||syncing||vaultBusy)return;
   $('lockVault').disabled=true;
   try{await writes;}catch{}
-  if(savingFailed&&!confirm('Encrypted save failed. Locking now may discard unsaved changes. Lock anyway?')){$('lockVault').disabled=false;return;}
-  session=null;state=null;accessKey='';githubToken='';revealed.clear();
-  ['textDialog','settingsDialog'].forEach(id=>{if($(id).open)$(id).close();});
+  if(savingFailed&&!confirm('Encrypted save failed. Signing out may discard unsaved changes. Sign out anyway?')){
+    $('lockVault').disabled=false;return;
+  }
+  session=null;state=null;accessKey='';githubToken='';revealed.clear();textIndex=-1;
+  for(const id of ['textDialog','settingsDialog','syncDialog','changeDialog','vaultGate'])if($(id).open)$(id).close();
   purgePrivateView();
-  $('appRoot').hidden=true;$('vaultGate').hidden=false;gateRefresh();
+  state=loadGuest();
+  $('siteMenu').open=false;
+  updateViewMode();render();
   $('lockVault').disabled=false;
-});
+}
+$('lockVault').onclick=signOut;
+$('menuSignOut').onclick=signOut;
 async function loadFromGitHub(){
   $('cloudGateStatus').textContent='Loading encrypted collections from GitHub…';
   const remote=await SantaCloud.get();
@@ -117,89 +193,121 @@ async function loadFromGitHub(){
     if(!local)continue;
     const oldFingerprint=await SantaCloud.fingerprint(local);
     const newFingerprint=await SantaCloud.fingerprint(record);
-    if(oldFingerprint!==newFingerprint && oldFingerprint===SantaCloud.lastSynced(record.id))replacements.push(record.id);
+    if(oldFingerprint!==newFingerprint&&oldFingerprint===SantaCloud.lastSynced(record.id))replacements.push(record.id);
   }
   const result=SantaVault.importRemote(remote.store.vaults,replacements);
   for(const record of remote.store.vaults){
     if(result.added.includes(record.id)||result.updated.includes(record.id)||
-       (existing.has(record.id)&&(await SantaCloud.fingerprint(existing.get(record.id)))===(await SantaCloud.fingerprint(record)))) {
+       (existing.has(record.id)&&(await SantaCloud.fingerprint(existing.get(record.id)))===(await SantaCloud.fingerprint(record)))){
       SantaCloud.setLastSynced(record.id,await SantaCloud.fingerprint(record));
     }
   }
-  $('cloudGateStatus').textContent=result.added.length+' encrypted collection(s) downloaded; '+result.updated.length+' refreshed. '+(result.skipped.length?result.skipped.length+' existing collection(s) with local changes were left unchanged. ':'')+'Unlock using your original passphrase.';
-  gateRefresh();
+  $('cloudGateStatus').textContent=result.added.length+' encrypted collection(s) downloaded; '+result.updated.length+
+    ' refreshed. '+(result.skipped.length?result.skipped.length+' existing local collection(s) left unchanged. ':'')+
+    'Unlock using your original passphrase.';
   return result;
 }
 $('loadCloud').onclick=async()=>{
   if(vaultBusy)return;
-  vaultBusy=true;const button=$('loadCloud');button.disabled=true;gateMessage('');
+  vaultBusy=true;const b=$('loadCloud');b.disabled=true;gateMessage('');
   try{await loadFromGitHub();}
-  catch(err){gateMessage('Could not load from GitHub: '+err.message);$('cloudGateStatus').textContent='Download failed. No local events were changed.';}
-  finally{vaultBusy=false;button.disabled=false;}
+  catch(err){gateMessage('Could not load from GitHub: '+err.message);$('cloudGateStatus').textContent='Download failed. Your local events were not changed.';}
+  finally{vaultBusy=false;b.disabled=false;}
 };
 function showSyncDialog(error){
+  if(!signedIn())return;
   $('githubToken').value=githubToken;
   $('syncDialogError').textContent=error||'';
   if(!$('syncDialog').open)$('syncDialog').showModal();
 }
 async function performSync(){
-  if(syncing||!session)return;
+  if(syncing||!signedIn())return;
   syncing=true;$('syncNow').disabled=true;
   syncIndicator('● Syncing encrypted events to GitHub…');
   try{
     await writes;
     if(savingFailed)throw new Error('Local encrypted save failed. Fix local storage before syncing.');
-    const localSession=session;
-    const record=SantaVault.recordFor(localSession);
+    const localSession=session,record=SantaVault.recordFor(localSession);
     if(!record)throw new Error('Encrypted event collection is missing.');
     const outcome=await SantaCloud.push(record,githubToken,SantaCloud.lastSynced(localSession.id));
     SantaCloud.setLastSynced(localSession.id,outcome.fingerprint);
-    if(localSession===session) {
+    if(localSession===session){
       await refreshSyncStatus();
       $('syncInfo').textContent=outcome.unchanged?'GitHub already contains this version.':'GitHub accepted your encrypted backup.';
     }
     if($('syncDialog').open)$('syncDialog').close();
   }catch(err){
-    if(session) {
+    if(signedIn()){
       syncIndicator('● Not synced — GitHub upload failed');
       $('syncInfo').textContent=err.message;
       showSyncDialog(err.message);
     }
-  }finally{
-    syncing=false;$('syncNow').disabled=false;
-    $('githubToken').value='';
-  }
+  }finally{syncing=false;$('syncNow').disabled=false;$('githubToken').value='';}
 }
-$('syncNow').onclick=()=>{if(!githubToken)showSyncDialog();else performSync();};
+$('syncNow').onclick=()=>{if(!signedIn())return;if(!githubToken)showSyncDialog();else performSync();};
 $('syncForm').addEventListener('submit',ev=>{
-  ev.preventDefault();if(syncing)return;
+  ev.preventDefault();if(syncing||!signedIn())return;
   githubToken=$('githubToken').value.trim();
   if(!githubToken){$('syncDialogError').textContent='Enter a GitHub access token.';return;}
   performSync();
 });
 $('changePin').onclick=()=>{
+  if(!signedIn())return;
   $('changeError').textContent='';
   for(const id of ['oldPin','newPin','newPinConfirm'])$(id).value='';
   $('changeDialog').showModal();
 };
 $('changeForm').addEventListener('submit',async ev=>{
-  ev.preventDefault();if(syncing||sending||vaultBusy)return;
+  ev.preventDefault();if(!signedIn()||syncing||sending||vaultBusy)return;
   if($('newPin').value!==$('newPinConfirm').value){$('changeError').textContent='New passphrases do not match.';return;}
-  vaultBusy=true;
-  $('changeError').textContent='';
-  const button=$('changeForm').querySelector('[type="submit"]');button.disabled=true;
+  vaultBusy=true;$('changeError').textContent='';
+  const b=$('changeForm').querySelector('[type="submit"]');b.disabled=true;
   try{
     await writes;
-    if(savingFailed)throw new Error('Encrypted local changes have not been saved. Try again after fixing storage.');
+    if(savingFailed)throw new Error('Encrypted local changes have not been saved.');
     const result=await SantaVault.changePassphrase(session,$('oldPin').value,$('newPin').value);
     session=result.session;state=normalizeState(result.data);
     $('changeDialog').close();render();
     await refreshSyncStatus();
-    $('syncInfo').textContent='Passphrase changed locally. Sync now to update the GitHub backup.';
+    $('syncInfo').textContent='Passphrase changed locally. Sync now to update your GitHub backup.';
   }catch(err){$('changeError').textContent=err.message;}
-  finally{vaultBusy=false;button.disabled=false;for(const id of ['oldPin','newPin','newPinConfirm'])$(id).value='';}
+  finally{vaultBusy=false;b.disabled=false;for(const id of ['oldPin','newPin','newPinConfirm'])$(id).value='';}
 });
-gateRefresh();
+function downloadGuestBackup(){
+  if(signedIn())return;
+  const event=active();
+  const serialized=JSON.stringify({format:'secret-santa-guest-v1',event},null,2);
+  const file=new Blob([serialized],{type:'application/json'});
+  const url=URL.createObjectURL(file);
+  const a=document.createElement('a');a.href=url;
+  const safeName=(event.name.trim()||'secret-santa').replace(/[^a-z0-9-]+/gi,'-').slice(0,45);
+  a.download=(safeName||'secret-santa')+'-backup.json';
+  document.body.append(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+$('guestDownload').onclick=downloadGuestBackup;
+$('menuGuestDownload').onclick=()=>{$('siteMenu').open=false;downloadGuestBackup();};
+$('menuGuestImport').onclick=()=>{if(signedIn())return;$('siteMenu').open=false;$('guestBackupFile').click();};
+$('guestBackupFile').addEventListener('change',async()=>{
+  if(signedIn())return;
+  const file=$('guestBackupFile').files?.[0];$('guestBackupFile').value='';
+  if(!file)return;
+  try {
+    if(file.size>1024*1024)throw new Error('The backup file is too large (maximum 1 MB).');
+    const data=JSON.parse(await file.text());
+    if(data?.format!=='secret-santa-guest-v1')throw new Error('Select a Secret Santa guest backup JSON file.');
+    const event=sanitizeGuestEvent(data.event);
+    if(!confirm('Replace the current guest event with the event from this backup? Any unsaved guest edits will be lost.'))return;
+    state={events:[event],active:event.id,endpoint:state.endpoint||''};
+    revealed.clear();save();render();
+  }catch(err){alert('Could not restore guest backup: '+err.message);}
+});
+$('menuSmsSettings').onclick=()=>{$('siteMenu').open=false;settings();};
+document.addEventListener('click',event=>{const menu=$('siteMenu');if(menu.open&&!menu.contains(event.target))menu.open=false;});
+document.addEventListener('keydown',event=>{if(event.key==='Escape')$('siteMenu').open=false;});
+state=loadGuest();
+updateViewMode();
+render();
 function node(tag,cls,text){const el=document.createElement(tag);if(cls)el.className=cls;if(text!==undefined)el.textContent=text;return el;}
 function button(text,cls,fn){const b=node('button',cls,text);b.type='button';b.addEventListener('click',fn);return b;}
 function money(b){return b===''?'No spending limit':Number(b).toLocaleString('en-US',{style:'currency',currency:'USD'});}
@@ -229,11 +337,11 @@ function renderHistory(){
   if(matched.matched.length){const details=node('details','history-details'),heading=node('summary','','Matched previous recipients'),list=node('ul','history-list');matched.matched.forEach(m=>list.append(node('li','',m.giver+' → '+m.recipient)));details.append(heading,list);summary.append(details);}
   if(matched.unmatched.length){const details=node('details','history-details'),heading=node('summary','','Unmatched names — check spelling'),list=node('ul','history-list');details.open=true;matched.unmatched.forEach(m=>list.append(node('li','',m.giver+': '+m.reason+(m.recipient?' ('+m.recipient+')':''))));details.append(heading,list);summary.append(details);}
 }
-$('avoidPrevious').addEventListener('change',()=>{active().avoidPrevious=$('avoidPrevious').checked;save();renderHistory();});
-$('previousEvent').addEventListener('change',()=>{active().previousEventId=$('previousEvent').value;save();renderHistory();});
+$('avoidPrevious').addEventListener('change',()=>{if(!signedIn())return;active().avoidPrevious=$('avoidPrevious').checked;save();renderHistory();});
+$('previousEvent').addEventListener('change',()=>{if(!signedIn())return;active().previousEventId=$('previousEvent').value;save();renderHistory();});
 function effectiveExclusions(e){
   const combined=e.exclusions.map(ex=>ex.slice());
-  if(!e.avoidPrevious)return combined;
+  if(!signedIn()||!e.avoidPrevious)return combined;
   const old=state.events.find(x=>x.id===e.previousEventId&&x.id!==e.id&&Array.isArray(x.draw));
   if(!old)return null;
   const matches=previousMatches(e,old);
@@ -245,10 +353,18 @@ $('eventName').addEventListener('input',()=>{active().name=$('eventName').value;
 $('budget').addEventListener('input',()=>{active().budget=$('budget').value;save();});
 $('noSelf').addEventListener('change',()=>{active().noSelf=$('noSelf').checked;save();});
 $('mutual').addEventListener('change',()=>{active().mutual=$('mutual').checked;save();});
-$('eventSelect').addEventListener('change',()=>{state.active=$('eventSelect').value;revealed.clear();save();render();});
-$('newEvent').onclick=()=>{const e=makeEvent();state.events.push(e);state.active=e.id;revealed.clear();save();render();$('eventName').focus();};
-$('duplicateEvent').onclick=()=>{const old=active(), next=makeEvent();const year=old.name.match(/\b(20\d{2})\s*$/);next.name=old.name.replace(/\s+\d{4}\s*$/, '')+' '+(year?Number(year[1])+1:new Date().getFullYear()+1);next.name=next.name.trim();next.budget=old.budget;next.noSelf=old.noSelf;next.mutual=old.mutual;next.names=old.names.slice();next.exclusions=old.exclusions.map(a=>a.slice());next.avoidPrevious=!!old.draw;next.previousEventId=old.draw?old.id:'';state.events.push(next);state.active=next.id;revealed.clear();save();render();$('eventName').focus();};
-$('deleteEvent').onclick=()=>{if(!confirm('Delete this event and all its saved assignments?'))return;state.events=state.events.filter(e=>e.id!==active().id);if(!state.events.length)state.events.push(makeEvent());state.active=state.events[0].id;revealed.clear();save();render();};
+$('eventSelect').addEventListener('change',()=>{if(!signedIn())return;state.active=$('eventSelect').value;revealed.clear();save();render();});
+$('newEvent').onclick=()=>{
+  if(!signedIn()){
+    const old=active();
+    if((old.names.length||old.name.trim()||old.draw)&&!confirm('Start a new guest event? This replaces the current one on this device. Download a backup first if you want to keep it.'))return;
+    const e=makeEvent();state={events:[e],active:e.id,endpoint:state.endpoint||''};
+    revealed.clear();save();render();$('eventName').focus();return;
+  }
+  const e=makeEvent();state.events.push(e);state.active=e.id;revealed.clear();save();render();$('eventName').focus();
+};
+$('duplicateEvent').onclick=()=>{if(!signedIn())return;const old=active(), next=makeEvent();const year=old.name.match(/\b(20\d{2})\s*$/);next.name=old.name.replace(/\s+\d{4}\s*$/, '')+' '+(year?Number(year[1])+1:new Date().getFullYear()+1);next.name=next.name.trim();next.budget=old.budget;next.noSelf=old.noSelf;next.mutual=old.mutual;next.names=old.names.slice();next.exclusions=old.exclusions.map(a=>a.slice());next.avoidPrevious=!!old.draw;next.previousEventId=old.draw?old.id:'';state.events.push(next);state.active=next.id;revealed.clear();save();render();$('eventName').focus();};
+$('deleteEvent').onclick=()=>{if(!signedIn())return;if(!confirm('Delete this event and all its saved assignments?'))return;state.events=state.events.filter(e=>e.id!==active().id);if(!state.events.length)state.events.push(makeEvent());state.active=state.events[0].id;revealed.clear();save();render();};
 $('draw').onclick=()=>{const e=active(), err=$('drawError');err.textContent='';if(!e.name.trim()){err.textContent='Enter an event name first.';$('eventName').focus();return;}if(!$('budget').checkValidity()){err.textContent='Enter a valid nonnegative spending limit, or leave blank.';$('budget').reportValidity();return;}if(e.names.length<2){err.textContent='Add at least two participants.';return;}const exclusions=effectiveExclusions(e);if(!exclusions){err.textContent='Choose a completed previous event or turn off previous-event exclusions.';return;}const p=drawAssignments(e.names,exclusions,e.noSelf,()=>crypto.getRandomValues(new Uint32Array(1))[0]/4294967296);if(!p){err.textContent='No valid drawing is possible with these exclusions. Remove an exclusion or add participants and try again.';return;}e.draw=p;e.sent={};revealed.clear();save();render();$('results').scrollIntoView({behavior:'smooth'});};
 function eyeIcon(open){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/>'+(open?'<path d="m3 3 18 18"/>':'')+'</svg>';}
 function renderResults(){const e=active();$('resultTitle').textContent=e.name;$('resultMeta').textContent=e.names.length+' participants · '+money(e.budget)+(e.budget!==''?' limit':'');const root=$('resultRows');root.replaceChildren();e.names.forEach((name,i)=>{const row=node('div','result-row'), giver=node('div','giver');giver.append(node('span','row-label','Participant'),document.createTextNode(name));const as=node('div','assignment'), value=node('span','recipient'), eye=button('','eye',()=>{if(revealed.has(i))revealed.delete(i);else revealed.add(i);refresh();});function refresh(){const open=revealed.has(i);value.classList.toggle('blurred',!open);value.textContent=open?e.names[e.draw[i]]:'Secret name';value.setAttribute('aria-label',open?value.textContent:'Hidden assignment');eye.innerHTML=eyeIcon(open);eye.setAttribute('aria-label',(open?'Hide':'Reveal')+' assignment for '+name);eye.setAttribute('aria-pressed',String(open));}refresh();as.append(value,eye);const actions=node('div','text-actions');const sent=e.sent[i];actions.append(button(sent?'Text again':'Send text','',()=>openText(i)));if(sent)actions.append(node('span','status',sent==='manual'?'Marked sent':'SMS accepted'));row.append(giver,as,actions);root.append(row);});$('sentProgress').textContent=Object.keys(e.sent).length+' of '+e.names.length+' notifications sent or marked sent.';}
@@ -264,6 +380,5 @@ $('markManual').onclick=()=>markSent('manual');
 function settings(){if(sending)return;if($('textDialog').open)$('textDialog').close();$('endpoint').value=state.endpoint||'';$('settingsError').textContent='';$('settingsDialog').showModal();}
 $('smsSettings').onclick=settings;$('openSmsSettings').onclick=settings;
 $('settingsForm').addEventListener('submit',ev=>{ev.preventDefault();const v=$('endpoint').value.trim();if(v){try{const u=new URL(v);if(u.protocol!=='https:'||u.username||u.password||u.hash||u.search)throw Error();}catch{$('settingsError').textContent='Enter an HTTPS endpoint URL without credentials, query or fragment.';return;}}if(v!==state.endpoint)accessKey='';state.endpoint=v;save();$('settingsDialog').close();});
-document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>{if(!sending)$(b.dataset.close).close();});
+document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>{if(!sending&&!syncing)$(b.dataset.close).close();});
 $('textDialog').addEventListener('cancel',e=>{if(sending)e.preventDefault();});
-gateRefresh();

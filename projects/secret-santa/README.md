@@ -1,61 +1,50 @@
 # Secret Santa
 
-A standalone, responsive HTML/CSS/JavaScript app for family gift exchanges. Open the project via HTTPS GitHub Pages or a localhost web server. No hosted account or backend is needed for drawing. The public GitHub repository contains only code and no participant names or assignments.
+A responsive, single-page family gift exchange app on GitHub Pages. Visitors can create a one-time Secret Santa event immediately, without creating an account or entering a PIN. Only Kameron signs in to see saved multi-year events and sync an encrypted history to GitHub.
 
-## Storage, privacy, and manual GitHub sync
+## Guest mode (default)
 
-**Your browser is the working copy.** Events are encrypted with AES-256-GCM before being saved to localStorage. Saving and editing is automatic locally. Nothing goes to GitHub until you click **↑ Sync to GitHub**. The status strip clearly says **Not synced** when the local encrypted copy differs from the last successfully synced copy.
+The main page opens directly to event setup. Guests can name an event, add names, set a spending limit, make spouse / participant exclusions, draw assignments, reveal/hide recipients, and use the same text-message controls as before.
 
-Clicking **Sync to GitHub** saves your encrypted collection into the JSON file at `projects/secret-santa/events.encrypted.json`.
+- **A guest has one active event at a time.** Clicking New event replaces their current guest event after confirmation. Guests do not see the event history selector, Reuse for next year, Change passphrase, or GitHub Sync.
+- The current guest event is saved only in that browser's `localStorage` (`secret-santa.guest.v1`). It survives ordinary refreshes, but clearing browser site data, changing phones, or private-browsing cleanup can remove it. **It is not uploaded or backed up to GitHub.**
+- The amber notice and Settings menu offer **Download Event Backup** and **Load Event Backup**. These JSON backups include the event's names **and completed assignments in readable text**, so store them privately; **do not upload guest backups to a public GitHub repository**.
+- Guest events are not PIN-encrypted, because there is no guest PIN. They are visible to anyone with access to that device's browser storage. A blurred assignment is a visual convenience only.
+- Previous-year exclusions appear only after Kameron signs in because a guest event is intended to be one-time and has no earlier event library. Individual exclusion controls work for everyone.
 
-The repository is **public**. This JSON stores only random salts, IVs, encrypted ciphertext, and non-secret metadata, never readable names, assignments, or passphrases. **Anyone can download the encrypted JSON and attempt offline guesses of the passphrase.** Use a long, unique passphrase that is not easy to guess; do not use a secret you have already shared publicly.
+## Kameron Sign In
 
-Each family/person has their own encryption passphrase and encrypted collection. Each collection holds many years of family events. The page never stores your passphrase or a recoverable passphrase hash. It uses PBKDF2-HMAC-SHA-256 with 600,000 iterations and a random salt to derive the AES-256-GCM encryption key. A new random nonce is used on every write.
+Open the **☰ Settings** hamburger menu and click **Kameron Sign In**. The sign-in dialog asks for the existing private PIN or passphrase and can download your previously synced encrypted GitHub history after you reset your phone. If no encrypted vault exists in the browser yet, it also offers initial passphrase creation.
 
-### Initial setup to upload to GitHub
+Signing in unlocks the private event picker (multiple years), Reuse for next year, previous-event exclusions, Change passphrase, and **Sync to GitHub**. Click **Sign Out** in Settings or the top toolbar when finished. The app returns to the guest event, without deleting either the local guest event or your encrypted private history. On a new browser visit, the app **always starts in guest mode**; it does not leave your private event history unlocked.
 
-1. Go to your GitHub account’s **Settings → Developer settings → Personal access tokens → Fine-grained tokens** or https://github.com/settings/personal-access-tokens/new.
-2. Create a token scoped to the **kameronyork/kameronyork.github.io** repository **only**, granting **Contents: Read and write**. No other permissions are needed. GitHub may require an expiration date; create a new token when it expires.
-3. Open your Secret Santa webpage using HTTPS, create or unlock your events, and click **Sync to GitHub**.
-4. Paste the token when prompted. The token is sent over HTTPS *only* to GitHub’s REST API. It is held **only in memory** until you lock the page or reload it; it is never stored in localStorage or committed to GitHub.
-5. Wait for the page to confirm **Synced to GitHub**. You can check the repository JSON file and GitHub commit history for the encrypted update.
+The private collection is encrypted in the browser with **AES-256-GCM**, using a key derived from the passphrase with **PBKDF2-HMAC-SHA-256, 600,000 iterations** and a random salt. The PIN itself is never stored. Older numeric PINs still work; new passphrases may be 8–128 printable characters. Only people who know the private passphrase can unlock this history in the normal UI. This is browser-level protection, **not server-verified identity authentication**: a person who learns the private passphrase could unlock the events, but GitHub still requires an authorized token to accept a sync.
 
-GitHub Pages is a static site and has no secret server credentials. **Without that token, anyone can download synced encrypted events, but cannot upload/edit the GitHub data.** Other users with their own PINs will need a repository-authorized token to sync their changes, or you can sync on their behalf. Do not enter the token on a page you do not trust.
+If you're updating from an older version of the webpage, the prior vault is retained under `secret-santa.vaults.v2`. Existing unencrypted events in `secret-santa.v1` can be imported and encrypted during initial private-vault creation on that same browser and hostname. Guest mode uses a separate storage key and will **never overwrite the existing encrypted vault**.
 
-### On a new phone or after clearing site data
+## Private owner GitHub Sync (manual token; no Cloudflare)
 
-1. Open the same Secret Santa webpage.
-2. Click **↓ Load saved events from GitHub** (no GitHub token needed for download).
-3. Unlock with the *same* passphrase you used when you synced. The page can also attempt to download automatically when an unlock attempt finds no matching local collection.
-4. Your complete synced event history is restored locally. Any edits **since the last successful sync** cannot be recovered from GitHub.
+Only while signed in does **↑ Sync to GitHub** appear. It sends the unlocked owner's already-encrypted collection to the single repository file at `projects/secret-santa/events.encrypted.json`, preserving any other encrypted collections already in that file.
 
-If you have older events saved unencrypted by the first version, create a passphrase on the **original browser and hostname**. Those existing local events will be encrypted and imported. Then click **Sync to GitHub**.
+One-time setup:
 
-### Change a PIN to a passphrase
+1. While signed into GitHub, open [fine-grained personal access tokens](https://github.com/settings/personal-access-tokens/new).
+2. Create a token restricted to **kameronyork/kameronyork.github.io**, with **Contents: Read and write** repository permission. If the token expires, create a replacement.
+3. In the Secret Santa webpage, open **☰ Settings → Kameron Sign In**, unlock your private events, and click **Sync to GitHub**.
+4. Paste the token into the Sync dialog. The page uses it to call GitHub's API over HTTPS; the token is held **only in page memory**, not stored in localStorage or committed to the repository.
+5. Wait for **Synced to GitHub**. If you edit anything afterward, the strip will change to **Not synced** until the next successful upload.
 
-Previously created numeric PINs (6–12 digits) still unlock existing collections. New passphrases support 8–128 printable ASCII characters, including letters, numbers and symbols (without spaces). You can use **Change passphrase** while your collection is unlocked: enter the existing PIN and the new passphrase twice. The collection is re-encrypted with a fresh salt. **Sync right afterward:** until you do, your GitHub backup still uses the previous PIN.
+The repository JSON is public but contains **encrypted ciphertext, not readable names, participants or assignments**. Strong, unique passphrases resist offline guessing. Anyone can download the encrypted file, but uploading requires the authorized GitHub token. GitHub protects against concurrent uploads via the file revision SHA, and the app guards against overwriting another device's newer copy.
 
-No passphrase is ever hardcoded in the public website or repository. No one with repo access can change an existing user’s local encrypted collection without their existing PIN and browser storage.
+To restore your private events after clearing browser data, use **☰ Settings → Kameron Sign In → Load saved events from GitHub**, then enter your original passphrase. Changes not synced before data was cleared cannot be recovered. Local guest events are separate and must be backed up with the guest Download button.
 
-### Conflicts and backup status
+## Previous-year exclusions
 
-Each click on Sync uses GitHub’s file revision SHA. If the same collection was edited on another device since your last download, the app **refuses to overwrite that newer GitHub copy**. It displays a conflict warning rather than silently losing data. When you are locked, **Load saved events from GitHub** refreshes clean local copies; unsynced local edits are never overwritten. To avoid conflicts, sync before changing devices, then download the current copy before making changes on another device.
-
-Clearing *only* cookies generally leaves localStorage intact; clearing **site data** can remove localStorage. Deleting browser site data before a successful sync can permanently lose unsynced events. Keeping your passphrase safe is essential: there is no online account password recovery.
-## Using the app
-
-1. Create an 8+ character passphrase (letters and numbers are supported) or unlock with your existing PIN/passphrase. Each passphrase opens its own family history.
-2. Name the event, optionally enter a USD gift limit, and add names (one per line).
-3. Expand each participant's exclusion list. With "Apply changes both ways" checked, excluding a spouse automatically excludes the reverse pairing too. Uncheck it for directional exclusions. Self-draw prevention is checked by default.
-4. Optionally check **Exclude the person each participant drew in a previous event**, then choose a completed previous event under the same PIN. Names match case-insensitively after trimming whitespace. The page lists matched giver → recipient pairs and unmatched people (including former recipients no longer participating). If names change, edit them and recheck the match list. The historical restriction combines with all manually chosen exclusions. Reusing a drawn event for next year automatically enables the prior-event restriction and selects the original drawing.
-5. Draw names. Each participant receives exactly one assignment, and each recipient appears once. If the constraints are impossible, the app explains that instead of creating an invalid draw.
-6. The results page hides assignments behind a blurred placeholder until the eye is clicked. "Hide all names" closes reveals. Resetting a draw requires confirmation and does not recall notifications.
-7. Select Send text next to a participant and enter their phone number. No assignment is shown in that dialog.
-8. Use New event to keep separate family events. Reuse for next year copies the participants, exclusions, settings and budget but not assignments or notification history. You can edit the copied event name and year.
+After signing in, check **Exclude the person each participant drew in a previous event** in the Exclusions section, choose a completed previous event, and review matched/unmatched names. Matching is case-insensitive. This restriction combines with individual exclusions and self-draw prevention. **Reuse for next year** automatically selects the previous event's completed drawing.
 
 ## Automated tests
 
-Run `node draw.test.cjs`, `node history.test.cjs`, `node vault.test.cjs` and `node cloud.test.cjs` (Node 20+).
+From this directory run `node draw.test.cjs`, `node history.test.cjs`, `node vault.test.cjs` and `node cloud.test.cjs` (Node 20+).
 
 ## Text messages: two options
 
